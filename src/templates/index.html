@@ -303,42 +303,11 @@
                 </app-header>
 
                 <main>
-                    <section>
-                        <h1 class="tp-title" data-template="config:app-title"/>
-                    </section>
-                    <section class="panels">
-                        <paper-card class="doclist" data-i18n="[heading]browse.documents" heading="documents">
-                            <div class="card-content">
-                                <div class="browse" slot="page">
-                                    <pb-custom-form id="facets" url="api/search/facets" event="pb-results-received" subscribe="docs" emit="docs"/>
-                                    <pb-browse-docs id="document-list" url="api/collection/" sort-options="[{&#34;label&#34;: &#34;browse.title&#34;, &#34;value&#34;: &#34;title&#34;},{&#34;label&#34;: &#34;browse.author&#34;, &#34;value&#34;: &#34;author&#34;}]" sort-by="title" filter-options="[{&#34;label&#34;: &#34;browse.title&#34;, &#34;value&#34;: &#34;title&#34;},{&#34;label&#34;: &#34;browse.author&#34;, &#34;value&#34;: &#34;author&#34;},{&#34;label&#34;: &#34;browse.file&#34;, &#34;value&#34;: &#34;file&#34;}]" filter-by="title" auto="auto" history="history" login="login" emit="docs" subscribe="docs">
-                                        <pb-paginate slot="toolbar" id="paginate" per-page="10" range="5" emit="docs" subscribe="docs"/>
-                                        <pb-restricted login="login" slot="toolbar">
-                                            <pb-ajax emit="docs" url="api/odd" method="post" data-template="lib:parse-params" event="pb-search-resubmit" title="Recompile ODD" data-i18n="[title]odd.manage.regenerate-all">
-                                                <h3 slot="title">
-                                                    <pb-i18n key="odd.manage.regenerate-all"/>
-                                                </h3>
-                                                <paper-icon-button icon="icons:update"/>
-                                            </pb-ajax>
-                                        </pb-restricted>
-                                    </pb-browse-docs>
-                                </div>
-                            </div>
-                        </paper-card>
-                        <pb-restricted class="upload-panel" login="login">
-                            <aside>
-                                <paper-card class="upload" data-i18n="[heading]upload.upload" heading="Upload">
-                                    <div class="card-content">
-                                        <pb-upload id="upload" emit="docs" accept=".xml, .tei, .odd, .docx, .mei"/>
-                                    </div>
-                                </paper-card>
-                            </aside>
-                        </pb-restricted>
-                    </section>
+                    <fx-fore src="fore/epidoc.html"></fx-fore>
                 </main>
+
                 <footer class="version">
-                    App: v<span data-template="pages:version"/> /
-                    web components: v<pb-version/>
+                    App: v<span data-template="pages:version"/> / web components: v<pb-version/>
                 </footer>
             </app-header-layout>
         </app-drawer-layout>
@@ -366,27 +335,6 @@
         </paper-dialog>
     </pb-page>
     <div class="splash"/>
-    <script>
-        const facets = document.getElementById('facets');
-        if (facets) {
-            facets.addEventListener('pb-custom-form-loaded', function(ev) {
-                const elems = ev.detail.querySelectorAll('.facet');
-                elems.forEach(facet =&gt; {
-                    facet.addEventListener('change', () =&gt; {
-                        const table = facet.closest('table');
-                        if (table) {
-                            const nested = table.querySelectorAll('.nested .facet').forEach(nested =&gt; {
-                                if (nested != facet) {
-                                    nested.checked = false;
-                                }
-                            });
-                        }
-                        facets.submit();
-                    });
-                });
-            });
-        }
-    </script>
 </body>
 
 </html>
