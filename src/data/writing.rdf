@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+         xmlns:map="http://www.w3c.rl.ac.uk/2003/11/21-skos-mapping#"
+         xmlns:dct="http://purl.org/dc/terms/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:extech="https://w3id.org/executionTechnique/ontology/">
+    <skos:ConceptScheme rdf:about="https://www.eagle-network.eu/voc/writing/">
+        <dc:title>EAGLE Vocabulary - Writing</dc:title>
+        <dc:creator>EAGLE Consortium</dc:creator>
+        <dc:contributor/>
+        <dc:publisher/>
+        <dc:rights/>
+        <dc:subject/>
+        <dc:description>  </dc:description>
+        <dc:date>2015-01-29</dc:date>
+        <dct:modified>2014-05-15 13:55:41</dct:modified>
+    </skos:ConceptScheme>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/2">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/217"/>
+        <skos:prefLabel xml:lang="la">Atramento</skos:prefLabel>
+        <skos:altLabel xml:lang="it">a inchiostro</skos:altLabel>
+        <skos:altLabel xml:lang="fr">encré</skos:altLabel>
+        <skos:altLabel xml:lang="en">inked</skos:altLabel>
+        <skos:altLabel xml:lang="de">mit Tinte</skos:altLabel>
+        <skos:altLabel xml:lang="hr">s tintom</skos:altLabel>
+        <skos:altLabel xml:lang="el">με μελάνη</skos:altLabel>
+        <skos:altLabel xml:lang="ar">محبر</skos:altLabel>
+        <skos:scopeNote xml:lang="en">In Ink</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">A inchiostro. Si riferisce a tutte quelle iscrizioni dipinte
+            realizzate a inchiostro, da non confondere con quelle realizzate a pittura (Silvia
+            Evangelisti).</skos:scopeNote>
+        <skos:scopeNote>EDR080072</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+      <dct:created>2013-08-26 11:29:56</dct:created>
+        <dct:modified>2013-08-26 11:30:28</dct:modified>
+    </skos:Concept>
+      <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/3">
+         <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsSubtractiva"/>
+          <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/215"/>
+        <skos:prefLabel xml:lang="la">Caelo</skos:prefLabel>
+        <skos:altLabel xml:lang="it">a bulino</skos:altLabel>
+        <skos:altLabel xml:lang="en">engraved</skos:altLabel>
+        <skos:altLabel xml:lang="es">grabado</skos:altLabel>
+        <skos:altLabel xml:lang="fr">gravé</skos:altLabel>
+        <skos:altLabel xml:lang="hu">kivésett</skos:altLabel>
+        <skos:altLabel xml:lang="el">έκτυπο, σκαλισμένο</skos:altLabel>
+        <skos:altLabel xml:lang="ar">منقوش</skos:altLabel>
+        <skos:scopeNote xml:lang="en">engraved with burin</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">Inciso con bulino. Si riferisce a quelle iscrizioni incise a
+            bulino su metallo. Il bulino lo strumento che sostituisce lo scalpello per l’incisione
+            sui metalli (Silvia Evangelisti).</skos:scopeNote>
+        <skos:scopeNote>EDR004986</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/23">
+                <skos:prefLabel xml:lang="de">eingraviert</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+       <dct:created>2013-08-26 11:31:00</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/18">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsAddictiva"/>
+        <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/216"/>
+        <skos:prefLabel xml:lang="la">Carbone</skos:prefLabel>
+        <skos:scopeNote xml:lang="en">realized with coal</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">A carbone. Si riferisce a quelle iscrizioni tracciate col
+            carbone, solitamente su intonaci o muri (Silvia Evangelisti).</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/163">
+                <skos:prefLabel xml:lang="it">Carbone scriptus</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <dct:created>2013-08-26 11:39:47</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/168">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsSubtractiva"/>
+        <skos:prefLabel xml:lang="en">carved</skos:prefLabel>
+        <skos:altLabel xml:lang="la">accurate incisae et concinne ordinatae</skos:altLabel>
+        <skos:altLabel xml:lang="de">sorgsam eingeschnitten und gleichmäßig angeordnet</skos:altLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2014-03-19 09:22:36</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/20">
+        <skos:prefLabel xml:lang="la">Cetera</skos:prefLabel>
+        <skos:altLabel xml:lang="hu">egyéb</skos:altLabel>
+        <skos:scopeNote xml:lang="en">other</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">altro</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2013-08-26 11:40:47</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/4">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsAddictiva"/>
+        <skos:prefLabel xml:lang="la">Crustis</skos:prefLabel>
+        <skos:altLabel xml:lang="it">con pezzetti</skos:altLabel>
+        <skos:altLabel xml:lang="fr">incrusté</skos:altLabel>
+        <skos:altLabel xml:lang="de">inkrustiert</skos:altLabel>
+        <skos:altLabel xml:lang="en">inkrusztáció</skos:altLabel>
+        <skos:altLabel xml:lang="en">Inlaid or embossed</skos:altLabel>
+        <skos:altLabel xml:lang="es">realzado</skos:altLabel>
+        <skos:altLabel xml:lang="el">ένθετο, ψηφοθετημένο (μαρκετερί)</skos:altLabel>
+        <skos:altLabel xml:lang="ar">مطعم أونقش بارز</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Inscriptions realized with small pieces of marble, stone or
+            other material, not mosaic tesserae</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">Si riferisce a quelle iscrizioni realizzate con pezzetti di
+            vario materiale duro (pietra) che non siano tessere di mosaico. Da non confondere,
+            appunto, con le iscrizioni realizzate con le tessere di mosaico (Silvia
+            Evangelisti).</skos:scopeNote>
+        <skos:scopeNote>EDR010609</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/34">
+                <skos:prefLabel xml:lang="la">Crustis scriptus</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <dct:created>2013-08-26 11:31:29</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/12">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="de">Eingemeißelt mit Farbresten</skos:prefLabel>
+        <skos:altLabel xml:lang="hu">vésett (festék nyomaival)</skos:altLabel>
+        <skos:scopeNote xml:lang="en">applies to inscriptions on stone remnants (usually red) of
+            paint preserved, with which the letters were retraced</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2013-08-26 11:38:21</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/44">
+        <skos:prefLabel xml:lang="en">Embossed</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2013-08-26 14:20:04</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/167">
+        <skos:prefLabel xml:lang="en">etched (with a sharp point)</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2014-03-19 09:22:15</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/21">
+        <skos:prefLabel xml:lang="la">Ignoratur</skos:prefLabel>
+        <skos:altLabel xml:lang="hu">ismeretlen</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Unknown</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">sconosciuto</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/164">
+                <skos:prefLabel xml:lang="la">non liquet</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <dct:created>2013-08-26 11:40:59</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/166">
+        <skos:prefLabel xml:lang="en">impressed</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:related rdf:resource="https://www.eagle-network.eu/voc/writing/lod/13"/>
+        <dct:created>2014-03-19 09:20:23</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/170">
+        <skos:prefLabel xml:lang="en">in points (chasing)</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2014-03-19 09:23:32</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/174">
+        <skos:prefLabel xml:lang="en">in points (repouss)</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2014-03-19 09:25:33</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/173">
+        <skos:prefLabel xml:lang="en">in relief (cut)</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2014-03-19 09:24:58</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/169">
+        <skos:prefLabel xml:lang="en">in troughs</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2014-03-19 09:23:05</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/5">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsMixta"/>
+        <skos:prefLabel xml:lang="la">Litteris Ageminatis</skos:prefLabel>
+        <skos:altLabel xml:lang="en">damascened</skos:altLabel>
+        <skos:altLabel xml:lang="fr">damasquinage</skos:altLabel>
+        <skos:altLabel xml:lang="it">Lettere ageminate</skos:altLabel>
+        <skos:altLabel xml:lang="la">Litt. Agem.</skos:altLabel>
+        <skos:altLabel xml:lang="de">tauschiert</skos:altLabel>
+        <skos:altLabel xml:lang="el">με ένθετα γράμματα δαμασκηνής τεχνοτροπίας</skos:altLabel>
+        <skos:altLabel xml:lang="ar">مقصب</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Damascened Letters</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">Lettere ageminate. Si riferisce a quelle iscrizioni su metallo
+            realizzate incastrando attraverso battitura (non colando) in un solco preventivamente
+            realizzato (con bulino?) pezzi di metallo differente (per colore e materiale) rispetto
+            al materiale in cui la lettera stata ricavata (Silvia Evangelisti).</skos:scopeNote>
+        <skos:scopeNote>EDR032760</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2013-08-26 11:31:44</dct:created>
+        <dct:modified>2013-08-26 11:33:06</dct:modified>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/36">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsMixta"/>
+        <skos:prefLabel xml:lang="la">Litteris Alveolatis</skos:prefLabel>
+        <skos:altLabel xml:lang="en">channelled</skos:altLabel>
+        <skos:altLabel xml:lang="de">in Bettungen</skos:altLabel>
+        <skos:altLabel xml:lang="it">lettere alveolate</skos:altLabel>
+        <skos:altLabel xml:lang="fr">lettres creusées</skos:altLabel>
+        <skos:altLabel xml:lang="la">Litt. Alv.</skos:altLabel>
+        <skos:altLabel xml:lang="la">litterae aureae (in letter beds)</skos:altLabel>
+        <skos:altLabel xml:lang="la">Bronzebuchstaben, vergoldet</skos:altLabel>
+        <skos:altLabel xml:lang="el">με γράμματα ελαφρώς κοίλα</skos:altLabel>
+        <skos:altLabel xml:lang="ar">حروف بقنوات</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Alveolus Littering</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">Lettere Alveolate. Si riferisce a scritte realizzate ricavando
+            nel supporto l’intera forma della lettera, che poteva poi venire riempita con materiale
+            diverso da quello del supporto stesso. Solitamente le lettere alveolate erano riempite
+            con metallo o paste colorate (Silvia Evangelisti).</skos:scopeNote>
+        <skos:scopeNote>EDR029193</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/38">
+                <skos:prefLabel xml:lang="de">litterae aureae (in
+                    Buchstabenbettungen)</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <dct:created>2013-08-26 13:40:09</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/6">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsAddictiva"/>
+        <skos:prefLabel xml:lang="la">Litteris Applicitis</skos:prefLabel>
+        <skos:altLabel xml:lang="it">applicate</skos:altLabel>
+        <skos:altLabel xml:lang="en">applied</skos:altLabel>
+        <skos:altLabel xml:lang="de">aufgesetzt</skos:altLabel>
+        <skos:altLabel xml:lang="fr">lettres appliquées</skos:altLabel>
+        <skos:altLabel xml:lang="la">Litt. App.</skos:altLabel>
+        <skos:altLabel xml:lang="la">litterae aureae (fastened with dowels)</skos:altLabel>
+        <skos:altLabel xml:lang="el">με γράμματα προσαρμοσμένα επικλινή</skos:altLabel>
+        <skos:altLabel xml:lang="ar">مطبق</skos:altLabel>
+        <skos:scopeNote xml:lang="en">metal letters applied</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">lettere metalliche applicate. Si riferisce a scritte
+            realizzate attraverso lettere metalliche applicate alla superficie del supporto
+            dell’epigrafe. Nel caso specifico della lamina aurea ci si riferisce a quelle lettere
+            realizzate attraverso apposizione di lamine auree alla superficie del vetro. La lamina
+            veniva poi graffita ed eliminata salvo nelle parti costituenti la scritta che poteva
+            essere sigillata da un secondo strato di vetro (Silvia Evangelisti).</skos:scopeNote>
+        <skos:scopeNote>EDR103378</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/41">
+                <skos:prefLabel xml:lang="de">litterae aureae (von außen
+                    eingedübelt)</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <dct:created>2013-08-26 11:34:26</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/7">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">Litteris Eminentibus</skos:prefLabel>
+        <skos:altLabel xml:lang="it">a rilievo</skos:altLabel>
+        <skos:altLabel xml:lang="de">erhaben</skos:altLabel>
+        <skos:altLabel xml:lang="fr">lettres en relief</skos:altLabel>
+        <skos:altLabel xml:lang="es">relevación</skos:altLabel>
+        <skos:altLabel xml:lang="en">relief</skos:altLabel>
+        <skos:altLabel xml:lang="el">με γράμματα προεξέχοντα</skos:altLabel>
+        <skos:altLabel xml:lang="ar">نحت بارز</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Letters in relief</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">Lettere in rilievo</skos:scopeNote>
+        <skos:scopeNote>EDR115514</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/69">
+                <skos:prefLabel xml:lang="la">Reversus impressione scriptus</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+       <dct:created>2013-08-26 11:35:08</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/8">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsPlastica"/>
+        <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/219"/>
+        <skos:prefLabel xml:lang="la">Litteris ex Forma</skos:prefLabel>
+        <skos:altLabel xml:lang="it">a matrice</skos:altLabel>
+        <skos:altLabel xml:lang="de">als Abdruck</skos:altLabel>
+        <skos:altLabel xml:lang="en">bélyegzett</skos:altLabel>
+        <skos:altLabel xml:lang="fr">lettres moulées</skos:altLabel>
+        <skos:altLabel xml:lang="la">litt. ex forma</skos:altLabel>
+        <skos:altLabel xml:lang="en">moulded</skos:altLabel>
+        <skos:altLabel xml:lang="en">stamped</skos:altLabel>
+        <skos:altLabel xml:lang="en">Stamp</skos:altLabel>
+        <skos:altLabel xml:lang="el">με γράμματα εκτυπωμένα (σχηματοποιημένα δια της
+            πίεσης)</skos:altLabel>
+        <skos:altLabel xml:lang="ar">حروف مصبوبة</skos:altLabel>
+        <skos:scopeNote xml:lang="en">stamped</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">Lettere impresse con una matrice. Si riferisce a scritte
+            realizzate tramite una matrice composta da due parti (valvae) che aderendo l’una
+            all’altra creano cavitinterne dentro cui viene versato il metallo liquefatto. Va
+            utilizzato, quindi per quegli oggetti in cui l’epigrafe nello stampo per l’oggetto
+            stesso e che sono solo di metallo. Le fistulae e le glandes rientrano in questa
+            categoria (Silvia Evangelisti).</skos:scopeNote>
+        <skos:scopeNote>EDR015716</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/78">
+                <skos:prefLabel xml:lang="la">ex forma</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/77">
+                <skos:prefLabel xml:lang="de">gestempelt</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <dct:created>2013-08-26 11:35:33</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/9">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">Litteris Scariphatis</skos:prefLabel>
+        <skos:altLabel xml:lang="de">geritzt</skos:altLabel>
+        <skos:altLabel xml:lang="la">titulus scarifatus</skos:altLabel>        
+      <skos:altLabel xml:lang="it">graffiti su superficie dura</skos:altLabel>
+        <skos:altLabel xml:lang="fr">graffiti sur surface dure</skos:altLabel>
+        <skos:altLabel xml:lang="la">Litt. scariph.</skos:altLabel>
+        <skos:altLabel xml:lang="en">scratched</skos:altLabel>
+        <skos:altLabel xml:lang="en">scratched / Graffito</skos:altLabel>
+        <skos:altLabel xml:lang="el">με γράμματα εγχάρακτα (σκαριφήματα)</skos:altLabel>
+        <skos:altLabel xml:lang="ru">граффито</skos:altLabel>
+        <skos:altLabel xml:lang="ar">مخدش</skos:altLabel>
+        <skos:scopeNote xml:lang="en">graffiti on hard surface (marble, plaster,
+            terracotta)</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">graffiti su superficie dura (marmot, intonaco,
+            terracotta)</skos:scopeNote>
+        <skos:scopeNote xml:lang="en">Also listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:scopeNote>EDR000146</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/88">
+                <skos:prefLabel xml:lang="de">Geritzt</skos:prefLabel>
+            <skos:altLabel xml:lang="it">Graffito</skos:altLabel>
+                <skos:altLabel xml:lang="de">Geritzt / Graffito</skos:altLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/89">
+                <skos:prefLabel xml:lang="la">Scariphatus</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+       <dct:created>2013-08-26 11:36:00</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/172">
+        <skos:prefLabel xml:lang="en">molded</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2014-03-19 09:24:35</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/10">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsAddictiva"/>
+        <skos:prefLabel xml:lang="la">Pictura</skos:prefLabel>
+        <skos:altLabel xml:lang="la">titulus pictus</skos:altLabel>
+        <skos:altLabel xml:lang="it">dipinta</skos:altLabel>
+        <skos:altLabel xml:lang="de">festett / dipinto</skos:altLabel>
+        <skos:altLabel xml:lang="de">aufgemalt</skos:altLabel>
+        <skos:altLabel xml:lang="en">painted</skos:altLabel>
+        <skos:altLabel xml:lang="en">painted / Dipinto</skos:altLabel>
+        <skos:altLabel xml:lang="fr">peint</skos:altLabel>
+        <skos:altLabel xml:lang="es">pintado</skos:altLabel>
+        <skos:altLabel xml:lang="el">ζωγραφισμένo, ιστορημένo</skos:altLabel>
+        <skos:altLabel xml:lang="ru">дипинто</skos:altLabel>
+        <skos:altLabel xml:lang="ar">مطلي</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Also listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:scopeNote xml:lang="en">painted inscription</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">Iscrizione dipinta. Si riferisce a quelle iscrizioni che sono
+            realizzate attraverso pittura diversa dall’inchiostro (Silvia
+            Evangelisti).</skos:scopeNote>
+        <skos:scopeNote>EDR005156</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/96">
+                <skos:prefLabel xml:lang="de">Gemalt / Dipinto</skos:prefLabel>
+            <skos:altLabel xml:lang="it">Dipinto</skos:altLabel>
+                <skos:altLabel xml:lang="de">Gemalt</skos:altLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/97">
+                <skos:prefLabel xml:lang="la">Pictus</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <dct:created>2013-08-26 11:36:25</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/171">
+        <skos:prefLabel xml:lang="en">protruding</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2014-03-19 09:24:07</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/11">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">Punctim</skos:prefLabel>
+        <skos:altLabel xml:lang="it">a punti incisi</skos:altLabel>
+        <skos:altLabel xml:lang="fr">pointillé</skos:altLabel>
+        <skos:altLabel xml:lang="en">poncolt</skos:altLabel>
+        <skos:altLabel xml:lang="en">punched</skos:altLabel>
+        <skos:altLabel xml:lang="el">σχηματισμένo με ακίδα, δια της κέντησης</skos:altLabel>
+        <skos:altLabel xml:lang="ar">محفر</skos:altLabel>
+        <skos:scopeNote xml:lang="en">impressed dots</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">a punti incisi</skos:scopeNote>
+        <skos:scopeNote>EDR071974</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/145">
+                <skos:prefLabel xml:lang="de">gepunzt</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+          <dct:created>2013-08-26 11:36:33</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/1">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsSubtractiva"/>
+        <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/232"/>
+        <skos:prefLabel xml:lang="la">Scalpro</skos:prefLabel>
+        <skos:altLabel xml:lang="en">chiselled</skos:altLabel>
+        <skos:altLabel xml:lang="es">cincelado</skos:altLabel>
+        <skos:altLabel xml:lang="de">geritzt / ziselliert</skos:altLabel>
+        <skos:altLabel xml:lang="it">incisa a scalpello</skos:altLabel>
+        <skos:altLabel xml:lang="fr">incisé</skos:altLabel>
+        <skos:altLabel xml:lang="en">incised</skos:altLabel>
+        <skos:altLabel xml:lang="en">inscribed</skos:altLabel>
+        <skos:altLabel xml:lang="hu">vésett</skos:altLabel>
+        <skos:altLabel xml:lang="el">σμιλεμένo</skos:altLabel>
+        <skos:altLabel xml:lang="ar">المنقوش</skos:altLabel>
+        <skos:scopeNote xml:lang="en">carved with chisel</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">incise a scalpello, scrittura a solchi. Si riferisce a quelle
+            scritte realizzate a scalpello mediante l’incisione di solchi (Silvia
+            Evangelisti).</skos:scopeNote>
+        <skos:scopeNote>EDR000079</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/115">
+                <skos:prefLabel xml:lang="en">Chisel</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/113">
+                <skos:prefLabel xml:lang="de">eingemeißelt</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/114">
+                <skos:prefLabel xml:lang="la">Insculptus</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+       <dct:created>2013-08-23 16:45:39</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/13">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsPlastica"/>
+        <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/231"/>
+        <skos:prefLabel xml:lang="la">Signaculo</skos:prefLabel>
+        <skos:altLabel xml:lang="it">impressa</skos:altLabel>
+        <skos:altLabel xml:lang="fr">timbré, cacheté</skos:altLabel>
+        <skos:altLabel xml:lang="el">αποτυπωμένο, σταμπωτό</skos:altLabel>
+        <skos:altLabel xml:lang="ar">مختوم</skos:altLabel>
+        <skos:scopeNote xml:lang="en">impressed</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">impressa con sigillo. Si riferisce a quelle scritte realizzate
+            con un signaculum (sigillo) che si differenzia dalla matrice perchcostituito da un solo
+            elemento la cui superficie iscritta viene pressata su materiali cedevoli (argilla prima
+            della cottura, ferro o piombo semifusi). Utilizzerei questa definizione anche per le
+            impronte di epigrafi originariamente in altro materiale il cui negativo troviamo su
+            intonaco o argilla o altro. Conierei definizione apposita (Silvia
+            Evangelisti).</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:related rdf:resource="https://www.eagle-network.eu/voc/writing/lod/166"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/125">
+                <skos:prefLabel xml:lang="la">Signaculo scriptus</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <dct:created>2013-08-26 11:38:40</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/165">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsSubtractiva"/>
+        <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/231"/>
+        <skos:prefLabel xml:lang="en">Signaculo Candente</skos:prefLabel>
+        <skos:scopeNote xml:lang="it">Si riferisce a quelle scritte realizzate con un signaculum
+            arroventato su materiali come il cuoio o il legno, oppure su esseri viventi (animali e
+            schiavi) una volta arroventati. Stilo – inciso su superficie morbida Si riferisce a
+            tutte quelle scritte realizzate con strumenti appuntiti (si usi anche per le scritte
+            fatte con le dita) su superficie morbida (argilla prima della cottura, malta fresca,
+            cera). Non utilizzare per le scritte realizzate a matrice o sigillo (Silvia
+            Evangelisti).</skos:scopeNote>
+        <skos:scopeNote xml:lang="en">impressed with hot seal</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2014-02-04 19:04:30</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/14">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsSubtractiva"/>
+        <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/230"/>
+        <skos:prefLabel xml:lang="la">Stilo</skos:prefLabel>
+        <skos:altLabel xml:lang="la">Acu</skos:altLabel>
+        <skos:altLabel xml:lang="la">Cultello</skos:altLabel>
+        <skos:altLabel xml:lang="la">Aliis instrumentis acutis</skos:altLabel>
+        <skos:altLabel xml:lang="de">geritzt / in weiches Material</skos:altLabel>
+        <skos:altLabel xml:lang="it">incisa su materia morbida</skos:altLabel>
+        <skos:altLabel xml:lang="en">inscribed on a soft surface</skos:altLabel>
+        <skos:altLabel xml:lang="fr">inscrit sur une surface tendre</skos:altLabel>
+        <skos:altLabel xml:lang="el">επιγεγραμμένο, εγχάρακτο πάνω σε μαλακή
+            επιφάνεια</skos:altLabel>
+        <skos:altLabel xml:lang="ar">منقوش على سطح ناعم</skos:altLabel>
+        <skos:scopeNote xml:lang="en">cut on soft material (soft clay, fresh mortar,
+            wax)</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">incise su materiale morbida (argilla prima della cottura,
+            malta fresca, cera)</skos:scopeNote>
+        <skos:scopeNote>EDR029531</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/132">
+                <skos:prefLabel xml:lang="it">Exaratus</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <dct:created>2013-08-26 11:38:59</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/15">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsSubtractiva"/>
+        <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/229"/>
+        <skos:prefLabel xml:lang="la">Terebro</skos:prefLabel>
+        <skos:altLabel xml:lang="it">a traforo</skos:altLabel>
+        <skos:altLabel xml:lang="de">durchlöchert</skos:altLabel>
+        <skos:altLabel xml:lang="en">perforated or bored</skos:altLabel>
+        <skos:altLabel xml:lang="fr">perforé, percé, troué</skos:altLabel>
+        <skos:altLabel xml:lang="hu">trébelt</skos:altLabel>
+        <skos:altLabel xml:lang="el">τρυπητό, διάτρυτο</skos:altLabel>
+        <skos:altLabel xml:lang="ar">مثقب أو محف</skos:altLabel>
+        <skos:scopeNote xml:lang="en">perforated</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">A traforo. Si riferisce a tutte quelle scritte realizzate nel
+            materiale stesso del supporto eliminando ogni parte dello stesso che non sia lettera o
+            elementi decorativi o cornici della stessa (Silvia Evangelisti).</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2013-08-26 11:39:15</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/16">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsAddictiva"/>
+        <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/228"/>
+        <skos:prefLabel xml:lang="la">Tessellis</skos:prefLabel>
+        <skos:altLabel xml:lang="de">als Mosaik</skos:altLabel>
+        <skos:altLabel xml:lang="hu">mozaik</skos:altLabel>
+        <skos:altLabel xml:lang="it">musiva</skos:altLabel>
+        <skos:altLabel xml:lang="fr">tesselle, tessère</skos:altLabel>
+        <skos:altLabel xml:lang="la">tesserae (mosaic)</skos:altLabel>
+        <skos:altLabel xml:lang="el">ψηφιδωτό</skos:altLabel>
+        <skos:altLabel xml:lang="ar">مكعبات (فسيفساء)</skos:altLabel>
+        <skos:altLabel xml:lang="la">opere musivo ex tessellis albis compositae</skos:altLabel>
+        <skos:altLabel xml:lang="de">aus weißen Mosaiksteinchen</skos:altLabel>        
+      <skos:scopeNote xml:lang="en">mosaic</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">Musiva. Si riferisce alle scritte realizzate con tessere di
+            mosaico. Da non confondere con le scritte realizzate con altro tipo di pezzetti di
+            pietra o marmo non costituenti tesserae, vd. crustis (Silvia
+            Evangelisti).</skos:scopeNote>
+        <skos:scopeNote xml:lang="en">Also listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:scopeNote>EDR000939</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/152">
+                <skos:prefLabel xml:lang="de">Mosaik</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/153">
+                <skos:prefLabel xml:lang="la">Tessellis scriptus</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+       <dct:created>2013-08-26 11:39:23</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/17">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsPlastica"/>
+        <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/226"/>
+        <skos:prefLabel xml:lang="la">Typo</skos:prefLabel>
+        <skos:altLabel xml:lang="it">a punzone</skos:altLabel>
+        <skos:scopeNote xml:lang="en">with punch</skos:scopeNote>
+        <skos:scopeNote xml:lang="it">A punzone. Si riferisce alle scritte realizzate a punzone
+            ossia mediante l’uso di un punzone su materiale duro imprimendo un colpo con un mazzuolo
+            o strumento similare. I marchi sono realizzati con signacula di vario materiale e
+            dimensioni (alcuni hanno anche supposto l'uso di lettere mobili) recanti lettere
+            rilevate o cave e quindi eviterei scalpro, mentre per quelli tracciati a "mano libera",
+            come su alcuni tipi di lucerne o di anfore, userei stilo. Per le scritte realizzate
+            usando le dita userei digito (nella bibliografia specifica, specie anglosassone, si
+            trova spesso il termine litterae digitatae). Eviterei in quest'ultimo caso di usare
+            stilo. Per quel che riguarda il vetro, oltre alle iscrizioni ex forma, le iscrizioni
+            cosiddette graffite erano realizzate con strumenti molto simili a quelli impiegati per
+            le gemme, in particolare si ricavava dapprima un solco con il trapano corrente e poi lo
+            si allargava con un bulino. Per quanto riguara la lamina d'oro impiegherei il termine ex
+            brattea aurea, dato che brattea il termine tecnico che indica proprio le sottilissime
+            lamine d'oro impiegate non solo nei vetri ma anche nell'oreficeria (Silvia
+            Evangelisti).</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <skos:exactMatch>
+            <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/161">
+                <skos:prefLabel xml:lang="la">Typo scriptus</skos:prefLabel>
+            </skos:Concept>
+        </skos:exactMatch>
+        <dct:created>2013-08-26 11:39:37</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/19">
+        <skos:prefLabel xml:lang="en">Undetermined</skos:prefLabel>
+        <skos:altLabel xml:lang="hu">meghatározhatatlan</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Undetermined Writing</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2013-08-26 11:40:34</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/175">
+        <extech:usesTool rdf:resource="https://www.eagle-network.eu/voc/writing/lod/227"/>
+        <skos:prefLabel xml:lang="en">with brush</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2014-03-19 09:26:05</dct:created>
+    </skos:Concept>
+
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/176">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">minio depictae</skos:prefLabel>
+        <skos:altLabel xml:lang="de">mit Mennige ausgemalt</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2015-01-29 20:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/177">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">compresse scriptae</skos:prefLabel>
+        <skos:altLabel xml:lang="de">eng geschrieben</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2015-01-29 20:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/178">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">rusticae neglegentissime insculptae</skos:prefLabel>
+        <skos:altLabel xml:lang="de">kunstlos und sehr nachlässig gemeißelt</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2015-01-29 20:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/179">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">accurate (minus accurate) / affabre insculptae / scalptae</skos:prefLabel>
+        <skos:altLabel xml:lang="de">sorgfältig (weniger sorgfältig) / kunstfertig herausgemeißelt</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2015-01-29 20:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/180">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">tempore recentiore colore nigro tinctae</skos:prefLabel>
+        <skos:altLabel xml:lang="de">in jüngerer Zeit mit schwarzer Farbe ausgemalt</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2015-01-29 20:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/181">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">decrescentes / accrescentes</skos:prefLabel>
+        <skos:altLabel xml:lang="de">kleiner / größer werdend</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2015-01-29 20:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/182">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">littera supra eminens reliquis maior</skos:prefLabel>
+        <skos:altLabel xml:lang="de">oben herausragend, größer als die übrigen</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2015-01-29 20:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/183">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">erasae, in litura repositae</skos:prefLabel>
+        <skos:altLabel xml:lang="de">getilgt, wieder kenntlich gemacht</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2015-01-29 20:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/184">
+        <skos:prefLabel xml:lang="la">valde detritae, partim umore deletae, musco circumlitae</skos:prefLabel>
+        <skos:altLabel xml:lang="de">stark abgerieben, teilweise durch Feuchtigkeit zerstört und bemost</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2015-01-29 20:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/185">
+        <skos:prefLabel xml:lang="la">plane evanuerunt</skos:prefLabel>
+        <skos:altLabel xml:lang="de">völlig verschwunden</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2015-01-29 20:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/186">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">Titulus incisus est litteris velocibus.</skos:prefLabel>
+        <skos:altLabel xml:lang="de">Die Inschrift ist mit flüchtigen Buchstaben eingemeißelt.</skos:altLabel>
+        <skos:scopeNote xml:lang="en">Listed by Anne Glock from volumes II/7 (Corduba); VI 8, 2 and 3 (Rome); XIII (Gaul and Germania); XVII/4,1 (Milestones) in CIL</skos:scopeNote>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2015-01-29 20:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/187">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsSubtractiva"/>
+        <skos:prefLabel xml:lang="la">Subula</skos:prefLabel>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/188">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsAddictiva"/>
+        <skos:prefLabel xml:lang="la">Brattea</skos:prefLabel>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/189">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsAddictiva"/>
+        <skos:prefLabel xml:lang="la">Calamo</skos:prefLabel>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/190">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsAddictiva"/>
+        <skos:prefLabel xml:lang="la">Creta</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2013-08-26 11:39:47</dct:created>
+    </skos:Concept>
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/191">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsAddictiva"/>
+        <skos:prefLabel xml:lang="la">Granulis</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/192">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsAddictiva"/>
+        <skos:prefLabel xml:lang="la">Penicillo</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/193">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsMixta"/>
+        <skos:prefLabel xml:lang="la">ad gemina metalla</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/194">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsMixta"/>
+        <skos:prefLabel xml:lang="la">alveolis repletis</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/195">
+        <skos:prefLabel xml:lang="la">Gypso</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+
+
+
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/196">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Lapide rubro</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+
+
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/197">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Lapide fulvo</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/198">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsPlastica"/>
+        <skos:prefLabel xml:lang="la">Digito</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/200">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ArsPlastica"/>
+        <skos:prefLabel xml:lang="la">Spathula</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/201">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">in alveolis insertis</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/202">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">ipsae lapidi</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/203">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">litt. sulcis angulatis</skos:prefLabel>
+        <skos:altLabel xml:lang="it">Iscrizione a solchi a V</skos:altLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/204">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">litt. sulcis incurvatis</skos:prefLabel>
+        <skos:altLabel xml:lang="it">Iscrizione a solchi a U</skos:altLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/205">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">litt. sulcis rectis</skos:prefLabel>
+        <skos:altLabel xml:lang="it">Iscrizione a solco quadrato</skos:altLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/206">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">litt. sulcis rudibus</skos:prefLabel>
+        <skos:altLabel xml:lang="it">Iscrizione a cordone</skos:altLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/207">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#ResultType"/>
+        <skos:prefLabel xml:lang="la">litt. rubricatis</skos:prefLabel>
+        <skos:altLabel xml:lang="it">Iscrizione a cordone</skos:altLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/208">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Color"/>
+        <skos:prefLabel xml:lang="la">rubro</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/209">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Color"/>
+        <skos:prefLabel xml:lang="la">nigro</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/210">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Color"/>
+        <skos:prefLabel xml:lang="la">albo</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/211">
+        <skos:prefLabel xml:lang="la">candente</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+   <!--    better use the values in the EAGLE Vocabulary for MATERIAL -->
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/212">
+        <skos:prefLabel xml:lang="la">plumbo</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/213">
+        <skos:prefLabel xml:lang="la">vitro</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/214">
+        <skos:prefLabel xml:lang="la">auro</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/233">
+        <skos:prefLabel xml:lang="la">argento</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    <!--    better use the values in the EAGLE Vocabulary for MATERIAL -->
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/215">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="it">Bulino</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/216">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="it">Carbone</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/217">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="it">Inchiostro</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+
+
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/218">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Digitus</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/219">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Forma</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/220">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Spathula</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/221">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Brattea</skos:prefLabel>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/222">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Calamus</skos:prefLabel>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/224">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Granulis</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/225">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Penicillus</skos:prefLabel>
+        <skos:inScheme rdf:resource="https://www.eagle-network.eu/voc/writing/"/>
+        <dct:created>2019-09-05 16:40:47</dct:created>
+    </skos:Concept>
+
+
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/226">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Typus</skos:prefLabel>
+        <skos:altLabel xml:lang="it">Punzone</skos:altLabel>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/227">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="en">Brush</skos:prefLabel>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/228">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Tessellae</skos:prefLabel>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/229">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Terebrus</skos:prefLabel>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/230">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Stylus</skos:prefLabel>
+    </skos:Concept>
+    
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/231">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Signaculus</skos:prefLabel>
+    </skos:Concept>
+    
+    <skos:Concept rdf:about="https://www.eagle-network.eu/voc/writing/lod/232">
+        <rdf:type rdf:resource="https://w3id.org/executionTechnique/ontology#Tool"/>
+        <skos:prefLabel xml:lang="la">Scalprum</skos:prefLabel>
+    </skos:Concept>
+</rdf:RDF>

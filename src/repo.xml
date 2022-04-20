@@ -1,1 +1,13 @@
-<meta xmlns="http://exist-db.org/xquery/repo"><description>Editionstools für eine digitale Epigraphik</description><author/><status>beta</status><license>GNU-LGPL</license><copyright>true</copyright><type>application</type><prepare>pre-install.xql</prepare><finish>post-install.xql</finish><target>edep</target><permissions user="edep" group="tei" mode="rw-r--r--"/><deployed>2022-04-19T13:07:52.079+02:00</deployed></meta>
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>Editionstools für eine digitale Epigraphik</description>
+    <author/>
+    <status>beta</status>
+    <license>GNU-LGPL</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <prepare>pre-install.xql</prepare>
+    <finish>post-install.xql</finish>
+    <target>edep</target>
+    <permissions user="edep" group="tei" mode="rw-r--r--"/>
+    <deployed>2022-04-19T13:07:52.079+02:00</deployed>
+</meta>

@@ -70,8 +70,5 @@
       "eslint --fix",
       "prettier --write"
     ]
-  },
-  "dependencies": {
-    "@jinntec/fore": "file:../Fore"
   }
 }
