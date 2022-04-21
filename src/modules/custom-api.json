@@ -25,6 +25,114 @@
         }
     },
     "paths": {
+    	"/api/decor": {
+    		"get" : {
+                "summary": "decor items",
+                "operationId": "api:decor",
+                "responses": {
+                    "200": {
+                        "description": "decor",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+    		}    
+    	},
+    	"/api/material": {
+    		"get" : {
+                "summary": "material items",
+                "operationId": "api:material",
+                "responses": {
+                    "200": {
+                        "description": "material",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+    		}    
+    	},
+    	"/api/objtyp": {
+    		"get" : {
+                "summary": "objtyp items",
+                "operationId": "api:objtyp",
+                "responses": {
+                    "200": {
+                        "description": "objtyp",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+    		}    
+    	},
+    	"/api/statepreserv": {
+    		"get" : {
+                "summary": "statepreserv items",
+                "operationId": "api:statepreserv",
+                "responses": {
+                    "200": {
+                        "description": "statepreserv",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+    		}    
+    	},
+    	"/api/typeins": {
+    		"get" : {
+                "summary": "typeins items",
+                "operationId": "api:typeins",
+                "responses": {
+                    "200": {
+                        "description": "typeins",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+    		}    
+    	},
+    	"/api/writing": {
+    		"get" : {
+                "summary": "writing items",
+                "operationId": "api:writing",
+                "responses": {
+                    "200": {
+                        "description": "writing",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+    		}    
+    	}
     },
     "security": [
         {
