@@ -104,20 +104,26 @@ button{
 }
 fx-control{
     display: grid;
-    grid-template-columns: 200px auto;
+    grid-template-columns: 300px auto;
     /*width: fit-content;*/
 
     grid-gap:0.3rem;
     margin: 0.5rem 0;
 
 }
-fx-control input{
-    width:200px;
+input, select{
+    width:300px;
+}
+
+fx-control [type="checkbox"]{
+    align-self:center;
+    width:fit-content;
 }
 fx-control textarea{
     width: 95%;
     display: inline-block;
 }
+
 
 .group{
     border:thin solid var(--paper-grey-300);
@@ -128,4 +134,12 @@ fx-control label{
     justify-self: end;
 }
 
+fx-fore{
+    position:relative;
+}
+fx-inspector{
+    position:absolute;
+    right:-20px;
+}
+}
 

@@ -1,0 +1,615 @@
+<items>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1826" name="Abaton"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1827" name="Acanthus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1828" name="Adytum / Adyton"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/11" name="Aedificium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1829" name="Aerarium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/15" name="Aes, fragmentum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1830" name="Aetoma"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/3" name="Aiguille"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1871" name="Aisle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/4" name="Akroter"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/29" name="Altar"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/30" name="Altar / Basis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/31" name="Altarbekrönung"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1963" name="Altar-stele"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1831" name="Amphidistyle in-antis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1832" name="Amphiprostyle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/16" name="Amphith̢̩tre"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/17" name="Amphora"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/21" name="Amphora, cortex"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/22" name="Ampulla"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/167" name="Amulette"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1833" name="Anactoron"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1872" name="Analemma"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1873" name="Anastylosis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1834" name="Anathyrosis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/27" name="Ancora"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1835" name="Andrón"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1836" name="Angle capital"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1837" name="Angle contraction"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1838" name="Anta capitel"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1839" name="Ante"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1840" name="Antechamber"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/28" name="Antefix"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1841" name="Anthemion"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/221" name="Anthropomorpher Sarkophag"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1842" name="Antithema"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1843" name="anulus aureus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1844" name="Apsis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/14" name="Aqueduc"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/436" name="Archaeological Feature"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/35" name="Architekturteil"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/119" name="Architrav"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1845" name="Archivolt"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/41" name="arenatum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/39" name="Arkade"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/43" name="Arma, galea"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/47" name="Arma, glans"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/49" name="Arma, spatha"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1846" name="Arsenal"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/79" name="Aschenkiste"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/84" name="Aschenkistendeckel"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/80" name="Aschenkistendeckel oder Sarkophagdeckel"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1847" name="Astragal"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1848" name="Astylos"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1849" name="Atlant"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1850" name="Attic"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/215" name="Attischer Sarkophag"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/69" name="Auxiliary Fort"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/169" name="Bague"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/45" name="Balle de catapulte"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1851" name="Baluster"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/254" name="Bank"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/324" name="Barrack Block"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/412" name="Barrier"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/425" name="Barrow"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1773" name="Base de Statue Commémorative"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/53" name="Basis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/56" name="Basis, donum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/325" name="Bath house"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/54" name="Bauplatte"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/55" name="Bauquader"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1852" name="Bema"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/419" name="Berm"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/155" name="Bleibarren"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/189" name="Block"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/441" name="Boiler"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/310" name="Bol"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1875" name="Bothros"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1853" name="Bouleuterion"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1874" name="Breccia"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1788" name="Brick"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/392" name="Brick Kiln"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/401" name="Brick Manufacturing Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/431" name="Bridge"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/432" name="Bridgehead"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/40" name="Brunnen"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/205" name="Brunnenfassung"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1854" name="Bucranium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/13" name="Building Material"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/12" name="Building structure"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/135" name="Büste"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/170" name="Cachet"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/58" name="Caduceus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1806" name="calender"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/166" name="Cam̩e"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/374" name="Canabae"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/60" name="Cancellum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/61" name="Candelabrum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/62" name="Cantharus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/64" name="Capitulum, abacus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/65" name="Capitulum, echinus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/448" name="Capsa"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/437" name="Carved Stone"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1856" name="Caryatide"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/433" name="Causeway"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1857" name="Cavea"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/244" name="Cazo (Trulla)"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1858" name="Cella"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/380" name="Cellar"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/228" name="Cemetery"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/442" name="Changing room"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1859" name="Channel"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1860" name="Chevron"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/85" name="Cippus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/86" name="Cippus, aquaeductus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/87" name="Cippus, centuriatio"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/88" name="Cippus, flumen"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/91" name="Cippus, funus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/90" name="Cippus, pomerium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/92" name="Cippus, terminus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/81" name="Cirque"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/83" name="Cista (tapa de...)"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/82" name="Ciste"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/302" name="Cistern"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/202" name="City gate"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/93" name="Clavis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/94" name="Clipeus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1171" name="cloche"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/96" name="Cochlear"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/97" name="Collare"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/175" name="Collier d'esclave"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/98" name="Collyrium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1861" name="Colonnade"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/100" name="Columna"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/105" name="Columna, imoscapus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1662" name="Columna, scapus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/106" name="Columna, summoscapus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/338" name="Commemorative"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/339" name="Commemorative Monument"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/340" name="Commemorative Stone"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/108" name="Cono"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/360" name="Construction Camp"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/375" name="Construction Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/315" name="Copa"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/109" name="Corona"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/347" name="Costal Defense Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/327" name="Courtyard"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/316" name="Couvercle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/231" name="Cremation"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/232" name="Cremation Cemetery"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/233" name="Cremation Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/417" name="Crenel"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1876" name="Crepidoma"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/110" name="Cretula"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/308" name="Cruche"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/111" name="Cruz"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/314" name="Cubilete"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/444" name="Culvert"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/112" name="Cupa"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/113" name="Cupa, lamina"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/59" name="Dach"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/46" name="Daga"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/273" name="Decke"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/346" name="Defence"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/439" name="Defensive Pit (Lilia)"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1877" name="Dentil"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1864" name="Diazoma"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/193" name="Dipinto"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1862" name="Dipteros"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/118" name="Diptychon"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/115" name="Disco"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/261" name="Distance Slab"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1863" name="Distyle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/418" name="Ditch"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/405" name="Dock and Harbour Installation"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1801" name="document"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/116" name="Dolium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/304" name="Drain"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1878" name="Dromos"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/117" name="Dromos-Verkleidung"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1865" name="Drum /Trommel"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/349" name="Dyke"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/420" name="Earthwork"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/156" name="Eckblock"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/102" name="Ehren-/Grab-/Votivsäule"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/20" name="Ehren-/Votivbogen"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1866" name="Ekklesiasterion"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/422" name="Enclosure"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1867" name="Enneastyle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1868" name="Entablature"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1869" name="Entasis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/328" name="Entrance hall"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/122" name="Estampilla"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/251" name="Estela discoidea"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/252" name="Estela funeraria"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1128" name="etichetta o bolla di accompagno per merce"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/216" name="Etruskischer Sarkophag"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1870" name="Euthynteria"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/423" name="Expansion Beacon Platform"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/37" name="Ex̬dre"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/413" name="Fan-Shaped Tower"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1879" name="Fascia"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/210" name="Fels"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/348" name="Fieldwork"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/294" name="Firstbalken"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/121" name="Fistula"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/123" name="Forma"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/75" name="Fort"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/70" name="Fort Annexe"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/71" name="Fortlet"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/76" name="Fortress"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/23" name="Fragmentos de botella"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/125" name="Fragmentum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/186" name="Fries"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/187" name="Fries-Eckblock"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/127" name="Fritillus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/355" name="Frontier Defence / Limes"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/8" name="Fussplatte einer Grabaedicula"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/212" name="Galet"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/384" name="Garden"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/385" name="Garden architecture"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/383" name="Gardens, parks and open spaces"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1880" name="Geison"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/128" name="Gemma"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/36" name="Gesims"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1152"
+          name="gettone distribuito in occasione di inaugurazione di&#xA;            edificio"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1159" name="gettone per assistere a spettacoli"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/200" name="Gewicht"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/120" name="Giebel"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/50" name="Glande, Chumbo"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/34" name="Grabaltar"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/230" name="Grabbau"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/235" name="Grabeinfassung"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/95" name="Grabmedaillon"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/101" name="Grabpfeiler"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/129" name="Gradus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/130" name="Gradus, amphiteatrum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/131" name="Gradus, theatrum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/335" name="Granary"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/52" name="Guarniciones"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1881" name="Guttae"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/368" name="Gyrus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/406" name="Harbour"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/326" name="Headquarters Building"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/132" name="Herme"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1882" name="Heroon"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1883" name="Hieron"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/424" name="Hoard"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/133" name="Horologion"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/331" name="Hospital, Infirmary"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/426" name="Human Remains"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1884" name="Hypaethral"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/372" name="Hypocaust"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1885" name="Hypostyle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1886" name="Hypotrachelium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/2" name="ignoratur"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/136" name="Indumentum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/138" name="Indumentum, calceamentum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/139" name="Indumentum, cingulum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/390" name="INDUSTRIAL"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/227" name="Inhumation"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/229" name="Inhumation Cemetery"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/259" name="Inscribed plaque"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/140" name="Instrumentum domesticum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/141" name="Instrumentum militare"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/142" name="Instrumentum sacrum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1887" name="Intercolumniation"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/414" name="Intermediate Tower"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1888" name="Intrados"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/143" name="Itinerario"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1140" name="jeton"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/103" name="Jupiter-Säule"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1855" name="Kannelur"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/63" name="Kapitell"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/391" name="Kiln"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/217" name="Klazomenischer Sarkophag"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/218" name="Kleinasiatischer Sarkophag"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/222" name="Klinensarkophag"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/107" name="Konsole"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/66" name="Kopf"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1889" name="Kymation"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/144" name="Labrum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/145" name="Lámina"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/146" name="Lámpara"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/408" name="Landing Point"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/256" name="Lápida"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/855" name="later"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/148" name="Laterculus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/77" name="Legionary Fortress"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/150" name="Libra"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/407" name="Lighthouse"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/393" name="Lime Kiln"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/421" name="Linear Earthwork"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/38" name="Linteau"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/151" name="Littera, metallica"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/365" name="Lookout"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/48" name="Lorica"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/149" name="Löwe (Löwen)"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/153" name="Mango"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/320" name="Marca de propiedad"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/361" name="Marching Camp"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/404" name="Maritime, Fluvial"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/386" name="Market place"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/192" name="Maske"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/154" name="Massa"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/857" name="mattone di ogni tipo"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1890" name="Mausoleum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/164" name="Medallón"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/165" name="Medallón con inscripción"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1891" name="Megaron"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/89" name="Meilen-/Leugenstein"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/157" name="Mensa"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/158" name="Mensa honorica"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/159" name="Mensa, capacitas"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/160" name="Mensa, mensura"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/161" name="Mensura, capacitas"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1892" name="Metope"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/446" name="Milecastle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/72" name="Milefortlet"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/114" name="Militärdiplom"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/357" name="Military Base"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/358" name="Military Camp"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/356" name="Military Installation"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/364" name="Military Observation Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/371" name="Military Road"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/343" name="Military Signalling Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/367" name="Military Training Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/370" name="Military Transport Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/396" name="Mine"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/395" name="Mineral Extraction Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/400" name="Mineral Product Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/428" name="Mithraeum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/152" name="Möbelfuß / Lampenständer"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1893" name="Modul / Embater"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/162" name="Mola"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/321" name="Molde"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/168" name="Monile, anulus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/171" name="Monile, armilla"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/172" name="Monile, fibula"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/173" name="Monile, inaures"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/174" name="Monile, torques"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1894" name="Monolith"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1895" name="Monopteros"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/10" name="Monument"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/176" name="Mortarium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/184" name="Mosaik"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/177" name="Mur"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1896" name="Mutulus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/180" name="Naiskos"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1897" name="Naos"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/181" name="Nummus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1898" name="Nymphaeum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/219" name="Oberitalischer Sarkophag"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1899" name="Oikos"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/182" name="Olla"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/183" name="Ollarium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/387" name="Open Space"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1900" name="Opisthodom"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1901" name="Orthostate"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/188" name="Oscillum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/124" name="Ostrakon"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1778" name="Other"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/332" name="Oven"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1902" name="Ovolo"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/369" name="Parade Ground"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1903" name="Paradeigma"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1904" name="Parastas"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/388" name="Park"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/317" name="Pátera"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1906" name="Peripteros"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1907" name="Peristasis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1908" name="Peristyle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/312" name="Peson de tisser"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/195" name="Pfeiler"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/190" name="Pflaster"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/213" name="Piedra"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/194" name="Pilaster"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/196" name="Pinienzapfen"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/197" name="Piño"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/209" name="Pirámide votiva"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/198" name="Pistillum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/438" name="Pit"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/260" name="Placa"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/427" name="Place of Worship"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/258" name="Plancha"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1909" name="Plateia"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/309" name="Platte"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/311" name="Platte mit Ritzzeichnung"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1910" name="Plinth"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/199" name="Pluteus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1911" name="Podium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/44" name="Pointe de fl̬che"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/201" name="Ponderal"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/381" name="Porticus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/6" name="Porträtnische"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/7" name="Porträtnische mit Inschrift"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/440" name="Post Hole"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1913" name="Posticum / Opisthodom"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/203" name="Postis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/394" name="Pottery Kiln"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/403" name="Pottery Manufacturing Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/362" name="Practice Camp"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/350" name="Practice Trench"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1914" name="Pronaos / Prodomos"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1915" name="Propylaeum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1916" name="Proscenium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1917" name="Prostyle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/204" name="Prótomo"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1918" name="Prytaneum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1919" name="Pteroma"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/206" name="Puteal"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/207" name="Pyramidenstumpf"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/208" name="Pyramidenstumpf mit Löwen"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/398" name="Quarry"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/399" name="Quarry Pit"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/353" name="Rampart"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/329" name="Regimental Shrine"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1921" name="Regula"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/24" name="Relief"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/26" name="Reliefblock"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/19" name="Religious, Ritual and Funerary"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/378" name="Resthouse"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1922" name="Rinceau"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/434" name="Road"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/435" name="Road ditch"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/211" name="Roca"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1923" name="Rosette"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/225" name="Rundplastische Tierskulptur"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/214" name="Sarkophag"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/223" name="Sarkophagdeckel"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/104" name="Säulenbasis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/68" name="Saxon Shore Fort"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1924" name="Scene"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/163" name="Schmuck"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/977" name="Schmuck, Armreif κόσμημα, βραχιόλι"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1925" name="Scotia"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/226" name="Sedile"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/9" name="Seitenwange einer Grabaedicula"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/234" name="Sepulcrum, cupa"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/373" name="Settlement"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/409" name="Ship"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/429" name="Shrine"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/363" name="Siege Camp"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/351" name="Siegework"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/240" name="Signaculum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1747" name="Signaculum, ocularius"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/342" name="Signal Station"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/341" name="Signalling Structure"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/242" name="Silex"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1926" name="Sima"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/243" name="situla"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/224" name="Skulptur"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1927" name="Socle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1928" name="Soffit"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/134" name="Sonnenuhr"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/245" name="Sors"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/246" name="Speculum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/247" name="Sphaera"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/248" name="Sphinx"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/333" name="Stable"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1929" name="Stadium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/67" name="Stadtbefestigung"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/220" name="Stadtrömischer Sarkophag"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/241" name="Statue"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/57" name="Statue base"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1772" name="Statues Funéraires"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/237" name="Statuette"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/238" name="Statuette mit Votivinschrift"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/250" name="Stele"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1930" name="Stereobate"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1931" name="Stoa"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/397" name="Stone Extraction Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/334" name="Storehouse"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/389" name="Street Furniture"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/379" name="Strip-house"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/330" name="Strongroom"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1932" name="Stylobate"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/253" name="Suppellex"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/255" name="Tabella"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/262" name="Tableta de barro"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1780" name="Tableware"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/263" name="Tabula ansata"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/264" name="Tabula, annona"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/265" name="Tabula, cerata"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/266" name="Tabula, defixio"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/267" name="Tabula, hospitalitas"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/268" name="Tabula, immunitatis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/269" name="Tabula, lusus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/270" name="Tabula, merx"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/271" name="Tabula, nummus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/272" name="Tabula, patronatus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1933" name="Taenia"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/257" name="Tafel"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1962" name="Bleitäfelchen"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/313" name="Taza"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/951" name="tegula"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/191" name="Teja"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1936" name="Temenos"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/5" name="Temple"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/359" name="Temporary Camp"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/275" name="Tessella"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/276" name="Tessera"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/278" name="Tessera, hospitalis"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/279" name="Tessera, lusus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/280" name="Tessera, monumentum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/277" name="Tessera, nummularia"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/281" name="Tessera, spectaculum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1937" name="Tetrastyle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1938" name="Thalamus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/282" name="Théâtre"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1939" name="Theatron"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/283" name="Thesaurus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1941" name="Thesmophorion"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1942" name="Tholos"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1943" name="Thymele"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1944" name="Thyroma"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1402" name="tile"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/284" name="Tintinnabulum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1945" name="Toichobate"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/336" name="Toilet"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/447" name="Tomb"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/185" name="Tondo"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/376" name="Town"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1946" name="Trachelium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/137" name="Traje (accesorio)"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/430" name="Transport"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/295" name="Trapezophorus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/352" name="Trench"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1947" name="Triglyph"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/18" name="Triumphal arch"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1949" name="Trochylus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/296" name="Tropaion (Tropaeum)"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/297" name="Tubus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1950" name="Tumulus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/366" name="Turret"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1951" name="Tympanum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/415" name="U-Shaped Tower"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/319" name="Umbral"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/78" name="Urne"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/51" name="Vaina"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/354" name="Vallum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/305" name="Vas"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/306" name="Vas, culina"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/307" name="Vas, mensa"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/74" name="Vexillation Fort"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/377" name="Vicus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/126" name="Vidrio"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/382" name="Villa"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/318" name="Volute"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/33" name="Votivaltar"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/25" name="Votivrelief"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/42" name="Waffe"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/416" name="Wall"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/236" name="Wand eines Grabbaus"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/179" name="Wand mit Pilastern"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/178" name="Wandmalerei"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/410" name="War-ship"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/298" name="Wasserspeier"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/345" name="Watch Tower"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/300" name="Water Storage Site"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/299" name="Water supply and drainage"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/303" name="Watercourse"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/323" name="Wattle and Daub"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/443" name="Well"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/337" name="Workshop"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/411" name="Wreck"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/147" name="Ziegel"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1952" name="Brique ou tuile"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1953" name="Colonne votive / base de statue"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1954" name="donarium"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1955" name="monument base / stela"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1957" name="Stèle ou plaque funéraire"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1958" name="TS bowl"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1956" name="mouth and neck of a picher"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1959" name="Bracket"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1960" name="Keystone"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1961" name="Rostrum"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/322" name="Zoomorfo"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1153" name="αβακίσκος"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1154"
+          name="κύβος που δίδεται κατά τα εγκαίνια ενός&#xA;            κτηρίου"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1074" name="λίθος, πέτρα"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1965" name="crowning block"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1966" name="door post"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1975" name="half-column"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1969" name="moulding"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1970" name="ossuary"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1971" name="revetment"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1972" name="statue base capital"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1973" name="statue plinth"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1974" name="statue base shaft"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1976" name="instrumentum publicum, voto"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1977" name="instrumentum publicum, legenda monetale"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1978"
+          name="Instrumentum publicum, coccio di ostracismo (ostrakon)"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1979" name="Instrumentum publicum, contrassegno"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1980" name="Armatura, parte di"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1981" name="Base e plinto"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1982" name="Kerykeion"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1983" name="Omphalos"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1984" name="Orcio"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1985" name="Pinax"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1986" name="Pietra non lavorata"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1987" name="Rivestimento"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1988" name="Cratere"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1989" name="Kotyle"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1990" name="Hydria"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1991" name="Lebete"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1992" name="Oinochoe"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1993" name="Vaso, staffa di"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1994" name="Vaso, frammento di"/>
+    <item value="https://www.eagle-network.eu/voc/objtyp/lod/1995" name="Vasetto"/>
+</items>

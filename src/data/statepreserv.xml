@@ -1,0 +1,30 @@
+<items>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/4" name="Broken"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/2" name="Complete"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/24" name="contigous"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/1" name="Good"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/5" name="Incomplete"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/23" name="intact"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/9" name="Lost"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/10" name="lost but recorded"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/25" name="non-contigous"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/3" name="Probably complete"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/6" name="tit. fragmenta inter se coniuncta"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/7" name="tit. fragmenta inter se non coniuncta"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/8"
+          name="tit. fragmenta partim tantum inter se coniuncta"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/26" name="nulla vestigia tituli discerni possunt"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/27" name="de titulo nec vola nec vestigium"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/28"
+          name="nihil legi potest nisi vestigia infirmissima"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/29"
+          name="titulus lapide scindendo periisse videtur"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/30"
+          name="quo labore pars tituli deleta esse videtur"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/31"
+          name="..., quorum inscriptiones prae vetustate legi nequeunt"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/32" name="undique aratri vomere laesus"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/33"
+          name="parte antica supra a dextra mutilus / mutilatus / adesus"/>
+    <item value="https://www.eagle-network.eu/voc/statepreserv/lod/34" name="in fronte fracturis rimisque laesus"/>
+</items>

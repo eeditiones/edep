@@ -1,0 +1,213 @@
+<items>
+    <item value="https://www.eagle-network.eu/voc/material/lod/2" name="(Local) Stone"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/735" name="(vulkanische) Breccie"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/30" name="(vulkanischer) Tuff"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/88" name="Achat"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/136" name="Acrolithic"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/109" name="aes"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/304" name="Amethyst"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/35" name="Amphibolit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/43" name="Amphibolit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/309" name="anderes metall"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/15" name="Andesit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/22" name="Andesit-Porphyr"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/100" name="Anhydrit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/7" name="Aplit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/131" name="Arcilla"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/128" name="arenatum"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/115" name="argentum"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/3" name="Artificial Rocks"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/112" name="aurum"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/16" name="Basalt"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/23" name="Basalt-Porphyr"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/305" name="Bergkristall"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/119" name="Bernstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/31" name="Bimsstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/65" name="Biogene Sedimente"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/124" name="bone"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/73" name="Breccie"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/642" name="Brick"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/644" name="Bronze, Copper Alloy"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/110" name="Bronze, gilded"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/133" name="cera"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/643" name="ceramic (glazed)"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/118" name="ceterum"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/106" name="Chaux"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/69" name="Chemische Sedimente"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/298" name="Chlorit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/135" name="Ciment"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/130" name="creta"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/105" name="Cuir"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/294" name="Diabas"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/9" name="Diorit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/295" name="Dolerit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/59" name="Dolomit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/44" name="Dolomit-Marmor"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/352" name="durvaszemcsés kristályos kőzetek"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/308" name="Edelmetall"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/288" name="Edelstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/36" name="Eklogit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/120" name="Elfenbein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/121" name="Emaille"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/311" name="Fayence"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/14" name="Feinkörnige Kristallingesteine"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/24" name="Feldspat-Porphyr"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/17" name="Felsit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/111" name="ferrum"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/86" name="Feuerstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/299" name="Fluorit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/10" name="Gabbro"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/300" name="Gagat"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/101" name="Gips"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/19" name="Glasige magmatische Gesteine"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/289" name="Glaspaste"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/39" name="Glimmerschiefer"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/37" name="Gneis"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/45" name="Gneis"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/301" name="Granat"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/11" name="Granit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/8" name="Grobkörnige Kristallingesteine"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/90" name="Hämatit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/91" name="Heliotrop"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/38" name="Hornfels"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/46" name="Hornfels"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/138" name="ignoratur"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/5" name="Indefinite"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/137" name="Indéterminé"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/89" name="Jaspis"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/47" name="Kalk-Marmor"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/76" name="Kalkmergel / Mergel"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/57" name="Kalksandstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/67" name="Kalksinter"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/60" name="Kalkstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/507" name="Kalkstein/ Alabaster"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/77" name="Kalkstein/ Alabaster"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/78" name="Kalktuff"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/56" name="Karbonatische Sedimentgesteine"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/92" name="Karneol"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/103" name="Kieselige Sedimentgesteine"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/72" name="Klastische Sedimentgesteine"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/74" name="Konglomerat"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/58" name="Korallen-Kalkstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/307" name="Kork"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/306" name="Korund"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/312" name="Kunstmarmor"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/313" name="Kunststoff"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/113" name="Kupfer"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/310" name="Kupferniederschlag"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/93" name="Lapislazuli"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/125" name="Leder"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/314" name="Lehm"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/318" name="Leinwand"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/123" name="lignum"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/66" name="Limestone"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/647" name="limestone veined with quartz"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/6" name="MAGMATISCHE GESTEINE"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/34" name="Magmatisches Ausgangsgestein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/61" name="Magnesit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/94" name="Magnetit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/48" name="Marmor"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/739" name="Marmor Chium"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/740" name="Marmor Claudianum"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/741" name="Marmor, hymettischer"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/742" name="Marmor, karystischer"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/743" name="Marmor, parischer"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/744" name="Marmor, phrygischer"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/745" name="Marmor, prokonnesischer "/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/746" name="Marmor, skyrischer"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/747" name="Marmor, taenarischer (rot)"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/748" name="Marmor, taenarischer (schwarz)"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/749" name="Marmor von Thassos"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/50" name="Marmor, geädert / farbig"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/49" name="Marmor, weiß"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/366" name="black marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/365" name="yellow marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/364" name="yellow and white marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/363" name="White Pentelic marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/648" name="Cipollino"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/362" name="white marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/361" name="Portasanta marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/738" name="Marmor, Carrara (blau)"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/360" name="pink-grained white marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/359" name="Numidian marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/358" name="grey-flecked, white marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/357" name="grey marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/356" name="dark grey marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/750" name="blue grey marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/751" name="blue marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/355" name="cream marble flecked with brown"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/354" name="cream marble"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/353" name="Marbre de Prokonnesos"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/321" name="Materialkombination"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/62" name="Mergel"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/114" name="Messing"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/107" name="Metal"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/33" name="METAMORPHE GESTEINE"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/87" name="Minerale"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/79" name="Molasse"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/251" name="mozaik"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/63" name="Muschel-Kalkstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/68" name="Muschelkalk"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/134" name="musivum"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/81" name="Nenfro"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/85"
+          name="Nicht Klastische silikatreiche&#xA;            Sedimentgesteine"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/99" name="Nicht-karbonatische Salze"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/20" name="Obsidian"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/95" name="Onyx"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/70" name="Ooid-Kalkstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/96" name="Opal"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/129" name="opus latericium"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/319" name="Papier"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/320" name="Papyrus"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/82" name="Peperin"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/12" name="Peridodit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/102" name="Phosphat"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/108" name="plumbum"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/297" name="Poros"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/25" name="Porphyr"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/21"
+          name="Porphyrische (ungleichkörnige)&#xA;            Kristallingesteine"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/315" name="Porzellan"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/80" name="Pyroclastische Sedimente"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/28" name="Pyroklastische Gesteine"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/26" name="Quarz-Porphyr"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/51" name="Quarzit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/104" name="Quazt"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/18" name="Rhyolit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/27" name="Rhyolith-Porphyr"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/1" name="Rock"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/75" name="Sandstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/502" name="sandstone"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/290" name="Saphir"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/97" name="Sardonyx"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/52" name="Schiefer"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/736" name="Grauwacke"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/32" name="Schlacke"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/42" name="Sedimentäres Ausgangsgestein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/55" name="SEDIMENTGESTEINE"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/302" name="Sepiolith (Meerschaum)"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/40" name="Serpentinit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/53" name="Silex"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/737" name="Lavaschlacke"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/291" name="Smaragd"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/292" name="Smaragdplasma"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/41" name="Speckstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/4" name="Steinputz-Trockenmörtel"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/317" name="Stoff"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/13" name="Syenit"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/126" name="tectorium"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/127" name="tectorium induens sepulchrum"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/132" name="Terra sigillata"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/54" name="Tonschiefer"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/293" name="Topas"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/83" name="Trachyte"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/71" name="Travertin Kalkstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/64" name="Tuff Kalkstein"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/117" name="unbestimmt"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/604" name="üveg"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/122" name="vitrum"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/98" name="Vulkantuff"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/84" name="Vulkantuff"/>
+    <item value="https://www.eagle-network.eu/voc/material/lod/116" name="Zinn"/>
+</items>
