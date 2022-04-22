@@ -24,7 +24,7 @@ declare function local:convert-rdf($rdf as xs:string) {
 
 declare function local:save-xml($rdf as xs:string) {
     let $save := <items>{local:convert-rdf($rdf)}</items>
-    return xmldb:store($xml-path, concat ($rdf,".xml"), $save)
+    return xmldb:store($xml-path, concat ($rdf,"-gen.xml"), $save)
 };
 
 declare function local:convert-all() {

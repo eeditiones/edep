@@ -141,5 +141,19 @@ fx-inspector{
     position:absolute;
     right:-20px;
 }
+.todo{
+    background:yellow;
 }
+.inprogress{
+    background:orange;
+}
+.note{
+    position:absolute;
+    right:1rem;
+    max-width:40%;
+}
+fx-repeatitem{
+    display:block;
+}
+
 

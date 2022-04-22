@@ -65,6 +65,13 @@ else if (matches($exist:path, "^.*/(resources|transform|templates)/.*$")
             }
             </forward>
         </dispatch>
+(:
+    using this rule temporarily to directly fetch the static json files instead of using endpoints.
+:)
+else if (matches($exist:resource, "\.(json)$", "s")) then
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/{$exist:path}"/>
+    </dispatch>
 
 (: other images are resolved against the data collection and also returned directly :)
 else if (matches($exist:resource, "\.(png|jpg|jpeg|gif|tif|tiff|txt|mei)$", "s")) then

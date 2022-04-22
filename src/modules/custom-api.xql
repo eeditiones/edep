@@ -49,7 +49,7 @@ declare function api:typeins($request as map(*)) {
          </output:serialization-parameters>
          
     return try {
-         serialize(<root>{doc("/db/apps/edep/data/typeins.xml")/items/item}</root>, $parameters) 
+         doc("/db/apps/edep/data/typeins.json")
     } catch * {
         ()
     }
