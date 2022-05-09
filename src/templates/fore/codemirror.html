@@ -1,0 +1,116 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+
+    <title>Epidoc</title>
+    <link href="../../resources/css/fore.css" rel="stylesheet"/>
+
+
+    <style>
+        /*
+                @font-face {
+                    font-family: "Kimberley";
+                    src: url(../../resources/fonts/Montserrat/Montserrat-Light.ttf) format("truetype");
+                }
+        */
+
+        body, .wrapper{
+            margin:0;
+            padding:0;
+            font-family: "Kimberley";
+        }
+        button{
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+        }
+        .wrapper{
+            width: 21cm;
+            height: 29.7cm;
+            background: lightyellow;
+            margin:0 auto;
+            padding: 2rem;
+        }
+        .grid{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap:1rem;
+            margin-bottom: 2rem;
+            border:thin solid var(--paper-grey-300);
+        }
+        fx-control{
+            display: grid;
+            grid-template-columns: 200px auto;
+            /*width: fit-content;*/
+
+            grid-gap:0.3rem;
+            margin: 0.5rem 0;
+
+        }
+        fx-control input{
+            width:200px;
+        }
+        fx-control textarea{
+            width: 95%;
+            display: inline-block;
+        }
+
+        .group{
+            border:thin solid var(--paper-grey-300);
+            margin-bottom:1rem;
+        }
+
+        fx-control label{
+            justify-self: end;
+        }
+        .green{
+            background:green;
+        }
+        .orange{
+            background:orange;
+        }
+        .yellow{
+            background:yellow;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <fx-fore>
+        <fx-model>
+            <fx-instance src="templates/fore/epidoc.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+            <fx-instance id="tmp">
+                <data>
+                    <dummy>xpath?</dummy>
+                    <dummycheck/>
+                    <material-group/>
+
+                </data>
+            </fx-instance>
+        </fx-model>
+        <fx-group ref="teiHeader">
+            <h1>Codemirror Test</h1>
+            <pre>
+                {log('tmp')}
+            </pre>
+
+            <fx-group ref=".//msDesc" class="group gid">
+                <fx-control ref="history/origin/origPlace/placeName[@type='province']">
+                    <label>Provinz/augusteische Region</label>
+                    <select ref="instance('province')" class="widget">
+                        <template>
+                            <option value="{?value}">{?value}</option>
+                        </template>
+                    </select>
+                    <span class="note">
+                        -&gt; Geodaten
+                    </span>
+                </fx-control>
+            </fx-group>
+        <fx-inspector/>
+    </fx-fore>
+
+</div>
+<script type="module" src="../../resources/scripts/fore-debug.js"/>
+</body>
+</html>
