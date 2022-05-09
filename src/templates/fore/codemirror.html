@@ -79,35 +79,19 @@
     <fx-fore>
         <fx-model>
             <fx-instance src="templates/fore/epidoc.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
-            <fx-instance id="tmp">
-                <data>
-                    <dummy>xpath?</dummy>
-                    <dummycheck/>
-                    <material-group/>
-
-                </data>
-            </fx-instance>
         </fx-model>
         <fx-group ref="teiHeader">
             <h1>Codemirror Test</h1>
             <pre>
-                {log('tmp')}
+                {log('.//body')}
             </pre>
-
-            <fx-group ref=".//msDesc" class="group gid">
-                <fx-control ref="history/origin/origPlace/placeName[@type='province']">
-                    <label>Provinz/augusteische Region</label>
-                    <select ref="instance('province')" class="widget">
-                        <template>
-                            <option value="{?value}">{?value}</option>
-                        </template>
-                    </select>
-                    <span class="note">
-                        -&gt; Geodaten
-                    </span>
+            <fx-group ref=".//text/body" class="group gid">
+                <fx-control ref=".">
+                    <label>Leiden+ Editor</label>
+                    <jinn-codemirror></jinn-codemirror>
                 </fx-control>
             </fx-group>
-        <fx-inspector/>
+        <fx-inspector open/>
     </fx-fore>
 
 </div>
