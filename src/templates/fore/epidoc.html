@@ -84,6 +84,7 @@
             <fx-instance id="decor" src="api/decor" type="json"/>
             <fx-instance id="typeins" src="data/typeins.json" type="json"/>
             <fx-instance id="objtyp" src="data/objtyp.json" type="json"/>
+            <fx-instance id="statepreserv" src="data/statepreserv.json" type="json"/>
             <fx-instance id="material" src="api/material"/>
             <fx-instance id="tmp">
                 <data>
@@ -93,10 +94,7 @@
 
                 </data>
             </fx-instance>
-            <fx-bind ref="instance('tmp')/material-group"
-                     calculate="if(string-length(instance('default')//physDesc/objectDesc/supportDesc/support/material) != 0)
-                                then instance('material')/category[./material/@name='Sandstein']/@name
-                                else 'bäh'"></fx-bind>
+            <fx-bind ref="instance('tmp')/material-group" calculate="if(string-length(instance('default')//physDesc/objectDesc/supportDesc/support/material) != 0)                                 then instance('material')/category[./material/@name='Sandstein']/@name                                 else 'bäh'"/>
             <!--                     calculate="if(string-length(instance('default')//physDesc/objectDesc/supportDesc/support/material) != 0)-->
             <!--                                then instance('material')/category[material='klastische Sedimente']/@name-->
             <!--                                else ()"></fx-bind>-->
@@ -189,8 +187,13 @@
                 </fx-control>
 
 
-                <fx-control ref="instance('tmp')/dummy">
+                <fx-control ref="instance('tmp')/dummy" class="todo">
                     <label>Erhaltung</label>
+                    <select ref="instance('statepreserv')" class="widget">
+                        <template>
+                            <option value="{?value}">{?name}</option>
+                        </template>
+                    </select>
                 </fx-control>
 
 
@@ -211,13 +214,19 @@
                             <option value="{?value}">{?name}</option>
                         </template>
                     </select>
+                </fx-control>
+
+
+                <fx-control ref="physDesc/objectDesc/supportDesc/support/objectType">
+                    <label>Inschriftträger</label>
+                    <select ref="instance('objtyp')" class="widget">
+                        <template>
+                            <option value="{?value}">{?name}</option>
+                        </template>
+                    </select>
                     <span class="note">
                         need to set textnode also in TEI?
                     </span>
-                </fx-control>
-
-                <fx-control ref="instance('tmp')/dummy">
-                    <label>Inschriftträger</label>
                 </fx-control>
 
                 <fx-control ref="instance('tmp')/material-group" update-event="change">
@@ -260,7 +269,7 @@
                                     </template>
                                 </fx-repeat> -->
 
-                <fx-control ref="../dimensions/height">
+                <fx-control ref=".//objectDesc/supportDesc/support/dimensions/height">
                     <label>Höhe</label>
                 </fx-control>
                 <fx-control ref="instance('tmp')/dummy">
@@ -284,10 +293,10 @@
                 <fx-control ref="instance('tmp')/dummy">
                     <label>Metrik</label>
                 </fx-control>
-                <fx-control ref="instance('tmp')/dummy">
+                <fx-control ref="/TEI/teiHeader/profileDesc/langUsage/language" class="todo">
                     <label>Sprache</label>
                 </fx-control>
-                <fx-control ref="instance('tmp')/dummy">
+                <fx-control ref=".//history/origin/origDate/origDate">
                     <label>Datierung Tag/Monat</label>
                 </fx-control>
                 <fx-control ref="instance('tmp')/dummy">
@@ -307,15 +316,13 @@
                 </fx-control>
 
                 <fx-control ref="instance('tmp')/dummy" value-prop="checked">
-                    <label id="geschichte">Sozial-/Wirtschafts-/Rechtsgeschichte</label>
+                    <label id="geographie">Geographie</label>
+                    <input type="checkbox" id="geographie"/>
                 </fx-control>
 
-                <fx-control ref="instance('tmp')/dummy">
-                    <label>Geographie</label>
-                </fx-control>
-
-                <fx-control ref="instance('tmp')/dummy">
-                    <label>Militär</label>
+                <fx-control ref="instance('tmp')/dummy" value-prop="checked">
+                    <label id="militaer" >Militär</label>
+                    <input type="checkbox" id="militaer"/>
                 </fx-control>
 
             </fx-group>
@@ -327,7 +334,7 @@
             </fx-group>
 
             <fx-group class="group">
-                <fx-control ref="instance('tmp')/dummy">
+                <fx-control ref="/TEI/text/body/div[@type='bibliography']">
                     <label>Paläographie</label>
                 </fx-control>
                 <fx-control ref="instance('tmp')/dummy">
@@ -336,7 +343,7 @@
                 <fx-control ref="instance('tmp')/dummy">
                     <label>textkritischer Apparat</label>
                 </fx-control>
-                <fx-control ref="instance('tmp')/dummy">
+                <fx-control ref="/TEI/text/body/div[@type='commentary']">
                     <label>Kommentar</label>
                     <textarea class="widget" rows="8"/>
                 </fx-control>
