@@ -17,6 +17,11 @@ declare namespace expath="http://expath.org/ns/pkg";
 declare namespace jmx="http://exist-db.org/jmx";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
+(:~
+ : Define where places are located
+ :)
+ declare variable $config:places := "/db/apps/edep/data/places/";
+
 (:~~
  : The version of the pb-components webcomponents library to be used by this app.
  : Should either point to a version published on npm,
