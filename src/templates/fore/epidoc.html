@@ -80,12 +80,13 @@
         <fx-model>
             <fx-instance src="templates/fore/epidoc.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
             <fx-instance id="province" src="data/province.json" type="json"/>
-            <fx-instance id="country" src="data/country.json" type="json"/>
+            <!--            <fx-instance id="country" src="data/country.json" type="json"/>-->
             <fx-instance id="decor" src="api/decor" type="json"/>
             <fx-instance id="typeins" src="data/typeins.json" type="json"/>
             <fx-instance id="objtyp" src="data/objtyp.json" type="json"/>
             <fx-instance id="statepreserv" src="data/statepreserv.json" type="json"/>
-            <fx-instance id="material" src="api/material"/>
+            <!--
+                        <fx-instance id="material" src="api/material"/> -->
             <fx-instance id="tmp">
                 <data>
                     <dummy>xpath?</dummy>
@@ -122,7 +123,6 @@
             </fx-group>
 
             <fx-group ref=".//msDesc" class="group gid">
-
                 <fx-control ref="history/origin/origPlace/placeName[@type='province']">
                     <label>Provinz/augusteische Region</label>
                     <select ref="instance('province')" class="widget">
@@ -137,15 +137,17 @@
 
                 <fx-control ref="history/provenance/placeName[@type='country']">
                     <label>Land</label>
-                    <select ref="instance('country')" class="widget">
-                        <template>
-                            <option value="{?value}">{?value}</option>
-                        </template>
-                    </select>
+
+                    <form>
+                        <auto-complete api="data/country.json" resultname="value" querymin="0" optionmax="500">
+                            <input type="text" class="widget" name="name" />
+                        </auto-complete>
+                    </form>
                     <span class="note">
                         -&gt; Geodaten
                     </span>
                 </fx-control>
+
 
                 <fx-control ref="history/provenance/placeName[@type='region']">
                     <label>Region</label>
@@ -197,15 +199,16 @@
                 </fx-control>
 
 
-                <fx-control ref="physDesc/objectDesc/supportDesc/support/rs/@ref">
-                    <label>Dekor</label>
-                    <select ref="instance('decor')?item" class="widget">
-                        <template>
-                            <option value="{?value}">{?name}</option>
-                        </template>
-                    </select>
-                </fx-control>
-
+                <!--
+                                <fx-control ref="physDesc/objectDesc/supportDesc/support/rs/@ref">
+                                    <label>Dekor</label>
+                                    <select ref="instance('decor')?item" class="widget">
+                                        <template>
+                                            <option value="{?value}">{?name}</option>
+                                        </template>
+                                    </select>
+                                </fx-control>
+                -->
 
                 <fx-control ref="/TEI/teiHeader/profileDesc/textClass/keywords/term" class="todo">
                     <label>Inschriftengattung</label>
@@ -243,17 +246,16 @@
                 <div>{instance('tmp')/material-group}</div>
                 <div>{instance('default')//physDesc/objectDesc/supportDesc/support/material/@ref}</div>
                 <div>{instance('default')//physDesc/objectDesc/supportDesc/support/material}</div>
-                <!--                <div>{instance('material')/category/material}</div>-->
                 <fx-control ref="physDesc/objectDesc/supportDesc/support/material" update-event="change">
                     <label>Material</label>
                     <select ref="instance('material')/category[@name=instance('tmp')/material-group]/material/@name" class="widget">
-                        <!--                    <select ref="instance('material')/category/material/@name" class="widget">-->
                         <template>
                             <option value="{string(.)}">{.}</option>
                         </template>
                     </select>
-                    <!--                    <fx-setvalue event="value-changed" ref="//physDesc/objectDesc/supportDesc/support/material" value="string(..)"/>-->
+                    <fx-setvalue event="value-changed" ref="//physDesc/objectDesc/supportDesc/support/material" value="string(..)"/>
                 </fx-control>
+                -->
 
                 <!--
                                 <fx-repeat id="r-material-group" ref="instance('material')/category">
