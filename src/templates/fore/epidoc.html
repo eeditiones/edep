@@ -81,10 +81,10 @@
             <fx-instance src="templates/fore/epidoc.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
             <fx-instance id="province" src="data/province.json" type="json"/>
             <!--            <fx-instance id="country" src="data/country.json" type="json"/>-->
-            <fx-instance id="decor" src="api/decor" type="json"/>
+<!--            <fx-instance id="decor" src="api/decor" type="json"/>-->
             <fx-instance id="typeins" src="data/typeins.json" type="json"/>
             <fx-instance id="objtyp" src="data/objtyp.json" type="json"/>
-            <fx-instance id="statepreserv" src="data/statepreserv.json" type="json"/>
+<!--            <fx-instance id="statepreserv" src="data/statepreserv.xml" type="json"/>-->
             <!--
                         <fx-instance id="material" src="api/material"/> -->
             <fx-instance id="tmp">
@@ -102,19 +102,16 @@
         </fx-model>
         <fx-group ref="teiHeader">
             <h1>EDEp Editor</h1>
-            <pre>
 
-                {log('tmp')}
-            </pre>
-
+            <span>Sprachselector hier</span>
             <fx-group ref=".//fileDesc">
-                <fx-control ref="./publicationStmt/idno" class="todo">
+                <fx-control ref="./publicationStmt/idno">
                     <label>EDE-p-Id</label>
                     <span class="note">
                         generated id starting with 'EEE000001'
                     </span>
                 </fx-control>
-                <fx-control ref="instance('tmp')/dummy" class="todo">
+                <fx-control ref="instance('tmp')/dummy">
                     <label>TM-Nummer</label>
                     <span class="note">
                         number from trismegistos.org
@@ -122,8 +119,9 @@
                 </fx-control>
             </fx-group>
 
+            <h2>Geodaten tbd</h2>
             <fx-group ref=".//msDesc" class="group gid">
-                <fx-control ref="history/origin/origPlace/placeName[@type='province']">
+<!--                <fx-control ref="history/origin/origPlace/placeName[@type='province']">
                     <label>Provinz/augusteische Region</label>
                     <select ref="instance('province')" class="widget">
                         <template>
@@ -179,6 +177,13 @@
                     </span>
 
                 </fx-control>
+                -->
+
+                <fx-control ref="instance('tmp')/dummy">
+                    <label>Fundkontext</label>
+                    <textarea class="widget"></textarea>
+                </fx-control>
+
 
                 <fx-control ref=".//origDate/origDate">
                     <label>Fundjahr</label>
@@ -188,29 +193,45 @@
                     <label>Aufbewahrung</label>
                 </fx-control>
 
+                <fx-control ref="instance('tmp')/dummy">
+                    <label>Weitere Ereignisse</label>
+                    <textarea class="widget" rows="8"></textarea>
+                </fx-control>
 
-                <fx-control ref="instance('tmp')/dummy" class="todo">
+                <fx-control ref="instance('tmp')/dummy">
+                    <label>Überlieferung</label>
+                </fx-control>
+
+                <fx-control ref="instance('tmp')/dummy">
+                    <label>Verifizierungsgrundlage</label>
+                </fx-control>
+
+                <fx-control ref="instance('tmp')/dummy">
+                    <label>Datum der Verifizierung</label>
+                    <input type="date"/>
+                </fx-control>
+            </fx-group>
+            <fx-group>
+
+                <fx-control ref="instance('tmp')/dummy">
                     <label>Erhaltung</label>
-                    <select ref="instance('statepreserv')" class="widget">
-                        <template>
-                            <option value="{?value}">{?name}</option>
-                        </template>
+                    <select class="widget">
+                        <option value="complete">vollständig</option>
+                        <option value="fragmentary">fragmentarisch</option>
                     </select>
                 </fx-control>
 
 
-                <!--
-                                <fx-control ref="physDesc/objectDesc/supportDesc/support/rs/@ref">
+                <fx-control ref=".//msDesc/physDesc/objectDesc/supportDesc/support/rs/@ref">
                                     <label>Dekor</label>
-                                    <select ref="instance('decor')?item" class="widget">
-                                        <template>
-                                            <option value="{?value}">{?name}</option>
-                                        </template>
+                    <select ref="instance('decor')?item?*" class="widget">
+                        <option value="yes">Ja</option>
+                        <option value="no">Nein</option>
+                        <option value="uncertain">unsicher</option>
                                     </select>
-                                </fx-control>
-                -->
+                </fx-control>
 
-                <fx-control ref="/TEI/teiHeader/profileDesc/textClass/keywords/term" class="todo">
+                <fx-control ref="/TEI/teiHeader/profileDesc/textClass/keywords/term">
                     <label>Inschriftengattung</label>
                     <select ref="instance('typeins')" class="widget">
                         <template>
@@ -232,20 +253,13 @@
                     </span>
                 </fx-control>
 
-                <fx-control ref="instance('tmp')/material-group" update-event="change">
-                    <label>Material Gruppe</label>
-                    <select ref="instance('material')/category" class="widget">
-                        <template>
-                            <option value="{@name}">{@name}</option>
-                        </template>
-                    </select>
-                    <fx-refresh event="value-changed"/>
-                </fx-control>
 
+<!--
                 <div>### {instance('material')/category[./material/@name='Sandstein']/@name}</div>
                 <div>{instance('tmp')/material-group}</div>
                 <div>{instance('default')//physDesc/objectDesc/supportDesc/support/material/@ref}</div>
                 <div>{instance('default')//physDesc/objectDesc/supportDesc/support/material}</div>
+-->
                 <fx-control ref="physDesc/objectDesc/supportDesc/support/material" update-event="change">
                     <label>Material</label>
                     <select ref="instance('material')/category[@name=instance('tmp')/material-group]/material/@name" class="widget">
@@ -255,7 +269,7 @@
                     </select>
                     <fx-setvalue event="value-changed" ref="//physDesc/objectDesc/supportDesc/support/material" value="string(..)"/>
                 </fx-control>
-                -->
+
 
                 <!--
                                 <fx-repeat id="r-material-group" ref="instance('material')/category">
@@ -292,12 +306,16 @@
                 <fx-control ref="instance('tmp')/dummy">
                     <label>Buchstabenhöhe</label>
                 </fx-control>
+            </fx-group>
+            <fx-group>
                 <fx-control ref="instance('tmp')/dummy">
                     <label>Metrik</label>
                 </fx-control>
-                <fx-control ref="/TEI/teiHeader/profileDesc/langUsage/language" class="todo">
+                <fx-control ref="/TEI/teiHeader/profileDesc/langUsage/language">
                     <label>Sprache</label>
                 </fx-control>
+            </fx-group>
+            <fx-group>
                 <fx-control ref=".//history/origin/origDate/origDate">
                     <label>Datierung Tag/Monat</label>
                 </fx-control>
@@ -338,14 +356,25 @@
             <fx-group class="group">
                 <fx-control ref="/TEI/text/body/div[@type='bibliography']">
                     <label>Paläographie</label>
+                    <textarea class="widget" rows="8"></textarea>
                 </fx-control>
+            </fx-group>
+            <fx-group>
                 <fx-control ref="instance('tmp')/dummy">
                     <label>Bibliographie</label>
                 </fx-control>
                 <fx-control ref="instance('tmp')/dummy">
-                    <label>textkritischer Apparat</label>
+                    <label>Bilder (Zeichnungen Fotos, Abklatsche)</label>
                 </fx-control>
                 <fx-control ref="/TEI/text/body/div[@type='commentary']">
+                    <label>Abbildungen</label>
+                    <textarea class="widget" rows="8"/>
+                </fx-control>
+                <fx-control ref="instance('tmp')/dummy">
+                    <label>textkritischer Appparat</label>
+                    <textarea class="widget" rows="8"/>
+                </fx-control>
+                <fx-control ref="instance('tmp')/dummy">
                     <label>Kommentar</label>
                     <textarea class="widget" rows="8"/>
                 </fx-control>
