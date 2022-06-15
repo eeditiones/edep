@@ -133,15 +133,15 @@
                 }
     		}    
     	},
-        "/api/places": {
+        "/api/places/{id}": {
     		"get" : {
                 "summary": "show places",
                 "operationId": "api:places-list",
                 "parameters": [
                     {
                         "name": "id",
-                        "in": "query",
-                        "required": false,
+                        "in": "path",
+                        "required": true,
                         "schema":{
                             "type": "string"
                         }
@@ -169,13 +169,59 @@
                 "parameters": [
                     {
                         "name": "id",
-                        "in": "query",
-                        "required": false,
+                        "in": "path",
+                        "required": true,
                         "schema":{
                             "type": "string"
                         }
                     }
                 ],
+                "requestBody": {
+                	"required": true,
+					"content": {
+						"application/xml": {
+							"schema": {
+							}
+						}
+					}
+				},
+                "responses": {
+                    "200": {
+                        "description": "places-add",
+                        "content": {
+                            "application/xml": {
+                                "schema": {
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    	},
+        "/api/places": {
+    		"get" : {
+                "summary": "show places",
+                "operationId": "api:places-list",
+                "responses": {
+                    "200": {
+                        "description": "places-list",
+                        "content": {
+                            "application/xml": {
+                                "schema": {
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+    		},
+            "post" : {
+                "summary": "update/add places",
+                "x-constraints": {
+					"group": "tei"
+                },
+                "operationId": "api:places-add",               
                 "requestBody": {
                 	"required": true,
 					"content": {
