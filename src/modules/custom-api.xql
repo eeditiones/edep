@@ -29,15 +29,8 @@ declare function api:lookup($name as xs:string, $arity as xs:integer) {
 };
 
 declare function api:writing($request as map(*)) {
-    let $parameters :=
-         <output:serialization-parameters
-    xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-             <output:method value="json"/>
-             <output:media-type value="text/javascript"/>
-         </output:serialization-parameters>
-         
-    return try {
-         serialize(<root>{doc("/db/apps/edep/data/writing.xml")/items/item}</root>, $parameters) 
+    try {
+        <root>{doc("/db/apps/edep/data/writing.xml")/items/item}</root>
     } catch * {
         ()
     }
@@ -45,7 +38,7 @@ declare function api:writing($request as map(*)) {
 
 declare function api:typeins($request as map(*)) {         
     try {
-         doc("/db/apps/edep/data/typeins.json")
+        <root>{doc("/db/apps/edep/data/typeins.xml")}</root>
     } catch * {
         ()
     }
@@ -77,7 +70,7 @@ declare function api:decor($request as map(*)) {
 
 declare function api:material($request as map(*)) {
     try {
-        <root>{doc("/db/apps/edep/data/material.xml")/items/item}</root>
+        <root>{doc("/db/apps/edep/data/material.xml")//material}</root>
     } catch * {
         ()
     }
