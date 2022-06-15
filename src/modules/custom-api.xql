@@ -43,15 +43,8 @@ declare function api:writing($request as map(*)) {
     }
 };
 
-declare function api:typeins($request as map(*)) {
-    let $parameters :=
-         <output:serialization-parameters
-    xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-             <output:method value="json"/>
-             <output:media-type value="text/javascript"/>
-         </output:serialization-parameters>
-         
-    return try {
+declare function api:typeins($request as map(*)) {         
+    try {
          doc("/db/apps/edep/data/typeins.json")
     } catch * {
         ()
@@ -59,60 +52,32 @@ declare function api:typeins($request as map(*)) {
 };
 
 declare function api:statepreserv($request as map(*)) {
-    let $parameters :=
-         <output:serialization-parameters
-    xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-             <output:method value="json"/>
-             <output:media-type value="text/javascript"/>
-         </output:serialization-parameters>
-         
-    return try {
-         serialize(<root>{doc("/db/apps/edep/data/statepreserv.xml")/items/item}</root>, $parameters) 
+   try {
+        <root>{doc("/db/apps/edep/data/statepreserv.xml")/items/item}</root>
     } catch * {
         ()
     }
 };
 
 declare function api:objtyp($request as map(*)) {
-    let $parameters :=
-         <output:serialization-parameters
-    xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-             <output:method value="json"/>
-             <output:media-type value="text/javascript"/>
-         </output:serialization-parameters>
-         
-    return try {
-         serialize(<root>{doc("/db/apps/edep/data/objtyp.xml")/items/item}</root>, $parameters) 
+    try {
+        <root>{doc("/db/apps/edep/data/objtyp.xml")/items/item}</root>
     } catch * {
         ()
     }
 };
 
 declare function api:decor($request as map(*)) {
-    let $parameters :=
-         <output:serialization-parameters
-    xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-             <output:method value="json"/>
-             <output:media-type value="text/javascript"/>
-         </output:serialization-parameters>
-         
-    return try {
-         serialize(<root>{doc("/db/apps/edep/data/decor.xml")/items/item}</root>, $parameters) 
+   try {
+        <root>{doc("/db/apps/edep/data/decor.xml")/items/item}</root> 
     } catch * {
         ()
     }
 };
 
 declare function api:material($request as map(*)) {
-    let $parameters :=
-         <output:serialization-parameters
-    xmlns:output="http://www.w3.org/2010/xslt-xquery-serialization">
-             <output:method value="json"/>
-             <output:media-type value="text/javascript"/>
-         </output:serialization-parameters>
-         
-    return try {
-         serialize(<root>{doc("/db/apps/edep/data/material.xml")/items/item}</root>, $parameters) 
+    try {
+        <root>{doc("/db/apps/edep/data/material.xml")/items/item}</root>
     } catch * {
         ()
     }
