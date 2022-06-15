@@ -121,8 +121,9 @@ declare function api:material($request as map(*)) {
 declare function api:places-list($request as map(*)) {
     let $return := if (not($request?parameters?id)) then
         let $place := for $place in collection($config:places)//@xml:id/string()
-            return <place id="{$place}" placename="{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="findspot"]/string()}"></place>
-        return <places>{$place}</places>
+            return <place id="{$place}" findspot="{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="findspot"]/string()}" 
+                        geo-location="{doc(concat($config:places, $place , ".xml"))/tei:place//tei:geo/string()}"></place>
+        return $place
         else 
             doc(concat($config:places, $request?parameters?id, ".xml"))
 

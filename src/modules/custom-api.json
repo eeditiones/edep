@@ -191,7 +191,6 @@
                         "content": {
                             "application/xml": {
                                 "schema": {
-                                    
                                 }
                             }
                         }
@@ -207,7 +206,7 @@
                     "200": {
                         "description": "places-list",
                         "content": {
-                            "application/xml": {
+                            "application/json": {
                                 "schema": {
                                     
                                 }
