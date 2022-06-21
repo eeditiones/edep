@@ -118,7 +118,7 @@ button{
     margin-bottom: 2rem;
     border:thin solid var(--paper-grey-300);
 }
-fx-control{
+fx-control,fx-output{
     display: grid;
     grid-template-columns: 300px auto;
     /*width: fit-content;*/
@@ -135,18 +135,27 @@ fx-control [type="checkbox"]{
     align-self:center;
     width:fit-content;
 }
+
 fx-control textarea{
     width: 95%;
     display: inline-block;
 }
 
-
+fx-group{
+    padding:1rem;
+}
+fx-group > label{
+    padding:0.5rem;
+    display:block;
+    position:absolute;
+}
 fx-group fx-group{
     border:thin solid var(--paper-grey-300);
     margin-bottom:1rem;
+    padding:0;
 }
 
-fx-control label{
+fx-control label, fx-output label{
     justify-self: end;
 }
 
