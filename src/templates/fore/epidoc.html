@@ -76,28 +76,19 @@
 <div class="wrapper">
     <fx-fore>
         <fx-model>
-            <fx-instance src="templates/fore/HD025278.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
-            <fx-instance id="province" src="data/province.json" type="json"/>
+            <fx-instance src="templates/fore/HD025278.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
+            <fx-instance id="province" src="data/province.json" type="json"></fx-instance>
             <!--            <fx-instance id="country" src="data/country.json" type="json"/>-->
             <!--            <fx-instance id="decor" src="api/decor" type="json"/>-->
-            <fx-instance id="typeins" src="data/typeins.json" type="json"/>
-            <fx-instance id="objtyp" src="data/objtyp.json" type="json"/>
-            <!--            <fx-instance id="statepreserv" src="data/statepreserv.xml" type="json"/>-->
-            <!--
-                        <fx-instance id="material" src="api/material"/> -->
+            <fx-instance id="typeins" src="data/typeins.json" type="json"></fx-instance>
+            <fx-instance id="objtyp" src="data/objtyp.json" type="json"></fx-instance>
+            <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"></fx-instance>
+
             <fx-instance id="tmp">
                 <data>
                     <dummy>xpath?</dummy>
-                    <dummycheck/>
-                    <material-group/>
-
                 </data>
             </fx-instance>
-            <fx-bind ref="instance('tmp')/material-group"
-                     calculate="if(string-length(instance('default')//physDesc/objectDesc/supportDesc/support/material) != 0)                                 then instance('material')/category[./material/@name='Sandstein']/@name                                 else 'bäh'"/>
-            <!--                     calculate="if(string-length(instance('default')//physDesc/objectDesc/supportDesc/support/material) != 0)-->
-            <!--                                then instance('material')/category[material='klastische Sedimente']/@name-->
-            <!--                                else ()"></fx-bind>-->
         </fx-model>
         <fx-group ref="teiHeader">
             <h1>EDEp Editor</h1>
@@ -124,7 +115,6 @@
 
             <fx-repeat ref=".//msPart">
                 <template>
-
                     <fx-group>
                         <!-- geoId from geodata -->
                         <fx-control ref="history/origin/origPlace/@corresp">
@@ -160,6 +150,7 @@
                             <label slot="label">Fundstelle</label>
                         </fx-output>
                     </fx-group>
+
                     <fx-group>
                         <!-- 10b) -->
                         <fx-control ref="history/provenance/note[@type='context']">
@@ -189,7 +180,6 @@
 
                     </fx-group>
 
-
                     <fx-group>
 
                         <!-- 13) -->
@@ -214,7 +204,7 @@
                         <!-- 15) -->
                         <fx-control ref="msContents/msItem/@class">
                             <label>Inschriftengattung</label>
-                            <select ref="instance('typeins')" class="widget">
+                            <select ref="instance('typeins')?*" class="widget">
                                 <template>
                                     <option value="{?value}">{?name}</option>
                                 </template>
@@ -224,7 +214,7 @@
                         <!-- 16a) -->
                         <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType">
                             <label>Inschriftträger</label>
-                            <select ref="instance('objtyp')" class="widget">
+                            <select ref="instance('objtyp')?*" class="widget">
                                 <template>
                                     <option value="{?value}">{?name}</option>
                                 </template>
@@ -241,11 +231,13 @@
                         <!-- 18) -->
                         <fx-control ref="//physDesc/objectDesc/supportDesc/support/material" update-event="change" class="orange">
                             <label>Material</label>
-                            <select ref="instance('material')/category[@name=instance('tmp')/material-group]/material/@name" class="widget">
-                                <template>
-                                    <option value="{string(.)}">{.}</option>
-                                </template>
-                            </select>
+                            <!--
+                                                        <select ref="instance('material')/category[@name=instance('tmp')/material-group]/material/@name" class="widget">
+                                                            <template>
+                                                                <option value="{string(.)}">{.}</option>
+                                                            </template>
+                                                        </select>
+                            -->
                             <!--                            <fx-setvalue event="value-changed" ref="//physDesc/objectDesc/supportDesc/support/material" value="string(..)"/>-->
                         </fx-control>
 
@@ -291,13 +283,21 @@
                             </fx-control>
                         </fx-group>
 
-
-
+                        <fx-trigger class="delete">
+                            <button>Löschen</button>
+                            <fx-confirm message="really delete?">
+                                <fx-delete ref="."></fx-delete>
+                            </fx-confirm>
+                            <!--                            <fx-delete ref="."></fx-delete>-->
+                        </fx-trigger>
                     </fx-group>
-
-
                 </template>
             </fx-repeat>
+
+            <fx-trigger class="add">
+                <button>Hinzufügen</button>
+                <fx-insert ref=".//msPart" origin="instance('mspart')"></fx-insert>
+            </fx-trigger>
 
             <!-- 26) -->
             <fx-group ref="//msDesc">
@@ -347,7 +347,7 @@
                 <button>Save</button>
             </fx-trigger>
         </fx-group>
-        <fx-inspector/>
+        <fx-inspector></fx-inspector>
     </fx-fore>
 
 </div>

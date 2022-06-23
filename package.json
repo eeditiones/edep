@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Editionstools für eine digitale Epigraphik",
   "dependencies": {
-    "@teipublisher/pb-components": "1.24.18"
+    "@teipublisher/pb-components": "1.38.1"
   },
   "scripts": {
     "test": "web-test-runner --coverage",

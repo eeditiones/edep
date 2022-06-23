@@ -94,6 +94,24 @@ h5 {
     margin: 0;
 }
 
+
+fx-trigger.add, fx-trigger.delete{
+    width:100%;
+    display:inline-block;
+}
+fx-trigger button{
+    color:white;
+}
+fx-trigger.add button{
+    background:green;
+}
+fx-trigger.delete{
+    text-align:right;
+}
+fx-trigger.delete button{
+    background:red;
+}
+
 /* Fore styling */
 body, .wrapper{
     margin:0;
@@ -160,7 +178,7 @@ fx-control label, fx-output label{
 }
 
 fx-fore{
-    position:relative;
+    /*position:relative;*/
 }
 fx-inspector{
     position:absolute;
@@ -179,6 +197,11 @@ fx-inspector{
 }
 fx-repeatitem{
     display:block;
+    background:lightgreen;
+}
+
+fx-inspector[open]{
+    width:50%;
 }
 
 
