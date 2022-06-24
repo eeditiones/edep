@@ -6,6 +6,10 @@
             <titleStmt>
                 <!-- TODO: Eingabe Haupttitel der Inschrift fehlt im Formular? -->
                 <title>Votive inscription from Bonna &amp;ndash; Bonn (Germania inferior)</title>
+                <!-- 44) Bearbeiter der Inschriftenedition -->
+                <editor></editor>
+                <!-- 45) Bearbeiter des Datensatzes -->
+                <author></author>
             </titleStmt>
             <publicationStmt>
                 <authority>Epigraphische Datenbank Heidelberg</authority>
@@ -51,7 +55,8 @@
                         </origin>
                     </history>
                     <!-- msPart ist als Ganzes wiederholbar -->
-                    <msPart>
+                    <!-- @xml:id erforderlich für Referenzierung unten -->
+                    <msPart xml:id="fragment1">
                         <msIdentifier>
                             <!-- 12a) Aufbewahrung -->
                             <repository ref="http://sicily.classics.ox.ac.uk/museum/064">Bonn, Rhein. Landesmus.</repository>
@@ -81,7 +86,6 @@
                                 </listBibl>
                                 <!-- 35c) Bilder -->
                                 <listBibl type="images">
-                                    <!-- Einträge wiederholbar -->
                                     <bibl>
                                         <!-- Zotero Referenz -->
                                         <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6"/>
@@ -92,8 +96,6 @@
                                         </biblScope>
                                     </bibl>
                                 </listBibl>
-                                <!-- 35d) Abbildungen, wiederholbar -->
-                                <graphic url="photo.png"></graphic>
                             </msItem>
                         </msContents>
                         <physDesc>
@@ -140,7 +142,7 @@
                             <origin>
                                 <!-- in @corresp wird die GeoID angegeben, andere Ortsangaben sind redundant und werden
                                     am Ende nur hinein kopiert - siehe Kommentare -->
-                                <origPlace corresp="#GeoID">
+                                <origPlace  corresp="#GeoID">
                                     <!-- 5) Provinz / augusteische Region: kopiert aus Geodatenbank -->
                                     <placeName type="province">Germania inferior</placeName>
                                     <!-- 8) Fundort (antik): kopiert aus Geodatenbank -->
@@ -196,16 +198,40 @@
         <!-- 33) Stand der Bearbeitung in @status -->
         <revisionDesc status="draft">
             <!-- 
-                47) Datensatz generiert/zuletzt geändert am. 46) ist redundant?
+                47) Datensatz generiert.
                 45) Bearbeiter des Datensatzes in @who
             
             -->
-            <change when="2020-02-06" who="Feraudi"/>
+            <change type="created" when="2020-02-06" who="Feraudi"/>
+            <!-- 46) Datensatz geändert -->
+            <change type="modified" when="2020-02-07" who="Feraudi"/>
         </revisionDesc>
     </teiHeader>
+    <facsimile>
+        <!-- @corresp referenziert msPart -->
+        <surface corresp="#fragment1">
+            <!-- 35d) Abbildungen, wiederholbar -->
+            <graphic url="photo.png"></graphic>
+        </surface>
+    </facsimile>
     <text>
         <body>
-            <div type="edition"></div>
+            <div type="edition">
+                <!-- 41) Textedition: @corresp referenziert msPart -->
+                <div type="textpart" subtype="fragment" n="a" corresp="#fragment1"></div>
+                <!-- Optionales weiteres Fragment -->
+                <div type="textpart" subtype="fragment" n="b" corresp="#fragment2"></div>
+            </div>
+            <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart -->
+            <div type="apparatus" corresp="#fragment1">
+                <listApp>
+                    <app loc="1"></app>
+                </listApp>
+            </div>
+            <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers -->
+            <div type="translation" corresp="#fragment1" resp="#Feraudi"></div>
+            <!-- 37) Kommentar: freier Inhalt. Nur einmal pro Dokument -->
+            <div type="commentary"></div>
         </body>
     </text>
 </TEI>
