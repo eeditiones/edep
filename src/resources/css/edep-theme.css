@@ -1,5 +1,18 @@
+html{
+    --group-1-bg:#7baaf7;
+    --group-2-bg:#ffb300;
+    --group-3-bg:#ba68c8;
+    --group-4-bg:#81c784;
+    --group-5-bg:#b39ddb;
+    --group-6-bg:#e57373;
+    --group-7-bg:#fce8b2;
+    --group-8-bg:#bcaaa4;
+    --group-9-bg:#81c784;
+}
 main {
-    margin: 0 20px 0 20px;
+    /*margin: 0 20px 0 20px;*/
+    margin:0 auto;
+    max-width: 800px;
 }
 
 @media (max-width: 1023px) {
@@ -111,6 +124,23 @@ fx-trigger.delete{
 fx-trigger.delete button{
     background:red;
 }
+fx-trigger.add-bib{
+    width:100%;
+    text-align:right;
+    display:block;
+    /*margin-bottom:1rem;*/
+}
+fx-trigger.add-bib a{
+
+}
+fx-trigger.add-bib iron-icon{
+    width:36px;
+    height:36px;
+    margin-right:18px;
+    color:green;
+
+}
+
 
 /* Fore styling */
 body, .wrapper{
@@ -121,6 +151,34 @@ body, .wrapper{
 button{
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
+}
+
+.group-1{
+    background:var(--group-1-bg);
+}
+.group-2{
+    background: var(--group-2-bg);
+}
+.group-3{
+    background: var(--group-3-bg);
+}
+.group-4{
+    background: var(--group-4-bg);
+}
+.group-5{
+    background: var(--group-5-bg);
+}
+.group-6{
+    background: var(--group-6-bg);
+}
+.group-7{
+    background: var(--group-7-bg);
+}
+.group-8{
+    background: var(--group-8-bg);
+}
+.group-9{
+    background: var(--group-9-bg);
 }
 .wrapper{
     width: 21cm;
@@ -139,14 +197,9 @@ button{
 fx-control,fx-output{
     display: grid;
     grid-template-columns: 300px auto;
-    /*width: fit-content;*/
-
     grid-gap:0.3rem;
-    margin: 0.5rem 0;
+    margin: 0.5rem;
 
-}
-input, select{
-    width:300px;
 }
 
 fx-control [type="checkbox"]{
@@ -154,13 +207,9 @@ fx-control [type="checkbox"]{
     width:fit-content;
 }
 
-fx-control textarea{
-    width: 95%;
-    display: inline-block;
-}
-
 fx-group{
     padding:1rem;
+    border-radius: 0.3rem;
 }
 fx-group > label{
     padding:0.5rem;
@@ -195,13 +244,48 @@ fx-inspector{
     right:1rem;
     max-width:40%;
 }
+fx-repeat{
+    border-radius: 0.3rem;
+}
+
 fx-repeatitem{
     display:block;
-    background:lightgreen;
+    background: var(--paper-blue-grey-50);
+    border-radius: 0.3rem;
+    padding: 0.5rem;
 }
 
 fx-inspector[open]{
     width:50%;
+}
+fx-repeat#bib fx-repeatitem{
+    display:grid;
+    grid-template-columns:auto 40px;
+    align-items:center;
+}
+.repeat-wrapper{
+    position:relative;
+    padding:2rem 1rem;
+    border:thin solid;
+}
+
+.title{
+    font-size:1.2rem;
+    display: flex;
+    flex-direction: row;
+    width:100%;
+}
+.title label{
+    margin-right:1rem;
+}
+.title input{
+    flex-grow:1;
+    font-size:1.2rem;
+    border:none;
+    border-bottom:thin solid;
+}
+[icon='remove-circle-outline']{
+    color:red;
 }
 
 

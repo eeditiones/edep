@@ -92,30 +92,28 @@
         </fx-model>
         <fx-group ref="teiHeader">
             <h1>EDEp Editor</h1>
+            <fx-control class="title" ref="fileDesc/titleStmt/title">
+                <label>Titel</label>
+            </fx-control>
 
-            <span>Sprachselector hier</span>
-            <fx-group>
+<!--            <span>Sprachselector hier</span>-->
+            <fx-group class="group-1">
                 <!-- 3) -->
                 <fx-control ref=".//msDesc/msIdentifier/idno">
                     <label>EDE-p-Id</label>
-                    <span class="note">
-                        generated id starting with 'EEE000001'
-                    </span>
                 </fx-control>
 
                 <!-- 4) -->
                 <fx-control ref=".//msPart[1]/msIdentifier/idno">
                     <label>TM-Nummer</label>
-                    <span class="note">
-                        number from trismegistos.org - is in msPart which is repeated so use first one?
-                    </span>
                 </fx-control>
             </fx-group>
 
 
             <fx-repeat ref=".//msPart">
                 <template>
-                    <fx-group>
+                    <fx-group class="group-2">
+
                         <!-- geoId from geodata -->
                         <fx-control ref="history/origin/origPlace/@corresp">
                             <label>GeoId</label>
@@ -149,9 +147,7 @@
                         <fx-output ref="history/provenance/placeName[@type='findspot']">
                             <label slot="label">Fundstelle</label>
                         </fx-output>
-                    </fx-group>
 
-                    <fx-group>
                         <!-- 10b) -->
                         <fx-control ref="history/provenance/note[@type='context']">
                             <label>Fundkontext</label>
@@ -180,7 +176,7 @@
 
                     </fx-group>
 
-                    <fx-group>
+                    <fx-group class="group-3">
 
                         <!-- 13) -->
                         <fx-control ref="physDesc/objectDesc/supportDesc/condition">
@@ -242,8 +238,8 @@
                         </fx-control>
 
 
-                        <fx-group>
-                            <label>Inschriftträger</label>
+<!--                        <fx-group>-->
+<!--                            <label>Inschriftträger</label>-->
                             <!-- 19) -->
                             <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/width">
                                 <label>Breite</label>
@@ -256,41 +252,68 @@
                             <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/depth">
                                 <label>Tiefe</label>
                             </fx-control>
-                        </fx-group>
+<!--                        </fx-group>-->
 
-                        <fx-group>
-                            <label>Inschriftfeld</label>
-                            <!-- 21) -->
-                            <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/height">
-                                <label>Höhe</label>
-                            </fx-control>
-                            <!-- 22) -->
-                            <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/width">
-                                <label>Breite</label>
-                            </fx-control>
-                            <!-- 23) -->
-                            <fx-control ref="physDesc/handDesc/handNote/dimensions/height">
-                                <label>Buchstabenhöhe</label>
-                            </fx-control>
-                        </fx-group>
-
-                        <!-- 24) unclear -->
-
-                        <!-- 25) -->
-                        <fx-group>
-                            <fx-control ref="msContents/msItem/textLang">
-                                <label>Sprache</label>
-                            </fx-control>
-                        </fx-group>
-
-                        <fx-trigger class="delete">
-                            <button>Löschen</button>
-                            <fx-confirm message="really delete?">
-                                <fx-delete ref="."></fx-delete>
-                            </fx-confirm>
-                            <!--                            <fx-delete ref="."></fx-delete>-->
-                        </fx-trigger>
                     </fx-group>
+                    <fx-group class="group-4">
+                        <label>Inschriftfeld</label>
+                        <!-- 21) -->
+                        <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/height">
+                            <label>Höhe</label>
+                        </fx-control>
+                        <!-- 22) -->
+                        <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/width">
+                            <label>Breite</label>
+                        </fx-control>
+                        <!-- 23) -->
+                        <fx-control ref="physDesc/handDesc/handNote/dimensions/height">
+                            <label>Buchstabenhöhe</label>
+                        </fx-control>
+                    </fx-group>
+
+
+                    <fx-group class="group-5">
+                        <!-- 24) -->
+                        <fx-control ref="instance('tmp')/dummy">
+                            <label>Metrik</label>
+                        </fx-control>
+                        <!-- 25) -->
+                        <fx-control ref="msContents/msItem/textLang">
+                            <label>Sprache</label>
+                        </fx-control>
+                    </fx-group>
+
+
+                    <fx-var name="frag" value="'#' || ./@xml:id"/>
+
+                    <div class="repeat-wrapper">
+                    <!-- 35b) -->
+                    <fx-repeat id="bib" ref="msContents/msItem/listBibl[@type='edition']/bibl/ptr">
+                        <template>
+                        <fx-control ref="//div[@type='textpart'][./@corresp=$frag]">
+                            <label>Bibliographie</label>
+                        </fx-control>
+                            <fx-trigger>
+                                    <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
+                                <fx-message>todo remove ...</fx-message>
+                            </fx-trigger>
+                        </template>
+                    </fx-repeat>
+                    <fx-trigger class="add-bib">
+                            <iron-icon icon="add-circle-outline" title="add Bibliographie"/>
+                        <fx-message>todo add...</fx-message>
+                    </fx-trigger>
+                    </div>
+
+
+
+                    <fx-trigger class="delete">
+                        <button>Löschen</button>
+                        <fx-confirm message="really delete?">
+                            <fx-delete ref="."></fx-delete>
+                        </fx-confirm>
+                        <!--                            <fx-delete ref="."></fx-delete>-->
+                    </fx-trigger>
                 </template>
             </fx-repeat>
 
@@ -300,16 +323,16 @@
             </fx-trigger>
 
             <!-- 26) -->
-            <fx-group ref="//msDesc">
+            <fx-group ref="//msDesc" class="group-6">
                 <!-- 26), 27)-->
 
-                <fx-control ref="history/origin/origDate/@when">
+                <fx-control ref="history/origin/origDate/@when-custom">
                     <label>Datierung</label>
                 </fx-control>
-                <fx-control ref="history/origin/origDate/@notBefore">
+                <fx-control ref="history/origin/origDate/@notBefore-custom">
                     <label>nach</label>
                 </fx-control>
-                <fx-control ref="history/origin/origDate/@notAfter">
+                <fx-control ref="history/origin/origDate/@notAfter-custom">
                     <label>vor</label>
                 </fx-control>
                 <fx-control ref="history/origin/origDate/@when-custom">
@@ -318,20 +341,53 @@
                 <span class="note">Datingmethod?</span>
             </fx-group>
 
-            <fx-group ref="profileDesc">
+            <fx-group ref="profileDesc" class="group-7">
                 <!-- 28)  -->
                 <fx-control ref="textClass/keywords/term">
                     <label>Religion</label>
+                    <select class="widget">
+                        <option value=""></option>
+                        <option value="pagan">pagan</option>
+                        <option value="jüdisch">jüdisch</option>
+                        <option value="christlich">christlich</option>
+                    </select>
+                </fx-control>
+                <!-- 29) missing -->
+                <!-- 30) -->
+                <fx-control ref="textClass/keywords/term[@ref='#social-economic-legal-history']" value-prop="checked">
+                    <label for="social">Sozial-,Wirschafts-/Rechtsgeschichte</label>
+                    <input id="social" type="checkbox" class="widget"/>
+                </fx-control>
+                <!-- 31) -->
+                <fx-control ref="textClass/keywords/term[@ref='#geography']"  value-prop="checked">
+                    <label for="geo">Geographie</label>
+                    <input id="geo" type="checkbox" class="widget"/>
+                </fx-control>
+                <!-- 32) -->
+                <fx-control ref="textClass/keywords/term[@ref='#military']"  value-prop="checked">
+                    <label for="mili">Militär</label>
+                    <input id="mili" type="checkbox" class="widget"/>
                 </fx-control>
             </fx-group>
 
+            <fx-group class="group-8">
+                <!-- 33) -->
+                <fx-control ref="revisionDesc/@status">
+                    <label>Stand der Bearbeitung</label>
+                    <select class="widget">
+                        <option value="draft">intern</option>
+                        <option value="public">öffentlich</option>
+                    </select>
+                </fx-control>
+            </fx-group>
 
-            <!-- 29) missing -->
-            <!-- 30) -->
-            <!-- 31) -->
-            <!-- 32) -->
-            <!-- 33) -->
-            <!-- 34) unclear -->
+            <fx-group class="group-9">
+                <!-- 34) -->
+                <fx-control ref="//layoutDesc/layout/rs[type='palaeography']/@ref">
+                    <label>Paläographie</label>
+                </fx-control>
+            </fx-group>
+
             <!-- 35b) -->
             <!-- 35a) -->
             <!-- 35c) -->

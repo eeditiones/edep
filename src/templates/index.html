@@ -16,13 +16,6 @@
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
     <script type="module" src="resources/scripts/fore-dev.js"></script>
     <script type="module" src="resources/scripts/datalist-ajax/datalist-ajax.min.js"></script>
-    <custom-style>
-        <style>
-            [ref="instance('tmp')/dummy"] {
-                background:ghostwhite;
-            }
-        </style>
-    </custom-style>
 </head>
 
 <body>
@@ -41,7 +34,7 @@
                     <app-toolbar class="menubar">
                         <a href="${app}/index.html" class="logo" data-template="lib:parse-params"/>
                         <pb-media-query query="(min-width: 1024px)">
-                            <a href="${app}/index.html" data-template="lib:parse-params">EDEp Editor</a>
+                            <a href="${app}/index.html" data-template="lib:parse-params">Inschriften</a>
                             <a href="${app}/geodata.html" data-template="lib:parse-params">Geodaten</a>
 
                             <pb-restricted login="login" group="tei">
