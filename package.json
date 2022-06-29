@@ -1,9 +1,10 @@
 {
   "name": "edep",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "description": "Editionstools für eine digitale Epigraphik",
   "dependencies": {
-    "@teipublisher/pb-components": "1.38.1"
+    "@teipublisher/pb-components": "1.38.1",
+    "jinn-codemirror": "github:JinnElements/jinn-codemirror"
   },
   "scripts": {
     "test": "web-test-runner --coverage",
@@ -18,7 +19,7 @@
     "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore && prettier \"**/*.js\" --write --ignore-path .gitignore"
   },
   "devDependencies": {
-    "@existdb/gulp-exist": "^4.0.0",
+    "@existdb/gulp-exist": "^4.3.1",
     "@existdb/gulp-replace-tmpl": "^1.0.0",
     "@open-wc/eslint-config": "^4.3.0",
     "@open-wc/testing": "next",

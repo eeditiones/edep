@@ -1,0 +1,29 @@
+{
+  "servers": {
+    "localhost": {
+      "server": "http://localhost:8080/exist",
+      "user": "admin",
+      "password": "",
+      "root": "/db/apps/edep"
+    }
+  },
+  "sync": {
+    "server": "localhost",
+    "ignore": [
+      ".existdb.json",
+      ".git/**",
+      "components/**",
+      "node_modules/**",
+      "bower_components/**",
+      "build/**",
+      "webtest/**"
+    ]
+  },
+  "package": {
+    "author": "Jinntec Team",
+    "target": "edep",
+    "description": "Editionstools für digitale Epigraphic",
+    "namespace": "https://jinntec.de/edep"
+  }
+
+}

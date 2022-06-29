@@ -56,7 +56,7 @@
                     </history>
                     <!-- msPart ist als Ganzes wiederholbar -->
                     <!-- @xml:id erforderlich für Referenzierung unten -->
-                    <msPart xml:id="fragment1">
+                    <msPart xml:id="F5771067f-65fb-47af-9a84-8e9d7dd393a8">
                         <msIdentifier>
                             <!-- 12a) Aufbewahrung -->
                             <repository ref="http://sicily.classics.ox.ac.uk/museum/064">Bonn, Rhein. Landesmus.</repository>
@@ -213,7 +213,7 @@
     </teiHeader>
     <facsimile>
         <!-- @corresp referenziert msPart -->
-        <surface corresp="#fragment1">
+        <surface corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8">
             <!-- 35d) Abbildungen, wiederholbar -->
             <graphic url="photo.png"></graphic>
         </surface>
@@ -221,20 +221,22 @@
     <text>
         <body>
             <div type="edition">
-                <!-- 41) Textedition: @corresp referenziert msPart -->
-                <div type="textpart" subtype="fragment" n="a" corresp="#fragment1"></div>
-                <!-- Optionales weiteres Fragment -->
-                <div type="textpart" subtype="fragment" n="b" corresp="#fragment2"></div>
+                <!-- 41) Textedition: @corresp referenziert msPart - eingefügt aus jinn-codemirror. Required -->
+                <div type="textpart" subtype="fragment" n="a" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8">
+                    <ab><expan>H<ex>einrich</ex></expan></ab>x
+                </div>
             </div>
-            <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart -->
-            <div type="apparatus" corresp="#fragment1">
+            <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
+            <div type="apparatus" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8">
                 <listApp>
-                    <app loc="1"></app>
+                    <app loc="1"><note>Lorem <hi rend="bold">ipsum</hi></note></app>
                 </listApp>
             </div>
-            <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers -->
-            <div type="translation" corresp="#fragment1" resp="#Feraudi"></div>
-            <!-- 37) Kommentar: freier Inhalt. Nur einmal pro Dokument -->
+            <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
+            <div type="translation" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8" resp="#Feraudi">
+                <ab>Übersetzung des Textes in XML</ab>
+            </div>
+            <!-- 37) Kommentar: freier Inhalt. Nur einmal pro Dokument - eingefügt aus jinn-codemirror -->
             <div type="commentary"></div>
         </body>
     </text>

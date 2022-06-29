@@ -84,11 +84,16 @@
             <fx-instance id="objtyp" src="data/objtyp.json" type="json"></fx-instance>
             <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"></fx-instance>
 
+            <fx-instance id="templates" src="templates/fore/templates.xml"  xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
             <fx-instance id="tmp">
                 <data>
                     <dummy>xpath?</dummy>
                 </data>
             </fx-instance>
+
+            <fx-function signature="gen-id() as xs:string" type="text/javascript">
+                return createUUID();
+            </fx-function>
         </fx-model>
         <fx-group ref="teiHeader">
             <h1>EDEp Editor</h1>
@@ -110,10 +115,10 @@
             </fx-group>
 
 
-            <fx-repeat ref=".//msPart">
+            <fx-repeat id="parts" ref=".//msPart">
                 <template>
                     <fx-group class="group-2">
-
+                        {gen-id()}
                         <!-- geoId from geodata -->
                         <fx-control ref="history/origin/origPlace/@corresp">
                             <label>GeoId</label>
@@ -294,14 +299,15 @@
                             <label>Bibliographie</label>
                         </fx-control>
                             <fx-trigger>
-                                    <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
-                                <fx-message>todo remove ...</fx-message>
+                                <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
+                                <fx-delete ref="."></fx-delete>
                             </fx-trigger>
                         </template>
                     </fx-repeat>
                     <fx-trigger class="add-bib">
                             <iron-icon icon="add-circle-outline" title="add Bibliographie"/>
                         <fx-message>todo add...</fx-message>
+                        <fx-insert ref="//body/div[@type='edition']" origin="instance('templates')/div[@type='edition']/div"></fx-insert>
                     </fx-trigger>
                     </div>
 
@@ -314,32 +320,41 @@
                         </fx-confirm>
                         <!--                            <fx-delete ref="."></fx-delete>-->
                     </fx-trigger>
+
+                    <!-- 26) -->
+                    <fx-group ref="//msDesc" class="group-6">
+                        <!-- 26), 27)-->
+
+                        <fx-control ref="history/origin/origDate/@when-custom">
+                            <label>Datierung</label>
+                        </fx-control>
+                        <fx-control ref="history/origin/origDate/@notBefore-custom">
+                            <label>nach</label>
+                        </fx-control>
+                        <fx-control ref="history/origin/origDate/@notAfter-custom">
+                            <label>vor</label>
+                        </fx-control>
+                        <fx-control ref="history/origin/origDate/@when-custom">
+                            <label>custom</label>
+                        </fx-control>
+                        <span class="note">Datingmethod?</span>
+                    </fx-group>
+
                 </template>
             </fx-repeat>
 
             <fx-trigger class="add">
                 <button>Hinzufügen</button>
-                <fx-insert ref=".//msPart" origin="instance('mspart')"></fx-insert>
+                <fx-action>
+                    <fx-insert ref="//msPart" origin="instance('mspart')"></fx-insert>
+                    <fx-update></fx-update>
+                    <fx-refresh></fx-refresh>
+                    <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="gen-id()"></fx-setvalue>
+<!--                    <fx-dispatch name="custom" targetid="parts"></fx-dispatch>-->
+                </fx-action>
             </fx-trigger>
+<!--            <fx-setvalue event="custom" ref="//msPart[index('parts')]/@xml:id" target="parts" value="gen-id()"></fx-setvalue>-->
 
-            <!-- 26) -->
-            <fx-group ref="//msDesc" class="group-6">
-                <!-- 26), 27)-->
-
-                <fx-control ref="history/origin/origDate/@when-custom">
-                    <label>Datierung</label>
-                </fx-control>
-                <fx-control ref="history/origin/origDate/@notBefore-custom">
-                    <label>nach</label>
-                </fx-control>
-                <fx-control ref="history/origin/origDate/@notAfter-custom">
-                    <label>vor</label>
-                </fx-control>
-                <fx-control ref="history/origin/origDate/@when-custom">
-                    <label>vor</label>
-                </fx-control>
-                <span class="note">Datingmethod?</span>
-            </fx-group>
 
             <fx-group ref="profileDesc" class="group-7">
                 <!-- 28)  -->
@@ -407,6 +422,6 @@
     </fx-fore>
 
 </div>
-<script type="module" src="../../resources/scripts/fore-debug.js"/>
+<script type="module" src="../../resources/scripts/fore-dev.js"/>
 </body>
 </html>
