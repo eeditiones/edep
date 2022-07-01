@@ -4,7 +4,7 @@
 const { src, dest, watch, series, parallel, lastRun } = require('gulp')
 const { createClient } = require('@existdb/gulp-exist')
 const zip = require("gulp-zip")
-const sass = require('gulp-sass')
+// const sass = require('gulp-sass')
 const uglify = require('gulp-uglify-es').default
 const replace = require('@existdb/gulp-replace-tmpl')
 const rename = require('gulp-rename')

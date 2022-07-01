@@ -1,0 +1,473 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+
+    <title>Epidoc</title>
+    <link href="../../resources/css/fore.css" rel="stylesheet"/>
+
+
+    <style>
+        /*
+                @font-face {
+                    font-family: "Kimberley";
+                    src: url(../../resources/fonts/Montserrat/Montserrat-Light.ttf) format("truetype");
+                }
+        */
+
+        body, .wrapper {
+            margin: 0;
+            padding: 0;
+            font-family: "Kimberley";
+        }
+
+        button {
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .wrapper {
+            width: 21cm;
+            height: 29.7cm;
+            background: lightyellow;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 1rem;
+            margin-bottom: 2rem;
+            border: thin solid var(--paper-grey-300);
+        }
+
+        fx-control {
+            display: grid;
+            grid-template-columns: 200px auto;
+            /*width: fit-content;*/
+
+            grid-gap: 0.3rem;
+            margin: 0.5rem 0;
+
+        }
+
+        fx-control input {
+            width: 200px;
+        }
+
+        fx-control textarea {
+            width: 95%;
+            display: inline-block;
+        }
+
+        .group {
+            border: thin solid var(--paper-grey-300);
+            margin-bottom: 1rem;
+        }
+
+        fx-control label {
+            justify-self: end;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <fx-fore>
+        <fx-model>
+            <fx-instance src="templates/fore/HD025278.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+            <fx-instance id="province" src="data/province.json" type="json"/>
+            <!--            <fx-instance id="country" src="data/country.json" type="json"/>-->
+            <!--            <fx-instance id="decor" src="api/decor" type="json"/>-->
+            <fx-instance id="typeins" src="data/typeins.json" type="json"/>
+            <fx-instance id="objtyp" src="data/objtyp.json" type="json"/>
+            <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+
+            <fx-instance id="templates" src="templates/fore/templates.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+
+            <fx-instance id="leiden">
+                <data>
+                    <epidoc/>
+                </data>
+            </fx-instance>
+
+            <fx-instance id="tmp">
+                <data>
+                    <dummy>xpath?</dummy>
+                </data>
+            </fx-instance>
+
+            <fx-instance xmlns="http://www.tei-c.org/ns/1.0" id="epidoc-editor" src="templates/fore/epidoc-snippet.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
+
+            <fx-function signature="gen-id() as xs:string" type="text/javascript">
+                return createUUID();
+            </fx-function>
+        </fx-model>
+        <fx-group ref="teiHeader">
+            <h1>EDEp Editor</h1>
+            <fx-control class="title" ref="fileDesc/titleStmt/title">
+                <label>Titel</label>
+            </fx-control>
+
+            <!--            <span>Sprachselector hier</span>-->
+            <fx-group class="group-1">
+                <!-- 3) -->
+                <fx-control ref=".//msDesc/msIdentifier/idno">
+                    <label>EDE-p-Id</label>
+                </fx-control>
+
+                <!-- 4) -->
+                <fx-control ref=".//msPart[1]/msIdentifier/idno">
+                    <label>TM-Nummer</label>
+                </fx-control>
+            </fx-group>
+
+            <fx-repeat id="parts" ref=".//msPart">
+                <template>
+                    <fx-group class="group-2">
+                        {gen-id()}
+                        <!-- geoId from geodata -->
+                        <fx-control ref="history/origin/origPlace/@corresp">
+                            <label>GeoId</label>
+                        </fx-control>
+                        <!-- 5) -->
+                        <fx-output ref="history/origin/origPlace/placeName[@type='province']">
+                            <label slot="label">Provinz/augusteische Region</label>
+                        </fx-output>
+
+                        <!-- 6) -->
+                        <fx-output ref="history/provenance/placeName[@type='country']">
+                            <label slot="label">Land</label>
+                        </fx-output>
+
+                        <!-- 7) -->
+                        <fx-output ref="history/history/provenance/placeName[@type='region']">
+                            <label slot="label">Region</label>
+                        </fx-output>
+
+                        <!-- 8) -->
+                        <fx-output ref="history/origin/origPlace/placeName[@type='ancient']">
+                            <label slot="label">Fundort (antik)</label>
+                        </fx-output>
+
+                        <!-- 9) -->
+                        <fx-output ref="history/provenance/placeName[@type='modern']">
+                            <label slot="label">Fundort (modern)</label>
+                        </fx-output>
+
+                        <!-- 10a) -->
+                        <fx-output ref="history/provenance/placeName[@type='findspot']">
+                            <label slot="label">Fundstelle</label>
+                        </fx-output>
+
+                        <!-- 10b) -->
+                        <fx-control ref="history/provenance/note[@type='context']">
+                            <label>Fundkontext</label>
+                            <textarea rows="4" class="widget"/>
+                        </fx-control>
+
+                        <!-- 11) -->
+                        <fx-control ref="history/provenance/@when">
+                            <label>Fundjahr</label>
+                        </fx-control>
+                        <fx-control ref="history/provenance/@notbefore">
+                            <label>nach</label>
+                        </fx-control>
+                        <fx-control ref="history/provenance/@notAfter">
+                            <label>vor</label>
+                        </fx-control>
+                        <fx-control ref="history/provenance/@when-custom">
+                            <label>vor</label>
+                        </fx-control>
+
+                        <!-- 12a) -->
+                        <fx-control ref="msIdentifier/repository">
+                            <label>Aufbewahrung</label>
+                        </fx-control>
+                        <!-- 12b-12e missing -->
+
+                    </fx-group>
+
+                    <fx-group class="group-3">
+
+                        <!-- 13) -->
+                        <fx-control ref="physDesc/objectDesc/supportDesc/condition">
+                            <label>Erhaltung</label>
+                            <select class="widget">
+                                <option value="complete">vollständig</option>
+                                <option value="fragmentary">fragmentarisch</option>
+                            </select>
+                        </fx-control>
+
+                        <!-- 14) -->
+                        <fx-control ref="physDesc/objectDesc/supportDesc/support/rs/@ref">
+                            <label>Dekor</label>
+                            <select ref="instance('decor')?item?*" class="widget">
+                                <option value="yes">Ja</option>
+                                <option value="no">Nein</option>
+                                <option value="uncertain">unsicher</option>
+                            </select>
+                        </fx-control>
+
+                        <!-- 15) -->
+                        <fx-control ref="msContents/msItem/@class">
+                            <label>Inschriftengattung</label>
+                            <select ref="instance('typeins')?*" class="widget">
+                                <template>
+                                    <option value="{?value}">{?name}</option>
+                                </template>
+                            </select>
+                        </fx-control>
+
+                        <!-- 16a) -->
+                        <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType">
+                            <label>Inschriftträger</label>
+                            <select ref="instance('objtyp')?*" class="widget">
+                                <template>
+                                    <option value="{?value}">{?name}</option>
+                                </template>
+                            </select>
+                        </fx-control>
+
+                        <!-- 16b) -->
+                        <fx-control ref="//physDesc/objectDesc/supportDesc/support/note">
+                            <label>Beschreibung Inschriftträger</label>
+                        </fx-control>
+
+                        <!-- there's no 17) -->
+
+                        <!-- 18) -->
+                        <fx-control ref="//physDesc/objectDesc/supportDesc/support/material" update-event="change" class="orange">
+                            <label>Material</label>
+                            <!--
+                                                        <select ref="instance('material')/category[@name=instance('tmp')/material-group]/material/@name" class="widget">
+                                                            <template>
+                                                                <option value="{string(.)}">{.}</option>
+                                                            </template>
+                                                        </select>
+                            -->
+                            <!--                            <fx-setvalue event="value-changed" ref="//physDesc/objectDesc/supportDesc/support/material" value="string(..)"/>-->
+                        </fx-control>
+
+
+                        <!--                        <fx-group>-->
+                        <!--                            <label>Inschriftträger</label>-->
+                        <!-- 19) -->
+                        <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/width">
+                            <label>Breite</label>
+                        </fx-control>
+                        <!-- 38) -->
+                        <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/height">
+                            <label>Höhe</label>
+                        </fx-control>
+                        <!-- 20) -->
+                        <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/depth">
+                            <label>Tiefe</label>
+                        </fx-control>
+                        <!--                        </fx-group>-->
+
+                    </fx-group>
+                    <fx-group class="group-4">
+                        <label>Inschriftfeld</label>
+                        <!-- 21) -->
+                        <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/height">
+                            <label>Höhe</label>
+                        </fx-control>
+                        <!-- 22) -->
+                        <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/width">
+                            <label>Breite</label>
+                        </fx-control>
+                        <!-- 23) -->
+                        <fx-control ref="physDesc/handDesc/handNote/dimensions/height">
+                            <label>Buchstabenhöhe</label>
+                        </fx-control>
+                    </fx-group>
+
+
+                    <fx-group class="group-5">
+                        <!-- 24) -->
+                        <fx-control ref="instance('tmp')/dummy">
+                            <label>Metrik</label>
+                        </fx-control>
+                        <!-- 25) -->
+                        <fx-control ref="msContents/msItem/textLang">
+                            <label>Sprache</label>
+                        </fx-control>
+                    </fx-group>
+
+
+                    <fx-var name="frag" value="'#' || ./@xml:id"/>
+                    <div class="repeat-wrapper">
+                        <!-- 35b) -->
+                        <fx-repeat class="nested-repeat" id="bib" ref="msContents/msItem/listBibl[@type='edition']/bibl/ptr">
+                            <template>
+                                <!--
+                                                                <jinn-codemirror id="leiden-editor" class="leiden">
+                                                                    <div slot="toolbar">
+                                                                        <select name="modes">
+                                                                            <option value="edcs" selected="selected">EDCS/EDH</option>
+                                                                            <option value="default">Petrae</option>
+                                                                            <option value="leiden_plus">Leiden+</option>
+                                                                        </select>
+                                                                        <button data-command="expan" class="leiden_plus">(a(bcd))</button>
+                                                                        <button data-command="erasure" class="leiden_plus">〚abc〛</button>
+                                                                        <button data-command="unclear" class="leiden_plus">ạ</button>
+                                                                        <button data-command="div" class="leiden_plus">&lt;=...</button>
+                                                                        <button data-command="part" class="leiden_plus">&lt;D=.A.part...</button>
+                                                                        <button data-command="recto" class="leiden_plus">&lt;D=.r...</button>
+                                                                        <button data-command="verso" class="leiden_plus">&lt;D=.v...</button>
+                                                                        <button data-command="erasure" class="edcs">〚abc〛</button>
+                                                                        <button data-command="gap" class="edcs">[...]</button>
+                                                                        <button data-command="convert" class="edcs">Leiden+</button>
+                                                                    </div>
+                                                                </jinn-codemirror> -->
+                                <fx-control class="xml-mirror" ref="instance('epidoc-editor')" as="node">
+                                    <fx-replace event="update" ref="instance('epidoc-editor')" with="event('serialized')" target="xml-editor"></fx-replace>
+                                    <jinn-codemirror id="xml-editor" mode="xml" schema="resources/scripts/epidoc.json" namespace="http://www.tei-c.org/ns/1.0" class="widget">
+                                        <div slot="toolbar">
+                                            <button id="import" title="Import from Leiden markup">Import Leiden</button>
+                                            <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                            <button data-command="removeEnclosing" title="Remove enclosing tags">&lt;X&gt;</button>
+                                        </div>
+                                    </jinn-codemirror>
+                                </fx-control>
+                                <fx-trigger>
+                                    <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
+                                    <fx-delete ref="."/>
+                                </fx-trigger>
+                            </template>
+                        </fx-repeat>
+                        <fx-trigger class="add-bib">
+                            <iron-icon icon="add-circle-outline" title="add Bibliographie"/>
+                            <fx-insert ref="msContents/msItem/listBibl[@type='edition']/bibl" origin="instance('mspart')//listBibl[@type='edition']/bibl"/>
+
+                            <!--                            <fx-insert ref="//body/div[@type='edition']" origin="instance('templates')/div[@type='edition']/div"/>-->
+                        </fx-trigger>
+                    </div>
+
+
+                    <fx-trigger class="delete">
+                        <button>Löschen</button>
+                        <fx-confirm message="really delete?">
+                            <fx-delete ref="."/>
+                        </fx-confirm>
+                        <!--                            <fx-delete ref="."></fx-delete>-->
+                    </fx-trigger>
+
+                </template>
+            </fx-repeat>
+
+            <fx-trigger class="add">
+                <button>Hinzufügen</button>
+                <fx-action>
+                    <!-- insert a new msPart  -->
+                    <fx-insert ref="//msPart" origin="instance('mspart')"/>
+                    <!-- update and refresh so the repeat index is updated -->
+                    <fx-update/>
+                    <fx-refresh/>
+                    <!-- setting generated id on new msPart -->
+                    <fx-var name="uuid" value="gen-id()"/>
+                    <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="$uuid"/>
+
+                    <!-- add required textpart to edition  -->
+                    <fx-insert ref="//body/div[@type='edition']/div" origin="instance('templates')//div[@type='edition']/div"/>
+                    <!-- update and refresh so the repeat index is updated -->
+                    <fx-update/>
+                    <fx-refresh/>
+
+                    <!-- copying the uuid to newly inserted textpart -->
+                    <fx-setvalue ref="//body/div[@type='edition']/div[fn:last()]/@corresp" value="$uuid"/>
+
+                </fx-action>
+            </fx-trigger>
+
+
+            <!-- 26) -->
+            <fx-group ref="//msDesc" class="group-6">
+                <!-- 26), 27)-->
+
+                <fx-control ref="history/origin/origDate/@when-custom">
+                    <label>Datierung</label>
+                </fx-control>
+                <fx-control ref="history/origin/origDate/@notBefore-custom">
+                    <label>nach</label>
+                </fx-control>
+                <fx-control ref="history/origin/origDate/@notAfter-custom">
+                    <label>vor</label>
+                </fx-control>
+                <fx-control ref="history/origin/origDate/@when-custom">
+                    <label>custom</label>
+                </fx-control>
+                <span class="note">Datingmethod?</span>
+            </fx-group>
+
+            <fx-group ref="profileDesc" class="group-7">
+                <!-- 28)  -->
+                <fx-control ref="textClass/keywords/term">
+                    <label>Religion</label>
+                    <select class="widget">
+                        <option value=""/>
+                        <option value="pagan">pagan</option>
+                        <option value="jüdisch">jüdisch</option>
+                        <option value="christlich">christlich</option>
+                    </select>
+                </fx-control>
+                <!-- 29) missing -->
+                <!-- 30) -->
+                <fx-control ref="textClass/keywords/term[@ref='#social-economic-legal-history']" value-prop="checked">
+                    <label for="social">Sozial-,Wirschafts-/Rechtsgeschichte</label>
+                    <input id="social" type="checkbox" class="widget"/>
+                </fx-control>
+                <!-- 31) -->
+                <fx-control ref="textClass/keywords/term[@ref='#geography']" value-prop="checked">
+                    <label for="geo">Geographie</label>
+                    <input id="geo" type="checkbox" class="widget"/>
+                </fx-control>
+                <!-- 32) -->
+                <fx-control ref="textClass/keywords/term[@ref='#military']" value-prop="checked">
+                    <label for="mili">Militär</label>
+                    <input id="mili" type="checkbox" class="widget"/>
+                </fx-control>
+            </fx-group>
+
+            <fx-group class="group-8">
+                <!-- 33) -->
+                <fx-control ref="revisionDesc/@status">
+                    <label>Stand der Bearbeitung</label>
+                    <select class="widget">
+                        <option value="draft">intern</option>
+                        <option value="public">öffentlich</option>
+                    </select>
+                </fx-control>
+            </fx-group>
+
+            <fx-group class="group-9">
+                <!-- 34) -->
+                <fx-control ref="//layoutDesc/layout/rs[type='palaeography']/@ref">
+                    <label>Paläographie</label>
+                </fx-control>
+            </fx-group>
+
+            <!-- 35b) -->
+            <!-- 35a) -->
+            <!-- 35c) -->
+            <!-- 35d) -->
+
+
+            <!-- 47) -->
+            <!-- 45) -->
+
+
+            <fx-trigger>
+                <button>Save</button>
+            </fx-trigger>
+        </fx-group>
+        <fx-inspector/>
+    </fx-fore>
+
+</div>
+<script type="module" src="../../resources/scripts/fore-dev.js"/>
+</body>
+</html>

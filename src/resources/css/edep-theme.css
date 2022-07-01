@@ -293,3 +293,35 @@ fx-repeat#bib fx-repeatitem{
 }
 
 
+jinn-codemirror {
+    max-height: 400px;
+    min-height: 320px;
+    font-size: 16px;
+}
+#xml-editor {
+    flex: 2;
+}
+#leiden-editor {
+    flex: 1;
+    padding-right: 10px;
+    border-right: 1px solid #CCAA00;
+    margin-right: 10px;
+}
+.hidden {
+    display: none;
+}
+[slot=toolbar] {
+    display: flex;
+    column-gap: 4px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+[slot=toolbar] * {
+    font-size: .85rem;
+    border: 1px solid transparent;
+    background-color: inherit;
+}
+[slot=toolbar] *:hover {
+    border: 1px solid orange;
+}
+
