@@ -76,7 +76,8 @@
 <div class="wrapper">
     <fx-fore>
         <fx-model>
-            <fx-instance src="templates/fore/HD025278.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
+            <fx-instance src="templates/fore/HD025278.xml"
+                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
             <fx-instance id="province" src="data/province.json" type="json"></fx-instance>
             <!--            <fx-instance id="country" src="data/country.json" type="json"/>-->
             <!--            <fx-instance id="decor" src="api/decor" type="json"/>-->
@@ -84,7 +85,8 @@
             <fx-instance id="objtyp" src="data/objtyp.json" type="json"></fx-instance>
             <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"></fx-instance>
 
-            <fx-instance id="templates" src="templates/fore/templates.xml"  xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
+            <fx-instance id="templates" src="templates/fore/templates.xml"
+                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
             <fx-instance id="tmp">
                 <data>
                     <dummy>xpath?</dummy>
@@ -101,7 +103,7 @@
                 <label>Titel</label>
             </fx-control>
 
-<!--            <span>Sprachselector hier</span>-->
+            <!--            <span>Sprachselector hier</span>-->
             <fx-group class="group-1">
                 <!-- 3) -->
                 <fx-control ref=".//msDesc/msIdentifier/idno">
@@ -230,7 +232,8 @@
                         <!-- there's no 17) -->
 
                         <!-- 18) -->
-                        <fx-control ref="//physDesc/objectDesc/supportDesc/support/material" update-event="change" class="orange">
+                        <fx-control ref="//physDesc/objectDesc/supportDesc/support/material" update-event="change"
+                                    class="orange">
                             <label>Material</label>
                             <!--
                                                         <select ref="instance('material')/category[@name=instance('tmp')/material-group]/material/@name" class="widget">
@@ -243,21 +246,21 @@
                         </fx-control>
 
 
-<!--                        <fx-group>-->
-<!--                            <label>Inschriftträger</label>-->
-                            <!-- 19) -->
-                            <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/width">
-                                <label>Breite</label>
-                            </fx-control>
-                            <!-- 38) -->
-                            <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/height">
-                                <label>Höhe</label>
-                            </fx-control>
-                            <!-- 20) -->
-                            <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/depth">
-                                <label>Tiefe</label>
-                            </fx-control>
-<!--                        </fx-group>-->
+                        <!--                        <fx-group>-->
+                        <!--                            <label>Inschriftträger</label>-->
+                        <!-- 19) -->
+                        <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/width">
+                            <label>Breite</label>
+                        </fx-control>
+                        <!-- 38) -->
+                        <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/height">
+                            <label>Höhe</label>
+                        </fx-control>
+                        <!-- 20) -->
+                        <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/depth">
+                            <label>Tiefe</label>
+                        </fx-control>
+                        <!--                        </fx-group>-->
 
                     </fx-group>
                     <fx-group class="group-4">
@@ -292,25 +295,28 @@
                     <fx-var name="frag" value="'#' || ./@xml:id"/>
 
                     <div class="repeat-wrapper">
-                    <!-- 35b) -->
-                    <fx-repeat id="bib" ref="msContents/msItem/listBibl[@type='edition']/bibl/ptr">
-                        <template>
-                        <fx-control ref="//div[@type='textpart'][./@corresp=$frag]">
-                            <label>Bibliographie</label>
-                        </fx-control>
-                            <fx-trigger>
-                                <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
-                                <fx-delete ref="."></fx-delete>
-                            </fx-trigger>
-                        </template>
-                    </fx-repeat>
-                    <fx-trigger class="add-bib">
+                        <!-- 35b) -->
+                        <fx-repeat class="nested-repeat" id="bib" ref="msContents/msItem/listBibl[@type='edition']/bibl">
+                            <template>
+<!--                                {name(//div[@type='edition']/div[./@corresp=$frag]/*[1])}-->
+                                <fx-control ref="//div[@type='edition']/div[./@corresp=$frag]/*[1]" update-event="update" as="node">
+                                    <label>Bibliographie</label>
+                                    <jinn-codemirror mode="xml" class="widget"/>
+                                </fx-control>
+                                <fx-trigger>
+                                    <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
+                                    <fx-delete ref="."/>
+                                </fx-trigger>
+                        {fn:count(preceding-sibling::*)}
+                            </template>
+                        </fx-repeat>
+                        <fx-trigger class="add-bib">
                             <iron-icon icon="add-circle-outline" title="add Bibliographie"/>
-                        <fx-message>todo add...</fx-message>
-                        <fx-insert ref="//body/div[@type='edition']" origin="instance('templates')/div[@type='edition']/div"></fx-insert>
-                    </fx-trigger>
-                    </div>
+                            <fx-insert ref="msContents/msItem/listBibl[@type='edition']/bibl" origin="instance('mspart')//listBibl[@type='edition']/bibl"/>
 
+<!--                            <fx-insert ref="//body/div[@type='edition']" origin="instance('templates')/div[@type='edition']/div"/>-->
+                        </fx-trigger>
+                    </div>
 
 
                     <fx-trigger class="delete">
@@ -321,40 +327,53 @@
                         <!--                            <fx-delete ref="."></fx-delete>-->
                     </fx-trigger>
 
-                    <!-- 26) -->
-                    <fx-group ref="//msDesc" class="group-6">
-                        <!-- 26), 27)-->
-
-                        <fx-control ref="history/origin/origDate/@when-custom">
-                            <label>Datierung</label>
-                        </fx-control>
-                        <fx-control ref="history/origin/origDate/@notBefore-custom">
-                            <label>nach</label>
-                        </fx-control>
-                        <fx-control ref="history/origin/origDate/@notAfter-custom">
-                            <label>vor</label>
-                        </fx-control>
-                        <fx-control ref="history/origin/origDate/@when-custom">
-                            <label>custom</label>
-                        </fx-control>
-                        <span class="note">Datingmethod?</span>
-                    </fx-group>
-
                 </template>
             </fx-repeat>
 
             <fx-trigger class="add">
                 <button>Hinzufügen</button>
                 <fx-action>
+                    <!-- insert a new msPart  -->
                     <fx-insert ref="//msPart" origin="instance('mspart')"></fx-insert>
+                    <!-- update and refresh so the repeat index is updated -->
                     <fx-update></fx-update>
                     <fx-refresh></fx-refresh>
-                    <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="gen-id()"></fx-setvalue>
-<!--                    <fx-dispatch name="custom" targetid="parts"></fx-dispatch>-->
+                    <!-- setting generated id on new msPart -->
+                    <fx-var name="uuid" value="gen-id()"></fx-var>
+                    <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="$uuid"></fx-setvalue>
+
+                    <!-- add required textpart to edition  -->
+                    <fx-insert ref="//body/div[@type='edition']/div"
+                               origin="instance('templates')//div[@type='edition']/div"></fx-insert>
+                    <!-- update and refresh so the repeat index is updated -->
+                    <fx-update></fx-update>
+                    <fx-refresh></fx-refresh>
+
+                    <!-- copying the uuid to newly inserted textpart -->
+                    <fx-setvalue ref="//body/div[@type='edition']/div[fn:last()]/@corresp"
+                                 value="$uuid"></fx-setvalue>
                 </fx-action>
             </fx-trigger>
-<!--            <fx-setvalue event="custom" ref="//msPart[index('parts')]/@xml:id" target="parts" value="gen-id()"></fx-setvalue>-->
 
+
+            <!-- 26) -->
+            <fx-group ref="//msDesc" class="group-6">
+                <!-- 26), 27)-->
+
+                <fx-control ref="history/origin/origDate/@when-custom">
+                    <label>Datierung</label>
+                </fx-control>
+                <fx-control ref="history/origin/origDate/@notBefore-custom">
+                    <label>nach</label>
+                </fx-control>
+                <fx-control ref="history/origin/origDate/@notAfter-custom">
+                    <label>vor</label>
+                </fx-control>
+                <fx-control ref="history/origin/origDate/@when-custom">
+                    <label>custom</label>
+                </fx-control>
+                <span class="note">Datingmethod?</span>
+            </fx-group>
 
             <fx-group ref="profileDesc" class="group-7">
                 <!-- 28)  -->
@@ -374,12 +393,12 @@
                     <input id="social" type="checkbox" class="widget"/>
                 </fx-control>
                 <!-- 31) -->
-                <fx-control ref="textClass/keywords/term[@ref='#geography']"  value-prop="checked">
+                <fx-control ref="textClass/keywords/term[@ref='#geography']" value-prop="checked">
                     <label for="geo">Geographie</label>
                     <input id="geo" type="checkbox" class="widget"/>
                 </fx-control>
                 <!-- 32) -->
-                <fx-control ref="textClass/keywords/term[@ref='#military']"  value-prop="checked">
+                <fx-control ref="textClass/keywords/term[@ref='#military']" value-prop="checked">
                     <label for="mili">Militär</label>
                     <input id="mili" type="checkbox" class="widget"/>
                 </fx-control>
@@ -411,7 +430,6 @@
 
             <!-- 47) -->
             <!-- 45) -->
-
 
 
             <fx-trigger>

@@ -264,6 +264,9 @@ fx-repeat#bib fx-repeatitem{
     grid-template-columns:auto 40px;
     align-items:center;
 }
+.nested-repeat fx-control{
+    display:block;
+}
 .repeat-wrapper{
     position:relative;
     padding:2rem 1rem;

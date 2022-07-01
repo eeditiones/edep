@@ -19,18 +19,14 @@
                 </bibl>
             </listBibl>
             <!-- 35a) Ältere Editionen -->
+<!--
             <listBibl type="previousEditions">
-                <!-- Einträge wiederholbar -->
                 <bibl>
-                    <!-- Zotero Referenz -->
                     <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6"/>
                 </bibl>
             </listBibl>
-            <!-- 35c) Bilder -->
             <listBibl type="images">
-                <!-- Einträge wiederholbar -->
                 <bibl>
-                    <!-- Zotero Referenz -->
                     <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6"/>
                     <biblScope>
                         <graphic url="photo.png">
@@ -39,6 +35,7 @@
                     </biblScope>
                 </bibl>
             </listBibl>
+-->
             <!-- 35d) Abbildungen, wiederholbar -->
             <graphic url="photo.png"/>
         </msItem>
