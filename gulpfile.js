@@ -4,8 +4,6 @@
 const { src, dest, watch, series, parallel, lastRun } = require('gulp')
 const { createClient } = require('@existdb/gulp-exist')
 const zip = require("gulp-zip")
-// const sass = require('gulp-sass')
-const uglify = require('gulp-uglify-es').default
 const replace = require('@existdb/gulp-replace-tmpl')
 const rename = require('gulp-rename')
 const del = require('delete')
@@ -14,11 +12,11 @@ const pkg = require('./package.json')
 const { version, license } = pkg
 
 // read metadata from .existdb.json
-const existJSON = require('./.existdb.json')
-const replacements = [existJSON.package, { version, license }]
+const {package, servers} = require('./.existdb.json')
+const replacements = [package, { version, license }]
 
-const packageUri = existJSON.package.namespace
-const serverInfo = existJSON.servers.localhost
+const packageUri = package.namespace
+const serverInfo = servers.localhost
 const target = serverInfo.root
 
 const connectionOptions = {
@@ -28,7 +26,7 @@ const connectionOptions = {
     }
 }
 const existClient = createClient(connectionOptions);
-console.log('existClient ', existClient);
+
 /**
  * Use the `delete` module directly, instead of using gulp-rimraf
  */
@@ -44,7 +42,7 @@ exports.clean = clean
  */
 function templates () {
     return src('src/*.tmpl')
-        .pipe(replace(replacements, {debug:true,unprefixed:true}))
+        .pipe(replace(replacements, {unprefixed: true}))
         .pipe(rename(path => { path.extname = "" }))
         .pipe(dest('build/'))
 }
@@ -55,18 +53,66 @@ function watchTemplates () {
 }
 exports["watch:tmpl"] = watchTemplates
 
+// epidoc editor
+function epidocEditor () {
+    return src("node_modules/jinn-codemirror/dist/*")
+        .pipe(dest("build/resources/scripts"))
+}
+
+// datalist-ajax
+function datalistAjax () {
+    return src("node_modules/datalist-ajax/dist/datalist-ajax.min.js")
+        .pipe(dest("build/resources/scripts/datalist-ajax/datalist-ajax.min.js"))
+}
+
+// leaflet styles and images
+function lfStyles () {
+    return src("node_modules/leaflet/dist/leaflet.css")
+        .pipe(dest("build/resources/css/leaflet/leaflet.css"))
+}
+function lfImages () {
+    return src("node_modules/leaflet/dist/images")
+        .pipe(dest("build/resources/images/leaflet"))
+}
+
+// OSD + images
+function osdLib () {
+    return src("node_modules/openseadragon/build/openseadragon/openseadragon.min.js")
+        .pipe(dest("build/resources/lib"))
+}
+function osdImages () {
+    return src("node_modules/openseadragon/build/openseadragon/images")
+        .pipe(dest("build/resources/images/openseadragon"))
+}
+
+// prismjs themes
+function prismThemes () {
+    return src("node_modules/prismjs/themes")
+        .pipe(dest("build/resources/css/prismjs"))
+}
+
+// pb-components
+function pbComponents () {
+    return src("node_modules/@teipublisher/pb-components/i18n/common")
+        .pipe(dest("build/resources/i18n/common"))
+}
+const copyModules = parallel(
+    epidocEditor, datalistAjax,
+    lfStyles, lfImages, pbComponents, 
+    prismThemes, osdImages, osdLib
+)
+exports["copy:modules"] = copyModules
+
 /**
- * compile SCSS styles and put them into 'build/app/css'
+ * copy styles
  */
 function styles () {
     return src('src/resources/css/*.css')
-        // .pipe(sass().on('error', sass.logError))
         .pipe(dest('build/resources/css'));
 }
 exports.styles = styles
 
 function watchStyles () {
-    // watch('src/scss/**/*.scss', series(styles))
     watch('src/resources/css/*.css', series(styles))
 }
 exports["watch:styles"] = watchStyles
@@ -75,19 +121,18 @@ exports["watch:styles"] = watchStyles
  * minify EcmaSript files and put them into 'build/app/js'
  */
 function minifyEs () {
-    return src('src/components/**/*.js')
-        .pipe(uglify())
-        .pipe(dest('build/components'))
+    return src('src/resources/scripts/**/*.js')
+        // .pipe(uglify())
+        .pipe(dest('build/resources/scripts'))
 }
 exports.minify = minifyEs
 
 function watchEs () {
-    watch('src/components/**/*.js', series(minifyEs))
+    watch('src/resources/scripts/**/*.js', series(minifyEs))
 }
 exports["watch:es"] = watchEs
 
-const static = 'src/**/*.{xml,html,xq,xquery,xql,xqm,xsl,xconf,json,svg,js,map,png,ico}'
-// const static = 'src/**/*.*'
+const static = 'src/**/*.{xml,html,xq,xquery,xql,xqm,xsl,xconf,json,svg,js,map,png,ico,woff,eot,ttf,odd}'
 
 /**
  * copy html templates, XSL stylesheet, XMLs and XQueries to 'build'
@@ -112,7 +157,7 @@ function deploy () {
         base: 'build',
         since: lastRun(deploy)
     })
-        .pipe(existClient.dest({target}))
+        .pipe(existClient.dest({ target }))
 }
 
 function watchBuild () {
@@ -120,12 +165,12 @@ function watchBuild () {
 }
 
 // construct the current xar name from available data
-const packageName = () => `${existJSON.package.target}-${pkg.version}.xar`
-console.log('packagename ', packageName());
+const packageName = () => `${package.target}-${pkg.version}.xar`
+
 /**
  * create XAR package in repo root
  */
-function xar () {
+function createXar () {
     return src('build/**/*', {base: 'build'})
         .pipe(zip(packageName()))
         .pipe(dest('./dist'))
@@ -145,7 +190,8 @@ const build = series(
     styles,
     minifyEs,
     templates,
-    copyStatic
+    copyStatic,
+    copyModules
 )
 const watchAll = parallel(
     watchStyles,
@@ -159,8 +205,8 @@ exports.build = build
 exports.watch = watchAll
 
 exports.deploy = series(build, deploy)
-exports.xar = series(build, xar)
-exports.install = series(build, xar, installXar)
+exports.xar = series(build, createXar)
+exports.install = series(build, createXar, installXar)
 
 // main task for day to day development
 exports.default = series(build, deploy, watchAll)
