@@ -1,0 +1,58 @@
+<fx-fore>
+    <fx-model>
+        <fx-instance src="templates/fore/epidoc-snippet.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
+        <fx-instance id="vars">
+            <data>
+                <leiden>(aa(b))</leiden>
+                <display-leiden>hidden</display-leiden>
+                <convert></convert>
+            </data>
+        </fx-instance>
+    </fx-model>
+
+    <jinn-codemirror id="leiden" class="leiden widget {instance('vars')/display-leiden}">
+        <div slot="toolbar">
+            <select name="modes">
+                <option value="edcs" selected="selected">EDCS/EDH</option>
+                <option value="default">Petrae</option>
+                <option value="leiden_plus">Leiden+</option>
+            </select>
+            <button data-command="expan" class="leiden_plus">(a(bcd))</button>
+            <button data-command="erasure" class="leiden_plus">〚abc〛</button>
+            <button data-command="unclear" class="leiden_plus">ạ</button>
+            <button data-command="div" class="leiden_plus">&lt;=...</button>
+            <button data-command="fragment" class="leiden_plus">&lt;D=.1.fragment...</button>
+            <button data-command="part" class="leiden_plus">&lt;D=.A.part...</button>
+            <button data-command="recto" class="leiden_plus">&lt;D=.r...</button>
+            <button data-command="verso" class="leiden_plus">&lt;D=.v...</button>
+            <button data-command="erasure" class="edcs">〚abc〛</button>
+            <button data-command="gap" class="edcs">[...]</button>
+            <button data-command="convert" class="edcs">Leiden+</button>
+        </div>
+    </jinn-codemirror>
+    <!-- ### when leiden editor updates the result of conversion -> event('content') is
+        ### parsed and replaces the default instance which contains the epidoc elements.
+    -->
+    <!--                <fx-message target="leiden" event="update" targetId="xml-editor">leiden updated</fx-message>-->
+    <fx-replace target="leiden" event="update" ref="instance()" with="parse(event('content'))"></fx-replace>
+
+
+    <!-- update instance with serialized value from xml editor -->
+
+    <fx-control ref="instance()" value-prop="content" as="node">
+        <jinn-codemirror id="xmleditor" mode="xml" schema="epidoc.json" namespace="http://www.tei-c.org/ns/1.0" class="widget">
+            <div slot="toolbar">
+                <fx-trigger>
+                    <button id="import" title="Import from Leiden markup">Import Leiden</button>
+                    <fx-setvalue ref="instance('vars')/display-leiden"></fx-setvalue>
+                </fx-trigger>
+                <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                <button data-command="removeEnclosing" title="Remove enclosing tags">&lt;X&gt;</button>
+            </div>
+        </jinn-codemirror>
+        <fx-replace ref="instance()" with="parse(event('content'))" event="update"></fx-replace>
+    </fx-control>
+
+<!--    <fx-inspector open></fx-inspector>-->
+</fx-fore>

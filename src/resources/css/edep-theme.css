@@ -107,10 +107,8 @@ h5 {
     margin: 0;
 }
 
-
-fx-trigger.add, fx-trigger.delete{
-    width:100%;
-    display:inline-block;
+fx-trigger{
+    display:block;
 }
 fx-trigger button{
     color:white;
@@ -125,7 +123,6 @@ fx-trigger.delete button{
     background:red;
 }
 fx-trigger.add-bib{
-    width:100%;
     text-align:right;
     display:block;
     /*margin-bottom:1rem;*/
@@ -133,9 +130,14 @@ fx-trigger.add-bib{
 fx-trigger.add-bib a{
 
 }
+fx-trigger iron-icon{
+    width:1.5rem;
+    height:1.5rem;
+    position:absolute;
+    right:0;
+
+}
 fx-trigger.add-bib iron-icon{
-    width:36px;
-    height:36px;
     margin-right:18px;
     color:green;
 
@@ -257,12 +259,11 @@ fx-repeatitem{
 }
 
 fx-inspector[open]{
-    width:50%;
+    width:30%;
 }
 fx-repeat#bib fx-repeatitem{
-    display:grid;
-    grid-template-columns:auto 40px;
-    align-items:center;
+    postion:relative;
+    margin-bottom:2rem;
 }
 .nested-repeat fx-control{
     display:block;
@@ -290,6 +291,8 @@ fx-repeat#bib fx-repeatitem{
 }
 [icon='remove-circle-outline']{
     color:red;
+    position:absolute;
+    right:0.5rem;
 }
 
 

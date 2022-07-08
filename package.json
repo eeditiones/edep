@@ -1,11 +1,11 @@
 {
   "name": "edep",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Editionstools für eine digitale Epigraphik",
   "dependencies": {
     "@teipublisher/pb-components": "1.38.1",
-    "jinn-codemirror": "github:JinnElements/jinn-codemirror",
-    "datalist-ajax": "1.0.2"
+    "datalist-ajax": "1.0.2",
+    "jinn-codemirror": "github:JinnElements/jinn-codemirror"
   },
   "scripts": {
     "test": "web-test-runner --coverage",
