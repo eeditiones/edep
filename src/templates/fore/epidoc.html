@@ -70,28 +70,52 @@
             justify-self: end;
         }
 
+
     </style>
 </head>
 <body>
 <div class="wrapper">
     <fx-fore>
         <fx-model>
-            <fx-instance src="templates/fore/HD025278.xml"
-                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
-            <fx-instance id="province" src="data/province.json" type="json"></fx-instance>
+            <fx-instance id="default" src="templates/fore/HD025278.xml"
+                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+            <fx-instance id="province" src="data/province.json" type="json"/>
             <!--            <fx-instance id="country" src="data/country.json" type="json"/>-->
             <!--            <fx-instance id="decor" src="api/decor" type="json"/>-->
-            <fx-instance id="typeins" src="data/typeins.json" type="json"></fx-instance>
-            <fx-instance id="objtyp" src="data/objtyp.json" type="json"></fx-instance>
-            <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"></fx-instance>
+            <fx-instance id="typeins" src="data/typeins.json" type="json"/>
+            <fx-instance id="objtyp" src="data/objtyp.json" type="json"/>
+            <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"
+                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
 
             <fx-instance id="templates" src="templates/fore/templates.xml"
-                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
+                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+
+            <!--
+                        <fx-instance id="leiden">
+                            <data>
+                                <epidoc/>
+                            </data>
+                        </fx-instance>
+            -->
+
+
+            <fx-instance id="vars">
+                <data>
+                    <display-leiden>hidden</display-leiden>
+                    <can-delete>false</can-delete>
+                    <parent></parent>
+                </data>
+            </fx-instance>
+            <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
+
             <fx-instance id="tmp">
                 <data>
                     <dummy>xpath?</dummy>
                 </data>
             </fx-instance>
+
+            <fx-instance xmlns="http://www.tei-c.org/ns/1.0" id="epidoc-editor" src="templates/fore/epidoc-snippet.xml"
+                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
 
             <fx-function signature="gen-id() as xs:string" type="text/javascript">
                 return createUUID();
@@ -116,11 +140,10 @@
                 </fx-control>
             </fx-group>
 
-
             <fx-repeat id="parts" ref=".//msPart">
                 <template>
                     <fx-group class="group-2">
-                        {gen-id()}
+                        <!--                        { if(count(./preceding-sibling::msPart) = 0) then 'hidden' else ''}-->
                         <!-- geoId from geodata -->
                         <fx-control ref="history/origin/origPlace/@corresp">
                             <label>GeoId</label>
@@ -158,7 +181,7 @@
                         <!-- 10b) -->
                         <fx-control ref="history/provenance/note[@type='context']">
                             <label>Fundkontext</label>
-                            <textarea rows="4" class="widget"></textarea>
+                            <textarea rows="4" class="widget"/>
                         </fx-control>
 
                         <!-- 11) -->
@@ -293,65 +316,109 @@
 
 
                     <fx-var name="frag" value="'#' || ./@xml:id"/>
-
                     <div class="repeat-wrapper">
                         <!-- 35b) -->
-                        <fx-repeat class="nested-repeat" id="bib" ref="msContents/msItem/listBibl[@type='edition']/bibl">
+
+
+                        <fx-trigger class="add-bib">
+                            <iron-icon icon="add-circle-outline" title="add Bibliographie"/>
+
+                            <!-- ##### when a new entry is created.. ##### -->
+                            <!-- ##### 1. store away the value of the xml:id of this part as fx-var is failing here for some reason ##### -->
+                            <fx-setvalue ref="instance('vars')/parent"
+                                         value="instance()//msPart[index('parts')]/@xml:id"></fx-setvalue>
+
+                            <!-- ##### 2. insert a new bibl element ##### -->
+                            <fx-insert ref="msContents/msItem/listBibl[@type='edition']/bibl"
+                                       origin="instance('mspart')//listBibl[@type='edition']/bibl"/>
+                            <!-- ##### 3. insert a new textpart div element in the body ##### -->
+                            <!--
+                            At this point of time it seems to be much more sensible to do post-processing of the xml:
+                            the content of the editor will be directly attached to the 'ptr' node not using idref mechanism.
+
+                            This can be easily done when loadling/saving content from/to the server in XQuery.
+
+                            <fx-insert ref="//body/div[@type='edition']/div"
+                                       origin="instance('templates')/div[@type='edition']/div"/>
+                           -->
+                            <!-- ##### 4. set the stored id to the newly created textpart @corresp ##### -->
+                            <!--
+                            <fx-setvalue ref="//body/div[@type='edition']/div[fn:last()]/@corresp"
+                                         value="string(instance('vars')/parent)"></fx-setvalue>
+                            -->
+
+                        </fx-trigger>
+
+                        <label>Bibliographie</label>
+                        <fx-repeat class="nested-repeat" id="bib"
+                                   ref="msContents/msItem/listBibl[@type='edition']/bibl">
                             <template>
-<!--                                {name(//div[@type='edition']/div[./@corresp=$frag]/*[1])}-->
-                                <fx-control ref="//div[@type='edition']/div[./@corresp=$frag]/*[1]" update-event="update" as="node">
-                                    <label>Bibliographie</label>
-                                    <jinn-codemirror mode="xml" class="widget"/>
+                                <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
+
+                                <!--
+                                Would be nice to link the control directly to body section but this cause the refresh to drop out.
+                                Controls not yet recognize if they depend on some other control.
+
+                                <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
+                                <fx-control ref="ptr" as="node" update-event="update">
+                                    <jinn-epidoc-editor schema="resources/scripts/epidoc.json" class="widget"
+                                                        remote="remote"></jinn-epidoc-editor>
                                 </fx-control>
+
                                 <fx-trigger>
                                     <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
                                     <fx-delete ref="."/>
                                 </fx-trigger>
-                        {fn:count(preceding-sibling::*)}
+
                             </template>
                         </fx-repeat>
-                        <fx-trigger class="add-bib">
-                            <iron-icon icon="add-circle-outline" title="add Bibliographie"/>
-                            <fx-insert ref="msContents/msItem/listBibl[@type='edition']/bibl" origin="instance('mspart')//listBibl[@type='edition']/bibl"/>
-
-<!--                            <fx-insert ref="//body/div[@type='edition']" origin="instance('templates')/div[@type='edition']/div"/>-->
-                        </fx-trigger>
                     </div>
 
 
-                    <fx-trigger class="delete">
+                    <fx-trigger class="delete {if(count(./preceding-sibling::msPart) = 0) then 'hidden' else ''}">
                         <button>Löschen</button>
-                        <fx-confirm message="really delete?">
-                            <fx-delete ref="."></fx-delete>
-                        </fx-confirm>
+                        <!--                        <fx-confirm message="really delete?">-->
+                        <fx-delete ref="."></fx-delete>
+                        <!--                        </fx-confirm>-->
                         <!--                            <fx-delete ref="."></fx-delete>-->
                     </fx-trigger>
 
                 </template>
             </fx-repeat>
+            <!-- #####
+            option 3: without fx-control just catching the event and using replace action to update node
+
+            moved this out of repeat to ensure it's not id clashing
+            ##### -->
+            <!--            <fx-replace ref="instance('default')//body/div[@type='edition']/div[fn:last()]" -->
+            <!--
+                        <fx-replace ref="instance('templates')/epidoc"
+                                    with="parse(event('content'))"
+                                    event="update"
+                                    target="epidoc-editor3"></fx-replace>
+                        <fx-refresh event="update" force="force" target="epidoc-editor3"></fx-refresh>
+                        <jinn-epidoc-editor id="epidoc-editor3" class="widget" schema="resources/scripts/epidoc.json"/>
+            -->
+
 
             <fx-trigger class="add">
                 <button>Hinzufügen</button>
                 <fx-action>
                     <!-- insert a new msPart  -->
-                    <fx-insert ref="//msPart" origin="instance('mspart')"></fx-insert>
+                    <fx-insert ref="//msPart" origin="instance('mspart')"/>
                     <!-- update and refresh so the repeat index is updated -->
-                    <fx-update></fx-update>
-                    <fx-refresh></fx-refresh>
+                    <fx-update/>
+                    <fx-refresh/>
                     <!-- setting generated id on new msPart -->
-                    <fx-var name="uuid" value="gen-id()"></fx-var>
-                    <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="$uuid"></fx-setvalue>
+                    <fx-var name="uuid" value="gen-id()"/>
+                    <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="$uuid"/>
 
-                    <!-- add required textpart to edition  -->
-                    <fx-insert ref="//body/div[@type='edition']/div"
-                               origin="instance('templates')//div[@type='edition']/div"></fx-insert>
-                    <!-- update and refresh so the repeat index is updated -->
-                    <fx-update></fx-update>
-                    <fx-refresh></fx-refresh>
-
-                    <!-- copying the uuid to newly inserted textpart -->
-                    <fx-setvalue ref="//body/div[@type='edition']/div[fn:last()]/@corresp"
-                                 value="$uuid"></fx-setvalue>
+                    <!-- add required textpart to edition
+                    <fx-insert ref="//body/div[@type='edition']/div" origin="instance('templates')//div[@type='edition']/div"/>
+                    <fx-update/>
+                    <fx-refresh/>
+                    <fx-setvalue ref="//body/div[@type='edition']/div[fn:last()]/@corresp" value="$uuid"/>
+                    -->
                 </fx-action>
             </fx-trigger>
 
@@ -380,7 +447,7 @@
                 <fx-control ref="textClass/keywords/term">
                     <label>Religion</label>
                     <select class="widget">
-                        <option value=""></option>
+                        <option value=""/>
                         <option value="pagan">pagan</option>
                         <option value="jüdisch">jüdisch</option>
                         <option value="christlich">christlich</option>
@@ -436,10 +503,9 @@
                 <button>Save</button>
             </fx-trigger>
         </fx-group>
-        <fx-inspector></fx-inspector>
+        <fx-inspector/>
     </fx-fore>
 
 </div>
-<script type="module" src="../../resources/scripts/fore-dev.js"/>
 </body>
 </html>

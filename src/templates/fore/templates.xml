@@ -1,7 +1,7 @@
 <body xmlns="http://www.tei-c.org/ns/1.0">
     <div type="edition">
         <div type="textpart" subtype="fragment" n="a" corresp="">
-            <ab/>
+            <ab>abc</ab>
         </div>
     </div>
     <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart -->

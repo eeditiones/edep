@@ -44,7 +44,17 @@ else if ($exist:path eq '/api.html') then
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/templates/api.html"/>
     </dispatch>
-    
+else if (contains($exist:path, 'localhost') and matches($exist:resource, "\.(js)$", "s")) then
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/{$exist:resource}">
+            <set-header name="Access-Control-Allow-Origin" value="*"/>
+            <set-header name="Access-Control-Allow-Credentials" value="true"/>
+            <set-header name="Access-Control-Allow-Methods" value="GET, POST, DELETE, PUT, PATCH, OPTIONS"/>
+            <set-header name="Access-Control-Allow-Headers" value="Accept, Content-Type, Authorization, X-Start"/>
+            <set-header name="Cache-Control" value="no-cache"/>
+        </forward>
+    </dispatch>
+
 (: static resources from the resources, transform, templates, odd or modules subirectories are directly returned :)
 else if (matches($exist:path, "^.*/(resources|transform|templates)/.*$")
     or matches($exist:path, "^.*/odd/.*\.css$")
@@ -74,7 +84,7 @@ else if (matches($exist:resource, "\.(json)$", "s")) then
     </dispatch>
 
 (: other images are resolved against the data collection and also returned directly :)
-else if (matches($exist:resource, "\.(png|jpg|jpeg|gif|tif|tiff|txt|mei)$", "s")) then
+else if (matches($exist:resource, "\.(png|jpg|jpeg|gif|tif|tiff|txt|mei|map)$", "s")) then
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/data/{$exist:path}"/>
     </dispatch>
@@ -82,11 +92,11 @@ else if (matches($exist:resource, "\.(png|jpg|jpeg|gif|tif|tiff|txt|mei)$", "s")
 (: all other requests are passed on the Open API router :)
 else
     let $main :=
-        if (matches($exist:path, "^/+api/+(?:odd|lint)")) then 
-            "api-odd.xql" 
+        if (matches($exist:path, "^/+api/+(?:odd|lint)")) then
+            "api-odd.xql"
         else if (matches($exist:path, "/+tex$") or matches($exist:path, "/+api/+apps/+generate$")) then
             "api-dba.xql"
-        else 
+        else
             "api.xql"
     return
         <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
