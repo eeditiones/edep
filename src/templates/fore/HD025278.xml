@@ -57,6 +57,19 @@
                     <!-- msPart ist als Ganzes wiederholbar -->
                     <!-- @xml:id erforderlich für Referenzierung unten -->
                     <msPart xml:id="F5771067f-65fb-47af-9a84-8e9d7dd393a8">
+                        <!--  ### runtime instance inlining these divs which finally end up in the body -->
+                        <div type="edition">
+                            <!-- 41) Textedition: @corresp referenziert msPart - eingefügt aus jinn-codemirror. Required -->
+                            <div type="textpart" subtype="fragment" n="a" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8">
+                            </div>
+                        </div>
+                        <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
+                        <div type="apparatus" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8">
+                        </div>
+                        <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
+                        <div type="translation" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8" resp="#Feraudi">
+                        </div>
+                        <!--  ### end of runtime instance inlining -->
                         <msIdentifier>
                             <!-- 12a) Aufbewahrung -->
                             <repository ref="http://sicily.classics.ox.ac.uk/museum/064">Bonn, Rhein. Landesmus.</repository>
@@ -85,18 +98,11 @@
 
                                 <!-- 35a) Ältere Editionen -->
                                 <listBibl type="previousEditions">
-                                    <!-- Einträge wiederholbar -->
-                                    <bibl>
-                                        <!-- Zotero Referenz -->
-                                        <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6"/>
-                                    </bibl>
+                                    <!-- Einträge wiederholbar - optional -->
                                 </listBibl>
                                 <!-- 35c) Bilder: Verweis auf Literatur, in der Abbildung vorhanden -->
                                 <listBibl type="images">
-                                    <bibl>
-                                        <!-- Zotero Referenz -->
-                                        <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6"/>
-                                    </bibl>
+                                    <!-- Einträge wiederholbar - optional -->
                                 </listBibl>
                             </msItem>
                         </msContents>

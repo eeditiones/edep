@@ -78,6 +78,10 @@ aside .upload {
     width: 100%;
 }
 
+.commentary{
+    display: block;
+}
+
 .parent-link iron-icon {
     padding-right: 4px;
 }
@@ -122,23 +126,22 @@ fx-trigger.delete{
 fx-trigger.delete button{
     background:red;
 }
-fx-trigger.add-bib{
+fx-trigger.add{
     text-align:right;
-    display:block;
+    display:inline-block;
     /*margin-bottom:1rem;*/
 }
-fx-trigger.add-bib a{
+fx-trigger.add a{
 
 }
 fx-trigger iron-icon{
     width:1.5rem;
     height:1.5rem;
-    position:absolute;
-    right:0;
+    /*position:absolute;*/
+    /*right:0;*/
 
 }
-fx-trigger.add-bib iron-icon{
-    margin-right:18px;
+fx-trigger.add iron-icon{
     color:green;
 
 }
@@ -195,6 +198,15 @@ button{
     grid-gap:1rem;
     margin-bottom: 2rem;
     border:thin solid var(--paper-grey-300);
+}
+
+fieldset{
+    border-radius: 0.3rem;
+
+}
+fieldset fieldset{
+    margin-top:1rem;
+
 }
 fx-control,fx-output{
     display: grid;
@@ -253,25 +265,67 @@ fx-repeat{
 
 fx-repeatitem{
     display:block;
-    background: var(--paper-blue-grey-50);
+    /*background: var(--paper-blue-grey-50);*/
     border-radius: 0.3rem;
-    padding: 0.5rem;
+    /*padding: 0.5rem;*/
 }
 
 fx-inspector[open]{
     width:30%;
 }
-fx-repeat#bib fx-repeatitem{
+
+.nested-repeat fx-repeatitem{
+    display: grid;
+    grid-template-columns: auto 3rem;
+
+}
+fx-var{
+    display: none;
+}
+.nested-repeat{
+    /*margin-top:1rem;*/
+}
+.nested-repeat label{
+    width: 8rem;
+    display: inline-block;
+}
+
+.nested-repeat fx-repeatitem{
     postion:relative;
-    margin-bottom:2rem;
+    margin-bottom:0.5rem;
 }
 .nested-repeat fx-control{
     display:block;
 }
+.nested-repeat fx-trigger{
+    display:block;
+    margin:0.5rem;
+}
+
+#parts > fx-repeatitem{
+    padding: 1rem 0;
+}
+#parts > fx-repeatitem > label{
+    font-size: 1.2rem;
+    font-weight: 500;
+
+}
+/*
 .repeat-wrapper{
     position:relative;
     padding:2rem 1rem;
     border:thin solid;
+}
+*/
+
+.repeat-caption{
+    width: 100%;
+    margin-top:2rem;
+    padding: 1rem 0;
+
+}
+.repeat-caption label{
+    display: inline-block;
 }
 
 .title{

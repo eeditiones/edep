@@ -19,7 +19,6 @@
                 </bibl>
             </listBibl>
             <!-- 35a) Ältere Editionen -->
-<!--
             <listBibl type="previousEditions">
                 <bibl>
                     <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6"/>
@@ -35,7 +34,6 @@
                     </biblScope>
                 </bibl>
             </listBibl>
--->
             <!-- 35d) Abbildungen, wiederholbar -->
             <graphic url="photo.png"/>
         </msItem>
