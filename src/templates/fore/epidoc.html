@@ -432,115 +432,22 @@
                             </fieldset>
                         </fieldset>
 
-
-
-                        <fieldset>
-                            <legend>Transkriptionen</legend>
-
-                            <fieldset>
-                                <legend>
-                                    <label>Edition ={div[@type='edition']/div[fn:last()]/@corresp}</label>
-                                    <fx-trigger class="add">
-                                        <iron-icon icon="add-circle-outline" title="add Bibliographie"/>
-                                        <fx-action>
-                                            <fx-insert context="div[@type='edition']"
-                                                       ref="div"
-                                                       origin="instance('templates')/div[@type='edition']/div"/>
-                                        </fx-action>
-                                    </fx-trigger>
-
-                                </legend>
-                                <fx-repeat class="nested-repeat" id="editions"
-                                           ref="div[@type='edition']/div">
-                                    <template>
-
-                                        <fx-control ref="." as="node" update-event="update">
-                                            <label>Edition</label>
-                                            <jinn-epidoc-editor schema="resources/scripts/epidoc.json"
-                                                                class="widget"></jinn-epidoc-editor>
-                                        </fx-control>
-
-                                        <fx-trigger>
-                                            <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
-                                            <fx-delete ref="."/>
-                                        </fx-trigger>
-
-                                    </template>
-                                </fx-repeat>
-                            </fieldset>
+                            <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="update">
+                                <label>Transkription</label>
+                                <jinn-epidoc-editor schema="resources/scripts/epidoc.json"
+                                                    class="widget"></jinn-epidoc-editor>
+                            </fx-control>
 
                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
-                            <fieldset>
-                                <legend>
-                                    <label>Apparatus</label>
-                                    <fx-trigger class="add">
-                                        <iron-icon icon="add-circle-outline" title="add Apparatus"/>
-                                        <fx-insert ref="div[@type='apparatus']"
-                                                   origin="instance('templates')/div[@type='apparatus']"/>
-<!--
-                                        <fx-insert context="div[@type='apparatus']"
-                                                   ref="div"
-                                                   origin="instance('templates')/div[@type='apparatus']/div"/>
--->
-                                        <!--todo - update id on textpart -->
-
-                                    </fx-trigger>
-
-                                </legend>
-                                <fx-repeat class="nested-repeat" id="r-apparatus"
-                                           ref="div[@type='apparatus']">
-                                    <template>
-
-                                        <fx-control ref="." as="node" update-event="update">
-                                            <label>Apparatus</label>
-                                            <jinn-codemirror mode="xml"
-                                                                class="widget"></jinn-codemirror>
-                                        </fx-control>
-
-                                        <fx-trigger>
-                                            <iron-icon icon="remove-circle-outline" title="delete Apparatus"/>
-                                            <fx-delete ref="."/>
-                                        </fx-trigger>
-
-                                    </template>
-                                </fx-repeat>
-                            </fieldset>
+                            <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="update">
+                                <label>Apparatus</label>
+                                <jinn-codemirror mode="xml" class="widget"></jinn-codemirror>
+                            </fx-control>
 
                             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-                            <fieldset>
-                                <legend>
-                                    <label>Übersetzung</label>
-                                    <fx-trigger class="add">
-                                        <iron-icon icon="add-circle-outline" title="add Apparatus"/>
-                                        <fx-insert ref="div[@type='translation']"
-                                                   origin="instance('templates')/div[@type='translation']"/>
-                                        <!--todo - update id on textpart -->
-                                    </fx-trigger>
-
-                                </legend>
-                                <fx-repeat class="nested-repeat" id="r-translation"
-                                           ref="div[@type='translation']">
-                                    <template>
-
-                                        <fx-control ref="." as="node" update-event="update">
-                                            <label>Translation</label>
-                                            <jinn-codemirror mode="xml"
-                                                                class="widget"></jinn-codemirror>
-                                        </fx-control>
-
-                                        <fx-trigger>
-                                            <iron-icon icon="remove-circle-outline" title="delete Translation"/>
-                                            <fx-delete ref="."/>
-                                        </fx-trigger>
-
-                                    </template>
-                                </fx-repeat>
-                            </fieldset>
-
-                            <fx-control class="commentary"
-                                        ref="instance()//div[@type='commentary']" as="node" update-event="update">
-                                <label>Kommentar</label>
-                                <jinn-codemirror class="widget" mode="xml"></jinn-codemirror>
+                            <fx-control class="translation" ref="div[@type='translation']" as="node" update-event="update">
+                                <label>Übersetzung</label>
+                                <jinn-codemirror mode="xml" class="widget"></jinn-codemirror>
                             </fx-control>
 <!--
                             <div class="repeat-caption">
@@ -565,8 +472,6 @@
                             <!--                        </fx-confirm>-->
                             <!--                            <fx-delete ref="."></fx-delete>-->
                         </fx-trigger>
-
-                    </fieldset>
 
 
 
@@ -610,6 +515,11 @@
                 </fx-action>
             </fx-trigger>
 
+            <fx-control class="commentary"
+                        ref="//body/div[@type='commentary']" as="node" update-event="update">
+                <label>Kommentar</label>
+                <jinn-codemirror class="widget" mode="xml"></jinn-codemirror>
+            </fx-control>
 
             <!-- 26) -->
             <fx-group ref="//msDesc" class="group-6">

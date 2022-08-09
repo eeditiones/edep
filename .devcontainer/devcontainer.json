@@ -8,7 +8,7 @@
         }
     },
     "runArgs": ["--name=EDEpdev"],
-    "forwardPorts": [ 8080, 8001 ],
+    "forwardPorts": [ 8080, 8443 ],
     "extensions": [ "exist-db.existdb-vscode", "42crunch.vscode-openapi", "redhat.vscode-xml" ],
     "overrideCommand": false,
     "postCreateCommand": [
