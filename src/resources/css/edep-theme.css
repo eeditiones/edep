@@ -83,8 +83,9 @@ aside .upload {
     width: 100%;
 }
 
-.commentary{
+.transcription, .apparatus, .translation, .commentary{
     display: block;
+    margin-top: 1em;
 }
 
 .parent-link iron-icon {
@@ -276,7 +277,7 @@ fx-repeatitem{
 }
 
 fx-inspector[open]{
-    width:30%;
+    width: 50%;
 }
 
 .nested-repeat fx-repeatitem{
