@@ -31,7 +31,12 @@ main {
         flex-direction: row;
     }
 }
-
+fx-case{
+    display:none;
+}
+fx-case.selected-case{
+    display: block;
+}
 .panels {
     margin-bottom: 40px;
 }
