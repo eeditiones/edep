@@ -163,7 +163,7 @@
             "post" : {
                 "summary": "update/add places",
                 "x-constraints": {
-					"group": "tei"
+					"user": "edep"
                 },
                 "operationId": "api:places-add",
                 "parameters": [
@@ -202,13 +202,38 @@
     		"get" : {
                 "summary": "show places",
                 "operationId": "api:places-list",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": false,
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "path",
+                        "required": false,
+                        "schema":{
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "path",
+                        "required": false,
+                        "schema":{
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "places-list",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    
                                 }
                             }
                         }
@@ -220,7 +245,7 @@
                 "x-constraints": {
 					"group": "tei"
                 },
-                "operationId": "api:places-add",               
+                "operationId": "api:places-add",
                 "requestBody": {
                 	"required": true,
 					"content": {
@@ -236,7 +261,6 @@
                         "content": {
                             "application/xml": {
                                 "schema": {
-                                    
                                 }
                             }
                         }

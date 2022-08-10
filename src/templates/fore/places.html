@@ -78,11 +78,23 @@
 <div class="wrapper">
     <h1>Places</h1>
     <fx-fore id="places">
+        <fx-action event="ready" if="exists(instance('query')/id)">
+            <fx-send submission="s-load"></fx-send>
+        </fx-action>
+
         <fx-model>
             <fx-instance src="templates/fore/place-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+            <fx-instance src="#querystring" id="query">
+                <data></data>
+            </fx-instance>
 
-            <fx-submission id="s-save" method="post" url="api/place" replace="none">
+            <fx-submission id="s-save" method="post" url="api/places/id={instance('query')/id" replace="none">
                 <fx-message event="submit-done">Ort wurde gespeichert</fx-message>
+            </fx-submission>
+            <fx-submission id="s-load" method="get" url="api/places/{instance('query')/id}" replace="instance">
+                <fx-toggle case="record" event="submit-done"></fx-toggle>
+            </fx-submission>
+            <fx-submission id="s-reset" url="templates/fore/place-tmpl.xml"  replace="instance">
             </fx-submission>
         </fx-model>
 
@@ -93,14 +105,16 @@
             <fx-case id="list">
                 <fx-trigger class="toggle-view">
                     <button>+</button>
-                    <fx-toggle case="add"></fx-toggle>
+                    <fx-toggle case="record"></fx-toggle>
                 </fx-trigger>
 
-                <div id="places-list"></div>
+                <div id="places-list">
+                    <pb-split-list url="api/places" selected="A"></pb-split-list>
+                </div>
 
             </fx-case>
 
-            <fx-case id="add">
+            <fx-case id="record">
                 <fx-group>
                     <fx-control ref="placeName[@type='findspot']">
                         <label>Fundstelle</label>
@@ -143,6 +157,7 @@
                     </fx-trigger>
                     <fx-trigger class="toggle-view close">
                         <a href="#">Abbrechen</a>
+                        <fx-send submission="s-reset"></fx-send>
                         <fx-toggle case="list"></fx-toggle>
                     </fx-trigger>
                 </div>
@@ -151,7 +166,6 @@
         </fx-switch>
         <fx-inspector/>
     </fx-fore>
-
 </div>
 <script type="module" src="../resources/scripts/fore-dev.js"/>
 </body>
