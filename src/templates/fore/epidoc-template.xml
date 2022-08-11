@@ -12,7 +12,7 @@
                 <author></author>
             </titleStmt>
             <publicationStmt>
-                <authority></authority>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
                 <availability>
                     <p>Heidelberger Akademie der Wissenschaften</p>
                     <licence target="http://creativecommons.org/licenses/by-sa/4.0/">This file is licensed under the
@@ -30,11 +30,9 @@
                             <supportDesc>
                                 <support>
                                     <!-- 16a) Inschriftträger -->
-                                    <!-- todo: ref + value setzen -->
-                                    <objectType ref="https://www.eagle-network.eu/voc/objtyp/lod/29">altar</objectType>
+                                    <objectType ref=""></objectType>
                                     <!-- 18) Material -->
-                                    <!-- todo: ref + value setzen -->
-                                    <material ref="http://www.eagle-network.eu/voc/material/lod/75">Sandstein</material>
+                                    <material ref=""></material>
                                     <!-- 16b) Beschreibung Inschriftträger -->
                                     <note></note>
                                 </support>
@@ -52,8 +50,8 @@
                                 Im Content - falls exakte Datierung unmöglich; schließt die anderen Attribute aus
                                 @datingMethod - fixes Attribut, hier immer Julianisch
                             -->
-                            <origDate when-custom="" notBefore-custom="" notAfter-custom=""
-                                      datingMethod="http://en.wikipedia.org/wiki/Julian_calendar"></origDate>
+                            <origDate when-custom="0205" notBefore-custom="0204" notAfter-custom="0206"
+                                      datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">Freitextangabe</origDate>
                         </origin>
                     </history>
                     <!-- msPart ist als Ganzes wiederholbar -->
@@ -66,21 +64,21 @@
                         <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
                         <div type="apparatus" corresp=""></div>
                         <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-                        <div type="translation" corresp="" resp="">
+                        <div type="translation" corresp="" resp="#Feraudi">
                         </div>
                         <!--  ### end of runtime instance inlining -->
                         <msIdentifier>
                             <!-- 12a) Aufbewahrung -->
-                            <repository ref="http://sicily.classics.ox.ac.uk/museum/064"></repository>
-                            <!-- 4) TM-Nummer -->
+                            <!-- todo: ref + value setzen -->
+                            <repository ref=""></repository>
+                            <!-- 4) TM-Nummer - manuelle Eingabe -->
                             <idno type="TM"></idno>
                         </msIdentifier>
                         <msContents>
                             <!-- TODO: 12d) Verifizierungsgrundlage: Auswahlmenü: Abklatsch / nicht-gesehen -->
                             <!-- TODO: 12e) Datum der Verifizierung -->
-
                             <!-- 15) Inschriftengattung in @class -->
-                            <msItem class="https://www.eagle-network.eu/voc/typeins/lod/51">
+                            <msItem class="">
                                 <!-- 25) Sprache -->
                                 <!-- TODO: Metrik logisch hierhin -->
                                 <textLang mainLang="lat"></textLang>
@@ -118,7 +116,7 @@
                                             <depth></depth>
                                         </dimensions>
                                         <!-- 14) Dekor -->
-                                        <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/2000">yes</rs>
+                                        <rs type="decoration" ref=""></rs>
                                     </support>
                                     <!-- 13) Erhaltung -->
                                     <condition></condition>
@@ -151,12 +149,11 @@
                             <origin>
                                 <!-- in @corresp wird die GeoID angegeben, andere Ortsangaben sind redundant und werden
                                     am Ende nur hinein kopiert - siehe Kommentare -->
-                                <origPlace  corresp="#GeoID">
+                                <origPlace  corresp="">
                                     <!-- 5) Provinz / augusteische Region: kopiert aus Geodatenbank -->
                                     <placeName type="province"></placeName>
                                     <!-- 8) Fundort (antik): kopiert aus Geodatenbank -->
-                                    <!-- ??? wenn der @ref ein identifier ist, woher setzen wir den ??? -->
-                                    <placeName type="ancient" ref="https://pleiades.stoa.org/places/108818"></placeName>
+                                    <placeName type="ancient" ref=""></placeName>
                                 </origPlace>
                             </origin>
                             <!--
@@ -170,11 +167,9 @@
                             <provenance type="found" when="" when-custom="" notBefore=""
                                         notAfter="">
                                 <!-- 6) Land: kopiert aus Geodatenbank -->
-                                <!-- ??? wenn der @ref ein identifier ist, woher setzen wir den ??? -->
-                                <placeName type="country" ref="https://www.geonames.org/2921044">Germany</placeName>
+                                <placeName type="country" ref=""></placeName>
                                 <!-- 9) Fundort (modern): kopiert aus Geodatenbank -->
-                                <!-- ??? wenn der @ref ein identifier ist, woher setzen wir den ??? -->
-                                <placeName type="modern" ref="http://www.geonames.org/2946447">Bonn</placeName>
+                                <placeName type="modern" ref=""></placeName>
                                 <!-- 10a) Fundstelle: kopiert aus Geodatenbank -->
                                 <placeName type="findspot"></placeName>
                                 <!-- 7) moderne Region: kopiert aus Geodatenbank -->
@@ -188,7 +183,6 @@
             </sourceDesc>
         </fileDesc>
         <encodingDesc>
-            <!-- ??? static text ??? -->
             <p>Encoded following EpiDoc guidelines 9.2</p>
         </encodingDesc>
         <profileDesc>
@@ -196,7 +190,7 @@
                 <!-- Welche URI für lokale Klassifikation? -->
                 <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/religion">
                     <!-- 28) Religion - kontrolliertes Vokabular? -->
-                    <term ref="#jewish"/>
+                    <term ref=""/>
                 </keywords>
                 <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/terms">
                     <!-- 30) Sozial-/Wirtschafts-/Rechtsgeschichte: ja = vorhanden -->
@@ -215,42 +209,29 @@
                 45) Bearbeiter des Datensatzes in @who
 
             -->
-
-            <!-- ??? müssen wir das im 1. Schritt berücksichtigen ?
-            hier bräuchten wir dann den benutzernamen und müssten timestamps vergeben
-            -->
-
-            <change type="created" when="" who="Feraudi"/>
+            <change type="created" when="" who=""/>
             <!-- 46) Datensatz geändert -->
-
-            <!-- ??? same as with created above -->
-            <change type="modified" when="2020-02-07" who="Feraudi"/>
+            <change type="modified" when="" who=""/>
         </revisionDesc>
     </teiHeader>
     <facsimile>
         <!-- @corresp referenziert msPart -->
         <surface corresp="">
             <!-- 35d) Abbildungen, wiederholbar -->
-            <graphic url="photo.png"></graphic>
+            <graphic url=""></graphic>
         </surface>
     </facsimile>
     <text>
         <body>
             <div type="edition">
                 <!-- 41) Textedition: @corresp referenziert msPart - eingefügt aus jinn-codemirror. Required -->
-                <div type="textpart" subtype="fragment" n="a" corresp="">
-                </div>
+                <div type="textpart" subtype="fragment" n="a" corresp=""></div>
             </div>
             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
             <div type="apparatus" corresp="">
-                <listApp>
-                    <app loc="1"><note>Lorem <hi rend="bold">ipsum</hi></note></app>
-                </listApp>
             </div>
             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-            <!-- ??? woher kommt '#Feraudi' ? -->
-            <div type="translation" corresp="" resp="#Feraudi">
-                <ab>Übersetzung des Textes in XML</ab>
+            <div type="translation" corresp="" resp="">
             </div>
             <!-- 37) Kommentar: freier Inhalt. Nur einmal pro Dokument - eingefügt aus jinn-codemirror -->
             <div type="commentary"></div>

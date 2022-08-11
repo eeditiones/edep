@@ -77,7 +77,7 @@
 <div class="wrapper">
     <fx-fore>
         <fx-model>
-            <fx-instance id="default" src="templates/fore/HD025278.xml"
+            <fx-instance id="default" src="templates/fore/epidoc-template.xml"
                          xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
             <fx-instance id="province" src="data/province.json" type="json"/>
             <!--            <fx-instance id="country" src="data/country.json" type="json"/>-->
@@ -116,6 +116,23 @@
 
             <fx-instance xmlns="http://www.tei-c.org/ns/1.0" id="epidoc-editor" src="templates/fore/epidoc-snippet.xml"
                          xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+
+            <!-- this instance holds queryString params from the Url of this page -->
+            <fx-instance id="params" src="#querystring"></fx-instance>
+
+            <fx-submission id="s-create"
+                           url="api/inscription"
+                           method="post"
+                           replace="none">
+                <fx-message event="submit-done">Daten wurden gespeichert</fx-message>
+            </fx-submission>
+
+            <fx-submission id="s-save"
+                           url="api/inscription?id={instance('params')/id}"
+                           method="post"
+                           replace="none">
+                <fx-message event="submit-done">Daten wurden aktualisiert</fx-message>
+            </fx-submission>
 
             <fx-function signature="gen-id() as xs:string" type="text/javascript">
                 return createUUID();
@@ -537,7 +554,6 @@
                 <fx-control ref="history/origin/origDate/@when-custom">
                     <label>custom</label>
                 </fx-control>
-                <span class="note">Datingmethod?</span>
             </fx-group>
 
             <fx-group ref="profileDesc" class="group-7">
@@ -597,8 +613,10 @@
             <!-- 45) -->
 
 
-            <fx-trigger>
+            <fx-trigger class="saveBtn">
                 <button>Save</button>
+                <fx-send submission="s-create" if="not(exists(instance('params')/id))"></fx-send>
+                <fx-send submission="s-save" if="exists(instance('params')/id)"></fx-send>
             </fx-trigger>
         </fx-group>
         <fx-inspector/>

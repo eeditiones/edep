@@ -48,6 +48,9 @@ fx-case.selected-case{
     padding:1rem;
 }
 
+.saveBtn button{
+    color:black;
+}
 
 .toggle-view{
     display:inline-block;
