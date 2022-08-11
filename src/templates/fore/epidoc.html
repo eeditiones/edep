@@ -484,13 +484,13 @@
                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
                             <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="update">
                                 <label>Apparatus</label>
-                                <jinn-xml-editor class="widget" unwrap="unwrap"></jinn-xml-editor>
+                                <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0"></jinn-xml-editor>
                             </fx-control>
 
                             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
                             <fx-control class="translation" ref="div[@type='translation']" as="node" update-event="update">
                                 <label>Übersetzung</label>
-                                <jinn-xml-editor class="widget" unwrap="unwrap"></jinn-xml-editor>
+                                <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0"></jinn-xml-editor>
                             </fx-control>
 <!--
                             <div class="repeat-caption">
@@ -561,7 +561,7 @@
             <fx-control class="commentary"
                         ref="instance('default')//body/div[@type='commentary']" as="node" update-event="update">
                 <label>Kommentar</label>
-                <jinn-xml-editor class="widget" unwrap="unwrap"></jinn-xml-editor>
+                <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0"></jinn-xml-editor>
             </fx-control>
 
             <!-- 26) -->
