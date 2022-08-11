@@ -78,26 +78,68 @@ declare function api:material($request as map(*)) {
 
 declare function api:places-list($request as map(*)) {
     let $return := if (not($request?parameters?id)) then
-        let $place := for $place in collection($config:places)//@xml:id/string()
-            return <a href="geodata.html?id={$place}">{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="findspot"]/string()}</a>
-
-        let $places := for $spot in collection($config:places)/tei:place/tei:placeName[@type="findspot"]/string()
-            return upper-case(substring(replace($spot, '\{', ''), 1,1))
-
-        let $catagory :=  for $value in distinct-values($places)
-            let $count := count($places[. eq $value])
-            order by $count descending
-            return map { "category" : $value, "count" : $count }
-
-        return map {"items" : $place,
-                    "categories" : $catagory}
-        else 
-            doc(concat($config:places, $request?parameters?id, ".xml"))
-
+        let $search := normalize-space($request?parameters?search)
+        let $letterParam := $request?parameters?category
+        let $limit := $request?parameters?limit
+        let $places :=
+            if ($search and $search != '') then
+                collection($config:places)/tei:place/tei:placeName[@type="findspot"][matches(@n, "^" || $search, "i")]/text()
+            else
+                collection($config:places)/tei:place/tei:placeName[@type="findspot"]/text()
+        let $sorted := sort($places, "?lang=de-DE", function($place) { lower-case($place/@n) })
+        let $letter := 
+            if (count($places) < $limit) then 
+                "Alle"
+            else if ($letterParam = '') then
+                substring($sorted[1], 1, 1) => upper-case()
+            else
+                $letterParam
+        let $byLetter :=
+            if ($letter = 'Alle') then
+                $sorted
+            else
+                filter($sorted, function($entry) {
+                    starts-with(lower-case($entry/@n), lower-case($letter))
+                })
+        return
+            map {
+                "items": api:output-place($byLetter),
+                "categories":
+                    if (count($places) < $limit) then
+                        []
+                    else array {
+                        for $index in 1 to string-length('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+                            let $alpha := substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ', $index, 1)
+                            let $hits := count(filter($sorted, function($entry) { starts-with(lower-case($entry/@n), lower-case($alpha))}))
+                            where $hits > 0
+                            return
+                                map {
+                                    "category": $alpha,
+                                    "count": $hits
+                                },
+                                map {
+                                    "category": "Alle",
+                                    "count": count($sorted)
+                                }
+                    }
+            }
+    else 
+        doc(concat($config:places, $request?parameters?id, ".xml"))
     return try {
         $return
     } catch * {
         ()
+    }
+};
+
+declare function api:output-place($list) {
+    array {
+        for $place in $list
+            let $label := $place/@n/string()
+            return
+                <span class="place">
+                    <a href="{$label}">{$place}</a>
+                </span>
     }
 };
 
@@ -109,6 +151,24 @@ declare function api:places-add($request as map(*)) {
             let $id-new := format-number(xs:integer(replace($ids[last()], "G", "")) + 1, "000000")
             let $store := xmldb:store($config:places, concat("G", $id-new, ".xml"), $request?body)
             return update insert attribute xml:id {concat("G", $id-new)} into doc(concat($config:places, "G", $id-new, ".xml"))/tei:place
+
+    return try {
+        $return
+    } catch * {
+        ()
+    }
+};
+
+declare function api:inscription($request as map(*)) {
+    let $check-collection := if(not(xmldb:collection-available($config:inscription))) then xmldb:create-collection("/", $config:inscription) else ()
+    let $return := if ($request?parameters?id) then
+            xmldb:store($config:inscription, concat($request?parameters?id, ".xml"), $request?body)
+        else
+            let $ids := collection($config:inscription)//tei:idno[@type="EDEp"]/text()
+            let $id-new := if (empty($ids)) then "0000000" else format-number(xs:integer(replace($ids[last()], "E", "")) + 1, "0000000")
+            let $store := xmldb:store($config:inscription, concat("E", $id-new, ".xml"), $request?body)
+            return update value doc(concat($config:inscription, "E", $id-new, ".xml"))//tei:msIdentifier/tei:idno[@type="EDEp"] 
+                with concat("E", $id-new)
 
     return try {
         $return
