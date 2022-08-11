@@ -144,13 +144,14 @@ declare function api:output-place($list) {
 };
 
 declare function api:places-add($request as map(*)) {
-    let $return := if ($request?parameters?id) then
+    let $return := if ($request?parameters?id and not(empty($request?body//@xml:id))) then
             xmldb:store($config:places, concat($request?parameters?id, ".xml"), $request?body)
         else
-            let $ids := collection($config:places)//@xml:id/string()
-            let $id-new := format-number(xs:integer(replace($ids[last()], "G", "")) + 1, "000000")
+            let $ids := sort(collection($config:places)//@xml:id/string())
+            let $id-new := if (empty($ids)) then "000000" else format-number(xs:integer(replace($ids[last()], "G", "")) + 1, "000000")
             let $store := xmldb:store($config:places, concat("G", $id-new, ".xml"), $request?body)
-            return update insert attribute xml:id {concat("G", $id-new)} into doc(concat($config:places, "G", $id-new, ".xml"))/tei:place
+            let $update := update insert attribute xml:id {concat("G", $id-new)} into doc(concat($config:places, "G", $id-new, ".xml"))/tei:place
+            return $ids   
 
     return try {
         $return
@@ -164,7 +165,7 @@ declare function api:inscription($request as map(*)) {
     let $return := if ($request?parameters?id) then
             xmldb:store($config:inscription, concat($request?parameters?id, ".xml"), $request?body)
         else
-            let $ids := collection($config:inscription)//tei:idno[@type="EDEp"]/text()
+            let $ids := sort(collection($config:inscription)//tei:idno[@type="EDEp"]/text())
             let $id-new := if (empty($ids)) then "0000000" else format-number(xs:integer(replace($ids[last()], "E", "")) + 1, "0000000")
             let $store := xmldb:store($config:inscription, concat("E", $id-new, ".xml"), $request?body)
             return update value doc(concat($config:inscription, "E", $id-new, ".xml"))//tei:msIdentifier/tei:idno[@type="EDEp"] 

@@ -205,29 +205,28 @@
                 "parameters": [
                     {
                         "name": "category",
-                        "in": "path",
-                        "required": false,
-                        "schema":{
-                            "type": "string"
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "example": "A"
                         }
                     },
                     {
                         "name": "limit",
-                        "in": "path",
-                        "required": false,
-                        "schema":{
-                            "type": "integer"
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
                         }
                     },
                     {
                         "name": "search",
-                        "in": "path",
-                        "required": false,
+                        "in": "query",
                         "schema":{
                             "type": "string"
                         }
                     }
-                ],
+                ],    
                 "responses": {
                     "200": {
                         "description": "places-list",
