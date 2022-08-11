@@ -441,13 +441,13 @@
                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
                             <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="update">
                                 <label>Apparatus</label>
-                                <jinn-codemirror mode="xml" class="widget"></jinn-codemirror>
+                                <jinn-xml-editor class="widget" unwrap="unwrap"></jinn-xml-editor>
                             </fx-control>
 
                             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
                             <fx-control class="translation" ref="div[@type='translation']" as="node" update-event="update">
                                 <label>Übersetzung</label>
-                                <jinn-codemirror mode="xml" class="widget"></jinn-codemirror>
+                                <jinn-xml-editor class="widget" unwrap="unwrap"></jinn-xml-editor>
                             </fx-control>
 <!--
                             <div class="repeat-caption">
@@ -516,9 +516,9 @@
             </fx-trigger>
 
             <fx-control class="commentary"
-                        ref="//body/div[@type='commentary']" as="node" update-event="update">
+                        ref="instance('default')//body/div[@type='commentary']" as="node" update-event="update">
                 <label>Kommentar</label>
-                <jinn-codemirror class="widget" mode="xml"></jinn-codemirror>
+                <jinn-xml-editor class="widget" unwrap="unwrap"></jinn-xml-editor>
             </fx-control>
 
             <!-- 26) -->
