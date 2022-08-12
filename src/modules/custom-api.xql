@@ -288,15 +288,6 @@ declare %private function  api:preprocessing-uuid($nodes as node()*, $uuid as xs
                 $node
 };
 
-declare %private function  api:preprocessing-select($nodes as node()*){
-    for $node in $nodes
-    return
-        typeswitch($node)
-            case element (tei:body) return $node/node()
-            case element (tei:facsimile) return $node
-        default return api:preprocessing-select($node/node())
-};
-
 declare %private function  api:preprocessing-copy($nodes as node()*){
     for $node in $nodes
     return
@@ -307,7 +298,9 @@ declare %private function  api:preprocessing-copy($nodes as node()*){
                 element { node-name($node) } {
                     $node/@*, 
                     $node/node(),
-                    root($node)//tei:body//tei:div[@type=("textpart", "apparatus", "translation")]
+                    root($node)//tei:body//tei:div[@type="textpart"],
+                    root($node)//tei:body//tei:div[@type="apparatus"],
+                    root($node)//tei:body//tei:div[@type="translation"]
                 }
             case element(tei:body) return
                 element { node-name($node) } {

@@ -298,6 +298,15 @@
 					"group": "tei"
                 },
                 "operationId": "api:inscription",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "requestBody": {
                 	"required": true,
 					"content": {
