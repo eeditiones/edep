@@ -380,7 +380,6 @@ jinn-codemirror {
     display: flex;
     column-gap: 4px;
     width: 100%;
-    margin-bottom: 10px;
 }
 [slot=toolbar] * {
     font-size: .85rem;
