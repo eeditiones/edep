@@ -78,8 +78,7 @@
         <fx-send submission="s-load-inscription" event="ready" if="exists(instance('params')/id)"></fx-send>
 
         <fx-model>
-<!--            <fx-instance id="default" src="api/inscription"-->
-            <fx-instance id="default" src="templates/fore/epidoc-template.xml"
+            <fx-instance id="default" src="api/inscription"
                          xpath-default-namespace="http://www.tei-c.org/ns/1.0">
 
             </fx-instance>
@@ -474,7 +473,7 @@
                         </fieldset>
 
                         <fx-group class="group-10">
-                            <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="update">
+                            <fx-control class="transcription" ref="div[@type='edition']/div" as="node" update-event="update">
                                 <label>Transkription</label>
                                 <jinn-epidoc-editor schema="resources/scripts/epidoc.json"
                                                     class="widget"></jinn-epidoc-editor>
