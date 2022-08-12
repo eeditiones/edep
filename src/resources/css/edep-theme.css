@@ -8,11 +8,12 @@ html{
     --group-7-bg:#fce8b2;
     --group-8-bg:#bcaaa4;
     --group-9-bg:#81c784;
+    --group-10-bg: #791eda;
 }
 main {
     /*margin: 0 20px 0 20px;*/
     margin:0 auto;
-    max-width: 800px;
+    max-width: 960px;
 }
 
 @media (max-width: 1023px) {
@@ -194,6 +195,11 @@ button{
 .group-9{
     background: var(--group-9-bg);
 }
+.group-10 {
+    border: 2px solid var(--group-10-bg);
+    margin-top: 1rem;
+}
+
 .wrapper{
     width: 21cm;
     height: 29.7cm;
@@ -380,7 +386,6 @@ jinn-codemirror {
     display: flex;
     column-gap: 4px;
     width: 100%;
-    margin-bottom: 10px;
 }
 [slot=toolbar] * {
     font-size: .85rem;
@@ -390,4 +395,6 @@ jinn-codemirror {
 [slot=toolbar] *:hover {
     border: 1px solid orange;
 }
-
+[slot=toolbar] .sep {
+    border-right: 1px solid #e0e0e0;
+}

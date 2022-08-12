@@ -69,41 +69,47 @@
         fx-control label {
             justify-self: end;
         }
-
-
     </style>
 </head>
 <body>
 <div class="wrapper">
     <fx-fore>
+        <!-- ### if get called with an id param we load the data via submission ### -->
+        <fx-send submission="s-load-inscription" event="ready" if="exists(instance('params')/id)"></fx-send>
+
         <fx-model>
+<!--            <fx-instance id="default" src="api/inscription"-->
             <fx-instance id="default" src="templates/fore/epidoc-template.xml"
-                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
-            <fx-instance id="province" src="data/province.json" type="json"/>
+                         xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+
+            </fx-instance>
+
+
+            <fx-instance id="province" src="data/province.json" type="json"></fx-instance>
             <!--            <fx-instance id="country" src="data/country.json" type="json"/>-->
             <!--            <fx-instance id="decor" src="api/decor" type="json"/>-->
-            <fx-instance id="typeins" src="data/typeins.json" type="json"/>
-            <fx-instance id="objtyp" src="data/objtyp.json" type="json"/>
+            <fx-instance id="typeins" src="data/typeins.json" type="json">
+
+            </fx-instance>
+            <fx-instance id="objtyp" src="data/objtyp.json" type="json">
+
+            </fx-instance>
             <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"
-                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+                         xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+
+            </fx-instance>
 
             <fx-instance id="templates" src="templates/fore/templates.xml"
-                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+                         xpath-default-namespace="http://www.tei-c.org/ns/1.0">
 
-            <!--
-                        <fx-instance id="leiden">
-                            <data>
-                                <epidoc/>
-                            </data>
-                        </fx-instance>
-            -->
-
+            </fx-instance>
 
             <fx-instance id="vars">
                 <data>
                     <display-leiden>hidden</display-leiden>
                     <can-delete>false</can-delete>
                     <parent></parent>
+                    <uuid></uuid>
                 </data>
             </fx-instance>
             <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
@@ -115,10 +121,21 @@
             </fx-instance>
 
             <fx-instance xmlns="http://www.tei-c.org/ns/1.0" id="epidoc-editor" src="templates/fore/epidoc-snippet.xml"
-                         xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+                         xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+
+            </fx-instance>
 
             <!-- this instance holds queryString params from the Url of this page -->
-            <fx-instance id="params" src="#querystring"></fx-instance>
+            <fx-instance id="params" src="#querystring">
+
+            </fx-instance>
+
+            <fx-submission id="s-load-inscription"
+                           url="api/inscription?id={instance('params')/id}"
+                           method="get"
+                           replace="instance">
+                <fx-message event="submit-error">Failed to load Inscription</fx-message>
+            </fx-submission>
 
             <fx-submission id="s-create"
                            url="api/inscription"
@@ -137,7 +154,10 @@
             <fx-function signature="gen-id() as xs:string" type="text/javascript">
                 return createUUID();
             </fx-function>
+
+
         </fx-model>
+
         <fx-group ref="teiHeader">
             <h1>EDEp Editor</h1>
             <fx-control class="title" ref="fileDesc/titleStmt/title">
@@ -163,11 +183,14 @@
                     <fieldset>
                         <legend>Fragment {count(./preceding-sibling::msPart) + 1}</legend>
                         <fx-group class="group-2">
-                            <!--                        { if(count(./preceding-sibling::msPart) = 0) then 'hidden' else ''}-->
                             <!-- geoId from geodata -->
                             <fx-control ref="history/origin/origPlace/@corresp">
                                 <label>GeoId</label>
+                                <fx-action event="value-changed">
+                                    <fx-message>geoId: {.}</fx-message>
+                                </fx-action>
                             </fx-control>
+
                             <!-- 5) -->
                             <fx-output ref="history/origin/origPlace/placeName[@type='province']">
                                 <label slot="label">Provinz/augusteische Region</label>
@@ -201,7 +224,7 @@
                             <!-- 10b) -->
                             <fx-control ref="history/provenance/note[@type='context']">
                                 <label>Fundkontext</label>
-                                <textarea rows="4" class="widget"/>
+                                <textarea rows="4" class="widget"></textarea>
                             </fx-control>
 
                             <!-- 11) -->
@@ -240,7 +263,8 @@
                             <!-- 14) -->
                             <fx-control ref="physDesc/objectDesc/supportDesc/support/rs/@ref">
                                 <label>Dekor</label>
-                                <select ref="instance('decor')?item?*" class="widget">
+<!--                                <select ref="instance('decor')?item?*" class="widget">-->
+                                <select class="widget">
                                     <option value="yes">Ja</option>
                                     <option value="no">Nein</option>
                                     <option value="uncertain">unsicher</option>
@@ -250,7 +274,7 @@
                             <!-- 15) -->
                             <fx-control ref="msContents/msItem/@class">
                                 <label>Inschriftengattung</label>
-                                <select ref="instance('typeins')?*" class="widget">
+                                <select ref="instance('typeins')?*" class="widget" selection="open">
                                     <template>
                                         <option value="{?value}">{?name}</option>
                                     </template>
@@ -260,7 +284,7 @@
                             <!-- 16a) -->
                             <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType">
                                 <label>Inschriftträger</label>
-                                <select ref="instance('objtyp')?*" class="widget">
+                                <select ref="instance('objtyp')?*" class="widget" selection="open">
                                     <template>
                                         <option value="{?value}">{?name}</option>
                                     </template>
@@ -334,7 +358,7 @@
                             </fx-control>
                         </fx-group>
 
-                        <fx-var name="frag" value="'#' || ./@xml:id"/>
+                        <fx-var name="frag" value="'#' || ./@xml:id"></fx-var>
 
                         <fieldset>
                             <legend>Bibliographie</legend>
@@ -449,6 +473,7 @@
                             </fieldset>
                         </fieldset>
 
+                        <fx-group class="group-10">
                             <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="update">
                                 <label>Transkription</label>
                                 <jinn-epidoc-editor schema="resources/scripts/epidoc.json"
@@ -458,14 +483,31 @@
                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
                             <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="update">
                                 <label>Apparatus</label>
-                                <jinn-xml-editor class="widget" unwrap="unwrap"></jinn-xml-editor>
+                                <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
+                                    <div slot="toolbar">
+                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
+                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
+                                        <button data-command="snippet" data-params="&lt;listApp>$|_|&lt;/listApp>" title="Insert apparatus list">&lt;listApp&gt;</button>
+                                        <button data-command="snippet" data-params='&lt;app loc="$|1|">&lt;note>$|_|&lt;/note>&lt;/app>' title="Insert apparatus entry">&lt;app&gt;</button>
+                                    </div>
+                                </jinn-xml-editor>
                             </fx-control>
 
                             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
                             <fx-control class="translation" ref="div[@type='translation']" as="node" update-event="update">
                                 <label>Übersetzung</label>
-                                <jinn-xml-editor class="widget" unwrap="unwrap"></jinn-xml-editor>
+                                <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
+                                    <div slot="toolbar">
+                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
+                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
+                                        <button data-command="snippet" data-params="&lt;p>$|_|&lt;/p>" title="Insert paragraph">&lt;p&gt;</button>
+                                    </div>
+                                </jinn-xml-editor>
                             </fx-control>
+                        </fx-group>
+                    </fieldset>
 <!--
                             <div class="repeat-caption">
                                 <label>Edition</label>
@@ -475,9 +517,6 @@
                                 </fx-trigger>
                             </div>
 -->
-
-
-                        </fieldset>
 
                         <!--                    </div>-->
 
@@ -535,7 +574,14 @@
             <fx-control class="commentary"
                         ref="instance('default')//body/div[@type='commentary']" as="node" update-event="update">
                 <label>Kommentar</label>
-                <jinn-xml-editor class="widget" unwrap="unwrap"></jinn-xml-editor>
+                <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
+                    <div slot="toolbar">
+                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
+                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
+                        <button data-command="snippet" data-params="&lt;p>$|_|&lt;/p>" title="Insert paragraph">&lt;p&gt;</button>
+                    </div>
+                </jinn-xml-editor>
             </fx-control>
 
             <!-- 26) -->
