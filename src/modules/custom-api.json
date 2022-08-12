@@ -272,7 +272,14 @@
                 "summary": "get template",
                 "operationId": "api:inscription-template",
                 "parameters": [
-                ],    
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "get template",

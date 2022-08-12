@@ -162,14 +162,15 @@ declare function api:places-add($request as map(*)) {
 
 declare function api:inscription($request as map(*)) {
     let $check-collection := if(not(xmldb:collection-available($config:inscription))) then xmldb:create-collection("/", $config:inscription) else ()
-    let $return := if ($request?parameters?id) then
-            xmldb:store($config:inscription, concat($request?parameters?id, ".xml"), $request?body)
+    let $return := 
+        if ($request?parameters?id) then
+            xmldb:store($config:inscription, concat($request?parameters?id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
         else
             let $ids := sort(collection($config:inscription)//tei:idno[@type="EDEp"]/text())
-            let $id-new := if (empty($ids)) then "0000000" else format-number(xs:integer(replace($ids[last()], "E", "")) + 1, "0000000")
-            let $store := xmldb:store($config:inscription, concat("E", $id-new, ".xml"), $request?body)
-            return update value doc(concat($config:inscription, "E", $id-new, ".xml"))//tei:msIdentifier/tei:idno[@type="EDEp"] 
-                with concat("E", $id-new)
+            let $id-new := if (empty($ids)) then "0000001" else format-number(xs:integer(replace($ids[last()], "E", "")) + 1, "0000000")
+            let $store := xmldb:store($config:inscription, concat("E", $id-new, ".xml"), api:postprocess($request?body, "E" || $id-new) => api:clean-namespace())
+            return
+                $store
 
     return try {
         $return
@@ -179,11 +180,18 @@ declare function api:inscription($request as map(*)) {
 };
 
 declare function api:inscription-template($request as map(*)) {
-    let $uuid := util:uuid()
-    let $template := doc($config:inscription-templ)
-    let $pre-uuid := api:preprocessing-uuid($template, $uuid) 
-    let $pre-select := api:preprocessing-select($pre-uuid)
-    let $return := api:preprocessing-copy($pre-uuid, $pre-select)
+    let $id := $request?parameters?id
+    let $doc :=
+        if ($id) then
+            collection($config:data-root)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI
+        else
+            doc($config:inscription-templ)
+    let $input :=
+        if (util:document-name($doc) = "epidoc-template.xml") then
+            api:preprocessing-uuid($doc, util:uuid())
+        else
+            $doc
+    let $return := api:preprocessing-copy($input)
 
     return try {
         $return
@@ -192,19 +200,92 @@ declare function api:inscription-template($request as map(*)) {
     }
 };
 
+declare %private function api:postprocess($nodes as node()*, $edepId as xs:string?) {
+    for $node in $nodes
+    return
+        typeswitch($node)
+            case document-node() return
+                document { api:postprocess($node/node(), $edepId) }
+            case element(tei:msPart) return
+                element { node-name($node) } {
+                    $node/@*,
+                    api:postprocess($node/* except $node/tei:div, $edepId)
+                }
+            case element(tei:idno) return
+                if ($node/@type = "EDEp" and exists($edepId)) then
+                    element { node-name($node) } {
+                        $node/@*,
+                        $edepId
+                    }
+                else
+                    $node
+            case element(tei:body) return
+                element { node-name($node) } {
+                    $node/@*,
+                    root($node)//tei:msPart/tei:div[@type=('apparatus', 'translation')],
+                    <div type="edition" xmlns="http://www.tei-c.org/ns/1.0">
+                    { root($node)//tei:msPart/tei:div[@type='textpart'] }
+                    </div>,
+                    $node/tei:div[@type = "commentary"]
+                }
+            case element() return
+                element { node-name($node) } {
+                    $node/@*,
+                    api:postprocess($node/node(), $edepId)
+                }
+            default return
+                $node
+};
+
+declare function api:clean-namespace($nodes as node()*) {
+    for $node in $nodes
+    return
+        typeswitch($node)
+            case document-node() return
+                document { api:clean-namespace($node/node()) }
+            case element() return
+                element { QName("http://www.tei-c.org/ns/1.0", local-name($node)) } {
+                    $node/@*,
+                    api:clean-namespace($node/node())
+                }
+            default return
+                $node
+};
+
 declare %private function  api:preprocessing-uuid($nodes as node()*, $uuid as xs:string){
     for $node in $nodes
     return
         typeswitch($node)
-            case comment () return $node
-            case text() return $node
-            case element (tei:msPart) return <msPart > {attribute xml:id {$uuid}} {$node/node()}</msPart>
-            case element (tei:surface) return <surface> {attribute corresp {concat("#",$uuid)}} {$node/node()}</surface>
-            case element (tei:div) return 
-                if  ($node/@corresp) then <div corresp="{concat("#",$uuid)}"> { $node/@type, $node/@subtype, $node/@n, $node/node()} </div> 
-                else <div> { $node/@*, api:preprocessing-uuid($node/node(), $uuid) } </div>
-            case element () return  element {node-name($node)} { $node/@*, api:preprocessing-uuid($node/node(), $uuid)}
-        default return  api:preprocessing-uuid($node/node(), $uuid)
+            case document-node() return
+                document { api:preprocessing-uuid($node/node(), $uuid) }
+            case element (tei:msPart) return 
+                element {node-name($node)} {
+                    attribute xml:id {$uuid},
+                    $node/node()
+                }
+            case element (tei:surface) return 
+                element { node-name($node) } {
+                    attribute corresp {concat("#",$uuid)},
+                    $node/node()
+                }
+            case element (tei:div) return
+                if ($node/@type = "commentary") then
+                    $node
+                else if ($node/@type = "edition") then
+                    api:preprocessing-uuid($node/node(), $uuid)
+                else
+                    element { node-name($node) } {
+                        $node/@* except $node/@corresp,
+                        attribute corresp {concat("#",$uuid)},
+                        $node/node()
+                    }
+            case element () return 
+                element { node-name($node) } { 
+                    $node/@*, 
+                    api:preprocessing-uuid($node/node(), $uuid)
+                }
+            default return
+                $node
 };
 
 declare %private function  api:preprocessing-select($nodes as node()*){
@@ -216,13 +297,23 @@ declare %private function  api:preprocessing-select($nodes as node()*){
         default return api:preprocessing-select($node/node())
 };
 
-declare %private function  api:preprocessing-copy($nodes as node()*, $insert as node()*){
+declare %private function  api:preprocessing-copy($nodes as node()*){
     for $node in $nodes
     return
         typeswitch($node)
             case comment () return $node
             case text() return $node
-            case element (tei:msPart) return <msPart> {$node/@* , $node/node(), $insert } </msPart>
-            case element () return  element {node-name($node)} { $node/@*, api:preprocessing-copy($node/node(), $insert)}
-        default return api:preprocessing-copy($node/node(), $insert)
+            case element (tei:msPart) return 
+                element { node-name($node) } {
+                    $node/@*, 
+                    $node/node(),
+                    root($node)//tei:body//tei:div[@type=("textpart", "apparatus", "translation")]
+                }
+            case element(tei:body) return
+                element { node-name($node) } {
+                    $node/@*,
+                    $node/tei:div[@type="commentary"]
+                }
+            case element () return  element {node-name($node)} { $node/@*, api:preprocessing-copy($node/node())}
+        default return api:preprocessing-copy($node/node())
 }; 
