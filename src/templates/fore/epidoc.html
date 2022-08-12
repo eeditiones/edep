@@ -473,6 +473,7 @@
                             </fieldset>
                         </fieldset>
 
+                        <fx-group class="group-10">
                             <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="update">
                                 <label>Transkription</label>
                                 <jinn-epidoc-editor schema="resources/scripts/epidoc.json"
@@ -486,7 +487,7 @@
                                     <div slot="toolbar">
                                         <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
                                         <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                        <button data-command="removeEnclosing" title="Remove enclosing tags">&lt;X></button>
+                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
                                         <button data-command="snippet" data-params="&lt;listApp>$|_|&lt;/listApp>" title="Insert apparatus list">&lt;listApp&gt;</button>
                                         <button data-command="snippet" data-params='&lt;app loc="$|1|">&lt;note>$|_|&lt;/note>&lt;/app>' title="Insert apparatus entry">&lt;app&gt;</button>
                                     </div>
@@ -500,11 +501,13 @@
                                     <div slot="toolbar">
                                         <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
                                         <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                        <button data-command="removeEnclosing" title="Remove enclosing tags">&lt;X></button>
+                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
                                         <button data-command="snippet" data-params="&lt;p>$|_|&lt;/p>" title="Insert paragraph">&lt;p&gt;</button>
                                     </div>
                                 </jinn-xml-editor>
                             </fx-control>
+                        </fx-group>
+                    </fieldset>
 <!--
                             <div class="repeat-caption">
                                 <label>Edition</label>
@@ -514,9 +517,6 @@
                                 </fx-trigger>
                             </div>
 -->
-
-
-                        </fieldset>
 
                         <!--                    </div>-->
 
@@ -578,7 +578,7 @@
                     <div slot="toolbar">
                         <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
                         <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                        <button data-command="removeEnclosing" title="Remove enclosing tags">&lt;X></button>
+                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
                         <button data-command="snippet" data-params="&lt;p>$|_|&lt;/p>" title="Insert paragraph">&lt;p&gt;</button>
                     </div>
                 </jinn-xml-editor>
