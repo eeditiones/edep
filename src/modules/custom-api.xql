@@ -198,7 +198,7 @@ declare %private function  api:preprocessing-uuid($nodes as node()*, $uuid as xs
         typeswitch($node)
             case comment () return $node
             case text() return $node
-            case element (tei:msPart) return <msPart > {attribute xml:id {concat("#",$uuid)}} {$node/node()}</msPart>
+            case element (tei:msPart) return <msPart > {attribute xml:id {$uuid}} {$node/node()}</msPart>
             case element (tei:surface) return <surface> {attribute corresp {concat("#",$uuid)}} {$node/node()}</surface>
             case element (tei:div) return 
                 if  ($node/@corresp) then <div corresp="{concat("#",$uuid)}"> { $node/@type, $node/@subtype, $node/@n, $node/node()} </div> 
