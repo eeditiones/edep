@@ -57,15 +57,7 @@
                     <!-- msPart ist als Ganzes wiederholbar -->
                     <!-- @xml:id erforderlich für Referenzierung unten -->
                     <msPart xml:id="">
-                        <!--  ### runtime instance inlining these divs which finally end up in the body -->
-                        <!-- 41) Textedition: @corresp referenziert msPart - eingefügt aus jinn-codemirror. Required -->
-                        <div type="textpart" subtype="fragment" n="a" corresp="">
-                        </div>
-                        <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
-                        <div type="apparatus" corresp=""></div>
-                        <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-                        <div type="translation" corresp="" resp="#Feraudi">
-                        </div>
+                        
                         <!--  ### end of runtime instance inlining -->
                         <msIdentifier>
                             <!-- 12a) Aufbewahrung -->

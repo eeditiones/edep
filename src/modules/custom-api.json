@@ -268,6 +268,23 @@
             }
     	},
         "/api/inscription": {
+            "get" : {
+                "summary": "get template",
+                "operationId": "api:inscription-template",
+                "parameters": [
+                ],    
+                "responses": {
+                    "200": {
+                        "description": "get template",
+                        "content": {
+                            "application/xml": {
+                                "schema": {
+                                }
+                            }
+                        }
+                    }
+                }
+    		},
             "post" : {
                 "summary": "update/add inscription",
                 "x-constraints": {

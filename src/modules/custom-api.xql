@@ -177,3 +177,52 @@ declare function api:inscription($request as map(*)) {
         ()
     }
 };
+
+declare function api:inscription-template($request as map(*)) {
+    let $uuid := util:uuid()
+    let $template := doc($config:inscription-templ)
+    let $pre-uuid := api:preprocessing-uuid($template, $uuid) 
+    let $pre-select := api:preprocessing-select($pre-uuid)
+    let $return := api:preprocessing-copy($pre-uuid, $pre-select)
+
+    return try {
+        $return
+    } catch * {
+        ()
+    }
+};
+
+declare %private function  api:preprocessing-uuid($nodes as node()*, $uuid as xs:string){
+    for $node in $nodes
+    return
+        typeswitch($node)
+            case comment () return $node
+            case text() return $node
+            case element (tei:msPart) return <msPart > {attribute xml:id {concat("#",$uuid)}} {$node/node()}</msPart>
+            case element (tei:surface) return <surface> {attribute corresp {concat("#",$uuid)}} {$node/node()}</surface>
+            case element (tei:div) return 
+                if  ($node/@corresp) then <div corresp="{concat("#",$uuid)}"> { $node/@type, $node/@subtype, $node/@n, $node/node()} </div> 
+                else <div> { $node/@*, api:preprocessing-uuid($node/node(), $uuid) } </div>
+            case element () return  element {node-name($node)} { $node/@*, api:preprocessing-uuid($node/node(), $uuid)}
+        default return  api:preprocessing-uuid($node/node(), $uuid)
+};
+
+declare %private function  api:preprocessing-select($nodes as node()*){
+    for $node in $nodes
+    return
+        typeswitch($node)
+            case element (tei:body) return $node/node()
+            case element (tei:facsimile) return $node
+        default return api:preprocessing-select($node/node())
+};
+
+declare %private function  api:preprocessing-copy($nodes as node()*, $insert as node()*){
+    for $node in $nodes
+    return
+        typeswitch($node)
+            case comment () return $node
+            case text() return $node
+            case element (tei:msPart) return <msPart> {$node/@* , $node/node(), $insert } </msPart>
+            case element () return  element {node-name($node)} { $node/@*, api:preprocessing-copy($node/node(), $insert)}
+        default return api:preprocessing-copy($node/node(), $insert)
+}; 

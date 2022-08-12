@@ -22,6 +22,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
  :)
  declare variable $config:places := "/db/apps/edep/data/places/";
  declare variable $config:inscription := "/db/apps/edep/data/inscriptions/";
+ declare variable $config:inscription-templ := "/db/apps/edep/templates/fore/epidoc-template.xml";
 
 (:~~
  : The version of the pb-components webcomponents library to be used by this app.
