@@ -228,16 +228,16 @@
 
                             <!-- 11) -->
                             <fx-control ref="history/provenance/@when">
-                                <label>Fundjahr</label>
+                                <label>Fundjahr/-datum (Zeitpunkt)</label>
                             </fx-control>
-                            <fx-control ref="history/provenance/@notbefore">
+                            <fx-control ref="history/provenance/@notBefore">
                                 <label>nach</label>
                             </fx-control>
                             <fx-control ref="history/provenance/@notAfter">
                                 <label>vor</label>
                             </fx-control>
                             <fx-control ref="history/provenance/@when-custom">
-                                <label>vor</label>
+                                <label>freie Angabe</label>
                             </fx-control>
 
                             <!-- 12a) -->
@@ -570,18 +570,20 @@
                 </fx-action>
             </fx-trigger>
 
-            <fx-control class="commentary"
-                        ref="instance('default')//body/div[@type='commentary']" as="node" update-event="update">
-                <label>Kommentar</label>
-                <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
-                    <div slot="toolbar">
-                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
-                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
-                        <button data-command="snippet" data-params="&lt;p>$|_|&lt;/p>" title="Insert paragraph">&lt;p&gt;</button>
-                    </div>
-                </jinn-xml-editor>
-            </fx-control>
+            <fx-group class="group-10">
+                <fx-control class="commentary"
+                            ref="instance('default')//body/div[@type='commentary']" as="node" update-event="update">
+                    <label>Kommentar</label>
+                    <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
+                        <div slot="toolbar">
+                            <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
+                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                            <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
+                            <button data-command="snippet" data-params="&lt;p>$|_|&lt;/p>" title="Insert paragraph">&lt;p&gt;</button>
+                        </div>
+                    </jinn-xml-editor>
+                </fx-control>
+            </fx-group>
 
             <!-- 26) -->
             <fx-group ref="//msDesc" class="group-6">
