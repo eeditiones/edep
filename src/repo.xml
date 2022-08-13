@@ -8,6 +8,6 @@
     <prepare>pre-install.xql</prepare>
     <finish>post-install.xql</finish>
     <target>edep</target>
-    <permissions user="edep" group="tei" mode="rw-r--r--"/>
+    <permissions user="edep" group="tei" password="edep" mode="rw-r--r--"/>
     <deployed>2022-04-19T13:07:52.079+02:00</deployed>
 </meta>
