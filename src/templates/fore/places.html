@@ -87,6 +87,8 @@
             <fx-instance src="#querystring" id="query">
                 <data></data>
             </fx-instance>
+            <fx-instance id="province" src="data/province.json" type="json">{}</fx-instance>
+            <fx-instance id="country" src="data/country.json" type="json">{}</fx-instance>
 
             <fx-submission id="s-save" method="post" url="api/places/id={instance('query')/id" replace="none">
                 <fx-message event="submit-done">Ort wurde gespeichert</fx-message>
@@ -98,26 +100,36 @@
             </fx-submission>
         </fx-model>
 
-        <h1>Places</h1>
-
         <fx-switch>
 
             <fx-case id="list">
                 <fx-trigger class="toggle-view">
-                    <button>+</button>
+                    <iron-icon icon="add" title="add edition"/>
                     <fx-toggle case="record"></fx-toggle>
                 </fx-trigger>
 
-                <div id="places-list">
+                <div id="places-list" class="case-content">
                     <pb-split-list url="api/places"></pb-split-list>
                 </div>
 
             </fx-case>
 
             <fx-case id="record">
-                <fx-group>
+                <fx-trigger class="toggle-view close">
+                    <iron-icon icon="close"></iron-icon>
+                    <fx-send submission="s-reset"></fx-send>
+                    <fx-toggle case="list"></fx-toggle>
+                </fx-trigger>
+
+                <code>
+                    {log('default')}
+                </code>
+                <fieldset class="case-content">
+                    <legend>Place</legend>
+<!--                <fx-group>-->
                     <fx-control ref="placeName[@type='findspot']">
                         <label>Fundstelle</label>
+                        <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
                     </fx-control>
                     <fx-control ref="placeName[@type='modern']">
                         <label>moderner Ortsname</label>
@@ -125,46 +137,53 @@
                     <fx-control ref="placeName[@type='ancient']">
                         <label>antiker Ortsname</label>
                     </fx-control>
-                </fx-group>
-                <fx-group>
-                    <fx-control ref="region[@type='province']">
+<!--                </fx-group>-->
+<!--                <fx-group>-->
+                    <fx-control ref="region[@type='province']" update-event="input">
                         <label>Provinz</label>
+                        <select ref="instance('province')?*" class="widget" selection="open">
+                            <template>
+                                <option value="{?name}">{?value}</option>
+                            </template>
+                        </select>
                     </fx-control>
                     <fx-control ref="region[@tyoe='modern']">
                         <label>moderne Region</label>
                     </fx-control>
-                    <fx-control ref="country">
+                    <fx-control ref="country" update-event="input">
                         <label>Modernes Land</label>
+                        <select ref="instance('country')?*" class="widget" selection="open">
+                            <template>
+                                <option value="{?name}">{?value}</option>
+                            </template>
+                        </select>
                     </fx-control>
-                </fx-group>
-                <fx-group ref="location">
-                    <fx-control ref="geo">
-                        <label/>
+<!--                </fx-group>-->
+<!--                <fx-group ref="location">-->
+<!--                    <fx-control ref="geo">-->
+                    <fx-control ref="location/geo">
+                        <label>Geo Location</label>
                     </fx-control>
-                </fx-group>
-                <fx-group>
+<!--                </fx-group>-->
+<!--                <fx-group>-->
                     <fx-control ref="ptr[@type='pleiades']">
                         <label>Pleiades</label>
                     </fx-control>
                     <fx-control ref="ptr[@type='geonames']">
                         <label>Geonames</label>
                     </fx-control>
-                </fx-group>
+<!--                </fx-group>-->
                 <div class="actions">
-                    <fx-trigger>
+                    <fx-trigger class="saveBtn">
                         <button>Speichern</button>
                         <fx-send submission="s-save"/>
                     </fx-trigger>
-                    <fx-trigger class="toggle-view close">
-                        <a href="#">Abbrechen</a>
-                        <fx-send submission="s-reset"></fx-send>
-                        <fx-toggle case="list"></fx-toggle>
-                    </fx-trigger>
                 </div>
+                </fieldset>
 
             </fx-case>
         </fx-switch>
-        <fx-inspector/>
+<!--        <fx-inspector/>-->
     </fx-fore>
 </div>
 <script type="module" src="../resources/scripts/fore-dev.js"/>
