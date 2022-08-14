@@ -75,7 +75,7 @@
 <div class="wrapper">
     <fx-fore>
         <!-- ### if get called with an id param we load the data via submission ### -->
-        <fx-send submission="s-load-inscription" event="ready" if="exists(instance('params')/id)"></fx-send>
+        <fx-send submission="s-load-inscription" event="ready" if="exists(instance('params')/id)" delay="500"></fx-send>
 
         <fx-model>
             <fx-instance id="default" src="api/inscription"
@@ -164,6 +164,7 @@
             </fx-function>
 
 
+            <fx-bind ref="instance('default')//fileDesc/titleStmt/title" required="true"></fx-bind>
         </fx-model>
 
         <fx-group ref="teiHeader">
@@ -490,7 +491,7 @@
 
 
                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
-                            <fx-control class="apparatus" ref="div[@type='apparatus']" as="node">
+                            <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="update">
                                 <label>Apparatus</label>
                                 <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
@@ -502,11 +503,11 @@
                                     </div>
                                 </jinn-xml-editor>
                             </fx-control>
-                            <fx-replace ref="div[@type='apparatus']/*[1]"
+                            <!--fx-replace ref="div[@type='apparatus']/*[1]"
                                         with="parse(event('content'))"
                                         target="apparatus"
                                         event="update">
-                            </fx-replace>
+                            </fx-replace-->
 
                             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
 <!--
@@ -523,7 +524,7 @@
                             </fx-control>
 -->
 
-                            <fx-control class="translation" ref="div[@type='translation']" as="node">
+                            <fx-control class="translation" ref="div[@type='translation']" as="node" update-event="update">
                                 <label>Übersetzung</label>
                                 <jinn-xml-editor id="translation" unwrap="unwrap" class="widget" namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
@@ -535,11 +536,11 @@
                                 </jinn-xml-editor>
                             </fx-control>
 
-                            <fx-replace ref="div[@type='translation']/*[1]"
+                            <!--fx-replace ref="div[@type='translation']/*[1]"
                                         with="parse(event('content'))"
                                         target="translation"
                                         event="update">
-                            </fx-replace>
+                            </fx-replace-->
 
 
 
@@ -631,7 +632,7 @@
             call it. The control will refresh the UI when the control looses focus (onblur).
             -->
             <fx-group class="group-10">
-                <fx-control class="commentary" ref="instance('default')//body/div[@type='commentary']" as="node">
+                <fx-control class="commentary" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="update">
                     <label>Kommentar</label>
                     <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
                         <div slot="toolbar">
@@ -643,10 +644,10 @@
                     </jinn-xml-editor>
                 </fx-control>
 
-                <fx-replace ref="instance('default')//body/div[@type='commentary']/*[1]"
+                <!--fx-replace ref="instance('default')//body/div[@type='commentary']"
                             with="parse(event('content'))"
                             target="commentary"
-                            event="update" ></fx-replace>
+                            event="update"></fx-replace-->
             </fx-group>
 
 
