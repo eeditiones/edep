@@ -313,14 +313,14 @@ declare variable $config:data-exclude :=
 (:~
  : The main ODD to be used by default
  :)
-declare variable $config:default-odd :="teipublisher_odds.odd";
+declare variable $config:default-odd :="edep.odd";
 
 (:~
  : Complete list of ODD files used by the app. If you add another ODD to this list,
  : make sure to run modules/generate-pm-config.xql to update the main configuration
  : module for transformations (modules/pm-config.xql).
  :)
-declare variable $config:odd-available :=("teipublisher_odds.odd", "teipublisher.odd", "tei_simplePrint.odd");
+declare variable $config:odd-available :=("edep.odd", "teipublisher_odds.odd", "teipublisher.odd", "tei_simplePrint.odd");
 
 (:~
  : List of ODD files which are used internally only, i.e. not for displaying information
