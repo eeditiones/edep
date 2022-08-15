@@ -78,15 +78,27 @@ declare function api:material($request as map(*)) {
 
 declare function api:places-list($request as map(*)) {
     let $return :=if (not($request?parameters?id)) then
+        let $thead := 
+            <tr>
+                <td>Findspot</td>
+                <td>Modern</td>
+                <td>Ancient</td>
+                <td>Region / Province</td>
+                <td>Region / Modern</td>
+                <td>Country</td>
+            </tr>
+
         let $places := for $place in collection($config:places)//@xml:id/string()
             return 
             <tr>
-                <td><a href="../geodata.html?id={$place}">{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="findspot"]/string()}</a></td>
+                <td><a href="geodata.html?id={$place}">{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="findspot"]/string()}</a></td>
                 <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="modern"]/string()}</td>
                 <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="ancient"]/string()}</td>
-             
+                <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:region[@type="province"]/string()}</td> 
+                <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:region[@type="modern"]/string()}</td>
+                <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:country/string()}</td>
             </tr>
-        return <table> {$places} </table>
+        return <table id="places-list"> <thead> {$thead} </thead> <tbody> {$places} </tbody> </table>
         else 
             doc(concat($config:places, $request?parameters?id, ".xml"))
 
