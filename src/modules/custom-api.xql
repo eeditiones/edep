@@ -80,11 +80,11 @@ declare function api:places-list($request as map(*)) {
     let $return :=if (not($request?parameters?id)) then
         let $places := for $place in collection($config:places)//@xml:id/string()
             return 
-            <td>
-                <tr><a href="geodata.html?id={$place}">{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="findspot"]/string()}</a></tr>
-                <tr>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="modern"]/string()}</tr>
-                <tr>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="ancient"]/string()}</tr>
-            </td>
+            <tr>
+                <td><a href="geodata.html?id={$place}">{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="findspot"]/string()}</a></td>
+                <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="modern"]/string()}</td>
+                <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="ancient"]/string()}</td>
+            </tr>
         return <table> {$places} </table>
         else 
             doc(concat($config:places, $request?parameters?id, ".xml"))

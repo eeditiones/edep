@@ -206,7 +206,7 @@
                     "200": {
                         "description": "places-list",
                         "content": {
-                            "application/xml": {
+                            "text/html": {
                                 "schema": {
                                 }
                             }
