@@ -74,6 +74,7 @@
 <body>
 <div class="wrapper">
     <fx-fore>
+        <fx-send event="ready" submission="s-login"/>
         <!-- ### if get called with an id param we load the data via submission ### -->
         <fx-send submission="s-load-inscription" event="ready" if="exists(instance('params')/id)" delay="500"></fx-send>
 
@@ -82,9 +83,10 @@
                          xpath-default-namespace="http://www.tei-c.org/ns/1.0">
 
             </fx-instance>
+            <fx-bind ref="instance('default')//fileDesc/titleStmt/title" required="true()"/>
 
 
-<!--            <fx-instance id="province" src="data/province.json" type="json"></fx-instance>-->
+            <!--            <fx-instance id="province" src="data/province.json" type="json"></fx-instance>-->
             <!--            <fx-instance id="country" src="data/country.json" type="json"/>-->
             <!--            <fx-instance id="decor" src="api/decor" type="json"/>-->
             <fx-instance id="typeins" src="data/typeins.json" type="json">
@@ -142,6 +144,11 @@
                            method="post"
                            replace="none">
                 <fx-message event="submit-done">Daten wurden gespeichert</fx-message>
+
+                <fx-action event="submit-error">
+                    <fx-message>Daten konnten nicht gespeichert werden.</fx-message>
+                    <fx-message>Please login to edit.</fx-message>
+                </fx-action>
             </fx-submission>
 
             <fx-submission id="s-save"
@@ -149,9 +156,13 @@
                            method="post"
                            replace="none">
                 <fx-message event="submit-done">Daten wurden aktualisiert</fx-message>
+                <fx-action event="submit-error">
+                    <fx-message>Daten konnten nicht gespeichert werden.</fx-message>
+                    <fx-message>Please login to edit.</fx-message>
+                </fx-action>
             </fx-submission>
 
-<!-- todo:            -->
+            <!-- todo:            -->
             <fx-submission id="s-load-geodata"
                            url="api/places?id={instance()//history/origin/origPlace/@corresp}"
                            method="get"
@@ -163,8 +174,11 @@
                 return createUUID();
             </fx-function>
 
+            <fx-instance id="login" type="json">{}</fx-instance>
+            <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance" instance="login" validate="false">
+                <fx-message event="submit-error">Please login to edit.</fx-message>
+            </fx-submission>
 
-            <fx-bind ref="instance('default')//fileDesc/titleStmt/title" required="true"></fx-bind>
         </fx-model>
 
         <fx-group ref="teiHeader">
@@ -272,7 +286,7 @@
                             <!-- 14) -->
                             <fx-control ref="physDesc/objectDesc/supportDesc/support/rs/@ref">
                                 <label>Dekor</label>
-<!--                                <select ref="instance('decor')?item?*" class="widget">-->
+                                <!--                                <select ref="instance('decor')?item?*" class="widget">-->
                                 <select class="widget">
                                     <option value="yes">Ja</option>
                                     <option value="no">Nein</option>
@@ -424,9 +438,9 @@
                                     <fx-trigger class="add">
                                         <iron-icon icon="add-circle-outline" title="add Bibliographie"/>
 
-                                        <fx-insert  context="msContents/msItem/listBibl[@type='previousEditions']"
-                                                    ref="bibl"
-                                                    origin="instance('mspart')//listBibl[@type='previousEditions']/bibl"/>
+                                        <fx-insert context="msContents/msItem/listBibl[@type='previousEditions']"
+                                                   ref="bibl"
+                                                   origin="instance('mspart')//listBibl[@type='previousEditions']/bibl"/>
                                     </fx-trigger>
                                 </legend>
                                 <fx-repeat class="nested-repeat" id="bib"
@@ -459,9 +473,9 @@
                                     <fx-trigger class="add">
                                         <iron-icon icon="add-circle-outline" title="add image"/>
 
-                                        <fx-insert  context="msContents/msItem/listBibl[@type='images']"
-                                                    ref="bibl"
-                                                    origin="instance('mspart')//listBibl[@type='images']/bibl"/>
+                                        <fx-insert context="msContents/msItem/listBibl[@type='images']"
+                                                   ref="bibl"
+                                                   origin="instance('mspart')//listBibl[@type='images']/bibl"/>
                                     </fx-trigger>
                                 </legend>
                                 <fx-repeat class="nested-repeat" id="bib"
@@ -493,13 +507,23 @@
                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
                             <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="blur">
                                 <label>Apparatus</label>
-                                <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
+                                <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap"
+                                                 namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
-                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
+                                        <button data-command="selectElement"
+                                                title="Select element around current cursor position">&lt;|>
+                                        </button>
                                         <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
-                                        <button data-command="snippet" data-params="&lt;listApp>$|_|&lt;/listApp>" title="Insert apparatus list">&lt;listApp&gt;</button>
-                                        <button data-command="snippet" data-params='&lt;app loc="$|1|">&lt;note>$|_|&lt;/note>&lt;/app>' title="Insert apparatus entry">&lt;app&gt;</button>
+                                        <button data-command="removeEnclosing" title="Remove enclosing tags"
+                                                class="sep">&lt;X>
+                                        </button>
+                                        <button data-command="snippet" data-params="&lt;listApp>$|_|&lt;/listApp>"
+                                                title="Insert apparatus list">&lt;listApp&gt;
+                                        </button>
+                                        <button data-command="snippet"
+                                                data-params='&lt;app loc="$|1|">&lt;note>$|_|&lt;/note>&lt;/app>'
+                                                title="Insert apparatus entry">&lt;app&gt;
+                                        </button>
                                     </div>
                                 </jinn-xml-editor>
                             </fx-control>
@@ -510,28 +534,36 @@
                             </fx-replace-->
 
                             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-<!--
-                            <fx-control class="translation" ref="div[@type='translation']" as="node" update-event="update">
-                                <label>Übersetzung</label>
-                                <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
-                                    <div slot="toolbar">
-                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
-                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
-                                        <button data-command="snippet" data-params="&lt;p>$|_|&lt;/p>" title="Insert paragraph">&lt;p&gt;</button>
-                                    </div>
-                                </jinn-xml-editor>
-                            </fx-control>
--->
+                            <!--
+                                                        <fx-control class="translation" ref="div[@type='translation']" as="node" update-event="update">
+                                                            <label>Übersetzung</label>
+                                                            <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
+                                                                <div slot="toolbar">
+                                                                    <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
+                                                                    <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                                    <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
+                                                                    <button data-command="snippet" data-params="&lt;p>$|_|&lt;/p>" title="Insert paragraph">&lt;p&gt;</button>
+                                                                </div>
+                                                            </jinn-xml-editor>
+                                                        </fx-control>
+                            -->
 
-                            <fx-control class="translation" ref="div[@type='translation']" as="node" update-event="blur">
+                            <fx-control class="translation" ref="div[@type='translation']" as="node"
+                                        update-event="blur">
                                 <label>Übersetzung</label>
-                                <jinn-xml-editor id="translation" unwrap="unwrap" class="widget" namespace="http://www.tei-c.org/ns/1.0">
+                                <jinn-xml-editor id="translation" unwrap="unwrap" class="widget"
+                                                 namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
-                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                                        <button data-command="selectElement"
+                                                title="Select element around current cursor position">&lt;|&gt;
+                                        </button>
                                         <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                        <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;</button>
+                                        <button data-command="removeEnclosing" title="Remove enclosing tags"
+                                                class="sep">&lt;X&gt;
+                                        </button>
+                                        <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;"
+                                                title="Insert paragraph">&lt;p&gt;
+                                        </button>
                                     </div>
                                 </jinn-xml-editor>
                             </fx-control>
@@ -543,32 +575,28 @@
                             </fx-replace-->
 
 
-
-
                         </fx-group>
                     </fieldset>
-<!--
-                            <div class="repeat-caption">
-                                <label>Edition</label>
-                                <fx-trigger class="add">
-                                    <iron-icon icon="add-circle-outline" title="add Bibliographie"/>
+                    <!--
+                                                <div class="repeat-caption">
+                                                    <label>Edition</label>
+                                                    <fx-trigger class="add">
+                                                        <iron-icon icon="add-circle-outline" title="add Bibliographie"/>
 
-                                </fx-trigger>
-                            </div>
--->
+                                                    </fx-trigger>
+                                                </div>
+                    -->
 
-                        <!--                    </div>-->
-
-
-                        <fx-trigger class="delete {if(count(./preceding-sibling::msPart) = 0) then 'hidden' else ''}">
-                            <button>Löschen</button>
-                            <!--                        <fx-confirm message="really delete?">-->
-                            <fx-delete ref="."></fx-delete>
-                            <!--                        </fx-confirm>-->
-                            <!--                            <fx-delete ref="."></fx-delete>-->
-                        </fx-trigger>
+                    <!--                    </div>-->
 
 
+                    <fx-trigger class="delete {if(count(./preceding-sibling::msPart) = 0) then 'hidden' else ''}">
+                        <button>Löschen</button>
+                        <!--                        <fx-confirm message="really delete?">-->
+                        <fx-delete ref="."></fx-delete>
+                        <!--                        </fx-confirm>-->
+                        <!--                            <fx-delete ref="."></fx-delete>-->
+                    </fx-trigger>
 
 
                 </template>
@@ -610,36 +638,44 @@
                 </fx-action>
             </fx-trigger>
 
-<!--
-            <fx-group class="group-10">
-                <fx-control class="commentary"
-                            ref="instance('default')//body/div[@type='commentary']" as="node" update-event="update">
-                    <label>Kommentar</label>
-                    <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
-                        <div slot="toolbar">
-                            <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
-                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                            <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
-                            <button data-command="snippet" data-params="&lt;p>$|_|&lt;/p>" title="Insert paragraph">&lt;p&gt;</button>
-                        </div>
-                    </jinn-xml-editor>
-                </fx-control>
-            </fx-group>
--->
+            <!--
+                        <fx-group class="group-10">
+                            <fx-control class="commentary"
+                                        ref="instance('default')//body/div[@type='commentary']" as="node" update-event="update">
+                                <label>Kommentar</label>
+                                <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
+                                    <div slot="toolbar">
+                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
+                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
+                                        <button data-command="snippet" data-params="&lt;p>$|_|&lt;/p>" title="Insert paragraph">&lt;p&gt;</button>
+                                    </div>
+                                </jinn-xml-editor>
+                            </fx-control>
+                        </fx-group>
+            -->
 
             <!--
             This won't call the update-cycle for each event as the replace action in its current form does not
             call it. The control will refresh the UI when the control looses focus (onblur).
             -->
             <fx-group class="group-10">
-                <fx-control class="commentary" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="blur">
+                <fx-control class="commentary" ref="instance('default')//body/div[@type='commentary']" as="node"
+                            update-event="blur">
                     <label>Kommentar</label>
-                    <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
+                    <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap"
+                                     namespace="http://www.tei-c.org/ns/1.0">
                         <div slot="toolbar">
-                            <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                            <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                            <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;</button>
+                            <button data-command="selectElement" title="Select element around current cursor position">
+                                &lt;|&gt;
+                            </button>
+                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;
+                            </button>
+                            <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
+                            </button>
+                            <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;"
+                                    title="Insert paragraph">&lt;p&gt;
+                            </button>
                         </div>
                     </jinn-xml-editor>
                 </fx-control>
