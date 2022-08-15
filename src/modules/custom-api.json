@@ -198,40 +198,32 @@
                 }
             }
     	},
+        "/api/places-list": {
+    		"get" : {
+                "summary": "show places list",
+                "operationId": "api:places-list",   
+                "responses": {
+                    "200": {
+                        "description": "places list",
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                }
+                            }
+                        }
+                    }
+                }
+    		}
+        },
         "/api/places": {
     		"get" : {
                 "summary": "show places",
-                "operationId": "api:places-list",
-                "parameters": [
-                    {
-                        "name": "category",
-                        "in": "query",
-                        "schema": {
-                            "type": "string",
-                            "example": "A"
-                        }
-                    },
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "schema": {
-                            "type": "integer",
-                            "default": 1
-                        }
-                    },
-                    {
-                        "name": "search",
-                        "in": "query",
-                        "schema":{
-                            "type": "string"
-                        }
-                    }
-                ],    
+                "operationId": "api:places-list",   
                 "responses": {
                     "200": {
                         "description": "places-list",
                         "content": {
-                            "application/json": {
+                            "application/xml": {
                                 "schema": {
                                 }
                             }
