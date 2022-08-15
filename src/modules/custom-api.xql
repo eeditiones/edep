@@ -78,53 +78,27 @@ declare function api:material($request as map(*)) {
 
 declare function api:places-list($request as map(*)) {
     let $return := if (not($request?parameters?id)) then
-        let $search := normalize-space($request?parameters?search)
-        let $letterParam := $request?parameters?category
-        let $limit := $request?parameters?limit
-        let $places :=
-            if ($search and $search != '') then
-                collection($config:places)/tei:place/tei:placeName[@type="findspot"][matches(@n, "^" || $search, "i")]/text()
-            else
-                collection($config:places)/tei:place/tei:placeName[@type="findspot"]/text()
-        let $sorted := sort($places, "?lang=de-DE", function($place) { lower-case($place/@n) })
-        let $letter := 
-            if (count($places) < $limit) then 
-                "Alle"
-            else if ($letterParam = '') then
-                substring($sorted[1], 1, 1) => upper-case()
-            else
-                $letterParam
-        let $byLetter :=
-            if ($letter = 'Alle') then
-                $sorted
-            else
-                filter($sorted, function($entry) {
-                    starts-with(lower-case($entry/@n), lower-case($letter))
-                })
-        return
-            map {
-                "items": api:output-place($byLetter),
-                "categories":
-                    if (count($places) < $limit) then
-                        []
-                    else array {
-                        for $index in 1 to string-length('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-                            let $alpha := substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ', $index, 1)
-                            let $hits := count(filter($sorted, function($entry) { starts-with(lower-case($entry/@n), lower-case($alpha))}))
-                            where $hits > 0
-                            return
-                                map {
-                                    "category": $alpha,
-                                    "count": $hits
-                                },
-                                map {
-                                    "category": "Alle",
-                                    "count": count($sorted)
-                                }
-                    }
-            }
-    else 
-        doc(concat($config:places, $request?parameters?id, ".xml"))
+        let $place := for $place in collection($config:places)//@xml:id/string()
+            return 
+            <td>
+                <tr><a href="geodata.html?id={$place}">{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="findspot"]/string()}</a></tr>
+                <tr>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="modern"]/string()} &#160; &#160; &#160;
+                {doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="ancient"]/string()}</tr>
+            </td>
+
+        let $places := for $spot in collection($config:places)/tei:place/tei:placeName[@type="findspot"]/string()
+            return upper-case(substring(replace($spot, '\{', ''), 1,1))
+
+        let $catagory :=  for $value in distinct-values($places)
+            let $count := count($places[. eq $value])
+            order by $count descending
+            return map { "category" : $value, "count" : $count }
+
+        return map {"items" : $place,
+                    "categories" : ""}
+        else 
+            doc(concat($config:places, $request?parameters?id, ".xml"))
+
     return try {
         $return
     } catch * {
