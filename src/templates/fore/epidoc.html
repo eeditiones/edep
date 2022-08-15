@@ -483,7 +483,7 @@
                         </fieldset>
 
                         <fx-group class="group-10">
-                            <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="update">
+                            <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="blur">
                                 <label>Transkription</label>
                                 <jinn-epidoc-editor schema="resources/scripts/epidoc.json"
                                                     class="widget"></jinn-epidoc-editor>
@@ -491,7 +491,7 @@
 
 
                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
-                            <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="update">
+                            <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="blur">
                                 <label>Apparatus</label>
                                 <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
@@ -524,7 +524,7 @@
                             </fx-control>
 -->
 
-                            <fx-control class="translation" ref="div[@type='translation']" as="node" update-event="update">
+                            <fx-control class="translation" ref="div[@type='translation']" as="node" update-event="blur">
                                 <label>Übersetzung</label>
                                 <jinn-xml-editor id="translation" unwrap="unwrap" class="widget" namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
@@ -632,7 +632,7 @@
             call it. The control will refresh the UI when the control looses focus (onblur).
             -->
             <fx-group class="group-10">
-                <fx-control class="commentary" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="update">
+                <fx-control class="commentary" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="blur">
                     <label>Kommentar</label>
                     <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
                         <div slot="toolbar">
