@@ -89,6 +89,7 @@
             </fx-instance>
             <fx-instance id="province" src="data/province.json" type="json">{}</fx-instance>
             <fx-instance id="country" src="data/country.json" type="json">{}</fx-instance>
+            <fx-instance id="places-list-instance" src="api/places-list" type="html"><data></data></fx-instance>
 
             <fx-submission id="s-save" method="post" url="api/places/id={instance('query')/id" replace="none">
                 <fx-message event="submit-done">Ort wurde gespeichert</fx-message>
@@ -108,9 +109,8 @@
                     <fx-toggle case="record"></fx-toggle>
                 </fx-trigger>
 
-                <div id="places-list" class="case-content" >
-                    <object data="api/places-list" style="width: 100%;height: 100%;"></object>
-<!--                    <pb-split-list url="api/places"></pb-split-list> -->
+                <div id="places" class="case-content" >
+                    <fx-output  ref="instance('places-list-instance')//*:body" mediatype="html"></fx-output>
                 </div>
 
             </fx-case>
