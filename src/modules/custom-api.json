@@ -198,6 +198,23 @@
                 }
             }
     	},
+        "/api/places-list": {
+    		"get" : {
+                "summary": "show places list",
+                "operationId": "api:places-list",   
+                "responses": {
+                    "200": {
+                        "description": "places list",
+                        "content": {
+                            "text/html": {
+                                "schema": {
+                                }
+                            }
+                        }
+                    }
+                }
+    		}
+        },
         "/api/places": {
     		"get" : {
                 "summary": "show places",
@@ -206,7 +223,7 @@
                     "200": {
                         "description": "places-list",
                         "content": {
-                            "text/html": {
+                            "application/xml": {
                                 "schema": {
                                 }
                             }

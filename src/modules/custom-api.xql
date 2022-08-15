@@ -81,9 +81,10 @@ declare function api:places-list($request as map(*)) {
         let $places := for $place in collection($config:places)//@xml:id/string()
             return 
             <tr>
-                <td><a href="geodata.html?id={$place}">{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="findspot"]/string()}</a></td>
+                <td><a href="../geodata.html?id={$place}">{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="findspot"]/string()}</a></td>
                 <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="modern"]/string()}</td>
                 <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="ancient"]/string()}</td>
+             
             </tr>
         return <table> {$places} </table>
         else 
