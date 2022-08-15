@@ -414,3 +414,36 @@ jinn-codemirror {
 input:focus, select:focus, textarea:focus{
     background: lightyellow;
 }
+
+
+#places-list {
+    border-collapse: collapse;
+    width: 280%;
+}
+
+#places-list td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#places-list tbody tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+#places-list tbody tr:hover {
+    background-color: #ddd;
+}
+
+#places-list th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+
+#places-list thead{
+    background-color: #35424b;
+    color: #F0F0F0;
+}
