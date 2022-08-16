@@ -50,8 +50,8 @@
                                 Im Content - falls exakte Datierung unmöglich; schließt die anderen Attribute aus
                                 @datingMethod - fixes Attribut, hier immer Julianisch
                             -->
-                            <origDate when-custom="0205" notBefore-custom="0204" notAfter-custom="0206"
-                                      datingMethod="http://en.wikipedia.org/wiki/Julian_calendar">Freitextangabe</origDate>
+                            <origDate when-custom="" notBefore-custom="" notAfter-custom=""
+                                      datingMethod="http://en.wikipedia.org/wiki/Julian_calendar"></origDate>
                         </origin>
                     </history>
                     <!-- msPart ist als Ganzes wiederholbar -->
@@ -222,11 +222,9 @@
                 <div type="textpart" subtype="fragment" n="a" corresp=""></div>
             </div>
             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
-            <div type="apparatus" corresp="">
-            </div>
+            <div type="apparatus" corresp=""></div>
             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-            <div type="translation" corresp="" resp="">
-            </div>
+            <div type="translation" corresp="" resp=""></div>
             <!-- 37) Kommentar: freier Inhalt. Nur einmal pro Dokument - eingefügt aus jinn-codemirror -->
             <div type="commentary"></div>
         </body>

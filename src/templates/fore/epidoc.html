@@ -194,10 +194,6 @@
                     <label>EDE-p-Id</label>
                 </fx-control>
 
-                <!-- 4) -->
-                <fx-control ref=".//msPart[1]/msIdentifier/idno">
-                    <label>TM-Nummer</label>
-                </fx-control>
             </fx-group>
 
             <fx-repeat id="parts" ref=".//msPart">
@@ -206,6 +202,10 @@
                     <fieldset>
                         <legend>Fragment {count(./preceding-sibling::msPart) + 1}</legend>
                         <fx-group class="group-2">
+                            <!-- 4) -->
+                            <fx-control ref="msIdentifier/idno">
+                                <label>TM-Nummer</label>
+                            </fx-control>
                             <!-- geoId from geodata -->
                             <fx-control ref="history/origin/origPlace/@corresp">
                                 <label>GeoId</label>
@@ -251,18 +251,22 @@
                             </fx-control>
 
                             <!-- 11) -->
-                            <fx-control ref="history/provenance/@when">
-                                <label>Fundjahr/-datum (Zeitpunkt)</label>
-                            </fx-control>
-                            <fx-control ref="history/provenance/@notBefore">
-                                <label>nach</label>
-                            </fx-control>
-                            <fx-control ref="history/provenance/@notAfter">
-                                <label>vor</label>
-                            </fx-control>
-                            <fx-control ref="history/provenance/@when-custom">
-                                <label>freie Angabe</label>
-                            </fx-control>
+                            <div class="block">
+                                <h3>Fundjahr/-datum</h3>
+                                <fx-control ref="history/provenance/@when">
+                                    <label>Zeitpunkt</label>
+                                    <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
+                                </fx-control>
+                                <fx-control ref="history/provenance/@notBefore">
+                                    <label>nach</label>
+                                </fx-control>
+                                <fx-control ref="history/provenance/@notAfter">
+                                    <label>vor</label>
+                                </fx-control>
+                                <fx-control ref="history/provenance/@when-custom">
+                                    <label>freie Angabe</label>
+                                </fx-control>
+                            </div>
 
                             <!-- 12a) -->
                             <fx-control ref="msIdentifier/repository">
@@ -498,7 +502,7 @@
 
                         <fx-group class="group-10">
                             <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="blur">
-                                <label>Transkription</label>
+                                <h3>Transkription</h3>
                                 <jinn-epidoc-editor schema="resources/scripts/epidoc.json"
                                                     class="widget"></jinn-epidoc-editor>
                             </fx-control>
@@ -506,7 +510,7 @@
 
                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
                             <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="blur">
-                                <label>Apparatus</label>
+                                <h3>Apparatus</h3>
                                 <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap"
                                                  namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
@@ -550,7 +554,7 @@
 
                             <fx-control class="translation" ref="div[@type='translation']" as="node"
                                         update-event="blur">
-                                <label>Übersetzung</label>
+                                <h3>Übersetzung</h3>
                                 <jinn-xml-editor id="translation" unwrap="unwrap" class="widget"
                                                  namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
@@ -662,7 +666,7 @@
             <fx-group class="group-10">
                 <fx-control class="commentary" ref="instance('default')//body/div[@type='commentary']" as="node"
                             update-event="blur">
-                    <label>Kommentar</label>
+                    <h3>Kommentar</h3>
                     <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap"
                                      namespace="http://www.tei-c.org/ns/1.0">
                         <div slot="toolbar">
@@ -690,9 +694,9 @@
             <!-- 26) -->
             <fx-group ref="//msDesc" class="group-6">
                 <!-- 26), 27)-->
-
                 <fx-control ref="history/origin/origDate/@when-custom">
-                    <label>Datierung</label>
+                    <label>Zeitpunkt</label>
+                    <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
                 </fx-control>
                 <fx-control ref="history/origin/origDate/@notBefore-custom">
                     <label>nach</label>
@@ -700,8 +704,8 @@
                 <fx-control ref="history/origin/origDate/@notAfter-custom">
                     <label>vor</label>
                 </fx-control>
-                <fx-control ref="history/origin/origDate/@when-custom">
-                    <label>custom</label>
+                <fx-control ref="history/origin/origDate">
+                    <label>Freie Angabe</label>
                 </fx-control>
             </fx-group>
 

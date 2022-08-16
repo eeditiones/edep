@@ -181,6 +181,16 @@ button{
     padding: 0.5rem 1rem;
 }
 
+.block {
+    border-top: 1px solid #607D8B;
+    border-bottom: 1px solid #607D8B;
+    margin: 1rem 0;
+}
+
+.block h3 {
+    margin-left: 310px;
+}
+
 .group-1{
     background:var(--group-1-bg);
 }
