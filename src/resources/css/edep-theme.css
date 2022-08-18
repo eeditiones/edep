@@ -405,20 +405,20 @@ jinn-codemirror {
 .hidden {
     display: none;
 }
-[slot=toolbar] {
+jinn-xml-editor [slot], jinn-epidoc-editor [slot] {
     display: flex;
     column-gap: 4px;
     width: 100%;
 }
-[slot=toolbar] * {
+jinn-epidoc-editor [slot] *, jinn-xml-editor [slot] *, jinn-epidoc-editor::part(button) {
     font-size: .85rem;
     border: 1px solid transparent;
     background-color: inherit;
 }
-[slot=toolbar] *:hover {
+jinn-xml-editor [slot] *:hover, jinn-epidoc-editor [slot] *:hover, jinn-epidoc-editor::part(button):hover {
     border: 1px solid orange;
 }
-[slot=toolbar] .sep {
+jinn-xml-editor [slot] .sep, jinn-epidoc-editor [slot] .sep {
     border-right: 1px solid #e0e0e0;
 }
 input:focus, select:focus, textarea:focus{

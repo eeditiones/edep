@@ -356,6 +356,12 @@
                             </fx-control>
                             <!--                        </fx-group>-->
 
+                            <fx-group class="group-9">
+                                <!-- 34) -->
+                                <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref">
+                                    <label>Paläographie</label>
+                                </fx-control>
+                            </fx-group>
                         </fx-group>
                         <fx-group class="group-4">
                             <label>Inschriftfeld</label>
@@ -503,8 +509,38 @@
                         <fx-group class="group-10">
                             <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="blur">
                                 <h3>Transkription</h3>
-                                <jinn-epidoc-editor schema="resources/scripts/epidoc.json"
-                                                    class="widget"></jinn-epidoc-editor>
+                                <jinn-epidoc-editor schema="resources/scripts/epidoc.json" unwrap="unwrap" class="widget">
+                                    <div slot="leiden-toolbar">
+                                        <button data-command="expan" data-mode="leiden_plus">(a(bcd))</button>
+                                        <button data-command="erasure" data-mode="leiden_plus">〚abc〛</button>
+                                        <button data-command="unclear" data-mode="leiden_plus">ạ</button>
+                                        <button data-command="div" data-mode="leiden_plus">&lt;=...</button>
+                                        <button data-command="part" data-mode="leiden_plus">&lt;D=.A.part...</button>
+                                        <button data-command="recto" data-mode="leiden_plus">&lt;D=.r...</button>
+                                        <button data-command="verso" data-mode="leiden_plus">&lt;D=.v...</button>
+                                        <button data-command="erasure" data-mode="edcs">〚abc〛</button>
+                                        <button data-command="gap" data-mode="edcs">[...]</button>
+                                        <button data-command="convert" data-mode="edcs">Leiden+</button>
+                                    </div>
+                                    <div slot="xml-toolbar">
+                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
+                                        <button data-command="snippet" data-params='&lt;ab&gt;$|_|&lt;/ab&gt;'
+                                            title="Insert ab">&lt;ab&gt;
+                                        </button>
+                                        <button data-command="snippet" data-params='&lt;supplied reason="lost"&gt;$|_|&lt;/supplied&gt;'
+                                            title="Insert supplied">&lt;supplied&gt;
+                                        </button>
+                                        <button data-command="snippet" data-params='&lt;expan&gt;&lt;abbr&gt;$|1|&lt;/abbr&gt;&lt;ex&gt;$|2|&lt;/ex&gt;&lt;/expan&gt;$|3|'
+                                            title="Insert expan/abbr">&lt;expan&gt;
+                                        </button>
+                                        <button data-command="snippet" data-params='&lt;gap reason="lost" extent="unknown" unit="character"/&gt;$|1|'
+                                            title="Gap extent unknown">&lt;gap/unknown&gt;</button>
+                                        <button data-command="snippet" data-params='&lt;gap reason="lost" quantity="$|1|" unit="$|2:line|"/&gt;$|3|'
+                                            title="Gap extent known">&lt;gap&gt;</button>
+                                    </div>
+                                </jinn-epidoc-editor>
                             </fx-control>
 
 
@@ -746,13 +782,6 @@
                         <option value="draft">intern</option>
                         <option value="public">öffentlich</option>
                     </select>
-                </fx-control>
-            </fx-group>
-
-            <fx-group class="group-9">
-                <!-- 34) -->
-                <fx-control ref="//layoutDesc/layout/rs[type='palaeography']/@ref">
-                    <label>Paläographie</label>
                 </fx-control>
             </fx-group>
 
