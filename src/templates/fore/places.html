@@ -93,7 +93,7 @@
             <fx-instance id="places-list-instance" src="api/places-list" type="html"><data></data></fx-instance>
             <fx-instance id="login" type="json">{}</fx-instance>
 
-            <fx-submission id="s-save" method="post" url="api/places/{instance('query')/id" replace="none">
+            <fx-submission id="s-save" method="post" url="api/places/{instance('query')/id}" replace="instance">
                 <fx-message event="submit-done">Ort wurde gespeichert</fx-message>
             </fx-submission>
             <fx-submission id="s-load" method="get" url="api/places/{instance('query')/id}" replace="instance">
@@ -124,7 +124,7 @@
                     <fx-send submission="s-reset"></fx-send>
                     <fx-toggle case="list"></fx-toggle>
                 </fx-trigger>
-
+                <fx-output  ref="/place/@xml:id"></fx-output>
                 <fieldset class="case-content">
                     <legend>Place</legend>
 <!--                <fx-group>-->

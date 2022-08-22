@@ -121,17 +121,24 @@ declare function api:output-place($list) {
 };
 
 declare function api:places-add($request as map(*)) {
-    let $return := if ($request?parameters?id and not(empty($request?body//@xml:id))) then
-            xmldb:store($config:places, concat($request?parameters?id, ".xml"), $request?body)
+    let $id := if ($request?parameters?id and not(empty($request?body//@xml:id))) then
+            let $store := xmldb:store($config:places, concat($request?parameters?id, ".xml"), $request?body)
+            return $request?body//@xml:id
+
+        else if ($request?body//@xml:id) then
+            let $id := $request?body//@xml:id
+            let $store  := xmldb:store($config:places, concat($id, ".xml"), $request?body)
+            return $id
         else
             let $ids := sort(collection($config:places)//@xml:id/string())
             let $id-new := if (empty($ids)) then "000000" else format-number(xs:integer(replace($ids[last()], "G", "")) + 1, "000000")
             let $store := xmldb:store($config:places, concat("G", $id-new, ".xml"), $request?body)
             let $update := update insert attribute xml:id {concat("G", $id-new)} into doc(concat($config:places, "G", $id-new, ".xml"))/tei:place
-            return $ids   
+            return concat("G",$id-new)
+             
 
     return try {
-        $return
+        doc(concat($config:places, $id, ".xml"))
     } catch * {
         ()
     }
