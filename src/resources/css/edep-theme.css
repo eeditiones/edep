@@ -425,10 +425,14 @@ input:focus, select:focus, textarea:focus{
     background: lightyellow;
 }
 
+.selected-case fx-output {
+    display: block !important;
+}
 
 #places-list {
     border-collapse: collapse;
-    width: 280%;
+    width: 100%;
+    margin-top: 4rem;
 }
 
 #places-list td, #customers th {

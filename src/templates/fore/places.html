@@ -78,26 +78,31 @@
 <div class="wrapper">
     <h1>Places</h1>
     <fx-fore id="places">
+        <fx-send event="ready" submission="s-login"/>
         <fx-action event="ready" if="exists(instance('query')/id)">
             <fx-send submission="s-load"></fx-send>
         </fx-action>
 
         <fx-model>
             <fx-instance src="templates/fore/place-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
-            <fx-instance src="#querystring" id="query">
+            <fx-instance id="query" src="#querystring">
                 <data></data>
             </fx-instance>
             <fx-instance id="province" src="data/province.json" type="json">{}</fx-instance>
             <fx-instance id="country" src="data/country.json" type="json">{}</fx-instance>
             <fx-instance id="places-list-instance" src="api/places-list" type="html"><data></data></fx-instance>
+            <fx-instance id="login" type="json">{}</fx-instance>
 
-            <fx-submission id="s-save" method="post" url="api/places/id={instance('query')/id" replace="none">
+            <fx-submission id="s-save" method="post" url="api/places/{instance('query')/id" replace="none">
                 <fx-message event="submit-done">Ort wurde gespeichert</fx-message>
             </fx-submission>
             <fx-submission id="s-load" method="get" url="api/places/{instance('query')/id}" replace="instance">
                 <fx-toggle case="record" event="submit-done"></fx-toggle>
             </fx-submission>
             <fx-submission id="s-reset" url="templates/fore/place-tmpl.xml"  replace="instance">
+            </fx-submission>
+            <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance" instance="login" validate="false">
+                <fx-message event="submit-error">Please login to edit.</fx-message>
             </fx-submission>
         </fx-model>
 
@@ -108,16 +113,14 @@
                     <iron-icon icon="add" title="add edition"/>
                     <fx-toggle case="record"></fx-toggle>
                 </fx-trigger>
-
                 <div id="places" class="case-content" >
                     <fx-output  ref="instance('places-list-instance')//*:body" mediatype="html"></fx-output>
                 </div>
-
             </fx-case>
 
             <fx-case id="record">
                 <fx-trigger class="toggle-view close">
-                    <a href="geodata.html"><iron-icon icon="close"></iron-icon></a>                    
+                    <a href="geodata.html"><iron-icon icon="close"></iron-icon></a>
                     <fx-send submission="s-reset"></fx-send>
                     <fx-toggle case="list"></fx-toggle>
                 </fx-trigger>
