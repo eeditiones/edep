@@ -32,6 +32,11 @@ main {
         flex-direction: row;
     }
 }
+
+.isRequiredFalse .widget{
+    background: lightcoral;
+}
+
 fx-case{
     display:none;
 }
