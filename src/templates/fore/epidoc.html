@@ -135,7 +135,8 @@
             <fx-submission id="s-load-inscription"
                            url="api/inscription?id={instance('params')/id}"
                            method="get"
-                           replace="instance">
+                           replace="instance"
+                           validate="false">
                 <fx-message event="submit-error">Failed to load Inscription</fx-message>
             </fx-submission>
 
