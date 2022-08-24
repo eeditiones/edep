@@ -1,5 +1,5 @@
 {
-    "name": "TEI Publisher App Development Container",
+    "name": "EDEp App Development Container",
     "build": {
         "dockerfile": "Dockerfile.dev",
         "args": {
