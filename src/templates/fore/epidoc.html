@@ -74,11 +74,14 @@
 <body>
 <div class="wrapper">
     <fx-fore>
-        <fx-send event="ready" submission="s-login"/>
+        <fx-send submission="s-login" event="pb-login" target="#document"></fx-send>
+
         <!-- ### if get called with an id param we load the data via submission ### -->
         <fx-send submission="s-load-inscription" event="ready" if="exists(instance('params')/id)" delay="500"></fx-send>
 
         <fx-model>
+            <fx-send event="model-construct-done" submission="s-login"/>
+
             <fx-instance id="default" src="api/inscription"
                          xpath-default-namespace="http://www.tei-c.org/ns/1.0">
 
@@ -112,9 +115,12 @@
                     <parent></parent>
                     <uuid></uuid>
                     <geoid></geoid>
+                    <loggedin>hidden</loggedin>
                 </data>
             </fx-instance>
             <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
+            <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
+
 
             <fx-instance id="tmp">
                 <data>
@@ -178,9 +184,13 @@
             <fx-instance id="login" type="json">{}</fx-instance>
             <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance" instance="login" validate="false">
                 <fx-message event="submit-error">Please login to edit.</fx-message>
+                <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
+                <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
             </fx-submission>
 
         </fx-model>
+
+        <div class="login-hint {instance('vars')/loggedin}">Bitte loggen Sie sich ein, um zu editieren.</div>
 
         <fx-group ref="teiHeader">
             <h1>EDEp Editor</h1>
@@ -796,7 +806,7 @@
             <!-- 45) -->
 
 
-            <fx-trigger class="saveBtn">
+            <fx-trigger class="saveBtn" ref="instance('vars')/loggedin">
                 <button>Speichern</button>
                 <fx-send submission="s-create" if="not(exists(instance('params')/id))"></fx-send>
                 <fx-send submission="s-save" if="exists(instance('params')/id)"></fx-send>

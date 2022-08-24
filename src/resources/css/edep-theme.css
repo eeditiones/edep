@@ -316,6 +316,12 @@ fx-repeatitem{
 fx-inspector[open]{
     width: 50%;
 }
+.login-hint.true{
+    display:none;
+}
+.login-hint.false{
+    display:block;
+}
 
 .nested-repeat fx-repeatitem{
     display: grid;
