@@ -161,7 +161,7 @@
             <fx-submission id="s-save"
                            url="api/inscription?id={instance('params')/id}"
                            method="post"
-                           replace="none">
+                           replace="instance">
                 <fx-message event="submit-done">Daten wurden aktualisiert</fx-message>
                 <fx-action event="submit-error">
                     <fx-message>Daten konnten nicht gespeichert werden.</fx-message>
@@ -170,11 +170,15 @@
             </fx-submission>
 
             <!-- todo:            -->
+            <fx-instance id="geodata"  xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                <data></data>
+            </fx-instance>
             <fx-submission id="s-load-geodata"
-                           url="api/places?id={instance()//history/origin/origPlace/@corresp}"
-                           method="get"
-                           replace="instance">
-
+                            url="api/places/{instance()//origPlace/@corresp}"
+                            method="get"
+                            replace="instance"
+                            instance="geodata"
+                            validate="false">
             </fx-submission>
 
             <fx-function signature="gen-id() as xs:string" type="text/javascript">
@@ -226,32 +230,32 @@
                             </fx-control>
 
                             <!-- 5) -->
-                            <fx-output ref="history/origin/origPlace/placeName[@type='province']">
+                            <fx-output ref="instance('geodata')/region[@type='province']">
                                 <label slot="label">Provinz/augusteische Region</label>
                             </fx-output>
 
                             <!-- 6) -->
-                            <fx-output ref="history/provenance/placeName[@type='country']">
+                            <fx-output ref="instance('geodata')/country">
                                 <label slot="label">Land</label>
                             </fx-output>
 
                             <!-- 7) -->
-                            <fx-output ref="history/history/provenance/placeName[@type='region']">
+                            <fx-output ref="instance('geodata')/region[@type='region']">
                                 <label slot="label">Region</label>
                             </fx-output>
 
                             <!-- 8) -->
-                            <fx-output ref="history/origin/origPlace/placeName[@type='ancient']">
+                            <fx-output ref="instance('geodata')/placeName[@type='ancient']">
                                 <label slot="label">Fundort (antik)</label>
                             </fx-output>
 
                             <!-- 9) -->
-                            <fx-output ref="history/provenance/placeName[@type='modern']">
+                            <fx-output ref="instance('geodata')/placeName[@type='modern']">
                                 <label slot="label">Fundort (modern)</label>
                             </fx-output>
 
                             <!-- 10a) -->
-                            <fx-output ref="history/provenance/placeName[@type='findspot']">
+                            <fx-output ref="instance('geodata')//placeName[@type='findspot']">
                                 <label slot="label">Fundstelle</label>
                             </fx-output>
 
