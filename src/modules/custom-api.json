@@ -216,21 +216,6 @@
     		}
         },
         "/api/places": {
-    		"get" : {
-                "summary": "show places",
-                "operationId": "api:places-list",   
-                "responses": {
-                    "200": {
-                        "description": "places-list",
-                        "content": {
-                            "application/xml": {
-                                "schema": {
-                                }
-                            }
-                        }
-                    }
-                }
-    		},
             "post" : {
                 "summary": "update/add places",
                 "x-constraints": {
