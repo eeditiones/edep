@@ -1,6 +1,6 @@
 {
   "name": "edep",
-  "version": "0.8",
+  "version": "0.8.1",
   "description": "Editionstools für eine digitale Epigraphik",
   "dependencies": {
     "@teipublisher/pb-components": "1.38.1",

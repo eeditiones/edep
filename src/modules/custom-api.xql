@@ -146,18 +146,27 @@ declare function api:places-add($request as map(*)) {
 
 declare function api:inscription($request as map(*)) {
     let $check-collection := if(not(xmldb:collection-available($config:inscription))) then xmldb:create-collection("/", $config:inscription) else ()
-    let $return := 
+    let $id := 
         if ($request?parameters?id) then
-            xmldb:store($config:inscription, concat($request?parameters?id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
+            let $store := xmldb:store($config:inscription, concat($request?parameters?id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
+            return $request?body//tei:idno[@type="EDEp"]/text()
+        else if ($request?body//tei:idno[@type="EDEp"]/node()) then
+            let $id := $request?body//tei:idno[@type="EDEp"]/text()
+            let $store := xmldb:store($config:inscription, concat($id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
+            return $request?body//tei:idno[@type="EDEp"]/text()
         else
             let $ids := sort(collection($config:inscription)//tei:idno[@type="EDEp"]/text())
             let $id-new := if (empty($ids)) then "0000001" else format-number(xs:integer(replace($ids[last()], "E", "")) + 1, "0000000")
             let $store := xmldb:store($config:inscription, concat("E", $id-new, ".xml"), api:postprocess($request?body, "E" || $id-new) => api:clean-namespace())
-            return
-                $store
+            return concat("E", $id-new)
 
     return try {
-        $return
+        let $preprocessing := map {
+            "parameters" : map {
+                    "id" : $id
+                }
+            }
+        return api:inscription-template($preprocessing)
     } catch * {
         ()
     }
