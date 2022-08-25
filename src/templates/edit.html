@@ -29,7 +29,16 @@
     <!--    <script type="module" src="resources/scripts/datalist-ajax/datalist-ajax.min.js"></script>-->
 
 
-
+<style>
+    .valid{
+        position:fixed;
+        bottom:0;
+        left:0;
+        padding:1rem;
+        background: red;
+        color:white;
+    }
+</style>
 </head>
 
 <body>
@@ -214,9 +223,16 @@
                             <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
                         </fx-submission>
 
+                        <fx-function signature="isValid() as xs:boolean" type="text/javascript">
+                            return form.getAttribute('valid') === 'true'
+                        </fx-function>
+
                     </fx-model>
 
                     <div class="login-hint {instance('vars')/loggedin}">Bitte loggen Sie sich ein, um zu editieren.</div>
+
+                    <div class="valid">editors valid: {isValid()}</div>
+
 
                     <fx-group ref="teiHeader">
                         <h1>EDEp Editor</h1>
@@ -581,10 +597,12 @@
                                                 </div>
                                             </jinn-epidoc-editor>
                                         </fx-control>
+<!--
                                         <fx-message event="invalid" target="transcriptionEditor">transcription invalid</fx-message>
                                         <fx-message event="valid" target="transcriptionEditor">transcription valid</fx-message>
                                         <fx-setvalue event="invalid" target="transcriptionEditor" ref="instance('vars')/transcription-valid">true</fx-setvalue>
                                         <fx-setvalue event="valid" target="transcriptionEditor" ref="instance('vars')/transcription-valid">false</fx-setvalue>
+-->
 
 
                                         <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
@@ -636,8 +654,10 @@
                                                 </div>
                                             </jinn-xml-editor>
                                         </fx-control>
+<!--
                                         <fx-setvalue event="invalid" target="translation" ref="instance('vars')/translation-valid">true</fx-setvalue>
                                         <fx-setvalue event="valid" target="translation" ref="instance('vars')/translation-valid">false</fx-setvalue>
+-->
                                     </fx-group>
                                 </fieldset>
                                 <!--
