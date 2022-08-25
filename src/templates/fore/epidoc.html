@@ -77,7 +77,7 @@
         <fx-send submission="s-login" event="pb-login" target="#document"></fx-send>
 
         <!-- ### if get called with an id param we load the data via submission ### -->
-        <fx-send submission="s-load-inscription" event="ready" if="exists(instance('params')/id)" delay="500"></fx-send>
+        <fx-send submission="s-load-inscription" event="ready" if="exists(instance('params')/id)"></fx-send>
 
         <fx-model>
             <fx-send event="model-construct-done" submission="s-login"/>
@@ -116,10 +116,14 @@
                     <uuid></uuid>
                     <geoid></geoid>
                     <loggedin>hidden</loggedin>
+                    <translation-valid>hidden</translation-valid>
+                    <transcription-valid>hidden</transcription-valid>
                 </data>
             </fx-instance>
             <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
             <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
+            <fx-bind ref="instance('vars')/translation-valid" relevant=".='true'"></fx-bind>
+            <fx-bind ref="instance('vars')/transcription-valid" relevant=".='true'"></fx-bind>
 
 
             <fx-instance id="tmp">
@@ -523,7 +527,7 @@
                         <fx-group class="group-10">
                             <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="blur">
                                 <h3>Transkription</h3>
-                                <jinn-epidoc-editor schema="resources/scripts/epidoc.json" unwrap="unwrap" class="widget">
+                                <jinn-epidoc-editor id="transcriptionEditor" schema="resources/scripts/epidoc.json" unwrap="unwrap" class="widget">
                                     <div slot="leiden-toolbar">
                                         <button data-command="expan" data-mode="leiden_plus">(a(bcd))</button>
                                         <button data-command="erasure" data-mode="leiden_plus">〚abc〛</button>
@@ -556,6 +560,10 @@
                                     </div>
                                 </jinn-epidoc-editor>
                             </fx-control>
+                            <fx-message event="invalid" target="transcriptionEditor">transcription invalid</fx-message>
+                            <fx-message event="valid" target="transcriptionEditor">transcription valid</fx-message>
+                            <fx-setvalue event="invalid" target="transcriptionEditor" ref="instance('vars')/transcription-valid">true</fx-setvalue>
+                            <fx-setvalue event="valid" target="transcriptionEditor" ref="instance('vars')/transcription-valid">false</fx-setvalue>
 
 
                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
@@ -588,20 +596,6 @@
                             </fx-replace-->
 
                             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-                            <!--
-                                                        <fx-control class="translation" ref="div[@type='translation']" as="node" update-event="update">
-                                                            <label>Übersetzung</label>
-                                                            <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
-                                                                <div slot="toolbar">
-                                                                    <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
-                                                                    <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                    <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X></button>
-                                                                    <button data-command="snippet" data-params="&lt;p>$|_|&lt;/p>" title="Insert paragraph">&lt;p&gt;</button>
-                                                                </div>
-                                                            </jinn-xml-editor>
-                                                        </fx-control>
-                            -->
-
                             <fx-control class="translation" ref="div[@type='translation']" as="node"
                                         update-event="blur">
                                 <h3>Übersetzung</h3>
@@ -621,14 +615,8 @@
                                     </div>
                                 </jinn-xml-editor>
                             </fx-control>
-
-                            <!--fx-replace ref="div[@type='translation']/*[1]"
-                                        with="parse(event('content'))"
-                                        target="translation"
-                                        event="update">
-                            </fx-replace-->
-
-
+                            <fx-setvalue event="invalid" target="translation" ref="instance('vars')/translation-valid">true</fx-setvalue>
+                            <fx-setvalue event="valid" target="translation" ref="instance('vars')/translation-valid">false</fx-setvalue>
                         </fx-group>
                     </fieldset>
                     <!--
@@ -808,7 +796,7 @@
             <!-- 47) -->
             <!-- 45) -->
 
-
+            <div class="{instance('vars')/translation-valid}">Übersetzung enthält Fehler!</div>
             <fx-trigger class="saveBtn" ref="instance('vars')/loggedin">
                 <button>Speichern</button>
                 <fx-send submission="s-create" if="not(exists(instance('params')/id))"></fx-send>
