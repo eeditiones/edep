@@ -12,3 +12,20 @@ function createUUID() {
     const uuid = s.join('');
     return 'F' + uuid;
 }
+
+const fore = document.querySelector('fx-fore');
+console.log('++++++++++++++++++++++++++++ Fore', fore);
+fore.addEventListener('ready', () => {
+    console.log('++++++++++++++++++++++++++++ Fore is ready');
+    const editors = [...fore.querySelectorAll('jinn-xml-editor')];
+    editors.forEach(editor =>{
+        editor.addEventListener('valid',()=>{
+            console.log('<<<<<<<<<<<<<<< valid');
+            fore.setAttribute('valid','true');
+        });
+        editor.addEventListener('invalid',()=>{
+            console.log('<<<<<<<<<<<<<<< invalid');
+            fore.setAttribute('valid','false');
+        });
+    });
+});
