@@ -227,11 +227,22 @@
                             return form.getAttribute('valid') === 'true'
                         </fx-function>
 
+                        <fx-function signature="editorsValid() as xs:boolean" type="text/javascript">
+                            const editors = form.querySelectorAll('jinn-xml-editor[valid="false"],jinn-codemirror[valid="false"]');
+                            console.log('+++ invalid editors', editors);
+                            if(editors.length !== 0){
+                            return false;
+                            }else{
+                            return true;
+                            }
+                        </fx-function>
+
                     </fx-model>
 
                     <div class="login-hint {instance('vars')/loggedin}">Bitte loggen Sie sich ein, um zu editieren.</div>
 
-                    <div class="valid">editors valid: {isValid()}</div>
+                    <div class="valid">isValid returned: {isValid()}</div>
+                    <div class="valid">editorsValid() returned: {editorsValid()}</div>
 
 
                     <fx-group ref="teiHeader">
