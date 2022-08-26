@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.stoa.org/epidoc/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <!-- Fehlende Felder da unklar: 34, 24 -->
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
@@ -50,14 +51,13 @@
                                 Im Content - falls exakte Datierung unmöglich; schließt die anderen Attribute aus
                                 @datingMethod - fixes Attribut, hier immer Julianisch
                             -->
-                            <origDate when-custom="" notBefore-custom="" notAfter-custom=""
-                                      datingMethod="http://en.wikipedia.org/wiki/Julian_calendar"></origDate>
+                            <origDate when-custom="" notBefore-custom="" notAfter-custom="" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar"></origDate>
                         </origin>
                     </history>
                     <!-- msPart ist als Ganzes wiederholbar -->
                     <!-- @xml:id erforderlich für Referenzierung unten -->
                     <msPart xml:id="">
-                        
+
                         <!--  ### end of runtime instance inlining -->
                         <msIdentifier>
                             <!-- 12a) Aufbewahrung -->
@@ -79,7 +79,7 @@
                                     <!-- Einträge wiederholbar -->
                                     <bibl>
                                         <!-- Zotero Referenz -->
-                                        <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6"/>
+                                        <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6" />
                                     </bibl>
                                 </listBibl>
 
@@ -122,7 +122,7 @@
                                             <width></width>
                                         </dimensions>
                                         <!-- 34) Paläographie: kontrolliertes Vokabular -->
-                                        <rs type="palaeography" ref="http://..."/>
+                                        <rs type="palaeography" ref="http://..." />
                                     </layout>
                                 </layoutDesc>
                             </objectDesc>
@@ -141,12 +141,7 @@
                             <origin>
                                 <!-- in @corresp wird die GeoID angegeben, andere Ortsangaben sind redundant und werden
                                     am Ende nur hinein kopiert - siehe Kommentare -->
-                                <origPlace  corresp="">
-                                    <!-- 5) Provinz / augusteische Region: kopiert aus Geodatenbank -->
-                                    <placeName type="province"></placeName>
-                                    <!-- 8) Fundort (antik): kopiert aus Geodatenbank -->
-                                    <placeName type="ancient" ref=""></placeName>
-                                </origPlace>
+                                <origPlace corresp="" />
                             </origin>
                             <!--
                                 11) Fundjahr (Attribute auf <provenance>)
@@ -156,16 +151,7 @@
                                 @notAfter - wie @when aber gemeint als "vor"
                                 @when-custom - falls exakte Datierung unmöglich; schließt die anderen Attribute aus
                             -->
-                            <provenance type="found" when="" when-custom="" notBefore=""
-                                        notAfter="">
-                                <!-- 6) Land: kopiert aus Geodatenbank -->
-                                <placeName type="country" ref=""></placeName>
-                                <!-- 9) Fundort (modern): kopiert aus Geodatenbank -->
-                                <placeName type="modern" ref=""></placeName>
-                                <!-- 10a) Fundstelle: kopiert aus Geodatenbank -->
-                                <placeName type="findspot"></placeName>
-                                <!-- 7) moderne Region: kopiert aus Geodatenbank -->
-                                <placeName type="region"></placeName>
+                            <provenance type="found" when="" when-custom="" notBefore="" notAfter="">
                                 <!-- 10b) Fundkontext: nicht kopiert, freie Eingabe -->
                                 <note type="context"></note>
                             </provenance>
@@ -184,15 +170,15 @@
                 <!-- Welche URI für lokale Klassifikation? -->
                 <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/religion">
                     <!-- 28) Religion - kontrolliertes Vokabular? -->
-                    <term ref=""/>
+                    <term ref="" />
                 </keywords>
                 <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/terms">
                     <!-- 30) Sozial-/Wirtschafts-/Rechtsgeschichte: ja = vorhanden -->
-                    <term ref="#social-economic-legal-history"/>
+                    <term ref="#social-economic-legal-history" />
                     <!-- 31) Geographie: ja = vorhanden -->
-                    <term ref="#geography"/>
+                    <term ref="#geography" />
                     <!-- 32) Militär: ja = vorhanden -->
-                    <term ref="#military"/>
+                    <term ref="#military" />
                 </keywords>
             </textClass>
         </profileDesc>
@@ -203,9 +189,9 @@
                 45) Bearbeiter des Datensatzes in @who
 
             -->
-            <change type="created" when="" who=""/>
+            <change type="created" when="" who="" />
             <!-- 46) Datensatz geändert -->
-            <change type="modified" when="" who=""/>
+            <change type="modified" when="" who="" />
         </revisionDesc>
     </teiHeader>
     <facsimile>
