@@ -80,6 +80,7 @@ declare function api:places-list($request as map(*)) {
     let $return :=if (not($request?parameters?id)) then
         let $thead := 
             <tr>
+                <td>Id</td>
                 <td>Findspot</td>
                 <td>Modern</td>
                 <td>Ancient</td>
@@ -88,15 +89,18 @@ declare function api:places-list($request as map(*)) {
                 <td>Country</td>
             </tr>
 
-        let $places := for $place in collection($config:places)//@xml:id/string()
+        let $places := 
+            for $place in collection($config:places)//tei:place
+            let $id := $place/@xml:id/string()
             return 
             <tr>
-                <td><a href="geodata.html?id={$place}">{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="findspot"]/string()}</a></td>
-                <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="modern"]/string()}</td>
-                <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:placeName[@type="ancient"]/string()}</td>
-                <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:region[@type="province"]/string()}</td> 
-                <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:region[@type="modern"]/string()}</td>
-                <td>{doc(concat($config:places, $place , ".xml"))/tei:place/tei:country/string()}</td>
+                <td>{$id}</td>
+                <td><a href="geodata.html?id={$id}">{$place/tei:placeName[@type="findspot"]/string()}</a></td>
+                <td>{$place/tei:placeName[@type="modern"]/string()}</td>
+                <td>{$place/tei:placeName[@type="ancient"]/string()}</td>
+                <td>{$place/tei:region[@type="province"]/string()}</td> 
+                <td>{$place/tei:region[@type="modern"]/string()}</td>
+                <td>{$place/tei:country/string()}</td>
             </tr>
         return <table id="places-list"> <thead> {$thead} </thead> <tbody> {$places} </tbody> </table>
         else 
