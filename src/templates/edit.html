@@ -100,7 +100,7 @@
 
             <main>
                 <!--                    <fx-fore src="templates/fore/epidoc.html"></fx-fore>-->
-                <fx-fore>
+                <fx-fore valid="true">
                     <fx-send submission="s-login" event="pb-login" target="#document"></fx-send>
 
                     <!-- ### if get called with an id param we load the data via submission ### -->
@@ -364,7 +364,7 @@
                                         </fx-control>
 
                                         <!-- 16a) -->
-                                        <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType">
+                                        <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType/@ref">
                                             <label>Inschriftträger</label>
                                             <select ref="instance('objtyp')?*" class="widget" selection="open">
                                                 <template>
