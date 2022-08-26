@@ -17,14 +17,14 @@ const fore = document.querySelector('fx-fore');
 console.log('++++++++++++++++++++++++++++ Fore', fore);
 fore.addEventListener('ready', () => {
     console.log('++++++++++++++++++++++++++++ Fore is ready');
-    const editors = [...fore.querySelectorAll('jinn-xml-editor')];
+    const editors = [...fore.querySelectorAll('jinn-xml-editor,jinn-epidoc-editor')];
     editors.forEach(editor =>{
         editor.addEventListener('valid',()=>{
-            console.log('<<<<<<<<<<<<<<< valid');
+            console.log('%s <<<<<<<<<<<<<<< valid', editor.id);
             fore.setAttribute('valid','true');
         });
         editor.addEventListener('invalid',()=>{
-            console.log('<<<<<<<<<<<<<<< invalid');
+            console.log('%s <<<<<<<<<<<<<<< invalid', editor.id);
             fore.setAttribute('valid','false');
         });
     });
