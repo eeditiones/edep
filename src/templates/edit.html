@@ -228,7 +228,7 @@
                         </fx-function>
 
                         <fx-function signature="editorsValid() as xs:boolean" type="text/javascript">
-                            const editors = form.querySelectorAll('jinn-xml-editor[valid="false"],jinn-codemirror[valid="false"]');
+                            const editors = form.querySelectorAll('jinn-xml-editor[valid="false"],jinn-epidoc-editor[valid="false"]');
                             console.log('+++ invalid editors', editors);
                             if(editors.length !== 0){
                             return false;
