@@ -38,6 +38,10 @@
         background: red;
         color:white;
     }
+
+    select {
+        width: 100%;
+    }
 </style>
 </head>
 
@@ -261,6 +265,33 @@
                                 <label slot="label">EDE-p-Id</label>
                             </fx-output>
 
+                            <!-- 16a) -->
+                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType/@ref">
+                                <label>Inschriftträger</label>
+                                <select ref="instance('objtyp')?*" class="widget" selection="open">
+                                    <template>
+                                        <option value="{?value}">{?name}</option>
+                                    </template>
+                                </select>
+                            </fx-control>
+
+                            <!-- 16b) -->
+                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/note">
+                                <label>Beschreibung Inschriftträger</label>
+                            </fx-control>
+
+                            <!-- there's no 17) -->
+
+                            <!-- 18) -->
+                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" update-event="change"
+                                        class="orange">
+                                <label>Material</label>
+                                <select ref="instance('material')?*" class="widget" selection="open">
+                                    <template>
+                                        <option value="{?value}">{?name}</option>
+                                    </template>
+                                </select>
+                            </fx-control>
                         </fx-group>
 
                         <fx-repeat id="parts" ref=".//msPart">
@@ -376,35 +407,6 @@
                                                 </template>
                                             </select>
                                         </fx-control>
-
-                                        <!-- 16a) -->
-                                        <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType/@ref">
-                                            <label>Inschriftträger</label>
-                                            <select ref="instance('objtyp')?*" class="widget" selection="open">
-                                                <template>
-                                                    <option value="{?value}">{?name}</option>
-                                                </template>
-                                            </select>
-                                        </fx-control>
-
-                                        <!-- 16b) -->
-                                        <fx-control ref="//physDesc/objectDesc/supportDesc/support/note">
-                                            <label>Beschreibung Inschriftträger</label>
-                                        </fx-control>
-
-                                        <!-- there's no 17) -->
-
-                                        <!-- 18) -->
-                                        <fx-control ref="//physDesc/objectDesc/supportDesc/support/material" update-event="change"
-                                                    class="orange">
-                                            <label>Material</label>
-                                            <select ref="instance('material')?*" class="widget" selection="open">
-                                                <template>
-                                                    <option value="{?value}">{?name}</option>
-                                                </template>
-                                            </select>
-                                        </fx-control>
-
 
                                         <!--                        <fx-group>-->
                                         <!--                            <label>Inschriftträger</label>-->
