@@ -8,6 +8,39 @@ declare variable $rdf-path := "/db/apps/edep/data";
 declare variable $xml-path := "/db/apps/edep/data";
 
 declare variable $rdfs := ("decor", "material", "objtyp", "statepreserv", "typeins", "writing");
+declare variable $material := ("material");
+
+declare function local:convert-material() {
+    let $concepts :=
+        array {
+            for $concept in doc('/db/apps/edep/data/material.rdf')/rdf:RDF/skos:Concept
+            let $label := string-join(local:material-label($concept), ' / ')
+                => replace("[\n\t\s]{2,}", " ")
+            order by $label
+            return
+                map {
+                    "name": $label,
+                    "value": $concept/@rdf:about/string()
+                }
+        }
+    let $serialized := serialize($concepts, map { "method": "json", "indent": true() })
+    return
+        xmldb:store("/db/apps/edep/data", 'material.json', $serialized, 'application/json')
+};
+
+declare function local:material-label($concept as element()?) {
+    if (exists($concept)) then (
+        if ($concept/skos:broader) then
+            local:material-label(root($concept)//skos:Concept[@rdf:about = $concept/skos:broader/@rdf:resource])
+        else
+            (),
+        (
+            $concept/skos:altLabel[@xml:lang='de']/string(),
+            $concept/skos:prefLabel/string()
+        )[1]
+    ) else
+        ()
+};
 
 declare function local:convert-rdf($rdf as xs:string) {
 
@@ -32,4 +65,5 @@ declare function local:convert-all() {
         return local:save-xml($rdf)
 };
 
-local:convert-all()
+(: local:convert-all() :)
+local:convert-material()

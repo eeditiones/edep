@@ -125,6 +125,9 @@
                         <fx-instance id="objtyp" src="data/objtyp.json" type="json">
 
                         </fx-instance>
+                        
+                        <fx-instance id="material" src="data/material.json" type="json"></fx-instance>
+
                         <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"
                                      xpath-default-namespace="http://www.tei-c.org/ns/1.0">
 
@@ -395,14 +398,11 @@
                                         <fx-control ref="//physDesc/objectDesc/supportDesc/support/material" update-event="change"
                                                     class="orange">
                                             <label>Material</label>
-                                            <!--
-                                                                        <select ref="instance('material')/category[@name=instance('tmp')/material-group]/material/@name" class="widget">
-                                                                            <template>
-                                                                                <option value="{string(.)}">{.}</option>
-                                                                            </template>
-                                                                        </select>
-                                            -->
-                                            <!--                            <fx-setvalue event="value-changed" ref="//physDesc/objectDesc/supportDesc/support/material" value="string(..)"/>-->
+                                            <select ref="instance('material')?*" class="widget" selection="open">
+                                                <template>
+                                                    <option value="{?value}">{?name}</option>
+                                                </template>
+                                            </select>
                                         </fx-control>
 
 
