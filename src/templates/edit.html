@@ -150,14 +150,12 @@
                                 <uuid></uuid>
                                 <geoid></geoid>
                                 <loggedin>hidden</loggedin>
-                                <translation-valid>hidden</translation-valid>
-                                <transcription-valid>hidden</transcription-valid>
+                                <xml-valid></xml-valid>
                             </data>
                         </fx-instance>
                         <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
                         <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
-                        <fx-bind ref="instance('vars')/translation-valid" relevant=".='true'"></fx-bind>
-                        <fx-bind ref="instance('vars')/transcription-valid" relevant=".='true'"></fx-bind>
+                        <fx-bind ref="instance('vars')/xml-valid" calculate="editorsValid()" constraint=".='true'"></fx-bind>
 
 
                         <fx-instance id="tmp">
@@ -230,17 +228,12 @@
                             <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
                         </fx-submission>
 
-                        <fx-function signature="isValid() as xs:boolean" type="text/javascript">
-                            return form.getAttribute('valid') === 'true'
-                        </fx-function>
-
                         <fx-function signature="editorsValid() as xs:boolean" type="text/javascript">
                             const editors = form.querySelectorAll('jinn-xml-editor[valid="false"],jinn-epidoc-editor[valid="false"]');
-                            console.log('+++ invalid editors', editors);
                             if(editors.length !== 0){
-                            return false;
+                                return false;
                             }else{
-                            return true;
+                                return true;
                             }
                         </fx-function>
 
@@ -248,9 +241,7 @@
 
                     <div class="login-hint {instance('vars')/loggedin}">Bitte loggen Sie sich ein, um zu editieren.</div>
 
-                    <div class="valid">isValid returned: {isValid()}</div>
                     <div class="valid">editorsValid() returned: {editorsValid()}</div>
-
 
                     <fx-group ref="teiHeader">
                         <h1>EDEp Editor</h1>
@@ -850,12 +841,15 @@
                         <!-- 47) -->
                         <!-- 45) -->
 
-                        <div class="{instance('vars')/translation-valid}">Übersetzung enthält Fehler!</div>
                         <fx-trigger class="saveBtn" ref="instance('vars')/loggedin">
                             <button>Speichern</button>
                             <fx-send submission="s-create" if="not(exists(instance('params')/id))"></fx-send>
                             <fx-send submission="s-save" if="exists(instance('params')/id)"></fx-send>
                         </fx-trigger>
+                        <fx-control ref="instance('vars')/xml-valid" class="valid-warning">
+                            <fx-alert>Bitte XML korrigieren, um zu speichern.</fx-alert>
+                            <input style="display:none;"></input>
+                        </fx-control>
                     </fx-group>
                     <fx-inspector/>
                 </fx-fore>
