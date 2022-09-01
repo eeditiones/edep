@@ -18,4 +18,10 @@
     <!-- 37) Kommentar: freier Inhalt. Nur einmal pro Dokument -->
     <div type="commentary"/>
     <epidoc> </epidoc>
+    <term ref="#social-economic-legal-history"/>
+    <!-- 31) Geographie: ja = vorhanden -->
+    <term ref="#geography"/>
+    <!-- 32) Militär: ja = vorhanden -->
+    <term ref="#military"/>
+
 </body>

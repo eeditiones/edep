@@ -111,7 +111,18 @@
                     <fx-send submission="s-load-inscription" event="ready" if="exists(instance('params')/id)"></fx-send>
 
                     <fx-model>
-                        <fx-send event="model-construct-done" submission="s-login"/>
+                        <fx-action event="model-construct-done">
+                            <fx-send submission="s-login"/>
+                            <!--
+                            ### initializing state for 30) 31) 32) dummy switches
+                            -->
+                            <fx-setvalue ref="instance('vars')/history-term"
+                                         value="if(exists(instance()//term[@ref='#social-economic-legal-history'])) then 'true' else 'false'"></fx-setvalue>
+                            <fx-setvalue ref="instance('vars')/geography-term"
+                                         value="if(exists(instance()//term[@ref='#geography'])) then 'true' else 'false'"></fx-setvalue>
+                            <fx-setvalue ref="instance('vars')/military-term"
+                                         value="if(exists(instance()//term[@ref='#military'])) then 'true' else 'false'"></fx-setvalue>
+                        </fx-action>
 
                         <fx-instance id="default" src="api/inscription"
                                      xpath-default-namespace="http://www.tei-c.org/ns/1.0">
@@ -151,6 +162,9 @@
                                 <geoid></geoid>
                                 <loggedin>hidden</loggedin>
                                 <xml-valid></xml-valid>
+                                <history-term></history-term>
+                                <geography-term></geography-term>
+                                <military-term></military-term>
                             </data>
                         </fx-instance>
                         <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
@@ -190,7 +204,6 @@
 
                             <fx-action event="submit-error">
                                 <fx-message>Daten konnten nicht gespeichert werden.</fx-message>
-                                <fx-message>Please login to edit.</fx-message>
                             </fx-action>
                         </fx-submission>
 
@@ -201,7 +214,6 @@
                             <fx-message event="submit-done">Daten wurden aktualisiert</fx-message>
                             <fx-action event="submit-error">
                                 <fx-message>Daten konnten nicht gespeichert werden.</fx-message>
-                                <fx-message>Please login to edit.</fx-message>
                             </fx-action>
                         </fx-submission>
 
@@ -805,20 +817,56 @@
                             </fx-control>
                             <!-- 29) missing -->
                             <!-- 30) -->
-                            <fx-control ref="textClass/keywords/term[@ref='#social-economic-legal-history']" value-prop="checked">
-                                <label for="social">Sozial-,Wirschafts-/Rechtsgeschichte</label>
-                                <input id="social" type="checkbox" class="widget"/>
+                            <!-- dummy switch to insert or delete 'term' elements in main instance -->
+                            <fx-control ref="instance('vars')/history-term" value-prop="checked" update-event="input">
+                                <label for="historyTerm">Sozial-,Wirschafts-/Rechtsgeschichte</label>
+                                <input id="historyTerm" type="checkbox" class="widget"/>
+                                <fx-message event="value-changed">value-changed</fx-message>
+                                <fx-insert event="value-changed"
+                                           if="context()/text()='true'"
+                                           context="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']"
+                                           ref="term"
+                                           origin="instance('templates')/term[@ref='#social-economic-legal-history']"></fx-insert>
+
+                                <fx-delete event="value-changed"
+                                           if="context()/text()='false'"
+                                           ref="instance('default')//term[@ref='#social-economic-legal-history']"></fx-delete>
                             </fx-control>
-                            <!-- 31) -->
-                            <fx-control ref="textClass/keywords/term[@ref='#geography']" value-prop="checked">
-                                <label for="geo">Geographie</label>
-                                <input id="geo" type="checkbox" class="widget"/>
+
+                               <!-- 31) -->
+                            <!-- dummy switch to insert or delete 'term' elements in main instance -->
+                            <fx-control ref="instance('vars')/geography-term" value-prop="checked" update-event="input">
+                                <label for="geographyTerm">Geographie</label>
+                                <input id="geographyTerm" type="checkbox" class="widget"/>
+                                <fx-message event="value-changed">value-changed</fx-message>
+                                <fx-insert event="value-changed"
+                                           if="context()/text()='true'"
+                                           context="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']"
+                                           ref="term"
+                                           origin="instance('templates')/term[@ref='#geography']"></fx-insert>
+
+                                <fx-delete event="value-changed"
+                                           if="context()/text()='false'"
+                                           ref="instance('default')//term[@ref='#geography']"></fx-delete>
                             </fx-control>
+
                             <!-- 32) -->
-                            <fx-control ref="textClass/keywords/term[@ref='#military']" value-prop="checked">
-                                <label for="mili">Militär</label>
-                                <input id="mili" type="checkbox" class="widget"/>
+                            <!-- dummy switch to insert or delete 'term' elements in main instance -->
+                            <fx-control ref="instance('vars')/military-term" value-prop="checked" update-event="input">
+                                <label for="militaryTerm">Militär</label>
+                                <input id="militaryTerm" type="checkbox" class="widget"/>
+                                <fx-message event="value-changed">value-changed</fx-message>
+                                <fx-insert event="value-changed"
+                                           if="context()/text()='true'"
+                                           context="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']"
+                                           ref="term"
+                                           origin="instance('templates')/term[@ref='#military']"></fx-insert>
+
+                                <fx-delete event="value-changed"
+                                           if="context()/text()='false'"
+                                           ref="instance('default')//term[@ref='#military']"></fx-delete>
                             </fx-control>
+
                         </fx-group>
 
                         <fx-group class="group-8">
