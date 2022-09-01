@@ -105,23 +105,15 @@
             <main>
                 <!--                    <fx-fore src="templates/fore/epidoc.html"></fx-fore>-->
                 <fx-fore valid="true">
-                    <fx-send submission="s-login" event="pb-login" target="#document"></fx-send>
+<!--                    <fx-send submission="s-login" event="pb-login" target="#document"></fx-send>-->
 
                     <!-- ### if get called with an id param we load the data via submission ### -->
                     <fx-send submission="s-load-inscription" event="ready" if="exists(instance('params')/id)"></fx-send>
+                    <fx-setfocus control="title" event="ready"></fx-setfocus>
 
                     <fx-model>
                         <fx-action event="model-construct-done">
                             <fx-send submission="s-login"/>
-                            <!--
-                            ### initializing state for 30) 31) 32) dummy switches
-                            -->
-                            <fx-setvalue ref="instance('vars')/history-term"
-                                         value="if(exists(instance()//term[@ref='#social-economic-legal-history'])) then 'true' else 'false'"></fx-setvalue>
-                            <fx-setvalue ref="instance('vars')/geography-term"
-                                         value="if(exists(instance()//term[@ref='#geography'])) then 'true' else 'false'"></fx-setvalue>
-                            <fx-setvalue ref="instance('vars')/military-term"
-                                         value="if(exists(instance()//term[@ref='#military'])) then 'true' else 'false'"></fx-setvalue>
                         </fx-action>
 
                         <fx-instance id="default" src="api/inscription"
@@ -165,6 +157,17 @@
                                 <history-term></history-term>
                                 <geography-term></geography-term>
                                 <military-term></military-term>
+                                <languages>
+                                    <lang code="cel">Celtic</lang>
+                                    <lang code="gre">Greek</lang>
+                                    <lang code="heb">Hebrew</lang>
+                                    <lang code="xib">Iberian</lang>
+                                    <lang code="ita">Italien</lang>
+                                    <lang code="lat">Latin</lang>
+                                    <lang code="nxm">Numidian</lang>
+                                    <lang code="xxx">Palmyrenic</lang>
+                                    <lang code="xpu">Phoenician-Punic</lang>
+                                </languages>
                             </data>
                         </fx-instance>
                         <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
@@ -194,6 +197,21 @@
                                        replace="instance"
                                        validate="false">
                             <fx-message event="submit-error">Failed to load Inscription</fx-message>
+
+                            <fx-action event="submit-done">
+                                <!--
+                                ### initializing state for 30) 31) 32) dummy switches
+                                -->
+                                <fx-setvalue ref="instance('vars')/history-term"
+                                             value="if(exists(instance('default')//term[@ref='#social-economic-legal-history'])) then 'true' else 'false'"></fx-setvalue>
+
+                                <fx-setvalue ref="instance('vars')/geography-term"
+                                             value="if(exists(instance('default')//term[@ref='#geography'])) then 'true' else 'false'"></fx-setvalue>
+
+                                <fx-setvalue ref="instance('vars')/military-term"
+                                             value="if(exists(instance('default')//term[@ref='#military'])) then 'true' else 'false'"></fx-setvalue>
+
+                            </fx-action>
                         </fx-submission>
 
                         <fx-submission id="s-create"
@@ -257,7 +275,7 @@
 
                     <fx-group ref="teiHeader">
                         <h1>EDEp Editor</h1>
-                        <fx-control class="title" ref="fileDesc/titleStmt/title">
+                        <fx-control id="title" class="title" ref="fileDesc/titleStmt/title">
                             <label>Titel</label>
                         </fx-control>
 
@@ -459,6 +477,14 @@
                                         <!-- 25) -->
                                         <fx-control ref="msContents/msItem/textLang">
                                             <label>Sprache</label>
+                                            <fx-items ref="instance('vars')/languages/lang" class="widget">
+                                                <template>
+                                                    <span class="fx-checkbox">
+                                                        <input type="checkbox" value="{@code}"/>
+                                                        <label>{.}</label>
+                                                    </span>
+                                                </template>
+                                            </fx-items>
                                         </fx-control>
                                     </fx-group>
 

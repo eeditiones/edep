@@ -173,12 +173,6 @@
                     <term ref="" />
                 </keywords>
                 <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/terms">
-                    <!-- 30) Sozial-/Wirtschafts-/Rechtsgeschichte: ja = vorhanden -->
-<!--                    <term ref="#social-economic-legal-history" />-->
-                    <!-- 31) Geographie: ja = vorhanden -->
-<!--                    <term ref="#geography" />-->
-                    <!-- 32) Militär: ja = vorhanden -->
-<!--                    <term ref="#military" />-->
                 </keywords>
             </textClass>
         </profileDesc>
