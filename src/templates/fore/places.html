@@ -102,6 +102,7 @@
             <fx-instance xpath-default-namespace="http://www.tei-c.org/ns/1.0">
                 <data/>
             </fx-instance>
+            <fx-bind ref="placeName[@type='findspot']" required="true()"/>
 
             <fx-instance id="vars">
                 <data>
@@ -130,15 +131,17 @@
                     <fx-send submission="s-load-places"></fx-send>
                     <fx-send submission="s-load-template"></fx-send>
                 </fx-action>
+                <fx-message event="submit-error">couldn't be saved</fx-message>
             </fx-submission>
-            <fx-submission id="s-load" method="get" url="api/places/{instance('query')/id}" replace="instance">
+            <fx-submission id="s-load" method="get" url="api/places/{instance('query')/id}" replace="instance" validate="false">
                 <fx-toggle case="record" event="submit-done"/>
             </fx-submission>
 
-            <fx-submission id="s-load-places" method="get" url="api/places-list" replace="target" target="#table">
+            <fx-submission id="s-load-places" method="get" url="api/places-list" replace="target" target="#table" validate="false">
                 <!--                <fx-toggle case="list" event="submit-done"></fx-toggle>-->
             </fx-submission>
-            <fx-submission id="s-load-template" method="get" url="templates/fore/place-tmpl.xml" replace="instance">
+
+            <fx-submission id="s-load-template" method="get" url="templates/fore/place-tmpl.xml" replace="instance" validate="false">
 
             </fx-submission>
 
@@ -218,8 +221,8 @@
                             <label>Geonames</label>
                         </fx-control>
                         <div class="actions">
-                            <fx-trigger id="save" class="saveBtn" ref="instance('vars')/loggedin">
-                                <button>Speichern</button>
+                            <fx-trigger id="save" class="saveBtn">
+                                <button type="submit">Speichern</button>
                                 <fx-send submission="s-save"/>
                             </fx-trigger>
                         </div>
