@@ -24,18 +24,18 @@
                 <!-- Einträge wiederholbar -->
                 <bibl>
                     <!-- Zotero Referenz -->
-                    <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6"/>
+                    <ptr target=""/>
                 </bibl>
             </listBibl>
             <!-- 35a) Ältere Editionen -->
             <listBibl type="previousEditions">
                 <bibl>
-                    <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6"/>
+                    <ptr target=""/>
                 </bibl>
             </listBibl>
             <listBibl type="images">
                 <bibl>
-                    <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6"/>
+                    <ptr target=""/>
                     <biblScope>
                         <graphic url="photo.png">
                             <desc>Beschreibung des Bildes</desc>

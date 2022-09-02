@@ -305,9 +305,10 @@
                         <!--            <span>Sprachselector hier</span>-->
                         <fx-group class="group-1">
                             <!-- 3) -->
-                            <fx-output ref=".//msDesc/msIdentifier/idno">
-                                <label slot="label">EDE-p-Id</label>
-                            </fx-output>
+                            <div class="edep-id">
+                                <label>EDEp ID: </label>
+                                <fx-output ref=".//msDesc/msIdentifier/idno"></fx-output>
+                            </div>
 
                             <!-- 16a) -->
                             <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType/@ref">
@@ -556,7 +557,7 @@
                                                     Controls not yet recognize if they depend on some other control.
 
                                                     <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
-                                                    <fx-control ref="ptr">
+                                                    <fx-control ref="ptr/@target">
                                                         <label>Zotero Referenz</label>
                                                     </fx-control>
 
@@ -593,7 +594,7 @@
                                                     Controls not yet recognize if they depend on some other control.
 
                                                     <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
-                                                    <fx-control ref="ptr">
+                                                    <fx-control ref="ptr/@target">
                                                         <label>Zotero Referenz</label>
                                                     </fx-control>
 
@@ -622,7 +623,7 @@
                                                        ref="msContents/msItem/listBibl[@type='images']/bibl">
                                                 <template>
 
-                                                    <fx-control ref="ptr">
+                                                    <fx-control ref="ptr/@target">
                                                         <label>Bild</label>
                                                     </fx-control>
 
@@ -636,83 +637,70 @@
                                         </fieldset>
                                     </fieldset>
 
-                                    <fx-group class="group-10">
-                                        <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="blur">
-                                            <h3>Transkription</h3>
-                                            <jinn-epidoc-editor id="transcriptionEditor" schema="resources/scripts/epidoc.json" unwrap="unwrap" class="widget">
-                                                <div slot="leiden-toolbar">
-                                                    <button data-command="expan" data-mode="leiden_plus">(a(bcd))</button>
-                                                    <button data-command="erasure" data-mode="leiden_plus">〚abc〛</button>
-                                                    <button data-command="unclear" data-mode="leiden_plus">ạ</button>
-                                                    <button data-command="div" data-mode="leiden_plus">&lt;=...</button>
-                                                    <button data-command="part" data-mode="leiden_plus">&lt;D=.A.part...</button>
-                                                    <button data-command="recto" data-mode="leiden_plus">&lt;D=.r...</button>
-                                                    <button data-command="verso" data-mode="leiden_plus">&lt;D=.v...</button>
-                                                    <button data-command="erasure" data-mode="edcs">〚abc〛</button>
-                                                    <button data-command="gap" data-mode="edcs">[...]</button>
-                                                    <button data-command="convert" data-mode="edcs">Leiden+</button>
-                                                </div>
-                                                <div slot="xml-toolbar">
-                                                    <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                    <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                    <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                    <button data-command="snippet" data-params='&lt;ab&gt;$|_|&lt;/ab&gt;'
-                                                            title="Insert ab">&lt;ab&gt;
-                                                    </button>
-                                                    <button data-command="snippet" data-params='&lt;supplied reason="lost"&gt;$|_|&lt;/supplied&gt;'
-                                                            title="Insert supplied">&lt;supplied&gt;
-                                                    </button>
-                                                    <button data-command="snippet" data-params='&lt;expan&gt;&lt;abbr&gt;$|1|&lt;/abbr&gt;&lt;ex&gt;$|2|&lt;/ex&gt;&lt;/expan&gt;$|3|'
-                                                            title="Insert expan/abbr">&lt;expan&gt;
-                                                    </button>
-                                                    <button data-command="snippet" data-params='&lt;gap reason="lost" extent="unknown" unit="character"/&gt;$|1|'
-                                                            title="Gap extent unknown">&lt;gap/unknown&gt;</button>
-                                                    <button data-command="snippet" data-params='&lt;gap reason="lost" quantity="$|1|" unit="$|2:line|"/&gt;$|3|'
-                                                            title="Gap extent known">&lt;gap&gt;</button>
-                                                </div>
-                                            </jinn-epidoc-editor>
-                                        </fx-control>
-<!--
-                                        <fx-message event="invalid" target="transcriptionEditor">transcription invalid</fx-message>
-                                        <fx-message event="valid" target="transcriptionEditor">transcription valid</fx-message>
-                                        <fx-setvalue event="invalid" target="transcriptionEditor" ref="instance('vars')/transcription-valid">true</fx-setvalue>
-                                        <fx-setvalue event="valid" target="transcriptionEditor" ref="instance('vars')/transcription-valid">false</fx-setvalue>
--->
+                                    <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="blur">
+                                        <h3>Transkription</h3>
+                                        <jinn-epidoc-editor id="transcriptionEditor" schema="resources/scripts/epidoc.json" unwrap="unwrap" class="widget">
+                                            <div slot="leiden-toolbar">
+                                                <button data-command="expan" data-mode="leiden_plus">(a(bcd))</button>
+                                                <button data-command="erasure" data-mode="leiden_plus">〚abc〛</button>
+                                                <button data-command="unclear" data-mode="leiden_plus">ạ</button>
+                                                <button data-command="div" data-mode="leiden_plus">&lt;=...</button>
+                                                <button data-command="part" data-mode="leiden_plus">&lt;D=.A.part...</button>
+                                                <button data-command="recto" data-mode="leiden_plus">&lt;D=.r...</button>
+                                                <button data-command="verso" data-mode="leiden_plus">&lt;D=.v...</button>
+                                                <button data-command="erasure" data-mode="edcs">〚abc〛</button>
+                                                <button data-command="gap" data-mode="edcs">[...]</button>
+                                                <button data-command="convert" data-mode="edcs">Leiden+</button>
+                                            </div>
+                                            <div slot="xml-toolbar">
+                                                <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                                                <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
+                                                <button data-command="snippet" data-params='&lt;ab&gt;$|_|&lt;/ab&gt;'
+                                                        title="Insert ab">&lt;ab&gt;
+                                                </button>
+                                                <button data-command="snippet" data-params='&lt;supplied reason="lost"&gt;$|_|&lt;/supplied&gt;'
+                                                        title="Insert supplied">&lt;supplied&gt;
+                                                </button>
+                                                <button data-command="snippet" data-params='&lt;expan&gt;&lt;abbr&gt;$|1|&lt;/abbr&gt;&lt;ex&gt;$|2|&lt;/ex&gt;&lt;/expan&gt;$|3|'
+                                                        title="Insert expan/abbr">&lt;expan&gt;
+                                                </button>
+                                                <button data-command="snippet" data-params='&lt;gap reason="lost" extent="unknown" unit="character"/&gt;$|1|'
+                                                        title="Gap extent unknown">&lt;gap/unknown&gt;</button>
+                                                <button data-command="snippet" data-params='&lt;gap reason="lost" quantity="$|1|" unit="$|2:line|"/&gt;$|3|'
+                                                        title="Gap extent known">&lt;gap&gt;</button>
+                                            </div>
+                                        </jinn-epidoc-editor>
+                                    </fx-control>
 
-
-                                        <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
-                                        <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="blur">
-                                            <h3>Apparatus</h3>
-                                            <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap"
-                                                             namespace="http://www.tei-c.org/ns/1.0">
-                                                <div slot="toolbar">
-                                                    <button data-command="selectElement"
-                                                            title="Select element around current cursor position">&lt;|>
-                                                    </button>
-                                                    <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                    <button data-command="removeEnclosing" title="Remove enclosing tags"
-                                                            class="sep">&lt;X>
-                                                    </button>
-                                                    <button data-command="snippet" data-params="&lt;listApp>$|_|&lt;/listApp>"
-                                                            title="Insert apparatus list">&lt;listApp&gt;
-                                                    </button>
-                                                    <button data-command="snippet"
-                                                            data-params='&lt;app loc="$|1|">&lt;note>$|_|&lt;/note>&lt;/app>'
-                                                            title="Insert apparatus entry">&lt;app&gt;
-                                                    </button>
-                                                </div>
-                                            </jinn-xml-editor>
-                                        </fx-control>
-                                        <!--fx-replace ref="div[@type='apparatus']/*[1]"
-                                                    with="parse(event('content'))"
-                                                    target="apparatus"
-                                                    event="update">
-                                        </fx-replace-->
-
+                                    <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
+                                    <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="blur">
+                                        <h3>Apparatus</h3>
+                                        <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap"
+                                                         namespace="http://www.tei-c.org/ns/1.0">
+                                            <div slot="toolbar">
+                                                <button data-command="selectElement"
+                                                        title="Select element around current cursor position">&lt;|>
+                                                </button>
+                                                <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                <button data-command="removeEnclosing" title="Remove enclosing tags"
+                                                        class="sep">&lt;X>
+                                                </button>
+                                                <button data-command="snippet" data-params="&lt;listApp>$|_|&lt;/listApp>"
+                                                        title="Insert apparatus list">&lt;listApp&gt;
+                                                </button>
+                                                <button data-command="snippet"
+                                                        data-params='&lt;app loc="$|1|">&lt;note>$|_|&lt;/note>&lt;/app>'
+                                                        title="Insert apparatus entry">&lt;app&gt;
+                                                </button>
+                                            </div>
+                                        </jinn-xml-editor>
+                                    </fx-control>
+                                    <fx-group>
+                                        <h3>Übersetzung</h3>
                                         <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
                                         <fx-control class="translation" ref="div[@type='translation']" as="node"
                                                     update-event="blur">
-                                            <h3>Übersetzung</h3>
                                             <jinn-xml-editor id="translation" unwrap="unwrap" class="widget"
                                                              namespace="http://www.tei-c.org/ns/1.0">
                                                 <div slot="toolbar">
@@ -729,10 +717,10 @@
                                                 </div>
                                             </jinn-xml-editor>
                                         </fx-control>
-<!--
-                                        <fx-setvalue event="invalid" target="translation" ref="instance('vars')/translation-valid">true</fx-setvalue>
-                                        <fx-setvalue event="valid" target="translation" ref="instance('vars')/translation-valid">false</fx-setvalue>
--->
+                                        <!-- 43) Übersetzer/in -->
+                                        <fx-control class="translator" ref="div[@type='translation']/@resp">
+                                            <label>Übersetzer/in: </label>
+                                        </fx-control>
                                     </fx-group>
                                 </fieldset>
                                 <!--

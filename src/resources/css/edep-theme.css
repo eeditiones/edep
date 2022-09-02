@@ -110,6 +110,10 @@ aside .upload {
     margin-top: 1em;
 }
 
+.translator {
+    display: flex;
+}
+
 .parent-link iron-icon {
     padding-right: 4px;
 }
@@ -251,7 +255,8 @@ fieldset fieldset{
     margin-top:1rem;
 
 }
-fx-control , fx-output{
+
+fx-control, .edep-id {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 0.3rem;
@@ -262,10 +267,10 @@ fx-control , fx-output{
 }
 
 
-fx-control label{
+fx-control label, .edep-id label {
     grid-area:label;
 }
-fx-control .widget{
+fx-control .widget, .edep-id fx-output {
     grid-area:control;
 }
 fx-control fx-alert{
@@ -292,7 +297,7 @@ fx-group fx-group{
     padding:0;
 }
 
-fx-control label, fx-output label{
+fx-control label, fx-output label, .edep-id label {
     justify-self: end;
 }
 
@@ -367,9 +372,9 @@ fx-var{
     postion:relative;
     margin-bottom:0.5rem;
 }
-.nested-repeat fx-control{
+/* .nested-repeat fx-control{
     display:block;
-}
+} */
 .nested-repeat fx-trigger{
     display:block;
     margin:0.5rem;
