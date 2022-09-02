@@ -251,12 +251,11 @@ fieldset fieldset{
     margin-top:1rem;
 
 }
-fx-control {
+fx-control , fx-output{
     display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 0.3rem;
-  grid-auto-flow: column;
-  grid-template-areas:
+    grid-template-columns: 1fr 2fr;
+    gap: 0.3rem;
+    grid-template-areas:
     "label control"
     ". alert";
     margin: 0.5rem;
@@ -299,6 +298,11 @@ fx-control label, fx-output label{
 
 fx-fore{
     /*position:relative;*/
+    opacity:0;
+}
+fx-fore.fx-ready{
+    transition:opacity 0.4s;
+    opacity:1;
 }
 fx-inspector{
     position:absolute;
