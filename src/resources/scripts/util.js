@@ -13,19 +13,12 @@ function createUUID() {
     return 'F' + uuid;
 }
 
-const fore = document.querySelector('fx-fore');
-console.log('++++++++++++++++++++++++++++ Fore', fore);
-fore.addEventListener('ready', () => {
-    console.log('++++++++++++++++++++++++++++ Fore is ready');
-    const editors = [...fore.querySelectorAll('jinn-xml-editor,jinn-epidoc-editor')];
-    editors.forEach(editor =>{
-        editor.addEventListener('valid',()=>{
-            console.log('%s <<<<<<<<<<<<<<< valid', editor.id);
-            fore.setAttribute('valid','true');
-        });
-        editor.addEventListener('invalid',()=>{
-            console.log('%s <<<<<<<<<<<<<<< invalid', editor.id);
-            fore.setAttribute('valid','false');
-        });
-    });
-});
+
+function checkDate(string){
+    if(string.length === 0 ) return true;// allow empty
+    const val = new Date(string);
+    if(val instanceof Date && !isNaN(val)) {
+        return true;
+    }
+    return false;
+}

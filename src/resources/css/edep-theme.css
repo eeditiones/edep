@@ -251,12 +251,26 @@ fieldset fieldset{
     margin-top:1rem;
 
 }
-fx-control,fx-output{
+fx-control {
     display: grid;
-    grid-template-columns: 300px auto;
-    grid-gap:0.3rem;
+  grid-template-columns: 1fr 2fr;
+  gap: 0px 0px;
+  grid-auto-flow: column;
+  grid-template-areas:
+    "label control"
+    ". alert";
     margin: 0.5rem;
+}
 
+
+fx-control label{
+    grid-area:label;
+}
+fx-control .widget{
+    grid-area:control;
+}
+fx-control fx-alert{
+    grid-area:alert;
 }
 
 fx-control [type="checkbox"]{

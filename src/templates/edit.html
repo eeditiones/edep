@@ -104,23 +104,38 @@
 
             <main>
                 <!--                    <fx-fore src="templates/fore/epidoc.html"></fx-fore>-->
-                <fx-fore valid="true">
-<!--                    <fx-send submission="s-login" event="pb-login" target="#document"></fx-send>-->
+                <fx-fore>
 
                     <!-- ### if get called with an id param we load the data via submission ### -->
-                    <fx-send submission="s-load-inscription" event="ready" if="exists(instance('params')/id)"></fx-send>
-                    <fx-setfocus control="title" event="ready"></fx-setfocus>
+<!--                    <fx-setfocus control="title" event="ready"/>-->
 
                     <fx-model>
                         <fx-action event="model-construct-done">
-                            <fx-send submission="s-login"/>
+                            <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'" />
+                            <fx-send submission="s-load-inscription" if="exists(instance('params')/id)"/>
                         </fx-action>
 
                         <fx-instance id="default" src="api/inscription"
                                      xpath-default-namespace="http://www.tei-c.org/ns/1.0">
 
                         </fx-instance>
-                        <fx-bind ref="instance('default')//fileDesc/titleStmt/title" required="true()"/>
+
+                        <fx-bind ref="instance('default')">
+                            <fx-bind ref=".//fileDesc/titleStmt/title" required="true()"/>
+
+                            <fx-bind ref=".//history/provenance">
+                                <fx-bind ref="./@when" constraint="checkDate(.)"></fx-bind>
+                                <fx-bind ref="./@notBefore" constraint="checkDate(.)"></fx-bind>
+                                <fx-bind ref="./@notAfter" constraint="checkDate(.)"></fx-bind>
+                            </fx-bind>
+                            <fx-bind ref=".//history/origin/origDate">
+                                <fx-bind ref="./@when-custom" constraint="checkDate(.)"></fx-bind>
+                                <fx-bind ref="./@notBefore-custom" constraint="checkDate(.)"></fx-bind>
+                                <fx-bind ref="./@notAfter-custom" constraint="checkDate(.)"></fx-bind>
+                            </fx-bind>
+                        </fx-bind>
+
+
 
 
                         <!--            <fx-instance id="province" src="data/province.json" type="json"></fx-instance>-->
@@ -267,11 +282,15 @@
                             }
                         </fx-function>
 
+                        <fx-function signature="checkDate($value as xs:string) as xs:boolean" type="text/javascript">
+                            return checkDate($value);
+                        </fx-function>
+
                     </fx-model>
 
                     <div class="login-hint {instance('vars')/loggedin}">Bitte loggen Sie sich ein, um zu editieren.</div>
 
-                    <div class="valid">editorsValid() returned: {editorsValid()}</div>
+<!--                    <div class="valid">editorsValid() returned: {editorsValid()}</div>-->
 
                     <fx-group ref="teiHeader">
                         <h1>EDEp Editor</h1>
@@ -378,12 +397,17 @@
                                             <fx-control ref="history/provenance/@when">
                                                 <label>Zeitpunkt</label>
                                                 <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
+                                                <fx-alert>Ungültiges Datum</fx-alert>
                                             </fx-control>
                                             <fx-control ref="history/provenance/@notBefore">
                                                 <label>nach</label>
+                                                <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
+                                                <fx-alert>Ungültiges Datum</fx-alert>
                                             </fx-control>
                                             <fx-control ref="history/provenance/@notAfter">
                                                 <label>vor</label>
+                                                <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
+                                                <fx-alert>Ungültiges Datum</fx-alert>
                                             </fx-control>
                                             <fx-control ref="history/provenance/@when-custom">
                                                 <label>freie Angabe</label>
@@ -818,12 +842,17 @@
                             <fx-control ref="history/origin/origDate/@when-custom">
                                 <label>Zeitpunkt</label>
                                 <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
+                                <fx-alert>Ungültiges Datum</fx-alert>
                             </fx-control>
                             <fx-control ref="history/origin/origDate/@notBefore-custom">
                                 <label>nach</label>
+                                <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
+                                <fx-alert>Ungültiges Datum</fx-alert>
                             </fx-control>
                             <fx-control ref="history/origin/origDate/@notAfter-custom">
                                 <label>vor</label>
+                                <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
+                                <fx-alert>Ungültiges Datum</fx-alert>
                             </fx-control>
                             <fx-control ref="history/origin/origDate">
                                 <label>Freie Angabe</label>
@@ -847,7 +876,6 @@
                             <fx-control ref="instance('vars')/history-term" value-prop="checked" update-event="input">
                                 <label for="historyTerm">Sozial-,Wirschafts-/Rechtsgeschichte</label>
                                 <input id="historyTerm" type="checkbox" class="widget"/>
-                                <fx-message event="value-changed">value-changed</fx-message>
                                 <fx-insert event="value-changed"
                                            if="context()/text()='true'"
                                            context="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']"
@@ -864,7 +892,6 @@
                             <fx-control ref="instance('vars')/geography-term" value-prop="checked" update-event="input">
                                 <label for="geographyTerm">Geographie</label>
                                 <input id="geographyTerm" type="checkbox" class="widget"/>
-                                <fx-message event="value-changed">value-changed</fx-message>
                                 <fx-insert event="value-changed"
                                            if="context()/text()='true'"
                                            context="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']"
@@ -881,7 +908,6 @@
                             <fx-control ref="instance('vars')/military-term" value-prop="checked" update-event="input">
                                 <label for="militaryTerm">Militär</label>
                                 <input id="militaryTerm" type="checkbox" class="widget"/>
-                                <fx-message event="value-changed">value-changed</fx-message>
                                 <fx-insert event="value-changed"
                                            if="context()/text()='true'"
                                            context="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']"
