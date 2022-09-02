@@ -558,7 +558,7 @@
 
                                                     <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
                                                     <fx-control ref="ptr/@target">
-                                                        <label>Zotero Referenz</label>
+                                                        <label>Referenz</label>
                                                     </fx-control>
 
                                                     <fx-trigger>
@@ -595,7 +595,7 @@
 
                                                     <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
                                                     <fx-control ref="ptr/@target">
-                                                        <label>Zotero Referenz</label>
+                                                        <label>Referenz</label>
                                                     </fx-control>
 
                                                     <fx-trigger>
@@ -624,8 +624,37 @@
                                                 <template>
 
                                                     <fx-control ref="ptr/@target">
-                                                        <label>Bild</label>
+                                                        <label>Referenz</label>
                                                     </fx-control>
+
+                                                    <fx-trigger>
+                                                        <iron-icon icon="remove-circle-outline" title="delete image"/>
+                                                        <fx-delete ref="."/>
+                                                    </fx-trigger>
+
+                                                </template>
+                                            </fx-repeat>
+                                        </fieldset>
+
+                                        <!-- 35d) Abbildungen -->
+                                        <fieldset>
+                                            <legend>
+                                                <label>Abbildungen</label>
+                                                <fx-trigger class="add">
+                                                    <iron-icon icon="add-circle-outline" title="add image"/>
+
+                                                    <fx-insert context="facsimile"
+                                                               ref="graphic"
+                                                               origin="instance('mspart')//facsimile/graphic"/>
+                                                </fx-trigger>
+                                            </legend>
+                                            <fx-repeat class="nested-repeat" ref="facsimile/graphic">
+                                                <template>
+                                                    <fx-group>
+                                                        <fx-control ref="@url">
+                                                            <label>URL</label>
+                                                        </fx-control>
+                                                    </fx-group>
 
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="delete image"/>

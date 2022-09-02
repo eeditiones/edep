@@ -211,12 +211,10 @@
             <change type="modified" when="2020-02-07" who="Feraudi"/>
         </revisionDesc>
     </teiHeader>
-    <facsimile>
-        <!-- @corresp referenziert msPart -->
-        <surface corresp="#fragment1">
-            <!-- 35d) Abbildungen, wiederholbar -->
-            <graphic url="photo.png"></graphic>
-        </surface>
+    <!-- @corresp referenziert msPart -->
+    <facsimile corresp="#fragment1">
+        <!-- 35d) Abbildungen, wiederholbar -->
+        <graphic url=""></graphic>
     </facsimile>
     <text>
         <body>
