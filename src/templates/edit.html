@@ -527,51 +527,6 @@
                                     <fieldset>
                                         <legend>Bibliographie</legend>
 
-
-                                        <fieldset>
-                                            <legend>
-                                                <label>Editionen</label>
-                                                <fx-trigger class="add">
-                                                    <iron-icon icon="add-circle-outline" title="add edition"/>
-
-                                                    <!-- ##### when a new entry is created.. ##### -->
-                                                    <!-- ##### 1. store away the value of the xml:id of this part as fx-var is failing here for some reason ##### -->
-                                                    <!--
-                                                                                    <fx-setvalue ref="instance('vars')/parent"
-                                                                                                 value="instance()//msPart[index('parts')]/@xml:id"></fx-setvalue>
-                                                    -->
-
-                                                    <!-- ##### 2. insert a new bibl element ##### -->
-                                                    <fx-insert context="msContents/msItem/listBibl[@type='edition']"
-                                                               ref="bibl"
-                                                               origin="instance('mspart')//listBibl[@type='edition']/bibl"/>
-                                                </fx-trigger>
-                                            </legend>
-                                            <fx-repeat class="nested-repeat" id="bib"
-                                                       ref="msContents/msItem/listBibl[@type='edition']/bibl">
-                                                <template>
-                                                    <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
-
-                                                    <!--
-                                                    Would be nice to link the control directly to body section but this cause the refresh to drop out.
-                                                    Controls not yet recognize if they depend on some other control.
-
-                                                    <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
-                                                    <fx-control ref="ptr/@target">
-                                                        <label>Zotero Referenz</label>
-                                                    </fx-control>
-
-                                                    <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
-                                                        <fx-delete ref="."/>
-                                                    </fx-trigger>
-
-                                                </template>
-                                            </fx-repeat>
-
-                                        </fieldset>
-                                        <!-- 35b) -->
-
                                         <!-- 35a) Ältere Editionen -->
                                         <fieldset>
                                             <legend>
@@ -595,7 +550,7 @@
 
                                                     <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
                                                     <fx-control ref="ptr/@target">
-                                                        <label>Zotero Referenz</label>
+                                                        <label>Referenz</label>
                                                     </fx-control>
 
                                                     <fx-trigger>
@@ -605,6 +560,50 @@
 
                                                 </template>
                                             </fx-repeat>
+                                        </fieldset>
+
+                                        <!-- 35b) -->
+                                        <fieldset>
+                                            <legend>
+                                                <label>Bibliographie</label>
+                                                <fx-trigger class="add">
+                                                    <iron-icon icon="add-circle-outline" title="add edition"/>
+
+                                                    <!-- ##### when a new entry is created.. ##### -->
+                                                    <!-- ##### 1. store away the value of the xml:id of this part as fx-var is failing here for some reason ##### -->
+                                                    <!--
+                                                                                    <fx-setvalue ref="instance('vars')/parent"
+                                                                                                 value="instance()//msPart[index('parts')]/@xml:id"></fx-setvalue>
+                                                    -->
+
+                                                    <!-- ##### 2. insert a new bibl element ##### -->
+                                                    <fx-insert context="msContents/msItem/listBibl[@type='bibliography']"
+                                                               ref="bibl"
+                                                               origin="instance('mspart')//listBibl[@type='bibliography']/bibl"/>
+                                                </fx-trigger>
+                                            </legend>
+                                            <fx-repeat class="nested-repeat" id="bib"
+                                                       ref="msContents/msItem/listBibl[@type='bibliography']/bibl">
+                                                <template>
+                                                    <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
+
+                                                    <!--
+                                                    Would be nice to link the control directly to body section but this cause the refresh to drop out.
+                                                    Controls not yet recognize if they depend on some other control.
+
+                                                    <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
+                                                    <fx-control ref="ptr/@target">
+                                                        <label>Referenz</label>
+                                                    </fx-control>
+
+                                                    <fx-trigger>
+                                                        <iron-icon icon="remove-circle-outline" title="Bibliographie löschen"/>
+                                                        <fx-delete ref="."/>
+                                                    </fx-trigger>
+
+                                                </template>
+                                            </fx-repeat>
+
                                         </fieldset>
 
                                         <!-- 35c) Bilder: Verweis auf Literatur, in der Abbildung vorhanden -->
@@ -624,8 +623,37 @@
                                                 <template>
 
                                                     <fx-control ref="ptr/@target">
-                                                        <label>Bild</label>
+                                                        <label>Referenz</label>
                                                     </fx-control>
+
+                                                    <fx-trigger>
+                                                        <iron-icon icon="remove-circle-outline" title="delete image"/>
+                                                        <fx-delete ref="."/>
+                                                    </fx-trigger>
+
+                                                </template>
+                                            </fx-repeat>
+                                        </fieldset>
+
+                                        <!-- 35d) Abbildungen -->
+                                        <fieldset>
+                                            <legend>
+                                                <label>Abbildungen</label>
+                                                <fx-trigger class="add">
+                                                    <iron-icon icon="add-circle-outline" title="add image"/>
+
+                                                    <fx-insert context="facsimile"
+                                                               ref="graphic"
+                                                               origin="instance('mspart')//facsimile/graphic"/>
+                                                </fx-trigger>
+                                            </legend>
+                                            <fx-repeat class="nested-repeat" ref="facsimile/graphic">
+                                                <template>
+                                                    <fx-group>
+                                                        <fx-control ref="@url">
+                                                            <label>URL</label>
+                                                        </fx-control>
+                                                    </fx-group>
 
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="delete image"/>
@@ -858,13 +886,13 @@
 
                         <fx-group ref="profileDesc" class="group-7">
                             <!-- 28)  -->
-                            <fx-control ref="textClass/keywords/term">
+                            <fx-control ref="textClass/keywords/term/@ref">
                                 <label>Religion</label>
                                 <select class="widget">
                                     <option value=""/>
-                                    <option value="pagan">pagan</option>
-                                    <option value="jüdisch">jüdisch</option>
-                                    <option value="christlich">christlich</option>
+                                    <option value="#pagan">pagan</option>
+                                    <option value="#jewish">jüdisch</option>
+                                    <option value="#christian">christlich</option>
                                 </select>
                             </fx-control>
                             <!-- 29) missing -->

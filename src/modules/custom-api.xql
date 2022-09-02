@@ -206,7 +206,7 @@ declare %private function api:postprocess($nodes as node()*, $edepId as xs:strin
             case element(tei:msPart) return
                 element { node-name($node) } {
                     $node/@*,
-                    api:postprocess($node/* except $node/tei:div, $edepId)
+                    api:postprocess($node/* except ($node/tei:div, $node/tei:facsimile), $edepId)
                 }
             case element(tei:idno) return
                 if ($node/@type = "EDEp" and exists($edepId)) then
@@ -216,6 +216,13 @@ declare %private function api:postprocess($nodes as node()*, $edepId as xs:strin
                     }
                 else
                     $node
+            case element(tei:TEI) return
+                element { node-name($node) } {
+                    $node/@*,
+                    api:postprocess($node/tei:teiHeader, $edepId),
+                    root($node)//tei:msPart/tei:facsimile,
+                    api:postprocess($node/tei:text, $edepId)
+                }
             case element(tei:body) return
                 element { node-name($node) } {
                     $node/@*,
@@ -260,7 +267,7 @@ declare %private function  api:preprocessing-uuid($nodes as node()*, $uuid as xs
                     attribute xml:id {$uuid},
                     $node/node()
                 }
-            case element (tei:surface) return 
+            case element (tei:facsimile) return 
                 element { node-name($node) } {
                     attribute corresp {concat("#",$uuid)},
                     $node/node()
@@ -297,13 +304,16 @@ declare %private function  api:preprocessing-copy($nodes as node()*){
                     $node/node(),
                     root($node)//tei:body//tei:div[@type="textpart"],
                     root($node)//tei:body//tei:div[@type="apparatus"],
-                    root($node)//tei:body//tei:div[@type="translation"]
+                    root($node)//tei:body//tei:div[@type="translation"],
+                    root($node)//tei:facsimile
                 }
             case element(tei:body) return
                 element { node-name($node) } {
                     $node/@*,
                     $node/tei:div[@type="commentary"]
                 }
+            case element(tei:facsimile) return
+                ()
             case element () return  element {node-name($node)} { $node/@*, api:preprocessing-copy($node/node())}
         default return api:preprocessing-copy($node/node())
 }; 

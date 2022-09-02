@@ -75,12 +75,8 @@
                                 <!-- TODO: Metrik logisch hierhin -->
                                 <textLang mainLang="lat"></textLang>
                                 <!-- 35b) Bibliographie-->
-                                <listBibl type="edition">
+                                <listBibl type="bibliography">
                                     <!-- Einträge wiederholbar -->
-                                    <bibl>
-                                        <!-- Zotero Referenz -->
-                                        <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6" />
-                                    </bibl>
                                 </listBibl>
 
                                 <!-- TODO: 12c) Überlieferung: Aufbewahrung als Abklatsch, ggf. weglassen, da deckungsgleich mit 35a) -->
@@ -188,12 +184,8 @@
             <change type="modified" when="" who="" />
         </revisionDesc>
     </teiHeader>
-    <facsimile>
-        <!-- @corresp referenziert msPart -->
-        <surface corresp="">
-            <!-- 35d) Abbildungen, wiederholbar -->
-            <graphic url=""></graphic>
-        </surface>
+    <!-- @corresp referenziert msPart -->
+    <facsimile corresp="">
     </facsimile>
     <text>
         <body>

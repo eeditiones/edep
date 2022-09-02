@@ -8,6 +8,10 @@
     <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
     <div type="translation" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8" resp="#Feraudi">
     </div>
+    <!-- 35d) Abbildungen, wiederholbar -->
+    <facsimile corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8">
+        <graphic url=""></graphic>
+    </facsimile>
     <msIdentifier>
         <!-- 12a) Aufbewahrung -->
         <repository ref="http://sicily.classics.ox.ac.uk/museum/064"></repository>
@@ -20,7 +24,7 @@
             <!-- 25) Sprache -->
             <textLang mainLang="lat"/>
             <!-- 35b) Bibliographie-->
-            <listBibl type="edition">
+            <listBibl type="bibliography">
                 <!-- Einträge wiederholbar -->
                 <bibl>
                     <!-- Zotero Referenz -->
@@ -33,18 +37,12 @@
                     <ptr target=""/>
                 </bibl>
             </listBibl>
+            <!-- 35c) Bilder4-->
             <listBibl type="images">
                 <bibl>
                     <ptr target=""/>
-                    <biblScope>
-                        <graphic url="photo.png">
-                            <desc>Beschreibung des Bildes</desc>
-                        </graphic>
-                    </biblScope>
                 </bibl>
             </listBibl>
-            <!-- 35d) Abbildungen, wiederholbar -->
-            <graphic url="photo.png"/>
         </msItem>
     </msContents>
     <physDesc>
