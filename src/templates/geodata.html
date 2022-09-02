@@ -79,7 +79,9 @@
                 </app-header>
 
                 <main>
-                    <fx-fore src="templates/fore/places.html"></fx-fore>
+                    <pb-restricted login="login" group="tei">
+                        <fx-fore src="templates/fore/places.html"/>
+                    </pb-restricted>
                 </main>
 
                 <footer class="version">
