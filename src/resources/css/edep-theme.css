@@ -254,7 +254,7 @@ fieldset fieldset{
 fx-control {
     display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 0px 0px;
+  gap: 0.3rem;
   grid-auto-flow: column;
   grid-template-areas:
     "label control"

@@ -150,6 +150,10 @@
                         
                         <fx-instance id="material" src="data/material.json" type="json"></fx-instance>
 
+                        <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
+                            <data/>
+                        </fx-instance>
+
                         <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"
                                      xpath-default-namespace="http://www.tei-c.org/ns/1.0">
 
@@ -473,6 +477,11 @@
                                             <!-- 34) -->
                                             <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref">
                                                 <label>Paläographie</label>
+                                                <select ref="instance('palaeo')/item" class="widget" selection="open">
+                                                    <template>
+                                                        <option value="{.}">{.}</option>
+                                                    </template>
+                                                </select>
                                             </fx-control>
                                         </fx-group>
                                     </fx-group>
