@@ -557,7 +557,7 @@
                                                     Controls not yet recognize if they depend on some other control.
 
                                                     <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
-                                                    <fx-control ref="ptr">
+                                                    <fx-control ref="ptr/@target">
                                                         <label>Zotero Referenz</label>
                                                     </fx-control>
 
@@ -594,7 +594,7 @@
                                                     Controls not yet recognize if they depend on some other control.
 
                                                     <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
-                                                    <fx-control ref="ptr">
+                                                    <fx-control ref="ptr/@target">
                                                         <label>Zotero Referenz</label>
                                                     </fx-control>
 
@@ -623,7 +623,7 @@
                                                        ref="msContents/msItem/listBibl[@type='images']/bibl">
                                                 <template>
 
-                                                    <fx-control ref="ptr">
+                                                    <fx-control ref="ptr/@target">
                                                         <label>Bild</label>
                                                     </fx-control>
 

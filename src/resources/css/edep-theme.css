@@ -366,9 +366,9 @@ fx-var{
     postion:relative;
     margin-bottom:0.5rem;
 }
-.nested-repeat fx-control{
+/* .nested-repeat fx-control{
     display:block;
-}
+} */
 .nested-repeat fx-trigger{
     display:block;
     margin:0.5rem;
