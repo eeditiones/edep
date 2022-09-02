@@ -15,62 +15,71 @@
                 }
         */
 
-        body, .wrapper{
-            margin:0;
-            padding:0;
+        body, .wrapper {
+            margin: 0;
+            padding: 0;
             font-family: "Kimberley";
         }
-        button{
+
+        button {
             font-size: 1.2rem;
             padding: 0.5rem 1rem;
         }
-        .wrapper{
+
+        .wrapper {
             width: 21cm;
             height: 29.7cm;
             background: lightyellow;
-            margin:0 auto;
+            margin: 0 auto;
             padding: 2rem;
         }
-        .grid{
+
+        .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-gap:1rem;
+            grid-gap: 1rem;
             margin-bottom: 2rem;
-            border:thin solid var(--paper-grey-300);
+            border: thin solid var(--paper-grey-300);
         }
-        fx-control{
+
+        fx-control {
             display: grid;
             grid-template-columns: 200px auto;
             /*width: fit-content;*/
 
-            grid-gap:0.3rem;
+            grid-gap: 0.3rem;
             margin: 0.5rem 0;
 
         }
-        fx-control input{
-            width:200px;
+
+        fx-control input {
+            width: 200px;
         }
-        fx-control textarea{
+
+        fx-control textarea {
             width: 95%;
             display: inline-block;
         }
 
-        .group{
-            border:thin solid var(--paper-grey-300);
-            margin-bottom:1rem;
+        .group {
+            border: thin solid var(--paper-grey-300);
+            margin-bottom: 1rem;
         }
 
-        fx-control label{
+        fx-control label {
             justify-self: end;
         }
-        .green{
-            background:green;
+
+        .green {
+            background: green;
         }
-        .orange{
-            background:orange;
+
+        .orange {
+            background: orange;
         }
-        .yellow{
-            background:yellow;
+
+        .yellow {
+            background: yellow;
         }
     </style>
 </head>
@@ -79,17 +88,19 @@
     <h1>Places</h1>
     <fx-fore id="places">
 
-        <fx-send submission="s-login" event="pb-login" target="#document"></fx-send>
-
         <fx-action event="ready" if="exists(instance('query')/id)">
             <fx-send submission="s-load"/>
         </fx-action>
 
         <fx-model>
-            <fx-send event="model-construct-done" submission="s-login"/>
+            <fx-action event="model-construct-done">
+                <fx-send submission="s-login"/>
+                <fx-send submission="s-load-template"></fx-send>
+                <fx-send submission="s-load-places"></fx-send>
+            </fx-action>
 
-            <fx-instance src="templates/fore/place-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                <data></data>
+            <fx-instance xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                <data/>
             </fx-instance>
 
             <fx-instance id="vars">
@@ -112,19 +123,31 @@
             </fx-instance>
 
 
-
             <fx-submission id="s-save" method="post" url="api/places/{instance('query')/id}" replace="instance">
-                <fx-message event="submit-done">Ort wurde gespeichert</fx-message>
+                <fx-action event="submit-done">
+                    <fx-message>Ort wurde gespeichert</fx-message>
+                    <fx-toggle case="list"></fx-toggle>
+                    <fx-send submission="s-load-places"></fx-send>
+                    <fx-send submission="s-load-template"></fx-send>
+                </fx-action>
             </fx-submission>
             <fx-submission id="s-load" method="get" url="api/places/{instance('query')/id}" replace="instance">
                 <fx-toggle case="record" event="submit-done"/>
             </fx-submission>
+
+            <fx-submission id="s-load-places" method="get" url="api/places-list" replace="target" target="#table">
+                <!--                <fx-toggle case="list" event="submit-done"></fx-toggle>-->
+            </fx-submission>
+            <fx-submission id="s-load-template" method="get" url="templates/fore/place-tmpl.xml" replace="instance">
+
+            </fx-submission>
+
             <fx-submission id="s-reset" url="templates/fore/place-tmpl.xml" replace="instance">
             </fx-submission>
 
             <fx-instance id="login" type="json">{}</fx-instance>
-            <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance" instance="login" validate="false">
-                <fx-message event="submit-error">Please login to edit.</fx-message>
+            <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance"
+                           instance="login" validate="false">
                 <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
                 <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
             </fx-submission>
@@ -141,7 +164,7 @@
                     <fx-toggle case="record"/>
                 </fx-trigger>
                 <div id="places" class="case-content">
-                    <fx-output ref="instance('places-list-instance')//*:body" mediatype="html"/>
+                    <div id="table"></div>
                 </div>
             </fx-case>
 
@@ -151,54 +174,58 @@
                     <fx-send submission="s-reset"/>
                     <fx-toggle case="list"/>
                 </fx-trigger>
-                <fx-output ref="/place/@xml:id"/>
-                <fieldset class="case-content">
-                    <legend>Place</legend>
-                    <fx-control ref="placeName[@type='findspot']">
-                        <label>Fundstelle</label>
-                        <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
-                    </fx-control>
-                    <fx-control ref="placeName[@type='modern']">
-                        <label>moderner Ortsname</label>
-                    </fx-control>
-                    <fx-control ref="placeName[@type='ancient']">
-                        <label>antiker Ortsname</label>
-                    </fx-control>
-                    <fx-control ref="region[@type='province']" update-event="input">
-                        <label>Provinz</label>
-                        <select ref="instance('province')?*" class="widget" selection="open">
-                            <template>
-                                <option value="{?name}">{?value}</option>
-                            </template>
-                        </select>
-                    </fx-control>
-                    <fx-control ref="region[@tyoe='modern']">
-                        <label>moderne Region</label>
-                    </fx-control>
-                    <fx-control ref="country" update-event="input">
-                        <label>Modernes Land</label>
-                        <select ref="instance('country')?*" class="widget" selection="open">
-                            <template>
-                                <option value="{?name}">{?value}</option>
-                            </template>
-                        </select>
-                    </fx-control>
-                    <fx-control ref="location/geo">
-                        <label>Geo Location</label>
-                    </fx-control>
-                    <fx-control ref="ptr[@type='pleiades']">
-                        <label>Pleiades</label>
-                    </fx-control>
-                    <fx-control ref="ptr[@type='geonames']">
-                        <label>Geonames</label>
-                    </fx-control>
-                    <div class="actions">
-                        <fx-trigger id="save" class="saveBtn" ref="instance('vars')/loggedin">
-                            <button>Speichern</button>
-                            <fx-send submission="s-save"/>
-                        </fx-trigger>
-                    </div>
-                </fieldset>
+                <pb-restricted login="login" group="tei">
+                    <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
+                    <fx-output ref="instance('default')/place/@xml:id"/>
+                    <fieldset class="case-content">
+                        <legend>Place</legend>
+                        <fx-control ref="placeName[@type='findspot']">
+                            <label>Fundstelle</label>
+                            <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
+                        </fx-control>
+                        <fx-control ref="placeName[@type='modern']">
+                            <label>moderner Ortsname</label>
+                        </fx-control>
+                        <fx-control ref="placeName[@type='ancient']">
+                            <label>antiker Ortsname</label>
+                        </fx-control>
+                        <fx-control ref="region[@type='province']" update-event="input">
+                            <label>Provinz</label>
+                            <select ref="instance('province')?*" class="widget" selection="open">
+                                <template>
+                                    <option value="{?name}">{?value}</option>
+                                </template>
+                            </select>
+                        </fx-control>
+                        <fx-control ref="region[@tyoe='modern']">
+                            <label>moderne Region</label>
+                        </fx-control>
+                        <fx-control ref="country" update-event="input">
+                            <label>Modernes Land</label>
+                            <select ref="instance('country')?*" class="widget" selection="open">
+                                <template>
+                                    <option value="{?name}">{?value}</option>
+                                </template>
+                            </select>
+                        </fx-control>
+                        <fx-control ref="location/geo">
+                            <label>Geo Location</label>
+                        </fx-control>
+                        <fx-control ref="ptr[@type='pleiades']">
+                            <label>Pleiades</label>
+                        </fx-control>
+                        <fx-control ref="ptr[@type='geonames']">
+                            <label>Geonames</label>
+                        </fx-control>
+                        <div class="actions">
+                            <fx-trigger id="save" class="saveBtn" ref="instance('vars')/loggedin">
+                                <button>Speichern</button>
+                                <fx-send submission="s-save"/>
+                            </fx-trigger>
+                        </div>
+                    </fieldset>
+                </pb-restricted>
+
             </fx-case>
 
         </fx-switch>

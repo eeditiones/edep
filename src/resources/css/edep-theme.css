@@ -349,6 +349,12 @@ fx-inspector[open]{
 fx-var{
     display: none;
 }
+.loginMessage{
+    font-size:2rem;
+    text-align:center;
+    width:100%;
+    color:orange;
+}
 .nested-repeat{
     /*margin-top:1rem;*/
 }
