@@ -73,7 +73,7 @@
                                 <!-- TODO: Metrik logisch hierhin -->
                                 <textLang mainLang="lat"></textLang>
                                 <!-- 35b) Bibliographie-->
-                                <listBibl type="edition">
+                                <listBibl type="bibliography">
                                     <!-- Einträge wiederholbar -->
                                     <bibl>
                                         <!-- Zotero Referenz -->

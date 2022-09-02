@@ -24,7 +24,7 @@
             <!-- 25) Sprache -->
             <textLang mainLang="lat"/>
             <!-- 35b) Bibliographie-->
-            <listBibl type="edition">
+            <listBibl type="bibliography">
                 <!-- Einträge wiederholbar -->
                 <bibl>
                     <!-- Zotero Referenz -->
