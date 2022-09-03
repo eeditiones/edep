@@ -9,13 +9,11 @@ xquery version "3.1";
 module namespace api="http://teipublisher.com/api/custom";
 
 (: Add your own module imports here :)
-import module namespace rutil="http://exist-db.org/xquery/router/util";
-import module namespace app="teipublisher.com/app" at "app.xql";
 import module namespace config="http://www.tei-c.org/tei-simple/config" at "config.xqm";
 
 declare namespace json="http://www.json.org";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-
+declare namespace sm="http://exist-db.org/xquery/securitymanager";
 
 (:~
  : Keep this. This function does the actual lookup in the imported modules.
@@ -231,6 +229,15 @@ declare %private function api:postprocess($nodes as node()*, $edepId as xs:strin
                     { root($node)//tei:msPart/tei:div[@type='textpart'] }
                     </div>,
                     $node/tei:div[@type = "commentary"]
+                }
+            case element(tei:revisionDesc) return
+                element { node-name($node) } {
+                    $node/@*,
+                    $node/tei:change,
+                    <change xmlns="http://www.tei-c.org/ns/1.0" 
+                        type="{if (empty($node/tei:change)) then 'created' else 'changed'}" 
+                        when="{current-dateTime()}" 
+                        who="{sm:id()//sm:real/sm:username/string()}"/>
                 }
             case element() return
                 element { node-name($node) } {

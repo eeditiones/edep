@@ -173,16 +173,7 @@
             </textClass>
         </profileDesc>
         <!-- 33) Stand der Bearbeitung in @status -->
-        <revisionDesc status="draft">
-            <!--
-                47) Datensatz generiert.
-                45) Bearbeiter des Datensatzes in @who
-
-            -->
-            <change type="created" when="" who="" />
-            <!-- 46) Datensatz geändert -->
-            <change type="modified" when="" who="" />
-        </revisionDesc>
+        <revisionDesc status="draft"></revisionDesc>
     </teiHeader>
     <!-- @corresp referenziert msPart -->
     <facsimile corresp="">
