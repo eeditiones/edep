@@ -34,7 +34,7 @@ main {
 }
 
 .isRequiredFalse .widget{
-    background: lightcoral;
+    background: lightyellow;
 }
 
 fx-case{
@@ -108,10 +108,6 @@ aside .upload {
 .transcription, .apparatus, .translation, .commentary{
     display: block;
     margin-top: 1em;
-}
-
-.translator {
-    display: flex;
 }
 
 .parent-link iron-icon {
@@ -255,8 +251,7 @@ fieldset fieldset{
     margin-top:1rem;
 
 }
-
-fx-control, .edep-id {
+fx-control , fx-output{
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 0.3rem;
@@ -267,10 +262,10 @@ fx-control, .edep-id {
 }
 
 
-fx-control label, .edep-id label {
+fx-control label{
     grid-area:label;
 }
-fx-control .widget, .edep-id fx-output {
+fx-control .widget{
     grid-area:control;
 }
 fx-control fx-alert{
@@ -297,7 +292,7 @@ fx-group fx-group{
     padding:0;
 }
 
-fx-control label, fx-output label, .edep-id label {
+fx-control label, fx-output label{
     justify-self: end;
 }
 
@@ -372,9 +367,9 @@ fx-var{
     postion:relative;
     margin-bottom:0.5rem;
 }
-/* .nested-repeat fx-control{
+.nested-repeat fx-control{
     display:block;
-} */
+}
 .nested-repeat fx-trigger{
     display:block;
     margin:0.5rem;
@@ -426,7 +421,15 @@ fx-var{
     position:absolute;
     right:0.5rem;
 }
-
+[required]::after{
+    content:'';
+}
+fx-control[required] > label::after {
+    position:absolute;
+    right:-1rem;
+    content:'*';
+    color:red;
+}
 
 jinn-codemirror {
     max-height: 400px;
