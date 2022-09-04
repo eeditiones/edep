@@ -89,6 +89,9 @@
                                 <listBibl type="images">
                                     <!-- Einträge wiederholbar - optional -->
                                 </listBibl>
+                                <note type="verification" subtype="">
+                                    <date when=""/>
+                                </note>
                             </msItem>
                         </msContents>
                         <physDesc>

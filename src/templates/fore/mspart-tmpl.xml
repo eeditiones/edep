@@ -43,6 +43,11 @@
                     <ptr target=""/>
                 </bibl>
             </listBibl>
+            <!-- 12d in @subtype -->
+            <note type="verification" subtype="autopsy">
+                <!-- 12e -->
+                <date when=""/>
+            </note>
         </msItem>
     </msContents>
     <physDesc>

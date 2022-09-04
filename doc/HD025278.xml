@@ -66,12 +66,14 @@
                         <msContents>
                             <!-- TODO: 12d) Verifizierungsgrundlage: Auswahlmenü: Abklatsch / nicht-gesehen -->
                             <!-- TODO: 12e) Datum der Verifizierung -->
-                            
                             <!-- 15) Inschriftengattung in @class -->
                             <msItem class="https://www.eagle-network.eu/voc/typeins/lod/51">
                                 <!-- 25) Sprache -->
                                 <!-- TODO: Metrik logisch hierhin -->
                                 <textLang mainLang="lat"></textLang>
+                                <note type="verification" subtype="autopsy">
+                                    <date when="2021-02-10"/>
+                                </note>
                                 <!-- 35b) Bibliographie-->
                                 <listBibl type="bibliography">
                                     <!-- Einträge wiederholbar -->
