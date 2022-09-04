@@ -4,11 +4,13 @@ html{
     --group-3-bg:#ba68c8;
     --group-4-bg:#81c784;
     --group-5-bg:#b39ddb;
-    --group-6-bg:#e57373;
+    --group-6-bg:#cee0fe;
     --group-7-bg:#fce8b2;
     --group-8-bg:#bcaaa4;
     --group-9-bg:#81c784;
-    --group-10-bg: #791eda;
+    --group-10-bg: #f9c74f;
+
+    --jinn-codemirror-background-color: white;
 }
 main {
     /*margin: 0 20px 0 20px;*/
@@ -188,7 +190,6 @@ button{
 
 .block {
     border-top: 1px solid #607D8B;
-    border-bottom: 1px solid #607D8B;
     margin: 1rem 0;
 }
 
@@ -224,8 +225,11 @@ button{
     background: var(--group-9-bg);
 }
 .group-10 {
-    border: 2px solid var(--group-10-bg);
+    background: var(--group-10-bg);
     margin-top: 1rem;
+}
+fx-group.padded {
+    padding-top: 1.5rem;
 }
 
 .wrapper{
@@ -280,11 +284,16 @@ fx-control [type="checkbox"]{
 fx-group{
     padding:1rem;
     border-radius: 0.3rem;
+    position: relative;
 }
-fx-group > label{
+fx-group > label {
+    font-family: "Oswald", Verdana, "Helvetica", sans-serif;
+    font-weight: 400 !important;
+    line-height: 1.2;
     padding:0.5rem;
     display:block;
     position:absolute;
+    top: 0;
 }
 fx-group fx-group{
     border:thin solid var(--paper-grey-300);
@@ -431,19 +440,8 @@ fx-control[required] > label::after {
     color:red;
 }
 
-jinn-codemirror {
-    max-height: 400px;
-    min-height: 320px;
+jinn-xml-editor, jinn-epidoc-editor {
     font-size: 16px;
-}
-#xml-editor {
-    flex: 2;
-}
-#leiden-editor {
-    flex: 1;
-    padding-right: 10px;
-    border-right: 1px solid #CCAA00;
-    margin-right: 10px;
 }
 .hidden {
     display: none;
