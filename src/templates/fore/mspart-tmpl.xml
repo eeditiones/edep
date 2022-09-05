@@ -45,14 +45,15 @@
                     <ptr target=""/>
                 </bibl>
             </listBibl>
-            <!-- 35c) Bilder4-->
+            <!-- 35c) Bilder-->
             <listBibl type="images">
                 <bibl>
                     <ptr target=""/>
+                    <note></note>
                 </bibl>
             </listBibl>
             <!-- 12d in @subtype -->
-            <note type="verification" subtype="autopsy">
+            <note type="verification" subtype="">
                 <!-- 12e -->
                 <date when=""/>
             </note>

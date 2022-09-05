@@ -648,11 +648,14 @@
                                             <fx-repeat class="nested-repeat" id="bib"
                                                        ref="msContents/msItem/listBibl[@type='images']/bibl">
                                                 <template>
-
-                                                    <fx-control ref="ptr/@target">
-                                                        <label>Referenz</label>
-                                                    </fx-control>
-
+                                                    <div>
+                                                        <fx-control ref="ptr/@target">
+                                                            <label>Referenz</label>
+                                                        </fx-control>
+                                                        <fx-control ref="note">
+                                                            <label>Freie Eingabe</label>
+                                                        </fx-control>
+                                                    </div>
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="delete image"/>
                                                         <fx-delete ref="."/>
