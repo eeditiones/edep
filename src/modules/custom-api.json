@@ -220,7 +220,7 @@
         "/api/places/{id}": {
     		"get" : {
                 "summary": "show places",
-                "operationId": "api:places-list",
+                "operationId": "api:load-place",
                 "parameters": [
                     {
                         "name": "id",
@@ -282,23 +282,6 @@
                 }
             }
     	},
-        "/api/places-list": {
-    		"get" : {
-                "summary": "show places list",
-                "operationId": "api:places-list",   
-                "responses": {
-                    "200": {
-                        "description": "places list",
-                        "content": {
-                            "text/html": {
-                                "schema": {
-                                }
-                            }
-                        }
-                    }
-                }
-    		}
-        },
         "/api/places": {
             "post" : {
                 "summary": "update/add places",

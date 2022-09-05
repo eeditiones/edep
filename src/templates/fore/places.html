@@ -118,11 +118,6 @@
 
             <fx-instance id="country" src="data/country.json" type="json">{}</fx-instance>
 
-            <fx-instance id="places-list-instance" src="api/places-list" type="html">
-                <data></data>
-            </fx-instance>
-
-
             <fx-submission id="s-save" method="post" url="api/places/{instance('query')/id}" replace="instance">
                 <fx-action event="submit-done">
                     <fx-message>Ort wurde gespeichert</fx-message>
