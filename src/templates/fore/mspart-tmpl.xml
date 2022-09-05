@@ -23,6 +23,14 @@
         <msItem class="https://www.eagle-network.eu/voc/typeins/lod/51">
             <!-- 25) Sprache -->
             <textLang mainLang="lat"/>
+            <!-- 12c) Überlieferung -->
+            <listBibl type="transmission">
+                <bibl>
+                    <!-- Zotero Referenz -->
+                    <ptr target=""/>
+                    <note></note>
+                </bibl>
+            </listBibl>
             <!-- 35b) Bibliographie-->
             <listBibl type="bibliography">
                 <!-- Einträge wiederholbar -->
@@ -63,7 +71,9 @@
                         <depth></depth>
                     </dimensions>
                     <!-- 14) Dekor -->
-                    <rs type="decoration" ref="http://www.eagle-network.eu/voc/decor/lod/2000"></rs>
+                    <rs type="decoration" ref=""></rs>
+                    <!-- 24) Metrik -->
+                    <rs type="metric"></rs>
                 </support>
                 <!-- 13) Erhaltung -->
                 <condition></condition>

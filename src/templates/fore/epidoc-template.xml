@@ -73,14 +73,20 @@
                             <msItem class="">
                                 <!-- 25) Sprache -->
                                 <!-- TODO: Metrik logisch hierhin -->
-                                <textLang mainLang="lat"></textLang>
+                                <textLang mainLang=""></textLang>
                                 <!-- 35b) Bibliographie-->
                                 <listBibl type="bibliography">
                                     <!-- Einträge wiederholbar -->
                                 </listBibl>
 
-                                <!-- TODO: 12c) Überlieferung: Aufbewahrung als Abklatsch, ggf. weglassen, da deckungsgleich mit 35a) -->
-
+                                <!-- 12c) Überlieferung -->
+                                <listBibl type="transmission">
+                                    <bibl>
+                                        <!-- Zotero Referenz -->
+                                        <ptr target=""/>
+                                        <note></note>
+                                    </bibl>
+                                </listBibl>
                                 <!-- 35a) Ältere Editionen -->
                                 <listBibl type="previousEditions">
                                     <!-- Einträge wiederholbar - optional -->
@@ -121,7 +127,9 @@
                                             <width></width>
                                         </dimensions>
                                         <!-- 34) Paläographie: kontrolliertes Vokabular -->
-                                        <rs type="palaeography" ref="http://..." />
+                                        <rs type="palaeography" ref="" />
+                                        <!-- 24) Metrik -->
+                                        <rs type="metric"></rs>
                                     </layout>
                                 </layoutDesc>
                             </objectDesc>

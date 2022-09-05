@@ -74,6 +74,14 @@
                                 <note type="verification" subtype="autopsy">
                                     <date when="2021-02-10"/>
                                 </note>
+                                <!-- 12c) Überlieferung -->
+                                <listBibl type="transmission">
+                                    <bibl>
+                                        <!-- Zotero Referenz -->
+                                        <ptr target="https://www.zotero.org/groups/382445/items/FZWWPUD6"/>
+                                        <note>Freie Eingabe</note>
+                                    </bibl>
+                                </listBibl>
                                 <!-- 35b) Bibliographie-->
                                 <listBibl type="bibliography">
                                     <!-- Einträge wiederholbar -->
@@ -130,6 +138,8 @@
                                         </dimensions>
                                         <!-- 34) Paläographie: kontrolliertes Vokabular -->
                                         <rs type="palaeography" ref="http://..."/>
+                                        <!-- 24) Metrik -->
+                                        <rs type="metric">partim</rs>
                                     </layout>
                                 </layoutDesc>
                             </objectDesc>
