@@ -81,11 +81,7 @@
 
                                 <!-- 12c) Überlieferung -->
                                 <listBibl type="transmission">
-                                    <bibl>
-                                        <!-- Zotero Referenz -->
-                                        <ptr target=""/>
-                                        <note></note>
-                                    </bibl>
+                                    <!-- Einträge wiederholbar -->
                                 </listBibl>
                                 <!-- 35a) Ältere Editionen -->
                                 <listBibl type="previousEditions">

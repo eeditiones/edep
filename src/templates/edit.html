@@ -396,6 +396,40 @@
                                             <label>Aufbewahrung</label>
                                         </fx-control>
 
+                                        <!-- 12c) Überlieferung -->
+                                        <fieldset>
+                                            <legend>
+                                                <label>Überlieferung</label>
+                                                <fx-trigger class="add">
+                                                    <iron-icon icon="add-circle-outline" title="Überlieferung hinzufügen"/>
+
+                                                    <fx-insert context="msContents/msItem/listBibl[@type='transmission']"
+                                                                ref="bibl"
+                                                                origin="instance('mspart')//listBibl[@type='transmission']/bibl"/>
+                                                </fx-trigger>
+                                            </legend>
+                                            <fx-repeat class="nested-repeat" id="bib"
+                                                        ref="msContents/msItem/listBibl[@type='transmission']/bibl">
+                                                <template>
+                                                    <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
+
+                                                    <div>
+                                                        <fx-control ref="ptr/@target">
+                                                            <label>Referenz</label>
+                                                        </fx-control>
+                                                        <fx-control ref="note">
+                                                            <label>Freie Eingabe</label>
+                                                        </fx-control>
+                                                    </div>
+                                                    <fx-trigger>
+                                                        <iron-icon icon="remove-circle-outline" title="Überlieferung löschen"/>
+                                                        <fx-delete ref="."/>
+                                                    </fx-trigger>
+
+                                                </template>
+                                            </fx-repeat>
+                                        </fieldset>
+
                                         <div class="block">
                                             <h3>Verifizierung</h3>
                                             <!-- 12b-12e missing -->

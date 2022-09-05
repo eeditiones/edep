@@ -255,7 +255,7 @@ fieldset fieldset{
     margin-top:1rem;
 
 }
-fx-control , fx-output{
+fx-control, fx-output {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 0.3rem;
@@ -264,7 +264,6 @@ fx-control , fx-output{
     ". alert";
     margin: 0.5rem;
 }
-
 
 fx-control label{
     grid-area:label;
