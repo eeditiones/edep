@@ -74,6 +74,86 @@ declare function api:material($request as map(*)) {
     }
 };
 
+declare function api:places-browse($request as map(*)) {
+    let $search := normalize-space($request?parameters?search)
+    let $letterParam := $request?parameters?category
+    let $limit := $request?parameters?limit
+    let $places :=
+        if ($search and $search != '') then
+            collection($config:data-root || "/places")//tei:place[ft:query(tei:placeName, $search || '*')]
+        else
+            collection($config:data-root || "/places")//tei:place
+    let $sorted := 
+        for $place in $places
+        order by $place/tei:placeName[@type="modern"]
+        return
+            $place
+    let $letter := 
+        if (count($places) < $limit) then 
+            "Alle"
+        else if ($letterParam = '') then
+            substring($sorted[1], 1, 1) => upper-case()
+        else
+            $letterParam
+    let $byLetter :=
+        if ($letter = 'Alle') then
+            $sorted
+        else
+            filter($sorted, function($entry) {
+                starts-with(lower-case($entry/tei:placeName[@type="modern"]), lower-case($letter))
+            })
+    return
+        map {
+            "items": api:output-place($byLetter, $letter, $search),
+            "categories":
+                if (count($places) < $limit) then
+                    []
+                else array {
+                    for $index in 1 to string-length('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+                    let $alpha := substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ', $index, 1)
+                    let $hits := count(filter($sorted, function($entry) { starts-with(lower-case($entry/@n), lower-case($alpha))}))
+                    where $hits > 0
+                    return
+                        map {
+                            "category": $alpha,
+                            "count": $hits
+                        },
+                    map {
+                        "category": "Alle",
+                        "count": count($sorted)
+                    }
+                }
+        }
+};
+
+declare function api:output-place($list, $category as xs:string, $search as xs:string?) {
+    array {
+        for $place in $list
+        let $categoryParam := if ($category = "all") then substring($place/@n, 1, 1) else $category
+        let $params := "id=" || $place/@xml:id || "&amp;category=" || $categoryParam || "&amp;search=" || $search
+        let $label := string-join((
+            $place/tei:placeName[@type='modern'][node()],
+            $place/tei:placeName[@type='ancient'][node()],
+            $place/tei:region[@type='ancient'][node()],
+            $place/tei:region[@type='province'][node()],
+            $place/tei:placeName[@type='findspot'][node()]
+        ), '; ')
+        let $coords := tokenize($place/tei:location/tei:geo)
+        return
+            <span class="place">
+                <a href="geodata.html?{$params}">{$label}</a>
+                <!--
+                <pb-geolocation latitude="{$coords[1]}" longitude="{$coords[2]}" label="{$label}" emit="map" event="click">
+                    { if ($place/@type != 'approximate') then attribute zoom { 9 } else () }
+                    <iron-icon icon="maps:map"></iron-icon>
+                </pb-geolocation>
+                -->
+                <paper-icon-button id="{$place/@xml:id}" class="place-id" icon="icons:content-copy"
+                    title="ID kopieren"></paper-icon-button>
+            </span>
+    }
+};
+
 declare function api:places-list($request as map(*)) {
     let $return :=if (not($request?parameters?id)) then
         let $thead := 
@@ -233,7 +313,7 @@ declare %private function api:postprocess($nodes as node()*, $edepId as xs:strin
             case element(tei:revisionDesc) return
                 element { node-name($node) } {
                     $node/@*,
-                    $node/tei:change,
+                    $node/tei:change[@type='created'],
                     <change xmlns="http://www.tei-c.org/ns/1.0" 
                         type="{if (empty($node/tei:change)) then 'created' else 'changed'}" 
                         when="{current-dateTime()}" 

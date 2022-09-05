@@ -96,7 +96,6 @@
             <fx-action event="model-construct-done">
                 <fx-send submission="s-login"/>
                 <fx-send submission="s-load-template"></fx-send>
-                <fx-send submission="s-load-places"></fx-send>
             </fx-action>
 
             <fx-instance xpath-default-namespace="http://www.tei-c.org/ns/1.0">
@@ -127,18 +126,11 @@
             <fx-submission id="s-save" method="post" url="api/places/{instance('query')/id}" replace="instance">
                 <fx-action event="submit-done">
                     <fx-message>Ort wurde gespeichert</fx-message>
-                    <fx-toggle case="list"></fx-toggle>
-                    <fx-send submission="s-load-places"></fx-send>
-                    <fx-send submission="s-load-template"></fx-send>
+                    <fx-send submission="s-load"></fx-send>
                 </fx-action>
                 <fx-message event="submit-error">couldn't be saved</fx-message>
             </fx-submission>
             <fx-submission id="s-load" method="get" url="api/places/{instance('query')/id}" replace="instance" validate="false">
-                <fx-toggle case="record" event="submit-done"/>
-            </fx-submission>
-
-            <fx-submission id="s-load-places" method="get" url="api/places-list" replace="target" target="#table" validate="false">
-                <!--                <fx-toggle case="list" event="submit-done"></fx-toggle>-->
             </fx-submission>
 
             <fx-submission id="s-load-template" method="get" url="templates/fore/place-tmpl.xml" replace="instance" validate="false">
@@ -157,81 +149,57 @@
 
         </fx-model>
 
-
-        <fx-switch>
-
-            <fx-case id="list">
-
-                <fx-trigger class="toggle-view">
-                    <iron-icon icon="add" title="add edition"/>
-                    <fx-toggle case="record"/>
-                </fx-trigger>
-                <div id="places" class="case-content">
-                    <div id="table"></div>
+        <pb-restricted login="login" group="tei">
+            <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
+            <fx-output ref="instance('default')/place/@xml:id"/>
+            <fieldset class="case-content">
+                <legend>Place</legend>
+                <fx-control ref="placeName[@type='findspot']">
+                    <label>Fundstelle</label>
+                    <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
+                </fx-control>
+                <fx-control ref="placeName[@type='modern']">
+                    <label>moderner Ortsname</label>
+                </fx-control>
+                <fx-control ref="placeName[@type='ancient']">
+                    <label>antiker Ortsname</label>
+                </fx-control>
+                <fx-control ref="region[@type='province']" update-event="input">
+                    <label>Provinz</label>
+                    <select ref="instance('province')?*" class="widget" selection="open">
+                        <template>
+                            <option value="{?name}">{?value}</option>
+                        </template>
+                    </select>
+                </fx-control>
+                <fx-control ref="region[@tyoe='modern']">
+                    <label>moderne Region</label>
+                </fx-control>
+                <fx-control ref="country" update-event="input">
+                    <label>Modernes Land</label>
+                    <select ref="instance('country')?*" class="widget" selection="open">
+                        <template>
+                            <option value="{?name}">{?value}</option>
+                        </template>
+                    </select>
+                </fx-control>
+                <fx-control ref="location/geo">
+                    <label>Geo Location</label>
+                </fx-control>
+                <fx-control ref="ptr[@type='pleiades']">
+                    <label>Pleiades</label>
+                </fx-control>
+                <fx-control ref="ptr[@type='geonames']">
+                    <label>Geonames</label>
+                </fx-control>
+                <div class="actions">
+                    <fx-trigger id="save" class="saveBtn">
+                        <button type="submit">Speichern</button>
+                        <fx-send submission="s-save"/>
+                    </fx-trigger>
                 </div>
-            </fx-case>
-
-            <fx-case id="record">
-                <fx-trigger class="toggle-view close">
-                    <iron-icon icon="close"/>
-                    <fx-send submission="s-reset"/>
-                    <fx-toggle case="list"/>
-                </fx-trigger>
-                <pb-restricted login="login" group="tei">
-                    <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
-                    <fx-output ref="instance('default')/place/@xml:id"/>
-                    <fieldset class="case-content">
-                        <legend>Place</legend>
-                        <fx-control ref="placeName[@type='findspot']">
-                            <label>Fundstelle</label>
-                            <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
-                        </fx-control>
-                        <fx-control ref="placeName[@type='modern']">
-                            <label>moderner Ortsname</label>
-                        </fx-control>
-                        <fx-control ref="placeName[@type='ancient']">
-                            <label>antiker Ortsname</label>
-                        </fx-control>
-                        <fx-control ref="region[@type='province']" update-event="input">
-                            <label>Provinz</label>
-                            <select ref="instance('province')?*" class="widget" selection="open">
-                                <template>
-                                    <option value="{?name}">{?value}</option>
-                                </template>
-                            </select>
-                        </fx-control>
-                        <fx-control ref="region[@tyoe='modern']">
-                            <label>moderne Region</label>
-                        </fx-control>
-                        <fx-control ref="country" update-event="input">
-                            <label>Modernes Land</label>
-                            <select ref="instance('country')?*" class="widget" selection="open">
-                                <template>
-                                    <option value="{?name}">{?value}</option>
-                                </template>
-                            </select>
-                        </fx-control>
-                        <fx-control ref="location/geo">
-                            <label>Geo Location</label>
-                        </fx-control>
-                        <fx-control ref="ptr[@type='pleiades']">
-                            <label>Pleiades</label>
-                        </fx-control>
-                        <fx-control ref="ptr[@type='geonames']">
-                            <label>Geonames</label>
-                        </fx-control>
-                        <div class="actions">
-                            <fx-trigger id="save" class="saveBtn">
-                                <button type="submit">Speichern</button>
-                                <fx-send submission="s-save"/>
-                            </fx-trigger>
-                        </div>
-                    </fieldset>
-                </pb-restricted>
-
-            </fx-case>
-
-        </fx-switch>
+            </fieldset>
+        </pb-restricted>
     </fx-fore>
 </div>
 <!--<script type="module" src="../resources/scripts/fore-dev.js"/>-->

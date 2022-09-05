@@ -32,6 +32,7 @@
                 <facet dimension="language" expression="nav:get-metadata(ancestor::dbk:article, 'language')"/>
             </text>
             <text qname="dbk:title"/>
+            <text qname="tei:placeName"/>
         </lucene>
     </index>
 </collection>
