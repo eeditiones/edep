@@ -7,6 +7,7 @@ html{
     --group-6-bg:#cee0fe;
     --group-7-bg:#fce8b2;
     --group-8-bg:#bcaaa4;
+    --group-8-1-bg:#ce93d8;
     --group-9-bg:#81c784;
     --group-10-bg: #f9c74f;
 
@@ -190,6 +191,7 @@ button{
 
 .block {
     border-top: 1px solid #607D8B;
+    border-bottom: 1px solid #607D8B;
     margin: 1rem 0;
 }
 
@@ -220,6 +222,9 @@ button{
 }
 .group-8{
     background: var(--group-8-bg);
+}
+.group-8-1{
+    background: var(--group-8-1-bg);
 }
 .group-9{
     background: var(--group-9-bg);
