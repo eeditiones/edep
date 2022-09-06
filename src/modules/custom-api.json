@@ -174,7 +174,7 @@
                 }
     		}    
     	},
-        "/api/places/browse": {
+        "/api/places": {
             "get": {
                 "summary": "List places",
                 "description": "Retrieve list of places in format required by pb-split-list",
@@ -219,7 +219,7 @@
         },
         "/api/places/{id}": {
     		"get" : {
-                "summary": "show places",
+                "summary": "show place",
                 "operationId": "api:load-place",
                 "parameters": [
                     {
@@ -245,7 +245,7 @@
                 }
     		},
             "post" : {
-                "summary": "update/add places",
+                "summary": "update/add place",
                 "x-constraints": {
 					"group": "tei"
                 },
@@ -260,35 +260,6 @@
                         }
                     }
                 ],
-                "requestBody": {
-                	"required": true,
-					"content": {
-						"application/xml": {
-							"schema": {
-							}
-						}
-					}
-				},
-                "responses": {
-                    "200": {
-                        "description": "places-add",
-                        "content": {
-                            "application/xml": {
-                                "schema": {
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-    	},
-        "/api/places": {
-            "post" : {
-                "summary": "update/add places",
-                "x-constraints": {
-					"group": "tei"
-                },
-                "operationId": "api:places-add",
                 "requestBody": {
                 	"required": true,
 					"content": {

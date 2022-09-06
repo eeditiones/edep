@@ -105,7 +105,7 @@
         <origin>
             <!-- in @corresp wird die GeoID angegeben, andere Ortsangaben sind redundant und werden
                                 am Ende nur hinein kopiert - siehe Kommentare -->
-            <origPlace corresp="#GeoID">
+            <origPlace corresp="">
                 <!-- 5) Provinz / augusteische Region: kopiert aus Geodatenbank -->
                 <placeName type="province"></placeName>
                 <!-- 8) Fundort (antik): kopiert aus Geodatenbank -->
