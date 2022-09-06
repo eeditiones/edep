@@ -109,10 +109,10 @@
                                             <depth></depth>
                                         </dimensions>
                                         <!-- 14) Dekor -->
-                                        <rs type="decoration" ref=""></rs>
+                                        <rs type="decoration" ref="https://www.eagle-network.eu/voc/decor/lod/1000"></rs>
                                     </support>
                                     <!-- 13) Erhaltung -->
-                                    <condition></condition>
+                                    <condition>complete</condition>
                                 </supportDesc>
                                 <layoutDesc>
                                     <layout>
@@ -136,7 +136,7 @@
                                         <height></height>
                                     </dimensions>
                                     <!-- 39) Ligatur -->
-                                    <rs type="ligature"></rs>
+                                    <rs type="ligature">no</rs>
                                 </handNote>
                             </handDesc>
                         </physDesc>
