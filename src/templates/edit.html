@@ -855,6 +855,10 @@
                                 <!-- setting generated id on new msPart -->
                                 <fx-var name="uuid" value="gen-id()"/>
                                 <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="$uuid"/>
+                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='textpart']/@corresp" value="'#' || $uuid"/>
+                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='apparatus']/@corresp" value="'#' || $uuid"/>
+                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='translation']/@corresp" value="'#' || $uuid"/>
+                                <fx-setvalue ref="//msPart[index('parts')]/facsimile/@corresp" value="'#' || $uuid"/>
 
                                 <!-- add required textpart to edition
                                 <fx-insert ref="//body/div[@type='edition']/div" origin="instance('templates')//div[@type='edition']/div"/>
