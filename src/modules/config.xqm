@@ -21,6 +21,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
  : Define where places are located
  :)
  declare variable $config:places := "/db/apps/edep/data/places/";
+ declare variable $config:people := $config:data-root || "/people/";
  declare variable $config:inscription := "/db/apps/edep/data/inscriptions/";
  declare variable $config:inscription-templ := "/db/apps/edep/templates/fore/epidoc-template.xml";
 

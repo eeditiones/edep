@@ -66,6 +66,47 @@
 				}
 			}
         },
+        "/personen": {
+            "get": {
+				"summary": "Landing page for people",
+				"description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
+				"tags": ["view"],
+				"operationId": "vapi:html",
+				"x-error-handler": "vapi:handle-error",
+				"parameters": [
+					{
+						"name": "file",
+						"in": "query",
+						"schema": {
+							"type": "string",
+                            "default": "pages/people"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "HTML of the page",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The document was not found",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+        },
     	"/api/decor": {
     		"get" : {
                 "summary": "decor items",
@@ -175,6 +216,33 @@
     		}    
     	},
         "/api/places": {
+            "post" : {
+                "summary": "update/add places",
+                "x-constraints": {
+					"group": "tei"
+                },
+                "operationId": "api:places-add",
+                "requestBody": {
+                	"required": true,
+					"content": {
+						"application/xml": {
+							"schema": {
+							}
+						}
+					}
+				},
+                "responses": {
+                    "200": {
+                        "description": "places-add",
+                        "content": {
+                            "application/xml": {
+                                "schema": {
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "get": {
                 "summary": "List places",
                 "description": "Retrieve list of places in format required by pb-split-list",
@@ -250,6 +318,141 @@
 					"group": "tei"
                 },
                 "operationId": "api:places-add",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                	"required": true,
+					"content": {
+						"application/xml": {
+							"schema": {
+							}
+						}
+					}
+				},
+                "responses": {
+                    "200": {
+                        "description": "places-add",
+                        "content": {
+                            "application/xml": {
+                                "schema": {
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    	},
+        "/api/people": {
+            "post" : {
+                "summary": "update/add person",
+                "x-constraints": {
+					"group": "tei"
+                },
+                "operationId": "api:person-add",
+                "requestBody": {
+                	"required": true,
+					"content": {
+						"application/xml": {
+							"schema": {
+							}
+						}
+					}
+				},
+                "responses": {
+                    "200": {
+                        "description": "places-add",
+                        "content": {
+                            "application/xml": {
+                                "schema": {
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "List people",
+                "description": "Retrieve list of places in format required by pb-split-list",
+                "operationId": "custom:people-browse",
+                "parameters": [
+					{
+						"name": "category",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 50
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "schema":{
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Categories and people to display",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/people/{id}": {
+    		"get" : {
+                "summary": "show person",
+                "operationId": "api:load-person",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema":{
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "person record",
+                        "content": {
+                            "application/xml": {
+                                "schema": {
+                                    
+                                }
+                            }
+                        }
+                    }
+                }
+    		},
+            "post" : {
+                "summary": "update/add person",
+                "x-constraints": {
+					"group": "tei"
+                },
+                "operationId": "api:person-add",
                 "parameters": [
                     {
                         "name": "id",

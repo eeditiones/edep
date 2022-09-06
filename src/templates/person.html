@@ -1,0 +1,182 @@
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title data-template="config:app-title"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"/>
+    <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-16.png" sizes="16x16"/>
+    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-24.png" sizes="24x24"/>
+    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-32.png" sizes="32x32"/>
+    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-64.png" sizes="64x64"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald"/>
+    <link rel="stylesheet" href="resources/css/theme.css"/>
+    <link rel="stylesheet" href="resources/css/fore.css"/>
+    <link rel="stylesheet" href="resources/css/edep-theme.css"/>
+    <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
+    <script type="module" src="resources/scripts/fore-dev.js"></script>
+
+<!--    <script type="module" src="resources/scripts/datalist-ajax/datalist-ajax.min.js"></script>-->
+<!--        <script type="module" src="http://localhost:8090/index.js"/>-->
+
+</head>
+
+<body>
+    <pb-page data-template="pages:pb-page" unresolved="unresolved">
+        <app-drawer-layout force-narrow="force-narrow">
+            <app-drawer slot="drawer" align="right">
+                <div class="drawer-content">
+                    <pb-media-query query="(max-width: 1023px)">
+                            <!-- language selector -->
+                            <pb-lang name="lang" data-template="pages:languages"/>
+                        </pb-media-query>
+                    </div>
+                </app-drawer>
+                <app-header-layout>
+                <app-header slot="header" reveals="reveals" fixed="fixed" effects="waterfall">
+                    <app-toolbar data-template="lib:include" data-template-path="templates/menu.html">
+                        <a data-target="custom" href="${app}/orte?category=${category}&amp;search=${search}" data-template="lib:parse-params">Geodaten</a>
+                        <a data-target="custom" href="${app}/personen?category=${category}&amp;search=${search}" data-template="lib:parse-params">Personen</a>
+                    </app-toolbar>
+                    <pb-media-query query="(max-width: 1023px)">
+                        <app-toolbar class="toolbar" sticky="sticky">
+                            <!-- Search input -->
+                            <pb-search action="${app}/search.html" data-template="lib:parse-params" value="${query}" redirect="redirect"/>
+                            <paper-icon-button icon="icons:menu" drawer-toggle="drawer-toggle"/>
+                        </app-toolbar>
+                    </pb-media-query>
+                </app-header>
+
+                <main>
+                    <pb-restricted login="login" group="tei">
+                        <fx-fore id="person">
+
+                            <fx-action event="ready" if="exists(instance('query')/id)">
+                                <fx-send submission="s-load"/>
+                            </fx-action>
+                    
+                            <fx-model>
+                                <fx-action event="model-construct-done">
+                                    <fx-send submission="s-login"/>
+                                    <fx-send submission="s-load-template"></fx-send>
+                                </fx-action>
+                    
+                                <fx-instance xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data/>
+                                </fx-instance>
+                    
+                                <fx-instance id="vars">
+                                    <data>
+                                        <loggedin>hidden</loggedin>
+                                    </data>
+                                </fx-instance>
+                                <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
+                    
+                                <fx-instance id="query" src="#querystring">
+                                    <data></data>
+                                </fx-instance>
+                    
+                                <fx-submission id="s-save" method="post" url="api/people/{instance('query')/id}" replace="instance">
+                                    <fx-action event="submit-done">
+                                        <fx-message>Ort wurde gespeichert</fx-message>
+                                        <fx-send submission="s-load"></fx-send>
+                                    </fx-action>
+                                    <fx-message event="submit-error">couldn't be saved</fx-message>
+                                </fx-submission>
+                                <fx-submission id="s-create"
+                                       url="api/people"
+                                       method="post"
+                                       replace="instance">
+                                    <fx-message event="submit-done">Daten wurden gespeichert</fx-message>
+
+                                    <fx-action event="submit-error">
+                                        <fx-message>Daten konnten nicht gespeichert werden.</fx-message>
+                                    </fx-action>
+                                </fx-submission>
+
+                                <fx-submission id="s-load" method="get" url="api/people/{instance('query')/id}" replace="instance" validate="false">
+                                </fx-submission>
+                    
+                                <fx-submission id="s-load-template" method="get" url="templates/fore/person-tmpl.xml" replace="instance" validate="false">
+                    
+                                </fx-submission>
+                    
+                                <fx-submission id="s-reset" url="templates/fore/person-tmpl.xml" replace="instance">
+                                </fx-submission>
+                    
+                                <fx-instance id="login" type="json">{}</fx-instance>
+                                <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance"
+                                               instance="login" validate="false">
+                                    <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
+                                    <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
+                                </fx-submission>
+                    
+                            </fx-model>
+                    
+                            <pb-restricted login="login" group="tei">
+                                <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
+                                <fx-output ref="instance('default')/person/@xml:id"/>
+                                <fieldset>
+                                    <legend>Person</legend>
+                                    <fx-control ref="persName/name[@type='praenomen']">
+                                        <label>Praenomen</label>
+                                        <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
+                                    </fx-control>
+                                    <fx-control ref="persName/name[@type='cognomen']">
+                                        <label>Cognomen</label>
+                                    </fx-control>
+                                    <fx-control ref="persName/name[@type='nomen']">
+                                        <label>Nomen</label>
+                                    </fx-control>
+                                    <fx-control ref="@sex">
+                                        <label>Geschlecht</label>
+                                        <select class="widget">
+                                            <option value="male">M</option>
+                                            <option value="female">W</option>
+                                        </select>
+                                    </fx-control>
+                                    <div class="actions">
+                                        <fx-trigger id="save" class="saveBtn">
+                                            <button type="submit">Speichern</button>
+                                            <fx-send submission="s-create" if="not(exists(instance('params')/id))"></fx-send>
+                                            <fx-send submission="s-save" if="exists(instance('params')/id)"></fx-send>
+                                        </fx-trigger>
+                                    </div>
+                                </fieldset>
+                            </pb-restricted>
+                        </fx-fore>
+                    </pb-restricted>
+                </main>
+
+                <footer class="version">
+                    App: v<span data-template="pages:version"/> / web components: v<pb-version/>
+                </footer>
+            </app-header-layout>
+        </app-drawer-layout>
+        <paper-dialog id="downloadDialog">
+            <h2>
+                <pb-i18n key="dialogs.generatingFile">Generating File...</pb-i18n>
+            </h2>
+            <paper-dialog-scrollable>
+                <pb-i18n key="dialogs.downloadMessage"/>
+            </paper-dialog-scrollable>
+            <div class="buttons">
+                <paper-button dialog-confirm="dialog-confirm" autofocus="autofocus">
+                    <pb-i18n key="dialogs.close">Close</pb-i18n>
+                </paper-button>
+            </div>
+        </paper-dialog>
+        <paper-dialog id="errorDialog">
+            <h2><pb-i18n key="dialogs.error">Error</pb-i18n></h2>
+            <paper-dialog-scrollable/>
+            <div class="buttons">
+                <paper-button dialog-confirm="dialog-confirm" autofocus="autofocus">
+                    <pb-i18n key="dialogs.close">Close</pb-i18n>
+                </paper-button>
+            </div>
+        </paper-dialog>
+    </pb-page>
+    <div class="splash"/>
+</body>
+
+</html>

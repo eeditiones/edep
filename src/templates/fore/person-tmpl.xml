@@ -1,0 +1,7 @@
+<person xmlns="http://www.tei-c.org/ns/1.0" sex="M">
+    <persName>
+        <name type="praenomen"/>
+        <name type="nomen"/>
+        <name type="cognomen"/>
+    </persName>
+</person>

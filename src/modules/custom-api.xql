@@ -111,7 +111,7 @@ declare function api:places-browse($request as map(*)) {
                 else array {
                     for $index in 1 to string-length('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
                     let $alpha := substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ', $index, 1)
-                    let $hits := count(filter($sorted, function($entry) { starts-with(lower-case($entry/@n), lower-case($alpha))}))
+                    let $hits := count(filter($sorted, function($entry) { starts-with(lower-case($entry/tei:placeName[@type="modern"]), lower-case($alpha))}))
                     where $hits > 0
                     return
                         map {
@@ -182,6 +182,116 @@ declare function api:places-add($request as map(*)) {
 
     return try {
         doc(concat($config:places, $id, ".xml"))
+    } catch * {
+        ()
+    }
+};
+
+declare function api:people-browse($request as map(*)) {
+    let $search := normalize-space($request?parameters?search)
+    let $letterParam := $request?parameters?category
+    let $limit := $request?parameters?limit
+    let $people :=
+        if ($search and $search != '') then
+            collection($config:data-root || "/people")//tei:person[ft:query(tei:persName, $search || '*')]
+        else
+            collection($config:data-root || "/people")//tei:person
+    let $sorted := 
+        for $person in $people
+        order by $person/tei:persName[@type='nomen']
+        return
+            $person
+    let $letter := 
+        if (count($people) < $limit) then 
+            "Alle"
+        else if ($letterParam = '') then
+            substring($sorted[1], 1, 1) => upper-case()
+        else
+            $letterParam
+    let $byLetter :=
+        if ($letter = 'Alle') then
+            $sorted
+        else
+            filter($sorted, function($entry) {
+                starts-with(lower-case($entry/tei:persName/tei:name[@type='nomen']), lower-case($letter))
+            })
+    return
+        map {
+            "items": api:output-person($byLetter, $letter, $search),
+            "categories":
+                if (count($people) < $limit) then
+                    []
+                else array {
+                    for $index in 1 to string-length('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+                    let $alpha := substring('ABCDEFGHIJKLMNOPQRSTUVWXYZ', $index, 1)
+                    let $hits := count(filter($sorted, function($entry) { starts-with(lower-case($entry/tei:persName/tei:name[@type='nomen']), lower-case($alpha))}))
+                    where $hits > 0
+                    return
+                        map {
+                            "category": $alpha,
+                            "count": $hits
+                        },
+                    map {
+                        "category": "Alle",
+                        "count": count($sorted)
+                    }
+                }
+        }
+};
+
+declare function api:output-person($list, $category as xs:string, $search as xs:string?) {
+    array {
+        for $person in $list
+        let $categoryParam := if ($category = "all") then substring($person/tei:persName/tei:name[@type='nomen'], 1, 1) else $category
+        let $params := "id=" || $person/@xml:id || "&amp;category=" || $categoryParam || "&amp;search=" || $search
+        let $label := string-join((
+            $person/tei:persName/tei:name[@type='praenomen'][node()],
+            $person/tei:persName/tei:name[@type='cognomen'][node()],
+            $person/tei:persName/tei:name[@type='nomen'][node()]
+        ), ' ')
+        return
+            <span class="person">
+                <a href="person.html?{$params}">{$label}</a>
+                <paper-icon-button id="{$person/@xml:id}" class="place-id" icon="icons:content-copy"
+                    title="ID kopieren"></paper-icon-button>
+            </span>
+    }
+};
+
+declare function api:load-person($request as map(*)) {
+    let $return := doc(concat($config:people, $request?parameters?id, ".xml"))
+    return try {
+        $return
+    } catch * {
+        ()
+    }
+};
+
+declare function api:person-add($request as map(*)) {
+    let $id := if ($request?parameters?id and not(empty($request?body//@xml:id))) then
+            let $store := xmldb:store($config:people, concat($request?parameters?id, ".xml"), $request?body)
+            return $request?body//@xml:id
+
+        else if ($request?body//@xml:id) then
+            let $id := $request?body//@xml:id
+            let $store  := xmldb:store($config:people, concat($id, ".xml"), $request?body)
+            return $id
+        else
+            let $ids := sort(collection($config:people)//@xml:id/string())
+            let $id-new := if (empty($ids)) then "000000" else format-number(xs:integer(replace($ids[last()], "P", "")) + 1, "000000")
+            let $withId :=
+                <person xmlns="http://www.tei-c.org/ns/1.0" xml:id="P{$id-new}">
+                { 
+                    $request?body//tei:person/@sex,
+                    $request?body/tei:person/* 
+                }
+                </person>
+            let $store := xmldb:store($config:people, concat("P", $id-new, ".xml"), $withId)
+            return concat("P",$id-new)
+             
+
+    return try {
+        doc(concat($config:people, $id, ".xml"))
     } catch * {
         ()
     }

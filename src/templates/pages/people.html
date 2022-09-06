@@ -42,7 +42,7 @@
                     <app-header slot="header" reveals="reveals" fixed="fixed" effects="waterfall">
                         <app-toolbar data-template="lib:include" data-template-path="templates/menu.html">
                             <a data-target="custom" href="${app}/orte?category=${category}&amp;search=${search}" data-template="lib:parse-params">Geodaten</a>
-                            <a data-target="custom" href="${app}/personen" target="_blank" data-template="lib:parse-params">Personen</a>
+                            <a data-target="custom" href="${app}/personen?category=${category}&amp;search=${search}" data-template="lib:parse-params">Personen</a>
                         </app-toolbar>
                         <app-toolbar data-template="lib:include" data-template-path="templates/toolbar.html"/>
                     </app-header>
@@ -53,7 +53,7 @@
                                 <paper-input id="query" name="search" label="Suche" data-template="templates:form-control">
                                     <paper-icon-button icon="search" slot="suffix"></paper-icon-button>
                                 </paper-input>
-                                <a href="geodata.html">
+                                <a href="person.html">
                                     <paper-button title="Neuer Fundort">
                                         <iron-icon icon="icons:add"></iron-icon>
                                         Neu
@@ -61,7 +61,7 @@
                                 </a>
                             </div>
                         </pb-custom-form>
-                        <pb-split-list url="api/places" subforms="#options" selected="A" emit="transcription" subscribe="transcription"></pb-split-list>
+                        <pb-split-list url="api/people" subforms="#options" selected="A" emit="transcription" subscribe="transcription"></pb-split-list>
                     </main>
                 </app-header-layout>
             </app-drawer-layout>
