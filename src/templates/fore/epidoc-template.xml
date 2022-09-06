@@ -125,7 +125,7 @@
                                         <!-- 34) Paläographie: kontrolliertes Vokabular -->
                                         <rs type="palaeography" ref="" />
                                         <!-- 24) Metrik -->
-                                        <rs type="metric"></rs>
+                                        <rs type="metric">no</rs>
                                     </layout>
                                 </layoutDesc>
                             </objectDesc>

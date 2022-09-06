@@ -74,7 +74,7 @@
                     <!-- 14) Dekor -->
                     <rs type="decoration" ref="https://www.eagle-network.eu/voc/decor/lod/1000"></rs>
                     <!-- 24) Metrik -->
-                    <rs type="metric"></rs>
+                    <rs type="metric">no</rs>
                 </support>
                 <!-- 13) Erhaltung -->
                 <condition>complete</condition>
