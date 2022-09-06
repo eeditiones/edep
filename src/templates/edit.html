@@ -435,19 +435,17 @@
                                             <!-- 12b-12e missing -->
                                             <fx-control ref="msContents/msItem/note[@type='verification']/@subtype">
                                                 <label>Verifizierungsgrundlage</label>
-                                                <select class="widget">
-                                                    <option value=""></option>
+                                                <input list="verificationbase"/>
+                                                <datalist id="verificationbase">
                                                     <option value="autopsy">Autopsie</option>
                                                     <option value="squeeze">Abklatsch</option>
                                                     <option value="photo">Foto</option>
                                                     <option value="drawing">Zeichnung</option>
                                                     <option value="not seen">nicht gesehen</option>
-                                                </select>
+                                                </datalist>
                                             </fx-control>
-                                            <fx-control ref="msContents/msItem/note[@type='verification']/@subtype">
-                                                <label>Verifizierungsgrundlage (freie Eingabe)</label>
-                                            </fx-control>
-                                            <fx-control ref="msContents/msItem/note[@type='verification']/date/@when">
+                                            <fx-control
+                                                    ref="msContents/msItem/note[@type='verification']/date/@when">
                                                 <label>Datum der Verifizierung</label>
                                                 <input placeholder="YYYY-MM-DD" class="widget"/>
                                             </fx-control>
