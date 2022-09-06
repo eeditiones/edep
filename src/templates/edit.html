@@ -72,6 +72,8 @@
             </app-header>
 
             <main>
+                <!--                <pb-restricted login="login" group="tei">-->
+
                 <!--                    <fx-fore src="templates/fore/epidoc.html"></fx-fore>-->
                 <fx-fore>
 
@@ -227,12 +229,12 @@
                         <fx-instance id="geodata"  xpath-default-namespace="http://www.tei-c.org/ns/1.0">
                             <data></data>
                         </fx-instance>
-                        <fx-submission id="s-load-geodata"
-                                       url="api/places/{instance()//origPlace/@corresp}"
-                                       method="get"
-                                       replace="instance"
-                                       instance="geodata"
-                                       validate="false">
+                            <fx-submission id="s-load-geodata"
+                                           url="api/places/{instance('vars')/geoid}"
+                                           method="get"
+                                           replace="instance"
+                                           into="instance('geodata')"
+                                           validate="false">
                         </fx-submission>
 
                         <fx-function signature="gen-id() as xs:string" type="text/javascript">
@@ -322,40 +324,42 @@
                                         <div class="block findspot">
                                             <h3>Fundort</h3>
                                             <!-- geoId from geodata -->
-                                            <fx-control ref="history/origin/origPlace/@corresp">
+                                                <fx-var name="corresp" value="history/origin/origPlace/@corresp"></fx-var>
+                                                <fx-control ref="$corresp">
                                                 <label>GeoId</label>
                                                 <fx-action event="value-changed">
-                                                    <fx-send submission="s-load-geodata"></fx-send>
+                                                        <fx-setvalue ref="instance('vars')/geoid" value="$corresp"></fx-setvalue>
+                                                        <fx-send submission="s-load-geodata"/>
                                                 </fx-action>
                                             </fx-control>
 
                                             <!-- 5) -->
-                                            <fx-output ref="instance('geodata')/region[@type='province']">
+                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/region[@type='province']">
                                                 <label slot="label">Provinz/augusteische Region</label>
                                             </fx-output>
 
                                             <!-- 6) -->
-                                            <fx-output ref="instance('geodata')/country">
+                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/country">
                                                 <label slot="label">Land</label>
                                             </fx-output>
 
                                             <!-- 7) -->
-                                            <fx-output ref="instance('geodata')/region[@type='region']">
+                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/region[@type='region']">
                                                 <label slot="label">Region</label>
                                             </fx-output>
 
                                             <!-- 8) -->
-                                            <fx-output ref="instance('geodata')/placeName[@type='ancient']">
+                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/placeName[@type='ancient']">
                                                 <label slot="label">Fundort (antik)</label>
                                             </fx-output>
 
                                             <!-- 9) -->
-                                            <fx-output ref="instance('geodata')/placeName[@type='modern']">
+                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/placeName[@type='modern']">
                                                 <label slot="label">Fundort (modern)</label>
                                             </fx-output>
 
                                             <!-- 10a) -->
-                                            <fx-output ref="instance('geodata')//placeName[@type='findspot']">
+                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/placeName[@type='findspot']">
                                                 <label slot="label">Fundstelle</label>
                                             </fx-output>
 
@@ -1028,7 +1032,7 @@
                     </fx-group>
                     <fx-inspector/>
                 </fx-fore>
-
+<!--                </pb-restricted>-->
             </main>
 
             <footer class="version">
