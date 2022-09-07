@@ -13,6 +13,26 @@ html{
 
     --jinn-codemirror-background-color: white;
 }
+.buttonBar{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+.buttonBar fx-trigger{
+    margin-right:0.5rem;
+}
+.buttonBar fx-trigger button{
+    color:black;
+}
+
+.visited[required].isEmpty .widget{
+    background:red;
+    color:white;
+}
+.submit-validation-failed fx-control.isEmpty .widget{
+    background:red;
+}
+
 main {
     /*margin: 0 20px 0 20px;*/
     margin:0 auto;
@@ -275,6 +295,7 @@ fx-control label{
 }
 fx-control .widget{
     grid-area:control;
+    background: white;
 }
 fx-control fx-alert{
     grid-area:alert;
@@ -504,3 +525,12 @@ input:focus, select:focus, textarea:focus{
     background-color: #35424b;
     color: #F0F0F0;
 }
+#places legend{
+    font-size:1.4rem;
+}
+
+.valid-warning[invalid] fx-alert{
+    display:block;
+    font-size:1.4rem;
+}
+

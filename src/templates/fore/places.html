@@ -89,7 +89,8 @@
     <fx-fore id="places">
 
         <fx-action event="ready" if="exists(instance('query')/id)">
-            <fx-send submission="s-load"/>
+            <fx-send submission="s-load"></fx-send>
+            <fx-setfocus control="findspot"></fx-setfocus>
         </fx-action>
 
         <fx-model>
@@ -144,12 +145,10 @@
 
         </fx-model>
 
-        <pb-restricted login="login" group="tei">
-            <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
             <fx-output ref="instance('default')/place/@xml:id"/>
             <fieldset class="case-content">
                 <legend>Place</legend>
-                <fx-control ref="placeName[@type='findspot']">
+                <fx-control ref="placeName[@type='findspot']" id="findspot">
                     <label>Fundstelle</label>
                     <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
                 </fx-control>
@@ -187,14 +186,22 @@
                 <fx-control ref="ptr[@type='geonames']">
                     <label>Geonames</label>
                 </fx-control>
-                <div class="actions">
-                    <fx-trigger id="save" class="saveBtn">
-                        <button type="submit">Speichern</button>
-                        <fx-send submission="s-save"/>
+                <section class="buttonBar">
+                    <fx-trigger class="saveBtn">
+                        <button>Speichern</button>
+                        <fx-action>
+                            <fx-send submission="s-login"></fx-send>
+                            <fx-send submission="s-save"></fx-send>
+                        </fx-action>
                     </fx-trigger>
-                </div>
+                    <fx-trigger>
+                        <a href="geodata.html">Neuer Eintrag</a>
+                    </fx-trigger>
+                    <fx-trigger>
+                        <a href="orte">Zur Liste</a>
+                    </fx-trigger>
+                </section>
             </fieldset>
-        </pb-restricted>
     </fx-fore>
 </div>
 <!--<script type="module" src="../resources/scripts/fore-dev.js"/>-->
