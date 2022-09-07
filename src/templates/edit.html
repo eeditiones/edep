@@ -19,7 +19,7 @@
 
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
 
-    <script type="module" src="resources/scripts/fore-dev.js"></script>
+    <script type="module" src="resources/scripts/fore.js"></script>
     <!--
         when running with Fore on localhost for debugging with latest sources:
         1. uncomment this and comment above Fore import
@@ -72,9 +72,8 @@
             </app-header>
 
             <main>
-                <!--                <pb-restricted login="login" group="tei">-->
-
-                <!--                    <fx-fore src="templates/fore/epidoc.html"></fx-fore>-->
+                <pb-restricted login="login" group="tei">
+                <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
                 <fx-fore>
 
                     <!-- ### if get called with an id param we load the data via submission ### -->
@@ -263,7 +262,7 @@
 
                     </fx-model>
 
-                    <div class="login-hint {instance('vars')/loggedin}">Bitte loggen Sie sich ein, um zu editieren.</div>
+                    <!--div class="login-hint {instance('vars')/loggedin}">Bitte loggen Sie sich ein, um zu editieren.</div-->
 
 <!--                    <div class="valid">editorsValid() returned: {editorsValid()}</div>-->
 
@@ -1024,7 +1023,7 @@
                         <!-- 47) -->
                         <!-- 45) -->
 
-                        <fx-trigger class="saveBtn" ref="instance('vars')/loggedin">
+                        <fx-trigger class="saveBtn">
                             <button>Speichern</button>
                             <fx-send submission="s-create" if="not(exists(instance('params')/id))"></fx-send>
                             <fx-send submission="s-save" if="exists(instance('params')/id)"></fx-send>
@@ -1036,7 +1035,7 @@
                     </fx-group>
                     <fx-inspector/>
                 </fx-fore>
-<!--                </pb-restricted>-->
+            </pb-restricted>
             </main>
 
             <footer class="version">
