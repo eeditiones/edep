@@ -72,8 +72,9 @@
             </app-header>
 
             <main>
+                <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                 <pb-restricted login="login" group="tei">
-                <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
+                    <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
                 <fx-fore>
 
                     <!-- ### if get called with an id param we load the data via submission ### -->
@@ -245,7 +246,6 @@
 
                         <fx-instance id="login" type="json">{}</fx-instance>
                         <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance" instance="login" validate="false">
-                            <fx-message event="submit-error">Please login to edit.</fx-message>
                             <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
                             <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
                         </fx-submission>
