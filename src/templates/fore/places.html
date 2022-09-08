@@ -187,7 +187,7 @@
                     <label>Geonames</label>
                 </fx-control>
                 <section class="buttonBar">
-                    <fx-trigger class="saveBtn">
+                    <fx-trigger class="saveBtn" debounce="1000">
                         <button>Speichern</button>
                         <fx-action>
                             <fx-send submission="s-login"></fx-send>

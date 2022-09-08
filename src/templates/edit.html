@@ -1023,7 +1023,7 @@
                         <!-- 45) -->
 
                         <section class="buttonBar">
-                        <fx-trigger class="saveBtn">
+                        <fx-trigger class="saveBtn" debounce="1000">
                             <button>Speichern</button>
                                 <fx-action if="not(exists(instance('params')/id))">
                                     <fx-send submission="s-login"/>
