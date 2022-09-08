@@ -24,13 +24,15 @@ html{
 .buttonBar fx-trigger button{
     color:black;
 }
-
-.visited[required].isEmpty .widget{
+.visited[required].isEmpty .widget, .visited[invalid] .widget{
     background:red;
     color:white;
 }
 .submit-validation-failed fx-control.isEmpty .widget{
     background:red;
+}
+.visited[invalid] fx-alert{
+    display:block;
 }
 
 main {
