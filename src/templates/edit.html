@@ -406,7 +406,7 @@
 
                                                     <fx-insert context="msContents/msItem/listBibl[@type='transmission']"
                                                                 ref="bibl"
-                                                                origin="instance('mspart')//listBibl[@type='transmission']/bibl"/>
+                                                                origin="instance('templates')//bibl"/>
                                                 </fx-trigger>
                                             </legend>
                                             <fx-repeat class="nested-repeat" id="bib"
@@ -567,7 +567,7 @@
 
                                                     <fx-insert context="msContents/msItem/listBibl[@type='previousEditions']"
                                                                ref="bibl"
-                                                               origin="instance('mspart')//listBibl[@type='previousEditions']/bibl"/>
+                                                               origin="instance('templates')//bibl"/>
                                                 </fx-trigger>
                                             </legend>
                                             <fx-repeat class="nested-repeat" id="bib"
@@ -610,7 +610,7 @@
                                                     <!-- ##### 2. insert a new bibl element ##### -->
                                                     <fx-insert context="msContents/msItem/listBibl[@type='bibliography']"
                                                                ref="bibl"
-                                                               origin="instance('mspart')//listBibl[@type='bibliography']/bibl"/>
+                                                               origin="instance('templates')//bibl"></fx-insert>
                                                 </fx-trigger>
                                             </legend>
                                             <fx-repeat class="nested-repeat" id="bib"
@@ -646,7 +646,7 @@
 
                                                     <fx-insert context="msContents/msItem/listBibl[@type='images']"
                                                                ref="bibl"
-                                                               origin="instance('mspart')//listBibl[@type='images']/bibl"/>
+                                                               origin="instance('templates')//bibl"/>
                                                 </fx-trigger>
                                             </legend>
                                             <fx-repeat class="nested-repeat" id="bib"
@@ -683,11 +683,9 @@
                                             </legend>
                                             <fx-repeat class="nested-repeat" ref="facsimile/graphic">
                                                 <template>
-                                                    <fx-group>
-                                                        <fx-control ref="@url">
-                                                            <label>URL</label>
-                                                        </fx-control>
-                                                    </fx-group>
+                                                    <fx-control ref="@url">
+                                                        <label>URL</label>
+                                                    </fx-control>
 
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="delete image"/>

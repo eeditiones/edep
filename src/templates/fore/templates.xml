@@ -24,4 +24,9 @@
     <!-- 32) Militär: ja = vorhanden -->
     <term ref="#military"/>
 
+    <bibl>
+        <ptr target=""/>
+    </bibl>
+
+
 </body>
