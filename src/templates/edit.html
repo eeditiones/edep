@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald"/>
     <link rel="stylesheet" href="resources/css/theme.css"/>
     <link rel="stylesheet" href="resources/css/fore.css"/>
-    <link rel="stylesheet" href="resources/css/edep-theme.css"/>
+    <link rel="stylesheet" href="resources/css/edep-theme2.css"/>
     <!-- Uncomment if jinn-codemirror is running on 8000 -->
     <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
     <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
@@ -310,9 +310,7 @@
 
                         <fx-repeat id="parts" ref=".//msPart">
                             <template>
-
-                                <fieldset>
-                                    <legend>Fragment {count(./preceding-sibling::msPart) + 1}</legend>
+                                <div class="fragment" data-nr="Fragment-{count(./preceding-sibling::msPart) + 1}">
                                     <fx-group class="group-2">
                                         <!-- 4) -->
                                         <fx-control ref="msIdentifier/idno">
@@ -438,7 +436,7 @@
                                             <!-- 12b-12e missing -->
                                             <fx-control ref="msContents/msItem/note[@type='verification']/@subtype">
                                                 <label>Verifizierungsgrundlage</label>
-                                                <input list="verificationbase"/>
+                                                <input list="verificationbase" class="widget"/>
                                                 <datalist id="verificationbase">
                                                     <option value="autopsy">Autopsie</option>
                                                     <option value="squeeze">Abklatsch</option>
@@ -801,7 +799,7 @@
                                             <label>Übersetzer/in: </label>
                                         </fx-control>
                                     </fx-group>
-                                </fieldset>
+                                </div>
                                 <!--
                                                             <div class="repeat-caption">
                                                                 <label>Edition</label>
