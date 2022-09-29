@@ -99,6 +99,16 @@ fx-case.selected-case{
     margin-top:3rem;
 }
 
+pb-split-list .place{
+    position:relative;
+    padding-left:2.5rem;
+    margin:0.5rem;
+}
+pb-split-list .place .place-id{
+    position:absolute;
+    left:0;
+    top:-0.5rem;
+}
 .saveBtn button{
     color:black;
 }
