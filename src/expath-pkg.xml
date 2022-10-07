@@ -1,4 +1,4 @@
-<package xmlns="http://expath.org/ns/pkg" spec="1.0" version="1.2.2"
+<package xmlns="http://expath.org/ns/pkg" spec="1.0" version="1.3.0"
          name="https://jinntec.de/edep" abbrev="edep">
     <title>Editionstools für eine digitale Epigraphik</title>
     <dependency processor="http://exist-db.org" semver-min="5.2.0"/>

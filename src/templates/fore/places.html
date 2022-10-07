@@ -160,7 +160,7 @@
                 </fx-control>
                 <fx-control ref="region[@type='province']" update-event="input">
                     <label>Provinz</label>
-                    <select ref="instance('province')?*" class="widget" selection="open">
+                    <select ref="instance('province')?*" class="widget" selection="open" static="static">
                         <template>
                             <option value="{?name}">{?value}</option>
                         </template>
@@ -171,7 +171,7 @@
                 </fx-control>
                 <fx-control ref="country" update-event="input">
                     <label>Modernes Land</label>
-                    <select ref="instance('country')?*" class="widget" selection="open">
+                    <select ref="instance('country')?*" class="widget" selection="open" static="static">
                         <template>
                             <option value="{?name}">{?value}</option>
                         </template>

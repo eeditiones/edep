@@ -159,6 +159,7 @@
                                     <lang code="xxx">Palmyrenic</lang>
                                     <lang code="xpu">Phoenician-Punic</lang>
                                 </languages>
+                                <changed>false</changed>
                             </data>
                         </fx-instance>
                         <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
@@ -265,6 +266,9 @@
 
                     </fx-model>
 
+                    <fx-setvalue event="value-changed"
+                                 if="instance('vars')/changed != 'true'"
+                                 ref="instance('vars')/changed">true</fx-setvalue>
                     <fx-group ref="teiHeader">
                         <h1>EDEp Editor</h1>
                         <fx-control id="title" class="title" ref="fileDesc/titleStmt/title">
@@ -280,9 +284,9 @@
                             </fx-output>
 
                             <!-- 16a) -->
-                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType/@ref">
+                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType/@ref" update-event="input">
                                 <label>Inschriftträger</label>
-                                <select ref="instance('objtyp')?*" class="widget" selection="open">
+                                <select ref="instance('objtyp')?*" class="widget" selection="open" static="static">
                                     <template>
                                         <option value="{?value}">{?name}</option>
                                     </template>
@@ -297,10 +301,10 @@
                             <!-- there's no 17) -->
 
                             <!-- 18) -->
-                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" update-event="change"
+                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" update-event="input"
                                         class="orange">
                                 <label>Material</label>
-                                <select ref="instance('material')?*" class="widget" selection="open">
+                                <select ref="instance('material')?*" class="widget" selection="open" static="static">
                                     <template>
                                         <option value="{?value}">{?name}</option>
                                     </template>
@@ -456,7 +460,7 @@
                                     <fx-group class="group-3">
 
                                         <!-- 13) -->
-                                        <fx-control ref="physDesc/objectDesc/supportDesc/condition">
+                                        <fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
                                             <label>Erhaltung</label>
                                             <select class="widget">
                                                 <option value="complete">vollständig</option>
@@ -475,7 +479,7 @@
                                         </fx-control>
 
                                         <!-- 15) -->
-                                        <fx-control ref="msContents/msItem/@class">
+                                        <fx-control ref="msContents/msItem/@class" update-event="input">
                                             <label>Inschriftengattung</label>
                                             <select ref="instance('typeins')?*" class="widget" selection="open">
                                                 <template>
@@ -502,9 +506,9 @@
 
                                         <fx-group class="group-9">
                                             <!-- 34) -->
-                                            <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref">
+                                            <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref" update-event="input">
                                                 <label>Paläographie</label>
-                                                <select ref="instance('palaeo')/item" class="widget" selection="open">
+                                                <select ref="instance('palaeo')/item" class="widget" selection="open" static="static">
                                                     <template>
                                                         <option value="{.}">{.}</option>
                                                     </template>
@@ -531,7 +535,7 @@
 
                                     <fx-group class="group-5">
                                         <!-- 24) -->
-                                        <fx-control ref="//layoutDesc/layout/rs[@type='metric']">
+                                        <fx-control ref="//layoutDesc/layout/rs[@type='metric']" update-event="input">
                                             <label>Metrik</label>
                                             <select class="widget">
                                                 <option value="yes">Ja</option>
@@ -761,7 +765,7 @@
                                     </fx-group>
 
                                     <fx-group class="group-8-1 padded">
-                                        <fx-control ref="//handDesc/handNote/rs">
+                                        <fx-control ref="//handDesc/handNote/rs" update-event="input">
                                             <label>Ligatur</label>
                                             <select class="widget">
                                                 <option value="yes">Ja</option>
@@ -938,7 +942,7 @@
 
                         <fx-group ref="profileDesc" class="group-7">
                             <!-- 28)  -->
-                            <fx-control ref="textClass/keywords/term/@ref">
+                            <fx-control ref="textClass/keywords/term/@ref" update-event="input">
                                 <label>Religion</label>
                                 <select class="widget">
                                     <option value=""/>
@@ -1000,7 +1004,7 @@
 
                         <fx-group class="group-8">
                             <!-- 33) -->
-                            <fx-control ref="revisionDesc/@status">
+                            <fx-control ref="revisionDesc/@status" update-event="input">
                                 <label>Stand der Bearbeitung</label>
                                 <select class="widget">
                                     <option value="draft">intern</option>
