@@ -10,7 +10,6 @@
     </div>
     <!-- 35d) Abbildungen, wiederholbar -->
     <facsimile corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8">
-        <graphic url=""></graphic>
     </facsimile>
     <msIdentifier>
         <!-- 12a) Aufbewahrung -->
@@ -25,32 +24,21 @@
             <textLang mainLang="lat"/>
             <!-- 12c) Überlieferung -->
             <listBibl type="transmission">
+                <!--
                 <bibl>
-                    <!-- Zotero Referenz -->
                     <ptr target=""/>
-                    <note></note>
+                    <note/>
                 </bibl>
+                -->
             </listBibl>
             <!-- 35b) Bibliographie-->
             <listBibl type="bibliography">
-                <!-- Einträge wiederholbar -->
-                <bibl>
-                    <!-- Zotero Referenz -->
-                    <ptr target=""/>
-                </bibl>
             </listBibl>
             <!-- 35a) Ältere Editionen -->
             <listBibl type="previousEditions">
-                <bibl>
-                    <ptr target=""/>
-                </bibl>
             </listBibl>
             <!-- 35c) Bilder-->
             <listBibl type="images">
-                <bibl>
-                    <ptr target=""/>
-                    <note></note>
-                </bibl>
             </listBibl>
             <!-- 12d in @subtype -->
             <note type="verification" subtype="">

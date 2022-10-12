@@ -25,7 +25,7 @@
         1. uncomment this and comment above Fore import
         2. Replace controller.xql with localhost-controller.xql
     -->
-        <!-- <script type="module" src="http://localhost:8090/index.js"/> -->
+<!--         <script type="module" src="http://localhost:8090/index.js"></script>-->
     <!--    <script type="module" src="resources/scripts/datalist-ajax/datalist-ajax.min.js"></script>-->
 
 
@@ -75,10 +75,10 @@
                 <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                 <pb-restricted login="login" group="tei">
                     <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
-                <fx-fore>
+                <fx-fore show-confirmation="show-confirmation">
 
                     <!-- ### if get called with an id param we load the data via submission ### -->
-                    <fx-setfocus control="title" event="ready"/>
+                    <fx-setfocus control="title" event="ready"></fx-setfocus>
 
                     <fx-model>
                         <fx-action event="model-construct-done">
@@ -88,7 +88,7 @@
 
                         <fx-instance id="default" src="api/inscription"
                                      xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-
+                                <data></data>
                         </fx-instance>
 
                         <fx-bind ref="instance('default')">
@@ -108,11 +108,6 @@
                         </fx-bind>
 
 
-
-
-                        <!--            <fx-instance id="province" src="data/province.json" type="json"></fx-instance>-->
-                        <!--            <fx-instance id="country" src="data/country.json" type="json"/>-->
-                        <!--            <fx-instance id="decor" src="api/decor" type="json"/>-->
                         <fx-instance id="typeins" src="data/typeins.json" type="json">
 
                         </fx-instance>
@@ -123,7 +118,7 @@
                         <fx-instance id="material" src="data/material.json" type="json"></fx-instance>
 
                         <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
-                            <data/>
+                            <data></data>
                         </fx-instance>
 
                         <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"
@@ -401,6 +396,11 @@
                                             <label>Aufbewahrung</label>
                                         </fx-control>
 
+                                        <!-- 12b) -->
+                                        <fx-control ref="instance('tmp')/dummy">
+                                            <label>Andere Ereignisse</label>
+                                        </fx-control>
+
                                         <!-- 12c) Überlieferung -->
                                         <fieldset>
                                             <legend>
@@ -410,10 +410,13 @@
 
                                                     <fx-insert context="msContents/msItem/listBibl[@type='transmission']"
                                                                 ref="bibl"
-                                                                origin="instance('templates')//bibl"/>
+                                                                origin="instance('templates')//bibl">
+
+                                                    </fx-insert>
+                                                    <fx-refresh control="r-transmission"></fx-refresh>
                                                 </fx-trigger>
                                             </legend>
-                                            <fx-repeat class="nested-repeat" id="bib"
+                                            <fx-repeat class="nested-repeat" id="r-transmission"
                                                         ref="msContents/msItem/listBibl[@type='transmission']/bibl">
                                                 <template>
                                                     <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
@@ -428,7 +431,8 @@
                                                     </div>
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="Überlieferung löschen"/>
-                                                        <fx-delete ref="."/>
+                                                        <fx-delete ref="."></fx-delete>
+                                                        <fx-refresh control="r-transmission"></fx-refresh>
                                                     </fx-trigger>
 
                                                 </template>
@@ -504,8 +508,9 @@
                                         </fx-control>
                                         <!--                        </fx-group>-->
 
+                                        <!-- 34) -->
+<!--
                                         <fx-group class="group-9">
-                                            <!-- 34) -->
                                             <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref" update-event="input">
                                                 <label>Paläographie</label>
                                                 <select ref="instance('palaeo')/item" class="widget" selection="open" static="static">
@@ -515,6 +520,7 @@
                                                 </select>
                                             </fx-control>
                                         </fx-group>
+-->
                                     </fx-group>
                                     <fx-group class="group-4">
                                         <label>Inschriftfeld</label>
@@ -555,6 +561,26 @@
                                                 </template>
                                             </fx-items>
                                         </fx-control>
+
+                                        <!-- 34) -->
+                                        <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref" update-event="input">
+                                            <label>Paläographie</label>
+                                            <select ref="instance('palaeo')/item" class="widget" selection="open" static="static">
+                                                <template>
+                                                    <option value="{.}">{.}</option>
+                                                </template>
+                                            </select>
+                                        </fx-control>
+
+                                        <!-- 39) -->
+                                        <fx-control ref="//handDesc/handNote/rs" update-event="input">
+                                            <label>Ligatur</label>
+                                            <select class="widget">
+                                                <option value="yes">Ja</option>
+                                                <option value="no">Nein</option>
+                                            </select>
+                                        </fx-control>
+
                                     </fx-group>
 
                                     <fx-var name="frag" value="'#' || ./@xml:id"></fx-var>
@@ -571,10 +597,11 @@
 
                                                     <fx-insert context="msContents/msItem/listBibl[@type='previousEditions']"
                                                                ref="bibl"
-                                                               origin="instance('templates')//bibl"/>
+                                                               origin="instance('templates')//bibl"></fx-insert>
+                                                        <fx-refresh control="r-editions"></fx-refresh>
                                                 </fx-trigger>
                                             </legend>
-                                            <fx-repeat class="nested-repeat" id="bib"
+                                            <fx-repeat class="nested-repeat" id="r-editions"
                                                        ref="msContents/msItem/listBibl[@type='previousEditions']/bibl">
                                                 <template>
                                                     <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
@@ -590,7 +617,8 @@
 
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
-                                                        <fx-delete ref="."/>
+                                                        <fx-delete ref="."></fx-delete>
+                                                        <fx-refresh control="r-editions"></fx-refresh>
                                                     </fx-trigger>
 
                                                 </template>
@@ -615,9 +643,11 @@
                                                     <fx-insert context="msContents/msItem/listBibl[@type='bibliography']"
                                                                ref="bibl"
                                                                origin="instance('templates')//bibl"></fx-insert>
+                                                   <fx-refresh control="r-biblio"></fx-refresh>
+
                                                 </fx-trigger>
                                             </legend>
-                                            <fx-repeat class="nested-repeat" id="bib"
+                                            <fx-repeat class="nested-repeat" id="r-biblio"
                                                        ref="msContents/msItem/listBibl[@type='bibliography']/bibl">
                                                 <template>
                                                     <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
@@ -633,7 +663,8 @@
 
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="Bibliographie löschen"/>
-                                                        <fx-delete ref="."/>
+                                                        <fx-delete ref="."></fx-delete>
+                                                       <fx-refresh control="r-biblio"></fx-refresh>
                                                     </fx-trigger>
 
                                                 </template>
@@ -650,10 +681,11 @@
 
                                                     <fx-insert context="msContents/msItem/listBibl[@type='images']"
                                                                ref="bibl"
-                                                               origin="instance('templates')//bibl"/>
+                                                               origin="instance('templates')//bibl"></fx-insert>
+                                                       <fx-refresh control="r-images"></fx-refresh>
                                                 </fx-trigger>
                                             </legend>
-                                            <fx-repeat class="nested-repeat" id="bib"
+                                            <fx-repeat class="nested-repeat" id="r-images"
                                                        ref="msContents/msItem/listBibl[@type='images']/bibl">
                                                 <template>
                                                     <div>
@@ -666,7 +698,8 @@
                                                     </div>
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="delete image"/>
-                                                        <fx-delete ref="."/>
+                                                        <fx-delete ref="."></fx-delete>
+                                                       <fx-refresh control="r-images"></fx-refresh>
                                                     </fx-trigger>
 
                                                 </template>
@@ -682,10 +715,11 @@
 
                                                     <fx-insert context="facsimile"
                                                                ref="graphic"
-                                                               origin="instance('mspart')//facsimile/graphic"/>
+                                                               origin="instance('templates')/graphic"></fx-insert>
+                                                       <fx-refresh control="r-pics"></fx-refresh>
                                                 </fx-trigger>
                                             </legend>
-                                            <fx-repeat class="nested-repeat" ref="facsimile/graphic">
+                                            <fx-repeat class="nested-repeat" ref="facsimile/graphic" id="r-pics">
                                                 <template>
                                                     <fx-control ref="@url">
                                                         <label>URL</label>
@@ -693,7 +727,8 @@
 
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="delete image"/>
-                                                        <fx-delete ref="."/>
+                                                        <fx-delete ref="."></fx-delete>
+                                                       <fx-refresh control="r-pics"></fx-refresh>
                                                     </fx-trigger>
 
                                                 </template>
@@ -764,6 +799,8 @@
                                         </fx-control>
                                     </fx-group>
 
+                                    <!-- 39) -->
+<!--
                                     <fx-group class="group-8-1 padded">
                                         <fx-control ref="//handDesc/handNote/rs" update-event="input">
                                             <label>Ligatur</label>
@@ -773,6 +810,7 @@
                                             </select>
                                         </fx-control>
                                     </fx-group>
+-->
 
                                     <fx-group class="group-9 padded">
                                         <label>Übersetzung</label>
@@ -819,6 +857,8 @@
                                     <button>Löschen</button>
                                     <!--                        <fx-confirm message="really delete?">-->
                                     <fx-delete ref="."></fx-delete>
+                                   <fx-refresh control="parts"></fx-refresh>
+
                                     <!--                        </fx-confirm>-->
                                     <!--                            <fx-delete ref="."></fx-delete>-->
                                 </fx-trigger>
@@ -846,17 +886,18 @@
                             <button>Hinzufügen</button>
                             <fx-action>
                                 <!-- insert a new msPart  -->
-                                <fx-insert ref="//msPart" origin="instance('mspart')"/>
+                                <fx-insert ref="//msPart" origin="instance('mspart')"></fx-insert>
                                 <!-- update and refresh so the repeat index is updated -->
-                                <fx-update/>
-                                <fx-refresh/>
+                                <fx-update></fx-update>
+                                <fx-refresh></fx-refresh>
                                 <!-- setting generated id on new msPart -->
-                                <fx-var name="uuid" value="gen-id()"/>
-                                <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="$uuid"/>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='textpart']/@corresp" value="'#' || $uuid"/>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='apparatus']/@corresp" value="'#' || $uuid"/>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='translation']/@corresp" value="'#' || $uuid"/>
-                                <fx-setvalue ref="//msPart[index('parts')]/facsimile/@corresp" value="'#' || $uuid"/>
+                                <fx-var name="uuid" value="gen-id()"></fx-var>
+                                <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="$uuid"></fx-setvalue>
+                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='textpart']/@corresp" value="'#' || $uuid"></fx-setvalue>
+                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='apparatus']/@corresp" value="'#' || $uuid"></fx-setvalue>
+                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='translation']/@corresp" value="'#' || $uuid"></fx-setvalue>
+                                <fx-setvalue ref="//msPart[index('parts')]/facsimile/@corresp" value="'#' || $uuid"></fx-setvalue>
+                               <fx-refresh control="parts"></fx-refresh>
 
                                 <!-- add required textpart to edition
                                 <fx-insert ref="//body/div[@type='edition']/div" origin="instance('templates')//div[@type='edition']/div"/>
@@ -1021,17 +1062,33 @@
 
                         <!-- 47) -->
                         <!-- 45) -->
+                        <fx-group>
+                            <fx-control ref="instance('tmp')/dummy">
+                                <label>Author der epigraphischen Edition</label>
+                            </fx-control>
+                            <!--
+                                                    <fx-output ref="instance('tmp')/dummy">
+                                                        <label>Kurator</label>
+                                                    </fx-output>
+                                                    <fx-output ref="instance('tmp')/dummy">
+                                                        <label>Generierung des Datenrecords</label>
+                                                    </fx-output>
+                                                    <fx-output ref="instance('tmp')/dummy">
+                                                        <label>Letzte AKtualisierung</label>
+                                                    </fx-output>
+                            -->
+                        </fx-group>
 
                         <section class="buttonBar">
                         <fx-trigger class="saveBtn" debounce="1000">
                             <button>Speichern</button>
                                 <fx-action if="not(exists(instance('params')/id))">
-                                    <fx-send submission="s-login"/>
-                                    <fx-send submission="s-create"/>
+                                    <fx-send submission="s-login"></fx-send>
+                                    <fx-send submission="s-create"></fx-send>
                                 </fx-action>
                                 <fx-action if="exists(instance('params')/id)">
-                                    <fx-send submission="s-login"/>
-                                    <fx-send submission="s-save"/>
+                                    <fx-send submission="s-login"></fx-send>
+                                    <fx-send submission="s-save"></fx-send>
                                 </fx-action>
                             </fx-trigger>
                             <fx-trigger>
@@ -1047,13 +1104,14 @@
                             <input style="display:none;"></input>
                         </fx-control>
                     </fx-group>
-                    <fx-inspector/>
+
+                    <fx-inspector></fx-inspector>
                 </fx-fore>
                 </pb-restricted>
             </main>
 
             <footer class="version">
-                App: v<span data-template="pages:version"/> / web components: v<pb-version/>
+                App: v<span data-template="pages:version"/> / web components: v<pb-version></pb-version>
             </footer>
         </app-header-layout>
     </app-drawer-layout>

@@ -288,6 +288,8 @@
             <change type="changed" when="2022-09-22T16:08:39.658Z" who="edep"/>
         </revisionDesc>
     </teiHeader>
+    <facsimile corresp="">
+    </facsimile>
     <text>
         <body>
             <div type="apparatus" corresp="#5cf1e956-0113-4366-b1e9-56011353668e">Lothringer Kalkstein</div>
