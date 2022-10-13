@@ -338,14 +338,15 @@ fx-control, fx-output {
 fx-control label{
     grid-area:label;
 }
-fx-control[as="node"]{
+fx-control.editor {
     display:block;
 }
 
-fx-control .widget{
+fx-control .widget, fx-control .xml-editor {
     grid-area:control;
     background: white;
 }
+
 fx-control fx-alert{
     grid-area:alert;
 }
