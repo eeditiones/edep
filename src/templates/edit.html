@@ -1088,15 +1088,15 @@
 
                         <!-- 35b) -->
                         <!-- 35a) -->
-                        <!-- 35c) -->
                         <!-- 35d) -->
 
 
                         <!-- 47) -->
                         <!-- 45) -->
                         <fx-group>
-                            <fx-control ref="instance('tmp')/dummy">
-                                <label>Author der epigraphischen Edition</label>
+                            <!-- 44) -->
+                            <fx-control ref="fileDesc/titleStmt/editor" title="Author of the epigraphic edition">
+                                <label>Bearbeiter der Inschriftenedition</label>
                             </fx-control>
                             <!--
                                                     <fx-output ref="instance('tmp')/dummy">
@@ -1109,6 +1109,15 @@
                                                         <label>Letzte AKtualisierung</label>
                                                     </fx-output>
                             -->
+
+                            <!-- 33) -->
+                            <fx-control ref="revisionDesc/@status" update-event="input">
+                                <label>Stand der Bearbeitung</label>
+                                <select class="widget">
+                                    <option value="draft">intern</option>
+                                    <option value="public">öffentlich</option>
+                                </select>
+                            </fx-control>
                         </fx-group>
 
                         <section class="buttonBar">
