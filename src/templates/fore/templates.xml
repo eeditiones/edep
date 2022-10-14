@@ -1,17 +1,17 @@
 <body xmlns="http://www.tei-c.org/ns/1.0">
     <div type="edition">
         <div type="textpart" subtype="fragment" n="a" corresp="">
-<!--            <ab>abc</ab>-->
+            <!--            <ab>abc</ab>-->
         </div>
     </div>
     <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart -->
     <!-- todo: fix template: should insert meaningful template node    -->
     <div type="apparatus" corresp="#fragment1">
-<!--
-        <listApp>
-            <app loc="1"/>
-        </listApp>
--->
+        <!--
+                <listApp>
+                    <app loc="1"/>
+                </listApp>
+        -->
     </div>
     <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers -->
     <div type="translation" corresp="#fragment1" resp="#Feraudi"/>
@@ -27,6 +27,13 @@
     <bibl>
         <ptr target=""/>
     </bibl>
+    <listBibl type="images">
+        <bibl>
+            <ptr target=""/>
+            <note></note>
+        </bibl>
+    </listBibl>
+
     <graphic url=""></graphic>
 
 </body>

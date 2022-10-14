@@ -678,11 +678,10 @@
                                                 <label>Bilder</label>
                                                 <fx-trigger class="add">
                                                     <iron-icon icon="add-circle-outline" title="add image"/>
-
-                                                    <fx-insert context="msContents/msItem/listBibl[@type='images']"
-                                                               ref="bibl"
-                                                               origin="instance('templates')//bibl"></fx-insert>
-                                                       <fx-refresh control="r-images"></fx-refresh>
+                                                    <fx-action>
+                                                        <fx-insert context="msContents/msItem/listBibl[@type='images']" ref="bibl" origin="instance('templates')//listBibl[@type='images']/bibl"></fx-insert>
+                                                        <fx-refresh control="r-images"></fx-refresh>
+                                                    </fx-action>
                                                 </fx-trigger>
                                             </legend>
                                             <fx-repeat class="nested-repeat" id="r-images"

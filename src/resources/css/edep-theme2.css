@@ -310,7 +310,7 @@ fx-group.padded {
 fieldset{
     border-radius: 0.3rem;
     /*width:100%;*/
-    border:thin solid var(--paper-grey-300);
+    border:thin solid var(--paper-grey-500);
 
 }
 fieldset fieldset{
@@ -370,7 +370,7 @@ fx-group > label {
     top: 0;
 }
 fx-group fx-group{
-    border:thin solid var(--paper-grey-300);
+    border:thin solid var(--paper-grey-600);
     margin:1rem 0;
 
     /*padding:1rem;*/
@@ -452,8 +452,18 @@ fx-var{
 .nested-repeat fx-repeatitem{
     postion:relative;
     margin-bottom:0.5rem;
+    border:thin solid var(--paper-grey-400);
 }
-
+.nested-repeat fx-control{
+    display:block;
+    margin-left:1rem;
+}
+.nested-repeat fx-control input{
+    width:100%;
+}
+.nested-repeat fx-control label{
+    display:block;
+}
 .nested-repeat fx-trigger{
     display:block;
     margin:0.5rem;
@@ -580,7 +590,7 @@ input:focus, select:focus, textarea:focus{
     color: #F0F0F0;
 }
 legend{
-    font-size:1.4rem;
+    /*font-size:1.4rem;*/
     padding:1rem;
 }
 
