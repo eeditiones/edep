@@ -112,5 +112,6 @@
             <!-- 10b) Fundkontext: nicht kopiert, freie Eingabe -->
             <note type="context"></note>
         </provenance>
+        <provenance type="history"></provenance>
     </history>
 </msPart>

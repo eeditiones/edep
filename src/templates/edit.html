@@ -611,9 +611,15 @@
                                                     Controls not yet recognize if they depend on some other control.
 
                                                     <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
-                                                    <fx-control ref="ptr/@target">
-                                                        <label>Referenz</label>
-                                                    </fx-control>
+                                                    <div>
+                                                        <fx-control ref="ptr/@target">
+                                                            <label>Referenz</label>
+                                                        </fx-control>
+                                                        <fx-control ref="note">
+                                                            <label>Freie Eingabe</label>
+                                                            <textarea rows="3" class="widget"></textarea>
+                                                        </fx-control>
+                                                    </div>
 
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
@@ -657,10 +663,15 @@
                                                     Controls not yet recognize if they depend on some other control.
 
                                                     <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
-                                                    <fx-control ref="ptr/@target">
-                                                        <label>Referenz</label>
-                                                    </fx-control>
-
+                                                    <div>
+                                                        <fx-control ref="ptr/@target">
+                                                            <label>Referenz</label>
+                                                        </fx-control>
+                                                        <fx-control ref="note">
+                                                            <label>Freie Eingabe</label>
+                                                            <textarea rows="3" class="widget"></textarea>
+                                                        </fx-control>
+                                                    </div>
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="Bibliographie löschen"/>
                                                         <fx-delete ref="."></fx-delete>
@@ -691,8 +702,25 @@
                                                         <fx-control ref="ptr/@target">
                                                             <label>Referenz</label>
                                                         </fx-control>
-                                                        <fx-control ref="note">
+                                                        <fx-control ref="note" as="node" update-event="blur">
                                                             <label>Freie Eingabe</label>
+                                                            <jinn-xml-editor unwrap="unwrap" class="widget"
+                                                                            namespace="http://www.tei-c.org/ns/1.0">
+                                                                <div slot="toolbar">
+                                                                    <button data-command="selectElement"
+                                                                            title="Select element around current cursor position">&lt;|&gt;
+                                                                    </button>
+                                                                    <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                                    <button data-command="removeEnclosing" title="Remove enclosing tags"
+                                                                            class="sep">&lt;X&gt;
+                                                                    </button>
+                                                                    <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;"
+                                                                            title="Insert paragraph">&lt;p&gt;
+                                                                    </button>
+                                                                    <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
+                                                                    <button data-command="snippet" data-params='&lt;placeName key="$|1|"&gt;$|_|&lt;/placeName&gt;' title="placeName">&lt;placeName&gt;</button>
+                                                                </div>
+                                                            </jinn-xml-editor>
                                                         </fx-control>
                                                     </div>
                                                     <fx-trigger>
@@ -736,7 +764,7 @@
                                     </fx-group>
                                     <fx-group class="group-7 padded">
                                         <label>Transkription</label>
-                                        <fx-control class="transcription" ref="div[@type='textpart']" as="node" update-event="blur">
+                                        <fx-control class="transcription editor" ref="div[@type='textpart']" as="node" update-event="blur">
                                             <jinn-epidoc-editor id="transcriptionEditor" schema="resources/scripts/epidoc.json" unwrap="unwrap" class="widget">
                                                 <div slot="leiden-toolbar">
                                                     <button data-command="expan" data-mode="leiden_plus">(a(bcd))</button>
@@ -775,7 +803,7 @@
                                     <fx-group class="group-8 padded">
                                         <label>Apparatus</label>
                                         <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
-                                        <fx-control class="apparatus" ref="div[@type='apparatus']" as="node" update-event="blur">
+                                        <fx-control class="apparatus editor" ref="div[@type='apparatus']" as="node" update-event="blur">
                                             <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap"
                                                             namespace="http://www.tei-c.org/ns/1.0">
                                                 <div slot="toolbar">
@@ -814,7 +842,7 @@
                                     <fx-group class="group-9 padded">
                                         <label>Übersetzung</label>
                                         <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-                                        <fx-control class="translation" ref="div[@type='translation']" as="node"
+                                        <fx-control class="translation editor" ref="div[@type='translation']" as="node"
                                                     update-event="blur">
                                             <jinn-xml-editor id="translation" unwrap="unwrap" class="widget"
                                                              namespace="http://www.tei-c.org/ns/1.0">
@@ -910,7 +938,7 @@
                         <!--
                                     <fx-group class="group-10 padded">
                                         <label>Kommentar</label>
-                                        <fx-control class="commentary"
+                                        <fx-control class="commentary editor"
                                                     ref="instance('default')//body/div[@type='commentary']" as="node" update-event="update">
                                             <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
                                                 <div slot="toolbar">
@@ -930,7 +958,7 @@
                         -->
                         <fx-group class="group-10 padded">
                             <label>Kommentar</label>
-                            <fx-control class="commentary" ref="instance('default')//body/div[@type='commentary']" as="node"
+                            <fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node"
                                         update-event="blur">
                                 <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap"
                                                  namespace="http://www.tei-c.org/ns/1.0">

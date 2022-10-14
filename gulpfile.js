@@ -55,7 +55,7 @@ exports["watch:tmpl"] = watchTemplates
 
 // epidoc editor
 function epidocEditor () {
-    return src("node_modules/jinn-codemirror/dist/*")
+    return src("node_modules/@jinntec/jinn-codemirror/dist/*")
         .pipe(dest("build/resources/scripts"))
 }
 
