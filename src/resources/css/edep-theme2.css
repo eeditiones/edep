@@ -432,6 +432,9 @@ input.widget, select.widget{
     grid-template-columns: auto 3rem;
 
 }
+.nested-repeat textarea{
+    width:100%;
+}
 fx-var{
     display: none;
 }

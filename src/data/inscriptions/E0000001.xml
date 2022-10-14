@@ -153,6 +153,7 @@
                                 <!-- 10b) Fundkontext: nicht kopiert, freie Eingabe -->
                                 <note type="context"/>
                             </provenance>
+                            <provenance type="history"></provenance>
                         </history>
                     </msPart>
                     <msPart xml:id="Fbc62ff44-fed5-451d-8e05-62031b9aeb1d">
@@ -256,6 +257,8 @@
                                 <!-- 10b) Fundkontext: nicht kopiert, freie Eingabe -->
                                 <note type="context"/>
                             </provenance>
+
+                            <provenance type="history"></provenance>
                         </history>
                     </msPart>
                 </msDesc>
