@@ -80,7 +80,8 @@ declare function api:places-browse($request as map(*)) {
     let $limit := $request?parameters?limit
     let $places :=
         if ($search and $search != '') then
-            collection($config:data-root || "/places")//tei:place[ft:query(tei:placeName, $search || '*')]
+            collection($config:data-root || "/places")//tei:place[ft:query(tei:placeName, $search || '*')] |
+            collection($config:data-root || "/places")//tei:place[contains(@xml:id, $search)]
         else
             collection($config:data-root || "/places")//tei:place
     let $sorted := 
