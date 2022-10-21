@@ -68,15 +68,15 @@
     "value": "https://www.eagle-network.eu/voc/objtyp/lod/132"
   },
   {
-    "name": "instrdom",
+    "name": "Instrumentum demesticum",
     "value": "https://www.eagle-network.eu/voc/objtyp/lod/140"
   },
   {
-    "name": "instrmil",
+    "name": "Instrumentum militare",
     "value": "https://www.eagle-network.eu/voc/objtyp/lod/141"
   },
   {
-    "name": "instrsac",
+    "name": "Instrumentum sacrum",
     "value": "https://www.eagle-network.eu/voc/objtyp/lod/142"
   },
   {
