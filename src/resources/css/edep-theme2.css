@@ -229,7 +229,7 @@ button{
 
 .block {
     /*border-top: 1px solid #607D8B;*/
-    /*border-bottom: 1px solid #607D8B;*/
+    border-bottom: 1px solid var(--paper-blue-700);
     margin: 1rem 0;
 }
 
@@ -456,10 +456,6 @@ fx-var{
     postion:relative;
     margin-bottom:0.5rem;
     border:thin solid var(--paper-grey-400);
-}
-.nested-repeat fx-control{
-    display:block;
-    margin-left:1rem;
 }
 .nested-repeat fx-control input{
     width:100%;
