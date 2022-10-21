@@ -13,7 +13,7 @@
     </facsimile>
     <msIdentifier>
         <!-- 12a) Aufbewahrung -->
-        <repository ref="http://sicily.classics.ox.ac.uk/museum/064"></repository>
+        <repository></repository>
         <!-- 4) TM-Nummer -->
         <idno type="TM"></idno>
     </msIdentifier>

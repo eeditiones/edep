@@ -61,8 +61,7 @@
                         <!--  ### end of runtime instance inlining -->
                         <msIdentifier>
                             <!-- 12a) Aufbewahrung -->
-                            <!-- todo: ref + value setzen -->
-                            <repository ref=""></repository>
+                            <repository></repository>
                             <!-- 4) TM-Nummer - manuelle Eingabe -->
                             <idno type="TM"></idno>
                         </msIdentifier>
