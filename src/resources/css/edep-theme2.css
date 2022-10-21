@@ -21,9 +21,22 @@ html{
 
 
 .buttonBar{
-    display:flex;
-    flex-direction:row;
-    align-items:center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    padding: 1rem;
+    padding-left:1.5rem;
+    background: white;
+    border-top: thin solid;
+    width: 100%;
+    left: 0;
+    background: var(--paper-grey-800);
+    text-align: center;
+}
+.buttonBar *{
+    color:white;
 }
 .buttonBar fx-trigger{
     margin-right:0.5rem;
