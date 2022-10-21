@@ -231,6 +231,7 @@ button{
     /*border-top: 1px solid #607D8B;*/
     border-bottom: 1px solid var(--paper-blue-700);
     margin: 1rem 0;
+    padding-bottom:2rem;
 }
 
 fx-group[ref="teiHeader"]{
@@ -528,6 +529,7 @@ fx-control[required] > label::after {
 
 jinn-xml-editor, jinn-epidoc-editor {
     font-size: 16px;
+    overflow:hidden;
 }
 .hidden {
     display: none;

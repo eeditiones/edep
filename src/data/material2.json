@@ -1,0 +1,270 @@
+[
+  {
+    "name": "unbestimmt",
+    "value": "https://www.eagle-network.eu/voc/material/lod/137"
+  },
+  {
+    "name": "Stein - unbestimmt",
+    "value": "https://www.eagle-network.eu/voc/material/lod/2"
+  },
+  {
+    "name": "Stein / Achat",
+    "value": "https://www.eagle-network.eu/voc/material/lod/88"
+  },
+  {
+    "name": "Stein / Alabaster",
+    "value": "https://www.eagle-network.eu/voc/material/lod/77"
+  },
+  {
+    "name": "Stein / Andesit",
+    "value": "https://www.eagle-network.eu/voc/material/lod/15"
+  },
+  {
+    "name": "Stein / Aplit",
+    "value": "https://www.eagle-network.eu/voc/material/lod/7"
+  },
+  {
+    "name": "Stein / Basalt",
+    "value": "https://www.eagle-network.eu/voc/material/lod/16"
+  },
+  {
+    "name": "Stein / Brekzie",
+    "value": "https://www.eagle-network.eu/voc/material/lod/73"
+  },
+  {
+    "name": "Stein / Dolomit",
+    "value": "https://www.eagle-network.eu/voc/material/lod/59"
+  },
+  {
+    "name": "Stein / Feldspat",
+    "value": "https://www.eagle-network.eu/voc/material/lod/24"
+  },
+  {
+    "name": "Stein / Gagat",
+    "value": "https://www.eagle-network.eu/voc/material/lod/300"
+  },
+  {
+    "name": "Stein / Gneis",
+    "value": "https://www.eagle-network.eu/voc/material/lod/37"
+  },
+  {
+    "name": "Stein / Granit",
+    "value": "https://www.eagle-network.eu/voc/material/lod/11"
+  },
+  {
+    "name": "Hämatit",
+    "value": "https://www.eagle-network.eu/voc/material/lod/90"
+  },
+  {
+    "name": "Stein / Heliotrop",
+    "value": "https://www.eagle-network.eu/voc/material/lod/91"
+  },
+  {
+    "name": "Stein / Jaspis",
+    "value": "https://www.eagle-network.eu/voc/material/lod/89"
+  },
+  {
+    "name": "Stein / Kalkmergel",
+    "value": "https://www.eagle-network.eu/voc/material/lod/76"
+  },
+  {
+    "name": "Stein / Karneol",
+    "value": "https://www.eagle-network.eu/voc/material/lod/92"
+  },
+  {
+    "name": "Stein / Kalkstein",
+    "value": "https://www.eagle-network.eu/voc/material/lod/67"
+  },
+  {
+    "name": "Stein / Kohlekalk",
+    "value": "https://www.eagle-network.eu/voc/material/lod/67"
+  },
+  {
+    "name": "Stein / Konglomerat",
+    "value": "https://www.eagle-network.eu/voc/material/lod/76"
+  },
+  {
+    "name": "Stein / Lapislazuli",
+    "value": "https://www.eagle-network.eu/voc/material/lod/93"
+  },
+  {
+    "name": "Stein / Lava",
+    "value": "https://www.eagle-network.eu/voc/material/lod/53"
+  },
+  {
+    "name": "Stein / magmatisches Gestein - unbestimmt",
+    "value": "https://www.eagle-network.eu/voc/material/lod/6"
+  },
+  {
+    "name": "Stein / Marmor (Farbe unbestimmt)",
+    "value": "https://www.eagle-network.eu/voc/material/lod/48"
+  },
+  {
+    "name": "Stein / Marmor, weiß",
+    "value": "https://www.eagle-network.eu/voc/material/lod/49"
+  },
+  {
+    "name": "Stein / Marmor, geädert/farbig",
+    "value": "https://www.eagle-network.eu/voc/material/lod/50"
+  },
+  {
+    "name": "Stein / Mineral - unbestimmt",
+    "value": "https://www.eagle-network.eu/voc/material/lod/87"
+  },
+  {
+    "name": "Stein / Molasse",
+    "value": "https://www.eagle-network.eu/voc/material/lod/79"
+  },
+  {
+    "name": "Stein / Muschelkalk",
+    "value": "https://www.eagle-network.eu/voc/material/lod/63"
+  },
+  {
+    "name": "Stein / Nenfro",
+    "value": "https://www.eagle-network.eu/voc/material/lod/81"
+  },
+  {
+    "name": "Stein / Onyx",
+    "value": "https://www.eagle-network.eu/voc/material/lod/15"
+  },
+  {
+    "name": "Stein / Oolith",
+    "value": "https://www.eagle-network.eu/voc/material/lod/70"
+  },
+  {
+    "name": "Stein / Opal",
+    "value": "https://www.eagle-network.eu/voc/material/lod/95"
+  },
+  {
+    "name": "Stein / Peperin",
+    "value": "https://www.eagle-network.eu/voc/material/lod/82"
+  },
+  {
+    "name": "Stein / Porphyr",
+    "value": "https://www.eagle-network.eu/voc/material/lod/15"
+  },
+  {
+    "name": "Stein / Quarzit",
+    "value": "https://www.eagle-network.eu/voc/material/lod/51"
+  },
+  {
+    "name": "Stein / Sandstein",
+    "value": "https://www.eagle-network.eu/voc/material/lod/75"
+  },
+  {
+    "name": "Stein / Sardonyx",
+    "value": "https://www.eagle-network.eu/voc/material/lod/97"
+  },
+  {
+    "name": "Stein / Schiefer",
+    "value": "https://www.eagle-network.eu/voc/material/lod/52"
+  },
+  {
+    "name": "Stein / Speckstein",
+    "value": "https://www.eagle-network.eu/voc/material/lod/41"
+  },
+  {
+    "name": "Stein / Syenit",
+    "value": "https://www.eagle-network.eu/voc/material/lod/13"
+  },
+  {
+    "name": "Stein / Trachyte",
+    "value": "https://www.eagle-network.eu/voc/material/lod/83"
+  },
+  {
+    "name": "Stein / Travertin",
+    "value": "https://www.eagle-network.eu/voc/material/lod/71"
+  },
+  {
+    "name": "Stein / Tuff",
+    "value": "https://www.eagle-network.eu/voc/material/lod/30"
+  },
+  {
+    "name": "Stein / Vulkantuff",
+    "value": "https://www.eagle-network.eu/voc/material/lod/98"
+  },
+  {
+    "name": "Metall - unbestimmt",
+    "value": "https://www.eagle-network.eu/voc/material/lod/107"
+  },
+  {
+    "name": "Metall / Blei",
+    "value": "https://www.eagle-network.eu/voc/material/lod/108"
+  },
+  {
+    "name": "Metall / Bronze",
+    "value": "https://www.eagle-network.eu/voc/material/lod/109"
+  },
+  {
+    "name": "Metall / Eisen",
+    "value": "https://www.eagle-network.eu/voc/material/lod/111"
+  },
+  {
+    "name": "Metall / Gold",
+    "value": "https://www.eagle-network.eu/voc/material/lod/112"
+  },
+  {
+    "name": "Metall / Kupfer",
+    "value": "https://www.eagle-network.eu/voc/material/lod/113"
+  },
+  {
+    "name": "Metall / Messing",
+    "value": "https://www.eagle-network.eu/voc/material/lod/114"
+  },
+  {
+    "name": "Metall / Silber",
+    "value": "https://www.eagle-network.eu/voc/material/lod/115"
+  },
+  {
+    "name": "Metall / Zinn",
+    "value": "https://www.eagle-network.eu/voc/material/lod/116"
+  },
+  {
+    "name": "sonstige Materialien/Werkstoffe - unbestimmt",
+    "value": "https://www.eagle-network.eu/voc/material/lod/118"
+  },
+  {
+    "name": "sonstige ... / Bernstein",
+    "value": "https://www.eagle-network.eu/voc/material/lod/119"
+  },
+  {
+    "name": "sonstige ... / Elfenbein",
+    "value": "https://www.eagle-network.eu/voc/material/lod/120"
+  },
+  {
+    "name": "sonstige ... / Emaille",
+    "value": "https://www.eagle-network.eu/voc/material/lod/121"
+  },
+  {
+    "name": "sonstige ... / Glas",
+    "value": "https://www.eagle-network.eu/voc/material/lod/122"
+  },
+  {
+    "name": "sonstige ... / Holz",
+    "value": "https://www.eagle-network.eu/voc/material/lod/123"
+  },
+  {
+    "name": "sonstige ... / Knochen",
+    "value": "https://www.eagle-network.eu/voc/material/lod/124"
+  },
+  {
+    "name": "sonstige ... / Leder",
+    "value": "https://www.eagle-network.eu/voc/material/lod/125"
+  },
+  {
+    "name": "sonstige ... / Putz",
+    "value": "https://www.eagle-network.eu/voc/material/lod/126"
+  },
+  {
+    "name": "sonstige ... / Stuck",
+    "value": "https://www.eagle-network.eu/voc/material/lod/126"
+  },
+  {
+    "name": "sonstige ... / Ton",
+    "value": "https://www.eagle-network.eu/voc/material/lod/131"
+  },
+  {
+    "name": "sonstige ... / Wachs",
+    "value": "https://www.eagle-network.eu/voc/material/lod/133"
+  }
+]
