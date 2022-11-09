@@ -6,7 +6,7 @@
     <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
     <div type="apparatus" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8"></div>
     <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-    <div type="translation" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8" resp="#Feraudi">
+    <div type="translation" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8" resp="">
     </div>
     <!-- 35d) Abbildungen, wiederholbar -->
     <facsimile corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8">
