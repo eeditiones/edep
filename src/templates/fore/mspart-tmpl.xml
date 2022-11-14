@@ -75,6 +75,8 @@
                         <!-- 22) Inschriftfeld: Breite -->
                         <width></width>
                     </dimensions>
+                    <!-- 34) Paläographie: kontrolliertes Vokabular -->
+                    <rs type="palaeography" ref="längliche Buchstaben"/>
                 </layout>
             </layoutDesc>
         </objectDesc>

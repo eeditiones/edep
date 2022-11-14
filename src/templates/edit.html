@@ -520,18 +520,6 @@
                                         <!--                        </fx-group>-->
 
                                         <!-- 34) -->
-<!--
-                                        <fx-group class="group-9">
-                                            <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref" update-event="input">
-                                                <label>Paläographie</label>
-                                                <select ref="instance('palaeo')/item" class="widget" selection="open" static="static">
-                                                    <template>
-                                                        <option value="{.}">{.}</option>
-                                                    </template>
-                                                </select>
-                                            </fx-control>
-                                        </fx-group>
--->
                                     </fx-group>
                                     <fx-group class="group-4">
                                         <label>Inschriftfeld</label>
@@ -581,6 +569,9 @@
                                                     <option value="{.}">{.}</option>
                                                 </template>
                                             </select>
+                                        </fx-control>
+                                        <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref" update-event="input" class="{instance('vars')/hide}">
+                                            <input class="widget" placeholder="freie Eingabe"/>
                                         </fx-control>
 
                                         <!-- 39) -->
@@ -697,7 +688,7 @@
                                         <!-- 35c) Bilder: Verweis auf Literatur, in der Abbildung vorhanden -->
                                         <fieldset>
                                             <legend>
-                                                <label>Bilder</label>
+                                                <label>Bilder (Fotos, Zeichnungen, Abklatsche)</label>
                                                 <fx-trigger class="add">
                                                     <iron-icon icon="add-circle-outline" title="add image"/>
                                                     <fx-action>
@@ -747,7 +738,7 @@
                                         <!-- 35d) Abbildungen -->
                                         <fieldset>
                                             <legend>
-                                                <label>Abbildungen</label>
+                                                <label>Abbildungen (URLs)</label>
                                                 <fx-trigger class="add">
                                                     <iron-icon icon="add-circle-outline" title="add image"/>
 
@@ -996,9 +987,10 @@
                                         event="update"></fx-replace-->
                         </fx-group>
 
-
                         <!-- 26) -->
                         <fx-group ref="//msDesc" class="group-6">
+                            <label>Datierung</label>
+
                             <!-- 26), 27)-->
                             <fx-control ref="history/origin/origDate/@when-custom">
                                 <label>Zeitpunkt</label>
@@ -1051,7 +1043,7 @@
                                <!-- 31) -->
                             <!-- dummy switch to insert or delete 'term' elements in main instance -->
                             <fx-control ref="instance('vars')/geography-term" value-prop="checked" update-event="input">
-                                <label for="geographyTerm">Geographie</label>
+                                <label for="geographyTerm">Geographie / Topographie</label>
                                 <input id="geographyTerm" type="checkbox" class="widget"/>
                                 <fx-insert event="value-changed"
                                            if="context()/text()='true'"
