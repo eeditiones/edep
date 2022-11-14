@@ -456,14 +456,13 @@
                                             <!-- 12b-12e missing -->
                                             <fx-control ref="msContents/msItem/note[@type='verification']/@subtype">
                                                 <label>Verifizierungsgrundlage</label>
-                                                <input list="verificationbase" class="widget"/>
-                                                <datalist id="verificationbase">
+                                                <select class="widget">
                                                     <option value="autopsy">Autopsie</option>
                                                     <option value="squeeze">Abklatsch</option>
                                                     <option value="photo">Foto</option>
                                                     <option value="drawing">Zeichnung</option>
                                                     <option value="not seen">nicht gesehen</option>
-                                                </datalist>
+                                                </select>
                                             </fx-control>
                                             <fx-control
                                                     ref="msContents/msItem/note[@type='verification']/date/@when">
