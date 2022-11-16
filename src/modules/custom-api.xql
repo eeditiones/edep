@@ -457,15 +457,17 @@ declare %private function  api:preprocessing-copy($nodes as node()*){
         typeswitch($node)
             case comment () return $node
             case text() return $node
-            case element (tei:msPart) return 
-                element { node-name($node) } {
-                    $node/@*, 
-                    $node/node(),
-                    root($node)//tei:body//tei:div[@type="textpart"],
-                    root($node)//tei:body//tei:div[@type="apparatus"],
-                    root($node)//tei:body//tei:div[@type="translation"],
-                    root($node)//tei:facsimile
-                }
+            case element (tei:msPart) return
+                let $corresp := '#' || $node/@xml:id
+                return
+                    element { node-name($node) } {
+                        $node/@*, 
+                        $node/node(),
+                        root($node)//tei:body//tei:div[@type="textpart"][@corresp=$corresp],
+                        root($node)//tei:body//tei:div[@type="apparatus"][@corresp=$corresp],
+                        root($node)//tei:body//tei:div[@type="translation"][@corresp=$corresp],
+                        root($node)//tei:facsimile[@corresp=$corresp]
+                    }
             case element(tei:body) return
                 element { node-name($node) } {
                     $node/@*,
