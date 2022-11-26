@@ -369,6 +369,10 @@ fx-control [type="checkbox"]{
     width:fit-content;
 }
 
+.bib-output {
+    margin-left: 17rem;
+}
+
 fx-group{
     padding:1rem;
     border-radius: 0.3rem;

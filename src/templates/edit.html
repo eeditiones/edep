@@ -71,7 +71,7 @@
                 </pb-media-query>
             </app-header>
 
-            <main>
+            <main id="main">
                 <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                 <pb-restricted login="login" group="tei">
                     <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
@@ -408,6 +408,7 @@
                                                     <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
                                                     <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
                                                     <button data-command="snippet" data-params="&lt;placeName key=&#34;$|1|&#34;&gt;$|_|&lt;/placeName&gt;" title="placeName">&lt;placeName&gt;</button>
+                                                    <button data-command="snippet" data-params="&lt;orgName key=&#34;$|1|&#34;&gt;$|_|&lt;/orgName&gt;" title="orgName">&lt;orgName&gt;</button>
                                                 </div>
                                             </jinn-xml-editor>
                                         </fx-control>
@@ -435,7 +436,11 @@
                                                     <div>
                                                         <fx-control ref="ptr/@target">
                                                             <label>Referenz</label>
+                                                            <fx-dispatch name="bibl-changed" event="value-changed" if=".">
+                                                            </fx-dispatch>
                                                         </fx-control>
+                                                        <pb-load class="bib-output" no-credentials="" subscribe="biblio"
+                                                             url="https://api.zotero.org/groups/2519759/items?tag={ptr/@target}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"></pb-load>
                                                         <fx-control ref="note">
                                                             <label>Freie Eingabe</label>
                                                         </fx-control>
@@ -630,7 +635,11 @@
                                                     <div>
                                                         <fx-control ref="ptr/@target">
                                                             <label>Referenz</label>
+                                                            <fx-dispatch name="bibl-changed" event="value-changed" if=".">
+                                                            </fx-dispatch>
                                                         </fx-control>
+                                                        <pb-load class="bib-output" no-credentials="" subscribe="biblio"
+                                                            url="https://api.zotero.org/groups/2519759/items?tag={ptr/@target}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"></pb-load>
                                                         <fx-control ref="note">
                                                             <label>Freie Eingabe</label>
                                                             <textarea rows="3" class="widget"></textarea>
@@ -680,9 +689,13 @@
 
                                                     <fx-control ref="//div[@type='edition']/div[@corresp = $frag][$current]" as="node" update-event="update">-->
                                                     <div>
-                                                        <fx-control ref="ptr/@target">
+                                                        <fx-control class="bibl-ref" ref="ptr/@target">
                                                             <label>Referenz</label>
+                                                            <fx-dispatch name="bibl-changed" event="value-changed" if=".">
+                                                            </fx-dispatch>
                                                         </fx-control>
+                                                        <pb-load class="bib-output" no-credentials="" subscribe="biblio"
+                                                            url="https://api.zotero.org/groups/2519759/items?tag={ptr/@target}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"></pb-load>
                                                         <fx-control ref="note">
                                                             <label>Freie Eingabe</label>
                                                             <textarea rows="3" class="widget"></textarea>
@@ -717,7 +730,11 @@
                                                     <div>
                                                         <fx-control ref="ptr/@target">
                                                             <label>Referenz</label>
+                                                            <fx-dispatch name="bibl-changed" event="value-changed" if=".">
+                                                            </fx-dispatch>
                                                         </fx-control>
+                                                        <pb-load class="bib-output" no-credentials="" subscribe="biblio"
+                                                            url="https://api.zotero.org/groups/2519759/items?tag={ptr/@target}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"></pb-load>
                                                         <fx-control ref="note" as="node" update-event="blur">
                                                             <label>Freie Eingabe</label>
                                                             <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
@@ -805,7 +822,7 @@
                                                     <button data-command="snippet" data-params='&lt;supplied reason="lost"&gt;$|_|&lt;/supplied&gt;'
                                                             title="Insert supplied">&lt;supplied&gt;
                                                     </button>
-                                                    <button data-command="snippet" data-params='&lt;expan&gt;&lt;abbr&gt;$|1|&lt;/abbr&gt;&lt;ex&gt;$|2|&lt;/ex&gt;&lt;/expan&gt;$|3|'
+                                                    <button data-command="snippet" data-params='&lt;expan&gt;&lt;abbr&gt;$|1|&lt;/abbr&gt;&lt;ex&gt;$|_|&lt;/ex&gt;&lt;/expan&gt;$|3|'
                                                             title="Insert expan/abbr">&lt;expan&gt;
                                                     </button>
                                                     <button data-command="snippet" data-params='&lt;gap reason="lost" extent="unknown" unit="character"/&gt;$|1|'

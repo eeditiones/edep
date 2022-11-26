@@ -22,3 +22,7 @@ function checkDate(string){
     }
     return false;
 }
+
+document.addEventListener('bibl-changed', (ev) => {
+    pbEvents.emit('pb-load', 'biblio');
+});
