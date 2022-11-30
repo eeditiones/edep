@@ -20,10 +20,10 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 (:~
  : Define where places are located
  :)
- declare variable $config:places := "/db/apps/edep/data/places/";
+ declare variable $config:places := $config:data-root || "/places/";
  declare variable $config:people := $config:data-root || "/people/";
- declare variable $config:inscription := "/db/apps/edep/data/inscriptions/";
- declare variable $config:inscription-templ := "/db/apps/edep/templates/fore/epidoc-template.xml";
+ declare variable $config:inscription := $config:data-root || "/inscriptions/";
+ declare variable $config:inscription-templ := $config:app-root || "/templates/fore/epidoc-template.xml";
 
 (:~~
  : The version of the pb-components webcomponents library to be used by this app.
@@ -295,7 +295,7 @@ declare variable $config:context-path :=
 (:~
  : The root of the collection hierarchy containing data.
  :)
-declare variable $config:data-root :=$config:app-root || "/data";
+declare variable $config:data-root := repo:get-root() || "/edep-data";
 
 (:~
  : The root of the collection hierarchy whose files should be displayed

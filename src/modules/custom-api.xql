@@ -28,7 +28,7 @@ declare function api:lookup($name as xs:string, $arity as xs:integer) {
 
 declare function api:writing($request as map(*)) {
     try {
-        <root>{doc("/db/apps/edep/data/writing.xml")/items/item}</root>
+        <root>{doc($config:data-root || "/writing.xml")/items/item}</root>
     } catch * {
         ()
     }
@@ -36,7 +36,7 @@ declare function api:writing($request as map(*)) {
 
 declare function api:typeins($request as map(*)) {         
     try {
-        <root>{doc("/db/apps/edep/data/typeins.xml")}</root>
+        <root>{doc($config:data-root || "/typeins.xml")}</root>
     } catch * {
         ()
     }
@@ -44,7 +44,7 @@ declare function api:typeins($request as map(*)) {
 
 declare function api:statepreserv($request as map(*)) {
    try {
-        <root>{doc("/db/apps/edep/data/statepreserv.xml")/items/item}</root>
+        <root>{doc($config:data-root || "/statepreserv.xml")/items/item}</root>
     } catch * {
         ()
     }
@@ -52,7 +52,7 @@ declare function api:statepreserv($request as map(*)) {
 
 declare function api:objtyp($request as map(*)) {
     try {
-        <root>{doc("/db/apps/edep/data/objtyp.xml")/items/item}</root>
+        <root>{doc($config:data-root || "/objtyp.xml")/items/item}</root>
     } catch * {
         ()
     }
@@ -60,7 +60,7 @@ declare function api:objtyp($request as map(*)) {
 
 declare function api:decor($request as map(*)) {
    try {
-        <root>{doc("/db/apps/edep/data/decor.xml")/items/item}</root> 
+        <root>{doc($config:data-root || "/decor.xml")/items/item}</root> 
     } catch * {
         ()
     }
@@ -68,7 +68,7 @@ declare function api:decor($request as map(*)) {
 
 declare function api:material($request as map(*)) {
     try {
-        <root>{doc("/db/apps/edep/data/material.xml")//material}</root>
+        <root>{doc($config:data-root || "/material.xml")//material}</root>
     } catch * {
         ()
     }
