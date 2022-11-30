@@ -600,13 +600,16 @@
                                         <!-- 34) -->
                                         <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref" update-event="input">
                                             <label>Paläographie</label>
-                                            <select ref="instance('palaeo')/item" class="widget" selection="open" static="static">
+                                            <fx-items ref="instance('palaeo')/item" class="widget">
                                                 <template>
-                                                    <option value="{.}">{.}</option>
+                                                    <span class="fx-checkbox">
+                                                        <input type="checkbox" value="{@ref}"/>
+                                                        <label>{.}</label>
+                                                    </span>
                                                 </template>
-                                            </select>
+                                            </fx-items>
                                         </fx-control>
-                                        <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref" update-event="input" class="{instance('vars')/hide}">
+                                        <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']" update-event="input" class="{instance('vars')/hide}">
                                             <input class="widget" placeholder="freie Eingabe"/>
                                         </fx-control>
 

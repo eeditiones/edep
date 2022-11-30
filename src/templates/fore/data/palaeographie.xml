@@ -1,27 +1,27 @@
 <data>
-    <item>Actuaria</item>
-    <item>Quadrata</item>
-    <item>Kursivschrift</item>
-    <item>längliche Buchstaben</item>
-    <item>Libraria</item>
-    <item>Unziale</item>
-    <item>tief eingemeißelt</item>
-    <item>ausgemalt</item>
-    <item>eng geschrieben</item>
-    <item>nachlässig gemeißt</item>
-    <item>sorgfältig gemeißelt</item>
-    <item>gleichmäßig angeordnet</item>
-    <item>geritzt</item>
-    <item>aufgemalt</item>
-    <item>Mosaikinschrift</item>
-    <item>litterae aureae</item>
-    <item>Buchstaben kleiner werdend</item>
-    <item>Buchstaben größer werdend</item>
-    <item>Buchstaben nach oben herausragend</item>
-    <item>Buchstaben eradiert</item>
-    <item>Buchstaben abgerieben</item>
-    <item>Buchstaben verwittert</item>
-    <item>Buchstaben verschwunden</item>
-    <item>Dübellöcher erhalten</item>
-    <item>Stein mehrfach beschrieben</item>
+    <item ref="#actuaria">Actuaria</item>
+    <item ref="#quadrata">Quadrata</item>
+    <item ref="#italics">Kursivschrift</item>
+    <item ref="#letters-prolonged">längliche Buchstaben</item>
+    <item ref="#libraria">Libraria</item>
+    <item ref="#uniziale">Unziale</item>
+    <item ref="#deep-engraved">tief eingemeißelt</item>
+    <item ref="#filled">ausgemalt</item>
+    <item ref="#narrow">eng geschrieben</item>
+    <item ref="#negligent-engraved">nachlässig gemeißelt</item>
+    <item ref="#carefully-engraved">sorgfältig gemeißelt</item>
+    <item ref="#evenly-distributed">gleichmäßig angeordnet</item>
+    <item ref="#scratched">geritzt</item>
+    <item ref="#painted">aufgemalt</item>
+    <item ref="#mosaic">Mosaikinschrift</item>
+    <item ref="#litterae-aureae">litterae aureae</item>
+    <item ref="#letters-decreasing">Buchstaben kleiner werdend</item>
+    <item ref="#letters-increasing">Buchstaben größer werdend</item>
+    <item ref="#letters-potruding">Buchstaben nach oben herausragend</item>
+    <item ref="#letters-erased">Buchstaben eradiert</item>
+    <item ref="#letters-rubbed">Buchstaben abgerieben</item>
+    <item ref="#letters-erodet">Buchstaben verwittert</item>
+    <item ref="#letters-missing">Buchstaben verschwunden</item>
+    <item ref="#dowel-hole">Dübellöcher erhalten</item>
+    <item ref="#overwritten">Stein mehrfach beschrieben</item>
 </data>
