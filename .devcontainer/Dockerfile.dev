@@ -50,6 +50,11 @@ RUN curl -L -o /usr/local/exist/autodeploy/tei-publisher-lib-${PUBLISHER_LIB_VER
 RUN curl -L -o /usr/local/exist/autodeploy/templating-${TEMPLATING_VERSION}.xar http://exist-db.org/exist/apps/public-repo/public/templating-${TEMPLATING_VERSION}.xar
 RUN curl -L -o /usr/local/exist/autodeploy/atom-editor-${EDITOR_VERSION}.xar https://github.com/wolfgangmm/existdb-langserver/raw/master/resources/atom-editor-${EDITOR_VERSION}.xar
 
+RUN git clone https://gitlab.existsolutions.com/akademie-mainz/edep-data.git \
+    && cd edep-data \
+    && ant \
+    && cp build/*.xar /usr/local/exist/autodeploy
+
 WORKDIR /usr/local/exist
 
 ENV JAVA_HOME=/usr/local/sdkman/candidates/java/current
