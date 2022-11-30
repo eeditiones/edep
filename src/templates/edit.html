@@ -837,15 +837,15 @@
                                         <label>Transkription</label>
                                         <fx-control class="transcription editor" ref="div[@type='textpart']" as="node" update-event="blur">
                                             <jinn-epidoc-editor id="transcriptionEditor" unwrap="unwrap" class="widget"
-                                                schema="resources/scripts/tei.json" schema-root="div">
+                                                schema="resources/scripts/tei.json" schema-root="div" mode="leiden_plus">
                                                 <div slot="leiden-toolbar">
                                                     <button data-command="expan" data-mode="leiden_plus">(a(bcd))</button>
                                                     <button data-command="erasure" data-mode="leiden_plus">〚abc〛</button>
                                                     <button data-command="unclear" data-mode="leiden_plus">ạ</button>
                                                     <button data-command="div" data-mode="leiden_plus">&lt;=...</button>
-                                                    <button data-command="part" data-mode="leiden_plus">&lt;D=.A.part...</button>
                                                     <button data-command="recto" data-mode="leiden_plus">&lt;D=.r...</button>
                                                     <button data-command="verso" data-mode="leiden_plus">&lt;D=.v...</button>
+                                                    <button data-command="fixNewlines" data-mode="leiden_plus" title="Add missing line numbers">&#x21A9;</button>
                                                     <button data-command="erasure" data-mode="edcs">〚abc〛</button>
                                                     <button data-command="gap" data-mode="edcs">[...]</button>
                                                     <button data-command="convert" data-mode="edcs">Convert to Leiden+</button>
