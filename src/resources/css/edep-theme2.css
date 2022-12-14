@@ -34,6 +34,7 @@ html{
     left: 0;
     background: var(--paper-grey-800);
     text-align: center;
+    z-index: 20;
 }
 .buttonBar *{
     color:white;
@@ -211,8 +212,22 @@ fx-trigger.delete button{
 fx-trigger.add{
     text-align:right;
     display:inline-block;
-    /*margin-bottom:1rem;*/
 }
+
+fx-repeat fx-trigger.add{
+    position: absolute;
+    bottom:-0.75rem;
+    right:1.75rem;
+    background: white;
+    padding-top: 0 0.3rem;
+    z-index: 10;
+}
+/*
+fx-trigger.add::before{
+    content:'hinzufügen';
+    background: white;
+}
+*/
 fx-trigger.add a{
 
 }
@@ -324,7 +339,8 @@ fieldset{
     border-radius: 0.3rem;
     /*width:100%;*/
     border:thin solid var(--paper-grey-500);
-
+    position: relative;
+    padding-bottom: 1rem;
 }
 fieldset fieldset{
     margin:2rem 0;

@@ -39,6 +39,7 @@ fx-trigger img[disabled]{
 fx-alert{
     color:darkred;
     font-size: 0.9rem;
+    display:none;
 }
 
 fx-model, fx-model *, fx-model ::slotted(fx-instance), fx-instance{

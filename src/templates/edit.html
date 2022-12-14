@@ -417,7 +417,7 @@
                                         <fieldset>
                                             <legend>
                                                 <label>Überlieferung</label>
-                                                <fx-trigger class="add">
+                                                <fx-trigger class="add" title="Überlieferung hinzufügen">
                                                     <iron-icon icon="add-circle-outline" title="Überlieferung hinzufügen"/>
 
                                                     <fx-insert context="msContents/msItem/listBibl[@type='transmission']"
@@ -633,8 +633,8 @@
                                         <fieldset>
                                             <legend>
                                                 <label>Ältere Editionen</label>
-                                                <fx-trigger class="add">
-                                                    <iron-icon icon="add-circle-outline" title="add Bibliographie"/>
+                                                <fx-trigger class="add" title="Ältere Edition hinzufügen">
+                                                    <iron-icon icon="add-circle-outline"></iron-icon>
 
                                                     <fx-insert context="msContents/msItem/listBibl[@type='previousEditions']"
                                                                ref="bibl"
@@ -690,8 +690,8 @@
                                         <fieldset>
                                             <legend>
                                                 <label>Bibliographie</label>
-                                                <fx-trigger class="add">
-                                                    <iron-icon icon="add-circle-outline" title="add edition"/>
+                                                <fx-trigger class="add" title="Bibliographie hinzufügen">
+                                                    <iron-icon icon="add-circle-outline"></iron-icon>
 
                                                     <!-- ##### when a new entry is created.. ##### -->
                                                     <!-- ##### 1. store away the value of the xml:id of this part as fx-var is failing here for some reason ##### -->
@@ -757,8 +757,8 @@
                                         <fieldset>
                                             <legend>
                                                 <label>Bilder (Fotos, Zeichnungen, Abklatsche)</label>
-                                                <fx-trigger class="add">
-                                                    <iron-icon icon="add-circle-outline" title="add image"/>
+                                                <fx-trigger class="add" title="Bilder (Fotos, Zeichnungen, Abklatsche) hinzufügen">
+                                                    <iron-icon icon="add-circle-outline"></iron-icon>
                                                     <fx-action>
                                                         <fx-insert context="msContents/msItem/listBibl[@type='images']" ref="bibl" origin="instance('templates')//listBibl[@type='images']/bibl"></fx-insert>
                                                         <fx-refresh control="r-images"></fx-refresh>
@@ -811,13 +811,13 @@
                                         <fieldset>
                                             <legend>
                                                 <label>Abbildungen (URLs)</label>
-                                                <fx-trigger class="add">
-                                                    <iron-icon icon="add-circle-outline" title="add image"/>
+                                                <fx-trigger class="add" title="Abbildung hinzufügen">
+                                                    <iron-icon icon="add-circle-outline"></iron-icon>
 
                                                     <fx-insert context="facsimile"
                                                                ref="graphic"
                                                                origin="instance('templates')/graphic"></fx-insert>
-                                                       <fx-refresh control="r-pics"></fx-refresh>
+<!--                                                       <fx-refresh control="r-pics"></fx-refresh>-->
                                                 </fx-trigger>
                                             </legend>
                                             <fx-repeat class="nested-repeat" ref="facsimile/graphic" id="r-pics">
@@ -829,7 +829,7 @@
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="delete image"/>
                                                         <fx-delete ref="."></fx-delete>
-                                                       <fx-refresh control="r-pics"></fx-refresh>
+<!--                                                       <fx-refresh control="r-pics"></fx-refresh>-->
                                                     </fx-trigger>
 
                                                 </template>
@@ -984,7 +984,7 @@
                         -->
 
 
-                        <fx-trigger class="add">
+                        <fx-trigger class="add" title="msPart hinzufügen">
                             <button>Hinzufügen</button>
                             <fx-action>
                                 <!-- insert a new msPart  -->
