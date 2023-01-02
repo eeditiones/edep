@@ -401,7 +401,7 @@
                                         <!-- 12b) -->
                                         <fx-control ref=".//provenance[@type='history']" as="node" update-event="blur">
                                             <label>Weitere Ereignisse</label>
-                                            <jinn-xml-editor unwrap="unwrap" class="widget" 
+                                            <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]"
                                                 schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
                                                 <div slot="toolbar">
                                                     <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
@@ -443,7 +443,7 @@
                                                              url="https://api.zotero.org/groups/2519759/items?tag={ptr/@target}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"></pb-load>
                                                         <fx-control ref="note" as="node" update-event="blur">
                                                             <label>Freie Eingabe</label>
-                                                            <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
+                                                            <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]"
                                                                 schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
                                                                 <div slot="toolbar">
                                                                     <button data-command="selectElement"
@@ -657,6 +657,7 @@
                                                         <fx-control ref="note" as="node" update-event="blur">
                                                             <label>Freie Eingabe</label>
                                                             <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
+                                                                placeholder="[Inline text/markup or sequence of paragraphs]"
                                                                 schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
                                                                 <div slot="toolbar">
                                                                     <button data-command="selectElement"
@@ -724,7 +725,8 @@
                                                         <fx-control ref="note" as="node" update-event="blur">
                                                             <label>Freie Eingabe</label>
                                                             <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
-                                                                schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
+                                                                schema-root="note" namespace="http://www.tei-c.org/ns/1.0"
+                                                                placeholder="[Inline text/markup or sequence of paragraphs]">
                                                                 <div slot="toolbar">
                                                                     <button data-command="selectElement"
                                                                             title="Select element around current cursor position">&lt;|&gt;
@@ -779,7 +781,8 @@
                                                         <fx-control ref="note" as="node" update-event="blur">
                                                             <label>Freie Eingabe</label>
                                                             <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
-                                                                schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
+                                                                schema-root="note" namespace="http://www.tei-c.org/ns/1.0"
+                                                                placeholder="[Inline text/markup or sequence of paragraphs]">
                                                                 <div slot="toolbar">
                                                                     <button data-command="selectElement"
                                                                             title="Select element around current cursor position">&lt;|&gt;
@@ -842,12 +845,13 @@
                                             <jinn-epidoc-editor id="transcriptionEditor" unwrap="unwrap" class="widget"
                                                 schema="resources/scripts/tei.json" schema-root="div" mode="leiden_plus">
                                                 <div slot="leiden-toolbar">
-                                                    <button data-command="expan" data-mode="leiden_plus">(a(bcd))</button>
-                                                    <button data-command="erasure" data-mode="leiden_plus">〚abc〛</button>
-                                                    <button data-command="unclear" data-mode="leiden_plus">ạ</button>
-                                                    <button data-command="div" data-mode="leiden_plus">&lt;=...</button>
-                                                    <button data-command="recto" data-mode="leiden_plus">&lt;D=.r...</button>
-                                                    <button data-command="verso" data-mode="leiden_plus">&lt;D=.v...</button>
+                                                    <button data-command="expan" data-mode="leiden_plus" title="Expanded abbreviation">(a(bcd))</button>
+                                                    <button data-command="erasure" data-mode="leiden_plus" title="Erasure">〚abc〛</button>
+                                                    <button data-command="unclear" data-mode="leiden_plus" title="Unclear">ạ</button>
+                                                    <button data-command="snippet" data-mode="leiden_plus" data-params="~|$|_||~$|2|" title="Language switch">~|...|~</button>
+                                                    <button data-command="div" data-mode="leiden_plus" title="Division">&lt;=...</button>
+                                                    <button data-command="recto" data-mode="leiden_plus" title="Recto">&lt;D=.r...</button>
+                                                    <button data-command="verso" data-mode="leiden_plus" title="Verso">&lt;D=.v...</button>
                                                     <button data-command="fixNewlines" data-mode="leiden_plus" title="Add missing line numbers">&#x21A9;</button>
                                                     <button data-command="erasure" data-mode="edcs">〚abc〛</button>
                                                     <button data-command="gap" data-mode="edcs">[...]</button>
@@ -880,7 +884,8 @@
                                         <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
                                         <fx-control class="apparatus editor" ref="div[@type='apparatus']" as="node" update-event="blur">
                                             <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap"
-                                            schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
+                                            schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0"
+                                            placeholder="[Should contain a &lt;listApp&gt; with nested &lt;app&gt;]">
                                                 <div slot="toolbar">
                                                     <button data-command="selectElement"
                                                             title="Select element around current cursor position">&lt;|>
@@ -919,7 +924,7 @@
                                         <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
                                         <fx-control class="translation editor" ref="div[@type='translation']" as="node"
                                                     update-event="blur">
-                                            <jinn-xml-editor id="translation" unwrap="unwrap" class="widget"
+                                            <jinn-xml-editor id="translation" unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]"
                                                 schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
                                                 <div slot="toolbar">
                                                     <button data-command="selectElement"
@@ -1015,7 +1020,8 @@
                                         <label>Kommentar</label>
                                         <fx-control class="commentary editor"
                                                     ref="instance('default')//body/div[@type='commentary']" as="node" update-event="update">
-                                            <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0">
+                                            <jinn-xml-editor class="widget" unwrap="unwrap" namespace="http://www.tei-c.org/ns/1.0" 
+                                                placeholder="[Inline text/markup or sequence of paragraphs]">
                                                 <div slot="toolbar">
                                                     <button data-command="selectElement" title="Select element around current cursor position">&lt;|></button>
                                                     <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
@@ -1035,7 +1041,7 @@
                             <label>Kommentar</label>
                             <fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node"
                                         update-event="blur">
-                                <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap"
+                                <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]"
                                     schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
                                         <button data-command="selectElement" title="Select element around current cursor position">
