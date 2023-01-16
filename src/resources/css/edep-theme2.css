@@ -45,6 +45,9 @@ html{
 .buttonBar fx-trigger button{
     color:black;
 }
+.csl-bib-body{
+    margin-left:17.8rem;
+}
 .visited[required].isEmpty .widget, .visited[invalid] .widget{
     background:red;
     color:white;
