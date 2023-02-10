@@ -288,7 +288,7 @@ declare variable $config:app-root :=
  : but may need to be changed if the app is behind a proxy.
  :)
 declare variable $config:context-path :=
-    if (not(empty(request:get-header("X-Forwarded-Host"))))
+    if (not(empty(request:get-header("X-Forwarded-For"))))
     then ("")
     else (request:get-context-path() || substring-after($config:app-root, "/db"))
 ;
