@@ -37,9 +37,9 @@ ARG ROUTER_VERSION=0.5.1
 # replace with name of your edition repository and choose branch to build
 ARG EDEP_VERSION=master
 
-ENV GITLAB_USER
+ARG GITLAB_USER
 
-ENV GITLAB_PASSWORD
+ARG GITLAB_PASSWORD
 
 
 # add key
