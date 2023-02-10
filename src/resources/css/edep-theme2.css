@@ -45,6 +45,9 @@ html{
 .buttonBar fx-trigger button{
     color:black;
 }
+.csl-bib-body{
+    margin-left:17.8rem;
+}
 .visited[required].isEmpty .widget, .visited[invalid] .widget{
     background:red;
     color:white;
@@ -386,7 +389,7 @@ fx-control [type="checkbox"]{
 }
 
 .bib-output {
-    margin-left: 17rem;
+    margin-left: 17.8rem;
 }
 
 fx-group{
