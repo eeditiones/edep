@@ -4,7 +4,8 @@
         "dockerfile": "Dockerfile.dev",
         "args": {
             "HTTP_PORT": "8080",
-            "HTTPS_PORT": "8443"
+            "HTTPS_PORT": "8443",
+            "GITLAB_TOKEN": "glpat-hh_UsW9x-cKy25sq3f2y"
         }
     },
     "runArgs": ["--name=EDEpdev"],
