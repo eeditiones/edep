@@ -53,7 +53,7 @@ RUN  git clone https://${GITLAB_USER}:${GITLAB_PASSWORD}@gitlab.existsolutions.c
     && git checkout ${EDEP_VERSION} \
     && ant
 
-RUN git clone https://${GITLAB_USER}:${GITLAB_TOKEN}@gitlab.existsolutions.com/akademie-mainz/edep-data.git \
+RUN git clone https://${GITLAB_USER}:${GITLAB_PASSWORD}@gitlab.existsolutions.com/akademie-mainz/edep-data.git \
     && cd edep-data \
     && ant
 
