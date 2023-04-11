@@ -5,7 +5,7 @@
   "dependencies": {
     "@teipublisher/pb-components": "2.4.6",
     "datalist-ajax": "1.0.2",
-    "@jinntec/jinn-codemirror": "1.11.7"
+    "@jinntec/jinn-codemirror": "1.11.8"
   },
   "scripts": {
     "test": "web-test-runner --coverage",
