@@ -65,30 +65,22 @@ function datalistAjax () {
         .pipe(dest("build/resources/scripts/datalist-ajax/datalist-ajax.min.js"))
 }
 
-// leaflet styles and images
-function lfStyles () {
-    return src("node_modules/leaflet/dist/leaflet.css")
-        .pipe(dest("build/resources/css/leaflet/leaflet.css"))
-}
-function lfImages () {
-    return src("node_modules/leaflet/dist/images")
-        .pipe(dest("build/resources/images/leaflet"))
+// components styles
+function pbStyles () {
+    return src("node_modules/@teipublisher/pb-components/css")
+        .pipe(dest("build/resources/css"))
 }
 
-// OSD + images
-function osdLib () {
-    return src("node_modules/openseadragon/build/openseadragon/openseadragon.min.js")
+// components lib
+function pbLib () {
+    return src("node_modules/@teipublisher/pb-components/lib")
         .pipe(dest("build/resources/lib"))
 }
-function osdImages () {
-    return src("node_modules/openseadragon/build/openseadragon/images")
-        .pipe(dest("build/resources/images/openseadragon"))
-}
 
-// prismjs themes
-function prismThemes () {
-    return src("node_modules/prismjs/themes")
-        .pipe(dest("build/resources/css/prismjs"))
+// components images
+function pbImages () {
+    return src("node_modules/@teipublisher/pb-components/images")
+        .pipe(dest("build/resources/images"))
 }
 
 // pb-components
@@ -98,8 +90,8 @@ function pbComponents () {
 }
 const copyModules = parallel(
     epidocEditor, datalistAjax,
-    lfStyles, lfImages, pbComponents, 
-    prismThemes, osdImages, osdLib
+    pbStyles, pbImages, pbComponents, 
+    pbLib
 )
 exports["copy:modules"] = copyModules
 

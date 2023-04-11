@@ -3,9 +3,9 @@
   "version": "1.5.0",
   "description": "Editionstools für eine digitale Epigraphik",
   "dependencies": {
-    "@teipublisher/pb-components": "1.41.1",
+    "@teipublisher/pb-components": "2.4.6",
     "datalist-ajax": "1.0.2",
-    "@jinntec/jinn-codemirror": "1.11.5"
+    "@jinntec/jinn-codemirror": "1.11.6"
   },
   "scripts": {
     "test": "web-test-runner --coverage",
