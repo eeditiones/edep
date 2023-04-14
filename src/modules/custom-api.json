@@ -219,7 +219,7 @@
             "post" : {
                 "summary": "update/add places",
                 "x-constraints": {
-					"group": "tei"
+					"group": ["tei"]
                 },
                 "operationId": "api:places-add",
                 "requestBody": {

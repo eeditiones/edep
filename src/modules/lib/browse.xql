@@ -25,25 +25,10 @@ import module namespace tpu="http://www.tei-c.org/tei-publisher/util" at "lib/ut
 import module namespace pm-config="http://www.tei-c.org/tei-simple/pm-config" at "../pm-config.xql";
 import module namespace nav="http://www.tei-c.org/tei-simple/navigation" at "../navigation.xql";
 import module namespace query="http://www.tei-c.org/tei-simple/query" at "../query.xql";
+import module namespace kwic="http://exist-db.org/xquery/kwic" at "resource:org/exist/xquery/lib/kwic.xql";
 
 declare namespace expath="http://expath.org/ns/pkg";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-
-
-declare
-    %templates:wrap
-function app:sort($items as element()*, $sortBy as xs:string?) {
-    let $items :=
-        if (exists($config:data-exclude)) then
-            $items except $config:data-exclude
-        else
-            $items
-    return
-        if ($sortBy) then
-            nav:sort($sortBy, $items)
-        else
-            $items
-};
 
 declare function app:is-writeable($node as node(), $model as map(*)) {
     let $path := $config:data-root || "/" || $model?root
@@ -61,46 +46,6 @@ declare function app:is-writeable($node as node(), $model as map(*)) {
         }
 };
 
-(:~
- : List documents in data collection
- :)
-declare
-    %templates:wrap
-    %templates:default("sort", "title")
-function app:list-works($node as node(), $model as map(*), $filter as xs:string?, $browse as xs:string?, $odd as xs:string?, $sort as xs:string) {
-    let $params := app:params2map($model?root)
-    let $cached := session:get-attribute($config:session-prefix || ".works")
-    let $filtered :=
-        if (app:use-cache($params, $cached)) then
-            $cached
-        else if (exists($filter) and $filter != '') then
-            query:query-metadata($browse, $filter, $sort)
-        else
-            let $options := query:options($sort)
-            return
-                nav:get-root($model?root, $options)
-    let $sorted := app:sort($filtered, $sort)
-    return (
-        session:set-attribute($config:session-prefix || ".timestamp", current-dateTime()),
-        session:set-attribute($config:session-prefix || '.hits', $filtered),
-        session:set-attribute($config:session-prefix || '.params', $params),
-        session:set-attribute($config:session-prefix || ".works", $sorted),
-        map {
-            "all" : $sorted,
-            "mode": "browse"
-        }
-    )
-};
-
-declare %private function app:params2map($root as xs:string?) {
-    map:merge((
-        for $param in request:get-parameter-names()[not(. = ("start", "per-page"))]
-        return
-            map:entry($param, request:get-parameter($param, ())),
-        map { "root": $root }
-    ))
-};
-
 declare 
     %templates:wrap
 function app:clear-facets($node as node(), $model as map(*)) {
@@ -108,14 +53,15 @@ function app:clear-facets($node as node(), $model as map(*)) {
     map {}
 };
 
-declare function app:use-cache($params as map(*), $cached) {
-    let $cachedParams := session:get-attribute($config:session-prefix || ".params")
-    let $timestamp := session:get-attribute($config:session-prefix || ".timestamp")
-    return
-        if (exists($cached) and exists($cachedParams) and deep-equal($params, $cachedParams) and exists($timestamp)) then
-            empty(xmldb:find-last-modified-since(collection($config:data-root), $timestamp))
-        else
-            false()
+declare 
+    %templates:wrap
+    %templates:default("field", "text")
+    %templates:default("sort", "title")
+function app:form($node as node(), $model as map(*), $field as xs:string, $sort as xs:string) {
+    map {
+        "field": $field,
+        "sort": $sort
+    }
 };
 
 declare function app:parent-collection($node as node(), $model as map(*)) {
@@ -145,17 +91,21 @@ function app:browse($node as node(), $model as map(*), $start as xs:int, $per-pa
     return (
         response:set-header("pb-start", xs:string($start)),
         response:set-header("pb-total", xs:string($total)),
-
+        attribute data-pagination-start { $start },
+        attribute data-pagination-total { $total },
         if (empty($model?all) and (empty($filter) or $filter = "")) then
             templates:process($node/*[@class="empty"], $model)
         else
-            subsequence($model?all, $start, $per-page) !
+            for $work in subsequence($model?all, $start, $per-page)
+            let $config := tpu:parse-pi(root($work), ())
+            return
                 templates:process($node/*[not(@class="empty")], map:merge(
                     ($model, map {
-                        "work": .,
-                        "config": tpu:parse-pi(root(.), ()),
-                        "ident": config:get-identifier(.),
-                        "path": document-uri(root(.))
+                        "work": $work,
+                        "config": $config,
+                        "media": if (map:contains($config, 'media')) then $config?media else (),
+                        "ident": config:get-identifier($work),
+                        "path": document-uri(root($work))
                     }))
                 )
     )
@@ -190,7 +140,7 @@ declare function app:download-link($node as node(), $model as map(*), $mode as x
     return
         element { node-name($node) } {
             $node/@*,
-            attribute url { $model?app || "api/document/" || escape-uri($file, true()) },
+            attribute url { "api/document/" || escape-uri($file, true()) },
             attribute odd { ($model?config?odd, $config:default-odd)[1] },
             $node/node()
         }
@@ -208,20 +158,20 @@ declare function app:dispatch-action($node as node(), $model as map(*), $action 
                         try {
                             xmldb:remove(util:collection-name($doc), util:document-name($doc))
                         } catch * {
-                            <p class="error">Failed to remove document {$path} (insufficient permissions?)</p>
+                            <p class="error"><pb-i18n key="browse.document-remove-failed="></pb-i18n> {$path} (insufficient permissions?)</p>
                         }
                     else
-                        <p>Document not found: {$path}</p>
+                        <p><pb-i18n key="browse.document-not-found"></pb-i18n>: {$path}</p>
             return
                 <div id="action-alert" class="alert alert-success">
-                    <p>Removed {count($docs) - count($result)} documents.</p>
+                    <p><pb-i18n key="browse.documents-removed"></pb-i18n>: {count($docs) - count($result)}</p>
                     { $result }
                 </div>
         case "delete-odd" return
             let $docs := request:get-parameter("docs[]", ())
             return
                 <div id="action-alert" class="alert alert-success">
-                    <p>Removed {count($docs)} documents.</p>
+                    <p><pb-i18n key="browse.documents-removed"></pb-i18n>: {count($docs)}</p>
                     {
                         for $path in $docs
                         let $doc := doc($config:odd-root || "/" || $path)
@@ -231,4 +181,22 @@ declare function app:dispatch-action($node as node(), $model as map(*), $action 
                 </div>
         default return
             ()
+};
+
+declare function app:show-hits($node as node(), $model as map(*)) {
+    if (empty($model?query) or $model?query = '' or $model?field = 'title') then
+        ()
+    else
+        for $field in ft:highlight-field-matches($model?work, query:field-prefix($model?work) || $model?field)
+        let $matches := $field//exist:match
+        return
+            <div class="matches">
+                <div class="count"><pb-i18n key="browse.items" options='{{"count": {count($matches)}}}'></pb-i18n></div>
+                {
+                    for $match in subsequence($matches, 1, 5)
+                    let $config := <config width="60" table="no"/>
+                    return
+                        kwic:get-summary($field, $match, $config)
+                }
+            </div>
 };

@@ -7,8 +7,8 @@ declare namespace pb="http://teipublisher.com/1.0";
 
 declare default element namespace "http://www.tei-c.org/ns/1.0";
 
-import module namespace router="http://exist-db.org/xquery/router";
-import module namespace errors = "http://exist-db.org/xquery/router/errors";
+import module namespace router="http://e-editiones.org/roaster";
+import module namespace errors = "http://e-editiones.org/roaster/errors";
 import module namespace config="http://www.tei-c.org/tei-simple/config" at "../../config.xqm";
 import module namespace pmu="http://www.tei-c.org/tei-simple/xquery/util";
 import module namespace tpu="http://www.tei-c.org/tei-publisher/util" at "../util.xql";
@@ -65,7 +65,7 @@ declare function oapi:recompile($request as map(*)) {
             if ($pi?output) then
                 tokenize($pi?output)
             else
-                ("web", "print", "latex", "epub")
+                ("web", "print", "latex", "epub", "fo")
         return
             try {
                 for $output in pmu:process-odd(
@@ -235,7 +235,7 @@ return
 };
 
 declare %private function oapi:compile($odd) {
-    for $module in ("web", "print", "latex", "epub")
+    for $module in ("web", "print", "latex", "epub", "fo")
     let $result :=
         pmu:process-odd(
             odd:get-compiled($config:odd-root, $odd || ".odd"),
@@ -260,6 +260,7 @@ declare %private function oapi:models($spec as element()) {
                 "behaviour": $model/@behaviour/string(),
                 "predicate": $model/@predicate/string(),
                 "css": $model/@cssClass/string(),
+                "mode": if ($model/@pb:mode) then $model/@pb:mode/string() else '',
                 "sourcerend": $model/@useSourceRendition = 'true',
                 "renditions": oapi:renditions($model),
                 "parameters": oapi:parameters($model),
@@ -276,6 +277,13 @@ declare %private function oapi:parameters($model as element()) {
             map {
                 "name": $param/@name/string(),
                 "value": $param/@value/string()
+            },
+        for $param in $model/pb:set-param
+        return
+            map {
+                "name": $param/@name/string(),
+                "value": $param/@value/string(),
+                "set": true()
             }
     }
 };
@@ -367,7 +375,7 @@ declare function oapi:get-odd($request as map(*)) {
 
 declare function oapi:lint($request as map(*)) {
     let $code := $request?parameters?code
-    let $query := ``[xquery version "3.1";declare variable $parameters := map {};declare variable $node := ();declare variable $get := (); () ! (
+    let $query := ``[xquery version "3.1";declare variable $parameters := map {};declare variable $mode := '';declare variable $node := ();declare variable $get := (); () ! (
 `{$code}`
 )]``
     let $r := util:compile-query($query, ())
@@ -491,7 +499,7 @@ declare %private function oapi:normalize-ns($nodes as node()*) {
                     $node/@*,
                     oapi:normalize-ns($node/node())
                 }
-            case element(pb:behaviour) | element(pb:param) return
+            case element(pb:behaviour) | element(pb:param) | element(pb:set-param) return
                 element { node-name($node) } {
                     $node/@*,
                     oapi:normalize-ns($node/node())

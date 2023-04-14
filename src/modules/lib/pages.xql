@@ -31,7 +31,7 @@ import module namespace templates="http://exist-db.org/xquery/html-templating";
 import module namespace config="http://www.tei-c.org/tei-simple/config" at "../config.xqm";
 import module namespace pm-config="http://www.tei-c.org/tei-simple/pm-config" at "../pm-config.xql";
 import module namespace tpu="http://www.tei-c.org/tei-publisher/util" at "lib/util.xql";
-import module namespace lib="http://exist-db.org/xquery/html-templating/lib" at "templates-lib.xqm";
+import module namespace lib="http://exist-db.org/xquery/html-templating/lib";
 
 declare variable $pages:EXIDE :=
     let $pkg := collection(repo:get-root())//expath:package[@name = "http://exist-db.org/apps/eXide"]
@@ -51,10 +51,10 @@ declare function pages:parse-params($node as node(), $model as map(*)) {
     lib:parse-params($node, $model, "\$\{", "\}")
 };
 
-declare function pages:pb-document($node as node(), $model as map(*)) {
-    let $odd := ($node/@odd, $model?odd)[1]
+declare function pages:pb-document($node as node(), $model as map(*), $odd as xs:string?) {
+    let $oddParam := ($node/@odd, $model?odd, $odd)[1]
     let $data := config:get-document($model?doc)
-    let $config := tpu:parse-pi(root($data), $model?view, $odd)
+    let $config := tpu:parse-pi(root($data), $model?view, $oddParam)
     return
         <pb-document path="{$model?doc}" root-path="{$config:data-root}" view="{$config?view}" odd="{replace($config?odd, '^(.*)\.odd', '$1')}"
             source-view="{$pages:EXIDE}">
@@ -67,8 +67,8 @@ declare function pages:pb-document($node as node(), $model as map(*)) {
  :)
 declare function pages:load-components($node as node(), $model as map(*)) {
     if (not($node/preceding::script[@data-template="pages:load-components"])) then (
-        <script defer="defer" src="https://unpkg.com/@webcomponents/webcomponentsjs@2.4.3/webcomponents-loader.js"></script>,
-        <script defer="defer" src="https://unpkg.com/web-animations-js@2.3.2/web-animations-next-lite.min.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.7.0/webcomponents-loader.js"></script>,
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/web-animations-js/web-animations.min.js"></script>
     ) else
         (),
     switch ($config:webcomponents)
@@ -113,10 +113,7 @@ declare function pages:load-xml($data as node()*, $view as xs:string?, $root as 
                         else
                             nav:get-first-page-start($config, $data)
                     case "single" return
-                        if ($root) then
-                            util:node-by-id($data, $root)
-                        else
-                            $data
+                        $data
                     default return
                         if ($root) then
                             util:node-by-id($data, $root)
@@ -260,6 +257,22 @@ declare function pages:toc-div($node, $model as map(*), $target as xs:string?,
 
 declare function pages:get-content($config as map(*), $div as element()) {
     nav:get-content($config, $div)
+};
+
+declare function pages:if-supported($node as node(), $model as map(*), $media as xs:string?) {
+    if ($media and exists($model?media)) then
+        if ($media = $model?media) then
+            element { node-name($node) } {
+                $node/@*,
+                templates:process($node/node(), $model)
+            }
+        else
+            ()
+    else
+        element { node-name($node) } {
+            $node/@*,
+            templates:process($node/node(), $model)
+        }
 };
 
 declare function pages:pb-page($node as node(), $model as map(*)) {

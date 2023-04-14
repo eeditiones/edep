@@ -39,7 +39,8 @@ declare function tpu:parse-pi($doc as document-node(), $view as xs:string?, $odd
         "depth": $defaultConfig?depth,
         "fill": $defaultConfig?fill,
         "type": config:document-type($doc/*),
-        "template": $defaultConfig?template
+        "template": $defaultConfig?template,
+        "media": $defaultConfig?media
     }
     let $pis :=
         map:merge(
@@ -53,6 +54,8 @@ declare function tpu:parse-pi($doc as document-node(), $view as xs:string?, $odd
                     ()
                 else if ($key = ('depth', 'fill')) then
                     map:entry($key, number($value))
+                else if ($key = 'media') then
+                    map:entry($key, tokenize($value, '[\s,]+'))
                 else
                     map:entry($key, $value)
         )
@@ -65,9 +68,9 @@ declare function tpu:parse-pi($doc as document-node(), $view as xs:string?, $odd
     let $pisWithOdd :=
         if ($defaultConfig?overwrite) then
             if ($cfgOddAvail) then
-                map:merge(($default, map { "odd": $pis?odd }))
+                map:merge(($default, map { "odd": $pis?odd, "output": $pis?output }))
             else
-                $default
+                map:merge(($default, map { "output": $pis?output }))
         else
             $pis
     (: ODD from parameter should overwrite ODD defined in PI :)
@@ -90,7 +93,7 @@ declare function tpu:get-template-config($request as map(*)) {
                 let $pval := array:fold-right(
                     [
                         request:get-parameter($param, ()),
-                        $request?parameters($param),
+                        if (map:contains($request, 'parameters')) then $request?parameters($param) else (),
                         request:get-attribute($param),
                         session:get-attribute($config:session-prefix || "." || $param)
                     ], (),
