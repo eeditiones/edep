@@ -194,7 +194,7 @@ app-drawer-layout:not([narrow]) [drawer-toggle] {
     flex: 1 0;
 }
 
-.menubar a, .menubar paper-menu-button {
+.menubar a:link, .menubar a:visited, .menubar paper-menu-button {
     margin: auto 8px;
     display: block;
     color: var(--pb-menubar-color);

@@ -22,7 +22,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
  :)
  declare variable $config:places := $config:data-root || "/places/";
  declare variable $config:people := $config:data-root || "/people/";
- declare variable $config:inscription := $config:data-root || "/inscriptions/";
+ declare variable $config:inscription := $config:data-root || "/workspace/";
  declare variable $config:inscription-templ := $config:app-root || "/templates/fore/epidoc-template.xml";
 
 (:~~

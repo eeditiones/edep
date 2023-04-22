@@ -45,6 +45,10 @@ html{
 .buttonBar fx-trigger button{
     color:black;
 }
+.buttonBar a:link, .buttonBar a:visited {
+    color: var(--pb-color-inverted);
+}
+
 .csl-bib-body{
     margin-left:17.8rem;
 }
@@ -57,17 +61,6 @@ html{
 }
 .visited[invalid] fx-alert{
     display:block;
-}
-
-main {
-    margin:0 auto !important;
-    max-width: 960px;
-}
-
-@media (max-width: 1023px) {
-    main {
-        margin: 0 8px 0 8px;
-    }
 }
 
 
@@ -145,56 +138,10 @@ pb-split-list .place .place-id{
 .actions{
     padding:1rem;
 }
-aside .upload {
-    --paper-card-header: {
-        background-color: #607D8B;
-    }
-;
-    --paper-card-header-text: {
-        font-family: "Oswald", Verdana, "Helvetica", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        color: white;
-    }
-;
-}
-
-aside .upload {
-    width: 100%;
-}
 
 .transcription, .apparatus, .translation, .commentary{
     display: block;
     margin-top: 1em;
-}
-
-.parent-link iron-icon {
-    padding-right: 4px;
-}
-
-.parent-link {
-    display: block;
-    margin-bottom: 10px;
-    margin-top: 16px;
-    padding: 6px 0;
-    border-bottom: thin solid var(--paper-grey-300);
-}
-
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Oswald", Verdana, "Helvetica", sans-serif;
-    font-weight: 400 !important;
-    line-height: 1.2;
-}
-
-h5 {
-    font-size: 16px;
-    margin: 0;
 }
 
 fx-trigger{
@@ -204,13 +151,13 @@ fx-trigger button{
     color:white;
 }
 fx-trigger.add button{
-    background:green;
+    background: var(--pb-color-green);
 }
 fx-trigger.delete{
     text-align:right;
 }
 fx-trigger.delete button{
-    background:red;
+    background: var(--pb-link-color);
 }
 fx-trigger.add{
     text-align:right;
@@ -242,7 +189,7 @@ fx-trigger iron-icon{
 
 }
 fx-trigger.add iron-icon{
-    color:green;
+    color:var(--pb-color-green);
 
 }
 
@@ -260,7 +207,7 @@ button{
 
 .block {
     /*border-top: 1px solid #607D8B;*/
-    border-bottom: 1px solid var(--paper-blue-700);
+    border-bottom: 1px solid var(--pb-link-color);
     margin: 1rem 0;
     padding-bottom:2rem;
 }
@@ -323,7 +270,7 @@ fx-group.padded {
     border:thin solid var(--paper-grey-300);
 }
 .fragment{
-    border:thin solid var(--paper-blue-700);
+    border:thin solid var(--pb-link-color);
     border-radius:0.3rem;
 }
 .fragment::before{
@@ -335,7 +282,7 @@ fx-group.padded {
     font-size:1.2rem;
     padding:0 0.5rem;
     z-index:1;
-    color:var(--paper-blue-700);
+    color: var(--pb-link-color);
 }
 
 fieldset{
@@ -398,7 +345,7 @@ fx-group{
     position: relative;
 }
 fx-group > label {
-    font-family: "Oswald", Verdana, "Helvetica", sans-serif;
+    font-family: var(--pb-heading-font-family);
     font-weight: 400 !important;
     line-height: 1.2;
     padding:0.5rem;
@@ -538,7 +485,8 @@ fx-var{
     display: inline-block;
 }
 
-.title{
+.title {
+    font-family: var(--pb-heading-font-family);
     font-size:1.4rem;
     display: block;
     margin-bottom:1rem;
@@ -554,7 +502,7 @@ fx-var{
 
 }
 [icon='remove-circle-outline']{
-    color:red;
+    color:var(--pb-link-color);
     position:absolute;
     right:0.5rem;
 }
