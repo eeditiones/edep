@@ -3,8 +3,8 @@ FROM mcr.microsoft.com/devcontainers/java:8-bullseye
 ARG GITLAB_TOKEN=""
 ARG EXIST_VERSION=6.2.0
 ARG TEMPLATING_VERSION=1.1.0
-ARG PUBLISHER_LIB_VERSION=2.10.1
-ARG ROUTER_VERSION=0.5.1
+ARG PUBLISHER_LIB_VERSION=3.0.0
+ARG ROUTER_VERSION=1.8.0
 ARG EDITOR_VERSION=1.1.0
 
 ARG HTTP_PORT=8080
@@ -23,9 +23,6 @@ RUN if [ "${INSTALL_MAVEN}" = "true" ]; then su vscode -c "source /usr/local/sdk
 RUN su vscode -c "source /usr/local/sdkman/bin/sdkman-init.sh && sdk install ant"
 ENV ANT_HOME=/usr/local/sdkman/candidates/ant/current
 ENV PATH=${PATH}:${ANT_HOME}/bin
-
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends bzip2
 
 # [Option] Install Node.js
 ARG INSTALL_NODE="true"
@@ -51,10 +48,10 @@ RUN curl -L -o /usr/local/exist/autodeploy/tei-publisher-lib-${PUBLISHER_LIB_VER
 RUN curl -L -o /usr/local/exist/autodeploy/templating-${TEMPLATING_VERSION}.xar http://exist-db.org/exist/apps/public-repo/public/templating-${TEMPLATING_VERSION}.xar
 RUN curl -L -o /usr/local/exist/autodeploy/atom-editor-${EDITOR_VERSION}.xar https://github.com/wolfgangmm/existdb-langserver/raw/master/resources/atom-editor-${EDITOR_VERSION}.xar
 
-RUN git clone https://docker:${GITLAB_TOKEN}@gitlab.existsolutions.com/akademie-mainz/edep-data.git \
-    && cd edep-data \
-    && ant \
-    && cp build/*.xar /usr/local/exist/autodeploy
+# RUN git clone https://docker:${GITLAB_TOKEN}@gitlab.existsolutions.com/akademie-mainz/edep-data.git \
+#     && cd edep-data \
+#     && ant \
+#     && cp build/*.xar /usr/local/exist/autodeploy
 
 WORKDIR /usr/local/exist
 
