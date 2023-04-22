@@ -124,7 +124,7 @@ function watchEs () {
 }
 exports["watch:es"] = watchEs
 
-const static = 'src/**/*.{xml,html,xq,xquery,xql,xqm,xsl,xconf,json,svg,js,map,png,ico,woff,eot,ttf,odd}'
+const static = 'src/**/*.{xml,html,xq,xquery,xql,xqm,xsl,xconf,json,css,svg,js,map,png,ico,woff,woff2,eot,ttf,odd}'
 
 /**
  * copy html templates, XSL stylesheet, XMLs and XQueries to 'build'

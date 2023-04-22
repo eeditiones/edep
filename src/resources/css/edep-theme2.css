@@ -251,7 +251,7 @@ fx-trigger.add iron-icon{
 body, .wrapper{
     margin:0;
     padding:0;
-    font-family: "Kimberley";
+    /* font-family: "Kimberley"; */
 }
 button{
     font-size: 1.2rem;

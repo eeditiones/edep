@@ -1,3 +1,5 @@
+@import url("../fonts/font.css");
+
 /* Due to a safari issue, relative paths to background images won't work as variables, so we list them here */
 
 .logo {
@@ -32,6 +34,7 @@ body {
     --pb-base-font: var(--pb-base-font-weight) var(--pb-base-font-size)/var(--pb-base-line-height) var(--pb-base-font-family);
     --pb-serif-font-family: "Junicode", Georgia, "Times New Roman", serif;
     --pb-content-font-family: var(--pb-serif-font-family);
+    --pb-content-font-weight:300;
     --pb-content-font-size: 20px;
     --pb-heading-font-family: "Oswald", Verdana, "Helvetica", sans-serif;
     --pb-heading-font-weight: 400 !important;
@@ -41,6 +44,8 @@ body {
     --pb-color-inverse: #F0F0F0;
     --pb-color-lighter: #35424b;
     --pb-color-focus: #f6a623;
+    --pb-annotation-stripes-light: #e0e0ef;
+    --pb-annotation-stripes-dark: #50505f;
     --pb-drawer-background-color: var(--pb-color-inverse);
     --pb-menubar-background-color: #35424b;
     --pb-menubar-color: var(--pb-color-inverse);
@@ -65,9 +70,13 @@ body {
     --pb-highlight-color: #F9E976;
     --paper-input-container-focus-color: var(--pb-color-focus);
     --pb-view-max-width: 920px;
-    font: var(--pb-base-font);
+    font-family: var(--pb-base-font-family);
     color: var(--pb-color-primary);
     margin: 0;
+}
+
+html {
+    font-size: var(--pb-base-font-size);
 }
 
 *:focus {
@@ -251,9 +260,9 @@ pb-view-type {
     }
 }
 
-.breadcrumbs {
+/* .breadcrumbs {
     margin: 10px 0 0 20px;
-}
+} */
 
 pb-view, pb-view-annotate {
     font-family: var(--pb-content-font-family);
@@ -344,4 +353,69 @@ pb-drawer {
 
 .version span {
     font-weight: bold;
+}
+
+/* Display KWIC search results */
+.matches {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-family: var(--pb-content-font-family);
+}
+
+.matches .hi {
+    color: var(--pb-color-focus);
+}
+
+.matches .count {
+    margin-top: 1em;
+}
+
+.matches .count::before {
+    content: '[';
+}
+
+.matches .count::after {
+    content: ']';
+}
+
+.facets {
+    flex: 0;
+    min-width: 220px;
+}
+
+.facets h3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.facets h3 paper-checkbox {
+    margin-left: 16px;
+    font-size: 11px;
+}
+
+.facets table {
+    font-size: 14px;
+    width:100%;
+}
+
+.facets table table {
+    padding-left: 16px;
+    width: 100%;
+}
+
+.facets table td {
+    padding: 4px 0;
+}
+
+.facets table td:nth-child(2) {
+    color: #808080;
+    text-align: right;
+    padding-left: 1em;
+    vertical-align: middle;
+}
+
+.gitlab img {
+    max-height: var(--pb-logo-image-height);
 }
