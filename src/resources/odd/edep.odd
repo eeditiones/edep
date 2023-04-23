@@ -70,7 +70,7 @@
                 </elementSpec>
             <elementSpec ident="TEI" mode="change">
                     <model predicate="@type='about'" behaviour="inline">
-            <param name="content" value="text/body/div[@xml:lang=$parameters?language]"/>
+            <param name="content" value="text/body/div[starts-with($parameters?language, @xml:lang)]"/>
         </model>
                     <model behaviour="document"/>
                 </elementSpec>
