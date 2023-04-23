@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald"/>
     <link rel="stylesheet" href="resources/css/theme.css"/>
     <link rel="stylesheet" href="resources/css/fore.css"/>
+    <link rel="stylesheet" href="resources/css/edep-theme.css"/>
     <link rel="stylesheet" href="resources/css/edep-theme2.css"/>
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
     <script type="module" src="resources/scripts/fore.js"></script>
@@ -22,7 +23,7 @@
 </head>
 
 <body>
-    <pb-page data-template="pages:pb-page" unresolved="unresolved">
+    <pb-page data-template="pages:pb-page" unresolved="unresolved" locales="resources/i18n/{{ns}}/{{lng}}.json">
         <app-drawer-layout force-narrow="force-narrow">
             <app-drawer slot="drawer" align="right">
                 <div class="drawer-content">

@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="resources/fonts/font.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&amp;display=swap"/>
         <link rel="stylesheet" href="resources/css/theme.css"/>
+        <link rel="stylesheet" href="resources/css/edep-theme.css"/>
         <link rel="stylesheet" href="resources/css/edep-theme2.css"/>
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
         <style>
@@ -36,16 +37,12 @@
         </style>
     </head>
     <body>
-        <pb-page data-template="pages:pb-page" unresolved="unresolved">
+        <pb-page data-template="pages:pb-page" unresolved="unresolved" locales="resources/i18n/{{ns}}/{{lng}}.json">
             <app-drawer-layout force-narrow="force-narrow">
                 <app-drawer data-template="lib:include" data-template-path="templates/drawer.html"/>
                 <app-header-layout>
                     <app-header slot="header" reveals="reveals" fixed="fixed" effects="waterfall">
-                        <app-toolbar data-template="lib:include" data-template-path="templates/menu.html">
-                            <a data-target="custom" href="${app}/orte?category=${category}&amp;search=${search}" data-template="lib:parse-params">Geodaten</a>
-                            <a data-target="custom" href="${app}/personen" target="_blank" data-template="lib:parse-params">Personen</a>
-                        </app-toolbar>
-                        <app-toolbar data-template="lib:include" data-template-path="templates/toolbar.html"/>
+                        <app-toolbar data-template="lib:include" data-template-path="templates/menu.html"></app-toolbar>
                     </app-header>
 
                     <main>
