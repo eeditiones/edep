@@ -2,6 +2,12 @@
     "myapp": {
         "title": "Foo"
     },
+    "menu": {
+        "inscriptions": "Inscriptions",
+        "geodata": "Geodata",
+        "people": "People",
+        "about": "About"
+    },
     "form": {
         "edepid": "EDEp-Id",
         "tm": "TM",

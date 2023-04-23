@@ -24,13 +24,13 @@ body {
 }
 
 main {
-    margin: 2rem auto 0 auto !important;
-    max-width: 1200px;
+    margin: 0 8px 0 8px;
 }
 
-@media (max-width: 1023px) {
+@media (min-width: 1200px) {
     main {
-        margin: 0 8px 0 8px;
+        margin: 2rem auto 0 auto !important;
+        max-width: 1024px;
     }
 }
 

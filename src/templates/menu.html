@@ -1,7 +1,10 @@
 <app-toolbar class="menubar">
     <a href="${app}/index.html" class="logo" data-template="lib:parse-params"/>
     <pb-media-query query="min-width: 1024px">
-        <a href="${app}/index.html" data-template="lib:parse-params">Inschriften</a>
+        <a href="${app}/index.html" data-template="lib:parse-params"><pb-i18n key="menu.inscriptions"></pb-i18n></a>
+        <a href="${app}/orte" target="_blank" data-template="lib:parse-params"><pb-i18n key="menu.geodata"></pb-i18n></a>
+        <a href="${app}/personen" data-template="lib:parse-params" target="_blank"><pb-i18n key="menu.people"></pb-i18n></a>
+        <a href="${app}/about.xml" data-template="lib:parse-params"><pb-i18n key="menu.about"></pb-i18n></a>
         <div id="custom" style="display: none"></div>
         <pb-restricted login="login">
             <paper-menu-button>
@@ -22,7 +25,7 @@
     </pb-media-query>
 
     <!-- Search input -->
-    <pb-search action="${app}/search.html" data-template="lib:parse-params" value="${query}" redirect="redirect"/>
+    <!--pb-search action="${app}/search.html" data-template="lib:parse-params" value="${query}" redirect="redirect"/-->
     <pb-media-query query="min-width: 1024px">
        <!-- language selector -->
        <pb-lang name="lang" data-template="pages:languages"/>

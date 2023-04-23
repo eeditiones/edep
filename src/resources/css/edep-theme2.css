@@ -20,7 +20,7 @@ html{
 }
 
 
-.buttonBar{
+.buttonBar {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -36,6 +36,12 @@ html{
     text-align: center;
     z-index: 20;
 }
+
+.buttonBar pb-restricted {
+    display: flex;
+    align-items: center;
+}
+
 .buttonBar *{
     color:white;
 }
@@ -426,12 +432,11 @@ fx-items {
 fx-var{
     display: none;
 }
-.loginMessage{
-    font-size:2rem;
-    text-align:center;
-    width:100%;
-    color:orange;
+.loginMessage {
+    color: var(--pb-link-color);
+    margin-right: 2rem;
 }
+
 .nested-repeat{
     /*margin-top:1rem;*/
 }

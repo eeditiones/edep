@@ -215,7 +215,7 @@
 </head>
 
 <body>
-    <pb-page data-template="pages:pb-page" unresolved="unresolved">
+    <pb-page data-template="pages:pb-page" unresolved="unresolved" locales="resources/i18n/{{ns}}/{{lng}}.json">
         <app-drawer-layout force-narrow="force-narrow">
             <app-drawer slot="drawer" align="right">
                 <div class="drawer-content">
@@ -227,14 +227,11 @@
                 </app-drawer>
                 <app-header-layout>
                 <app-header slot="header" reveals="reveals" fixed="fixed" effects="waterfall">
-                    <app-toolbar data-template="lib:include" data-template-path="templates/menu.html">
-                        <a data-target="custom" href="${app}/orte" target="_blank" data-template="lib:parse-params">Geodaten</a>
-                        <a data-target="custom" href="${app}/personen" data-template="lib:parse-params" target="_blank">Personen</a>
-                    </app-toolbar>
+                    <app-toolbar data-template="lib:include" data-template-path="templates/menu.html"></app-toolbar>
                     <pb-media-query query="(max-width: 1023px)">
                         <app-toolbar class="toolbar" sticky="sticky">
                             <!-- Search input -->
-                            <pb-search action="${app}/search.html" data-template="lib:parse-params" value="${query}" redirect="redirect"></pb-search>
+                            <!--pb-search action="${app}/search.html" data-template="lib:parse-params" value="${query}" redirect="redirect"></pb-search-->
                             <paper-icon-button icon="icons:menu" drawer-toggle="drawer-toggle"></paper-icon-button>
                         </app-toolbar>
                     </pb-media-query>
@@ -245,26 +242,26 @@
                         <h1 class="tp-title" data-template="config:app-title"></h1>
                     </section>
                     <section class="panels">
-                                <div class="browse" slot="page">
-                                    <pb-custom-form id="facets" url="api/search/facets" event="pb-results-received" subscribe="docs" emit="docs"></pb-custom-form>
-                                    <pb-browse-docs id="document-list" url="api/collection" sort-options='[{"label": "browse.title", "value": "title"},{"label": "browse.author", "value": "author"}]' sort-by="title"
-                                        filter-options='[{"label": "browse.title", "value": "title"},{"label": "browse.author", "value": "author"},{"label": "browse.file", "value": "file"}]' filter-by="title" auto="auto" history="history" login="login" emit="docs" subscribe="docs">
-                                        <pb-paginate slot="toolbar" id="paginate" per-page="10" range="5" emit="docs" subscribe="docs"></pb-paginate>
-                                        <a slot="toolbar" href="${app}/edit.html" data-template="lib:parse-params">
-                                            <paper-button>
-                                                <iron-icon icon="icons:add"/> Neue Inschrift
-                                            </paper-button>
-                                        </a>
-                                        <pb-restricted login="login" slot="toolbar">
-                                            <pb-ajax emit="docs" url="api/odd" method="post" data-template="lib:parse-params" event="pb-search-resubmit" title="Recompile ODD" data-i18n="[title]odd.manage.regenerate-all">
-                                                <h3 slot="title">
-                                                    <pb-i18n key="odd.manage.regenerate-all"/>
-                                                </h3>
-                                                <paper-icon-button icon="icons:update"/>
-                                            </pb-ajax>
-                                        </pb-restricted>
-                                    </pb-browse-docs>
-                                </div>
+                        <div class="browse" slot="page">
+                            <pb-custom-form id="facets" url="api/search/facets" event="pb-results-received" subscribe="docs" emit="docs"></pb-custom-form>
+                            <pb-browse-docs id="document-list" url="api/collection" sort-options='[{"label": "browse.title", "value": "title"},{"label": "browse.author", "value": "author"}]' sort-by="title"
+                                filter-options='[{"label": "browse.title", "value": "title"},{"label": "browse.author", "value": "author"},{"label": "browse.file", "value": "file"}]' filter-by="title" auto="auto" history="history" login="login" emit="docs" subscribe="docs">
+                                <pb-paginate slot="toolbar" id="paginate" per-page="10" range="5" emit="docs" subscribe="docs"></pb-paginate>
+                                <a slot="toolbar" href="${app}/edit.html" data-template="lib:parse-params">
+                                    <paper-button>
+                                        <iron-icon icon="icons:add"/> Neue Inschrift
+                                    </paper-button>
+                                </a>
+                                <pb-restricted login="login" slot="toolbar">
+                                    <pb-ajax emit="docs" url="api/odd" method="post" data-template="lib:parse-params" event="pb-search-resubmit" title="Recompile ODD" data-i18n="[title]odd.manage.regenerate-all">
+                                        <h3 slot="title">
+                                            <pb-i18n key="odd.manage.regenerate-all"/>
+                                        </h3>
+                                        <paper-icon-button icon="icons:update"/>
+                                    </pb-ajax>
+                                </pb-restricted>
+                            </pb-browse-docs>
+                        </div>
                         <pb-restricted class="upload-panel" login="login">
                             <aside>
                                 <pb-upload id="upload" emit="docs" subscribe="docs" accept=".xml, .tei, .odd, .docx, .mei"/>
@@ -272,10 +269,10 @@
                         </pb-restricted>
                     </section>
                 </main>
-                <footer class="version">
+                <!--footer class="version">
                     App: v<span data-template="pages:version"/> /
                     web components: v<pb-version></pb-version>
-                </footer>
+                </footer-->
             </app-header-layout>
         </app-drawer-layout>
         <paper-dialog id="downloadDialog">

@@ -46,7 +46,7 @@
 </head>
 
 <body>
-<pb-page data-template="pages:pb-page" unresolved="unresolved">
+<pb-page data-template="pages:pb-page" unresolved="unresolved" locales="resources/i18n/{{ns}}/{{lng}}.json">
     <app-drawer-layout force-narrow="force-narrow">
         <app-drawer slot="drawer" align="right">
             <div class="drawer-content">
@@ -58,10 +58,7 @@
         </app-drawer>
         <app-header-layout>
             <app-header slot="header" reveals="reveals" fixed="fixed" effects="waterfall">
-                <app-toolbar data-template="lib:include" data-template-path="templates/menu.html">
-                    <a data-target="custom" href="${app}/orte" target="_blank" data-template="lib:parse-params">Geodaten</a>
-                    <a data-target="custom" href="${app}/personen" target="_blank" data-template="lib:parse-params">Personen</a>
-                </app-toolbar>
+                <app-toolbar data-template="lib:include" data-template-path="templates/menu.html"></app-toolbar>
                 <pb-media-query query="(max-width: 1023px)">
                     <app-toolbar class="toolbar" sticky="sticky">
                         <!-- Search input -->
@@ -73,9 +70,6 @@
 
             <main id="main">
                 <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                <pb-restricted login="login" group="tei">
-                    <p class="loginMessage" slot="fallback">You need to be logged in to save.</p>
-                </pb-restricted>
                     <fx-fore show-confirmation="show-confirmation">
 
                         <!-- ### if get called with an id param we load the data via submission ### -->
@@ -1178,20 +1172,24 @@
                             </fx-group>
 
                             <section class="buttonBar">
-                                <fx-trigger class="saveBtn" debounce="1000">
-                                    <button>Speichern</button>
-                                    <fx-action if="not(exists(instance('params')/id))">
-                                        <fx-send submission="s-login"></fx-send>
-                                        <fx-send submission="s-create"></fx-send>
-                                    </fx-action>
-                                    <fx-action if="exists(instance('params')/id)">
-                                        <fx-send submission="s-login"></fx-send>
-                                        <fx-send submission="s-save"></fx-send>
-                                    </fx-action>
-                                </fx-trigger>
-                                <fx-trigger>
-                                    <a href="edit.html">Neuer Eintrag</a>
-                                </fx-trigger>
+                                <pb-restricted login="login" group="tei">
+                                    <p class="loginMessage" slot="fallback">You need to be logged in to save.</p>
+                                
+                                    <fx-trigger class="saveBtn" debounce="1000">
+                                        <button>Speichern</button>
+                                        <fx-action if="not(exists(instance('params')/id))">
+                                            <fx-send submission="s-login"></fx-send>
+                                            <fx-send submission="s-create"></fx-send>
+                                        </fx-action>
+                                        <fx-action if="exists(instance('params')/id)">
+                                            <fx-send submission="s-login"></fx-send>
+                                            <fx-send submission="s-save"></fx-send>
+                                        </fx-action>
+                                    </fx-trigger>
+                                    <fx-trigger>
+                                        <a href="edit.html">Neuer Eintrag</a>
+                                    </fx-trigger>
+                                </pb-restricted>
                                 <fx-trigger>
                                     <a href="index.html">Zur Liste</a>
                                 </fx-trigger>
