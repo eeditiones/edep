@@ -1,0 +1,62 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title data-template="config:app-title"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"/>
+    <link rel="stylesheet" href="resources/css/edep-theme.css"/>
+    <script type="module" src="http://localhost:8090/index.js"/>
+    <!--    <script type="module" src="resources/scripts/fore-dev.js"></script>-->
+    <link rel="stylesheet" href="resources/css/theme.css"/>
+    <link rel="stylesheet" href="resources/css/fore.css"/>
+    <link rel="stylesheet" href="resources/css/edep-theme.css"/>
+    <link rel="stylesheet" href="resources/css/edep-theme2.css"/>
+
+</head>
+
+<body>
+<fx-fore>
+    <fx-model>
+
+        <fx-instance id="i-geo" xpath-default-namespace="http://www.tei-c.org/ns/1.0"
+                    src="templates/fore/data/geoid.xml">
+            <data></data>
+        </fx-instance>
+
+        <fx-instance id="i-geodata" src="api/geopicker/places" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+            <data></data>
+        </fx-instance>
+
+        <fx-instance id='vars'>
+            <data>
+                <open>false</open>
+            </data>
+        </fx-instance>
+
+    </fx-model>
+
+    <fx-control ref="instance('i-geo')/origPlace/@corresp">
+        <fx-action event='click'>
+            <fx-setvalue ref="instance('vars')/open">true</fx-setvalue>
+            <fx-refresh force="force"></fx-refresh>
+        </fx-action>
+
+    </fx-control>
+    <fx-repeat id='r-places' ref="instance('i-geodata')/place" style="display:{if(instance('vars')/open = 'true') then 'block' else 'none'};">
+        <template>
+            <div>
+                <fx-action event="click">
+                    <fx-message>clicked</fx-message>
+                    <fx-setvalue ref="instance('i-geo')/origPlace/@corresp" value="context('r-places')/@xml:id"></fx-setvalue>
+<!--                    <fx-setvalue ref="instance('i-geo')/origPlace/@corresp">fpo</fx-setvalue>-->
+                    <fx-refresh force='force'></fx-refresh>
+                    <fx-return ref="instance('i-geo')/origPlace/@corresp"></fx-return>
+                </fx-action>
+                <fx-output ref='placeName'></fx-output>
+            </div>
+        </template>
+    </fx-repeat>
+    <fx-inspector open="open"/>
+</fx-fore>
+
+</body>
+</html>
