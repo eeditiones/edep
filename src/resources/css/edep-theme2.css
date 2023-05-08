@@ -612,7 +612,7 @@ legend{
     top:15rem;
     left:50%;
     transform: translateX(-50%);
-    z-index:5;
+    z-index:-1;
     opacity:1;
 
 }
