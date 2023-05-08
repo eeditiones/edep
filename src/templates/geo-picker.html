@@ -43,7 +43,6 @@
         <fx-instance id="vars">
             <data>
                 <open>true</open>
-                <search></search>
                 <place></place>
             </data>
         </fx-instance>
@@ -58,7 +57,6 @@
             <fx-message event='submit-done'>place loaded</fx-message>
         </fx-submission>
     </fx-model>
-<!--    <fx-var name="selected" value="instance('i-geodata')/place[@xml:id=instance('i-geo')/origPlace/@corresp]"></fx-var>-->
 
     <fx-control ref="instance('i-geo')/origPlace/@corresp" update-event='input'>
         <label>GeoId</label>
