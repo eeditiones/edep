@@ -11,23 +11,24 @@
     <link rel="shortcut icon" type="image/png" href="resources/images/favicon-24.png" sizes="24x24"/>
     <link rel="shortcut icon" type="image/png" href="resources/images/favicon-32.png" sizes="32x32"/>
     <link rel="shortcut icon" type="image/png" href="resources/images/favicon-64.png" sizes="64x64"/>
-    <link rel="stylesheet" href="resources/css/theme.css"/>
-    <link rel="stylesheet" href="resources/css/fore.css"/>
-    <link rel="stylesheet" href="resources/css/edep-theme.css"/>
-    <link rel="stylesheet" href="resources/css/edep-theme2.css"/>
+    <link rel="stylesheet" href="resources/css/theme.css"  media='screen'/>
+    <link rel="stylesheet" href="resources/css/fore.css" media='screen'/>
+    <link rel="stylesheet" href="resources/css/edep-theme.css"  media='screen'/>
+    <link rel="stylesheet" href="resources/css/edep-theme2.css"  media='screen'/>
+    <link rel="stylesheet" href="resources/css/geo-picker.css" media="screen"/>
     <!-- Uncomment if jinn-codemirror is running on 8000 -->
     <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
     <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
 
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
 
-<!--    <script type="module" src="resources/scripts/fore-dev.js"></script>-->
+    <script type="module" src="resources/scripts/fore-dev.js"></script>
     <!--
         when running with Fore on localhost for debugging with latest sources:
         1. uncomment this and comment above Fore import
         2. Replace controller.xql with localhost-controller.xql
     -->
-     <script type="module" src="http://localhost:8090/index.js"></script>
+<!--     <script type="module" src="http://localhost:8090/index.js"></script>-->
     <!--    <script type="module" src="resources/scripts/datalist-ajax/datalist-ajax.min.js"></script>-->
 
 
@@ -45,23 +46,6 @@
             width: 100%;
         }
 
-        fx-control > fx-fore{
-            position:absolute;
-            z-index: 100;
-            width:100%;
-            min-height:1rem;
-        }
-        fx-control > fx-fore  fx-control {
-            display:block;
-            padding-top:0;
-            margin:0;
-        }
-        fx-inspector{
-            position:fixed;
-            right:0;
-            top:0;
-
-        }
     </style>
 </head>
 
@@ -237,18 +221,6 @@
                                 </fx-action>
                             </fx-submission>
 
-                            <!-- todo:            -->
-                            <fx-instance id="geodata"  xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                                <data></data>
-                            </fx-instance>
-                            <fx-submission id="s-load-geodata"
-                                           url="api/places/{instance('vars')/geoid}"
-                                           method="get"
-                                           replace="instance"
-                                           into="instance('geodata')"
-                                           validate="false">
-                            </fx-submission>
-
                             <fx-function signature="gen-id() as xs:string" type="text/javascript">
                                 return createUUID();
                             </fx-function>
@@ -325,58 +297,15 @@
                                                 <label>TM-Nummer</label>
                                             </fx-control>
 
-                                            <fx-var name="corresp" value="history/origin/origPlace/@corresp"></fx-var>
-                                            <fx-control ref="$corresp"
-                                                        url='geo-picker.html'
-                                                        initial='..'>
-                                                <label>GeoId</label>
-                                            </fx-control>
 
                                             <div class="block findspot">
                                                 <h3>Fundort</h3>
                                                 <!-- geoId from geodata -->
-<!--
                                                 <fx-var name="corresp" value="history/origin/origPlace/@corresp"></fx-var>
-                                                <fx-control ref="$corresp"
-                                                            url='geo-picker.html'
-                                                            initial='.'>
-                                                    <label>GeoId</label>
-                                                    <fx-action event="value-changed">
-                                                        <fx-setvalue ref="instance('vars')/geoid" value="$corresp"></fx-setvalue>
-                                                        <fx-send submission="s-load-geodata"></fx-send>
-                                                    </fx-action>
+                                                <fx-control class="fore-control" ref="$corresp"
+                                                            url="geo-picker.html"
+                                                            initial="..">
                                                 </fx-control>
--->
-
-                                                <!-- 5) -->
-                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/region[@type='province']">
-                                                    <label slot="label">Provinz/augusteische Region</label>
-                                                </fx-output>
-
-                                                <!-- 6) -->
-                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/country">
-                                                    <label slot="label">Land</label>
-                                                </fx-output>
-
-                                                <!-- 7) -->
-                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/region[@type='region']">
-                                                    <label slot="label">Region</label>
-                                                </fx-output>
-
-                                                <!-- 8) -->
-                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/placeName[@type='ancient']">
-                                                    <label slot="label">Fundort (antik)</label>
-                                                </fx-output>
-
-                                                <!-- 9) -->
-                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/placeName[@type='modern']">
-                                                    <label slot="label">Fundort (modern)</label>
-                                                </fx-output>
-
-                                                <!-- 10a) -->
-                                                <fx-output ref="instance('geodata')/place[@xml:id=$corresp]/placeName[@type='findspot']">
-                                                    <label slot="label">Fundstelle</label>
-                                                </fx-output>
 
                                                 <!-- 10b) -->
                                                 <fx-control ref="history/provenance/note[@type='context']">
@@ -1231,8 +1160,8 @@
                                 <input style="display:none;"/>
                             </fx-control>
                         </fx-group>
-
                         <fx-inspector></fx-inspector>
+
                     </fx-fore>
             </main>
 
@@ -1265,6 +1194,7 @@
     </paper-dialog>
 </pb-page>
 <div class="splash"></div>
+
 <script src="./resources/scripts/util.js" type="text/javascript"></script>
 </body>
 
