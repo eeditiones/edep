@@ -27,11 +27,13 @@
     <bibl>
         <ptr target=""/>
         <note></note>
+        <citedRange></citedRange>
     </bibl>
     <listBibl type="images">
         <bibl>
             <ptr target=""/>
             <note></note>
+            <citedRange></citedRange>
         </bibl>
     </listBibl>
 

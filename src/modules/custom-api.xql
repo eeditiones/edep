@@ -478,7 +478,7 @@ declare %private function  api:preprocessing-copy($nodes as node()*){
                 return
                     element { node-name($node) } {
                         $node/@*, 
-                        $node/node(),
+                        api:preprocessing-copy($node/node()),
                         root($node)//tei:body//tei:div[@type="textpart"][@corresp=$corresp],
                         root($node)//tei:body//tei:div[@type="apparatus"][@corresp=$corresp],
                         root($node)//tei:body//tei:div[@type="translation"][@corresp=$corresp],
@@ -488,6 +488,13 @@ declare %private function  api:preprocessing-copy($nodes as node()*){
                 element { node-name($node) } {
                     $node/@*,
                     $node/tei:div[@type="commentary"]
+                }
+            case element(tei:bibl) return
+                element { node-name($node) } {
+                    $node/@*,
+                    head(($node/tei:citedRange, <citedRange xmlns="http://www.tei-c.org/ns/1.0"></citedRange>)),
+                    head(($node/tei:ptr, <ptr target="" xmlns="http://www.tei-c.org/ns/1.0"/>)),
+                    head(($node/tei:note, <note xmlns="http://www.tei-c.org/ns/1.0"></note>))
                 }
             case element(tei:facsimile) return
                 ()
