@@ -125,6 +125,8 @@
                                         <rs type="palaeography" ref="" />
                                         <!-- 24) Metrik -->
                                         <rs type="metric">no</rs>
+                                        <!-- Beschreibung -->
+                                        <ab/>
                                     </layout>
                                 </layoutDesc>
                             </objectDesc>

@@ -496,6 +496,14 @@ declare %private function  api:preprocessing-copy($nodes as node()*){
                     head(($node/tei:ptr, <ptr target="" xmlns="http://www.tei-c.org/ns/1.0"/>)),
                     head(($node/tei:note, <note xmlns="http://www.tei-c.org/ns/1.0"></note>))
                 }
+            case element(tei:layout) return
+                element { node-name($node) } {
+                    $node/@*,
+                    $node/tei:dimensions,
+                    head(($node/tei:rs[@type="paleography"], <rs xmlns="http://www.tei-c.org/ns/1.0" type="paleography" ref=""/>)),
+                    head(($node/tei:rs[@type="metric"], <rs xmlns="http://www.tei-c.org/ns/1.0" type="metric">no</rs>)),
+                    head(($node/tei:ab, <ab xmlns="http://www.tei-c.org/ns/1.0"/>))
+                }
             case element(tei:facsimile) return
                 ()
             case element () return  element {node-name($node)} { $node/@*, api:preprocessing-copy($node/node())}
