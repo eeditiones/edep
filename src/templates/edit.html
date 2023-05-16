@@ -22,13 +22,13 @@
 
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
 
-    <script type="module" src="resources/scripts/fore-dev.js"></script>
+<!--    <script type="module" src="resources/scripts/fore-dev.js"></script>-->
     <!--
         when running with Fore on localhost for debugging with latest sources:
         1. uncomment this and comment above Fore import
         2. Replace controller.xql with localhost-controller.xql
     -->
-<!--     <script type="module" src="http://localhost:8090/index.js"></script>-->
+     <script type="module" src="http://localhost:8090/index.js"></script>
     <!--    <script type="module" src="resources/scripts/datalist-ajax/datalist-ajax.min.js"></script>-->
 
 
@@ -296,7 +296,6 @@
                                             <fx-control ref="msIdentifier/idno">
                                                 <label>TM-Nummer</label>
                                             </fx-control>
-
 
                                             <div class="block findspot">
                                                 <h3>Fundort</h3>
@@ -1160,7 +1159,6 @@
                                 <input style="display:none;"/>
                             </fx-control>
                         </fx-group>
-                        <fx-inspector></fx-inspector>
 
                     </fx-fore>
             </main>
@@ -1196,6 +1194,8 @@
 <div class="splash"></div>
 
 <script src="./resources/scripts/util.js" type="text/javascript"></script>
+<fx-devtools></fx-devtools>
+
 </body>
 
 </html>
