@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="resources/css/theme.css"/>
     <link rel="stylesheet" href="resources/css/fore.css"/>
     <link rel="stylesheet" href="resources/css/edep-theme.css"/>
+    <link rel="stylesheet" href="resources/css/edep-theme2.css"/>
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
     <script type="module" src="resources/scripts/fore-dev.js"></script>
 
@@ -122,11 +123,17 @@
                                         <label>Praenomen</label>
                                         <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
                                     </fx-control>
+                                    <fx-control ref="persName/name[@type='nomen']">
+                                        <label>Nomen Gentile</label>
+                                    </fx-control>
+                                    <fx-control ref="persName/name[@type='filiation']">
+                                        <label>Filiation</label>
+                                    </fx-control>
+                                    <fx-control ref="persName/name[@type='tribus']">
+                                        <label>Tribus</label>
+                                    </fx-control>
                                     <fx-control ref="persName/name[@type='cognomen']">
                                         <label>Cognomen</label>
-                                    </fx-control>
-                                    <fx-control ref="persName/name[@type='nomen']">
-                                        <label>Nomen</label>
                                     </fx-control>
                                     <fx-control ref="@sex">
                                         <label>Geschlecht</label>

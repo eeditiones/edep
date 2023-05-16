@@ -3,5 +3,7 @@
         <name type="praenomen"/>
         <name type="nomen"/>
         <name type="cognomen"/>
+        <name type="tribus"/>
+        <name type="filiation"/>
     </persName>
 </person>
