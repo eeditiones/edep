@@ -1,559 +1,580 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "version": "1.0.0",
-        "title": "Custom API",
-        "description": "This is the place to add your own path endpoints"
-    },
-    "servers": [
-        {
-            "description": "Endpoint for testing on localhost",
-            "url":"http://localhost:8080/exist/apps/edep"
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Custom API",
+    "description": "This is the place to add your own path endpoints"
+  },
+  "servers": [
+    {
+      "description": "Endpoint for testing on localhost",
+      "url": "http://localhost:8080/exist/apps/edep"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "name": "teipublisher.com.login",
+        "in": "cookie"
+      }
+    }
+  },
+  "paths": {
+    "/orte": {
+      "get": {
+        "summary": "Landing page for places",
+        "description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
+        "tags": [
+          "view"
+        ],
+        "operationId": "vapi:html",
+        "x-error-handler": "vapi:handle-error",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "pages/places"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "HTML of the page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The document was not found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
-    ],
-    "components": {
-        "securitySchemes": {
-            "basicAuth": {
-                "type": "http",
-                "scheme": "basic"
-            },
-            "cookieAuth": {
-                "type": "apiKey",
-                "name": "teipublisher.com.login",
-                "in": "cookie"
-            }
-        }
+      }
     },
-    "paths": {
-        "/orte": {
-            "get": {
-				"summary": "Landing page for places",
-				"description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
-				"tags": ["view"],
-				"operationId": "vapi:html",
-				"x-error-handler": "vapi:handle-error",
-				"parameters": [
-					{
-						"name": "file",
-						"in": "query",
-						"schema": {
-							"type": "string",
-                            "default": "pages/places"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "HTML of the page",
-						"content": {
-							"text/html": {
-								"schema": {
-									"type": "string"
-								}
-							}
-						}
-					},
-					"404": {
-						"description": "The document was not found",
-						"content": {
-							"text/html": {
-								"schema": {
-									"type": "string"
-								}
-							}
-						}
-					}
-				}
-			}
-        },
-        "/personen": {
-            "get": {
-				"summary": "Landing page for people",
-				"description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
-				"tags": ["view"],
-				"operationId": "vapi:html",
-				"x-error-handler": "vapi:handle-error",
-				"parameters": [
-					{
-						"name": "file",
-						"in": "query",
-						"schema": {
-							"type": "string",
-                            "default": "pages/people"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "HTML of the page",
-						"content": {
-							"text/html": {
-								"schema": {
-									"type": "string"
-								}
-							}
-						}
-					},
-					"404": {
-						"description": "The document was not found",
-						"content": {
-							"text/html": {
-								"schema": {
-									"type": "string"
-								}
-							}
-						}
-					}
-				}
-			}
-        },
-    	"/api/decor": {
-    		"get" : {
-                "summary": "decor items",
-                "operationId": "api:decor",
-                "responses": {
-                    "200": {
-                        "description": "decor",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array"
-                                }
-                            }
-                        }
-                    }
-                }
-    		}    
-    	},
-    	"/api/material": {
-    		"get" : {
-                "summary": "material items",
-                "operationId": "api:material",
-                "responses": {
-                    "200": {
-                        "description": "material",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array"
-                                }
-                            }
-                        }
-                    }
-                }
-    		}    
-    	},
-    	"/api/objtyp": {
-    		"get" : {
-                "summary": "objtyp items",
-                "operationId": "api:objtyp",
-                "responses": {
-                    "200": {
-                        "description": "objtyp",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array"
-                                }
-                            }
-                        }
-                    }
-                }
-    		}    
-    	},
-    	"/api/statepreserv": {
-    		"get" : {
-                "summary": "statepreserv items",
-                "operationId": "api:statepreserv",
-                "responses": {
-                    "200": {
-                        "description": "statepreserv",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array"
-                                }
-                            }
-                        }
-                    }
-                }
-    		}    
-    	},
-    	"/api/typeins": {
-    		"get" : {
-                "summary": "typeins items",
-                "operationId": "api:typeins",
-                "responses": {
-                    "200": {
-                        "description": "typeins",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array"
-                                }
-                            }
-                        }
-                    }
-                }
-    		}    
-    	},
-    	"/api/writing": {
-    		"get" : {
-                "summary": "writing items",
-                "operationId": "api:writing",
-                "responses": {
-                    "200": {
-                        "description": "writing",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array"
-                                }
-                            }
-                        }
-                    }
-                }
-    		}    
-    	},
-        "/api/places": {
-            "post" : {
-                "summary": "update/add places",
-                "x-constraints": {
-					"group": ["tei"]
-                },
-                "operationId": "api:places-add",
-                "requestBody": {
-                	"required": true,
-					"content": {
-						"application/xml": {
-							"schema": {
-							}
-						}
-					}
-				},
-                "responses": {
-                    "200": {
-                        "description": "places-add",
-                        "content": {
-                            "application/xml": {
-                                "schema": {
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "get": {
-                "summary": "List places",
-                "description": "Retrieve list of places in format required by pb-split-list",
-                "operationId": "custom:places-browse",
-                "parameters": [
-					{
-						"name": "category",
-						"in": "query",
-						"schema": {
-							"type": "string"
-						}
-					},
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "schema": {
-                            "type": "integer",
-                            "default": 50
-                        }
-                    },
-                    {
-                        "name": "search",
-                        "in": "query",
-                        "schema":{
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Categories and places to display",
-                        "content": {
-                            "application/json": {
-                                "schema":{
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
+    "/personen": {
+      "get": {
+        "summary": "Landing page for people",
+        "description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
+        "tags": [
+          "view"
+        ],
+        "operationId": "vapi:html",
+        "x-error-handler": "vapi:handle-error",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "pages/people"
             }
-        },
-        "/api/places/{id}": {
-    		"get" : {
-                "summary": "show place",
-                "operationId": "api:load-place",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema":{
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "places-list",
-                        "content": {
-                            "application/xml": {
-                                "schema": {
-                                    
-                                }
-                            }
-                        }
-                    }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "HTML of the page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
                 }
-    		},
-            "post" : {
-                "summary": "update/add place",
-                "x-constraints": {
-					"group": "tei"
-                },
-                "operationId": "api:places-add",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema":{
-                            "type": "string"
-                        }
-                    }
-                ],
-                "requestBody": {
-                	"required": true,
-					"content": {
-						"application/xml": {
-							"schema": {
-							}
-						}
-					}
-				},
-                "responses": {
-                    "200": {
-                        "description": "places-add",
-                        "content": {
-                            "application/xml": {
-                                "schema": {
-                                }
-                            }
-                        }
-                    }
-                }
+              }
             }
-    	},
-        "/api/people": {
-            "post" : {
-                "summary": "update/add person",
-                "x-constraints": {
-					"group": "tei"
-                },
-                "operationId": "api:person-add",
-                "requestBody": {
-                	"required": true,
-					"content": {
-						"application/xml": {
-							"schema": {
-							}
-						}
-					}
-				},
-                "responses": {
-                    "200": {
-                        "description": "places-add",
-                        "content": {
-                            "application/xml": {
-                                "schema": {
-                                }
-                            }
-                        }
-                    }
+          },
+          "404": {
+            "description": "The document was not found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
                 }
-            },
-            "get": {
-                "summary": "List people",
-                "description": "Retrieve list of places in format required by pb-split-list",
-                "operationId": "custom:people-browse",
-                "parameters": [
-					{
-						"name": "category",
-						"in": "query",
-						"schema": {
-							"type": "string"
-						}
-					},
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "schema": {
-                            "type": "integer",
-                            "default": 50
-                        }
-                    },
-                    {
-                        "name": "search",
-                        "in": "query",
-                        "schema":{
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Categories and people to display",
-                        "content": {
-                            "application/json": {
-                                "schema":{
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                }
+              }
             }
-        },
-        "/api/people/{id}": {
-    		"get" : {
-                "summary": "show person",
-                "operationId": "api:load-person",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema":{
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "person record",
-                        "content": {
-                            "application/xml": {
-                                "schema": {
-                                    
-                                }
-                            }
-                        }
-                    }
-                }
-    		},
-            "post" : {
-                "summary": "update/add person",
-                "x-constraints": {
-					"group": "tei"
-                },
-                "operationId": "api:person-add",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema":{
-                            "type": "string"
-                        }
-                    }
-                ],
-                "requestBody": {
-                	"required": true,
-					"content": {
-						"application/xml": {
-							"schema": {
-							}
-						}
-					}
-				},
-                "responses": {
-                    "200": {
-                        "description": "places-add",
-                        "content": {
-                            "application/xml": {
-                                "schema": {
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-    	},
-        "/api/inscription": {
-            "get" : {
-                "summary": "get template",
-                "operationId": "api:inscription-template",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "get template",
-                        "content": {
-                            "application/xml": {
-                                "schema": {
-                                }
-                            }
-                        }
-                    }
-                }
-    		},
-            "post" : {
-                "summary": "update/add inscription",
-                "x-constraints": {
-					"group": "tei"
-                },
-                "operationId": "api:inscription",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "query",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "requestBody": {
-                	"required": true,
-					"content": {
-						"application/xml": {
-							"schema": {
-							}
-						}
-					}
-				},
-                "responses": {
-                    "200": {
-                        "description": "inscription",
-                        "content": {
-                            "application/xml": {
-                                "schema": {
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-    	}
-    },
-    "security": [
-        {
-            "cookieAuth": []
-        },
-        {
-            "basicAuth": []
+          }
         }
-    ]
+      }
+    },
+    "/api/decor": {
+      "get": {
+        "summary": "decor items",
+        "operationId": "api:decor",
+        "responses": {
+          "200": {
+            "description": "decor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/material": {
+      "get": {
+        "summary": "material items",
+        "operationId": "api:material",
+        "responses": {
+          "200": {
+            "description": "material",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/objtyp": {
+      "get": {
+        "summary": "objtyp items",
+        "operationId": "api:objtyp",
+        "responses": {
+          "200": {
+            "description": "objtyp",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/statepreserv": {
+      "get": {
+        "summary": "statepreserv items",
+        "operationId": "api:statepreserv",
+        "responses": {
+          "200": {
+            "description": "statepreserv",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/typeins": {
+      "get": {
+        "summary": "typeins items",
+        "operationId": "api:typeins",
+        "responses": {
+          "200": {
+            "description": "typeins",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/writing": {
+      "get": {
+        "summary": "writing items",
+        "operationId": "api:writing",
+        "responses": {
+          "200": {
+            "description": "writing",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/places": {
+      "post": {
+        "summary": "update/add places",
+        "x-constraints": {
+          "group": [
+            "tei"
+          ]
+        },
+        "operationId": "api:places-add",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "places-add",
+            "content": {
+              "application/xml": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "List places",
+        "description": "Retrieve list of places in format required by pb-split-list",
+        "operationId": "custom:places-browse",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Categories and places to display",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/places/{id}": {
+      "get": {
+        "summary": "show place",
+        "operationId": "api:load-place",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "places-list",
+            "content": {
+              "application/xml": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "update/add place",
+        "x-constraints": {
+          "group": "tei"
+        },
+        "operationId": "api:places-add",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "places-add",
+            "content": {
+              "application/xml": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/geopicker/places": {
+      "get": {
+        "summary": "shortlist of places for geodata-picker page",
+        "operationId": "custom:geopicker-places",
+        "responses": {
+          "200": {
+            "description": "places-list for geo picker page",
+            "content": {
+              "application/xml": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/people": {
+      "post": {
+        "summary": "update/add person",
+        "x-constraints": {
+          "group": "tei"
+        },
+        "operationId": "api:person-add",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "places-add",
+            "content": {
+              "application/xml": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "List people",
+        "description": "Retrieve list of places in format required by pb-split-list",
+        "operationId": "custom:people-browse",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 50
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Categories and people to display",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/people/{id}": {
+      "get": {
+        "summary": "show person",
+        "operationId": "api:load-person",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "person record",
+            "content": {
+              "application/xml": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "update/add person",
+        "x-constraints": {
+          "group": "tei"
+        },
+        "operationId": "api:person-add",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "places-add",
+            "content": {
+              "application/xml": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/inscription": {
+      "get": {
+        "summary": "get template",
+        "operationId": "api:inscription-template",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get template",
+            "content": {
+              "application/xml": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "update/add inscription",
+        "x-constraints": {
+          "group": "tei"
+        },
+        "operationId": "api:inscription",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "inscription",
+            "content": {
+              "application/xml": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "cookieAuth": []
+    },
+    {
+      "basicAuth": []
+    }
+  ]
 }

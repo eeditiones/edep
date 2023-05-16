@@ -1,0 +1,76 @@
+fx-control.fore-control{
+    display:block;
+}
+
+fx-control > fx-fore{
+    z-index: 100;
+    width:100%;
+    min-height:1rem;
+}
+fx-control > fx-fore  fx-control {
+    /*display:block;*/
+    padding-top:0;
+    margin:0;
+}
+[icon="close"]{
+    width:1rem;
+    height:1rem;
+
+}
+fx-inspector{
+    position:fixed;
+    right:0;
+    top:0;
+}
+fx-fore fx-fore fx-inspector{
+    width:25%;
+}
+
+#geopicker fx-control{
+    width: 100%;
+    grid-template-areas: "label control clear";
+    grid-template-columns: 17rem 1fr 1rem;
+}
+#geopicker label{
+    grid-area: label;
+}
+#geopicker input{
+    grid-area: control;
+}
+#geopicker fx-repeat-attributes{
+    display: none;
+}
+#geopicker iron-icon{
+    grid-area: clear;
+    align-self:center;
+    border-radius: 50%;
+}
+#geopicker iron-icon:hover{
+    background: #ddd;
+}
+
+#geopicker fx-repeat{
+    margin-top:1.5rem;
+    height:40vh;
+    overflow: auto;
+    border:thin solid #999;
+}
+#geopicker fx-repeatitem{
+    cursor: pointer;
+    border-bottom: thin solid #ddd;
+}
+#geopicker fx-repeatitem:hover{
+    background: #efefef;
+}
+#geopicker fx-output{
+    padding:0.5rem;
+    margin: 0;
+}
+#geopicker input{
+    width: 100%;
+}
+#geopicker fx-group{
+    margin:0;
+    padding:0;
+    border:0;
+}

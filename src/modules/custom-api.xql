@@ -164,6 +164,22 @@ declare function api:load-place($request as map(*)) {
     }
 };
 
+declare function api:geopicker-places($request as map(*)) {
+    let $places := collection($config:data-root || "/places")//tei:place
+    return
+        <data xmlns="http://www.tei-c.org/ns/1.0">
+        {
+            for $place in $places
+            order by $place/placeName[@type="findspot"]
+            return
+                <place xml:id="{$place/@xml:id}">
+                    {$place/tei:placeName[@type="findspot"]}
+                </place>
+        }
+        </data>
+
+};
+
 declare function api:places-add($request as map(*)) {
     let $id := if ($request?parameters?id and not(empty($request?body//@xml:id))) then
             let $store := xmldb:store($config:places, concat($request?parameters?id, ".xml"), $request?body)
