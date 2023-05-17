@@ -18,6 +18,7 @@
 <fx-fore id="geopicker">
     <fx-action event="visibilitychange" target="#document" if="event('target.visibilityState')='visible'">
         <fx-message>document focus {event('target.visibilityState')}</fx-message>
+        <fx-send submission='s-load-places'></fx-send>
     </fx-action>
     <!--
     This page allows to pick a `place` record with geo-data information for linkage
@@ -97,8 +98,8 @@
         <fx-action event='value-changed'>
             <!-- if we have a @corresp load the place and display it -->
             <fx-action if="string-length(.) != 0">
-                <fx-send submission="s-load-places"></fx-send>
                 <fx-send submission="s-load-place"></fx-send>
+                <fx-send submission="s-load-places"></fx-send>
                 <fx-setvalue ref="instance('vars')/open">true</fx-setvalue>
             </fx-action>
             <!-- return the @corresp to the binding control -->
@@ -167,7 +168,7 @@
         </fx-repeat>
     -->
 
-
+<!--<fx-inspector></fx-inspector>-->
 
     <!--    </fx-group>-->
 </fx-fore>

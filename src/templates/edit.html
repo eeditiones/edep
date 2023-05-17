@@ -250,6 +250,7 @@
                         <fx-group ref="teiHeader">
                             <fx-control id="title" class="title" ref="fileDesc/titleStmt/title">
                                 <label>Titel</label>
+                                <fx-hint>Choose a unique title. This becomes the TEI:title element.</fx-hint>
                             </fx-control>
                             <!--            <span>Sprachselector hier</span>-->
                             <fx-group class="group-1">
@@ -280,6 +281,15 @@
                                 <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" update-event="input"
                                             class="orange">
                                     <label>Material</label>
+                                    <iron-icon icon="info-outline"></iron-icon>
+                                    <fx-hint>Materialien sind eingeteilt in ... bla
+
+                                    <p>und können bla bla...</p>
+
+                                        ...bla bla blabla
+
+                                    </fx-hint>
+
                                     <select ref="instance('material')?*" class="widget" selection="open" static="static">
                                         <template>
                                             <option value="{?value}">{?name}</option>
@@ -1181,6 +1191,7 @@
             </paper-button>
         </div>
     </paper-dialog>
+
     <paper-dialog id="errorDialog">
         <h2><pb-i18n key="dialogs.error">Error</pb-i18n></h2>
         <paper-dialog-scrollable></paper-dialog-scrollable>
@@ -1194,7 +1205,7 @@
 <div class="splash"></div>
 
 <script src="./resources/scripts/util.js" type="text/javascript"></script>
-<fx-devtools></fx-devtools>
+<!--<fx-devtools></fx-devtools>-->
 
 </body>
 

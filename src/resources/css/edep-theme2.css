@@ -308,11 +308,12 @@ fieldset fieldset legend{
 }
 fx-control, fx-output {
     display: grid;
-    grid-template-columns: 17rem 1fr;
+    grid-template-columns: 17rem 1rem 1fr;
     gap: 0.3rem;
     grid-template-areas:
-    "label control"
-    ". alert";
+    "label icon control"
+    ". . alert"
+    ". . hint";
     margin: 0.5rem;
 
 }
@@ -323,6 +324,12 @@ fx-control, fx-output {
 fx-control label{
     grid-area:label;
 }
+fx-control [icon="info-outline"]{
+    grid-araa:icon;
+    width: 1rem;
+    height:1rem;
+    cursor:pointer;
+}
 fx-control.editor {
     display:block;
 }
@@ -332,8 +339,33 @@ fx-control .widget, fx-control .xml-editor {
     background: white;
 }
 
+fx-control label{
+    grid-area:label;
+}
+fx-control iron-icon:hover ~ fx-hint{
+    display: block;
+    height: auto;
+    opacity: 1;
+    transition: all .4s;
+    position: absolute;
+    background: white;
+    border: thin solid #ddd;
+    padding: 1rem;
+    z-index: 10;
+    box-shadow: 1px 1px 1px #999;
+    background: var(--paper-grey-900);
+    color:white;
+}
+
 fx-control fx-alert{
     grid-area:alert;
+}
+
+fx-control fx-hint{
+    grid-area:hint;
+    display: inline-block;
+    opacity: 0;
+    height: 0;
 }
 
 fx-control [type="checkbox"]{

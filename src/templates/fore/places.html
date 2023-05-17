@@ -87,11 +87,16 @@
 <div class="wrapper">
     <h1>Places</h1>
     <fx-fore id="places" show-confirmation="show-confirmation">
+        <fx-action event="visibilitychange" target="#document">
+            <fx-message>document focus {event('target.visibilityState')}</fx-message>
+        </fx-action>
 
         <fx-action event="ready" if="exists(instance('query')/id)">
             <fx-send submission="s-load"></fx-send>
-            <fx-setfocus control="findspot"></fx-setfocus>
         </fx-action>
+        <fx-setfocus event="ready" delay='300'>
+            <fx-setfocus control="findspot"></fx-setfocus>
+        </fx-setfocus>
 
         <fx-model>
             <fx-action event="model-construct-done">
@@ -109,6 +114,7 @@
                     <loggedin>hidden</loggedin>
                 </data>
             </fx-instance>
+
             <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
 
             <fx-instance id="query" src="#querystring">
@@ -150,7 +156,7 @@
                 <legend>Place</legend>
                 <fx-control ref="placeName[@type='findspot']" id="findspot">
                     <label>Fundstelle</label>
-                    <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
+                    <input type="text" class="widget" autofocus='autofocus' tabindex="1"/>
                 </fx-control>
                 <fx-control ref="placeName[@type='modern']">
                     <label>moderner Ortsname</label>
@@ -202,8 +208,10 @@
                     </fx-trigger>
                 </section>
             </fieldset>
+    <fx-inspector></fx-inspector>
     </fx-fore>
 </div>
-<!--<script type="module" src="../resources/scripts/fore-dev.js"/>-->
+<script type="module" src="http://localhost:8090/index.js"/>
+
 </body>
 </html>
