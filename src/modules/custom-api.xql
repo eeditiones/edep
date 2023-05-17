@@ -141,7 +141,7 @@ declare function api:output-place($list, $category as xs:string, $search as xs:s
         ), '; ')
         let $coords := tokenize($place/tei:location/tei:geo)
         return
-            <span class="place">
+            <div class="place">
                 <a href="geodata.html?{$params}">{$label}</a>
                 <!--
                 <pb-geolocation latitude="{$coords[1]}" longitude="{$coords[2]}" label="{$label}" emit="map" event="click">
@@ -151,7 +151,7 @@ declare function api:output-place($list, $category as xs:string, $search as xs:s
                 -->
                 <paper-icon-button id="{$place/@xml:id}" class="place-id" icon="icons:content-copy"
                     title="ID kopieren"></paper-icon-button>
-            </span>
+            </div>
     }
 };
 
@@ -508,4 +508,22 @@ declare %private function  api:preprocessing-copy($nodes as node()*){
                 ()
             case element () return  element {node-name($node)} { $node/@*, api:preprocessing-copy($node/node())}
         default return api:preprocessing-copy($node/node())
-}; 
+};
+
+
+
+declare %private function api:merge($input as element()?, $template as element()) {
+    if ($input) then
+        element { node-name($input) } {
+            $input/@*,
+            for $child in $template/*
+            let $inputChild := $input/*[node-name(.)=node-name($child)]
+            return
+                if ($inputChild) then
+                    api:merge($inputChild, $child)
+                else
+                    $child
+        }
+    else
+        $template
+};

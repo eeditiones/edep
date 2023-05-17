@@ -114,10 +114,16 @@ fx-case.selected-case{
     margin-top:3rem;
 }
 
-pb-split-list .place{
+pb-split-list::part(items) {
+    display: block;
+    column-count: 2;
+}
+
+pb-split-list .place {
     position:relative;
     padding-left:2.5rem;
-    margin:0.5rem;
+    margin: 0 0.5em 1em 0.5em;
+    line-height: 1.5;
 }
 pb-split-list .place .place-id{
     position:absolute;
