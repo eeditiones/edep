@@ -149,17 +149,17 @@
             <fieldset class="case-content">
                 <legend>Place</legend>
                 <fx-control ref="placeName[@type='findspot']" id="findspot">
-                    <label>Fundstelle</label>
+                    <label><pb-i18n key="form.site-find-spot">Fundstelle</pb-i18n></label>
                     <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
                 </fx-control>
                 <fx-control ref="placeName[@type='modern']">
-                    <label>moderner Ortsname</label>
+                    <label><pb-i18n key="form.site-modern-name">Fundort (modern)</pb-i18n></label>
                 </fx-control>
                 <fx-control ref="placeName[@type='ancient']">
-                    <label>antiker Ortsname</label>
+                    <label><pb-i18n key="form.site-ancient-name"></pb-i18n></label>
                 </fx-control>
                 <fx-control ref="region[@type='province']" update-event="input">
-                    <label>Provinz</label>
+                    <label><pb-i18n key="form.site-ancient-province"></pb-i18n></label>
                     <select ref="instance('province')?*" class="widget" selection="open" static="static">
                         <template>
                             <option value="{?name}">{?value}</option>
@@ -167,10 +167,10 @@
                     </select>
                 </fx-control>
                 <fx-control ref="region[@type='modern']">
-                    <label>moderne Region</label>
+                    <label><pb-i18n key="form.site-modern-region"></pb-i18n></label>
                 </fx-control>
                 <fx-control ref="country" update-event="input">
-                    <label>Modernes Land</label>
+                    <label><pb-i18n key="form.site-modern-country"></pb-i18n></label>
                     <select ref="instance('country')?*" class="widget" selection="open" static="static">
                         <template>
                             <option value="{?name}">{?value}</option>
@@ -188,17 +188,17 @@
                 </fx-control>
                 <section class="buttonBar">
                     <fx-trigger class="saveBtn" debounce="1000">
-                        <button>Speichern</button>
+                        <button><pb-i18n key="form.save"></pb-i18n></button>
                         <fx-action>
                             <fx-send submission="s-login"></fx-send>
                             <fx-send submission="s-save"></fx-send>
                         </fx-action>
                     </fx-trigger>
                     <fx-trigger>
-                        <a href="geodata.html">Neuer Eintrag</a>
+                        <a href="geodata.html"><pb-i18n key="form.new"></pb-i18n></a>
                     </fx-trigger>
                     <fx-trigger>
-                        <a href="orte">Zur Liste</a>
+                        <a href="orte"><pb-i18n key="form.list"></pb-i18n></a>
                     </fx-trigger>
                 </section>
             </fieldset>

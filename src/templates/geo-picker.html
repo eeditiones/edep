@@ -90,12 +90,12 @@
     <!-- 5) -->
     <fx-group ref="instance('i-place')" style="display:{if(instance('vars')/open = 'true') then 'block' else 'none'};">
         <fx-output ref="region[@type='province']">
-            <label slot="label">Provinz/augusteische Region</label>
+            <label slot="label"><pb-i18n key="form.site-ancient-province"></pb-i18n></label>
         </fx-output>
 
         <!-- 6) -->
         <fx-output ref="country">
-            <label slot="label">Land</label>
+            <label slot="label"><pb-i18n key="form.site-modern-country"></pb-i18n></label>
         </fx-output>
 
         <!-- 7) -->
@@ -105,17 +105,17 @@
 
         <!-- 8) -->
         <fx-output ref="placeName[@type='ancient']">
-            <label slot="label">Fundort (antik)</label>
+            <label slot="label"><pb-i18n key="form.site-ancient-name">Fundort (antik)</pb-i18n></label>
         </fx-output>
 
         <!-- 9) -->
         <fx-output ref="placeName[@type='modern']">
-            <label slot="label">Fundort (modern)</label>
+            <label slot="label"><pb-i18n key="form.site-modern-name">Fundort (modern)</pb-i18n></label>
         </fx-output>
 
         <!-- 10a) -->
         <fx-output ref="placeName[@type='findspot']">
-            <label slot="label">Fundstelle</label>
+            <label slot="label"><pb-i18n key="form.site-find-spot">Fundstelle</pb-i18n></label>
         </fx-output>
 
     </fx-group>

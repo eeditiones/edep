@@ -249,19 +249,19 @@
 
                         <fx-group ref="teiHeader">
                             <fx-control id="title" class="title" ref="fileDesc/titleStmt/title">
-                                <label>Titel</label>
+                                <label><pb-i18n key="form.title"></pb-i18n></label>
                             </fx-control>
                             <!--            <span>Sprachselector hier</span>-->
                             <fx-group class="group-1">
                                 <!-- 3) -->
 
                                 <fx-output ref=".//msDesc/msIdentifier/idno">
-                                    <label slot="label">EDEp ID: </label>
+                                    <label slot="label"><pb-i18n key="form.edepid">EDEp ID</pb-i18n></label>
                                 </fx-output>
 
                                 <!-- 16a) -->
                                 <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType/@ref" update-event="input">
-                                    <label>Inschriftträger</label>
+                                    <label><pb-i18n key="form.type-of-monument">Inschriftträger</pb-i18n></label>
                                     <select ref="instance('objtyp')?*" class="widget" selection="open" static="static">
                                         <template>
                                             <option value="{?value}">{?name}</option>
@@ -271,7 +271,7 @@
 
                                 <!-- 16b) -->
                                 <fx-control ref="//physDesc/objectDesc/supportDesc/support/note">
-                                    <label>Beschreibung Inschriftträger</label>
+                                    <label><pb-i18n key="form.description-of-monument">Beschreibung Inschriftträger</pb-i18n></label>
                                 </fx-control>
 
                                 <!-- there's no 17) -->
@@ -279,7 +279,7 @@
                                 <!-- 18) -->
                                 <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" update-event="input"
                                             class="orange">
-                                    <label>Material</label>
+                                    <label><pb-i18n key="form.material">Material</pb-i18n></label>
                                     <select ref="instance('material')?*" class="widget" selection="open" static="static">
                                         <template>
                                             <option value="{?value}">{?name}</option>
@@ -294,12 +294,12 @@
                                         <fx-group class="group-2">
                                             <!-- 4) -->
                                             <fx-control ref="msIdentifier/idno">
-                                                <label>TM-Nummer</label>
+                                                <label><pb-i18n key="form.tm">TM Nummer</pb-i18n></label>
                                             </fx-control>
 
 
                                             <div class="block findspot">
-                                                <h3>Fundort</h3>
+                                                <h3><pb-i18n key="form.findspot">Fundort</pb-i18n></h3>
                                                 <!-- geoId from geodata -->
                                                 <fx-var name="corresp" value="history/origin/origPlace/@corresp"></fx-var>
                                                 <fx-control class="fore-control" ref="$corresp"
@@ -309,7 +309,7 @@
 
                                                 <!-- 10b) -->
                                                 <fx-control ref="history/provenance/note[@type='context']">
-                                                    <label>Fundkontext</label>
+                                                    <label><pb-i18n key="form.context-of-provenance">Fundkontext</pb-i18n></label>
                                                     <textarea rows="4" class="widget"></textarea>
                                                 </fx-control>
                                             </div>
@@ -319,24 +319,24 @@
                                             <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
                                             <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
                                             <div class="block">
-                                                <h3>Fundjahr/-datum</h3>
+                                                <h3><pb-i18n key="form.year-of-find">Fundjahr/-datum</pb-i18n></h3>
                                                 <fx-control ref="history/provenance/@when">
-                                                    <label>Zeitpunkt</label>
+                                                    <label><pb-i18n key="form.date">Zeitpunkt</pb-i18n></label>
                                                     <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
-                                                    <fx-alert><iron-icon icon="warning"></iron-icon>Ungültiges Datum</fx-alert>
+                                                    <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
                                                 </fx-control>
                                                 <fx-control ref="history/provenance/@notBefore">
-                                                    <label>nach</label>
+                                                    <label><pb-i18n key="form.date-after">nach</pb-i18n></label>
                                                     <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
-                                                    <fx-alert><iron-icon icon="warning"></iron-icon>Ungültiges Datum</fx-alert>
+                                                    <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
                                                 </fx-control>
                                                 <fx-control ref="history/provenance/@notAfter">
-                                                    <label>vor</label>
+                                                    <label><pb-i18n key="form.date-before">vor</pb-i18n></label>
                                                     <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
-                                                    <fx-alert><iron-icon icon="warning"></iron-icon>Ungültiges Datum</fx-alert>
+                                                    <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.invalid-date">Ungültiges Datum</pb-i18n></fx-alert>
                                                 </fx-control>
                                                 <fx-control ref="history/provenance/@when-custom">
-                                                    <label>freie Angabe</label>
+                                                    <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                 </fx-control>
                                             </div>
 
@@ -344,12 +344,12 @@
 
                                                 <!-- 12a) -->
                                                 <fx-control ref="msIdentifier/repository">
-                                                    <label>Aufbewahrung</label>
+                                                    <label><pb-i18n key="form.last-recorded-location">Aufbewahrung</pb-i18n></label>
                                                 </fx-control>
 
                                                 <!-- 12b) -->
                                                 <fx-control ref=".//provenance[@type='history']" as="node" update-event="blur">
-                                                    <label>Weitere Ereignisse</label>
+                                                    <label><pb-i18n key="form.other-events">Weitere Ereignisse</pb-i18n></label>
                                                     <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]"
                                                                      schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
                                                         <div slot="toolbar">
@@ -365,7 +365,7 @@
                                                 <!-- 12c) Überlieferung -->
                                                 <fieldset>
                                                     <legend>
-                                                        <label>Überlieferung</label>
+                                                        <label><pb-i18n key="form.transmission">Überlieferung</pb-i18n></label>
                                                         <fx-trigger class="add" title="Überlieferung hinzufügen">
                                                             <iron-icon icon="add-circle-outline" title="Überlieferung hinzufügen"></iron-icon>
 
@@ -384,7 +384,7 @@
 
                                                             <div>
                                                                 <fx-control ref="ptr/@target">
-                                                                    <label>Referenz</label>
+                                                                    <label><pb-i18n key="form.reference">Referenz</pb-i18n></label>
                                                                     <fx-action event="init"  if="string-length(.) != 0">
                                                                         <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
                                                                                  attach-to="#zoteroRef1"></fx-load>
@@ -396,10 +396,10 @@
                                                                 </fx-control>
                                                                 <div id="zoteroRef1"></div>
                                                                 <fx-control ref="citedRange">
-                                                                    <label>Cited Range</label>
+                                                                    <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                                 </fx-control>
                                                                 <fx-control ref="note" as="node" update-event="blur">
-                                                                    <label>Freie Eingabe</label>
+                                                                    <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                                     <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]"
                                                                                      schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
                                                                         <div slot="toolbar">
@@ -431,10 +431,10 @@
                                             </div>
 
                                             <div>
-                                                <h3>Verifizierung</h3>
+                                                <h3><pb-i18n key="form.verification">Verifizierung</pb-i18n></h3>
                                                 <!-- 12b-12e missing -->
                                                 <fx-control ref="msContents/msItem/note[@type='verification']/@subtype">
-                                                    <label>Verifizierungsgrundlage</label>
+                                                    <label><pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n></label>
                                                     <input list="verificationbase" class="widget"/>
                                                     <datalist id="verificationbase">
                                                         <option value="autopsy">Autopsie</option>
@@ -447,7 +447,7 @@
 
                                                 <fx-control
                                                         ref="msContents/msItem/note[@type='verification']/date/@when">
-                                                    <label>Datum der Verifizierung</label>
+                                                    <label><pb-i18n key="form.date-of-verification">Datum der Verifizierung</pb-i18n></label>
                                                     <input placeholder="YYYY-MM-DD" class="widget"/>
                                                 </fx-control>
                                             </div>
@@ -457,7 +457,7 @@
 
                                             <!-- 13) -->
                                             <fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
-                                                <label>Erhaltung</label>
+                                                <label><pb-i18n key="form.preservation">Erhaltung</pb-i18n></label>
                                                 <select class="widget">
                                                     <option value="complete">vollständig</option>
                                                     <option value="fragmentary">fragmentarisch</option>
@@ -466,7 +466,7 @@
 
                                             <!-- 14) -->
                                             <fx-control ref="physDesc/objectDesc/supportDesc/support/rs/@ref" update-event="input">
-                                                <label>Dekor</label>
+                                                <label><pb-i18n key="form.decoration">Dekor</pb-i18n></label>
                                                 <select class="widget">
                                                     <option value="https://www.eagle-network.eu/voc/decor/lod/2000">Ja</option>
                                                     <option value="https://www.eagle-network.eu/voc/decor/lod/1000">Nein</option>
@@ -476,7 +476,7 @@
 
                                             <!-- 15) -->
                                             <fx-control ref="msContents/msItem/@class" update-event="input">
-                                                <label>Inschriftengattung</label>
+                                                <label><pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n></label>
                                                 <select ref="instance('typeins')?*" class="widget" selection="open">
                                                     <template>
                                                         <option value="{?value}">{?name}</option>
@@ -488,36 +488,36 @@
                                             <!--                            <label>Inschriftträger</label>-->
                                             <!-- 38) -->
                                             <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/height">
-                                                <label>Höhe</label>
+                                                <label><pb-i18n key="form.height">Höhe</pb-i18n></label>
                                             </fx-control>
                                             <!-- 19) -->
                                             <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/width">
-                                                <label>Breite</label>
+                                                <label><pb-i18n key="form.width">Breite</pb-i18n></label>
                                             </fx-control>
                                             <!-- 20) -->
                                             <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/depth">
-                                                <label>Tiefe</label>
+                                                <label><pb-i18n key="form.depth">Tiefe</pb-i18n></label>
                                             </fx-control>
                                             <!--                        </fx-group>-->
 
                                             <!-- 34) -->
                                         </fx-group>
                                         <fx-group class="group-4">
-                                            <label>Inschriftfeld</label>
+                                            <label><pb-i18n key="form.inscription-field">Inschriftfeld</pb-i18n></label>
                                             <!-- 21) -->
                                             <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/height">
-                                                <label>Höhe</label>
+                                                <label><pb-i18n key="form.height">Höhe</pb-i18n></label>
                                             </fx-control>
                                             <!-- 22) -->
                                             <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/width">
-                                                <label>Breite</label>
+                                                <label><pb-i18n key="form.width">Breite</pb-i18n></label>
                                             </fx-control>
                                             <!-- 23) -->
                                             <fx-control ref="physDesc/handDesc/handNote/dimensions/height">
-                                                <label>Buchstabenhöhe</label>
+                                                <label><pb-i18n key="form.letter-size">Buchstabenhöhe</pb-i18n></label>
                                             </fx-control>
                                             <fx-control ref="physDesc/objectDesc/layoutDesc/layout/ab">
-                                                <label>Beschreibung</label>
+                                                <label><pb-i18n key="form.description">Beschreibung</pb-i18n></label>
                                             </fx-control>
                                         </fx-group>
 
@@ -525,7 +525,7 @@
                                         <fx-group class="group-5">
                                             <!-- 24) -->
                                             <fx-control ref="//layoutDesc/layout/rs[@type='metric']" update-event="input">
-                                                <label>Metrik</label>
+                                                <label><pb-i18n key="form.metre">Metrik</pb-i18n></label>
                                                 <select class="widget">
                                                     <option value="yes">Ja</option>
                                                     <option value="no">Nein</option>
@@ -534,7 +534,7 @@
                                             </fx-control>
                                             <!-- 25) -->
                                             <fx-control ref="msContents/msItem/textLang/@mainLang">
-                                                <label>Sprache</label>
+                                                <label><pb-i18n key="form.language">Sprache</pb-i18n></label>
                                                 <fx-items ref="instance('vars')/languages/lang" class="widget">
                                                     <template>
                                                     <span class="fx-checkbox">
@@ -547,7 +547,7 @@
 
                                             <!-- 34) -->
                                             <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref" update-event="input">
-                                                <label>Paläographie</label>
+                                                <label><pb-i18n key="form.palaeography">Paläographie</pb-i18n></label>
                                                 <fx-items ref="instance('palaeo')/item" class="widget">
                                                     <template>
                                                     <span class="fx-checkbox">
@@ -558,12 +558,12 @@
                                                 </fx-items>
                                             </fx-control>
                                             <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']" update-event="input" class="{instance('vars')/hide}">
-                                                <input class="widget" placeholder="freie Eingabe"/>
+                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                             </fx-control>
 
                                             <!-- 39) -->
                                             <fx-control ref="//handDesc/handNote/rs" update-event="input">
-                                                <label>Ligatur</label>
+                                                <label><pb-i18n key="form.ligature">Ligatur</pb-i18n></label>
                                                 <select class="widget">
                                                     <option value="yes">Ja</option>
                                                     <option value="no">Nein</option>
@@ -575,12 +575,12 @@
                                         <fx-var name="frag" value="'#' || ./@xml:id"></fx-var>
 
                                         <fx-group class="group-6 padded">
-                                            <label>Referenzen</label>
+                                            <label><pb-i18n key="form.references">Referenzen</pb-i18n></label>
 
                                             <!-- 35a) Ältere Editionen -->
                                             <fieldset>
                                                 <legend>
-                                                    <label>Ältere Editionen</label>
+                                                    <label><pb-i18n key="form.previous-editions">Ältere Editionen</pb-i18n></label>
                                                     <fx-trigger class="add" title="Ältere Edition hinzufügen">
                                                         <iron-icon icon="add-circle-outline"></iron-icon>
 
@@ -596,7 +596,7 @@
                                                         <!--                                                    <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>-->
                                                         <div>
                                                             <fx-control ref="ptr/@target">
-                                                                <label>Referenz</label>
+                                                                <label><pb-i18n key="form.reference">Referenz</pb-i18n></label>
                                                                 <fx-action event="init"  if="string-length(.) != 0">
                                                                     <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
                                                                              attach-to="#zoteroRef2"></fx-load>
@@ -607,11 +607,11 @@
                                                                 </fx-action>
                                                             </fx-control>
                                                             <fx-control ref="citedRange">
-                                                                <label>Cited Range</label>
+                                                                <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                             </fx-control>
                                                             <div id="zoteroRef2"></div>
                                                             <fx-control ref="note" as="node" update-event="blur">
-                                                                <label>Freie Eingabe</label>
+                                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                                 <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
                                                                                  placeholder="[Inline text/markup or sequence of paragraphs]"
                                                                                  schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
@@ -646,7 +646,7 @@
                                             <!-- 35b) -->
                                             <fieldset>
                                                 <legend>
-                                                    <label>Bibliographie</label>
+                                                    <label><pb-i18n key="form.bibliography">Bibliographie</pb-i18n></label>
                                                     <fx-trigger class="add" title="Bibliographie hinzufügen">
                                                         <iron-icon icon="add-circle-outline"></iron-icon>
 
@@ -672,7 +672,7 @@
 
                                                         <div>
                                                             <fx-control ref="ptr/@target">
-                                                                <label>Referenz</label>
+                                                                <label><pb-i18n key="form.reference">Referenz</pb-i18n></label>
                                                                 <fx-action event="init"  if="string-length(.) != 0">
                                                                     <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
                                                                              attach-to="#zoteroRef3"></fx-load>
@@ -684,10 +684,10 @@
                                                             </fx-control>
                                                             <div id="zoteroRef3"></div>
                                                             <fx-control ref="citedRange">
-                                                                <label>Cited Range</label>
+                                                                <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                             </fx-control>
                                                             <fx-control ref="note" as="node" update-event="blur">
-                                                                <label>Freie Eingabe</label>
+                                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                                 <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
                                                                                  schema-root="note" namespace="http://www.tei-c.org/ns/1.0"
                                                                                  placeholder="[Inline text/markup or sequence of paragraphs]">
@@ -722,7 +722,7 @@
                                             <!-- 35c) Bilder: Verweis auf Literatur, in der Abbildung vorhanden -->
                                             <fieldset>
                                                 <legend>
-                                                    <label>Bilder (Fotos, Zeichnungen, Abklatsche)</label>
+                                                    <label><pb-i18n key="form.images-dps">Bilder (Fotos, Zeichnungen, Abklatsche)</pb-i18n></label>
                                                     <fx-trigger class="add" title="Bilder (Fotos, Zeichnungen, Abklatsche) hinzufügen">
                                                         <iron-icon icon="add-circle-outline"></iron-icon>
                                                         <fx-action>
@@ -736,7 +736,7 @@
                                                     <template>
                                                         <div>
                                                             <fx-control ref="ptr/@target">
-                                                                <label>Referenz</label>
+                                                                <label><pb-i18n key="form.reference">Referenz</pb-i18n></label>
                                                                 <fx-action event="init"  if="string-length(.) != 0">
                                                                     <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
                                                                              attach-to="#zoteroRef4"></fx-load>
@@ -748,10 +748,10 @@
                                                             </fx-control>
                                                             <div id="zoteroRef4"></div>
                                                             <fx-control ref="citedRange">
-                                                                <label>Cited Range</label>
+                                                                <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                             </fx-control>
                                                             <fx-control ref="note" as="node" update-event="blur">
-                                                                <label>Freie Eingabe</label>
+                                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                                 <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
                                                                                  schema-root="note" namespace="http://www.tei-c.org/ns/1.0"
                                                                                  placeholder="[Inline text/markup or sequence of paragraphs]">
@@ -785,7 +785,7 @@
                                             <!-- 35d) Abbildungen -->
                                             <fieldset>
                                                 <legend>
-                                                    <label>Abbildungen (URLs)</label>
+                                                    <label><pb-i18n key="form.images">Abbildungen (URLs)</pb-i18n></label>
                                                     <fx-trigger class="add" title="Abbildung hinzufügen">
                                                         <iron-icon icon="add-circle-outline"></iron-icon>
 
@@ -812,7 +812,7 @@
                                             </fieldset>
                                         </fx-group>
                                         <fx-group class="group-7 padded">
-                                            <label>Transkription</label>
+                                            <label><pb-i18n key="form.transcription">Transkription</pb-i18n></label>
                                             <fx-control class="transcription editor" ref="div[@type='textpart']" as="node" update-event="blur">
                                                 <jinn-epidoc-editor id="transcriptionEditor" unwrap="unwrap" class="widget"
                                                                     schema="resources/scripts/tei.json" schema-root="div" mode="leiden_plus">
@@ -853,7 +853,7 @@
                                             </fx-control>
                                         </fx-group>
                                         <fx-group class="group-8 padded">
-                                            <label>Apparatus</label>
+                                            <label><pb-i18n key="form.apparatus">Apparatus</pb-i18n></label>
                                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
                                             <fx-control class="apparatus editor" ref="div[@type='apparatus']" as="node" update-event="blur">
                                                 <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap"
@@ -893,7 +893,7 @@
                                         -->
 
                                         <fx-group class="group-9 padded">
-                                            <label>Übersetzung</label>
+                                            <label><pb-i18n key="form.translation">Übersetzung</pb-i18n></label>
                                             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
                                             <fx-control class="translation editor" ref="div[@type='translation']" as="node"
                                                         update-event="blur">
@@ -916,7 +916,7 @@
                                             </fx-control>
                                             <!-- 43) Übersetzer/in -->
                                             <fx-control class="translator" ref="div[@type='translation']/@resp">
-                                                <label>Übersetzer/in: </label>
+                                                <label><pb-i18n key="form.translated-by">Übersetzer/in</pb-i18n>: </label>
                                             </fx-control>
                                         </fx-group>
                                     </div>
@@ -963,7 +963,7 @@
 
 
                             <fx-trigger class="add" title="msPart hinzufügen">
-                                <button>Hinzufügen</button>
+                                <button><pb-i18n key="form.add"></pb-i18n></button>
                                 <fx-action>
                                     <!-- insert a new msPart  -->
                                     <fx-insert ref="//msPart" origin="instance('mspart')"></fx-insert>
@@ -987,7 +987,7 @@
                             call it. The control will refresh the UI when the control looses focus (onblur).
                             -->
                             <fx-group class="group-10 padded">
-                                <label>Kommentar</label>
+                                <label><pb-i18n key="form.commentary">Kommentar</pb-i18n></label>
                                 <fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node"
                                             update-event="blur">
                                     <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]"
@@ -1016,33 +1016,33 @@
 
                             <!-- 26) -->
                             <fx-group ref="//msDesc" class="group-6">
-                                <label>Datierung</label>
+                                <label><pb-i18n key="form.dating">Datierung</pb-i18n></label>
 
                                 <!-- 26), 27)-->
                                 <fx-control ref="history/origin/origDate/@when-custom">
-                                    <label>Zeitpunkt</label>
+                                    <label><pb-i18n key="form.date">Zeitpunkt</pb-i18n></label>
                                     <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
-                                    <fx-alert><iron-icon icon="warning"></iron-icon>Ungültiges Datum</fx-alert>
+                                    <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
                                 </fx-control>
                                 <fx-control ref="history/origin/origDate/@notBefore-custom">
-                                    <label>nach</label>
+                                    <label><pb-i18n key="form.date-after">nach</pb-i18n></label>
                                     <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
-                                    <fx-alert><iron-icon icon="warning"></iron-icon>Ungültiges Datum</fx-alert>
+                                    <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
                                 </fx-control>
                                 <fx-control ref="history/origin/origDate/@notAfter-custom">
-                                    <label>vor</label>
+                                    <label><pb-i18n key="form.date-before">vor</pb-i18n></label>
                                     <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
-                                    <fx-alert><iron-icon icon="warning"></iron-icon>Ungültiges Datum</fx-alert>
+                                    <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
                                 </fx-control>
                                 <fx-control ref="history/origin/origDate">
-                                    <label>Freie Angabe</label>
+                                    <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                 </fx-control>
                             </fx-group>
 
                             <fx-group ref="profileDesc" class="group-7">
                                 <!-- 28)  -->
                                 <fx-control ref="textClass/keywords/term/@ref" update-event="input">
-                                    <label>Religion</label>
+                                    <label><pb-i18n key="form.religion">Religion</pb-i18n></label>
                                     <select class="widget">
                                         <option value=""></option>
                                         <option value="#pagan">pagan</option>
@@ -1054,7 +1054,7 @@
                                 <!-- 30) -->
                                 <!-- dummy switch to insert or delete 'term' elements in main instance -->
                                 <fx-control ref="instance('vars')/history-term" value-prop="checked" update-event="input">
-                                    <label for="historyTerm">Sozial-,Wirschafts-/Rechtsgeschichte</label>
+                                    <label for="historyTerm"><pb-i18n key="form.social-economic-legal history">Sozial-,Wirschafts-/Rechtsgeschichte</pb-i18n></label>
                                     <input id="historyTerm" type="checkbox" class="widget"/>
                                     <fx-insert event="value-changed"
                                                if="context()/text()='true'"
@@ -1070,7 +1070,7 @@
                                 <!-- 31) -->
                                 <!-- dummy switch to insert or delete 'term' elements in main instance -->
                                 <fx-control ref="instance('vars')/geography-term" value-prop="checked" update-event="input">
-                                    <label for="geographyTerm">Geographie / Topographie</label>
+                                    <label for="geographyTerm"><pb-i18n key="form.geography">Geographie / Topographie</pb-i18n></label>
                                     <input id="geographyTerm" type="checkbox" class="widget"/>
                                     <fx-insert event="value-changed"
                                                if="context()/text()='true'"
@@ -1086,7 +1086,7 @@
                                 <!-- 32) -->
                                 <!-- dummy switch to insert or delete 'term' elements in main instance -->
                                 <fx-control ref="instance('vars')/military-term" value-prop="checked" update-event="input">
-                                    <label for="militaryTerm">Militär</label>
+                                    <label for="militaryTerm"><pb-i18n key="form.military">Militär</pb-i18n></label>
                                     <input id="militaryTerm" type="checkbox" class="widget"/>
                                     <fx-insert event="value-changed"
                                                if="context()/text()='true'"
@@ -1101,17 +1101,6 @@
 
                             </fx-group>
 
-                            <fx-group class="group-8">
-                                <!-- 33) -->
-                                <fx-control ref="revisionDesc/@status" update-event="input">
-                                    <label>Stand der Bearbeitung</label>
-                                    <select class="widget">
-                                        <option value="draft">intern</option>
-                                        <option value="public">öffentlich</option>
-                                    </select>
-                                </fx-control>
-                            </fx-group>
-
                             <!-- 35b) -->
                             <!-- 35a) -->
                             <!-- 35d) -->
@@ -1122,7 +1111,7 @@
                             <fx-group>
                                 <!-- 44) -->
                                 <fx-control ref="fileDesc/titleStmt/editor" title="Author of the epigraphic edition">
-                                    <label>Bearbeiter der Inschriftenedition</label>
+                                    <label><pb-i18n key="form.author-epigraphic-edition">Bearbeiter der Inschriftenedition</pb-i18n></label>
                                 </fx-control>
                                 <!--
                                                         <fx-output ref="instance('tmp')/dummy">
@@ -1138,12 +1127,13 @@
 
                                 <!-- 33) -->
                                 <fx-control ref="revisionDesc/@status" update-event="input">
-                                    <label>Stand der Bearbeitung</label>
+                                    <label><pb-i18n key="form.status-of-editing">Stand der Bearbeitung</pb-i18n></label>
                                     <select class="widget">
                                         <option value="draft">intern</option>
                                         <option value="public">öffentlich</option>
                                     </select>
                                 </fx-control>
+                                
                             </fx-group>
 
                             <section class="buttonBar">
@@ -1151,7 +1141,7 @@
                                     <p class="loginMessage" slot="fallback">You need to be logged in to save.</p>
                                 
                                     <fx-trigger class="saveBtn" debounce="1000">
-                                        <button>Speichern</button>
+                                        <button><pb-i18n key="form.save"></pb-i18n></button>
                                         <fx-action if="not(exists(instance('params')/id))">
                                             <fx-send submission="s-login"></fx-send>
                                             <fx-send submission="s-create"></fx-send>
@@ -1162,11 +1152,11 @@
                                         </fx-action>
                                     </fx-trigger>
                                     <fx-trigger>
-                                        <a href="edit.html">Neuer Eintrag</a>
+                                        <a href="edit.html"><pb-i18n key="form.new">Neuer Eintrag</pb-i18n></a>
                                     </fx-trigger>
                                 </pb-restricted>
                                 <fx-trigger>
-                                    <a href="index.html">Zur Liste</a>
+                                    <a href="index.html"><pb-i18n key="form.list">Zur Liste</pb-i18n></a>
                                 </fx-trigger>
                             </section>
 
@@ -1185,28 +1175,6 @@
             </footer>
         </app-header-layout>
     </app-drawer-layout>
-    <paper-dialog id="downloadDialog">
-        <h2>
-            <pb-i18n key="dialogs.generatingFile">Generating File...</pb-i18n>
-        </h2>
-        <paper-dialog-scrollable>
-            <pb-i18n key="dialogs.downloadMessage"></pb-i18n>
-        </paper-dialog-scrollable>
-        <div class="buttons">
-            <paper-button dialog-confirm="dialog-confirm" autofocus="autofocus">
-                <pb-i18n key="dialogs.close">Close</pb-i18n>
-            </paper-button>
-        </div>
-    </paper-dialog>
-    <paper-dialog id="errorDialog">
-        <h2><pb-i18n key="dialogs.error">Error</pb-i18n></h2>
-        <paper-dialog-scrollable></paper-dialog-scrollable>
-        <div class="buttons">
-            <paper-button dialog-confirm="dialog-confirm" autofocus="autofocus">
-                <pb-i18n key="dialogs.close">Close</pb-i18n>
-            </paper-button>
-        </div>
-    </paper-dialog>
 </pb-page>
 <div class="splash"></div>
 
