@@ -29,7 +29,7 @@ fx-fore fx-fore fx-inspector{
 #geopicker fx-control{
     width: 100%;
     grid-template-areas: "label control clear";
-    grid-template-columns: 17rem 1fr 1rem;
+    grid-template-columns: 17rem 1fr 1rem 2rem;
 }
 #geopicker label{
     grid-area: label;
@@ -41,7 +41,7 @@ fx-fore fx-fore fx-inspector{
     display: none;
 }
 #geopicker iron-icon{
-    grid-area: clear;
+    /*grid-area: clear;*/
     align-self:center;
     border-radius: 50%;
 }

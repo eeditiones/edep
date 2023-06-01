@@ -22,13 +22,13 @@
 
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
 
-    <script type="module" src="resources/scripts/fore-dev.js"></script>
+<!--    <script type="module" src="resources/scripts/fore-dev.js"></script>-->
     <!--
         when running with Fore on localhost for debugging with latest sources:
         1. uncomment this and comment above Fore import
         2. Replace controller.xql with localhost-controller.xql
     -->
-<!--     <script type="module" src="http://localhost:8090/index.js"></script>-->
+     <script type="module" src="http://localhost:8090/index.js"></script>
     <!--    <script type="module" src="resources/scripts/datalist-ajax/datalist-ajax.min.js"></script>-->
 
 
@@ -77,7 +77,7 @@
                     <fx-fore show-confirmation="show-confirmation">
 
                         <!-- ### if get called with an id param we load the data via submission ### -->
-                        <fx-setfocus control="title" event="ready"></fx-setfocus>
+                        <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>
                         <fx-model>
                             <fx-action event="model-construct-done">
                                 <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
@@ -248,8 +248,9 @@
                         </fx-model>
 
                         <fx-group ref="teiHeader">
-                            <fx-control id="title" class="title" ref="fileDesc/titleStmt/title">
+                            <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
                                 <label><pb-i18n key="form.title"></pb-i18n></label>
+                                <fx-hint>Choose a unique title. This becomes the TEI:title element.</fx-hint>
                             </fx-control>
                             <!--            <span>Sprachselector hier</span>-->
                             <fx-group class="group-1">
@@ -280,6 +281,15 @@
                                 <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" update-event="input"
                                             class="orange">
                                     <label><pb-i18n key="form.material">Material</pb-i18n></label>
+                                    <iron-icon icon="info-outline"></iron-icon>
+                                    <fx-hint>Materialien sind eingeteilt in ... bla
+
+                                        <p>und können bla bla...</p>
+
+                                        ...bla bla blabla
+
+                                    </fx-hint>
+
                                     <select ref="instance('material')?*" class="widget" selection="open" static="static">
                                         <template>
                                             <option value="{?value}">{?name}</option>
@@ -296,7 +306,6 @@
                                             <fx-control ref="msIdentifier/idno">
                                                 <label><pb-i18n key="form.tm">TM Nummer</pb-i18n></label>
                                             </fx-control>
-
 
                                             <div class="block findspot">
                                                 <h3><pb-i18n key="form.findspot">Fundort</pb-i18n></h3>
@@ -1133,7 +1142,7 @@
                                         <option value="public">öffentlich</option>
                                     </select>
                                 </fx-control>
-                                
+
                             </fx-group>
 
                             <section class="buttonBar">
@@ -1165,7 +1174,6 @@
                                 <input style="display:none;"/>
                             </fx-control>
                         </fx-group>
-                        <fx-inspector></fx-inspector>
 
                     </fx-fore>
             </main>
@@ -1179,6 +1187,10 @@
 <div class="splash"></div>
 
 <script src="./resources/scripts/util.js" type="text/javascript"></script>
+<!--<fx-devtools></fx-devtools>-->
+
+
+
 </body>
 
 </html>
