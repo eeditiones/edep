@@ -536,7 +536,7 @@ fx-var{
     border:none;
     border-bottom:thin solid;
     width:100%;
-
+    display: block;
 }
 [icon='remove-circle-outline']{
     color:var(--pb-link-color);

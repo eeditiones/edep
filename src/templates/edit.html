@@ -77,7 +77,7 @@
                     <fx-fore show-confirmation="show-confirmation">
 
                         <!-- ### if get called with an id param we load the data via submission ### -->
-                        <fx-setfocus control="title" event="ready"></fx-setfocus>
+                        <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>
                         <fx-model>
                             <fx-action event="model-construct-done">
                                 <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
@@ -248,7 +248,7 @@
                         </fx-model>
 
                         <fx-group ref="teiHeader">
-                            <fx-control id="title" class="title" ref="fileDesc/titleStmt/title">
+                            <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
                                 <label>Titel</label>
                                 <fx-hint>Choose a unique title. This becomes the TEI:title element.</fx-hint>
                             </fx-control>
@@ -1206,6 +1206,8 @@
 
 <script src="./resources/scripts/util.js" type="text/javascript"></script>
 <!--<fx-devtools></fx-devtools>-->
+
+
 
 </body>
 
