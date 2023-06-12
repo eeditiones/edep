@@ -10,6 +10,9 @@ module namespace api="http://teipublisher.com/api/custom";
 
 (: Add your own module imports here :)
 import module namespace config="http://www.tei-c.org/tei-simple/config" at "config.xqm";
+import module namespace pm-config="http://www.tei-c.org/tei-simple/pm-config" at "pm-config.xql";
+import module namespace tpu="http://www.tei-c.org/tei-publisher/util" at "lib/util.xql";
+import module namespace errors = "http://e-editiones.org/roaster/errors";
 
 declare namespace json="http://www.json.org";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
@@ -526,4 +529,16 @@ declare %private function api:merge($input as element()?, $template as element()
         }
     else
         $template
+};
+
+declare function api:render($request as map(*)) {
+    let $type := $request?parameters?type
+    let $xml := 
+        switch ($type)
+            case "transcription" return
+                $request?body//tei:msPart/tei:div[@type="textpart"]
+            default return
+                $request?body
+    return
+        $pm-config:web-transform(api:clean-namespace($xml), map { "root": $xml, "webcomponents": 7 }, $config:default-odd)
 };

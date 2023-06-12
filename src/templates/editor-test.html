@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title data-template="config:app-title"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"/>
+    <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-16.png" sizes="16x16"/>
+    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-24.png" sizes="24x24"/>
+    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-32.png" sizes="32x32"/>
+    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-64.png" sizes="64x64"/>
+    <link rel="stylesheet" href="resources/css/theme.css"  media='screen'/>
+    <link rel="stylesheet" href="resources/css/fore.css" media='screen'/>
+    <link rel="stylesheet" href="resources/css/edep-theme.css"  media='screen'/>
+    <link rel="stylesheet" href="resources/css/edep-theme2.css"  media='screen'/>
+    <link rel="stylesheet" href="transform/edep.css" media="screen"/>
+    <style>
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+    <!-- Uncomment if jinn-codemirror is running on 8000 -->
+    <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
+    <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
+</head>
+
+<body>
+    <jinn-epidoc-editor id="transcriptionEditor" class="widget"
+        schema="resources/scripts/tei.json" schema-root="div" mode="leiden_plus">
+        <div slot="leiden-toolbar">
+            <button data-command="expan" data-mode="leiden_plus" title="Expanded abbreviation">(a(bcd))</button>
+            <button data-command="erasure" data-mode="leiden_plus" title="Erasure">〚abc〛</button>
+            <button data-command="unclear" data-mode="leiden_plus" title="Unclear">ạ</button>
+            <button data-command="snippet" data-mode="leiden_plus" data-params="~|$|_||~$|2:gr|" title="Language switch">~|...|~</button>
+            <button data-command="div" data-mode="leiden_plus" title="Division">&lt;=...</button>
+            <button data-command="snippet" data-mode="leiden_plus" title="Part" data-params="&lt;D=.$|A|.part&lt;=$|_|=&gt;=D&gt;">&lt;D=.A.part...</button>
+            <button data-command="snippet" data-mode="leiden_plus" title="Column" data-params="&lt;D=.$|i|.column&lt;=$|_|=&gt;=D&gt;">&lt;D=.i.column...</button>
+            <button data-command="snippet" data-mode="leiden_plus" title="Recto/Verso" data-params="&lt;D=.$|r|&lt;=$|_|=&gt;=D&gt;">&lt;D=.r...</button>
+            <button data-command="fixNewlines" data-mode="leiden_plus" title="Add missing line numbers">&#x21A9;</button>
+            <button data-command="erasure" data-mode="edcs">〚abc〛</button>
+            <button data-command="gap" data-mode="edcs">[...]</button>
+            <button data-command="convert" data-mode="edcs">Convert to Leiden+</button>
+        </div>
+        <div slot="xml-toolbar">
+            <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+            <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
+            <button data-command="snippet" data-params='&lt;ab&gt;$|_|&lt;/ab&gt;'
+                    title="Insert ab">&lt;ab&gt;
+            </button>
+            <button data-command="snippet" data-params='&lt;supplied reason="lost"&gt;$|_|&lt;/supplied&gt;'
+                    title="Insert supplied">&lt;supplied&gt;
+            </button>
+            <button data-command="snippet" data-params='&lt;expan&gt;&lt;abbr&gt;$|1|&lt;/abbr&gt;&lt;ex&gt;$|_|&lt;/ex&gt;&lt;/expan&gt;$|3|'
+                    title="Insert expan/abbr">&lt;expan&gt;
+            </button>
+            <button data-command="snippet" data-params='&lt;gap reason="lost" extent="unknown" unit="character"/&gt;$|1|'
+                    title="Gap extent unknown">&lt;gap/unknown&gt;</button>
+            <button data-command="snippet" data-params='&lt;gap reason="lost" quantity="$|1|" unit="$|2:line|"/&gt;$|3|'
+                    title="Gap extent known">&lt;gap&gt;</button>
+            <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
+        </div>
+    </jinn-epidoc-editor>
+    <div id="output"></div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const epidoc = document.getElementById('transcriptionEditor');
+            const output = document.getElementById('output');
+
+            epidoc.addEventListener('update', (ev) => {
+                fetch('api/render', {
+                    method: 'POST',
+                    body: `&lt;div xmlns="http://www.tei-c.org/ns/1.0"&gt;${ev.detail.content}&lt;/div&gt;`,
+                    headers: {
+                        "Content-Type": "application/xml"
+                    }
+                })
+                .then((response) => response.text())
+                .then((html) => {
+                    output.innerHTML = html;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
