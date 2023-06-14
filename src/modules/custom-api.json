@@ -567,6 +567,41 @@
           }
         }
       }
+    },
+    "/api/render": {
+      "post": {
+        "summary": "Render the transcription",
+        "operationId": "api:render",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "rendered transcription",
+            "content": {
+              "text/html": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "security": [
