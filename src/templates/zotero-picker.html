@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+
+  <title>zotero</title>
+
+  <link href="../../resources/fore.css" rel="stylesheet" media="screen" />
+  <!--    <link href="clock.css" rel="stylesheet">-->
+
+  <style>
+      .zotero-picker{
+          position: relative;
+      }
+      .zotero-picker fx-repeat{
+          display: none;
+      }
+      .zotero-picker.open fx-repeat{
+          display: block;
+          position: absolute;
+          max-height: 80vh;
+          overflow: auto;
+      }
+      .zotero-picker .bib{
+          display: block;
+      }
+      .zotero-picker .bib:hover{
+          background: #efefef;
+      }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <fx-fore>
+    <fx-send event="ready" submission="s-load"></fx-send>
+    <fx-model>
+      <fx-instance id="zotero-ref"
+                   src="templates/fore/data/zotero.xml"
+                   xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+        <data></data>
+      </fx-instance>
+
+      <fx-instance id="zotero-list" type="json">[{}]</fx-instance>
+
+      <fx-instance id="z-vars">
+        <data>
+          <search></search>
+          <open></open>
+          <return></return>
+        </data>
+      </fx-instance>
+
+      <fx-submission id="s-load"
+                     url="https://api.zotero.org/groups/2519759/items?q=lat&amp;include=data,bib"
+                     method="get"
+                     replace="instance"
+                     instance="zotero-list"
+                     validate="false"></fx-submission>
+
+    </fx-model>
+
+    <section class="zotero-picker {instance('z-vars')/open}">
+      <header>
+        <fx-control ref="instance('z-vars')/search" update-event="input">
+          <fx-action event="value-changed">
+            <fx-update></fx-update>
+            <fx-refresh></fx-refresh>
+            <fx-setvalue ref="instance('z-vars')/open">open</fx-setvalue>
+          </fx-action>
+        </fx-control>
+      </header>
+      <fx-repeat ref="instance('zotero-list')?*">
+        <template>
+          <fx-output class="bib" tabindex="0" ref="?bib[contains(.,instance('z-vars')/search)]" mediatype="html">
+            <fx-message event="click">item clicked</fx-message>
+            <fx-action event="keydown">
+              <fx-message>selected {context()}</fx-message>
+              <fx-setvalue ref="instance('z-vars')/open"></fx-setvalue>
+              <fx-setvalue ref="instance('z-vars')/return" value="?tags?tag?1"></fx-setvalue>
+
+            </fx-action>
+          </fx-output>
+        </template>
+      </fx-repeat>
+    </section>
+<fx-inspector></fx-inspector>
+  </fx-fore>
+
+</div>
+<script type="module" src="../demo.js"></script>
+</body>
+
+</html>

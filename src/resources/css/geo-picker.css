@@ -3,7 +3,7 @@ fx-control.fore-control{
 }
 
 fx-control > fx-fore{
-    z-index: 100;
+    z-index: 10;
     width:100%;
     min-height:1rem;
 }
@@ -26,6 +26,9 @@ fx-fore fx-fore fx-inspector{
     width:25%;
 }
 
+fx-fore#geopicker{
+    padding:0 1rem;
+}
 #geopicker fx-control{
     width: 100%;
     grid-template-areas: "label control clear";
@@ -33,6 +36,7 @@ fx-fore fx-fore fx-inspector{
 }
 #geopicker label{
     grid-area: label;
+    margin-right:1rem;
 }
 #geopicker input{
     grid-area: control;
@@ -63,7 +67,7 @@ fx-fore fx-fore fx-inspector{
     background: #efefef;
 }
 #geopicker fx-output{
-    padding:0.5rem;
+    padding:0.125rem 0;
     margin: 0;
 }
 #geopicker input{

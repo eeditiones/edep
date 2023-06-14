@@ -1,0 +1,27 @@
+.zotero-picker{
+    position: relative;
+}
+.zotero-picker fx-repeat{
+    display: none;
+}
+.zotero-picker.open fx-repeat{
+    display: block;
+    position: absolute;
+    max-height: 50vh;
+    overflow: auto;
+    max-width: 100%;
+    border: thin solid #ccc;
+    padding: 0.25rem;
+    z-index: 200;
+    background: white;
+}
+.zotero-picker fx-repeat fx-repeatitem{
+    border:none;
+    margin:0;
+}
+.zotero-picker .bib{
+    display: block;
+}
+.zotero-picker .bib:hover{
+    background: #efefef;
+}

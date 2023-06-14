@@ -231,6 +231,7 @@ fx-group[ref="teiHeader"]{
 .group-1{
     /*background:var(--group-1-bg);*/
     margin:0;
+    padding:0  2rem;
 }
 .group-2{
     /*background: var(--group-2-bg);*/
@@ -315,12 +316,13 @@ fieldset fieldset legend{
 fx-control, fx-output {
     display: grid;
     grid-template-columns: 17rem 1rem 1fr;
-    gap: 0.3rem;
+    row-gap: 0.2rem;
     grid-template-areas:
     "label icon control"
     ". . alert"
     ". . hint";
     margin: 0.5rem;
+    grid-column-gap: 0.5rem;
 
 }
 .fx-checkbox{
@@ -504,6 +506,9 @@ fx-var{
 }
 #parts > fx-repeatitem{
     padding: 1rem 0;
+}
+pb-login{
+    z-index: 10;
 }
 #parts > fx-repeatitem > label{
     font-size: 1.2rem;

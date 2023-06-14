@@ -46,7 +46,7 @@
             <data></data>
         </fx-instance>
 
-        <fx-instance id="vars">
+        <fx-instance id="g-vars">
             <data>
                 <open>true</open>
                 <place></place>
@@ -71,7 +71,8 @@
                        url="api/geopicker/places"
                        method="get"
                        replace="instance"
-                       instance="i-geodata">
+                       instance="i-geodata"
+                    >
             <fx-message event="submit-done">places have been reloaded</fx-message>
         </fx-submission>
     </fx-model>
@@ -90,7 +91,7 @@
                 <!-- reset @corresp to empty -->
                 <fx-setvalue ref="."></fx-setvalue>
                 <!-- open group to display details -->
-                <fx-setvalue ref="instance('vars')/open">false</fx-setvalue>
+                <fx-setvalue ref="instance('g-vars')/open">false</fx-setvalue>
                 <fx-refresh force="force"></fx-refresh>
             </fx-action>
         </iron-icon>
@@ -100,7 +101,7 @@
             <fx-action if="string-length(.) != 0">
                 <fx-send submission="s-load-place"></fx-send>
                 <fx-send submission="s-load-places"></fx-send>
-                <fx-setvalue ref="instance('vars')/open">true</fx-setvalue>
+                <fx-setvalue ref="instance('g-vars')/open">true</fx-setvalue>
             </fx-action>
             <!-- return the @corresp to the binding control -->
             <fx-return ref="."></fx-return>
@@ -109,7 +110,7 @@
 
 
     <!-- 5) -->
-    <fx-group ref="instance('i-place')" style="display:{if(instance('vars')/open = 'true') then 'block' else 'none'};">
+    <fx-group ref="instance('i-place')" style="display:{if(instance('g-vars')/open = 'true') then 'block' else 'none'};">
         <fx-output ref="region[@type='province']">
             <label slot="label"><pb-i18n key="form.site-ancient-province"></pb-i18n></label>
         </fx-output>
@@ -145,21 +146,21 @@
         If a full repeat is needed to output a formatted item for selection the following markup can be used. However
         it's not yet complete.
         #######
-        <fx-control ref="instance('vars')/search" update-event='input'>
+        <fx-control ref="instance('g-vars')/search" update-event='input'>
             <fx-action event='click'>
-                <fx-setvalue ref="instance('vars')/open" value="if(. = 'true') then 'false' else 'true'"></fx-setvalue>
+                <fx-setvalue ref="instance('g-vars')/open" value="if(. = 'true') then 'false' else 'true'"></fx-setvalue>
                 <fx-refresh force="force"></fx-refresh>
             </fx-action>
         </fx-control>
 
-        <fx-repeat id="r-places" ref="instance('i-geodata')/place" style="display:{if(instance('vars')/open = 'true') then 'block' else 'none'};">
+        <fx-repeat id="r-places" ref="instance('i-geodata')/place" style="display:{if(instance('g-vars')/open = 'true') then 'block' else 'none'};">
             <template>
                 <div tabindex='0'>
                     <fx-action event="click">
                         <fx-message>clicked</fx-message>
                         <fx-setvalue ref="instance('i-geo')/origPlace/@corresp" value="context('r-places')/@xml:id"></fx-setvalue>
                         <fx-return ref="instance('i-geo')/origPlace/@corresp"></fx-return>
-                        <fx-setvalue ref="instance('vars')/open">false</fx-setvalue>
+                        <fx-setvalue ref="instance('g-vars')/open">false</fx-setvalue>
                         <fx-send submission="s-load-place"></fx-send>
                     </fx-action>
                     <fx-output  tabindex='0' ref="placeName"></fx-output>
@@ -168,7 +169,6 @@
         </fx-repeat>
     -->
 
-<!--<fx-inspector></fx-inspector>-->
 
     <!--    </fx-group>-->
 </fx-fore>

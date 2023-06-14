@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="resources/css/edep-theme.css"  media='screen'/>
     <link rel="stylesheet" href="resources/css/edep-theme2.css"  media='screen'/>
     <link rel="stylesheet" href="resources/css/geo-picker.css" media="screen"/>
+    <link rel="stylesheet" href="resources/css/zotero-picker.css" media="screen"/>
     <!-- Uncomment if jinn-codemirror is running on 8000 -->
     <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
     <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
@@ -76,6 +77,12 @@
                 <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                     <fx-fore show-confirmation="show-confirmation">
 
+<!--
+                        <fx-action event="ready">
+                            <fx-send submission="s-load-zotero"></fx-send>
+                        </fx-action>
+-->
+
                         <!-- ### if get called with an id param we load the data via submission ### -->
                         <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>
                         <fx-model>
@@ -127,7 +134,33 @@
                             <fx-instance id="templates" src="templates/fore/templates.xml"
                                          xpath-default-namespace="http://www.tei-c.org/ns/1.0">
 
-                            </fx-instance>
+
+                           </fx-instance>
+
+
+                           <fx-instance id="i-zotero-refs"
+                                        xpath-default-namespace="http://www.tei-c.org/ns/1.0"
+                                       type="json">{}</fx-instance>
+
+
+                           <fx-submission id="s-load-zotero"
+                                          method="get"
+                                          url="https://api.zotero.org/groups/2519759/items?q=lat&amp;include=data,bib"
+                                          replace="instance"
+                                          instance="i-zotero-refs"
+                                          validate="false">
+                                <fx-action event="submit-done">
+                                    <fx-send submission="write-zotero-to-localstorage"></fx-send>
+                                </fx-action>
+                           </fx-submission>
+
+                            <fx-submission id="write-zotero-to-localstorage"
+                                           url="localStore:zotero"
+                                           method="post"
+                                           replace="none"
+                                           ref="instance('i-zotero-refs')"></fx-submission>
+
+
 
                             <fx-instance id="vars">
                                 <data>
@@ -390,20 +423,16 @@
                                                                ref="msContents/msItem/listBibl[@type='transmission']/bibl">
                                                         <template>
                                                             <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
-
                                                             <div>
-                                                                <fx-control ref="ptr/@target">
-                                                                    <label><pb-i18n key="form.reference">Referenz</pb-i18n></label>
-                                                                    <fx-action event="init"  if="string-length(.) != 0">
-                                                                        <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
-                                                                                 attach-to="#zoteroRef1"></fx-load>
-                                                                    </fx-action>
-                                                                    <fx-action event="value-changed"  if="string-length(.) != 0">
-                                                                        <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
-                                                                                 attach-to="#zoteroRef1"></fx-load>
-                                                                    </fx-action>
+                                                                <fx-var name="ptr" value="ptr/@target"></fx-var>
+
+                                                                <fx-control ref="$ptr"
+                                                                            url="zotero-picker.html"
+                                                                            initial=".."
+                                                                            class="fore-control">
+<!--                                                                    <fx-replace ref="" with="instance('i-zotero-refs'" event="init"></fx-replace>-->
                                                                 </fx-control>
-                                                                <div id="zoteroRef1"></div>
+
                                                                 <fx-control ref="citedRange">
                                                                     <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                                 </fx-control>
@@ -1187,7 +1216,7 @@
 <div class="splash"></div>
 
 <script src="./resources/scripts/util.js" type="text/javascript"></script>
-<!--<fx-devtools></fx-devtools>-->
+<fx-devtools></fx-devtools>
 
 
 
