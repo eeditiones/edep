@@ -49,7 +49,6 @@
                 </app-header>
 
                 <main>
-                    <pb-restricted login="login" group="tei">
                         <fx-fore id="person">
 
                             <fx-action event="ready" if="exists(instance('query')/id)">
@@ -66,6 +65,62 @@
                                     <data/>
                                 </fx-instance>
                     
+                                <fx-instance id="tribus">
+                                    <data>
+                                        <tribus>Aelia</tribus>
+                                        <tribus>Aemilia</tribus>
+                                        <tribus>Arnensis</tribus>
+                                        <tribus>Camilia</tribus>
+                                        <tribus>Claudia</tribus>
+                                        <tribus>Clustumina</tribus>
+                                        <tribus>Collina</tribus>
+                                        <tribus>Cornelia</tribus>
+                                        <tribus>Esquilina</tribus>
+                                        <tribus>Fabia</tribus>
+                                        <tribus>Falerna</tribus>
+                                        <tribus>Galeria</tribus>
+                                        <tribus>Horatia</tribus>
+                                        <tribus>Lemonia</tribus>
+                                        <tribus>Maecia</tribus>
+                                        <tribus>Menenia</tribus>
+                                        <tribus>Oufentina</tribus>
+                                        <tribus>Palatina</tribus>
+                                        <tribus>Papiria</tribus>
+                                        <tribus>Pollia</tribus>
+                                        <tribus>Pomptina</tribus>
+                                        <tribus>Publilia</tribus>
+                                        <tribus>Pupinia</tribus>
+                                        <tribus>Quirina</tribus>
+                                        <tribus>Romilia</tribus>
+                                        <tribus>Sabatina</tribus>
+                                        <tribus>Scaptia</tribus>
+                                        <tribus>Sergia</tribus>
+                                        <tribus>Stellatina</tribus>
+                                        <tribus>Suburana</tribus>
+                                        <tribus>Sulpicia</tribus>
+                                        <tribus>Teretina</tribus>
+                                        <tribus>Tromentina</tribus>
+                                        <tribus>Ulpia</tribus>
+                                        <tribus>Velina</tribus>
+                                        <tribus>Voltinia</tribus>
+                                        <tribus>Voturia</tribus>
+                                    </data>
+                                </fx-instance>
+                                <fx-instance id="status">
+                                    <data>
+                                        <item key="Herrscher / Herrscherhaus"/>
+                                        <item key="Senatorenstand"/>
+                                        <item key="Ritterstand"/>
+                                        <item key="Dekurionenstand"/>
+                                        <item key="höhere Gemeindeverwaltung"/>
+                                        <item key="subalterne Beamte"/>
+                                        <item key="Domänen- / niedere Gemeindeverwaltung"/>
+                                        <item key="Augustalen"/>
+                                        <item key="Freigelassene"/>
+                                        <item key="Sklaven"/>
+                                        <item key="Sonstige"/>
+                                    </data>
+                                </fx-instance>
                                 <fx-instance id="vars">
                                     <data>
                                         <loggedin>hidden</loggedin>
@@ -114,11 +169,13 @@
                     
                             </fx-model>
                     
-                            <pb-restricted login="login" group="tei">
-                                <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
+                            
                                 <fx-output ref="instance('default')/person/@xml:id"/>
                                 <fieldset>
                                     <legend>Person</legend>
+                                    <fx-control ref="persName/name[@type='god']">
+                                        <label>Gott</label>
+                                    </fx-control>
                                     <fx-control ref="persName/name[@type='praenomen']">
                                         <label>Praenomen</label>
                                         <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
@@ -126,14 +183,22 @@
                                     <fx-control ref="persName/name[@type='nomen']">
                                         <label>Nomen Gentile</label>
                                     </fx-control>
-                                    <fx-control ref="persName/name[@type='filiation']">
-                                        <label>Filiation</label>
+                                    <fx-control ref="persName/name[@type='cognomen']">
+                                        <label>Cognomen</label>
+                                    </fx-control>
+                                    <fx-control ref="persName/name[@type='supernomen']">
+                                        <label>Supernomen</label>
                                     </fx-control>
                                     <fx-control ref="persName/name[@type='tribus']">
                                         <label>Tribus</label>
+                                        <select ref="instance('tribus')/tribus" class="widget" selection="open">
+                                            <template>
+                                                <option value="{.}">{.}</option>
+                                            </template>
+                                        </select>
                                     </fx-control>
-                                    <fx-control ref="persName/name[@type='cognomen']">
-                                        <label>Cognomen</label>
+                                    <fx-control ref="persName/name[@type='origo']">
+                                        <label>Origo</label>
                                     </fx-control>
                                     <fx-control ref="@sex">
                                         <label>Geschlecht</label>
@@ -142,6 +207,39 @@
                                             <option value="F">Weiblich</option>
                                         </select>
                                     </fx-control>
+                                    <fx-control ref="state[@type='status']">
+                                        <label>Sozialer Status</label>
+                                        <select class="widget" ref="instance('status')/item" selection="open">
+                                            <template>
+                                                <option value="{@key}">{@key}</option>
+                                            </template>
+                                        </select>
+                                    </fx-control>
+                                    <fx-control ref="occupation">
+                                        <label>Beruf</label>
+                                    </fx-control>
+
+                                    <fieldset>
+                                        <legend>Referenzen</legend>
+                                        <fx-repeat ref="./idno">
+                                            <template>
+                                                <div class="inline-form">
+                                                    <fx-control ref="@type">
+                                                        <label>Type: </label>
+                                                        <select class="widget" selection="open">
+                                                            <option value="url">URL</option>
+                                                            <option value="id">ID</option>
+                                                        </select>
+                                                    </fx-control>
+                                                    <fx-control ref="." class="flex-2">
+                                                    </fx-control>
+                                                </div>
+                                            </template>
+                                        </fx-repeat>
+                                    </fieldset>
+                                </fieldset>
+                                <pb-restricted login="login" group="tei">
+                                    <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
                                     <div class="actions">
                                         <fx-trigger id="save" class="saveBtn">
                                             <button type="submit">Speichern</button>
@@ -149,10 +247,8 @@
                                             <fx-send submission="s-save" if="exists(instance('params')/id)"></fx-send>
                                         </fx-trigger>
                                     </div>
-                                </fieldset>
-                            </pb-restricted>
+                                </pb-restricted>
                         </fx-fore>
-                    </pb-restricted>
                 </main>
 
                 <footer class="version">

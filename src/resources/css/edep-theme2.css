@@ -93,6 +93,28 @@ fx-case.selected-case{
 .panels {
     margin-bottom: 40px;
 }
+
+.inline-form {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.inline-form fx-control {
+    display: inline-block;
+}
+
+#person [ref="./idno"] [ref="@type"] select {
+    width: 6em;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+.flex-2 input {
+    width: 100%;
+}
+
 #places fx-switch{
     max-width:80vw;
 }
