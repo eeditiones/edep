@@ -35,7 +35,6 @@
   <fx-fore>
     <fx-action event="ready">
       <fx-setvalue ref="instance('z-vars')/search" value="instance('zotero-ref')/ptr/@target"></fx-setvalue>
-      <fx-send submission="s-load"></fx-send>
     </fx-action>
     <fx-model>
       <fx-instance id="zotero-ref"
@@ -55,7 +54,7 @@
       </fx-instance>
 
       <fx-submission id="s-load"
-                     url="https://api.zotero.org/groups/2519759/items?q=lat&amp;include=data,bib"
+                     url="https://api.zotero.org/groups/2519759/items?q={instance('z-vars')/search}&amp;include=data,bib"
                      method="get"
                      replace="instance"
                      instance="zotero-list"
@@ -78,7 +77,8 @@
           <fx-action event="value-changed">
             <fx-update></fx-update>
             <fx-refresh></fx-refresh>
-            <fx-setvalue ref="instance('z-vars')/open" if="string-length(context())=1">open</fx-setvalue>
+            <fx-setvalue ref="instance('z-vars')/open" if="string-length(context())=3">open</fx-setvalue>
+            <fx-send submission="s-load"></fx-send>
           </fx-action>
         </fx-control>
         <div id="zotero-bib-output"></div>
@@ -86,7 +86,7 @@
       <fx-repeat id="r-bibs" ref="instance('zotero-list')?*">
         <template>
           <fx-var name="current" value="."></fx-var>
-          <fx-output class="bib" tabindex="0" ref="?bib[contains(.,instance('z-vars')/search)]" mediatype="html">
+          <fx-output class="bib" tabindex="0" ref="?bib" mediatype="html">
             <fx-action event="click">
               <fx-setvalue ref="instance('z-vars')/open"></fx-setvalue>
               <fx-setvalue ref="instance('z-vars')/search" value="$current?data?tags(1)?tag"></fx-setvalue>
@@ -106,7 +106,6 @@
   </fx-fore>
 
 </div>
-<script type="module" src="../demo.js"></script>
 </body>
 
 </html>
