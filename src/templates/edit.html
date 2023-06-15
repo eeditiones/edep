@@ -85,7 +85,7 @@
 -->
 
                         <!-- ### if get called with an id param we load the data via submission ### -->
-                        <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>
+<!--                        <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>-->
                         <fx-model>
                             <fx-action event="model-construct-done">
                                 <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
@@ -435,15 +435,24 @@
                                                         <template>
                                                             <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
                                                             <div>
-                                                                <fx-var name="ptr" value="ptr/@target"></fx-var>
-
-                                                                <fx-control ref="$ptr"
+<!--                                                                <fx-var name="ptr" value="ptr/@target"></fx-var>-->
+                                                                <fx-control ref="ptr/@target"
                                                                             url="zotero-picker.html"
                                                                             initial=".."
-                                                                            class="fore-control">
-<!--                                                                    <fx-replace ref="" with="instance('i-zotero-refs'" event="init"></fx-replace>-->
-                                                                </fx-control>
+                                                                            class="fore-control"
+                                                                            update-event="input">
 
+<!--                                                                    <fx-replace ref="" with="instance('i-zotero-refs'" event="init"></fx-replace>-->
+                                                                    <fx-action event="init"  if="string-length(.) != 0">
+                                                                        <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
+                                                                                 attach-to="#zoteroRef1"></fx-load>
+                                                                    </fx-action>
+                                                                    <fx-action event="value-changed"  if="string-length(.) != 0">
+                                                                        <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
+                                                                                 attach-to="#zoteroRef1"></fx-load>
+                                                                    </fx-action>
+                                                                </fx-control>
+                                                                <div id="zoteroRef1" class="zotero-bib"></div>
                                                                 <fx-control ref="citedRange">
                                                                     <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                                 </fx-control>
@@ -644,8 +653,11 @@
                                                     <template>
                                                         <!--                                                    <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>-->
                                                         <div>
-                                                            <fx-control ref="ptr/@target">
-                                                                <label><pb-i18n key="form.reference">Referenz</pb-i18n></label>
+                                                            <fx-control ref="ptr/@target"
+                                                                        url="zotero-picker.html"
+                                                                        initial=".."
+                                                                        class="fore-control"
+                                                                        update-event="input">
                                                                 <fx-action event="init"  if="string-length(.) != 0">
                                                                     <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
                                                                              attach-to="#zoteroRef2"></fx-load>
@@ -655,10 +667,10 @@
                                                                              attach-to="#zoteroRef2"></fx-load>
                                                                 </fx-action>
                                                             </fx-control>
+                                                            <div id="zoteroRef2" class="zotero-bib"></div>
                                                             <fx-control ref="citedRange">
                                                                 <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                             </fx-control>
-                                                            <div id="zoteroRef2"></div>
                                                             <fx-control ref="note" as="node" update-event="blur">
                                                                 <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                                 <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
@@ -720,8 +732,11 @@
                                                         <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
 
                                                         <div>
-                                                            <fx-control ref="ptr/@target">
-                                                                <label><pb-i18n key="form.reference">Referenz</pb-i18n></label>
+                                                            <fx-control ref="ptr/@target"
+                                                                        url="zotero-picker.html"
+                                                                        initial=".."
+                                                                        class="fore-control"
+                                                                        update-event="input">
                                                                 <fx-action event="init"  if="string-length(.) != 0">
                                                                     <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
                                                                              attach-to="#zoteroRef3"></fx-load>
@@ -731,7 +746,7 @@
                                                                              attach-to="#zoteroRef3"></fx-load>
                                                                 </fx-action>
                                                             </fx-control>
-                                                            <div id="zoteroRef3"></div>
+                                                            <div id="zoteroRef3" class="zotero-bib"></div>
                                                             <fx-control ref="citedRange">
                                                                 <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                             </fx-control>
@@ -784,8 +799,11 @@
                                                            ref="msContents/msItem/listBibl[@type='images']/bibl">
                                                     <template>
                                                         <div>
-                                                            <fx-control ref="ptr/@target">
-                                                                <label><pb-i18n key="form.reference">Referenz</pb-i18n></label>
+                                                            <fx-control ref="ptr/@target"
+                                                                        url="zotero-picker.html"
+                                                                        initial=".."
+                                                                        class="fore-control"
+                                                                        update-event="input">
                                                                 <fx-action event="init"  if="string-length(.) != 0">
                                                                     <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
                                                                              attach-to="#zoteroRef4"></fx-load>
@@ -795,7 +813,7 @@
                                                                              attach-to="#zoteroRef4"></fx-load>
                                                                 </fx-action>
                                                             </fx-control>
-                                                            <div id="zoteroRef4"></div>
+                                                            <div id="zoteroRef4" class="zotero-bib"></div>
                                                             <fx-control ref="citedRange">
                                                                 <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                             </fx-control>

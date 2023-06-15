@@ -25,3 +25,10 @@
 .zotero-picker .bib:hover{
     background: #efefef;
 }
+#zotero-bib-output{
+    max-width: 100%;
+    white-space: normal;
+}
+.zotero-bib{
+    margin-left:1.5rem;
+}
