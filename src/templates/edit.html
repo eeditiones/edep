@@ -17,19 +17,20 @@
     <link rel="stylesheet" href="resources/css/edep-theme2.css"  media='screen'/>
     <link rel="stylesheet" href="resources/css/geo-picker.css" media="screen"/>
     <link rel="stylesheet" href="resources/css/zotero-picker.css" media="screen"/>
+    <link rel="stylesheet" href="transform/edep.css" media="screen"/>
     <!-- Uncomment if jinn-codemirror is running on 8000 -->
     <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
     <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
 
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
 
-<!--    <script type="module" src="resources/scripts/fore-dev.js"></script>-->
+    <script type="module" src="resources/scripts/fore-dev.js"></script>
     <!--
         when running with Fore on localhost for debugging with latest sources:
         1. uncomment this and comment above Fore import
         2. Replace controller.xql with localhost-controller.xql
     -->
-     <script type="module" src="http://localhost:8090/index.js"></script>
+     <!--script type="module" src="http://localhost:8090/index.js"></script-->
     <!--    <script type="module" src="resources/scripts/datalist-ajax/datalist-ajax.min.js"></script>-->
 
 
@@ -252,6 +253,16 @@
                                     <fx-message>Daten konnten nicht gespeichert werden.</fx-message>
                                     <fx-action src="resources/scripts/showErrors.js"></fx-action>
                                 </fx-action>
+                            </fx-submission>
+
+                            <fx-submission id="s-render"
+                                url="api/render?type=transcription"
+                                method="post"
+                                replace="target"
+                                target="#transcription-display"
+                                validate="false">
+                                <fx-message event="submit-done">Render called</fx-message>
+                                <fx-message event="submit-error">Render failed</fx-message>
                             </fx-submission>
 
                             <fx-function signature="gen-id() as xs:string" type="text/javascript">
@@ -888,7 +899,11 @@
                                                         <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
                                                     </div>
                                                 </jinn-epidoc-editor>
+                                                <fx-action event="value-changed">
+                                                    <fx-send submission="s-render"></fx-send>
+                                                </fx-action>
                                             </fx-control>
+                                            <div id="transcription-display"></div>
                                         </fx-group>
                                         <fx-group class="group-8 padded">
                                             <label><pb-i18n key="form.apparatus">Apparatus</pb-i18n></label>
