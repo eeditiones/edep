@@ -77,7 +77,7 @@
           <fx-action event="value-changed">
             <fx-update></fx-update>
             <fx-refresh></fx-refresh>
-            <fx-setvalue ref="instance('z-vars')/open" if="string-length(context())=3">open</fx-setvalue>
+            <fx-setvalue ref="instance('z-vars')/open" if="string-length(context())&gt;=3">open</fx-setvalue>
             <fx-send submission="s-load"></fx-send>
           </fx-action>
         </fx-control>
