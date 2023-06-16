@@ -74,6 +74,8 @@
       <header>
         <fx-control ref="instance('z-vars')/search" update-event="input">
           <label><pb-i18n key="form.reference">Referenz</pb-i18n></label>
+          <iron-icon icon="info-outline"></iron-icon>
+          <fx-hint><pb-i18n key="form.hint-reference">Zotero Referenz</pb-i18n></fx-hint>
           <fx-action event="value-changed">
             <fx-update></fx-update>
             <fx-refresh></fx-refresh>
