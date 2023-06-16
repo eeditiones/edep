@@ -14,7 +14,7 @@ function createUUID() {
 }
 
 
-function checkDate(string){
+function checkDate(string) {
     if(string.length === 0 ) return true;// allow empty
     const val = new Date(string);
     if(val instanceof Date && !isNaN(val)) {
@@ -23,6 +23,25 @@ function checkDate(string){
     return false;
 }
 
-document.addEventListener('bibl-changed', (ev) => {
-    pbEvents.emit('pb-load', 'biblio');
+window.addEventListener('DOMContentLoaded', () => {
+    const fore = document.querySelector('fx-fore');
+    fore.addEventListener('ready', () => {
+        const epidoc = document.getElementById('transcriptionEditor');
+        const output = document.getElementById('transcription-display');
+    
+        epidoc.addEventListener('update', (ev) => {
+            fetch('api/render', {
+                method: 'POST',
+                body: ev.detail.content.outerHTML,
+                headers: {
+                    "Content-Type": "application/xml"
+                }
+            })
+            .then((response) => response.text())
+            .then((html) => {
+                output.innerHTML = html;
+            });
+        });
+    });
+
 });
