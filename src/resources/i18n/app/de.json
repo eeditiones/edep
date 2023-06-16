@@ -71,6 +71,8 @@
         "site-modern-name": "Fundort (modern)",
         "site-modern-region": "Moderne Region",
         "site-find-spot": "Fundstelle",
-        "hint-reference": "Referenz auf Zotero Eintrag. Eingabe von mind. 3 Buchstaben öffnet Auswahlliste. Alternativ ist unten eine freie Angabe möglich."
+        "hint-reference": "Referenz auf Zotero Eintrag. Eingabe von mind. 3 Buchstaben öffnet Auswahlliste. Alternativ ist unten eine freie Angabe möglich.",
+        "biblio-abbreviation": "Kürzel",
+        "hint-biblio-abbreviation": "Valide XML ID zur Referenzierung dieses Eintrags"
     }
 }

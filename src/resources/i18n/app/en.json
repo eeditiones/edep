@@ -68,6 +68,8 @@
         "site-modern-name": "Site (modern)",
         "site-find-spot": "Find spot",
         "site-modern-region": "Modern region",
-        "hint-reference": "Zotero reference. Enter at least 3 characters to open selection list. As an alternative, a free entry is possible below."
+        "hint-reference": "Zotero reference. Enter at least 3 characters to open selection list. As an alternative, a free entry is possible below.",
+        "biblio-abbreviation": "Sigle",
+        "hint-biblio-abbreviation": "Valid XML ID to use as reference to this entry"
     }
 }
