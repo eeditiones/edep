@@ -658,11 +658,11 @@
                                                                         initial=".."
                                                                         class="fore-control"
                                                                         update-event="input">
-                                                                <fx-action event="init"  if="string-length(.) != 0">
+                                                                <fx-action event="init" if="string-length(.) != 0">
                                                                     <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
                                                                              attach-to="#zoteroRef2"></fx-load>
                                                                 </fx-action>
-                                                                <fx-action event="value-changed"  if="string-length(.) != 0">
+                                                                <fx-action event="value-changed" if="string-length(.) != 0">
                                                                     <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
                                                                              attach-to="#zoteroRef2"></fx-load>
                                                                 </fx-action>
@@ -1249,7 +1249,7 @@
 <div class="splash"></div>
 
 <script src="./resources/scripts/util.js" type="text/javascript"></script>
-<fx-devtools></fx-devtools>
+<!--fx-devtools></fx-devtools-->
 
 
 

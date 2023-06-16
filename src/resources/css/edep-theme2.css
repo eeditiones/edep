@@ -31,6 +31,7 @@ html{
     background: white;
     border-top: thin solid;
     width: 100%;
+    column-gap: 20px;
     left: 0;
     background: var(--paper-grey-800);
     text-align: center;
@@ -40,11 +41,13 @@ html{
 .buttonBar pb-restricted {
     display: flex;
     align-items: center;
+    column-gap: 20px;
 }
 
-.buttonBar *{
-    color:white;
+.buttonBar button {
+    color: var(--pb-primary-color);
 }
+
 .buttonBar fx-trigger{
     margin-right:0.5rem;
 }
@@ -52,7 +55,7 @@ html{
     color:black;
 }
 .buttonBar a:link, .buttonBar a:visited {
-    color: var(--pb-color-inverted);
+    color: var(--pb-color-inverse);
 }
 
 .csl-bib-body{
