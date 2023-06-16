@@ -27,7 +27,7 @@
         "other-events": "Weitere Ereignisse",
         "transmission": "Überlieferung",
         "reference": "Referenz",
-        "cited-range": "Seitenangabe",
+        "cited-range": "Cited range",
         "verification": "Verifizierung",
         "basis-of-verification": "Verfizierungsgrundlage",
         "date-of-verification": "Datum der Verifizierung",
@@ -70,6 +70,7 @@
         "site-ancient-name": "Fundort (antik)",
         "site-modern-name": "Fundort (modern)",
         "site-modern-region": "Moderne Region",
-        "site-find-spot": "Fundstelle"
+        "site-find-spot": "Fundstelle",
+        "hint-reference": "Referenz auf Zotero Eintrag. Eingabe von mind. 3 Buchstaben öffnet Auswahlliste. Alternativ ist unten eine freie Angabe möglich."
     }
 }

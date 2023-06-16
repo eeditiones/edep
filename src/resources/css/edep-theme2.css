@@ -344,8 +344,7 @@ fx-control, fx-output {
     row-gap: 0.2rem;
     grid-template-areas:
     "label icon control"
-    ". . alert"
-    ". . hint";
+    ". . alert";
     margin: 0.5rem;
     grid-column-gap: 0.5rem;
 
@@ -358,7 +357,7 @@ fx-control label{
     grid-area:label;
 }
 fx-control [icon="info-outline"]{
-    grid-araa:icon;
+    grid-area:icon;
     width: 1rem;
     height:1rem;
     cursor:pointer;
@@ -375,19 +374,9 @@ fx-control .widget, fx-control .xml-editor {
 fx-control label{
     grid-area:label;
 }
-fx-control iron-icon:hover ~ fx-hint{
-    display: block;
-    height: auto;
+fx-control iron-icon:hover ~ fx-hint {
     opacity: 1;
     transition: all .4s;
-    position: absolute;
-    background: white;
-    border: thin solid #ddd;
-    padding: 1rem;
-    z-index: 10;
-    box-shadow: 1px 1px 1px #999;
-    background: var(--paper-grey-900);
-    color:white;
 }
 
 fx-control fx-alert{
@@ -395,10 +384,16 @@ fx-control fx-alert{
 }
 
 fx-control fx-hint{
-    grid-area:hint;
     display: inline-block;
+    transform: translate(0, 2em);
     opacity: 0;
-    height: 0;
+    position: absolute;
+    border: thin solid #ddd;
+    padding: 1rem;
+    z-index: 10;
+    box-shadow: 1px 1px 1px #999;
+    background: var(--paper-grey-900);
+    color:white;
 }
 
 fx-control [type="checkbox"]{

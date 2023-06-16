@@ -67,6 +67,7 @@
         "site-ancient-name": "Site (ancient)",
         "site-modern-name": "Site (modern)",
         "site-find-spot": "Find spot",
-        "site-modern-region": "Modern region"
+        "site-modern-region": "Modern region",
+        "hint-reference": "Zotero reference. Enter at least 3 characters to open selection list. As an alternative, a free entry is possible below."
     }
 }

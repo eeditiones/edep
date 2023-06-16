@@ -294,7 +294,6 @@
                         <fx-group ref="teiHeader">
                             <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
                                 <label><pb-i18n key="form.title"></pb-i18n></label>
-                                <fx-hint>Choose a unique title. This becomes the TEI:title element.</fx-hint>
                             </fx-control>
                             <!--            <span>Sprachselector hier</span>-->
                             <fx-group class="group-1">
@@ -325,15 +324,6 @@
                                 <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" update-event="input"
                                             class="orange">
                                     <label><pb-i18n key="form.material">Material</pb-i18n></label>
-                                    <iron-icon icon="info-outline"></iron-icon>
-                                    <fx-hint>Materialien sind eingeteilt in ... bla
-
-                                        <p>und können bla bla...</p>
-
-                                        ...bla bla blabla
-
-                                    </fx-hint>
-
                                     <select ref="instance('material')?*" class="widget" selection="open" static="static">
                                         <template>
                                             <option value="{?value}">{?name}</option>
@@ -535,11 +525,14 @@
                                             <!-- 15) -->
                                             <fx-control ref="msContents/msItem/@class" update-event="input">
                                                 <label><pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n></label>
-                                                <select ref="instance('typeins')?*" class="widget" selection="open">
+                                                <fx-items ref="instance('typeins')?*" class="widget">
                                                     <template>
-                                                        <option value="{?value}">{?name}</option>
+                                                        <span class="fx-checkbox">
+                                                            <input type="checkbox" value="{?name}"/>
+                                                            <label>{?value}</label>
+                                                        </span>
                                                     </template>
-                                                </select>
+                                                </fx-items>
                                             </fx-control>
 
                                             <!--                        <fx-group>-->
@@ -604,20 +597,26 @@
                                             </fx-control>
 
                                             <!-- 34) -->
+                                            <fieldset>
+                                                <legend><label><pb-i18n key="form.palaeography">Paläographie</pb-i18n></label></legend>
+                                            <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='paleography']/@ref" update-event="input">
                                             <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='paleography']/@ref" update-event="input">
                                                 <label><pb-i18n key="form.palaeography">Paläographie</pb-i18n></label>
-                                                <fx-items ref="instance('palaeo')/item" class="widget">
-                                                    <template>
-                                                    <span class="fx-checkbox">
-                                                        <input type="checkbox" value="{@ref}"/>
-                                                        <label>{.}</label>
-                                                    </span>
-                                                    </template>
-                                                </fx-items>
-                                            </fx-control>
-                                            <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='paleography']" update-event="input" class="{instance('vars')/hide}">
-                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
-                                            </fx-control>
+                                                <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='paleography']/@ref" update-event="input">
+                                                <label><pb-i18n key="form.palaeography">Paläographie</pb-i18n></label>
+                                                    <fx-items ref="instance('palaeo')/item" class="widget">
+                                                        <template>
+                                                        <span class="fx-checkbox">
+                                                            <input type="checkbox" value="{@ref}"/>
+                                                            <label>{.}</label>
+                                                        </span>
+                                                        </template>
+                                                    </fx-items>
+                                                </fx-control>
+                                                <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='paleography']" update-event="input" class="{instance('vars')/hide}">
+                                                    <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
+                                                </fx-control>
+                                            </fieldset>
 
                                             <!-- 39) -->
                                             <fx-control ref="//handDesc/handNote/rs" update-event="input">
