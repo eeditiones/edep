@@ -220,15 +220,25 @@
                                     </fx-control>
 
                                     <fieldset>
-                                        <legend>Referenzen</legend>
-                                        <fx-repeat ref="./idno">
+                                        <legend>
+                                            <label>Referenzen</label>
+                                            <fx-trigger class="add" title="Referenz hinzufügen">
+                                                <iron-icon icon="add-circle-outline" title="Referenz hinzufügen"></iron-icon>
+
+                                                <fx-insert context="."
+                                                           ref="idno">
+                                                </fx-insert>
+                                                <fx-refresh control="r-idno"></fx-refresh>
+                                            </fx-trigger>
+                                        </legend>
+                                        <fx-repeat ref="./idno" id="r-idno">
                                             <template>
                                                 <div class="inline-form">
                                                     <fx-control ref="@type">
                                                         <label>Type: </label>
                                                         <select class="widget" selection="open">
-                                                            <option value="url">PIR</option>
-                                                            <option value="id">PLRE</option>
+                                                            <option value="pir">PIR</option>
+                                                            <option value="plre">PLRE</option>
                                                             <option value="wikidata">Wikidata</option>
                                                         </select>
                                                     </fx-control>
