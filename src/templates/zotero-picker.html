@@ -10,22 +10,22 @@
   <!--    <link href="clock.css" rel="stylesheet">-->
 
   <style>
-      .zotero-picker{
+      .zotero-picker {
           position: relative;
       }
-      .zotero-picker fx-repeat{
+      .zotero-picker fx-repeat {
           display: none;
       }
-      .zotero-picker.open fx-repeat{
+      .zotero-picker.open fx-repeat {
           display: block;
           position: absolute;
           max-height: 80vh;
           overflow: auto;
       }
-      .zotero-picker .bib{
+      .zotero-picker .bib {
           display: block;
       }
-      .zotero-picker .bib:hover{
+      .zotero-picker .bib:hover {
           background: #efefef;
       }
   </style>
@@ -33,8 +33,13 @@
 <body>
 <div class="wrapper">
   <fx-fore>
+    <fx-action event="click" target="#document" if="instance('z-vars')/open='open'">
+      <fx-setvalue ref="instance('z-vars')/open"></fx-setvalue>
+    </fx-action>
+
     <fx-action event="ready">
       <fx-setvalue ref="instance('z-vars')/search" value="instance('zotero-ref')/ptr/@target"></fx-setvalue>
+      <fx-send submission="s-load-tag" if="string-length(instance('zotero-ref')/ptr/@target) != 0"></fx-send>
     </fx-action>
     <fx-model>
       <fx-instance id="zotero-ref"
@@ -43,6 +48,8 @@
         <data></data>
       </fx-instance>
 
+      <fx-instance id="current-tag" type="json">[{}]</fx-instance>
+
       <fx-instance id="zotero-list" type="json">[{}]</fx-instance>
 
       <fx-instance id="z-vars">
@@ -50,8 +57,17 @@
           <search></search>
           <open></open>
           <return></return>
+          <show-tag>false</show-tag>
         </data>
       </fx-instance>
+
+      <fx-submission id="s-load-tag"
+                     url="https://api.zotero.org/groups/2519759/items?tag={instance('zotero-ref')/ptr/@target}&amp;include=bib"
+                     method="get"
+                     replace="instance"
+                     instance="current-tag"
+                     validate="false">
+      </fx-submission>
 
       <fx-submission id="s-load"
                      url="https://api.zotero.org/groups/2519759/items?q={instance('z-vars')/search}&amp;include=data,bib"
@@ -59,55 +75,63 @@
                      replace="instance"
                      instance="zotero-list"
                      validate="false"></fx-submission>
-
     </fx-model>
 
     <section id="zotero-picker" class="zotero-picker {instance('z-vars')/open}">
-<!--
-      <fx-action event="ref-selected">
-        <fx-message>return {instance('z-vars')/return}</fx-message>
-        <fx-load url="https://api.zotero.org/groups/2519759/items?tag={instance('z-vars')/return}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
-                 attach-to="#zotero-bib-output"></fx-load>
-      </fx-action>
--->
-
       <header>
-        <fx-control ref="instance('z-vars')/search" update-event="input">
-          <label><pb-i18n key="form.reference">Referenz</pb-i18n></label>
+        <fx-control ref="instance('z-vars')/search" update-event="input" debounce="200">
+          <label>
+            <pb-i18n key="form.reference">Referenz</pb-i18n>
+          </label>
           <iron-icon icon="info-outline"></iron-icon>
           <fx-hint><pb-i18n key="form.hint-reference">Zotero Referenz</pb-i18n></fx-hint>
           <fx-action event="value-changed">
             <fx-update></fx-update>
             <fx-refresh></fx-refresh>
-            <fx-setvalue ref="instance('z-vars')/open" if="string-length(context())&gt;=3">open</fx-setvalue>
+            <fx-setvalue ref="instance('z-vars')/open" if='string-length(context())&gt;=3'>open</fx-setvalue>
             <fx-send submission="s-load"></fx-send>
           </fx-action>
+          <iron-icon icon="close">
+            <fx-action event="click">
+              <!-- reset to empty -->
+              <fx-setvalue ref="instance('zotero-ref')/ptr/@target"></fx-setvalue>
+              <fx-setvalue ref="instance('z-vars')/search"></fx-setvalue>
+              <fx-setvalue ref="instance('z-vars')/return"></fx-setvalue>
+              <fx-setvalue ref="instance('z-vars')/open"></fx-setvalue>
+              <fx-reset instance="current-tag"></fx-reset>
+              <!-- open group to display details -->
+              <fx-refresh force="force"></fx-refresh>
+            </fx-action>
+          </iron-icon>
         </fx-control>
-        <div id="zotero-bib-output"></div>
+        <fx-output class="zotero-bib" ref="instance('current-tag')?*?bib" mediatype="html"></fx-output>
       </header>
       <fx-repeat id="r-bibs" ref="instance('zotero-list')?*">
         <template>
           <fx-var name="current" value="."></fx-var>
-          <fx-output class="bib" tabindex="0" ref="?bib" mediatype="html">
+          <div tabindex="0">
+          <fx-output class="bib" ref="?bib" mediatype="html" role="link" tabindex="0">
             <fx-action event="click">
               <fx-setvalue ref="instance('z-vars')/open"></fx-setvalue>
-              <fx-setvalue ref="instance('z-vars')/search" value="$current?data?tags(1)?tag"></fx-setvalue>
-              <fx-setvalue ref="instance('z-vars')/return" value="$current?data?tags(1)?tag"></fx-setvalue>
+              <fx-setvalue ref="instance('z-vars')/search" value='$current?data?tags(1)?tag'></fx-setvalue>
+              <fx-setvalue ref="instance('z-vars')/return" value='$current?data?tags(1)?tag'></fx-setvalue>
+              <fx-setvalue ref="instance('zotero-ref')/ptr/@target" value='$current?data?tags(1)?tag'></fx-setvalue>
+              <fx-send submission="s-load-tag"></fx-send>
               <fx-return ref="instance('z-vars')/return/text()"></fx-return>
-<!--              <fx-dispatch name="ref-selected" targetid="zotero-picker"></fx-dispatch>-->
+              <fx-refresh force="force"></fx-refresh>
             </fx-action>
             <fx-action event="keydown" if="event('code') = 'Enter'">
               <fx-setvalue ref="instance('z-vars')/open"></fx-setvalue>
               <fx-setvalue ref="instance('z-vars')/return" value="$current?data?tags(1)?tag"></fx-setvalue>
             </fx-action>
           </fx-output>
-
+          </div>
         </template>
       </fx-repeat>
     </section>
   </fx-fore>
-
 </div>
 </body>
 
 </html>
+

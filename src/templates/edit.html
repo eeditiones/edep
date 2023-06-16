@@ -138,31 +138,6 @@
 
                         </fx-instance>
 
-
-                        <fx-instance id="i-zotero-refs"
-                                    xpath-default-namespace="http://www.tei-c.org/ns/1.0"
-                                    type="json">{}</fx-instance>
-
-
-                        <fx-submission id="s-load-zotero"
-                                        method="get"
-                                        url="https://api.zotero.org/groups/2519759/items?q=lat&amp;include=data,bib"
-                                        replace="instance"
-                                        instance="i-zotero-refs"
-                                        validate="false">
-                            <fx-action event="submit-done">
-                                <fx-send submission="write-zotero-to-localstorage"></fx-send>
-                            </fx-action>
-                        </fx-submission>
-
-                        <fx-submission id="write-zotero-to-localstorage"
-                                        url="localStore:zotero"
-                                        method="post"
-                                        replace="none"
-                                        ref="instance('i-zotero-refs')"></fx-submission>
-
-
-
                         <fx-instance id="vars">
                             <data>
                                 <display-leiden>hidden</display-leiden>
@@ -425,24 +400,12 @@
                                                     <template>
                                                         <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
                                                         <div>
-<!--                                                                <fx-var name="ptr" value="ptr/@target"></fx-var>-->
                                                             <fx-control ref="ptr/@target"
                                                                         url="zotero-picker.html"
                                                                         initial=".."
                                                                         class="fore-control"
                                                                         update-event="input">
-
-<!--                                                                    <fx-replace ref="" with="instance('i-zotero-refs'" event="init"></fx-replace>-->
-                                                                <fx-action event="init"  if="string-length(.) != 0">
-                                                                    <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
-                                                                                attach-to="#zoteroRef1"></fx-load>
-                                                                </fx-action>
-                                                                <fx-action event="value-changed"  if="string-length(.) != 0">
-                                                                    <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
-                                                                                attach-to="#zoteroRef1"></fx-load>
-                                                                </fx-action>
                                                             </fx-control>
-                                                            <div id="zoteroRef1" class="zotero-bib"></div>
                                                             <fx-control ref="citedRange">
                                                                 <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                             </fx-control>
@@ -662,16 +625,7 @@
                                                                     initial=".."
                                                                     class="fore-control"
                                                                     update-event="input">
-                                                            <fx-action event="init" if="string-length(.) != 0">
-                                                                <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
-                                                                            attach-to="#zoteroRef2"></fx-load>
-                                                            </fx-action>
-                                                            <fx-action event="value-changed" if="string-length(.) != 0">
-                                                                <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
-                                                                            attach-to="#zoteroRef2"></fx-load>
-                                                            </fx-action>
                                                         </fx-control>
-                                                        <div id="zoteroRef2" class="zotero-bib"></div>
                                                         <fx-control ref="citedRange">
                                                             <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                         </fx-control>
@@ -748,16 +702,7 @@
                                                                     initial=".."
                                                                     class="fore-control"
                                                                     update-event="input">
-                                                            <fx-action event="init"  if="string-length(.) != 0">
-                                                                <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
-                                                                            attach-to="#zoteroRef3"></fx-load>
-                                                            </fx-action>
-                                                            <fx-action event="value-changed"  if="string-length(.) != 0">
-                                                                <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
-                                                                            attach-to="#zoteroRef3"></fx-load>
-                                                            </fx-action>
                                                         </fx-control>
-                                                        <div id="zoteroRef3" class="zotero-bib"></div>
                                                         <fx-control ref="citedRange">
                                                             <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                         </fx-control>
@@ -823,16 +768,7 @@
                                                                     initial=".."
                                                                     class="fore-control"
                                                                     update-event="input">
-                                                            <fx-action event="init"  if="string-length(.) != 0">
-                                                                <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
-                                                                            attach-to="#zoteroRef4"></fx-load>
-                                                            </fx-action>
-                                                            <fx-action event="value-changed"  if="string-length(.) != 0">
-                                                                <fx-load url="https://api.zotero.org/groups/2519759/items?tag={.}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum"
-                                                                            attach-to="#zoteroRef4"></fx-load>
-                                                            </fx-action>
                                                         </fx-control>
-                                                        <div id="zoteroRef4" class="zotero-bib"></div>
                                                         <fx-control ref="citedRange">
                                                             <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                         </fx-control>
@@ -1237,7 +1173,7 @@
                         <section class="buttonBar">
                             <pb-restricted login="login" group="tei">
                                 <p class="loginMessage" slot="fallback">You need to be logged in to save.</p>
-                            
+
                                 <fx-trigger class="saveBtn" debounce="1000">
                                     <button><pb-i18n key="form.save"></pb-i18n></button>
                                     <fx-action if="not(exists(instance('params')/id))">
