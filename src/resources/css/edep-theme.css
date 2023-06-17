@@ -29,7 +29,7 @@ main {
 
 @media (min-width: 1200px) {
     main {
-        margin: 2rem auto 0 auto !important;
+        margin: 2rem auto 5rem auto !important;
         max-width: 1024px;
     }
 }
