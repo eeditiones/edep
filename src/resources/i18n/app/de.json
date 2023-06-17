@@ -11,6 +11,9 @@
     "form": {
         "title": "Titel",
         "edepid": "EDEp-Id",
+        "fragment-type": "Art des Eintrags",
+        "type-main": "Gesamte Inschrift",
+        "type-fragment": "Fragment",
         "tm": "TM ID",
         "type-of-monument": "Inschriftträger",
         "description-of-monument": "Beschreibung Inschriftträger",

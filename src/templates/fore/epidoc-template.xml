@@ -57,7 +57,7 @@
                     </history>
                     <!-- msPart ist als Ganzes wiederholbar -->
                     <!-- @xml:id erforderlich für Referenzierung unten -->
-                    <msPart xml:id="">
+                    <msPart xml:id="" type="main">
 
                         <!--  ### end of runtime instance inlining -->
                         <msIdentifier>

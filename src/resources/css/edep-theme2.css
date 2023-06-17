@@ -311,8 +311,7 @@ fx-group.padded {
     border:thin solid var(--pb-link-color);
     border-radius:0.3rem;
 }
-.fragment::before{
-    content: attr(data-nr);
+.fragment > label {
     position:absolute;
     top:0;
     left:0.5rem;

@@ -443,6 +443,7 @@ declare %private function  api:preprocessing-uuid($nodes as node()*, $uuid as xs
             case element (tei:msPart) return 
                 element {node-name($node)} {
                     attribute xml:id {$uuid},
+                    $node/@* except $node/@xml:id,
                     $node/node()
                 }
             case element (tei:facsimile) return 

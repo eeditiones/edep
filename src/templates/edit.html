@@ -304,8 +304,19 @@
 
                         <fx-repeat id="parts" ref=".//msPart">
                             <template>
-                                <div class="fragment" data-nr="Fragment-{count(./preceding-sibling::msPart) + 1}">
+                                <div class="fragment">
+                                    <label>
+                                        <pb-i18n key="form.type-{@type}"></pb-i18n>
+                                    </label>
                                     <fx-group class="group-2">
+                                        <fx-control ref="@type">
+                                            <label class="bold"><pb-i18n key="form.fragment-type"></pb-i18n></label>
+                                            <select class="widget">
+                                                <option value="main"><pb-i18n key="form.type-inscription">Gesamte Inschrift</pb-i18n></option>
+                                                <option value="fragment"><pb-i18n key="form.type-fragment">Fragment</pb-i18n></option>
+                                            </select>
+                                        </fx-control>
+
                                         <!-- 4) -->
                                         <fx-control ref="msIdentifier/idno">
                                             <label><pb-i18n key="form.tm">TM Nummer</pb-i18n></label>
