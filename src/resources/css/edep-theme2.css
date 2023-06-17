@@ -330,15 +330,22 @@ fieldset{
     position: relative;
     padding-bottom: 1rem;
 }
-fieldset fieldset{
+fieldset > fieldset{
     margin:2rem 0;
     width:auto;
 
 }
-fieldset fieldset legend{
+fieldset > fieldset legend{
     font-size:1.2rem;
 }
-fx-control, fx-output {
+
+.nested-repeat fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+fx-control, fx-output, .nested-repeat fieldset legend {
     display: grid;
     grid-template-columns: 17rem 1rem 1fr;
     row-gap: 0.2rem;
@@ -347,8 +354,19 @@ fx-control, fx-output {
     ". . alert";
     margin: 0.5rem;
     grid-column-gap: 0.5rem;
-
 }
+
+.nested-repeat fieldset legend {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.nested-repeat fieldset legend label {
+    grid-area: label;
+    justify-self: end;
+    font-style: italic;
+}
+
 .fx-checkbox{
     display:block;
 }
@@ -371,9 +389,6 @@ fx-control .widget, fx-control .xml-editor {
     background: white;
 }
 
-fx-control label{
-    grid-area:label;
-}
 fx-control iron-icon:hover ~ fx-hint {
     opacity: 1;
     transition: all .4s;
@@ -574,7 +589,7 @@ pb-login{
     position:absolute;
     right:0.5rem;
 }
-[required]::after{
+fx-control[required]::after{
     content:'';
 }
 fx-control[required] > label::after {
