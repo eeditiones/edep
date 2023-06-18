@@ -1,4 +1,4 @@
-<msPart xml:id="" xmlns="http://www.tei-c.org/ns/1.0">
+<msPart xml:id="" type="fragment" xmlns="http://www.tei-c.org/ns/1.0">
     <!--  ### runtime instance inlining these divs which finally end up in the body -->
     <!-- 41) Textedition: @corresp referenziert msPart - eingefügt aus jinn-codemirror. Required -->
     <div type="textpart" subtype="fragment" n="a" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8"/>
