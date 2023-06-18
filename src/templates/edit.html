@@ -180,7 +180,7 @@
                         </fx-instance>
 
                         <fx-submission id="s-load-inscription"
-                                        url="api/inscription?id={instance('params')/id}"
+                                        url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
                                         method="get"
                                         replace="instance"
                                         validate="false">
@@ -215,7 +215,7 @@
                         </fx-submission>
 
                         <fx-submission id="s-save"
-                                        url="api/inscription?id={instance('params')/id}"
+                                        url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
                                         method="post"
                                         replace="instance">
                             <fx-message event="submit-done">Daten wurden aktualisiert</fx-message>
@@ -262,6 +262,11 @@
                     </fx-model>
 
                     <fx-group ref="teiHeader">
+                        <!--fx-repeat ref="instance('params')/*">
+                            <template>
+                                <span>Param {name(.)}={.}</span>
+                            </template>
+                        </fx-repeat-->
                         <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
                             <label><pb-i18n key="form.title"></pb-i18n></label>
                         </fx-control>

@@ -1,5 +1,4 @@
-<?xml-model href="teipublisher_odds.xsd"?>
-<?teipublisher output="web print"?>
+<?xml-model href="teipublisher_odds.xsd"?><?teipublisher output="web print"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:pb="http://teipublisher.com/1.0" xml:lang="en">
     <teiHeader>
         <fileDesc>
@@ -54,7 +53,7 @@
                     <modelSequence output="web" predicate="$parameters?header='short'">
             <model predicate="title/node()" behaviour="link">
                 <param name="content" value="title[1]"/>
-                <param name="uri" value="'edit.html?id=' || root(.)//teiHeader//idno[@type='EDEp']"/>
+                <param name="uri" value="'edit.html?collection=' || substring-after(util:collection-name(.), '/db/apps/edep-data/') || '&amp;amp;id=' || root(.)//teiHeader//idno[@type='EDEp']"/>
             </model>
             <model predicate="not(title/node())" behaviour="link">
                 <param name="content" value="$parameters?doc"/>

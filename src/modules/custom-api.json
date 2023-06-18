@@ -517,6 +517,13 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "collection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -540,6 +547,13 @@
         "parameters": [
           {
             "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "collection",
             "in": "query",
             "schema": {
               "type": "string"

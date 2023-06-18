@@ -318,27 +318,33 @@ declare function api:person-add($request as map(*)) {
 };
 
 declare function api:inscription($request as map(*)) {
-    let $check-collection := if(not(xmldb:collection-available($config:inscription))) then xmldb:create-collection("/", $config:inscription) else ()
+    let $check-collection := 
+        if(not(xmldb:collection-available($config:inscription))) then 
+            xmldb:create-collection("/", $config:inscription) 
+        else 
+            ()
+    let $collection := $config:data-root || "/" || $request?parameters?collection
     let $id := 
         if ($request?parameters?id) then
-            let $store := xmldb:store($config:inscription, concat($request?parameters?id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
+            let $store := xmldb:store($collection, concat($request?parameters?id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
             return $request?body//tei:idno[@type="EDEp"]/text()
         else if ($request?body//tei:idno[@type="EDEp"]/node()) then
             let $id := $request?body//tei:idno[@type="EDEp"]/text()
-            let $store := xmldb:store($config:inscription, concat($id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
+            let $store := xmldb:store($collection, concat($id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
             return $request?body//tei:idno[@type="EDEp"]/text()
         else
-            let $ids := sort(collection($config:inscription)//tei:idno[@type="EDEp"]/text())
+            let $ids := sort(collection($collection)//tei:idno[@type="EDEp"]/text())
             let $id-new := if (empty($ids)) then "0000001" else format-number(xs:integer(replace($ids[last()], "E", "")) + 1, "0000000")
-            let $store := xmldb:store($config:inscription, concat("E", $id-new, ".xml"), api:postprocess($request?body, "E" || $id-new) => api:clean-namespace())
+            let $store := xmldb:store($collection, concat("E", $id-new, ".xml"), api:postprocess($request?body, "E" || $id-new) => api:clean-namespace())
             return concat("E", $id-new)
 
     return try {
         let $preprocessing := map {
             "parameters" : map {
-                    "id" : $id
-                }
+                "id" : $id,
+                "collection": $request?parameters?collection
             }
+        }
         return api:inscription-template($preprocessing)
     } catch * {
         ()
@@ -347,9 +353,10 @@ declare function api:inscription($request as map(*)) {
 
 declare function api:inscription-template($request as map(*)) {
     let $id := $request?parameters?id
+    let $collection := $config:data-root || "/" || $request?parameters?collection
     let $doc :=
         if ($id) then
-            collection($config:data-root)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI
+            collection($collection)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI
         else
             doc($config:inscription-templ)
     let $input :=
