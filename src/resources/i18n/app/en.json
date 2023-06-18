@@ -8,9 +8,9 @@
     "form": {
         "title": "Title",
         "edepid": "EDEp-Id",
-        "fragment-type": "Type of entry",
-        "type-main": "Entire inscription",
-        "type-fragment": "Fragment",
+        "part-type": "Type of entry",
+        "part-main": "Entire inscription",
+        "part-fragment": "Fragment",
         "tm": "TM ID",
         "type-of-monument": "Type of monument",
         "description-of-monument": "Description of monument",

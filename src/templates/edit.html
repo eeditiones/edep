@@ -52,7 +52,7 @@
 </head>
 
 <body>
-<pb-page data-template="pages:pb-page" unresolved="unresolved" locales="resources/i18n/{{ns}}/{{lng}}.json">
+<pb-page data-template="pages:pb-page" unresolved="unresolved" locales="resources/i18n/{{ns}}/{{lng}}.json" require-language="">
     <app-drawer-layout force-narrow="force-narrow">
         <app-drawer slot="drawer" align="right">
             <div class="drawer-content">
@@ -74,9 +74,9 @@
                 </pb-media-query>
             </app-header>
 
-            <main id="main">
+            <main id="main" class="editor">
                 <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                    <fx-fore show-confirmation="show-confirmation">
+                <fx-fore show-confirmation="show-confirmation">
 
 <!--
                     <fx-action event="ready">
@@ -258,15 +258,42 @@
                         <fx-function signature="checkDate($value as xs:string) as xs:boolean" type="text/javascript">
                             return checkDate($value);
                         </fx-function>
-
                     </fx-model>
 
+                    <nav>
+                        <h3>Navigation</h3>
+                        <ul>
+                            <fx-repeat ref="teiHeader//msPart">
+                                <template>
+                                    <li>
+                                        <a href="#{@xml:id}">
+                                            <fx-switch ref="@type">
+                                                <fx-case name="main">
+                                                    <pb-i18n key="form.part-main"></pb-i18n>
+                                                </fx-case>
+                                                <fx-case name="fragment">
+                                                    <span>
+                                                        <pb-i18n key="form.part-fragment"></pb-i18n>
+                                                        {(' ', count(preceding-sibling::msPart[@type='fragment']) + 1)}
+                                                    </span>
+                                                </fx-case>
+                                            </fx-switch>
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a href="#{@xml:id}-findspot"><pb-i18n key="form.findspot"></pb-i18n></a>
+                                            </li>
+                                            <li>
+                                                <a href="#{@xml:id}-references"><pb-i18n key="form.references"></pb-i18n></a>
+                                            </li>
+                                            <li><a href="#{@xml:id}-transcript"><pb-i18n key="form.transcription"></pb-i18n></a></li>
+                                        </ul>
+                                    </li>
+                                </template>
+                            </fx-repeat>
+                        </ul>
+                    </nav>
                     <fx-group ref="teiHeader">
-                        <!--fx-repeat ref="instance('params')/*">
-                            <template>
-                                <span>Param {name(.)}={.}</span>
-                            </template>
-                        </fx-repeat-->
                         <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
                             <label><pb-i18n key="form.title"></pb-i18n></label>
                         </fx-control>
@@ -309,16 +336,23 @@
 
                         <fx-repeat id="parts" ref=".//msPart">
                             <template>
-                                <div class="fragment">
+                                <div class="fragment" id="{@xml:id}">
                                     <label>
-                                        <pb-i18n key="form.type-{@type}"></pb-i18n>
+                                        <fx-switch ref="@type">
+                                            <fx-case name="main">
+                                                <pb-i18n key="form.part-main"></pb-i18n>
+                                            </fx-case>
+                                            <fx-case name="fragment">
+                                                <pb-i18n key="form.part-fragment"></pb-i18n>
+                                            </fx-case>
+                                        </fx-switch>
                                     </label>
                                     <fx-group class="group-2">
                                         <fx-control ref="@type">
-                                            <label class="bold"><pb-i18n key="form.fragment-type"></pb-i18n></label>
+                                            <label class="bold"><pb-i18n key="form.part-type"></pb-i18n></label>
                                             <select class="widget">
-                                                <option value="main"><pb-i18n key="form.type-inscription">Gesamte Inschrift</pb-i18n></option>
-                                                <option value="fragment"><pb-i18n key="form.type-fragment">Fragment</pb-i18n></option>
+                                                <option value="main" data-i18n="form.part-main"></option>
+                                                <option value="fragment" data-i18n="form.part-fragment"></option>
                                             </select>
                                         </fx-control>
 
@@ -327,7 +361,7 @@
                                             <label><pb-i18n key="form.tm">TM Nummer</pb-i18n></label>
                                         </fx-control>
 
-                                        <div class="block findspot">
+                                        <div class="block" id="{@xml:id}-findspot">
                                             <h3><pb-i18n key="form.findspot">Fundort</pb-i18n></h3>
                                             <!-- geoId from geodata -->
                                             <fx-var name="corresp" value="history/origin/origPlace/@corresp"></fx-var>
@@ -610,7 +644,7 @@
 
                                     <fx-var name="frag" value="'#' || ./@xml:id"></fx-var>
 
-                                    <fx-group class="group-6 padded">
+                                    <fx-group class="group-6 padded" id="{@xml:id}-references">
                                         <label><pb-i18n key="form.references">Referenzen</pb-i18n></label>
 
                                         <!-- 35a) Ältere Editionen -->
@@ -852,7 +886,7 @@
                                             </fx-repeat>
                                         </fieldset>
                                     </fx-group>
-                                    <fx-group class="group-7 padded">
+                                    <fx-group class="group-7 padded" id="{@xml:id}-transcript">
                                         <label><pb-i18n key="form.transcription">Transkription</pb-i18n></label>
                                         <fx-control class="transcription editor" ref="div[@type='textpart']" as="node" update-event="blur">
                                             <jinn-epidoc-editor id="transcriptionEditor" unwrap="unwrap" class="widget"

@@ -24,8 +24,16 @@ function checkDate(string) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+    let language;
+
+    pbEvents.subscribe('pb-page-ready', null, (ev) => {
+        language = ev.detail.language;
+    });
+
     const fore = document.querySelector('fx-fore');
     fore.addEventListener('ready', () => {
+        pbEvents.emit('pb-i18n-language', null, { language });
+
         const epidoc = document.getElementById('transcriptionEditor');
         const output = document.getElementById('transcription-display');
     
@@ -43,5 +51,4 @@ window.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-
 });

@@ -19,6 +19,30 @@ html{
     box-sizing: border-box;
 }
 
+@media (min-width: 1200px) {
+    .editor > fx-fore {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas: "aside form";
+        column-gap: 40px;
+    }
+}
+
+.editor > fx-fore nav {
+    grid-area: aside;
+}
+
+.editor > fx-fore fx-group[ref=teiHeader] {
+    grid-area: form;
+}
+
+nav h3 {
+    margin-top: 0;
+}
+
+nav ul {
+    padding-left: 1rem;
+}
 
 .buttonBar {
     display: flex;
@@ -572,6 +596,7 @@ pb-login{
     font-size:1.4rem;
     display: block;
     margin-bottom:1rem;
+    margin-top: 0;
 }
 .title label{
     display:block;
