@@ -23,19 +23,22 @@ body{
 
 @media (min-width: 1200px) {
     .editor > fx-fore {
+        display: block;
+        /*
         display: grid;
         grid-template-columns: auto 1fr;
         grid-template-areas: "aside form";
         column-gap: 40px;
+        */
     }
 }
 
 .editor > fx-fore nav {
-    grid-area: aside;
+    position:fixed;
 }
 
 .editor > fx-fore fx-group[ref=teiHeader] {
-    grid-area: form;
+    margin-left:9rem;
 }
 
 nav h3 {
@@ -43,7 +46,9 @@ nav h3 {
 }
 
 nav ul {
-    padding-left: 1rem;
+    padding: 0;
+    margin:0;
+    list-style: none;
 }
 
 .buttonBar {

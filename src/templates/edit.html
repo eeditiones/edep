@@ -256,8 +256,8 @@
 
                     <nav>
                         <h3>Navigation</h3>
-                        <ul>
-                            <fx-repeat ref="teiHeader//msPart">
+                        <div>
+                            <ul data-ref="teiHeader//msPart">
                                 <template>
                                     <li>
                                         <a href="#{@xml:id}">
@@ -284,7 +284,9 @@
                                         </ul>
                                     </li>
                                 </template>
-                            </fx-repeat>
+                            </ul>
+                        </div>
+                        <ul>
                             <li><a href="#commentary"><pb-i18n key="form.commentary"></pb-i18n></a></li>
                             <li><a href="#chronology"><pb-i18n key="form.dating"></pb-i18n></a></li>
                         </ul>
