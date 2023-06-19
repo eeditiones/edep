@@ -291,6 +291,8 @@
                                     </li>
                                 </template>
                             </fx-repeat>
+                            <li><a href="#commentary"><pb-i18n key="form.commentary"></pb-i18n></a></li>
+                            <li><a href="#chronology"><pb-i18n key="form.dating"></pb-i18n></a></li>
                         </ul>
                     </nav>
                     <fx-group ref="teiHeader">
@@ -1066,7 +1068,7 @@
                         This won't call the update-cycle for each event as the replace action in its current form does not
                         call it. The control will refresh the UI when the control looses focus (onblur).
                         -->
-                        <fx-group class="group-10 padded">
+                        <fx-group class="group-10 padded" id="commentary">
                             <label><pb-i18n key="form.commentary">Kommentar</pb-i18n></label>
                             <fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node"
                                         update-event="blur">
@@ -1095,7 +1097,7 @@
                         </fx-group>
 
                         <!-- 26) -->
-                        <fx-group ref="//msDesc" class="group-6">
+                        <fx-group ref="//msDesc" class="group-6" id="chronology">
                             <label><pb-i18n key="form.dating">Datierung</pb-i18n></label>
 
                             <!-- 26), 27)-->
