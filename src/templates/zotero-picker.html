@@ -58,6 +58,7 @@
           <open></open>
           <return></return>
           <show-tag>false</show-tag>
+          <busy></busy>
         </data>
       </fx-instance>
 
@@ -67,19 +68,29 @@
                      replace="instance"
                      instance="current-tag"
                      validate="false">
+        <fx-action event="submit-done">
+          <fx-setvalue ref="instance('z-vars')/busy"></fx-setvalue>
+        </fx-action>
       </fx-submission>
+
 
       <fx-submission id="s-load"
                      url="https://api.zotero.org/groups/2519759/items?q={instance('z-vars')/search}&amp;include=data,bib"
                      method="get"
                      replace="instance"
                      instance="zotero-list"
-                     validate="false"></fx-submission>
+                     validate="false">
+<!--        <fx-setvalue event="submit" ref="instance('z-vars')/busy">busy</fx-setvalue>-->
+        <fx-action event="submit-done">
+          <fx-setvalue ref="instance('z-vars')/busy"></fx-setvalue>
+        </fx-action>
+      </fx-submission>
     </fx-model>
 
     <section id="zotero-picker" class="zotero-picker {instance('z-vars')/open}">
       <header>
-        <fx-control ref="instance('z-vars')/search" update-event="input" debounce="200">
+<!--        <fx-control ref="instance('z-vars')/search" update-event="input" debounce="200" aria-busy="{instance('z-vars')/busy}" aria-desscribedby="load-progress">-->
+        <fx-control ref="instance('z-vars')/search" update-event="input" aria-desscribedby="load-progress">
           <label>
             <pb-i18n key="form.reference">Referenz</pb-i18n>
           </label>
@@ -88,7 +99,14 @@
           <fx-action event="value-changed">
             <fx-update></fx-update>
             <fx-refresh></fx-refresh>
-            <fx-setvalue ref="instance('z-vars')/open" if='string-length(context())&gt;=3'>open</fx-setvalue>
+            <fx-action if="string-length(context())&gt;=3">
+              <fx-setvalue ref="instance('z-vars')/open">open</fx-setvalue>
+            </fx-action>
+            <fx-action if="string-length(context())&gt;=2">
+              <fx-setvalue ref="instance('z-vars')/busy">busy</fx-setvalue>
+            </fx-action>
+
+            <fx-refresh force="force"></fx-refresh>
             <fx-send submission="s-load"></fx-send>
           </fx-action>
           <iron-icon icon="close">
@@ -104,6 +122,8 @@
             </fx-action>
           </iron-icon>
         </fx-control>
+        <progress id="load-progress" class="{instance('z-vars')/busy}" aria-label="loading references,,,"></progress>
+
         <fx-output class="zotero-bib" ref="instance('current-tag')?*?bib" mediatype="html"></fx-output>
       </header>
       <fx-repeat id="r-bibs" ref="instance('zotero-list')?*">
@@ -116,7 +136,7 @@
               <fx-setvalue ref="instance('z-vars')/search" value='$current?data?tags(1)?tag'></fx-setvalue>
               <fx-setvalue ref="instance('z-vars')/return" value='$current?data?tags(1)?tag'></fx-setvalue>
               <fx-setvalue ref="instance('zotero-ref')/ptr/@target" value='$current?data?tags(1)?tag'></fx-setvalue>
-              <fx-send submission="s-load-tag"></fx-send>
+              <fx-send submission="s-load-tag" if="string-length(instance('zotero-ref')/ptr/@target) != 0"></fx-send>
               <fx-return ref="instance('z-vars')/return/text()"></fx-return>
               <fx-refresh force="force"></fx-refresh>
             </fx-action>

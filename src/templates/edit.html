@@ -30,7 +30,7 @@
         1. uncomment this and comment above Fore import
         2. Replace controller.xql with localhost-controller.xql
     -->
-     <!--script type="module" src="http://localhost:8090/index.js"></script-->
+<!--     <script type="module" src="http://localhost:8090/index.js"></script>-->
     <!--    <script type="module" src="resources/scripts/datalist-ajax/datalist-ajax.min.js"></script>-->
 
 
@@ -63,7 +63,7 @@
             </div>
         </app-drawer>
         <app-header-layout>
-            <app-header reveals="reveals" fixed="fixed" effects="waterfall">
+            <app-header slot="header" fixed="fixed" reveals="reveals" effects="waterfall">
                 <app-toolbar data-template="lib:include" data-template-path="templates/menu.html"></app-toolbar>
                 <pb-media-query query="(max-width: 1023px)">
                     <app-toolbar class="toolbar" sticky="sticky">
@@ -78,14 +78,8 @@
                 <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                 <fx-fore show-confirmation="show-confirmation">
 
-<!--
-                    <fx-action event="ready">
-                        <fx-send submission="s-load-zotero"></fx-send>
-                    </fx-action>
--->
-
                     <!-- ### if get called with an id param we load the data via submission ### -->
-<!--                        <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>-->
+                    <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>
                     <fx-model>
                         <fx-action event="model-construct-done">
                             <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
@@ -295,7 +289,7 @@
                             <li><a href="#chronology"><pb-i18n key="form.dating"></pb-i18n></a></li>
                         </ul>
                     </nav>
-                    <fx-group ref="teiHeader">
+                    <fx-group ref="teiHeader" style='z-index:{}'>
                         <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
                             <label><pb-i18n key="form.title"></pb-i18n></label>
                         </fx-control>
@@ -540,17 +534,20 @@
                                             </select>
                                         </fx-control>
 
+
                                         <!-- 15) -->
                                         <fx-control ref="msContents/msItem/@class" update-event="input">
                                             <label><pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n></label>
                                             <fx-items ref="instance('typeins')?*" class="widget">
                                                 <template>
                                                     <span class="fx-checkbox">
-                                                        <input type="checkbox" value="{?name}"/>
-                                                        <label>{?value}</label>
+                                                        <input type="checkbox" value="{value}"/>
+                                                        <label>{name}</label>
                                                     </span>
                                                 </template>
                                             </fx-items>
+
+
                                         </fx-control>
 
                                         <!--                        <fx-group>-->

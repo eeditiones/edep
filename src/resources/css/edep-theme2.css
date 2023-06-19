@@ -12,9 +12,11 @@ html{
     --group-10-bg: #f9c74f;
 
     --jinn-codemirror-background-color: white;
+    scroll-behavior: smooth;
 }
 
-
+body{
+}
 * {
     box-sizing: border-box;
 }
@@ -566,7 +568,7 @@ fx-var{
     padding: 1rem 0;
 }
 pb-login{
-    z-index: 10;
+    z-index: auto;
 }
 #parts > fx-repeatitem > label{
     font-size: 1.2rem;

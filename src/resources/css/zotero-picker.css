@@ -45,10 +45,25 @@
     "label icon control clear"
     ". . alert ."
     ". . hint .";
-    margin: 0.5rem;
+    /*margin: 0.5rem;*/
     grid-column-gap: 0.5rem;
 }
 
 .zotero-picker fx-control iron-icon{
     grid-area: clear;
+}
+.zotero-picker progress{
+    display:none;
+    visibility: hidden;
+    margin-left:18.5rem;
+    width:inherit;
+    /*position:absolute;*/
+    /*top:0;*/
+    height: 6px;
+    /*min-height: 4px;*/
+    margin-bottom:0.25rem;
+}
+.zotero-picker progress.busy{
+    display: block;
+    visibility: visible;
 }
