@@ -50,5 +50,24 @@ window.addEventListener('DOMContentLoaded', () => {
                 output.innerHTML = html;
             });
         });
+
+
+        const navLinks = Array.from(document.querySelectorAll('nav a'));
+
+        navLinks.forEach(link => {
+
+            link.addEventListener('click', e => {
+                console.log('clicked it')
+
+                navLinks.forEach(lk =>{
+                    lk.style.textDecoration = "none";
+                    lk.style.fontWeight = "300";
+                })
+
+                const parent = e.target.closest('a');
+                parent.style.textDecoration = "underline";
+                parent.style.fontWeight = "700";
+            });
+        });
     });
 });
