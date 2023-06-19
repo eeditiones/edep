@@ -76,6 +76,10 @@
         "site-find-spot": "Fundstelle",
         "hint-reference": "Referenz auf Zotero Eintrag. Eingabe von mind. 3 Buchstaben öffnet Auswahlliste. Alternativ ist unten eine freie Angabe möglich.",
         "biblio-abbreviation": "Kürzel",
-        "hint-biblio-abbreviation": "Valide XML ID zur Referenzierung dieses Eintrags"
+        "hint-biblio-abbreviation": "Valide XML ID zur Referenzierung dieses Eintrags",
+        "data-saved": "Daten wurden gespeichert",
+        "save-failed": "Daten konnten nicht gespeichert werden",
+        "loading-failed": "Laden der Inschrift fehlgeschlagen",
+        "invalid-data": "Bitte Fehler korrigieren"
     }
 }

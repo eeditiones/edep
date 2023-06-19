@@ -184,7 +184,7 @@
                                         method="get"
                                         replace="instance"
                                         validate="false">
-                            <fx-message event="submit-error">Failed to load Inscription</fx-message>
+                            <fx-message event="submit-error"><pb-i18n key="loading-failed"></pb-i18n></fx-message>
 
                             <fx-action event="submit-done">
                                 <!--
@@ -206,10 +206,10 @@
                                         url="api/inscription"
                                         method="post"
                                         replace="instance">
-                            <fx-message event="submit-done">Daten wurden gespeichert</fx-message>
+                            <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
 
                             <fx-action event="submit-error">
-                                <fx-message>Daten konnten nicht gespeichert werden.</fx-message>
+                                <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
                                 <fx-action src="resources/scripts/showErrors.js"></fx-action>
                             </fx-action>
                         </fx-submission>
@@ -218,9 +218,9 @@
                                         url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
                                         method="post"
                                         replace="instance">
-                            <fx-message event="submit-done">Daten wurden aktualisiert</fx-message>
+                            <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
                             <fx-action event="submit-error">
-                                <fx-message>Daten konnten nicht gespeichert werden.</fx-message>
+                                <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
                                 <fx-action src="resources/scripts/showErrors.js"></fx-action>
                             </fx-action>
                         </fx-submission>
@@ -1241,7 +1241,7 @@
                         </section>
 
                         <fx-control ref="instance('vars')/xml-valid" class="valid-warning">
-                            <fx-alert>Bitte XML korrigieren, um zu speichern.</fx-alert>
+                            <fx-alert><pb-i18n key="form.invalid-data"></pb-i18n></fx-alert>
                             <input style="display:none;"/>
                         </fx-control>
                     </fx-group>

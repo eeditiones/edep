@@ -73,6 +73,10 @@
         "site-modern-region": "Modern region",
         "hint-reference": "Zotero reference. Enter at least 3 characters to open selection list. As an alternative, a free entry is possible below.",
         "biblio-abbreviation": "Sigle",
-        "hint-biblio-abbreviation": "Valid XML ID to use as reference to this entry"
+        "hint-biblio-abbreviation": "Valid XML ID to use as reference to this entry",
+        "data-saved": "Data has been saved",
+        "save-failed": "Saving data failed",
+        "loading-failed": "Failed to load inscription",
+        "invalid-data": "Please correct form before saving"
     }
 }
