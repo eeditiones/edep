@@ -13,6 +13,7 @@ html{
 
     --jinn-codemirror-background-color: white;
     scroll-behavior: smooth;
+    scroll-padding-top:5rem;
 }
 
 body{
@@ -284,6 +285,7 @@ fx-group[ref="teiHeader"]{
     padding:0;
     margin:0;
 }
+
 .group-1{
     /*background:var(--group-1-bg);*/
     margin:0;
