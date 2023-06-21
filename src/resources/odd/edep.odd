@@ -164,9 +164,6 @@
                     <modelSequence predicate="@break=&#34;no&#34;">
             <model behaviour="inline">
                 <param name="content" value="'-'"/>
-                <outputRendition xml:space="preserve">
-                color:green;
-                </outputRendition>
             </model>
             <model behaviour="break">
                 <param name="type" value="'line'"/>
@@ -194,7 +191,7 @@
             </outputRendition>
         </model>
                     <model predicate="@extent" behaviour="inline">
-            <param name="content" value="@extent"/>
+            <param name="content" value="if (@extent = 'unknown') then '?' else @extent"/>
             <outputRendition xml:space="preserve" scope="before">
             content: '[..';
             </outputRendition>
@@ -212,6 +209,18 @@
         </model>
                 </elementSpec>
                 <elementSpec ident="surplus" mode="add"/>
+            <elementSpec ident="abbr" mode="change">
+                    <model predicate="parent::expan" behaviour="inline"/>
+                    <model behaviour="inline">
+            <param name="content" value="(., '(---)')"/>
+        </model>
+                </elementSpec>
+                <elementSpec ident="text()" mode="add">
+                    <model predicate="following-sibling::lb[@break=&#34;no&#34;]" behaviour="text">
+            <param name="content" value="replace(., '[\s\n]+$', '')"/>
+        </model>
+                    <model behaviour="text"/>
+                </elementSpec>
             </schemaSpec>
         </body>
     </text>
