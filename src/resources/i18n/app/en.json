@@ -6,6 +6,12 @@
         "about": "About"
     },
     "form": {
+        "object": "Object",
+        "object-description": "Object description",
+        "text-description": "Text description",
+        "edition": "Text edition",
+        "historic-relevance": "Historic relevance",
+        "display": "Display",
         "title": "Title",
         "edepid": "EDEp-Id",
         "part-type": "Type of entry",

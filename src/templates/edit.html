@@ -297,6 +297,7 @@
                         </fx-control>
                         <!--            <span>Sprachselector hier</span>-->
                         <fx-group class="group-1">
+                            <h3><pb-i18n key="form.object">Objekt</pb-i18n></h3>
                             <!-- 3) -->
 
                             <fx-output ref=".//msDesc/msIdentifier/idno">
@@ -345,7 +346,6 @@
                                             </fx-case>
                                         </fx-switch>
                                     </label>
-                                    <fx-group class="group-2">
                                         <fx-control ref="@type">
                                             <label class="bold"><pb-i18n key="form.part-type"></pb-i18n></label>
                                             <select class="widget">
@@ -358,8 +358,8 @@
                                         <fx-control ref="msIdentifier/idno">
                                             <label><pb-i18n key="form.tm">TM Nummer</pb-i18n></label>
                                         </fx-control>
-
-                                        <div class="block" id="{@xml:id}-findspot">
+                                    
+                                        <fx-group id="{@xml:id}-findspot">
                                             <h3><pb-i18n key="form.findspot">Fundort</pb-i18n></h3>
                                             <!-- geoId from geodata -->
                                             <fx-var name="corresp" value="history/origin/origPlace/@corresp"></fx-var>
@@ -373,13 +373,13 @@
                                                 <label><pb-i18n key="form.context-of-provenance">Fundkontext</pb-i18n></label>
                                                 <textarea rows="4" class="widget"></textarea>
                                             </fx-control>
-                                        </div>
+                                        </fx-group>
 
                                         <!-- 11) -->
 
                                         <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
                                         <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
-                                        <div class="block">
+                                        <fx-group>
                                             <h3><pb-i18n key="form.year-of-find">Fundjahr/-datum</pb-i18n></h3>
                                             <fx-control ref="history/provenance/@when">
                                                 <label><pb-i18n key="form.date">Zeitpunkt</pb-i18n></label>
@@ -399,10 +399,11 @@
                                             <fx-control ref="history/provenance/@when-custom">
                                                 <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                             </fx-control>
-                                        </div>
+                                        </fx-group>
 
-                                        <div class="block">
+                                        <fx-group>
 
+                                            <h3><pb-i18n key="form.last-recorded-location"></pb-i18n></h3>
                                             <!-- 12a) -->
                                             <fx-control ref="msIdentifier/repository">
                                                 <label><pb-i18n key="form.last-recorded-location">Aufbewahrung</pb-i18n></label>
@@ -490,9 +491,9 @@
                                                     </template>
                                                 </fx-repeat>
                                             </fieldset>
-                                        </div>
+                                        </fx-group>
 
-                                        <div>
+                                        <fx-group>
                                             <h3><pb-i18n key="form.verification">Verifizierung</pb-i18n></h3>
                                             <!-- 12b-12e missing -->
                                             <fx-control ref="msContents/msItem/note[@type='verification']/@subtype">
@@ -512,10 +513,10 @@
                                                 <label><pb-i18n key="form.date-of-verification">Datum der Verifizierung</pb-i18n></label>
                                                 <input placeholder="YYYY-MM-DD" class="widget"/>
                                             </fx-control>
-                                        </div>
-                                    </fx-group>
+                                        </fx-group>
 
                                     <fx-group class="group-3">
+                                        <h3><pb-i18n key="form.object-description">Objektbeschreibung</pb-i18n></h3>
 
                                         <!-- 13) -->
                                         <fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
@@ -571,7 +572,7 @@
                                         <!-- 34) -->
                                     </fx-group>
                                     <fx-group class="group-4">
-                                        <label><pb-i18n key="form.inscription-field">Inschriftfeld</pb-i18n></label>
+                                        <h3><pb-i18n key="form.inscription-field">Inschriftfeld</pb-i18n></h3>
                                         <!-- 21) -->
                                         <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/height">
                                             <label><pb-i18n key="form.height">Höhe</pb-i18n></label>
@@ -591,6 +592,7 @@
 
 
                                     <fx-group class="group-5">
+                                        <h3><pb-i18n key="form.text-description"></pb-i18n></h3>
                                         <!-- 24) -->
                                         <fx-control ref="//layoutDesc/layout/rs[@type='metric']" update-event="input">
                                             <label><pb-i18n key="form.metre">Metrik</pb-i18n></label>
@@ -614,9 +616,8 @@
                                         </fx-control>
 
                                         <!-- 34) -->
-                                        <fieldset>
-                                            <legend><label><pb-i18n key="form.palaeography">Paläographie</pb-i18n></label></legend>
-                                                <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='paleography']/@ref" update-event="input">
+                                        <div class="block">
+                                            <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='paleography']/@ref" update-event="input">
                                                 <label><pb-i18n key="form.palaeography">Paläographie</pb-i18n></label>
                                                 <fx-items ref="instance('palaeo')/item" class="widget">
                                                     <template>
@@ -630,7 +631,7 @@
                                             <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='paleography']" update-event="input" class="{instance('vars')/hide}">
                                                 <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                             </fx-control>
-                                        </fieldset>
+                                        </div>
 
                                         <!-- 39) -->
                                         <fx-control ref="//handDesc/handNote/rs" update-event="input">
@@ -645,8 +646,8 @@
 
                                     <fx-var name="frag" value="'#' || ./@xml:id"></fx-var>
 
-                                    <fx-group class="group-6 padded" id="{@xml:id}-references">
-                                        <label><pb-i18n key="form.references">Referenzen</pb-i18n></label>
+                                    <fx-group class="group-6" id="{@xml:id}-references">
+                                        <h3><pb-i18n key="form.references">Referenzen</pb-i18n></h3>
 
                                         <!-- 35a) Ältere Editionen -->
                                         <fieldset>
@@ -887,8 +888,10 @@
                                             </fx-repeat>
                                         </fieldset>
                                     </fx-group>
-                                    <fx-group class="group-7 padded" id="{@xml:id}-transcript">
-                                        <label><pb-i18n key="form.transcription">Transkription</pb-i18n></label>
+                                    <fx-group class="group-6" id="{@xml:id}-edition">
+                                        <h3><pb-i18n key="form.edition">Textedition</pb-i18n></h3>
+                                    <div class="block" id="{@xml:id}-transcript">
+                                        <h4><pb-i18n key="form.transcription">Transkription</pb-i18n></h4>
                                         <fx-control class="transcription editor" ref="div[@type='textpart']" as="node" update-event="blur">
                                             <jinn-epidoc-editor id="transcriptionEditor" unwrap="unwrap" class="widget"
                                                                 schema="resources/scripts/tei.json" schema-root="div" mode="leiden_plus">
@@ -930,10 +933,11 @@
                                                 <fx-send submission="s-render"></fx-send>
                                             </fx-action-->
                                         </fx-control>
+                                        <h4><pb-i18n key="form.display">Display</pb-i18n></h4>
                                         <div id="transcription-display"></div>
-                                    </fx-group>
-                                    <fx-group class="group-8 padded">
-                                        <label><pb-i18n key="form.apparatus">Apparatus</pb-i18n></label>
+                                    </div>
+                                    <div class="block">
+                                        <h4><pb-i18n key="form.apparatus">Apparatus</pb-i18n></h4>
                                         <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
                                         <fx-control class="apparatus editor" ref="div[@type='apparatus']" as="node" update-event="blur">
                                             <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap"
@@ -958,7 +962,7 @@
                                                 </div>
                                             </jinn-xml-editor>
                                         </fx-control>
-                                    </fx-group>
+                                    </div>
 
                                     <!-- 39) -->
                                     <!--
@@ -973,8 +977,8 @@
                                                                         </fx-group>
                                     -->
 
-                                    <fx-group class="group-9 padded">
-                                        <label><pb-i18n key="form.translation">Übersetzung</pb-i18n></label>
+                                    <div class="block">
+                                        <h4><pb-i18n key="form.translation">Übersetzung</pb-i18n></h4>
                                         <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
                                         <fx-control class="translation editor" ref="div[@type='translation']" as="node"
                                                     update-event="blur">
@@ -999,7 +1003,8 @@
                                         <fx-control class="translator" ref="div[@type='translation']/@resp">
                                             <label><pb-i18n key="form.translated-by">Übersetzer/in</pb-i18n>: </label>
                                         </fx-control>
-                                    </fx-group>
+                                    </div>
+                                </fx-group>
                                 </div>
                                 <!--
                                                             <div class="repeat-caption">
@@ -1068,8 +1073,8 @@
                         This won't call the update-cycle for each event as the replace action in its current form does not
                         call it. The control will refresh the UI when the control looses focus (onblur).
                         -->
-                        <fx-group class="group-10 padded" id="commentary">
-                            <label><pb-i18n key="form.commentary">Kommentar</pb-i18n></label>
+                        <fx-group class="group-10" id="commentary">
+                            <h3><pb-i18n key="form.commentary">Kommentar</pb-i18n></h3>
                             <fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node"
                                         update-event="blur">
                                 <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]"
@@ -1099,7 +1104,7 @@
 
                         <!-- 26) -->
                         <fx-group ref="//msDesc" class="group-6" id="chronology">
-                            <label><pb-i18n key="form.dating">Datierung</pb-i18n></label>
+                            <h3><pb-i18n key="form.dating">Datierung</pb-i18n></h3>
 
                             <!-- 26), 27)-->
                             <fx-control ref="history/origin/origDate/@when-custom">
@@ -1123,6 +1128,7 @@
                         </fx-group>
 
                         <fx-group ref="profileDesc" class="group-7">
+                            <h3><pb-i18n key="form.historic-relevance"></pb-i18n></h3>
                             <!-- 28)  -->
                             <fx-control ref="textClass/keywords/term/@ref" update-event="input">
                                 <label><pb-i18n key="form.religion">Religion</pb-i18n></label>

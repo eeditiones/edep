@@ -52,6 +52,10 @@ nav ul {
     list-style: none;
 }
 
+nav ul ul {
+    margin-left: 1em;
+}
+
 .buttonBar {
     display: flex;
     flex-direction: row;
@@ -343,6 +347,7 @@ fx-group.padded {
 .fragment{
     border:thin solid var(--pb-link-color);
     border-radius:0.3rem;
+    padding-top: 1rem;
 }
 .fragment > label {
     position:absolute;
@@ -456,6 +461,7 @@ fx-group{
     padding:1rem;
     border-radius: 0.3rem;
     position: relative;
+    padding:0 2rem 1rem 2rem;
 }
 fx-group > label {
     font-family: var(--pb-heading-font-family);
@@ -466,12 +472,15 @@ fx-group > label {
     position:absolute;
     top: 0;
 }
-fx-group fx-group{
+fx-group fx-group {
     border:thin solid var(--paper-grey-600);
-    margin:1rem 0;
-
     /*padding:1rem;*/
 }
+
+fx-group + fx-group {
+    margin-top: 1rem;
+}
+
 #parts fx-group{
     margin:1rem;
 }

@@ -9,6 +9,12 @@
         "about": "Über das Projekt"
     },
     "form": {
+        "object": "Objekt",
+        "object-description": "Objectbeschreibung",
+        "text-description": "Textbeschreibung",
+        "edition": "Textedition",
+        "display": "Ausgabe",
+        "historic-relevance": "Historische Relevanz",
         "title": "Titel",
         "edepid": "EDEp-Id",
         "part-type": "Art des Eintrags",
