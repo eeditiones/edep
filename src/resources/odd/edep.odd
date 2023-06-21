@@ -177,9 +177,7 @@
                 </elementSpec>
                 <elementSpec ident="del" mode="change">
                     <model behaviour="inline">
-            <outputRendition xml:space="preserve">
-            text-decoration: line-through;
-            </outputRendition>
+            <param name="content" value="('[[', ., ']]')"/>
         </model>
                 </elementSpec>
                 <elementSpec ident="gap" mode="change">
