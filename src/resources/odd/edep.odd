@@ -89,7 +89,7 @@
                     <model behaviour="inline"/>
                 </elementSpec>
                 <elementSpec ident="ab" mode="change">
-                    <model behaviour="paragraph"/>
+                    <model behaviour="block"/>
                 </elementSpec>
                 <elementSpec ident="note" mode="change">
                     <model predicate="&#34;sic&#34;" behaviour="inline">
@@ -110,21 +110,12 @@
                 <elementSpec ident="supplied" mode="change">
                     <model predicate="following-sibling::node()[1][name()='gap'][@reason=&#34;lost&#34;]" behaviour="inline">
             <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;[&#34;,., &#34;? ---]&#34;) else (&#34;[&#34;,., &#34; ---]&#34;)"/>
-            <outputRendition xml:space="preserve">
-            background:pink;
-            </outputRendition>
         </model>
                     <model predicate="preceding-sibling::node()[1][name()='gap'][@reason=&#34;lost&#34;]" behaviour="inline">
             <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;[--- &#34;,., &#34;?]&#34;) else (&#34;[--- &#34;,., &#34;]&#34;)"/>
-            <outputRendition xml:space="preserve">
-            background:yellow;
-            </outputRendition>
         </model>
                     <model predicate="@reason=&#34;lost&#34;" behaviour="inline">
             <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;[&#34;,. , &#34;?]&#34;) else (&#34;[&#34;,. , &#34;]&#34;)"/>
-            <outputRendition xml:space="preserve">
-            background:lightgreen;
-            </outputRendition>
         </model>
                     <model predicate="parent::choice" behaviour="inline"/>
                     <model predicate="@reason='damage'" behaviour="inline">
@@ -161,6 +152,7 @@
         </model>
                 </elementSpec>
                 <elementSpec ident="lb" mode="change">
+                    <model predicate="not(preceding-sibling::lb)" behaviour="omit"/>
                     <modelSequence predicate="@break=&#34;no&#34;">
             <model behaviour="inline">
                 <param name="content" value="'-'"/>
