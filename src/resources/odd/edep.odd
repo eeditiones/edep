@@ -175,26 +175,15 @@
                 <elementSpec ident="gap" mode="change">
                     <model predicate="preceding-sibling::node()[1][name()='supplied'][@reason=&#34;lost&#34;]" behaviour="inline"/>
                     <model predicate="following-sibling::node()[1][name()='supplied'][@reason=&#34;lost&#34;]" behaviour="inline"/>
-                    <model predicate="desc" behaviour="inline">
-            <outputRendition xml:space="preserve">
-            color: grey;
-            </outputRendition>
+                    <model predicate="@reason='lost' and @unit='line'" behaviour="inline">
+            <param name="content" value="('[- - - - -')"/>
         </model>
                     <model predicate="@extent" behaviour="inline">
-            <param name="content" value="if (@extent = 'unknown') then '?' else @extent"/>
-            <outputRendition xml:space="preserve" scope="before">
-            content: '[..';
-            </outputRendition>
-            <outputRendition xml:space="preserve" scope="after">
-            content: '..]';
-            </outputRendition>
-            <outputRendition xml:space="preserve">
-            color: grey;
-            </outputRendition>
+            <param name="content" value="('[- - -', if (@extent = 'unknown') then '?' else '', ']')"/>
         </model>
                     <model behaviour="inline">
             <outputRendition xml:space="preserve" scope="before">
-            content: '[...]';
+            content: '[- - -]';
             </outputRendition>
         </model>
                 </elementSpec>
