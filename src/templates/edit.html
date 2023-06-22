@@ -365,13 +365,6 @@
                                             </fx-case>
                                         </fx-switch>
                                     </label>
-                                        <fx-control ref="@type">
-                                            <label class="bold"><pb-i18n key="form.part-type"></pb-i18n></label>
-                                            <select class="widget">
-                                                <option value="main" data-i18n="form.part-main"></option>
-                                                <option value="fragment" data-i18n="form.part-fragment"></option>
-                                            </select>
-                                        </fx-control>
 
                                         <!-- 4) -->
                                         <fx-control ref="msIdentifier/idno">
@@ -1044,7 +1037,7 @@
                                 <!--                    </div>-->
 
 
-                                <fx-trigger class="delete {if(count(./preceding-sibling::msPart) = 0) then 'hidden' else ''}">
+                                <fx-trigger class="delete {if(@type='main' or count(./preceding-sibling::msPart) = 0) then 'hidden' else ''}">
                                     <button>Löschen</button>
                                     <!--                        <fx-confirm message="really delete?">-->
                                     <fx-delete ref="."></fx-delete>
