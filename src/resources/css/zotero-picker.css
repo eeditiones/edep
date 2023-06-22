@@ -32,14 +32,14 @@
     white-space: normal;
 }
 .zotero-bib{
-    margin-left: 19.5rem;
+    margin-left: 18rem;
     display: block;
-    width: 65%;
+    width: 50%;
     white-space: normal;
 }
 .zotero-picker fx-control{
     display: grid;
-    grid-template-columns: 17rem 1rem 1fr 1rem;
+    grid-template-columns: 16rem 1rem 1fr 1rem;
     row-gap: 0.2rem;
     grid-template-areas:
     "label icon control clear"
@@ -55,7 +55,7 @@
 .zotero-picker progress{
     display:none;
     visibility: hidden;
-    margin-left:18.5rem;
+    margin-left:18rem;
     width:inherit;
     /*position:absolute;*/
     /*top:0;*/

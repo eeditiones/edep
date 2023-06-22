@@ -319,7 +319,7 @@
                             <h3><pb-i18n key="form.object">Objekt</pb-i18n></h3>
                             <!-- 3) -->
 
-                            <fx-output ref=".//msDesc/msIdentifier/idno">
+                            <fx-output ref=".//msDesc/msIdentifier/idno" class="edepid">
                                 <label slot="label"><pb-i18n key="form.edepid">EDEp ID</pb-i18n></label>
                             </fx-output>
 
@@ -344,7 +344,7 @@
                             <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" update-event="input"
                                         class="orange">
                                 <label><pb-i18n key="form.material">Material</pb-i18n></label>
-                                <select ref="instance('material')?*" class="widget" selection="open" static="static">
+                                <select multiple="multiple" size="10" ref="instance('material')?*" class="widget" static="static">
                                     <template>
                                         <option value="{?value}">{?name}</option>
                                     </template>
@@ -370,7 +370,7 @@
                                         <fx-control ref="msIdentifier/idno">
                                             <label><pb-i18n key="form.tm">TM Nummer</pb-i18n></label>
                                         </fx-control>
-                                    
+
                                         <fx-group id="{@xml:id}-findspot">
                                             <h3><pb-i18n key="form.findspot">Fundort</pb-i18n></h3>
                                             <!-- geoId from geodata -->
@@ -510,14 +510,13 @@
                                             <!-- 12b-12e missing -->
                                             <fx-control ref="msContents/msItem/note[@type='verification']/@subtype">
                                                 <label><pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n></label>
-                                                <input list="verificationbase" class="widget"/>
-                                                <datalist id="verificationbase">
+                                                <select multiple="multiple" size="5" class="widget">
                                                     <option value="autopsy">Autopsie</option>
                                                     <option value="squeeze">Abklatsch</option>
                                                     <option value="photo">Foto</option>
                                                     <option value="drawing">Zeichnung</option>
                                                     <option value="not seen">nicht gesehen</option>
-                                                </datalist>
+                                                </select>
                                             </fx-control>
 
                                             <fx-control
@@ -525,7 +524,7 @@
                                                 <label><pb-i18n key="form.date-of-verification">Datum der Verifizierung</pb-i18n></label>
                                                 <input placeholder="YYYY-MM-DD" class="widget"/>
                                             </fx-control>
-                                        </fx-group>
+                                    </fx-group>
 
                                      <fx-group id="{@xml:id}-objectdesc">
                                         <h3><pb-i18n key="form.object-description">Objektbeschreibung</pb-i18n></h3>
@@ -549,7 +548,6 @@
                                             </select>
                                         </fx-control>
 
-
                                         <!-- 15) -->
                                         <div class="alternatives">
                                             <fx-control ref="msContents/msItem/@class" update-event="input">
@@ -563,7 +561,7 @@
                                                     </template>
                                                 </fx-items>
                                             </fx-control>
-                                        
+
 
                                             <fx-control ref="msContents/msItem/@type">
                                                 <label><pb-i18n key="form.free-form">Freie Eingabe</pb-i18n></label>

@@ -36,6 +36,11 @@ body{
 
 .editor > fx-fore nav {
     position:fixed;
+    height: 100vh;
+    background: #efefef;
+    left: 0;
+    padding: 1rem;
+    z-index: 10;
 }
 
 .editor > fx-fore fx-group[ref=teiHeader] {
@@ -292,13 +297,21 @@ button{
 fx-group[ref="teiHeader"]{
     padding:0;
     margin:0;
+    min-width: 46rem;
 }
-
+.edepid{
+    font-size: 1.4rem;
+    margin-left:1.5rem;
+}
+.edepid label{
+    transform:translateX(-1.5rem);
+}
 .group-1{
     /*background:var(--group-1-bg);*/
     margin:0;
     padding:0  2rem;
 }
+.group-1 fx-output
 .group-2{
     /*background: var(--group-2-bg);*/
 }
@@ -379,6 +392,9 @@ fieldset > fieldset{
 fieldset > fieldset legend{
     font-size:1.2rem;
 }
+fieldset control{
+    margin-left:-1rem;
+}
 
 .nested-repeat fieldset {
     border: 0;
@@ -388,13 +404,14 @@ fieldset > fieldset legend{
 
 fx-control, fx-output, .nested-repeat fieldset legend {
     display: grid;
-    grid-template-columns: 17rem 1rem 1fr;
+    grid-template-columns: 16rem 1rem 1fr;
     row-gap: 0.2rem;
     grid-template-areas:
     "label icon control"
     ". . alert";
-    margin: 0.5rem;
+    margin: 0.5rem 0;
     grid-column-gap: 0.5rem;
+    width: calc(100% - 1rem);
 }
 
 .nested-repeat fieldset legend {
@@ -412,6 +429,9 @@ fx-control, fx-output, .nested-repeat fieldset legend {
     display:block;
 }
 
+fx-control{
+    pointer-events: none;
+}
 fx-control label{
     grid-area:label;
 }
@@ -428,6 +448,7 @@ fx-control.editor {
 fx-control .widget, fx-control .xml-editor {
     grid-area:control;
     background: white;
+    pointer-events: all;
 }
 
 fx-control iron-icon:hover ~ fx-hint {
@@ -823,5 +844,21 @@ legend{
         transform: rotate(360deg);
     }
 }
+/*
+@media (max-width: 60rem), screen {
+    fx-control {
+        display: block;
+    }
 
+    fx-control label {
+        display: block;
+    }
+
+    fx-control .widget {
+        display:block ;
+    }
+
+
+}
+*/
 

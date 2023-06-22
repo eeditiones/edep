@@ -6,7 +6,7 @@
 
   <title>zotero</title>
 
-  <link href="../../resources/fore.css" rel="stylesheet" media="screen" />
+  <link href="resources/fore.css" rel="stylesheet" media="screen" />
   <!--    <link href="clock.css" rel="stylesheet">-->
 
   <style>
@@ -97,8 +97,10 @@
           <fx-hint><pb-i18n key="form.hint-reference">Zotero Referenz</pb-i18n></fx-hint>
           </label>
           <fx-action event="value-changed">
+<!--
             <fx-update></fx-update>
             <fx-refresh></fx-refresh>
+-->
             <fx-action if="string-length(context())&gt;=3">
               <fx-setvalue ref="instance('z-vars')/open">open</fx-setvalue>
             </fx-action>
