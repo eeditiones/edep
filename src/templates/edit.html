@@ -558,19 +558,24 @@
 
 
                                         <!-- 15) -->
-                                        <fx-control ref="msContents/msItem/@class" update-event="input">
-                                            <label><pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n></label>
-                                            <fx-items ref="instance('typeins')?*" class="widget">
-                                                <template>
-                                                    <span class="fx-checkbox">
-                                                        <input type="checkbox" value="{value}"/>
-                                                        <label>{name}</label>
-                                                    </span>
-                                                </template>
-                                            </fx-items>
+                                        <div class="alternatives">
+                                            <fx-control ref="msContents/msItem/@class" update-event="input">
+                                                <label><pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n></label>
+                                                <fx-items ref="instance('typeins')?*" class="widget">
+                                                    <template>
+                                                        <span class="fx-checkbox">
+                                                            <input type="checkbox" value="{value}"/>
+                                                            <label>{name}</label>
+                                                        </span>
+                                                    </template>
+                                                </fx-items>
+                                            </fx-control>
+                                        
 
-
-                                        </fx-control>
+                                            <fx-control ref="msContents/msItem/@type">
+                                                <label><pb-i18n key="form.free-form">Freie Eingabe</pb-i18n></label>
+                                            </fx-control>
+                                        </div>
 
                                         <!--                        <fx-group>-->
                                         <!--                            <label>Inschriftträger</label>-->
@@ -635,7 +640,7 @@
                                         </fx-control>
 
                                         <!-- 34) -->
-                                        <div class="block">
+                                        <div class="alternatives">
                                             <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='paleography']/@ref" update-event="input">
                                                 <label><pb-i18n key="form.palaeography">Paläographie</pb-i18n></label>
                                                 <fx-items ref="instance('palaeo')/item" class="widget">

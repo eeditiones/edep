@@ -70,7 +70,7 @@
                             <!-- TODO: 12d) Verifizierungsgrundlage: Auswahlmenü: Abklatsch / nicht-gesehen -->
                             <!-- TODO: 12e) Datum der Verifizierung -->
                             <!-- 15) Inschriftengattung in @class -->
-                            <msItem class="">
+                            <msItem class="" type="">
                                 <!-- 25) Sprache -->
                                 <!-- TODO: Metrik logisch hierhin -->
                                 <textLang mainLang=""></textLang>

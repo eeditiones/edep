@@ -285,6 +285,11 @@ button{
     padding-bottom:2rem;
 }
 
+.alternatives {
+    padding: 1rem 1rem 1rem 0;
+    border-right: 4px solid #cee0fe;
+}
+
 fx-group[ref="teiHeader"]{
     padding:0;
     margin:0;
@@ -446,6 +451,7 @@ fx-control fx-hint{
     box-shadow: 1px 1px 1px #999;
     background: var(--paper-grey-900);
     color:white;
+    max-width: 25vw;
 }
 
 fx-control [type="checkbox"]{

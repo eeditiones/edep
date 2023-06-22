@@ -16,7 +16,7 @@
     </msIdentifier>
     <msContents>
         <!-- 15) Inschriftengattung in @class -->
-        <msItem class="https://www.eagle-network.eu/voc/typeins/lod/51">
+        <msItem class="https://www.eagle-network.eu/voc/typeins/lod/51" type="">
             <!-- 25) Sprache -->
             <textLang mainLang="lat"/>
             <!-- 12c) Überlieferung -->
