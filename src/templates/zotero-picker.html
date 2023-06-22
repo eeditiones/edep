@@ -97,33 +97,29 @@
           <fx-hint><pb-i18n key="form.hint-reference">Zotero Referenz</pb-i18n></fx-hint>
           </label>
           <fx-action event="value-changed">
-<!--
-            <fx-update></fx-update>
-            <fx-refresh></fx-refresh>
--->
             <fx-action if="string-length(context())&gt;=3">
               <fx-setvalue ref="instance('z-vars')/open">open</fx-setvalue>
             </fx-action>
             <fx-action if="string-length(context())&gt;=2">
-              <fx-setvalue ref="instance('z-vars')/busy">busy</fx-setvalue>
-            </fx-action>
-
-            <fx-refresh force="force"></fx-refresh>
-            <fx-send submission="s-load"></fx-send>
-          </fx-action>
-          <iron-icon icon="close">
-            <fx-action event="click">
-              <!-- reset to empty -->
-              <fx-setvalue ref="instance('zotero-ref')/ptr/@target"></fx-setvalue>
-              <fx-setvalue ref="instance('z-vars')/search"></fx-setvalue>
-              <fx-setvalue ref="instance('z-vars')/return"></fx-setvalue>
-              <fx-setvalue ref="instance('z-vars')/open"></fx-setvalue>
-              <fx-reset instance="current-tag"></fx-reset>
-              <!-- open group to display details -->
+              <fx-setvalue ref="instance('z-vars')/busy" if=". != 'busy'">busy</fx-setvalue>
               <fx-refresh force="force"></fx-refresh>
             </fx-action>
-          </iron-icon>
+            <fx-send submission="s-load"></fx-send>
+          </fx-action>
         </fx-control>
+        <iron-icon icon="close">
+          <fx-action event="click">
+            <!-- reset to empty -->
+            <fx-setvalue ref="instance('zotero-ref')/ptr/@target"></fx-setvalue>
+            <fx-setvalue ref="instance('z-vars')/search"></fx-setvalue>
+            <fx-setvalue ref="instance('z-vars')/return"></fx-setvalue>
+            <fx-setvalue ref="instance('z-vars')/open"></fx-setvalue>
+            <fx-reset instance="current-tag"></fx-reset>
+            <!-- open group to display details -->
+            <fx-refresh force="force"></fx-refresh>
+          </fx-action>
+        </iron-icon>
+
         <progress id="load-progress" class="{instance('z-vars')/busy}" aria-label="loading references,,,"></progress>
 
         <fx-output class="zotero-bib" ref="instance('current-tag')?*?bib" mediatype="html"></fx-output>

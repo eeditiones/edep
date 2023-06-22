@@ -1,6 +1,12 @@
 .zotero-picker{
     position: relative;
 }
+.zotero-picker header{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    margin-left:10rem;
+}
 .zotero-picker fx-repeat{
     display: none;
 }
@@ -32,21 +38,17 @@
     white-space: normal;
 }
 .zotero-bib{
-    margin-left: 18rem;
     display: block;
-    width: 50%;
     white-space: normal;
+    padding:0.25rem;
+    background: whitesmoke;
 }
 .zotero-picker fx-control{
-    display: grid;
-    grid-template-columns: 16rem 1rem 1fr 1rem;
-    row-gap: 0.2rem;
-    grid-template-areas:
-    "label icon control clear"
-    ". . alert ."
-    ". . hint .";
-    /*margin: 0.5rem;*/
-    grid-column-gap: 0.5rem;
+    grid-area: control;
+    display: flex;
+    flex-direction: row;
+    column-gap: 2rem;
+
 }
 
 .zotero-picker fx-control iron-icon{

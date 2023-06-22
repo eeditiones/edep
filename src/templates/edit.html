@@ -94,7 +94,7 @@
                         <fx-bind ref="instance('default')">
                             <fx-bind ref=".//fileDesc/titleStmt/title" required="true()" constraint="string-length(.) != 0">
                             </fx-bind>
-                            <fx-bind ref=".//bibl/@xml:id" required="string-length(../note) != 0" constraint="matches(., '^[a-z_]')"></fx-bind>
+                            <fx-bind ref=".//bibl/@xml:id" required="string-length(../note) != 0" constraint="matches(., '^[a-z_]')" alert="bibl/@xml:id does not match the pattern"></fx-bind>
                             <fx-bind ref=".//history/provenance">
                                 <fx-bind ref="./@when" constraint="checkDate(.)"></fx-bind>
                                 <fx-bind ref="./@notBefore" constraint="checkDate(.)"></fx-bind>

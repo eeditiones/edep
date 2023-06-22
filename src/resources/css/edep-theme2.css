@@ -41,6 +41,7 @@ body{
     left: 0;
     padding: 1rem;
     z-index: 10;
+    top:4.2rem;
 }
 
 .editor > fx-fore fx-group[ref=teiHeader] {
@@ -59,6 +60,18 @@ nav ul {
 
 nav ul ul {
     margin-left: 1em;
+}
+nav a,
+nav a:visited,
+nav a:link{
+    color:#333;
+    display: inline-block;
+    padding: 0.25rem 0;
+}
+nav a:hover{
+    background: white;
+    padding: 0.3rem;
+    border-radius: 0.1rem;
 }
 
 .buttonBar {
