@@ -124,6 +124,11 @@
 
         <fx-output class="zotero-bib" ref="instance('current-tag')?*?bib" mediatype="html"></fx-output>
       </header>
+
+      <fx-action event="keydown" if="event('code') = 'Escape'" target="#document">
+        <fx-setvalue ref="instance('z-vars')/open"></fx-setvalue>
+        <fx-setvalue ref="instance('z-vars')/busy"></fx-setvalue>
+      </fx-action>
       <fx-repeat id="r-bibs" ref="instance('zotero-list')?*">
         <template>
           <fx-var name="current" value="."></fx-var>
