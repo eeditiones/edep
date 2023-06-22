@@ -39,7 +39,7 @@ body{
 }
 
 .editor > fx-fore fx-group[ref=teiHeader] {
-    margin-left:9rem;
+    margin-left: 12rem;
 }
 
 nav h3 {

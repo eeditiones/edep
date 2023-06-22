@@ -256,10 +256,12 @@
 
                     <nav>
                         <h3>Navigation</h3>
-                        <div>
-                            <ul data-ref="teiHeader//msPart">
+                        <ul>
+                            <li><a href="#object"><pb-i18n key="form.object">Objekt</pb-i18n></a></li>
+
+                            <li data-ref="teiHeader//msPart">
                                 <template>
-                                    <li>
+                                    <div>
                                         <a href="#{@xml:id}">
                                             <fx-switch ref="@type">
                                                 <fx-case name="main">
@@ -278,17 +280,34 @@
                                                 <a href="#{@xml:id}-findspot"><pb-i18n key="form.findspot"></pb-i18n></a>
                                             </li>
                                             <li>
+                                                <a href="#{@xml:id}-finddate"><pb-i18n key="form.year-of-find"></pb-i18n></a>
+                                            </li>
+                                            <li>
+                                                <a href="#{@xml:id}-location"><pb-i18n key="form.last-recorded-location"></pb-i18n></a>
+                                            </li>
+                                            <li>
+                                                <a href="#{@xml:id}-verification"><pb-i18n key="form.verification"></pb-i18n></a>
+                                            </li>
+                                            <li>
+                                                <a href="#{@xml:id}-objectdesc"><pb-i18n key="form.object-description"></pb-i18n></a>
+                                            </li>
+                                            <li>
+                                                <a href="#{@xml:id}-inscription-field"><pb-i18n key="form.inscription-field"></pb-i18n></a>
+                                            </li>
+                                            <li>
+                                                <a href="#{@xml:id}-text-description"><pb-i18n key="form.text-description"></pb-i18n></a>
+                                            </li>
+                                            <li>
                                                 <a href="#{@xml:id}-references"><pb-i18n key="form.references"></pb-i18n></a>
                                             </li>
-                                            <li><a href="#{@xml:id}-transcript"><pb-i18n key="form.transcription"></pb-i18n></a></li>
+                                            <li><a href="#{@xml:id}-edition"><pb-i18n key="form.edition">Textedition</pb-i18n></a></li>
                                         </ul>
-                                    </li>
+                                    </div>
                                 </template>
-                            </ul>
-                        </div>
-                        <ul>
+                            </li>
                             <li><a href="#commentary"><pb-i18n key="form.commentary"></pb-i18n></a></li>
                             <li><a href="#chronology"><pb-i18n key="form.dating"></pb-i18n></a></li>
+                            <li><a href="#historic-relevance"><pb-i18n key="form.historic-relevance"></pb-i18n></a></li>
                         </ul>
                     </nav>
                     <fx-group ref="teiHeader" style='z-index:{}'>
@@ -296,7 +315,7 @@
                             <label><pb-i18n key="form.title"></pb-i18n></label>
                         </fx-control>
                         <!--            <span>Sprachselector hier</span>-->
-                        <fx-group class="group-1">
+                        <fx-group id="object">
                             <h3><pb-i18n key="form.object">Objekt</pb-i18n></h3>
                             <!-- 3) -->
 
@@ -379,7 +398,7 @@
 
                                         <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
                                         <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
-                                        <fx-group>
+                                    <fx-group id="{@xml:id}-finddate">
                                             <h3><pb-i18n key="form.year-of-find">Fundjahr/-datum</pb-i18n></h3>
                                             <fx-control ref="history/provenance/@when">
                                                 <label><pb-i18n key="form.date">Zeitpunkt</pb-i18n></label>
@@ -401,7 +420,7 @@
                                             </fx-control>
                                         </fx-group>
 
-                                        <fx-group>
+                                        <fx-group id="{@xml:id}-location">
 
                                             <h3><pb-i18n key="form.last-recorded-location"></pb-i18n></h3>
                                             <!-- 12a) -->
@@ -493,7 +512,7 @@
                                             </fieldset>
                                         </fx-group>
 
-                                        <fx-group>
+                                        <fx-group id="{@xml:id}-verification">
                                             <h3><pb-i18n key="form.verification">Verifizierung</pb-i18n></h3>
                                             <!-- 12b-12e missing -->
                                             <fx-control ref="msContents/msItem/note[@type='verification']/@subtype">
@@ -515,7 +534,7 @@
                                             </fx-control>
                                         </fx-group>
 
-                                    <fx-group class="group-3">
+                                     <fx-group id="{@xml:id}-objectdesc">
                                         <h3><pb-i18n key="form.object-description">Objektbeschreibung</pb-i18n></h3>
 
                                         <!-- 13) -->
@@ -571,7 +590,7 @@
 
                                         <!-- 34) -->
                                     </fx-group>
-                                    <fx-group class="group-4">
+                                    <fx-group id="{@xml:id}-inscription-field">
                                         <h3><pb-i18n key="form.inscription-field">Inschriftfeld</pb-i18n></h3>
                                         <!-- 21) -->
                                         <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/height">
@@ -591,7 +610,7 @@
                                     </fx-group>
 
 
-                                    <fx-group class="group-5">
+                                    <fx-group id="{@xml:id}-text-description">
                                         <h3><pb-i18n key="form.text-description"></pb-i18n></h3>
                                         <!-- 24) -->
                                         <fx-control ref="//layoutDesc/layout/rs[@type='metric']" update-event="input">
@@ -1127,7 +1146,7 @@
                             </fx-control>
                         </fx-group>
 
-                        <fx-group ref="profileDesc" class="group-7">
+                        <fx-group ref="profileDesc" id="historic-relevance">
                             <h3><pb-i18n key="form.historic-relevance"></pb-i18n></h3>
                             <!-- 28)  -->
                             <fx-control ref="textClass/keywords/term/@ref" update-event="input">
