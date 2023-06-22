@@ -86,6 +86,7 @@
         "data-saved": "Daten wurden gespeichert",
         "save-failed": "Daten konnten nicht gespeichert werden",
         "loading-failed": "Laden der Inschrift fehlgeschlagen",
-        "invalid-data": "Bitte Fehler korrigieren"
+        "invalid-data": "Bitte Fehler korrigieren",
+        "hint-geoid": "Vorhandene ID aus Ortsdatenbank. Hinzufügen mit +"
     }
 }

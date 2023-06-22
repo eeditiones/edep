@@ -78,7 +78,10 @@
     </fx-model>
 
     <fx-control ref="instance('i-geo')/origPlace/@corresp" update-event="input">
-        <label>GeoId</label>
+        <label>GeoId
+        <iron-icon icon="info-outline"></iron-icon>
+        <fx-hint><pb-i18n key="form.hint-geoid">XML:ID</pb-i18n></fx-hint>
+        </label>
         <input list="place-list" class="widget"/>
 
         <datalist id="place-list" data-ref="instance('i-geodata')//place/placeName">

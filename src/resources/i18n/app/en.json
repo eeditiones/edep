@@ -83,6 +83,7 @@
         "data-saved": "Data has been saved",
         "save-failed": "Saving data failed",
         "loading-failed": "Failed to load inscription",
-        "invalid-data": "Please correct form before saving"
+        "invalid-data": "Please correct form before saving",
+        "hint-geoid": "Existing ID of a place registered in the geo database. Click + to create new."
     }
 }
