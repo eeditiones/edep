@@ -429,23 +429,26 @@
                                             </fx-control>
 
                                             <!-- 12b) -->
-                                            <fx-control ref=".//provenance[@type='history']" as="node" update-event="blur">
-                                                <label><pb-i18n key="form.other-events">Weitere Ereignisse</pb-i18n></label>
-                                                <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                                    schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
-                                                    <div slot="toolbar">
-                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                        <button data-command="snippet" data-params="&lt;placeName key=&#34;$|1|&#34;&gt;$|_|&lt;/placeName&gt;" title="placeName">&lt;placeName&gt;</button>
-                                                        <button data-command="snippet" data-params="&lt;orgName key=&#34;$|1|&#34;&gt;$|_|&lt;/orgName&gt;" title="orgName">&lt;orgName&gt;</button>
-                                                    </div>
-                                                </jinn-xml-editor>
-                                            </fx-control>
-                                            <pb-popover>
-                                                <iron-icon icon="info-outline"></iron-icon>
-                                                <template slot="alternate"><pb-i18n key="form.hint-other-events"></pb-i18n></template>
-                                            </pb-popover>
+                                            <div class="with-hint">
+                                                <fx-control ref=".//provenance[@type='history']" as="node" update-event="blur">
+                                                    <label><pb-i18n key="form.other-events">Weitere Ereignisse</pb-i18n></label>
+                                                    <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]"
+                                                                     schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
+                                                        <div slot="toolbar">
+                                                            <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                                                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                            <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
+                                                            <button data-command="snippet" data-params="&lt;placeName key=&#34;$|1|&#34;&gt;$|_|&lt;/placeName&gt;" title="placeName">&lt;placeName&gt;</button>
+                                                            <button data-command="snippet" data-params="&lt;orgName key=&#34;$|1|&#34;&gt;$|_|&lt;/orgName&gt;" title="orgName">&lt;orgName&gt;</button>
+                                                        </div>
+                                                    </jinn-xml-editor>
+                                                </fx-control>
+                                                <pb-popover>
+                                                    <iron-icon icon="info-outline"></iron-icon>
+                                                    <template slot="alternate"><pb-i18n key="form.hint-other-events"></pb-i18n></template>
+                                                </pb-popover>
+                                            </div>
+
 
                                             <!-- 12c) Überlieferung -->
                                             <fieldset>
@@ -478,39 +481,44 @@
                                                             </fx-control>
                                                             <fieldset>
                                                                 <legend><label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label></legend>
-                                                                <fx-control ref="@xml:id">
-                                                                    <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                                </fx-control>
-                                                                <pb-popover>
-                                                                    <iron-icon icon="info-outline"></iron-icon>
-                                                                    <template slot="alternate">
-                                                                        <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                    </template>
-                                                                </pb-popover>
-                                                                <fx-control ref="note" as="node" update-event="blur">
-                                                                    <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
-                                                                    <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                                                        schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
-                                                                        <div slot="toolbar">
-                                                                            <button data-command="selectElement"
-                                                                                    title="Select element around current cursor position">&lt;|&gt;
-                                                                            </button>
-                                                                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                            <button data-command="removeEnclosing" title="Remove enclosing tags"
-                                                                                    class="sep">&lt;X&gt;
-                                                                            </button>
-                                                                            <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;"
-                                                                                    title="Insert paragraph">&lt;p&gt;
-                                                                            </button>
-                                                                            <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
-                                                                            <button data-command="snippet" data-params='&lt;placeName key="$|1|"&gt;$|_|&lt;/placeName&gt;' title="placeName">&lt;placeName&gt;</button>
-                                                                        </div>
-                                                                    </jinn-xml-editor>
-                                                                </fx-control>
-                                                                <pb-popover>
-                                                                    <iron-icon icon="info-outline"></iron-icon>
-                                                                    <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
-                                                                </pb-popover>
+                                                                <div class="with-hint">
+                                                                    <fx-control ref="@xml:id">
+                                                                        <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
+                                                                    </fx-control>
+                                                                    <pb-popover>
+                                                                        <iron-icon icon="info-outline"></iron-icon>
+                                                                        <template slot="alternate">
+                                                                            <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                        </template>
+                                                                    </pb-popover>
+                                                                </div>
+
+                                                                <div class="with-hint">
+                                                                    <fx-control ref="note" as="node" update-event="blur">
+                                                                        <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
+                                                                        <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]"
+                                                                                            schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
+                                                                            <div slot="toolbar">
+                                                                                <button data-command="selectElement"
+                                                                                        title="Select element around current cursor position">&lt;|&gt;
+                                                                                </button>
+                                                                                <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                                                <button data-command="removeEnclosing" title="Remove enclosing tags"
+                                                                                        class="sep">&lt;X&gt;
+                                                                                </button>
+                                                                                <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;"
+                                                                                        title="Insert paragraph">&lt;p&gt;
+                                                                                </button>
+                                                                                <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
+                                                                                <button data-command="snippet" data-params='&lt;placeName key="$|1|"&gt;$|_|&lt;/placeName&gt;' title="placeName">&lt;placeName&gt;</button>
+                                                                            </div>
+                                                                        </jinn-xml-editor>
+                                                                    </fx-control>
+                                                                    <pb-popover>
+                                                                        <iron-icon icon="info-outline"></iron-icon>
+                                                                        <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
+                                                                    </pb-popover>
+                                                                </div>
                                                             </fieldset>
                                                         </div>
                                                         <fx-trigger>
@@ -714,40 +722,45 @@
                                                             <legend>
                                                                 <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                             </legend>
-                                                            <fx-control ref="@xml:id">
-                                                                <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                            </fx-control>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"></iron-icon>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                            <fx-control ref="note" as="node" update-event="blur">
-                                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
-                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
-                                                                                    placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                                                    schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
-                                                                    <div slot="toolbar">
-                                                                        <button data-command="selectElement"
-                                                                                title="Select element around current cursor position">&lt;|&gt;
-                                                                        </button>
-                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags"
-                                                                                class="sep">&lt;X&gt;
-                                                                        </button>
-                                                                        <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;"
-                                                                                title="Insert paragraph">&lt;p&gt;
-                                                                        </button>
-                                                                        <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
-                                                                        <button data-command="snippet" data-params='&lt;placeName key="$|1|"&gt;$|_|&lt;/placeName&gt;' title="placeName">&lt;placeName&gt;</button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
-                                                            </fx-control>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"></iron-icon>
-                                                                <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
-                                                            </pb-popover>
+
+                                                            <div class="with-hint">
+                                                                <fx-control ref="@xml:id">
+                                                                    <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
+                                                                </fx-control>
+                                                                <pb-popover>
+                                                                    <iron-icon icon="info-outline"></iron-icon>
+                                                                    <template slot="alternate">
+                                                                        <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                    </template>
+                                                                </pb-popover>
+                                                            </div>
+                                                            <div class="with-hint">
+                                                                <fx-control ref="note" as="node" update-event="blur">
+                                                                    <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
+                                                                    <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
+                                                                                        placeholder="[Inline text/markup or sequence of paragraphs]"
+                                                                                        schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
+                                                                        <div slot="toolbar">
+                                                                            <button data-command="selectElement"
+                                                                                    title="Select element around current cursor position">&lt;|&gt;
+                                                                            </button>
+                                                                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                                            <button data-command="removeEnclosing" title="Remove enclosing tags"
+                                                                                    class="sep">&lt;X&gt;
+                                                                            </button>
+                                                                            <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;"
+                                                                                    title="Insert paragraph">&lt;p&gt;
+                                                                            </button>
+                                                                            <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
+                                                                            <button data-command="snippet" data-params='&lt;placeName key="$|1|"&gt;$|_|&lt;/placeName&gt;' title="placeName">&lt;placeName&gt;</button>
+                                                                        </div>
+                                                                    </jinn-xml-editor>
+                                                                </fx-control>
+                                                                <pb-popover>
+                                                                    <iron-icon icon="info-outline"></iron-icon>
+                                                                    <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
+                                                                </pb-popover>
+                                                            </div>
                                                         </fieldset>
                                                     </div>
 
@@ -802,40 +815,44 @@
                                                             <legend>
                                                                 <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                             </legend>
-                                                            <fx-control ref="@xml:id">
-                                                                <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                            </fx-control>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"></iron-icon>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                            <fx-control ref="note" as="node" update-event="blur">
-                                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
-                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
-                                                                                    schema-root="note" namespace="http://www.tei-c.org/ns/1.0"
-                                                                                    placeholder="[Inline text/markup or sequence of paragraphs]">
-                                                                    <div slot="toolbar">
-                                                                        <button data-command="selectElement"
-                                                                                title="Select element around current cursor position">&lt;|&gt;
-                                                                        </button>
-                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags"
-                                                                                class="sep">&lt;X&gt;
-                                                                        </button>
-                                                                        <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;"
-                                                                                title="Insert paragraph">&lt;p&gt;
-                                                                        </button>
-                                                                        <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
-                                                                        <button data-command="snippet" data-params='&lt;placeName key="$|1|"&gt;$|_|&lt;/placeName&gt;' title="placeName">&lt;placeName&gt;</button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
-                                                            </fx-control>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"></iron-icon>
-                                                                <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
-                                                            </pb-popover>
+                                                            <div class="with-hint">
+                                                                <fx-control ref="@xml:id">
+                                                                    <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
+                                                                </fx-control>
+                                                                <pb-popover>
+                                                                    <iron-icon icon="info-outline"></iron-icon>
+                                                                    <template slot="alternate">
+                                                                        <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                    </template>
+                                                                </pb-popover>
+                                                            </div>
+                                                            <div class="with-hint">
+                                                                <fx-control ref="note" as="node" update-event="blur">
+                                                                    <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
+                                                                    <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
+                                                                                        schema-root="note" namespace="http://www.tei-c.org/ns/1.0"
+                                                                                        placeholder="[Inline text/markup or sequence of paragraphs]">
+                                                                        <div slot="toolbar">
+                                                                            <button data-command="selectElement"
+                                                                                    title="Select element around current cursor position">&lt;|&gt;
+                                                                            </button>
+                                                                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                                            <button data-command="removeEnclosing" title="Remove enclosing tags"
+                                                                                    class="sep">&lt;X&gt;
+                                                                            </button>
+                                                                            <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;"
+                                                                                    title="Insert paragraph">&lt;p&gt;
+                                                                            </button>
+                                                                            <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
+                                                                            <button data-command="snippet" data-params='&lt;placeName key="$|1|"&gt;$|_|&lt;/placeName&gt;' title="placeName">&lt;placeName&gt;</button>
+                                                                        </div>
+                                                                    </jinn-xml-editor>
+                                                                </fx-control>
+                                                                <pb-popover>
+                                                                    <iron-icon icon="info-outline"></iron-icon>
+                                                                    <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
+                                                                </pb-popover>
+                                                            </div>
                                                         </fieldset>
                                                     </div>
                                                     <fx-trigger>
@@ -876,40 +893,45 @@
                                                         </fx-control>
                                                         <fieldset>
                                                             <legend><label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label></legend>
-                                                            <fx-control ref="@xml:id">
-                                                                <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                            </fx-control>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"></iron-icon>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                            <fx-control ref="note" as="node" update-event="blur">
-                                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
-                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
-                                                                                    schema-root="note" namespace="http://www.tei-c.org/ns/1.0"
-                                                                                    placeholder="[Inline text/markup or sequence of paragraphs]">
-                                                                    <div slot="toolbar">
-                                                                        <button data-command="selectElement"
-                                                                                title="Select element around current cursor position">&lt;|&gt;
-                                                                        </button>
-                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags"
-                                                                                class="sep">&lt;X&gt;
-                                                                        </button>
-                                                                        <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;"
-                                                                                title="Insert paragraph">&lt;p&gt;
-                                                                        </button>
-                                                                        <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
-                                                                        <button data-command="snippet" data-params='&lt;placeName key="$|1|"&gt;$|_|&lt;/placeName&gt;' title="placeName">&lt;placeName&gt;</button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
-                                                            </fx-control>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"></iron-icon>
-                                                                <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
-                                                            </pb-popover>
+                                                            <div class="with-hint">
+                                                                <fx-control ref="@xml:id">
+                                                                    <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
+                                                                </fx-control>
+                                                                <pb-popover>
+                                                                    <iron-icon icon="info-outline"></iron-icon>
+                                                                    <template slot="alternate">
+                                                                        <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                    </template>
+                                                                </pb-popover>
+                                                            </div>
+
+                                                            <div class="with-hint">
+                                                                <fx-control ref="note" as="node" update-event="blur">
+                                                                    <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
+                                                                    <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
+                                                                                     schema-root="note" namespace="http://www.tei-c.org/ns/1.0"
+                                                                                     placeholder="[Inline text/markup or sequence of paragraphs]">
+                                                                        <div slot="toolbar">
+                                                                            <button data-command="selectElement"
+                                                                                    title="Select element around current cursor position">&lt;|&gt;
+                                                                            </button>
+                                                                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                                            <button data-command="removeEnclosing" title="Remove enclosing tags"
+                                                                                    class="sep">&lt;X&gt;
+                                                                            </button>
+                                                                            <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;"
+                                                                                    title="Insert paragraph">&lt;p&gt;
+                                                                            </button>
+                                                                            <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
+                                                                            <button data-command="snippet" data-params='&lt;placeName key="$|1|"&gt;$|_|&lt;/placeName&gt;' title="placeName">&lt;placeName&gt;</button>
+                                                                        </div>
+                                                                    </jinn-xml-editor>
+                                                                </fx-control>
+                                                                <pb-popover>
+                                                                    <iron-icon icon="info-outline"></iron-icon>
+                                                                    <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
+                                                                </pb-popover>
+                                                            </div>
                                                         </fieldset>
                                                     </div>
                                                     <fx-trigger>

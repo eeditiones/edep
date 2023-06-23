@@ -36,6 +36,8 @@ fx-fore#geopicker{
     grid-template-columns: 1fr 2rem 2rem;
     margin-left:0.25rem;
     justify-content: left;
+    align-items: center;
+    grid-gap:0.5rem;
 }
 .geopicker-control fx-control{
     grid-area: control;

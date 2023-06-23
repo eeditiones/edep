@@ -5,10 +5,15 @@
     display: flex;
     flex-direction:row;
     flex-wrap: wrap;
-    margin-left:10rem;
+    margin-left:12rem;
+}
+.zotero-picker header .with-hint{
+    width: calc(100% - 2rem);
 }
 .zotero-picker fx-repeat{
     display: none;
+    border:none;
+    padding: 0;
 }
 .zotero-picker.open fx-repeat{
     display: block;

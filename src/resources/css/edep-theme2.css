@@ -443,7 +443,7 @@ fx-control, fx-output, .nested-repeat fieldset legend {
 }
 
 fx-control{
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 fx-control label{
     grid-area:label;
@@ -763,6 +763,16 @@ legend{
     transition:opacity 0.8s;
     transition-delay:1s;
 }
+
+.with-hint {
+    grid-area: control;
+    grid-template-columns: 1fr 1rem;
+    display: grid;
+    grid-template-areas: "control hint";
+    align-items: center;
+    /*width: calc(100% - 2rem);*/
+}
+/* lds-roller */
 .lds-roller {
     display: block;
     position: relative;
