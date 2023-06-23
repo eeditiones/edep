@@ -6,6 +6,8 @@
     flex-direction:row;
     flex-wrap: wrap;
     margin-left:12rem;
+    align-items: center;
+    gap:0.5rem;
 }
 .zotero-picker header .with-hint{
     width: calc(100% - 2rem);

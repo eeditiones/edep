@@ -450,8 +450,6 @@ fx-control label{
 }
 fx-control [icon="info-outline"]{
     grid-area:icon;
-    width: 1rem;
-    height:1rem;
     cursor:pointer;
 }
 fx-control.editor {
@@ -771,6 +769,10 @@ legend{
     grid-template-areas: "control hint";
     align-items: center;
     /*width: calc(100% - 2rem);*/
+}
+.with-hint pb-popover{
+    grid-area:hint;
+    align-self: start;
 }
 /* lds-roller */
 .lds-roller {

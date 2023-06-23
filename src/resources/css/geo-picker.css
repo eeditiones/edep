@@ -12,11 +12,6 @@ fx-control > fx-fore  fx-control {
     padding-top:0;
     margin:0;
 }
-[icon="close"]{
-    width:1rem;
-    height:1rem;
-
-}
 fx-inspector{
     position:fixed;
     right:0;
@@ -55,6 +50,7 @@ fx-fore#geopicker{
 }
 .geopicker-control a{
     grid-area: add;
+    margin-left:-1rem;
 }
 
 #geopicker fx-repeat-attributes{
