@@ -502,7 +502,8 @@ declare %private function  api:preprocessing-copy($nodes as node()*){
                 }
             case element(tei:bibl) return
                 element { node-name($node) } {
-                    $node/@*,
+                    $node/@* except $node/@xml:id,
+                    attribute xml:id { $node/@xml:id },
                     head(($node/tei:citedRange, <citedRange xmlns="http://www.tei-c.org/ns/1.0"></citedRange>)),
                     head(($node/tei:ptr, <ptr target="" xmlns="http://www.tei-c.org/ns/1.0"/>)),
                     head(($node/tei:note, <note xmlns="http://www.tei-c.org/ns/1.0"></note>))
