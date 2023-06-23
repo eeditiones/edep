@@ -84,6 +84,14 @@
         "save-failed": "Saving data failed",
         "loading-failed": "Failed to load inscription",
         "invalid-data": "Please correct form before saving",
-        "hint-geoid": "Existing ID of a place registered in the geo database. Click + to create new."
+        "hint-geoid": "Insert existing ID from ‘Geodata’ (select from menu or copy and paste, use [Kopiersymbol] to copy). If necessary, create new IDs in the ‘Geodata’.",
+        "hint-part-type": "For inscriptions consisting of different fragments click on ‘add fragment’ below and enter the detailed information concerning the single fragments there.",
+        "hint-other-events": "Relocations of the inscription since the finding. You may use the toolbar to provide the text with markup, e. g. with <placeName> for places, or with <orgName> for museums / institutions.",
+        "hint-reference2": "Enter all the references without any Zotero entry or valid XML ID, and notes referring to the cited works. You may use the toolbar to provide the text with markup.",
+        "hint-transcription": "Enter the transcription following <a href='https://papyri.info/docs/leiden_plus'>Leiden+</a>. The toolbar provides predefined options for the correct input, e. g. the button (a(bcd)) for Marcus -> (M(arcus)). Already edited text can be adapted to Leiden+ by entering a ( while highlighting a word: e. g. D(is) -> (D(is)). Enter linebreaks using &#x21A9; at the right of the toolbar.",
+        "hint-transcription2": "You may use the toolbar to provide the text with markup, e. g. names of people: for this purpose, create a person ID (see above ‘People’) or choose an already existing ID. Copy the ID using [Kopiersymbol], switch back to the editor, highlight the name of the person, click on <persName> and enter/paste the ID as value of @key.",
+        "hint-apparatus": "You may use the toolbar to provide the text with markup, e. g. for references to a title listed in the previous editions, click on <ref>, and enter the ZoteroTag as value of @target.",
+        "hint-translation": "You may use the toolbar to provide the text with markup, e. g. to tag mentioned people again via <persName>.",
+        "hint-commentary": "You may use the toolbar to provide the text with markup, e. g. for references to mentioned people as well as to works cited in the previous editions or in the bibliography (see above ‘transcription’ and ‘apparatus’). "
     }
 }

@@ -356,14 +356,21 @@
                             <template>
                                 <div class="fragment" id="{@xml:id}">
                                     <label>
+                                        <pb-popover>
                                         <fx-switch ref="@type">
                                             <fx-case name="main">
                                                 <pb-i18n key="form.part-main"></pb-i18n>
+                                                <iron-icon icon="info-outline"></iron-icon>
                                             </fx-case>
                                             <fx-case name="fragment">
                                                 <pb-i18n key="form.part-fragment"></pb-i18n>
+                                                <iron-icon icon="info-outline"></iron-icon>
                                             </fx-case>
                                         </fx-switch>
+                                        <template slot="alternate">
+                                            <pb-i18n key="form.hint-part-type"></pb-i18n>
+                                        </template>
+                                        </pb-popover>
                                     </label>
 
                                         <!-- 4) -->
@@ -435,6 +442,10 @@
                                                     </div>
                                                 </jinn-xml-editor>
                                             </fx-control>
+                                            <pb-popover>
+                                                <iron-icon icon="info-outline"></iron-icon>
+                                                <template slot="alternate"><pb-i18n key="form.hint-other-events"></pb-i18n></template>
+                                            </pb-popover>
 
                                             <!-- 12c) Überlieferung -->
                                             <fieldset>
@@ -469,9 +480,13 @@
                                                                 <legend><label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label></legend>
                                                                 <fx-control ref="@xml:id">
                                                                     <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                                    <iron-icon icon="info-outline"></iron-icon>
-                                                                    <fx-hint><pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n></fx-hint>
                                                                 </fx-control>
+                                                                <pb-popover>
+                                                                    <iron-icon icon="info-outline"></iron-icon>
+                                                                    <template slot="alternate">
+                                                                        <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                    </template>
+                                                                </pb-popover>
                                                                 <fx-control ref="note" as="node" update-event="blur">
                                                                     <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                                     <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]"
@@ -492,6 +507,10 @@
                                                                         </div>
                                                                     </jinn-xml-editor>
                                                                 </fx-control>
+                                                                <pb-popover>
+                                                                    <iron-icon icon="info-outline"></iron-icon>
+                                                                    <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
+                                                                </pb-popover>
                                                             </fieldset>
                                                         </div>
                                                         <fx-trigger>
@@ -692,13 +711,20 @@
                                                             <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                         </fx-control>
                                                         <fieldset>
-                                                            <legend><label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label></legend>
+                                                            <legend>
+                                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
+                                                            </legend>
                                                             <fx-control ref="@xml:id">
                                                                 <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                                <iron-icon icon="info-outline"></iron-icon>
-                                                                <fx-hint><pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n></fx-hint>
                                                             </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"></iron-icon>
+                                                                <template slot="alternate">
+                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                </template>
+                                                            </pb-popover>
                                                             <fx-control ref="note" as="node" update-event="blur">
+                                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                                 <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
                                                                                     placeholder="[Inline text/markup or sequence of paragraphs]"
                                                                                     schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
@@ -718,6 +744,10 @@
                                                                     </div>
                                                                 </jinn-xml-editor>
                                                             </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"></iron-icon>
+                                                                <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
+                                                            </pb-popover>
                                                         </fieldset>
                                                     </div>
 
@@ -769,12 +799,18 @@
                                                             <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
                                                         </fx-control>
                                                         <fieldset>
-                                                            <legend><label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label></legend>
+                                                            <legend>
+                                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
+                                                            </legend>
                                                             <fx-control ref="@xml:id">
                                                                 <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                                <iron-icon icon="info-outline"></iron-icon>
-                                                                <fx-hint><pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n></fx-hint>
                                                             </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"></iron-icon>
+                                                                <template slot="alternate">
+                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                </template>
+                                                            </pb-popover>
                                                             <fx-control ref="note" as="node" update-event="blur">
                                                                 <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                                 <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
@@ -796,6 +832,10 @@
                                                                     </div>
                                                                 </jinn-xml-editor>
                                                             </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"></iron-icon>
+                                                                <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
+                                                            </pb-popover>
                                                         </fieldset>
                                                     </div>
                                                     <fx-trigger>
@@ -838,9 +878,13 @@
                                                             <legend><label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label></legend>
                                                             <fx-control ref="@xml:id">
                                                                 <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                                <iron-icon icon="info-outline"></iron-icon>
-                                                                <fx-hint><pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n></fx-hint>
                                                             </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"></iron-icon>
+                                                                <template slot="alternate">
+                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                </template>
+                                                            </pb-popover>
                                                             <fx-control ref="note" as="node" update-event="blur">
                                                                 <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                                                 <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json"
@@ -862,6 +906,10 @@
                                                                     </div>
                                                                 </jinn-xml-editor>
                                                             </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"></iron-icon>
+                                                                <template slot="alternate"><pb-i18n key="form.hint-reference2"></pb-i18n></template>
+                                                            </pb-popover>
                                                         </fieldset>
                                                     </div>
                                                     <fx-trigger>
@@ -911,6 +959,12 @@
                                             <jinn-epidoc-editor id="transcriptionEditor" unwrap="unwrap" class="widget" show-leiden=""
                                                                 schema="resources/scripts/tei.json" schema-root="div" mode="leiden_plus">
                                                 <div slot="leiden-toolbar">
+                                                    <pb-popover>
+                                                        <iron-icon icon="info-outline"></iron-icon>
+                                                        <template slot="alternate">
+                                                            <pb-i18n key="form.hint-transcription">Hint</pb-i18n>
+                                                        </template>
+                                                    </pb-popover>
                                                     <button data-command="expan" data-mode="leiden_plus" title="Expanded abbreviation">(a(bcd))</button>
                                                     <button data-command="erasure" data-mode="leiden_plus" title="Erasure">〚abc〛</button>
                                                     <button data-command="unclear" data-mode="leiden_plus" title="Unclear">ạ</button>
@@ -925,6 +979,12 @@
                                                     <button data-command="convert" data-mode="edcs">Convert to Leiden+</button>
                                                 </div>
                                                 <div slot="xml-toolbar">
+                                                    <pb-popover>
+                                                        <iron-icon icon="info-outline"></iron-icon>
+                                                        <template slot="alternate">
+                                                            <pb-i18n key="form.hint-transcription2">Hint</pb-i18n>
+                                                        </template>
+                                                    </pb-popover>
                                                     <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
                                                     <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
                                                     <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
@@ -959,6 +1019,12 @@
                                                                 schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0"
                                                                 placeholder="[Should contain a &lt;listApp&gt; with nested &lt;app&gt;]">
                                                 <div slot="toolbar">
+                                                    <pb-popover>
+                                                        <iron-icon icon="info-outline"></iron-icon>
+                                                        <template slot="alternate">
+                                                            <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
+                                                        </template>
+                                                    </pb-popover>
                                                     <button data-command="selectElement"
                                                             title="Select element around current cursor position">&lt;|>
                                                     </button>
@@ -1001,6 +1067,12 @@
                                             <jinn-xml-editor id="translation" unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]"
                                                                 schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
                                                 <div slot="toolbar">
+                                                    <pb-popover>
+                                                        <iron-icon icon="info-outline"></iron-icon>
+                                                        <template slot="alternate">
+                                                            <pb-i18n key="form.hint-translation">Hint</pb-i18n>
+                                                        </template>
+                                                    </pb-popover>
                                                     <button data-command="selectElement"
                                                             title="Select element around current cursor position">&lt;|&gt;
                                                     </button>
@@ -1096,6 +1168,12 @@
                                 <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]"
                                                     schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
+                                        <pb-popover>
+                                            <iron-icon icon="info-outline"></iron-icon>
+                                            <template slot="alternate">
+                                                <pb-i18n key="form.hint-commentary">Hint</pb-i18n>
+                                            </template>
+                                        </pb-popover>
                                         <button data-command="selectElement" title="Select element around current cursor position">
                                             &lt;|&gt;
                                         </button>

@@ -93,8 +93,6 @@
         <fx-control ref="instance('z-vars')/search" update-event="input" aria-desscribedby="load-progress">
           <label>
             <pb-i18n key="form.reference">Referenz</pb-i18n>
-            <iron-icon icon="info-outline"></iron-icon>
-          <fx-hint><pb-i18n key="form.hint-reference">Zotero Referenz</pb-i18n></fx-hint>
           </label>
           <fx-action event="value-changed">
             <fx-action if="string-length(context())&gt;=3">
@@ -107,6 +105,10 @@
             <fx-send submission="s-load"></fx-send>
           </fx-action>
         </fx-control>
+        <pb-popover>
+          <iron-icon icon="info-outline"></iron-icon>
+          <template slot="alternate"><pb-i18n key="form.hint-reference">Zotero Referenz</pb-i18n></template>
+        </pb-popover>
         <iron-icon icon="close">
           <fx-action event="click">
             <!-- reset to empty -->

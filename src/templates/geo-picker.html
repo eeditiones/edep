@@ -79,10 +79,7 @@
 
   <div class="geopicker-control">
     <fx-control ref="instance('i-geo')/origPlace/@corresp" update-event="input">
-        <label>GeoId
-        <iron-icon icon="info-outline"></iron-icon>
-        <fx-hint><pb-i18n key="form.hint-geoid">XML:ID</pb-i18n></fx-hint>
-        </label>
+        <label>GeoId</label>
         <input list="place-list" class="widget"/>
 
       <datalist id="place-list" data-ref="instance('i-geodata')//place/placeName">
@@ -101,6 +98,10 @@
         <fx-return ref='.'></fx-return>
       </fx-action>
     </fx-control>
+    <pb-popover>
+      <iron-icon icon="info-outline"></iron-icon>
+      <template slot="alternate"><pb-i18n key="form.hint-geoid">XML:ID</pb-i18n></template>
+    </pb-popover>
     <iron-icon icon="close">
       <fx-action event="click">
         <!-- reset @corresp to empty -->

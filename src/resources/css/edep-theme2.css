@@ -690,6 +690,7 @@ jinn-xml-editor, jinn-epidoc-editor {
 jinn-xml-editor [slot], jinn-epidoc-editor [slot] {
     display: flex;
     column-gap: 4px;
+    align-items: center;
     /*width: 100%;*/
 }
 jinn-epidoc-editor [slot] *, jinn-xml-editor [slot] *, jinn-epidoc-editor::part(button) {
