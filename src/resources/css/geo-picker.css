@@ -24,6 +24,10 @@ fx-fore fx-fore fx-inspector{
 fx-fore#geopicker{
     padding:0 1rem;
 }
+
+[icon="add-circle-outline"]{
+    color:black;
+}
 #geopicker .geopicker-control{
     width: 100%;
     display: grid;
