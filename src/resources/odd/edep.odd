@@ -119,28 +119,13 @@
         </model>
                     <model predicate="parent::choice" behaviour="inline"/>
                     <model predicate="@reason='damage'" behaviour="inline">
-            <outputRendition xml:space="preserve" scope="before">
-            content:"&lt;";
-            </outputRendition>
-            <outputRendition xml:space="preserve" scope="after">
-            content:"&gt;";
-            </outputRendition>
+            <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;[&#34;,. , &#34;?]&#34;) else (&#34;[&#34;,. , &#34;]&#34;)"/>
         </model>
                     <model predicate="@reason='illegible' or not(@reason)" behaviour="inline">
-            <outputRendition xml:space="preserve" scope="before">
-            content:"[";
-            </outputRendition>
-            <outputRendition xml:space="preserve" scope="after">
-            content:"]";
-            </outputRendition>
+            <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;[&#34;,. , &#34;?]&#34;) else (&#34;[&#34;,. , &#34;]&#34;)"/>
         </model>
                     <model predicate="@reason='omitted'" behaviour="inline">
-            <outputRendition xml:space="preserve" scope="before">
-            content:"(";
-            </outputRendition>
-            <outputRendition xml:space="preserve" scope="after">
-            content:")";
-            </outputRendition>
+            <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;&lt;&#34;,. , &#34;?&gt;&#34;) else (&#34;&lt;&#34;,. , &#34;&gt;&#34;)"/>
         </model>
                     <model behaviour="inline">
             <outputRendition xml:space="preserve" scope="before">
@@ -175,16 +160,14 @@
                 <elementSpec ident="gap" mode="change">
                     <model predicate="preceding-sibling::node()[1][name()='supplied'][@reason=&#34;lost&#34;]" behaviour="inline"/>
                     <model predicate="following-sibling::node()[1][name()='supplied'][@reason=&#34;lost&#34;]" behaviour="inline"/>
-                    <model predicate="@reason='lost' and @unit='line'" behaviour="inline">
-            <param name="content" value="('[- - - - -')"/>
+                    <model predicate="@unit='line'" behaviour="inline">
+            <param name="content" value="'[- - - - - -]'"/>
         </model>
                     <model predicate="@extent" behaviour="inline">
-            <param name="content" value="('[- - -', if (@extent = 'unknown') then '?' else '', ']')"/>
+            <param name="content" value="'[- - -]'"/>
         </model>
                     <model behaviour="inline">
-            <outputRendition xml:space="preserve" scope="before">
-            content: '[- - -]';
-            </outputRendition>
+            <param name="content" value="'[- - -]'"/>
         </model>
                 </elementSpec>
                 <elementSpec ident="surplus" mode="add"/>
@@ -199,6 +182,11 @@
             <param name="content" value="replace(., '[\s\n]+$', '')"/>
         </model>
                     <model behaviour="text"/>
+                </elementSpec>
+            <elementSpec ident="unclear" mode="change">
+                    <model behaviour="inline">
+            <param name="content" value="codepoints-to-string(string-to-codepoints(.) ! (., 803))"/>
+        </model>
                 </elementSpec>
             </schemaSpec>
         </body>
