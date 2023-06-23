@@ -7,9 +7,9 @@
     },
     "form": {
         "object": "Object",
-        "object-description": "Object description",
-        "text-description": "Text description",
-        "edition": "Text edition",
+        "object-description": "Description of object",
+        "text-description": "Description of text",
+        "edition": "Edition of text",
         "historic-relevance": "Historic relevance",
         "display": "Display",
         "title": "Title",
@@ -29,7 +29,7 @@
         "date-after": "after",
         "date-invalid": "Invalid date",
         "free-form": "Free form",
-        "last-recorded-location": "Last recorded location",
+        "last-recorded-location": "Present location",
         "other-events": "Other events",
         "transmission": "Transmission",
         "reference": "Reference",
@@ -88,10 +88,39 @@
         "hint-part-type": "For inscriptions consisting of different fragments click on ‘add fragment’ below and enter the detailed information concerning the single fragments there.",
         "hint-other-events": "Relocations of the inscription since the finding. You may use the toolbar to provide the text with markup, e. g. with <placeName> for places, or with <orgName> for museums / institutions.",
         "hint-reference2": "Enter all the references without any Zotero entry or valid XML ID, and notes referring to the cited works. You may use the toolbar to provide the text with markup.",
-        "hint-transcription": "Enter the transcription following <a href='https://papyri.info/docs/leiden_plus'>Leiden+</a>. The toolbar provides predefined options for the correct input, e. g. the button (a(bcd)) for Marcus -> (M(arcus)). Already edited text can be adapted to Leiden+ by entering a ( while highlighting a word: e. g. D(is) -> (D(is)). Enter linebreaks using &#x21A9; at the right of the toolbar.",
+        "hint-transcription-prefix": "Enter the transcription following ",
+        "hint-transcription": ". The toolbar provides predefined options for the correct input, e. g. the button (a(bcd)) for Marcus → (M(arcus)). Already edited text can be adapted to Leiden+ by entering a ( while highlighting a word: e. g. D(is) → (D(is)). Enter linebreaks using ↩ at the right of the toolbar.",
         "hint-transcription2": "You may use the toolbar to provide the text with markup, e. g. names of people: for this purpose, create a person ID (see above ‘People’) or choose an already existing ID. Copy the ID using [Kopiersymbol], switch back to the editor, highlight the name of the person, click on <persName> and enter/paste the ID as value of @key.",
         "hint-apparatus": "You may use the toolbar to provide the text with markup, e. g. for references to a title listed in the previous editions, click on <ref>, and enter the ZoteroTag as value of @target.",
         "hint-translation": "You may use the toolbar to provide the text with markup, e. g. to tag mentioned people again via <persName>.",
         "hint-commentary": "You may use the toolbar to provide the text with markup, e. g. for references to mentioned people as well as to works cited in the previous editions or in the bibliography (see above ‘transcription’ and ‘apparatus’). "
+    },
+    "status": {
+        "intern": "internal",
+        "public": "public"
+    },
+    "verification": {
+        "autopsy": "autopsy",
+        "squeeze": "squeeze",
+        "photo": "foto",
+        "drawing": "drawing",
+        "not-seen": "not seen"
+    },
+    "preservation": {
+        "fragmentary": "fragmentary",
+        "complete": "complete"
+    },
+    "decor": {
+        "yes": "yes",
+        "no": "no",
+        "uncertain": "uncertain"
+    },
+    "metric": {
+        "partim": "partim"
+    },
+    "religion": {
+        "pagan": "pagan",
+        "jewish": "jewish",
+        "christian": "christian"
     }
 }

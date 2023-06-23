@@ -197,7 +197,7 @@
                         </fx-submission>
 
                         <fx-submission id="s-create"
-                                        url="api/inscription"
+                                        url="api/inscription?collection={instance('params')/collection}"
                                         method="post"
                                         replace="instance">
                             <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
@@ -538,11 +538,11 @@
                                             <fx-control ref="msContents/msItem/note[@type='verification']/@subtype">
                                                 <label><pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n></label>
                                                 <select multiple="multiple" size="5" class="widget">
-                                                    <option value="autopsy">Autopsie</option>
-                                                    <option value="squeeze">Abklatsch</option>
-                                                    <option value="photo">Foto</option>
-                                                    <option value="drawing">Zeichnung</option>
-                                                    <option value="not seen">nicht gesehen</option>
+                                                    <option value="autopsy" data-i18n="verification.autopsy">Autopsie</option>
+                                                    <option value="squeeze" data-i18n="verification.squeeze">Abklatsch</option>
+                                                    <option value="photo" data-i18n="verification.photo">Foto</option>
+                                                    <option value="drawing" data-i18n="verification.drawing">Zeichnung</option>
+                                                    <option value="not seen" data-i18n="verification.not-seen">nicht gesehen</option>
                                                 </select>
                                             </fx-control>
 
@@ -560,8 +560,8 @@
                                         <fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
                                             <label><pb-i18n key="form.preservation">Erhaltung</pb-i18n></label>
                                             <select class="widget">
-                                                <option value="complete">vollständig</option>
-                                                <option value="fragmentary">fragmentarisch</option>
+                                                <option value="complete" data-i18n="preservation.complete">vollständig</option>
+                                                <option value="fragmentary" data-i18n="preservation.fragmentary">fragmentarisch</option>
                                             </select>
                                         </fx-control>
 
@@ -569,9 +569,9 @@
                                         <fx-control ref="physDesc/objectDesc/supportDesc/support/rs/@ref" update-event="input">
                                             <label><pb-i18n key="form.decoration">Dekor</pb-i18n></label>
                                             <select class="widget">
-                                                <option value="https://www.eagle-network.eu/voc/decor/lod/2000">Ja</option>
-                                                <option value="https://www.eagle-network.eu/voc/decor/lod/1000">Nein</option>
-                                                <option value="uncertain">unsicher</option>
+                                                <option value="https://www.eagle-network.eu/voc/decor/lod/2000" data-i18n="decor.yes">Ja</option>
+                                                <option value="https://www.eagle-network.eu/voc/decor/lod/1000" data-i18n="decor.no">Nein</option>
+                                                <option value="uncertain" data-i18n="decor.uncertain">unsicher</option>
                                             </select>
                                         </fx-control>
 
@@ -639,9 +639,9 @@
                                         <fx-control ref="//layoutDesc/layout/rs[@type='metric']" update-event="input">
                                             <label><pb-i18n key="form.metre">Metrik</pb-i18n></label>
                                             <select class="widget">
-                                                <option value="yes">Ja</option>
-                                                <option value="no">Nein</option>
-                                                <option value="partim">Partim</option>
+                                                <option value="yes" data-i18n="decor.yes">Ja</option>
+                                                <option value="no" data-i18n="decor.no">Nein</option>
+                                                <option value="partim" data-i18n="metric.partim">Partim</option>
                                             </select>
                                         </fx-control>
                                         <!-- 25) -->
@@ -679,8 +679,8 @@
                                         <fx-control ref="//handDesc/handNote/rs" update-event="input">
                                             <label><pb-i18n key="form.ligature">Ligatur</pb-i18n></label>
                                             <select class="widget">
-                                                <option value="yes">Ja</option>
-                                                <option value="no">Nein</option>
+                                                <option value="yes" data-i18n="decor.yes">Ja</option>
+                                                <option value="no" data-i18n="decor.no">Nein</option>
                                             </select>
                                         </fx-control>
 
@@ -984,6 +984,8 @@
                                                     <pb-popover>
                                                         <iron-icon icon="info-outline"></iron-icon>
                                                         <template slot="alternate">
+                                                            <pb-i18n key="form.hint-transcription-prefix">Hint</pb-i18n>
+                                                            <a href='https://papyri.info/docs/leiden_plus' target="_blank">Leiden+</a>
                                                             <pb-i18n key="form.hint-transcription">Hint</pb-i18n>
                                                         </template>
                                                     </pb-popover>
@@ -1063,6 +1065,7 @@
                                                     </button>
                                                     <button data-command="snippet" data-params='&lt;ref type="biblio" target="$|1|"&gt;$|_|&lt;/ref&gt;' title="Insert reference">&lt;ref&gt;</button>
                                                     <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
+                                                    <button data-command="snippet" data-params="'&lt;citedRange&gt;$|1|&lt;/citedRange&gt;" title="citedRange">&lt;citedRange&gt;</button>
                                                 </div>
                                             </jinn-xml-editor>
                                         </fx-control>
@@ -1208,6 +1211,7 @@
                                         </button>
                                         <button data-command="snippet" data-params='&lt;ref type="biblio" target="$|1|"&gt;$|_|&lt;/ref&gt;' title="Insert reference">&lt;ref&gt;</button>
                                         <button data-command="snippet" data-params='&lt;persName key="$|1|"&gt;$|_|&lt;/persName&gt;' title="persName">&lt;persName&gt;</button>
+                                        <button data-command="snippet" data-params='&lt;citedRange&gt;$|1|&lt;/citedRange&gt;' title="citedRange">&lt;citedRange&gt;</button>
                                     </div>
                                 </jinn-xml-editor>
                             </fx-control>
@@ -1248,11 +1252,10 @@
                             <!-- 28)  -->
                             <fx-control ref="textClass/keywords/term/@ref" update-event="input">
                                 <label><pb-i18n key="form.religion">Religion</pb-i18n></label>
-                                <select class="widget">
-                                    <option value=""></option>
-                                    <option value="#pagan">pagan</option>
-                                    <option value="#jewish">jüdisch</option>
-                                    <option value="#christian">christlich</option>
+                                <select class="widget" multiple="multiple" static="static">
+                                    <option value="#pagan" data-i18n="religion.pagan">pagan</option>
+                                    <option value="#jewish" data-i18n="religion.jewish">jüdisch</option>
+                                    <option value="#christian" data-i18n="religion.christian">christlich</option>
                                 </select>
                             </fx-control>
                             <!-- 29) missing -->
@@ -1334,8 +1337,8 @@
                             <fx-control ref="revisionDesc/@status" update-event="input">
                                 <label><pb-i18n key="form.status-of-editing">Stand der Bearbeitung</pb-i18n></label>
                                 <select class="widget">
-                                    <option value="draft">intern</option>
-                                    <option value="public">öffentlich</option>
+                                    <option value="draft" data-i18n="status.intern">intern</option>
+                                    <option value="public" data-i18n="status.public">öffentlich</option>
                                 </select>
                             </fx-control>
 
