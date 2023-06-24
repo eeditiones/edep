@@ -29,6 +29,13 @@ window.addEventListener('DOMContentLoaded', () => {
     pbEvents.subscribe('pb-page-ready', null, (ev) => {
         language = ev.detail.language;
     });
+    pbEvents.subscribe('pb-i18n-update', null, (ev) => {
+        document.dispatchEvent(new CustomEvent('fx-language', { 
+            detail: { language: ev.detail.language },
+            bubbles: true,
+            composed: true
+        }));
+    });
 
     const fore = document.querySelector('fx-fore');
     fore.addEventListener('ready', () => {

@@ -144,7 +144,7 @@
                                 <history-term></history-term>
                                 <geography-term></geography-term>
                                 <military-term></military-term>
-                                <languages>
+                                <languages xml:lang="en">
                                     <lang code="cel">Celtic</lang>
                                     <lang code="gre">Greek</lang>
                                     <lang code="heb">Hebrew</lang>
@@ -155,6 +155,18 @@
                                     <lang code="xxx">Palmyrenic</lang>
                                     <lang code="xpu">Phoenician-Punic</lang>
                                 </languages>
+                                <languages xml:lang="de">
+                                    <lang code="cel">Keltisch</lang>
+                                    <lang code="gre">Griechisch</lang>
+                                    <lang code="heb">Hebräisch</lang>
+                                    <lang code="xib">Iberisch</lang>
+                                    <lang code="ita">Italisch</lang>
+                                    <lang code="lat">Latein</lang>
+                                    <lang code="nxm">Numidisch</lang>
+                                    <lang code="xxx">Palmyrisch</lang>
+                                    <lang code="xpu">Phoenicisch-Punisch</lang>
+                                </languages>
+                                <language>en</language>
                             </data>
                         </fx-instance>
                         <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
@@ -253,6 +265,10 @@
                             return checkDate($value);
                         </fx-function>
                     </fx-model>
+
+                    <fx-action event="fx-language" target="#document">
+                        <fx-setvalue ref="instance('vars')/language" value="event('language')"/>
+                    </fx-action>
 
                     <nav>
                         <h3>Navigation</h3>
@@ -647,7 +663,7 @@
                                         <!-- 25) -->
                                         <fx-control ref="msContents/msItem/textLang/@mainLang">
                                             <label><pb-i18n key="form.language">Sprache</pb-i18n></label>
-                                            <fx-items ref="instance('vars')/languages/lang" class="widget">
+                                            <fx-items ref="instance('vars')/languages[@xml:lang=instance('vars')/language]/lang" class="widget">
                                                 <template>
                                                 <span class="fx-checkbox">
                                                     <input type="checkbox" value="{@code}"/>
