@@ -108,7 +108,7 @@
                         </fx-bind>
 
 
-                        <fx-instance id="typeins" src="../edep-data/typeins.json" type="json">
+                        <fx-instance id="typeins" src="../edep-data/typeins.xml">
 
                         </fx-instance>
                         <fx-instance id="objtyp" src="../edep-data/objtyp.json" type="json">
@@ -595,11 +595,11 @@
                                         <div class="alternatives">
                                             <fx-control ref="msContents/msItem/@class" update-event="input">
                                                 <label><pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n></label>
-                                                <fx-items ref="instance('typeins')?*" class="widget">
+                                                <fx-items ref="instance('typeins')/term" class="widget">
                                                     <template>
                                                         <span class="fx-checkbox">
-                                                            <input type="checkbox" value="{value}"/>
-                                                            <label>{name}</label>
+                                                            <input type="checkbox" value="{@ref}"/>
+                                                            <label><fx-output ref="name[@xml:lang = instance('vars')/language]"></fx-output></label>
                                                         </span>
                                                     </template>
                                                 </fx-items>
