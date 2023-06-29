@@ -8,10 +8,8 @@
         <name xml:lang="en">quadrata </name>
     </item>
     <item ref="#italics">
-        <name xml:lang="de">
-            <name xml:lang="de">Kursivschrift</name>
-            <name xml:lang="en">cursive</name>
-        </name>
+        <name xml:lang="de">Kursivschrift</name>
+        <name xml:lang="en">cursive</name>
     </item>
     <item ref="#letters-prolonged">
         <name xml:lang="de">längliche Buchstaben</name>

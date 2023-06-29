@@ -54,7 +54,8 @@
 </head>
 
 <body>
-<pb-page data-template="pages:pb-page" unresolved="unresolved" locales="resources/i18n/{{ns}}/{{lng}}.json" require-language="">
+<pb-page data-template="pages:pb-page" unresolved="unresolved" locales="resources/i18n/{{ns}}/{{lng}}.json" require-language=""
+    supported-languages="de,en">
     <app-drawer-layout force-narrow="force-narrow">
         <app-drawer slot="drawer" align="right">
             <div class="drawer-content">
@@ -683,7 +684,7 @@
                                                     <template>
                                                     <span class="fx-checkbox">
                                                         <input type="checkbox" value="{@ref}"/>
-                                                        <label>{.}</label>
+                                                        <label>{name[@xml:lang=instance('vars')/language]}</label>
                                                     </span>
                                                     </template>
                                                 </fx-items>
