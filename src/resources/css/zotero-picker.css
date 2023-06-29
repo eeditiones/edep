@@ -57,6 +57,11 @@
     column-gap: 2rem;
 
 }
+.zotero-picker .zotero-html{
+    white-space:normal;
+    margin-left:0.5rem;
+    padding:0.5rem 0;
+}
 
 .zotero-picker fx-control iron-icon{
     grid-area: clear;

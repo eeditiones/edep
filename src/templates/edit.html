@@ -22,16 +22,18 @@
     <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
     <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
 
+<!--    <script type="module" src="http://localhost:8090/index.js"/>-->
+    <script type="module" src="resources/scripts/fore-dev.js"></script>
+    <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
+
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
 
-    <script type="module" src="resources/scripts/fore-dev.js"></script>
     <!--
         when running with Fore on localhost for debugging with latest sources:
         1. uncomment this and comment above Fore import
         2. Replace controller.xql with localhost-controller.xql
     -->
-<!--     <script type="module" src="http://localhost:8090/index.js"></script>-->
-    <!--    <script type="module" src="resources/scripts/datalist-ajax/datalist-ajax.min.js"></script>-->
+    <!--    <script type="module" src="resources/scripts/datalist-aj    ax/datalist-ajax.min.js"></script>-->
 
 
     <style>
@@ -84,6 +86,7 @@
                         <fx-action event="model-construct-done">
                             <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
                             <fx-send submission="s-load-inscription" if="exists(instance('params')/id)"></fx-send>
+                            <fx-setvalue ref="instance('vars')/inited">true</fx-setvalue>
                         </fx-action>
 
                         <fx-instance id="default" src="api/inscription"
@@ -167,6 +170,7 @@
                                     <lang code="xpu">Phoenicisch-Punisch</lang>
                                 </languages>
                                 <language>en</language>
+                                <inited>false</inited>
                             </data>
                         </fx-instance>
                         <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
@@ -265,11 +269,9 @@
                             return checkDate($value);
                         </fx-function>
                     </fx-model>
-
-                    <fx-action event="fx-language" target="#document">
+                    <fx-action event="fx-language" target="#document" if="instance('vars')/inited='true'">
                         <fx-setvalue ref="instance('vars')/language" value="event('language')"/>
                     </fx-action>
-
                     <nav>
                         <h3>Navigation</h3>
                         <ul>
@@ -599,7 +601,7 @@
                                                     <template>
                                                         <span class="fx-checkbox">
                                                             <input type="checkbox" value="{@ref}"/>
-                                                            <label><fx-output ref="name[@xml:lang = instance('vars')/language]"></fx-output></label>
+                                                            <label>{name[@xml:lang = instance('vars')/language]}</label>
                                                         </span>
                                                     </template>
                                                 </fx-items>
