@@ -39,7 +39,7 @@
 
     <fx-action event="ready">
       <fx-setvalue ref="instance('z-vars')/search" value="instance('zotero-ref')/ptr/@target"/>
-        <fx-load url="https://api.zotero.org/groups/2519759/items/top?tag={instance('zotero-ref')/ptr/@target}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum" attach-to="#htmlout"/>
+        <fx-load if="string-length(instance('zotero-ref')/ptr/@target) &gt; 0" url="https://api.zotero.org/groups/2519759/items/top?tag={instance('zotero-ref')/ptr/@target}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum" attach-to="#htmlout"/>
         <fx-refresh force="force"></fx-refresh>
     </fx-action>
     <fx-model>
@@ -130,7 +130,7 @@
               <fx-setvalue ref="instance('z-vars')/search" value="$current?data?tags(1)?tag"></fx-setvalue>
               <fx-setvalue ref="instance('z-vars')/return" value="$current?data?tags(1)?tag"></fx-setvalue>
               <fx-setvalue ref="instance('zotero-ref')/ptr/@target" value="$current?data?tags(1)?tag"></fx-setvalue>
-              <fx-load url="https://api.zotero.org/groups/2519759/items/top?tag={instance('zotero-ref')/ptr/@target}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum" attach-to="#htmlout"></fx-load>
+              <fx-load if="string-length(instance('zotero-ref')/ptr/@target) &gt; 0" url="https://api.zotero.org/groups/2519759/items/top?tag={instance('zotero-ref')/ptr/@target}&amp;format=bib&amp;style=digital-humanities-im-deutschsprachigen-raum" attach-to="#htmlout"></fx-load>
               <fx-return ref="instance('z-vars')/return/text()"></fx-return>
               <fx-refresh force="force"></fx-refresh>
             </fx-action>
