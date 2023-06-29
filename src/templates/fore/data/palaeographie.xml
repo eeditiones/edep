@@ -1,27 +1,104 @@
 <data>
-    <item ref="#actuaria">Actuaria</item>
-    <item ref="#quadrata">Quadrata</item>
-    <item ref="#italics">Kursivschrift</item>
-    <item ref="#letters-prolonged">längliche Buchstaben</item>
-    <item ref="#libraria">Libraria</item>
-    <item ref="#uniziale">Unziale</item>
-    <item ref="#deep-engraved">tief eingemeißelt</item>
-    <item ref="#filled">ausgemalt</item>
-    <item ref="#narrow">eng geschrieben</item>
-    <item ref="#negligent-engraved">nachlässig gemeißelt</item>
-    <item ref="#carefully-engraved">sorgfältig gemeißelt</item>
-    <item ref="#evenly-distributed">gleichmäßig angeordnet</item>
-    <item ref="#scratched">geritzt</item>
-    <item ref="#painted">aufgemalt</item>
-    <item ref="#mosaic">Mosaikinschrift</item>
-    <item ref="#litterae-aureae">litterae aureae</item>
-    <item ref="#letters-decreasing">Buchstaben kleiner werdend</item>
-    <item ref="#letters-increasing">Buchstaben größer werdend</item>
-    <item ref="#letters-potruding">Buchstaben nach oben herausragend</item>
-    <item ref="#letters-erased">Buchstaben eradiert</item>
-    <item ref="#letters-rubbed">Buchstaben abgerieben</item>
-    <item ref="#letters-erodet">Buchstaben verwittert</item>
-    <item ref="#letters-missing">Buchstaben verschwunden</item>
-    <item ref="#dowel-hole">Dübellöcher erhalten</item>
-    <item ref="#overwritten">Stein mehrfach beschrieben</item>
+    <item ref="#actuaria">
+        <name xml:lang="de">Actuaria</name>
+        <name xml:lang="en">actuaria</name>
+    </item>
+    <item ref="#quadrata">
+        <name xml:lang="de">Quadrata</name>
+        <name xml:lang="en">quadrata </name>
+    </item>
+    <item ref="#italics">
+        <name xml:lang="de">
+            <name xml:lang="de">Kursivschrift</name>
+            <name xml:lang="en">cursive</name>
+        </name>
+    </item>
+    <item ref="#letters-prolonged">
+        <name xml:lang="de">längliche Buchstaben</name>
+        <name xml:lang="en">elongated letters</name>
+    </item>
+    <item ref="#libraria">
+        <name xml:lang="de">Libraria</name>
+        <name xml:lang="en">libraria</name>
+    </item>
+    <item ref="#uniziale">
+        <name xml:lang="de">Unziale</name>
+        <name xml:lang="en">uncial</name>
+    </item>
+    <item ref="#deep-engraved">
+        <name xml:lang="de">tief eingemeißelt</name>
+        <name xml:lang="en">deeply carved</name>
+    </item>
+    <item ref="#filled">
+        <name xml:lang="de">ausgemalt</name>
+        <name xml:lang="en">coloured/painted</name>
+    </item>
+    <item ref="#narrow">
+        <name xml:lang="de">eng geschrieben</name>
+        <name xml:lang="en">tightly written</name>
+    </item>
+    <item ref="#negligent-engraved">
+        <name xml:lang="de">nachlässig gemeißelt</name>
+        <name xml:lang="en">carelessly carved</name>
+    </item>
+    <item ref="#carefully-engraved">
+        <name xml:lang="de">sorgfältig gemeißelt</name>
+        <name xml:lang="en">carefully carved</name>
+    </item>
+    <item ref="#evenly-distributed">
+        <name xml:lang="de">gleichmäßig angeordnet</name>
+        <name xml:lang="en">evenly arranged</name>
+    </item>
+    <item ref="#scratched">
+        <name xml:lang="de">geritzt</name>
+        <name xml:lang="en">scratched (graffiti)</name>
+    </item>
+    <item ref="#painted">
+        <name xml:lang="de">aufgemalt</name>
+        <name xml:lang="en">painted</name>
+    </item>
+    <item ref="#mosaic">
+        <name xml:lang="de">Mosaikinschrift</name>
+        <name xml:lang="en">mosaic inscription</name>
+    </item>
+    <item ref="#litterae-aureae">
+        <name xml:lang="de">litterae aureae</name>
+        <name xml:lang="en">litterae aureae</name>
+    </item>
+    <item ref="#letters-decreasing">
+        <name xml:lang="de">Buchstaben kleiner werdend</name>
+        <name xml:lang="en">letters getting smaller</name>
+    </item>
+    <item ref="#letters-increasing">
+        <name xml:lang="de">Buchstaben größer werdend</name>
+        <name xml:lang="en">letters getting bigger</name>
+    </item>
+    <item ref="#letters-potruding">
+        <name xml:lang="de">Buchstaben nach oben herausragend</name>
+        <name xml:lang="en">letters protruding upwards</name>
+    </item>
+    <item ref="#letters-erased">
+        <name xml:lang="de">Buchstaben eradiert</name>
+        <name xml:lang="en">letters erased</name>
+    </item>
+    <item ref="#letters-rubbed">
+        <name xml:lang="de">Buchstaben abgerieben</name>
+        <name xml:lang="en">letters rubbed off</name>
+    </item>
+    <item ref="#letters-erodet">
+        <name xml:lang="de">Buchstaben verwittert</name>
+        <name xml:lang="en">letters weathered</name>
+    </item>
+    <item ref="#letters-missing">
+        <name xml:lang="de">Buchstaben verschwunden</name>
+        <name xml:lang="en">letters disappeared</name>
+    </item>
+    <item ref="#dowel-hole">
+        <name xml:lang="de">Dübellöcher erhalten</name>
+        <name xml:lang="en">dowel holes preserved</name>
+    </item>
+    <item ref="#overwritten">
+        <name xml:lang="de">Stein mehrfach beschrieben</name>
+        <name xml:lang="en">described several times</name>
+    </item>
 </data>
