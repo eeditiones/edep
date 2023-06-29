@@ -108,6 +108,9 @@
             <fx-setvalue ref="instance('z-vars')/search"></fx-setvalue>
             <fx-setvalue ref="instance('z-vars')/return"></fx-setvalue>
             <fx-setvalue ref="instance('z-vars')/open"></fx-setvalue>
+            <fx-load attach-to="#htmlout">
+              <template><div></div></template>
+            </fx-load>
             <!-- open group to display details -->
             <fx-refresh force="force"></fx-refresh>
           </fx-action>
