@@ -115,11 +115,11 @@
                         <fx-instance id="typeins" src="../edep-data/typeins.xml">
 
                         </fx-instance>
-                        <fx-instance id="objtyp" src="../edep-data/objtyp.json" type="json">
+                        <fx-instance id="objtyp" src="../edep-data/objtyp.xml">
 
                         </fx-instance>
 
-                        <fx-instance id="material" src="../edep-data/material.json" type="json"></fx-instance>
+                        <fx-instance id="material" src="../edep-data/material.xml"></fx-instance>
 
                         <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
                             <data></data>
@@ -345,9 +345,9 @@
                             <!-- 16a) -->
                             <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType/@ref" update-event="input">
                                 <label><pb-i18n key="form.type-of-monument">Inschriftträger</pb-i18n></label>
-                                <select ref="instance('objtyp')?*" class="widget" selection="open" static="static">
+                                <select ref="instance('objtyp')/term" class="widget" selection="open" static="static">
                                     <template>
-                                        <option value="{?value}">{?name}</option>
+                                        <option value="{@ref}">{name[@xml:lang = instance('vars')/language]}</option>
                                     </template>
                                 </select>
                             </fx-control>
@@ -363,9 +363,9 @@
                             <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" update-event="input"
                                         class="orange">
                                 <label><pb-i18n key="form.material">Material</pb-i18n></label>
-                                <select multiple="multiple" size="10" ref="instance('material')?*" class="widget" static="static">
+                                <select multiple="multiple" size="10" ref="instance('material')/term" class="widget" static="static">
                                     <template>
-                                        <option value="{?value}">{?name}</option>
+                                        <option value="{@ref}">{name[@xml:lang = instance('vars')/language]}</option>
                                     </template>
                                 </select>
                             </fx-control>
