@@ -29,19 +29,9 @@ window.addEventListener('DOMContentLoaded', () => {
     pbEvents.subscribe('pb-page-ready', null, (ev) => {
         language = ev.detail.language;
     });
-    pbEvents.subscribe('pb-i18n-update', null, (ev) => {
-        const lang = ev.detail.language;
-        const twoletter = lang.length !== 2 ? lang.substring(lang, 0, 2) : lang;
-        document.dispatchEvent(new CustomEvent('fx-language', {
-            detail: { language: twoletter },
-            bubbles: true,
-            composed: true
-        }));
-    });
 
     const fore = document.querySelector('fx-fore');
     fore.addEventListener('ready', () => {
-        pbEvents.emit('pb-i18n-language', null, { language });
 
         const epidoc = document.getElementById('transcriptionEditor');
         const output = document.getElementById('transcription-display');

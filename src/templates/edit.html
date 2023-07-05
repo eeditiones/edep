@@ -80,6 +80,10 @@
             <main id="main" class="editor">
                 <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                 <fx-fore show-confirmation="show-confirmation">
+                    <!--
+                                        <fx-message event="pb-page-ready" target="#document"  phase="capture">pb-page-ready</fx-message>
+                                        <fx-message event="update" target="#document" phase="capture">update</fx-message>
+                    -->
 
                     <!-- ### if get called with an id param we load the data via submission ### -->
                     <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>
@@ -266,13 +270,19 @@
                             }
                         </fx-function>
 
+                        <fx-function signature="shortlang($input as xs:string) as xs:string" type="text/javascript">
+                            console.log('shortlang', $input.substring( 0, 2))
+                            return $input.substring(0, 2)
+                        </fx-function>
+
                         <fx-function signature="checkDate($value as xs:string) as xs:boolean" type="text/javascript">
                             return checkDate($value);
                         </fx-function>
                     </fx-model>
-                    <fx-action event="fx-language" target="#document" if="instance('vars')/inited='true'">
-                        <fx-setvalue ref="instance('vars')/language" value="event('language')"/>
+                    <fx-action event="pb-i18n-update" target="#document" if="instance('vars')/inited='true'">
+                        <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'))"/>
                     </fx-action>
+
                     <nav>
                         <h3>Navigation</h3>
                         <ul>
