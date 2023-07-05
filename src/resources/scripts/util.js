@@ -30,8 +30,10 @@ window.addEventListener('DOMContentLoaded', () => {
         language = ev.detail.language;
     });
     pbEvents.subscribe('pb-i18n-update', null, (ev) => {
-        document.dispatchEvent(new CustomEvent('fx-language', { 
-            detail: { language: ev.detail.language },
+        const lang = ev.detail.language;
+        const twoletter = lang.length !== 2 ? lang.substring(lang, 0, 2) : lang;
+        document.dispatchEvent(new CustomEvent('fx-language', {
+            detail: { language: twoletter },
             bubbles: true,
             composed: true
         }));

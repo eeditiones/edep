@@ -54,8 +54,202 @@
 </head>
 
 <body>
-<pb-page data-template="pages:pb-page" unresolved="unresolved" locales="resources/i18n/{{ns}}/{{lng}}.json" require-language=""
+<fx-fore>
+    <!-- ### if get called with an id param we load the data via submission ### -->
+    <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>
+    <fx-model>
+        <fx-action event="model-construct-done">
+            <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
+            <fx-send submission="s-load-inscription" if="exists(instance('params')/id)"></fx-send>
+            <fx-setvalue ref="instance('vars')/inited">true</fx-setvalue>
+        </fx-action>
+
+        <fx-instance id="default" src="api/inscription"
+                     xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+            <data></data>
+        </fx-instance>
+
+        <fx-bind ref="instance('default')">
+            <fx-bind ref=".//fileDesc/titleStmt/title" required="true()" constraint="string-length(.) != 0">
+            </fx-bind>
+            <!--fx-bind ref=".//bibl/@xml:id" required="string-length(../note) != 0" constraint="matches(., '^[a-z_]')" alert="bibl/@xml:id does not match the pattern"></fx-bind-->
+            <fx-bind ref=".//history/provenance">
+                <fx-bind ref="./@when" constraint="checkDate(.)"></fx-bind>
+                <fx-bind ref="./@notBefore" constraint="checkDate(.)"></fx-bind>
+                <fx-bind ref="./@notAfter" constraint="checkDate(.)"></fx-bind>
+            </fx-bind>
+            <fx-bind ref=".//history/origin/origDate">
+                <fx-bind ref="./@when-custom" constraint="checkDate(.)"></fx-bind>
+                <fx-bind ref="./@notBefore-custom" constraint="checkDate(.)"></fx-bind>
+                <fx-bind ref="./@notAfter-custom" constraint="checkDate(.)"></fx-bind>
+            </fx-bind>
+        </fx-bind>
+
+
+        <fx-instance id="typeins" src="../edep-data/typeins.xml">
+
+        </fx-instance>
+        <fx-instance id="objtyp" src="../edep-data/objtyp.xml">
+
+        </fx-instance>
+
+        <fx-instance id="material" src="../edep-data/material.xml"></fx-instance>
+
+        <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
+            <data></data>
+        </fx-instance>
+
+        <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"
+                     xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+
+        </fx-instance>
+
+        <fx-instance id="templates" src="templates/fore/templates.xml"
+                     xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+
+
+        </fx-instance>
+
+        <fx-instance id="vars">
+            <data>
+                <display-leiden>hidden</display-leiden>
+                <can-delete>false</can-delete>
+                <parent></parent>
+                <uuid></uuid>
+                <geoid></geoid>
+                <loggedin>hidden</loggedin>
+                <xml-valid></xml-valid>
+                <history-term></history-term>
+                <geography-term></geography-term>
+                <military-term></military-term>
+                <languages xml:lang="en">
+                    <lang code="cel">Celtic</lang>
+                    <lang code="gre">Greek</lang>
+                    <lang code="heb">Hebrew</lang>
+                    <lang code="xib">Iberian</lang>
+                    <lang code="ita">Italic</lang>
+                    <lang code="lat">Latin</lang>
+                    <lang code="nxm">Numidian</lang>
+                    <lang code="xxx">Palmyrenic</lang>
+                    <lang code="xpu">Phoenician-Punic</lang>
+                </languages>
+                <languages xml:lang="de">
+                    <lang code="cel">Keltisch</lang>
+                    <lang code="gre">Griechisch</lang>
+                    <lang code="heb">Hebräisch</lang>
+                    <lang code="xib">Iberisch</lang>
+                    <lang code="ita">Italisch</lang>
+                    <lang code="lat">Latein</lang>
+                    <lang code="nxm">Numidisch</lang>
+                    <lang code="xxx">Palmyrisch</lang>
+                    <lang code="xpu">Phoenicisch-Punisch</lang>
+                </languages>
+                <language>en</language>
+                <inited>false</inited>
+            </data>
+        </fx-instance>
+        <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
+        <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
+        <fx-bind ref="instance('vars')/xml-valid" calculate="editorsValid()" constraint=".='true'"></fx-bind>
+
+
+        <fx-instance id="tmp">
+            <data>
+                <dummy>xpath?</dummy>
+            </data>
+        </fx-instance>
+
+        <!-- this instance holds queryString params from the Url of this page -->
+        <fx-instance id="params" src="#querystring">
+
+        </fx-instance>
+
+        <fx-submission id="s-load-inscription"
+                       url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
+                       method="get"
+                       replace="instance"
+                       validate="false">
+            <fx-message event="submit-error"><pb-i18n key="loading-failed"></pb-i18n></fx-message>
+
+            <fx-action event="submit-done">
+                <!--
+                ### initializing state for 30) 31) 32) dummy switches
+                -->
+                <fx-setvalue ref="instance('vars')/history-term"
+                             value="if(exists(instance('default')//term[@ref='#social-economic-legal-history'])) then 'true' else 'false'"></fx-setvalue>
+
+                <fx-setvalue ref="instance('vars')/geography-term"
+                             value="if(exists(instance('default')//term[@ref='#geography'])) then 'true' else 'false'"></fx-setvalue>
+
+                <fx-setvalue ref="instance('vars')/military-term"
+                             value="if(exists(instance('default')//term[@ref='#military'])) then 'true' else 'false'"></fx-setvalue>
+
+            </fx-action>
+        </fx-submission>
+
+        <fx-submission id="s-create"
+                       url="api/inscription?collection={instance('params')/collection}"
+                       method="post"
+                       replace="instance">
+            <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
+
+            <fx-action event="submit-error">
+                <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
+                <fx-action src="resources/scripts/showErrors.js"></fx-action>
+            </fx-action>
+        </fx-submission>
+
+        <fx-submission id="s-save"
+                       url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
+                       method="post"
+                       replace="instance">
+            <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
+            <fx-action event="submit-error">
+                <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
+                <fx-action src="resources/scripts/showErrors.js"></fx-action>
+            </fx-action>
+        </fx-submission>
+
+        <!--fx-submission id="s-render"
+            url="api/render?type=transcription"
+            method="post"
+            replace="target"
+            target="#transcription-display"
+            validate="false">
+            <fx-message event="submit-done">Render called</fx-message>
+            <fx-message event="submit-error">Render failed</fx-message>
+        </fx-submission-->
+
+        <fx-function signature="gen-id() as xs:string" type="text/javascript">
+            return createUUID();
+        </fx-function>
+
+        <fx-instance id="login" type="json">{}</fx-instance>
+        <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance" instance="login" validate="false">
+            <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
+            <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
+        </fx-submission>
+
+        <!--                        <fx-submission-->
+        <fx-function signature="editorsValid() as xs:boolean" type="text/javascript">
+            const editors = form.querySelectorAll('jinn-xml-editor[valid="false"],jinn-epidoc-editor[valid="false"]');
+            if(editors.length !== 0){
+            return false;
+            }else{
+            return true;
+            }
+        </fx-function>
+
+        <fx-function signature="checkDate($value as xs:string) as xs:boolean" type="text/javascript">
+            return checkDate($value);
+        </fx-function>
+    </fx-model>
+
+
+    <pb-page data-template="pages:pb-page" unresolved="unresolved" locales="resources/i18n/{{ns}}/{{lng}}.json" require-language=""
     supported-languages="de,en">
+        <fx-message event="pb-i18n-update">pb-i18n-update: Lang has been set to {event('language')}</fx-message>
+
     <app-drawer-layout force-narrow="force-narrow">
         <app-drawer slot="drawer" align="right">
             <div class="drawer-content">
@@ -79,200 +273,13 @@
 
             <main id="main" class="editor">
                 <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-                <fx-fore show-confirmation="show-confirmation">
 
-                    <!-- ### if get called with an id param we load the data via submission ### -->
-                    <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>
-                    <fx-model>
-                        <fx-action event="model-construct-done">
-                            <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
-                            <fx-send submission="s-load-inscription" if="exists(instance('params')/id)"></fx-send>
-                            <fx-setvalue ref="instance('vars')/inited">true</fx-setvalue>
-                        </fx-action>
-
-                        <fx-instance id="default" src="api/inscription"
-                                        xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                            <data></data>
-                        </fx-instance>
-
-                        <fx-bind ref="instance('default')">
-                            <fx-bind ref=".//fileDesc/titleStmt/title" required="true()" constraint="string-length(.) != 0">
-                            </fx-bind>
-                            <!--fx-bind ref=".//bibl/@xml:id" required="string-length(../note) != 0" constraint="matches(., '^[a-z_]')" alert="bibl/@xml:id does not match the pattern"></fx-bind-->
-                            <fx-bind ref=".//history/provenance">
-                                <fx-bind ref="./@when" constraint="checkDate(.)"></fx-bind>
-                                <fx-bind ref="./@notBefore" constraint="checkDate(.)"></fx-bind>
-                                <fx-bind ref="./@notAfter" constraint="checkDate(.)"></fx-bind>
-                            </fx-bind>
-                            <fx-bind ref=".//history/origin/origDate">
-                                <fx-bind ref="./@when-custom" constraint="checkDate(.)"></fx-bind>
-                                <fx-bind ref="./@notBefore-custom" constraint="checkDate(.)"></fx-bind>
-                                <fx-bind ref="./@notAfter-custom" constraint="checkDate(.)"></fx-bind>
-                            </fx-bind>
-                        </fx-bind>
-
-
-                        <fx-instance id="typeins" src="../edep-data/typeins.xml">
-
-                        </fx-instance>
-                        <fx-instance id="objtyp" src="../edep-data/objtyp.xml">
-
-                        </fx-instance>
-
-                        <fx-instance id="material" src="../edep-data/material.xml"></fx-instance>
-
-                        <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
-                            <data></data>
-                        </fx-instance>
-
-                        <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"
-                                        xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-
-                        </fx-instance>
-
-                        <fx-instance id="templates" src="templates/fore/templates.xml"
-                                        xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-
-
-                        </fx-instance>
-
-                        <fx-instance id="vars">
-                            <data>
-                                <display-leiden>hidden</display-leiden>
-                                <can-delete>false</can-delete>
-                                <parent></parent>
-                                <uuid></uuid>
-                                <geoid></geoid>
-                                <loggedin>hidden</loggedin>
-                                <xml-valid></xml-valid>
-                                <history-term></history-term>
-                                <geography-term></geography-term>
-                                <military-term></military-term>
-                                <languages xml:lang="en">
-                                    <lang code="cel">Celtic</lang>
-                                    <lang code="gre">Greek</lang>
-                                    <lang code="heb">Hebrew</lang>
-                                    <lang code="xib">Iberian</lang>
-                                    <lang code="ita">Italic</lang>
-                                    <lang code="lat">Latin</lang>
-                                    <lang code="nxm">Numidian</lang>
-                                    <lang code="xxx">Palmyrenic</lang>
-                                    <lang code="xpu">Phoenician-Punic</lang>
-                                </languages>
-                                <languages xml:lang="de">
-                                    <lang code="cel">Keltisch</lang>
-                                    <lang code="gre">Griechisch</lang>
-                                    <lang code="heb">Hebräisch</lang>
-                                    <lang code="xib">Iberisch</lang>
-                                    <lang code="ita">Italisch</lang>
-                                    <lang code="lat">Latein</lang>
-                                    <lang code="nxm">Numidisch</lang>
-                                    <lang code="xxx">Palmyrisch</lang>
-                                    <lang code="xpu">Phoenicisch-Punisch</lang>
-                                </languages>
-                                <language>en</language>
-                                <inited>false</inited>
-                            </data>
-                        </fx-instance>
-                        <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
-                        <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
-                        <fx-bind ref="instance('vars')/xml-valid" calculate="editorsValid()" constraint=".='true'"></fx-bind>
-
-
-                        <fx-instance id="tmp">
-                            <data>
-                                <dummy>xpath?</dummy>
-                            </data>
-                        </fx-instance>
-
-                        <!-- this instance holds queryString params from the Url of this page -->
-                        <fx-instance id="params" src="#querystring">
-
-                        </fx-instance>
-
-                        <fx-submission id="s-load-inscription"
-                                        url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
-                                        method="get"
-                                        replace="instance"
-                                        validate="false">
-                            <fx-message event="submit-error"><pb-i18n key="loading-failed"></pb-i18n></fx-message>
-
-                            <fx-action event="submit-done">
-                                <!--
-                                ### initializing state for 30) 31) 32) dummy switches
-                                -->
-                                <fx-setvalue ref="instance('vars')/history-term"
-                                                value="if(exists(instance('default')//term[@ref='#social-economic-legal-history'])) then 'true' else 'false'"></fx-setvalue>
-
-                                <fx-setvalue ref="instance('vars')/geography-term"
-                                                value="if(exists(instance('default')//term[@ref='#geography'])) then 'true' else 'false'"></fx-setvalue>
-
-                                <fx-setvalue ref="instance('vars')/military-term"
-                                                value="if(exists(instance('default')//term[@ref='#military'])) then 'true' else 'false'"></fx-setvalue>
-
-                            </fx-action>
-                        </fx-submission>
-
-                        <fx-submission id="s-create"
-                                        url="api/inscription?collection={instance('params')/collection}"
-                                        method="post"
-                                        replace="instance">
-                            <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
-
-                            <fx-action event="submit-error">
-                                <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
-                                <fx-action src="resources/scripts/showErrors.js"></fx-action>
-                            </fx-action>
-                        </fx-submission>
-
-                        <fx-submission id="s-save"
-                                        url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
-                                        method="post"
-                                        replace="instance">
-                            <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
-                            <fx-action event="submit-error">
-                                <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
-                                <fx-action src="resources/scripts/showErrors.js"></fx-action>
-                            </fx-action>
-                        </fx-submission>
-
-                        <!--fx-submission id="s-render"
-                            url="api/render?type=transcription"
-                            method="post"
-                            replace="target"
-                            target="#transcription-display"
-                            validate="false">
-                            <fx-message event="submit-done">Render called</fx-message>
-                            <fx-message event="submit-error">Render failed</fx-message>
-                        </fx-submission-->
-
-                        <fx-function signature="gen-id() as xs:string" type="text/javascript">
-                            return createUUID();
-                        </fx-function>
-
-                        <fx-instance id="login" type="json">{}</fx-instance>
-                        <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance" instance="login" validate="false">
-                            <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
-                            <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
-                        </fx-submission>
-
-                        <!--                        <fx-submission-->
-                        <fx-function signature="editorsValid() as xs:boolean" type="text/javascript">
-                            const editors = form.querySelectorAll('jinn-xml-editor[valid="false"],jinn-epidoc-editor[valid="false"]');
-                            if(editors.length !== 0){
-                            return false;
-                            }else{
-                            return true;
-                            }
-                        </fx-function>
-
-                        <fx-function signature="checkDate($value as xs:string) as xs:boolean" type="text/javascript">
-                            return checkDate($value);
-                        </fx-function>
-                    </fx-model>
+<!--
                     <fx-action event="fx-language" target="#document" if="instance('vars')/inited='true'">
                         <fx-setvalue ref="instance('vars')/language" value="event('language')"/>
                     </fx-action>
+-->
+
                     <nav>
                         <h3>Navigation</h3>
                         <ul>
@@ -360,20 +367,15 @@
                             <!-- there's no 17) -->
 
                             <!-- 18) -->
-                            <fieldset class='material'>
-                                <legend><pb-i18n key="form.material">Material</pb-i18n></legend>
-                                <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref"
-                                            class="orange" style="margin-top:0;">
-                                    <fx-items ref="instance('material')/term" class="widget">
-                                        <template>
-                                            <span class="fx-checkbox">
-                                                <input type="checkbox" value="{@ref}"/>
-                                                <label>{name[@xml:lang = instance('vars')/language]}</label>
-                                            </span>
-                                        </template>
-                                    </fx-items>
-                                </fx-control>
-                            </fieldset>
+                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" update-event="input"
+                                        class="orange">
+                                <label><pb-i18n key="form.material">Material</pb-i18n></label>
+                                <select multiple="multiple" size="10" ref="instance('material')/term" class="widget">
+                                    <template>
+                                        <option value="{@ref}">{name[@xml:lang = instance('vars')/language]}</option>
+                                    </template>
+                                </select>
+                            </fx-control>
                         </fx-group>
 
                         <fx-repeat id="parts" ref=".//msPart">
@@ -1398,7 +1400,6 @@
                         </fx-control>
                     </fx-group>
 
-                </fx-fore>
             </main>
 
             <footer class="version">
@@ -1407,6 +1408,7 @@
         </app-header-layout>
     </app-drawer-layout>
 </pb-page>
+</fx-fore>
 <div class="splash"></div>
 
 <script src="./resources/scripts/util.js" type="text/javascript"></script>

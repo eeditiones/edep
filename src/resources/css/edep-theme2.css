@@ -426,6 +426,9 @@ fx-control, fx-output, .nested-repeat fieldset legend {
     grid-column-gap: 0.5rem;
     width: calc(100% - 1rem);
 }
+.material fx-control fx-items{
+    grid-area:unset;
+}
 
 .nested-repeat fieldset legend {
     margin-bottom: 0;
