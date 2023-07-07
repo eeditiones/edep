@@ -1,7 +1,5 @@
 {
-    "myapp": {
-        "title": "Foo"
-    },
+    "title": "Editionstools für eine digitale Epigraphik",
     "menu": {
         "inscriptions": "Inschriften",
         "geodata": "Geodaten",
@@ -64,6 +62,7 @@
         "translated-by": "Übersetzer/in",
         "transcription": "Transkription",
         "dating": "Datierung",
+        "dating-placeholder": "JJJJ, JJJJ-MM oder JJJJ-MM-TT",
         "religion": "Religion",
         "social-economic-legal history": "Sozial-/Wirtschafts-/Rechtsgeschichte",
         "geography": "Geographie",
