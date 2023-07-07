@@ -309,7 +309,7 @@ declare variable $config:context-path :=
 (:~
  : The root of the collection hierarchy containing data.
  :)
-declare variable $config:data-root := repo:get-root() || "/edep-data";
+declare variable $config:data-root := repo:get-root() || "edep-data";
 
 (:~
  : The root of the collection hierarchy whose files should be displayed
