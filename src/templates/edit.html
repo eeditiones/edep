@@ -270,17 +270,20 @@
                             }
                         </fx-function>
 
-                        <fx-function signature="shortlang($input as xs:string) as xs:string" type="text/javascript">
-                            console.log('shortlang', $input.substring( 0, 2))
-                            return $input.substring(0, 2)
+                        <fx-function signature="shortlang($input as xs:string,$default as xs:string) as xs:string" type="text/javascript">
+                            if($input) {
+                                return $input.substring(0, 2);
+                            }
+                            return $default;
                         </fx-function>
 
                         <fx-function signature="checkDate($value as xs:string) as xs:boolean" type="text/javascript">
                             return checkDate($value);
                         </fx-function>
                     </fx-model>
-                    <fx-action event="pb-i18n-update" target="#document" if="instance('vars')/inited='true'">
-                        <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'))"/>
+                    <fx-action event="pb-i18n-update" target="#document">
+                        <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'), instance('vars')/language/string())"></fx-setvalue>
+                        <fx-refresh force='force'></fx-refresh>
                     </fx-action>
 
                     <nav>
