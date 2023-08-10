@@ -1288,7 +1288,7 @@
                         <fx-group ref="profileDesc" id="historic-relevance">
                             <h3><pb-i18n key="form.historic-relevance"></pb-i18n></h3>
                             <!-- 28)  -->
-                            <fx-control ref="textClass/keywords/term/@ref" update-event="input">
+                            <fx-control ref="textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/religion']/term/@ref" update-event="input">
                                 <label><pb-i18n key="form.religion">Religion</pb-i18n></label>
                                 <select class="widget" multiple="multiple" static="static">
                                     <option value="#pagan" data-i18n="religion.pagan">pagan</option>
@@ -1304,8 +1304,7 @@
                                 <input id="historyTerm" type="checkbox" class="widget"/>
                                 <fx-insert event="value-changed"
                                             if="context()/text()='true'"
-                                            context="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']"
-                                            ref="term"
+                                            ref="instance('default')//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']/term"
                                             origin="instance('templates')/term[@ref='#social-economic-legal-history']"></fx-insert>
 
                                 <fx-delete event="value-changed"
@@ -1320,8 +1319,7 @@
                                 <input id="geographyTerm" type="checkbox" class="widget"/>
                                 <fx-insert event="value-changed"
                                             if="context()/text()='true'"
-                                            context="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']"
-                                            ref="term"
+                                            ref="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']/term"
                                             origin="instance('templates')/term[@ref='#geography']"></fx-insert>
 
                                 <fx-delete event="value-changed"
@@ -1336,8 +1334,7 @@
                                 <input id="militaryTerm" type="checkbox" class="widget"/>
                                 <fx-insert event="value-changed"
                                             if="context()/text()='true'"
-                                            context="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']"
-                                            ref="term"
+                                            ref="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']/term"
                                             origin="instance('templates')/term[@ref='#military']"></fx-insert>
 
                                 <fx-delete event="value-changed"
