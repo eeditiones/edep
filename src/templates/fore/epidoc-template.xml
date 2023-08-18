@@ -109,10 +109,10 @@
                                             <depth></depth>
                                         </dimensions>
                                         <!-- 14) Dekor -->
-                                        <rs type="decoration" ref="https://www.eagle-network.eu/voc/decor/lod/1000"></rs>
+                                        <rs type="decoration" ref=""></rs>
                                     </support>
                                     <!-- 13) Erhaltung -->
-                                    <condition>complete</condition>
+                                    <condition></condition>
                                 </supportDesc>
                                 <layoutDesc>
                                     <layout>
@@ -125,7 +125,7 @@
                                         <!-- 34) Paläographie: kontrolliertes Vokabular -->
                                         <rs type="palaeography" ref="" />
                                         <!-- 24) Metrik -->
-                                        <rs type="metric">no</rs>
+                                        <rs type="metric"></rs>
                                         <!-- Beschreibung -->
                                         <ab/>
                                     </layout>
@@ -138,7 +138,7 @@
                                         <height></height>
                                     </dimensions>
                                     <!-- 39) Ligatur -->
-                                    <rs type="ligature">no</rs>
+                                    <rs type="ligature"></rs>
                                 </handNote>
                             </handDesc>
                         </physDesc>

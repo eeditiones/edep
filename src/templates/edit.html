@@ -597,6 +597,7 @@
                                         <fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
                                             <label><pb-i18n key="form.preservation">Erhaltung</pb-i18n></label>
                                             <select class="widget">
+                                                <option value="" data-i18n="form.unknown">unbekannt</option>
                                                 <option value="complete" data-i18n="preservation.complete">vollständig</option>
                                                 <option value="fragmentary" data-i18n="preservation.fragmentary">fragmentarisch</option>
                                             </select>
@@ -606,6 +607,7 @@
                                         <fx-control ref="physDesc/objectDesc/supportDesc/support/rs/@ref" update-event="input">
                                             <label><pb-i18n key="form.decoration">Dekor</pb-i18n></label>
                                             <select class="widget">
+                                                <option value="" data-i18n="form.unknown">unbekannt</option>
                                                 <option value="https://www.eagle-network.eu/voc/decor/lod/2000" data-i18n="decor.yes">Ja</option>
                                                 <option value="https://www.eagle-network.eu/voc/decor/lod/1000" data-i18n="decor.no">Nein</option>
                                                 <option value="uncertain" data-i18n="decor.uncertain">unsicher</option>
@@ -676,6 +678,7 @@
                                         <fx-control ref="//layoutDesc/layout/rs[@type='metric']" update-event="input">
                                             <label><pb-i18n key="form.metre">Metrik</pb-i18n></label>
                                             <select class="widget">
+                                                <option value="" data-i18n="form.unknown">unbekannt</option>
                                                 <option value="yes" data-i18n="decor.yes">Ja</option>
                                                 <option value="no" data-i18n="decor.no">Nein</option>
                                                 <option value="partim" data-i18n="metric.partim">Partim</option>
@@ -716,6 +719,7 @@
                                         <fx-control ref="//handDesc/handNote/rs" update-event="input">
                                             <label><pb-i18n key="form.ligature">Ligatur</pb-i18n></label>
                                             <select class="widget">
+                                                <option value="" data-i18n="form.unknown">unbekannt</option>
                                                 <option value="yes" data-i18n="decor.yes">Ja</option>
                                                 <option value="no" data-i18n="decor.no">Nein</option>
                                             </select>
