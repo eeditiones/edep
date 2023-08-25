@@ -82,6 +82,17 @@ declare function dapi:print($request as map(*)) {
     dapi:generate-html($request, "print")
 };
 
+declare function dapi:epidoc($request as map(*)) {
+    let $doc := xmldb:decode($request?parameters?id)
+    return 
+        if ($doc) then 
+            let $xml := config:get-document($doc)
+            return 
+                $pm-config:tei-transform($xml, map{} , 'edep-clean.odd')             
+        else
+            error($errors:NOT_FOUND, "Document " || $doc || " not found")
+};
+
 declare %private function dapi:generate-html($request as map(*), $outputMode as xs:string) {
     let $doc := xmldb:decode($request?parameters?id)
     let $addStyles :=

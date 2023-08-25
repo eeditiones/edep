@@ -728,7 +728,50 @@
           }
         }
       }
-    }
+    },
+    		"/api/document/{id}/epidoc": {
+			"get": {
+				"summary": "Get the Epidoc source of a document",
+				"description": "Get the source of a document, either as XML, text or binary.",
+				"tags": ["documents"],
+				"operationId": "dapi:epidoc",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Content of the document",
+						"content": {
+							"application/xml": {
+								"schema": {
+									"type": "string"
+								}
+							},
+							"text/markdown": {
+								"schema": {
+									"type": "string"
+								}
+							},
+							"text/text": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"410": {
+						"description": "Document deleted"
+					}
+				}
+			}
+		}
   },
   "security": [
     {
