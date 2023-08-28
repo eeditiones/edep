@@ -242,12 +242,13 @@
                 <model behaviour="copy"/>
             </elementSpec>
         <elementSpec ident="facsimile" mode="add">
-                <model predicate="@corresp and not(graphic)" behaviour="inline">
-            <desc>Move @corresp attribute to element graphic</desc>
-            <param name="uri" value="@corresp"/>
-            <pb:template xmlns="" xml:space="preserve"><facsimile xmlns="http://www.tei-c.org/ns/1.0"><graphic url="[[uri]]"/></facsimile></pb:template>
+                <model predicate="not(graphic[@url])" behaviour="omit">
+            <desc>Omit element if it doesn’t contain a child graphic element with @url</desc>
         </model>
                 <model behaviour="copy"/>
+            </elementSpec>
+            <elementSpec ident="author" mode="add">
+                <model predicate="string-length(.) eq 0" behaviour="omit"/>
             </elementSpec>
         </schemaSpec>
     </text>
