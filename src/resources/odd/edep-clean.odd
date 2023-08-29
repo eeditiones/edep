@@ -194,7 +194,7 @@
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="textLang" mode="add">
-                <model predicate="matches(@mainLang, '\w\s+\w')" behaviour="inline">
+                <model predicate="count(tokenize(@mainLang, '\s+')) gt 1" behaviour="inline">
             <param name="mainLang" value="let $foreign := ancestor::TEI/descendant::div[@type eq 'edition']/descendant::foreign/@xml:lang for $x in tokenize(@mainLang, '\s+') return $x[not(. = $foreign)]"/>
             <param name="otherLangs" value="let $foreign := ancestor::TEI/descendant::div[@type eq 'edition']/descendant::foreign/@xml:lang for $x in tokenize(@mainLang, '\s+') return $x[. = $foreign]"/>
             <pb:template xmlns="" xml:space="preserve"><textLang xmlns="http://www.tei-c.org/ns/1.0" mainLang="[[mainLang]]" otherLangs="[[otherLangs]]"/></pb:template>
