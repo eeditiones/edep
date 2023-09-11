@@ -26,6 +26,23 @@ function checkDate(string) {
 window.addEventListener('DOMContentLoaded', () => {
     let language;
 
+    const navLinks = Array.from(document.querySelectorAll('nav a'));
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            console.log('clicked it')
+
+            navLinks.forEach(lk =>{
+                lk.style.textDecoration = "none";
+                lk.style.fontWeight = "300";
+            })
+
+            const parent = e.target.closest('a');
+            parent.style.textDecoration = "underline";
+            parent.style.fontWeight = "700";
+        });
+    });
+
+
     pbEvents.subscribe('pb-page-ready', null, (ev) => {
         language = ev.detail.language;
     });
@@ -51,22 +68,5 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
 
-        const navLinks = Array.from(document.querySelectorAll('nav a'));
-
-        navLinks.forEach(link => {
-
-            link.addEventListener('click', e => {
-                console.log('clicked it')
-
-                navLinks.forEach(lk =>{
-                    lk.style.textDecoration = "none";
-                    lk.style.fontWeight = "300";
-                })
-
-                const parent = e.target.closest('a');
-                parent.style.textDecoration = "underline";
-                parent.style.fontWeight = "700";
-            });
-        });
     });
 });

@@ -430,6 +430,12 @@ fx-control, fx-output, .nested-repeat fieldset legend {
     grid-area:unset;
 }
 
+fx-items.material-list{
+    display:block;
+    column-count:2;
+    width:100%;
+}
+
 .nested-repeat fieldset legend {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -493,6 +499,11 @@ fx-control [type="checkbox"]{
     width:fit-content;
 }
 
+
+fx-control.block{
+    display:block;
+    width:100%;
+}
 .bib-output {
     margin-left: 17.8rem;
 }

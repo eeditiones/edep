@@ -280,6 +280,11 @@
                         <fx-function signature="checkDate($value as xs:string) as xs:boolean" type="text/javascript">
                             return checkDate($value);
                         </fx-function>
+                        <fx-function signature="sortNames($terms as element()*) as element()*" type="text/xquery">
+                            for $term in $terms
+                            order by $term/name[@xml:lang = instance('vars')/language]
+                            return $term
+                        </fx-function>
                     </fx-model>
                     <fx-action event="pb-i18n-update" target="#document">
                         <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'), instance('vars')/language/string())"></fx-setvalue>
@@ -373,16 +378,17 @@
                             <!-- there's no 17) -->
 
                             <!-- 18) -->
-                            <fieldset class='material'>
-                                <legend><pb-i18n key="form.material">Material</pb-i18n></legend>
-                                <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref"
-                                            class="orange" style="margin-top:0;">
-                                    <fx-items ref="instance('material')/term" class="widget">
+                            <fieldset class="material">
+                                <legend>
+                                            <pb-i18n key="form.material">Material</pb-i18n>
+                                        </legend>
+                                <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" class="orange block" style="margin-top:0;">
+                                    <fx-items ref="sortNames(instance('material')/term)" class="widget material-list">
                                         <template>
-                                            <span class="fx-checkbox">
+                                            <div class="fx-checkbox">
                                                 <input type="checkbox" value="{@ref}"/>
                                                 <label>{name[@xml:lang = instance('vars')/language]}</label>
-                                            </span>
+                                            </div>
                                         </template>
                                     </fx-items>
                                 </fx-control>
