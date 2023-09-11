@@ -17,6 +17,8 @@ import module namespace errors = "http://e-editiones.org/roaster/errors";
 declare namespace json="http://www.json.org";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace sm="http://exist-db.org/xquery/securitymanager";
+declare namespace fore = "http://teipublisher.com/ns/fore";
+
 
 (:~
  : Keep this. This function does the actual lookup in the imported modules.
@@ -550,4 +552,86 @@ declare function api:render($request as map(*)) {
                 $request?body
     return
         $pm-config:web-transform(api:clean-namespace($xml), map { "root": $xml, "webcomponents": 7 }, $config:default-odd)
+};
+
+declare function api:file-upload($mainTmpl as document-node(), $input as document-node()) as node()* {
+    for $node in $mainTmpl/*
+    return
+        api:reconstruct-tree($node, $input)
+};
+
+declare $private function api:find-counterpart($nodeTemplate as element(), $input as document-node()) as item()* {
+    let $candidates := $input/descendant::*[local-name() eq $nodeTemplate/local-name()]
+    [every $elName in ancestor::*/local-name()
+        satisfies $elName = ($nodeTemplate/ancestor::*/local-name())][count(ancestor::*) eq count($nodeTemplate/ancestor::*)]
+    [every $typeValue in $nodeTemplate/ancestor-or-self::*[@type ne '']/@type
+        satisfies $typeValue = ./ancestor-or-self::*/@type]
+        [if ($nodeTemplate/@scheme) then
+        .[@scheme eq $nodeTemplate/@scheme] else true()]
+    let $counterpart :=
+    
+        if ($nodeTemplate/@fore:type) then
+            $candidates[1]
+        else
+            if (count($candidates) <= 1) then
+                $candidates
+            else
+                error(xs:QName("ERROR"), "ambiguous elements with element name " || $candidates[1]/name())
+    return
+        $counterpart
+};
+
+declare %private function api:process-children($nodeTemplate as element(), $nodeInput as element()) as item()* {
+    (: if the node from the input file only contais a text node, or mixed content, then get its children :)
+    if ($nodeInput[((count(child::node()) eq 1) and (text()[string-length(replace(., '\s+', '')) ne 0])) or
+    ((text()[string-length(replace(., '\s+', '')) ne 0]) and child::element())]) then
+        $nodeInput/node()
+    else
+        (:if the node from the template is empty, get whatever its counterpart has :)
+        if ($nodeTemplate/not(child::*)) then
+            $nodeInput/node()
+        else
+            (: else process each child from the template :)
+            for $node in $nodeTemplate/*
+            return
+                api:reconstruct-tree($node, $nodeInput/root())
+};
+
+declare %private function api:reconstruct-tree($tmplNodes as element()*, $input as node()*) as node()* {
+    for $tmpl in $tmplNodes
+    let $name := $tmpl/local-name()
+    let $counterpart := api:find-counterpart($tmpl, $input)
+    return
+        if ($counterpart) then
+            (: if the node it’s the same in both form and input, copy the node :)
+            (if (deep-equal($tmpl, $counterpart)) then
+                $tmpl
+            else
+                (: if the number of attributes is not the same, get the missing attributes from the template:)
+                if (count($counterpart/@*) ne count($tmpl/@*))
+                then
+                    let $atts := for $att in $tmpl/@*
+                    return
+                        if ($counterpart/@*[name() eq $att/name()]) then
+                            $counterpart/@*[name() eq $att]
+                        else
+                            $att
+                    return
+                        element {QName("http://www.tei-c.org/ns/1.0", $name)}
+                        {
+                            $atts,
+                            api:process-children($tmpl, $counterpart)
+                        }
+                else
+                    element {QName("http://www.tei-c.org/ns/1.0", $name)} {
+                        $counterpart/@*,
+                        api:process-children($tmpl, $counterpart)
+                    }, 
+                      if ($tmpl[@fore:type]) then $counterpart/following-sibling::* else 
+                      if (not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
+                      $counterpart/following-sibling::*[not(local-name() = $tmpl/following-sibling::*/local-name())]
+                      else ()
+                      )
+                     else
+            $tmpl
 };
