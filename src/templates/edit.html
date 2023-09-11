@@ -87,14 +87,23 @@
 
                     <!-- ### if get called with an id param we load the data via submission ### -->
                     <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>
-                    <fx-model>
+                    <fx-model data-template="pages:parse-params">
                         <fx-action event="model-construct-done">
                             <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
                             <fx-send submission="s-load-inscription" if="exists(instance('params')/id)"></fx-send>
                             <fx-setvalue ref="instance('vars')/inited">true</fx-setvalue>
                         </fx-action>
 
-                        <fx-instance id="default" src="api/inscription"
+                        <!-- this instance holds queryString params from the Url of this page -->
+                        <fx-instance id="params">
+                            <data>
+                                <id>${id}</id>
+                                <collection>${collection}</collection>
+                                <app>${app}</app>
+                            </data>
+                        </fx-instance>
+
+                        <fx-instance id="default" src="${app}/api/inscription"
                                         xpath-default-namespace="http://www.tei-c.org/ns/1.0">
                             <data></data>
                         </fx-instance>
@@ -116,14 +125,14 @@
                         </fx-bind>
 
 
-                        <fx-instance id="typeins" src="../edep-data/typeins.xml">
+                        <fx-instance id="typeins" src="${app}/../edep-data/typeins.xml">
 
                         </fx-instance>
-                        <fx-instance id="objtyp" src="../edep-data/objtyp.xml">
+                        <fx-instance id="objtyp" src="${app}/../edep-data/objtyp.xml">
 
                         </fx-instance>
 
-                        <fx-instance id="material" src="../edep-data/material.xml"></fx-instance>
+                        <fx-instance id="material" src="${app}/../edep-data/material.xml"></fx-instance>
 
                         <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
                             <data></data>
@@ -189,13 +198,8 @@
                             </data>
                         </fx-instance>
 
-                        <!-- this instance holds queryString params from the Url of this page -->
-                        <fx-instance id="params" src="#querystring">
-
-                        </fx-instance>
-
                         <fx-submission id="s-load-inscription"
-                                        url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
+                                        url="${app}/api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
                                         method="get"
                                         replace="instance"
                                         validate="false">
@@ -218,7 +222,7 @@
                         </fx-submission>
 
                         <fx-submission id="s-create"
-                                        url="api/inscription?collection={instance('params')/collection}"
+                                        url="${app}/api/inscription?collection={instance('params')/collection}"
                                         method="post"
                                         replace="instance">
                             <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
@@ -230,7 +234,7 @@
                         </fx-submission>
 
                         <fx-submission id="s-save"
-                                        url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
+                                        url="${app}/api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
                                         method="post"
                                         replace="instance">
                             <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
@@ -255,7 +259,7 @@
                         </fx-function>
 
                         <fx-instance id="login" type="json">{}</fx-instance>
-                        <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance" instance="login" validate="false">
+                        <fx-submission id="s-login" ref="instance('login')?*" url="../../api/login" method="post" replace="instance" instance="login" validate="false">
                             <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
                             <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
                         </fx-submission>
@@ -286,10 +290,10 @@
                             return $term
                         </fx-function>
                     </fx-model>
-                    <fx-action event="pb-i18n-update" target="#document">
+                    <!--fx-action event="pb-i18n-update" target="#document">
                         <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'), instance('vars')/language/string())"></fx-setvalue>
                         <fx-refresh force='force'></fx-refresh>
-                    </fx-action>
+                    </fx-action-->
 
                     <nav>
                         <h3>Navigation</h3>
