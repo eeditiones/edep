@@ -554,22 +554,32 @@ declare function api:render($request as map(*)) {
         $pm-config:web-transform(api:clean-namespace($xml), map { "root": $xml, "webcomponents": 7 }, $config:default-odd)
 };
 
-declare function api:file-upload($mainTmpl as document-node(), $input as document-node()) as node()* {
+(: Main function to handle the upload of an epidoc file to the app: the first argument is the
+template “epidoc-template.xml” and the second argument is the epidoc file to upload :)
+declare function api:file-upload($mainTmpl as document-node(), $input as document-node()) as node() {
     for $node in $mainTmpl/*
     return
         api:reconstruct-tree($node, $input)
 };
 
+(: Function to look in the input file for the equivalent element to the element being processed
+in the template  :)
 declare %private function api:find-counterpart($nodeTemplate as element(), $input as document-node()) as item()* {
+    (: List of candidates is created based on the name of the element and its ancestors. In addition
+    we look for the values of the attribute @type to disambiguate <msPart type="main"> from <msPart type="fragment">
+    and for the values of @scheme to disambiguate the <keywords> elements :)
     let $candidates := $input/descendant::*[local-name() eq $nodeTemplate/local-name()]
-    [every $elName in ancestor::*/local-name()
-        satisfies $elName = ($nodeTemplate/ancestor::*/local-name())][count(ancestor::*) eq count($nodeTemplate/ancestor::*)]
-    [every $typeValue in $nodeTemplate/ancestor-or-self::*[@type ne '']/@type
-        satisfies $typeValue = ./ancestor-or-self::*/@type]
+        [every $elName in ancestor::*/local-name()
+            satisfies $elName = ($nodeTemplate/ancestor::*/local-name())][count(ancestor::*) eq count($nodeTemplate/ancestor::*)]
+        [every $typeValue in $nodeTemplate/ancestor-or-self::*[@type ne '']/@type
+            satisfies $typeValue = ./ancestor-or-self::*/@type]
         [if ($nodeTemplate/@scheme) then
-        .[@scheme eq $nodeTemplate/@scheme] else true()]
-    let $counterpart :=
-    
+            .[@scheme eq $nodeTemplate/@scheme] else true()]
+    (: To make the final selection for the equivalent element we take into consideration
+    the presence of @fore:type (so far only present in <div type="fragment")> and we just
+    select the first one. The other fragments will be processed through api:reconstruct-tree() 
+    If at this point we have more than one candidate, throw an error with the element name :)
+    let $counterpart :=    
         if ($nodeTemplate/@fore:type) then
             $candidates[1]
         else
@@ -580,7 +590,7 @@ declare %private function api:find-counterpart($nodeTemplate as element(), $inpu
     return
         $counterpart
 };
-
+(: Function to merge the contents of each element after the comparison :)
 declare %private function api:process-children($nodeTemplate as element(), $nodeInput as element()) as item()* {
     (: if the node from the input file only contais a text node, or mixed content, then get its children :)
     if ($nodeInput[((count(child::node()) eq 1) and (text()[string-length(replace(., '\s+', '')) ne 0])) or
@@ -596,14 +606,17 @@ declare %private function api:process-children($nodeTemplate as element(), $node
             return
                 api:reconstruct-tree($node, $nodeInput/root())
 };
-
+(: Function that compares element nodes from the template with the input file :)
 declare %private function api:reconstruct-tree($tmplNodes as element()*, $input as node()*) as node()* {
     for $tmpl in $tmplNodes
     let $name := $tmpl/local-name()
     let $counterpart := api:find-counterpart($tmpl, $input)
     return
+    (: if we find an equivalent element, we return more than one item: on one hand, 
+    the result of processing the this “counterpart” element, on the other, additional
+    operations are done to handle repeateable elements :)
         if ($counterpart) then
-            (: if the node it’s the same in both form and input, copy the node :)
+            (: if the node it’s exactly the same in both form and input, copy the node :)
             (if (deep-equal($tmpl, $counterpart)) then
                 $tmpl
             else
@@ -623,17 +636,30 @@ declare %private function api:reconstruct-tree($tmplNodes as element()*, $input 
                     return
                         attribute {$attName} {""}                        
                     return
+                    (: we return an element with the all the attributes and then we process its contents :)
                         element {QName("http://www.tei-c.org/ns/1.0", $name)}
                         {
                             $counterpart/@* | $emptyAtts,
                             api:process-children($tmpl, $counterpart)
                         }
                 else
+                (: if the number of attributes is the same, copy the attributes from the input element
+                and then process its children :)
                     element {QName("http://www.tei-c.org/ns/1.0", $name)} {
                         $counterpart/@*,
                         api:process-children($tmpl, $counterpart)
                     }, 
-                      if ($tmpl[@fore:type]) then $counterpart/following-sibling::* else 
+                    (: Processing of repeteable elements. There are two possible scenarios
+                    Scenario 1: we have an attribute @fore:type which mean that we were only
+                    processing the first “candidate”. We thus need to get its following siblings :)
+                      if ($tmpl[@fore:type]) 
+                        then $counterpart/following-sibling::* 
+                      else 
+                      (: Second scenario: there are elements in the input file, not present in the template
+                      this would be the case of <msPart type='fragment'>, for example, since
+                      in the template we only have <msPart type='main'>. For those cases
+                      we look in the element in the input file being processed has a following-sibling
+                      that it’s not present in the template :)
                       if (not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
                       $counterpart/following-sibling::*[not(local-name() = $tmpl/following-sibling::*/local-name())]
                       else ()
