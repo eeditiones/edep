@@ -610,16 +610,22 @@ declare %private function api:reconstruct-tree($tmplNodes as element()*, $input 
                 (: if the number of attributes is not the same, get the missing attributes from the template:)
                 if (count($counterpart/@*) ne count($tmpl/@*))
                 then
-                    let $atts := for $att in $tmpl/@*
+                    (:let $atts := for $att in $tmpl/@*
+                            return
+                                if ($counterpart/@*[name() eq $att/name()]) then
+                                    $counterpart/@*[name() eq $att]
+                                else
+                                    $att:)                    
+                    let $emptyAttsNames := for $att in $tmpl/@*
                     return
-                        if ($counterpart/@*[name() eq $att/name()]) then
-                            $counterpart/@*[name() eq $att]
-                        else
-                            $att
+                        $att[not(name() = $counterpart/@*/name())]/name()
+                    let $emptyAtts := for $attName in $emptyAttsNames
+                    return
+                        attribute {$attName} {""}                        
                     return
                         element {QName("http://www.tei-c.org/ns/1.0", $name)}
                         {
-                            $atts,
+                            $counterpart/@* | $emptyAtts,
                             api:process-children($tmpl, $counterpart)
                         }
                 else
