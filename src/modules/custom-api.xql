@@ -560,7 +560,7 @@ declare function api:file-upload($mainTmpl as document-node(), $input as documen
         api:reconstruct-tree($node, $input)
 };
 
-declare $private function api:find-counterpart($nodeTemplate as element(), $input as document-node()) as item()* {
+declare %private function api:find-counterpart($nodeTemplate as element(), $input as document-node()) as item()* {
     let $candidates := $input/descendant::*[local-name() eq $nodeTemplate/local-name()]
     [every $elName in ancestor::*/local-name()
         satisfies $elName = ($nodeTemplate/ancestor::*/local-name())][count(ancestor::*) eq count($nodeTemplate/ancestor::*)]
