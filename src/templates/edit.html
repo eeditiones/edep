@@ -222,7 +222,6 @@
                                         method="post"
                                         replace="instance">
                             <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
-
                             <fx-action event="submit-error">
                                 <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
                                 <fx-action src="resources/scripts/showErrors.js"></fx-action>
@@ -643,15 +642,15 @@
                                         <!--                        <fx-group>-->
                                         <!--                            <label>Inschriftträger</label>-->
                                         <!-- 38) -->
-                                        <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/height">
+                                        <fx-control class="measurement" ref="physDesc/objectDesc/supportDesc/support/dimensions/height">
                                             <label><pb-i18n key="form.height">Höhe</pb-i18n></label>
                                         </fx-control>
                                         <!-- 19) -->
-                                        <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/width">
+                                        <fx-control  class="measurement" ref="physDesc/objectDesc/supportDesc/support/dimensions/width">
                                             <label><pb-i18n key="form.width">Breite</pb-i18n></label>
                                         </fx-control>
                                         <!-- 20) -->
-                                        <fx-control ref="physDesc/objectDesc/supportDesc/support/dimensions/depth">
+                                        <fx-control class="measurement" ref="physDesc/objectDesc/supportDesc/support/dimensions/depth">
                                             <label><pb-i18n key="form.depth">Tiefe</pb-i18n></label>
                                         </fx-control>
                                         <!--                        </fx-group>-->
@@ -661,15 +660,15 @@
                                     <fx-group id="{@xml:id}-inscription-field">
                                         <h3><pb-i18n key="form.inscription-field">Inschriftfeld</pb-i18n></h3>
                                         <!-- 21) -->
-                                        <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/height">
+                                        <fx-control class="measurement" ref="physDesc/objectDesc/layoutDesc/layout/dimensions/height">
                                             <label><pb-i18n key="form.height">Höhe</pb-i18n></label>
                                         </fx-control>
                                         <!-- 22) -->
-                                        <fx-control ref="physDesc/objectDesc/layoutDesc/layout/dimensions/width">
+                                        <fx-control class="measurement" ref="physDesc/objectDesc/layoutDesc/layout/dimensions/width">
                                             <label><pb-i18n key="form.width">Breite</pb-i18n></label>
                                         </fx-control>
                                         <!-- 23) -->
-                                        <fx-control ref="physDesc/handDesc/handNote/dimensions/height">
+                                        <fx-control class="measurement" ref="physDesc/handDesc/handNote/dimensions/height">
                                             <label><pb-i18n key="form.letter-size">Buchstabenhöhe</pb-i18n></label>
                                         </fx-control>
                                         <fx-control ref="physDesc/objectDesc/layoutDesc/layout/ab">

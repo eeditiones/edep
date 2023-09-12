@@ -415,6 +415,20 @@ fieldset control{
     margin: 0;
 }
 
+.measurement{
+    position:relative;
+    width:26rem;
+}
+.measurement::after{
+    content:'cm';
+    position:absolute;
+    right:1rem;
+}
+.measurement input{
+    width:5rem;
+    text-align:right;
+}
+
 fx-control, fx-output, .nested-repeat fieldset legend {
     display: grid;
     grid-template-columns: 16rem 1rem 1fr;
