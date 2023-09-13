@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="utf-8"/>
+    <base href="${app}/" data-template="pages:parse-params"/>
     <title data-template="config:app-title"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico"/>
@@ -71,7 +72,7 @@
                 <pb-media-query query="(max-width: 1023px)">
                     <app-toolbar class="toolbar" sticky="sticky">
                         <!-- Search input -->
-                        <pb-search action="${app}/search.html" data-template="lib:parse-params" value="${query}" redirect="redirect"></pb-search>
+                        <pb-search action="search.html" data-template="lib:parse-params" value="${query}" redirect="redirect"></pb-search>
                         <paper-icon-button icon="icons:menu" drawer-toggle="drawer-toggle"></paper-icon-button>
                     </app-toolbar>
                 </pb-media-query>
@@ -94,6 +95,11 @@
                             <fx-setvalue ref="instance('vars')/inited">true</fx-setvalue>
                         </fx-action>
 
+                        <fx-instance id="default" src="api/inscription"
+                                        xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                            <data></data>
+                        </fx-instance>
+
                         <!-- this instance holds queryString params from the Url of this page -->
                         <fx-instance id="params">
                             <data>
@@ -101,11 +107,6 @@
                                 <collection>${collection}</collection>
                                 <app>${app}</app>
                             </data>
-                        </fx-instance>
-
-                        <fx-instance id="default" src="${app}/api/inscription"
-                                        xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                            <data></data>
                         </fx-instance>
 
                         <fx-bind ref="instance('default')">
@@ -125,14 +126,14 @@
                         </fx-bind>
 
 
-                        <fx-instance id="typeins" src="${app}/../edep-data/typeins.xml">
+                        <fx-instance id="typeins" src="../edep-data/typeins.xml">
 
                         </fx-instance>
-                        <fx-instance id="objtyp" src="${app}/../edep-data/objtyp.xml">
+                        <fx-instance id="objtyp" src="../edep-data/objtyp.xml">
 
                         </fx-instance>
 
-                        <fx-instance id="material" src="${app}/../edep-data/material.xml"></fx-instance>
+                        <fx-instance id="material" src="../edep-data/material.xml"></fx-instance>
 
                         <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
                             <data></data>
@@ -199,7 +200,7 @@
                         </fx-instance>
 
                         <fx-submission id="s-load-inscription"
-                                        url="${app}/api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
+                                        url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
                                         method="get"
                                         replace="instance"
                                         validate="false">
@@ -222,7 +223,7 @@
                         </fx-submission>
 
                         <fx-submission id="s-create"
-                                        url="${app}/api/inscription?collection={instance('params')/collection}"
+                                        url="api/inscription?collection={instance('params')/collection}"
                                         method="post"
                                         replace="instance">
                             <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
@@ -234,7 +235,7 @@
                         </fx-submission>
 
                         <fx-submission id="s-save"
-                                        url="${app}/api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
+                                        url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
                                         method="post"
                                         replace="instance">
                             <fx-message event="submit-done"><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
@@ -259,7 +260,7 @@
                         </fx-function>
 
                         <fx-instance id="login" type="json">{}</fx-instance>
-                        <fx-submission id="s-login" ref="instance('login')?*" url="../../api/login" method="post" replace="instance" instance="login" validate="false">
+                        <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance" instance="login" validate="false">
                             <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
                             <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
                         </fx-submission>
@@ -430,8 +431,8 @@
                                             <!-- geoId from geodata -->
                                             <fx-var name="corresp" value="history/origin/origPlace/@corresp"></fx-var>
                                             <fx-control class="fore-control" ref="$corresp"
-                                                        url="geo-picker.html"
-                                                        initial="..">
+                                                        url="templates/geo-picker.html"
+                                                        initial=".." data-template="pages:parse-params">
                                             </fx-control>
 
                                             <!-- 10b) -->
@@ -518,10 +519,11 @@
                                                         <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>
                                                         <div>
                                                             <fx-control ref="ptr/@target"
-                                                                        url="zotero-picker.html"
+                                                                        url="templates/zotero-picker.html"
                                                                         initial=".."
                                                                         class="fore-control"
-                                                                        update-event="input">
+                                                                        update-event="input"
+                                                                        data-template="pages:parse-params">
                                                             </fx-control>
                                                             <fx-control ref="citedRange">
                                                                 <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
@@ -761,10 +763,11 @@
                                                     <!--                                                    <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"></fx-var>-->
                                                     <div>
                                                         <fx-control ref="ptr/@target"
-                                                                    url="zotero-picker.html"
+                                                                    url="templates/zotero-picker.html"
                                                                     initial=".."
                                                                     class="fore-control"
-                                                                    update-event="input">
+                                                                    update-event="input"
+                                                                    data-template="pages:parse-params">
                                                         </fx-control>
                                                         <fx-control ref="citedRange">
                                                             <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
@@ -854,10 +857,11 @@
 
                                                     <div>
                                                         <fx-control ref="ptr/@target"
-                                                                    url="zotero-picker.html"
+                                                                    url="templates/zotero-picker.html"
                                                                     initial=".."
                                                                     class="fore-control"
-                                                                    update-event="input">
+                                                                    update-event="input"
+                                                                    data-template="pages:parse-params">
                                                         </fx-control>
                                                         <fx-control ref="citedRange">
                                                             <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
@@ -934,10 +938,10 @@
                                                 <template>
                                                     <div>
                                                         <fx-control ref="ptr/@target"
-                                                                    url="zotero-picker.html"
+                                                                    url="templates/zotero-picker.html"
                                                                     initial=".."
                                                                     class="fore-control"
-                                                                    update-event="input">
+                                                                    update-event="input" data-template="pages:parse-params">
                                                         </fx-control>
                                                         <fx-control ref="citedRange">
                                                             <label><pb-i18n key="form.cited-range">Cited Range</pb-i18n></label>
@@ -1409,7 +1413,7 @@
                                     </fx-action>
                                 </fx-trigger>
                                 <fx-trigger>
-                                    <a href="edit.html?collection=workspace"><pb-i18n key="form.new">Neuer Eintrag</pb-i18n></a>
+                                    <a href="edit/workspace/" data-template="pages:parse-params"><pb-i18n key="form.new">Neuer Eintrag</pb-i18n></a>
                                 </fx-trigger>
                             </pb-restricted>
                             <fx-trigger>

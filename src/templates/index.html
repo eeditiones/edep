@@ -247,7 +247,7 @@
                             <pb-browse-docs id="document-list" url="api/collection" sort-options='[{"label": "browse.title", "value": "title"},{"label": "browse.author", "value": "author"}]' sort-by="title"
                                 filter-options='[{"label": "browse.title", "value": "title"},{"label": "browse.author", "value": "author"},{"label": "browse.file", "value": "file"}]' filter-by="title" auto="auto" history="history" login="login" emit="docs" subscribe="docs">
                                 <pb-paginate slot="toolbar" id="paginate" per-page="10" range="5" emit="docs" subscribe="docs"></pb-paginate>
-                                <a slot="toolbar" href="${app}/edit.html?collection=workspace" data-template="pages:parse-params">
+                                <a slot="toolbar" href="${app}/edit/workspace/" data-template="pages:parse-params">
                                     <paper-button>
                                         <iron-icon icon="icons:add"/> <pb-i18n key="form.new"></pb-i18n>
                                     </paper-button>
