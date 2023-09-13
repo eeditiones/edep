@@ -35,62 +35,57 @@
             </tagsDecl>
         </encodingDesc>
         <revisionDesc>
-            <change when="2023-09-12Z">Initial version</change>
+            <change when="2023-09-13Z">Initial version</change>
         </revisionDesc>
     </teiHeader>
     <text>
         <body>
             <schemaSpec start="TEI teiCorpus" ident="edep-edition" source="edep.odd">
-            <elementSpec ident="teiHeader" mode="change">
-                    <model output="latex" behaviour="metadata"/>
-                    <model output="fo" behaviour="omit"/>
-                    <model output="web" behaviour="block">
-            <param name="objectType" value="let $vocab := doc('/db/apps/edep-data/objtyp.xml') let $uris := tokenize(descendant::objectType/@ref, '\s+') for $uri in $uris return $vocab//term[@ref = $uri]"/>
-            <param name="material" value="let $vocab := doc('/db/apps/edep-data/material.xml') let $uris := tokenize(descendant::material/@ref, '\s+') for $uri in $uris return $vocab//term[@ref = $uri]"/>
-            <param name="description" value="descendant::support/note"/>
-            <param name="dimensions" value="string-join(descendant::msPart[@type eq 'main']/descendant::supportDesc/descendant::dimensions/*, ' × ')"/>
-            <param name="condition" value="descendant::msPart[@type eq 'main']/descendant::condition"/>
-            <param name="decoration" value="let $vocab := doc('/db/apps/edep-data/decor.xml') let $uris := tokenize(descendant::msPart[@type eq 'main']/descendant::supportDesc/descendant::rs[@type eq 'decoration']/@ref, '\s+') for $uri in $uris return $vocab//item[@value = $uri]/@name"/>
-            <param name="findContext" value="descendant::msPart[@type eq 'main']/descendant::provenance[@type eq 'found']/note"/>
-            <param name="findDate" value="let $element := descendant::msPart[@type eq 'main']/descendant::provenance[@type eq 'found'] let $range := $element/@notBefore || ' – ' || $element/@notAfter let $exact := $element/@when let $string := $element/@when-custom return if ($exact and $string) then $exact || ' (' || $string || ')' else if ($range and string) then $range || ' (' || $string || ')' else if ($exact or $range) then ($exact, $range) else $string"/>
+                            <elementSpec ident="teiHeader" mode="change">
+                                <model output="latex" behaviour="metadata"/>
+                                <model output="fo" behaviour="omit"/>
+                                <model output="web" predicate="$parameters?header='short'" behaviour="block"/>
+                                <model output="web" behaviour="metadata"/>
+                                <model behaviour="block">
+            <param name="objectType" value="let $vocab := doc('/db/apps/edep-data/objtyp.xml') let $uris := tokenize(descendant::objectType/@ref, '\s+') for $uri in $uris return if ($uri) then  &lt;row type=&#34;metadata&#34;&gt; &lt;cell&gt;form.type-of-monument&lt;/cell&gt; &lt;cell&gt;{$vocab//*[local-name() eq 'term'][@ref = $uri]/*[local-name() eq 'name']}&lt;/cell&gt; &lt;/row&gt;  else ()"/>
+            <param name="material" value="let $vocab := doc('/db/apps/edep-data/material.xml') let $uris := tokenize(descendant::material/@ref, '\s+') for $uri in $uris return $vocab//*[local-name() eq 'term'][@ref = $uri]/*[local-name() eq 'name']"/>
+            <param name="description" value="let $desc := descendant::support/note/string() return if($desc) then &lt;row type=&#34;metadata&#34;&gt; &lt;cell&gt;form.description-of-monument&lt;/cell&gt; &lt;cell&gt;{$desc}&lt;/cell&gt; &lt;/row&gt; else ()"/>
+            <param name="dimensions" value="let $dimensions:= string-join(descendant::msPart[@type eq 'main']/descendant::supportDesc/descendant::dimensions/*, ' × ') return if (string-length($dimensions) gt 3) then &lt;row type=&#34;metadata&#34;&gt; &lt;cell&gt;metadata.dimensions&lt;/cell&gt; &lt;cell&gt;{$dimensions}&lt;/cell&gt; &lt;/row&gt; else ()"/>
+            <param name="condition" value="let $condition := descendant::msPart[@type eq 'main']/descendant::condition return 'preservation.' || $condition"/>
+            <param name="decoration" value="let $vocab := doc('/db/apps/edep-data/decor.xml') let $uris := tokenize(descendant::msPart[@type eq 'main']/descendant::supportDesc/descendant::rs[@type eq 'decoration']/@ref, '\s+') for $uri in $uris return $vocab//*[local-name() eq 'item'][@value = $uri]/@name"/>
+            <param name="findContext" value="let $note := descendant::msPart[@type eq 'main']/descendant::provenance[@type eq 'found']/note/string() return if ($note) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;form.context-of-provenance&lt;/cell&gt;&lt;cell&gt;{$note}&lt;/cell&gt;&lt;/row&gt; else ()"/>
+            <param name="findDate" value="let $element := descendant::msPart[@type eq 'main']/descendant::provenance[@type eq 'found'] let $range := $element/@notBefore || ' – ' || $element/@notAfter let $exact := $element/@when let $string := $element/@when-custom return if ($exact and $string) then $exact || ' (' || $string || ')' else if ((string-length($range) gt 1) and $string) then $range || ' (' || $string || ')' else if ($exact) then ($exact) else if (string-length($range) gt 1) then $range else $string"/>
             <param name="modernLocation" value="descendant::msPart[@type eq 'main']/msIdentifier/repository"/>
             <param name="tmID" value="descendant::msPart[@type eq 'main']/descendant::idno[@type eq 'TM']"/>
-            <param name="palaeography" value="let $vocab := doc('/db/apps/edep-data/writing.xml') let $uris := tokenize(descendant::msPart[@type eq 'main']/descendant::rs[@type eq 'palaeography']/@ref, '\s+') for $uri in $uris return $vocab//item[@value = $uri]/@name"/>
+            <param name="palaeography" value="let $vocab := doc('/db/apps/edep/templates/fore/data/palaeographie.xml') let $uris := tokenize(descendant::msPart[@type eq 'main']/descendant::rs[@type eq 'palaeography']/@ref, '\s+') for $uri in $uris return $vocab//*[local-name() eq 'item'][@ref = $uri]/*[local-name() eq 'name']"/>
             <param name="letterSize" value="string-join(descendant::msPart[@type eq 'main']/descendant::handDesc/descendant::dimensions[@type eq 'letterHeight']/*, ' × ')"/>
             <param name="fieldDesc" value="descendant::msPart[@type eq 'main']/descendant::layout/ab"/>
-            <param name="provenanceContext" value="descendant::msPart[@type eq 'main']/descendant::provenance[@type eq 'found']/note[@type eq 'context']"/>
-            <param name="inscriptionType" value="let $vocab := doc('/db/apps/edep-data/typeins.xml') let $uris := tokenize(descendant::msPart[@type eq 'main']/msContents/@class, '\s+') for $uri in $uris return $vocab//term[@ref = $uri]"/>
+            <param name="provenanceHistory" value="let $history := descendant::msPart[@type eq 'main']/descendant::provenance[@type eq 'history']/node() return if ($history) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;form.other-events&lt;/cell&gt;&lt;cell&gt;{$history}&lt;/cell&gt;&lt;/row&gt; else ()"/>
+            <param name="inscriptionType" value="let $vocab := doc('/db/apps/edep-data/typeins.xml') let $uris := tokenize(descendant::msPart[@type eq 'main']/descendant::msItem/@class, '\s+') for $uri in $uris return $vocab//*[local-name() eq 'term'][@ref = $uri]"/>
             <param name="metre" value="descendant::msPart[@type eq 'main']/descendant::rs[@type eq 'metric']"/>
             <param name="language" value="let $element := descendant::msPart[@type eq 'main']/descendant::textLang return string-join(($element/@mainLang, tokenize($element/otherLangs, '\s+')), ', ')"/>
             <param name="date" value="let $element := descendant::origDate let $range := $element/@notBefore-custom || ' – ' || $element/@notAfter-custom let $exact := $element/@when-custom let $string := $element/string() return if ($exact) then $string || ' (' || $exact || ')' else if ($range) then $string || ' (' || $range || ')' else $string"/>
             <param name="religion" value="let $attVal := descendant::keywords[@scheme eq 'https://edh.ub.uni-heidelberg.de/edep/religion']/term/@ref return 'religion.' || substring($attVal, 2)"/>
-            <param name="historicRelevance" value="descendant::keywords[@scheme eq 'https://edh.ub.uni-heidelberg.de/edep/terms']/term/@ref"/>
+            <param name="historicRelevance" value="let $terms := descendant::keywords[@scheme eq 'https://edh.ub.uni-heidelberg.de/edep/terms']/term/@ref return if ($terms) then  &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;form.historic-relevance&lt;/cell&gt;&lt;cell&gt;{ for $term in $terms return &lt;seg n=&#34;form.{substring($term, 2)}&#34;/&gt; }&lt;/cell&gt;&lt;/row&gt; else ()"/>
             <param name="ligature" value="descendant::msPart[@type eq 'main']/descendant::handDesc/descendant::rs[@type eq 'ligature']"/>
-            <param name="fieldDimensions" value="string-join(descendant::msPart[@type eq 'main']/descendant::layout/descendant::dimensions/*, ' × ')"/>
+            <param name="fieldDimensions" value="let $dimensionsEls := descendant::msPart[@type eq 'main']/descendant::layout/dimensions/* return if ($dimensionsEls) then string-join($dimensionsEls, ' × ') else ()"/>
+            <param name="verification" value="let $subtype := descendant::msPart[@type eq 'main']/descendant::note[@type eq 'verification']/substring-before(@subtype, ' ') return 'verification.' || $subtype"/>
+            <param name="verificationDate" value="descendant::msPart[@type eq 'main']/descendant::note[@type eq 'verification']/date/@when"/>
             <pb:template xmlns="" xml:space="preserve">        <div id="metadata">
             <section>
                 <h2><pb-i18n key="form.object-description"/></h2>
                 <table>
                     <tbody>
-                        <tr>
-                            <th><pb-i18n key="form.type-of-monument"/></th>
-                            <td>[[objectType]]</td>
-                        </tr>
+                      [[objectType]] 
                         <tr>
                             <th><pb-i18n key="form.material"/></th>
                             <td>[[material]]</td>
                         </tr>
-                        <tr>
-                            <th><pb-i18n key="form.description-of-monument"/></th>
-                            <td>[[description]]</td>
-                        </tr>
-                        <tr>
-                            <th>Dimensions</th>
-                            <td>[[dimensions]]</td>
-                        </tr>
+                        [[description]] 
+                        [[dimensions]] 
                         <tr>
                             <th><pb-i18n key="form.preservation"/></th>
-                            <td>[[condition]]</td>
+                            <td><pb-i18n key="[[condition]]"/></td>
                         </tr>
                         <tr>
                             <th><pb-i18n key="form.decoration"/></th>
@@ -100,10 +95,7 @@
                             <th><pb-i18n key="form.findspot"/></th>
                             <td/>
                         </tr>
-                        <tr>
-                            <th>Find context</th>
-                            <td>[[findContext]]</td>
-                        </tr>
+                      [[findContext]]
                         <tr>
                             <th><pb-i18n key="form.year-of-find"/></th>
                             <td>[[findDate]]</td>
@@ -124,7 +116,7 @@
                 <table>
                     <tbody>
                        <tr>
-                            <th>Dimensions</th>
+                            <th><pb-i18n key="metadata.dimensions"/></th>
                             <td>[[fieldDimensions]]</td>
                         </tr>
                          <tr>
@@ -157,11 +149,7 @@
                         <tr>
                             <th><pb-i18n key="form.site-ancient-province"/></th>
                             <td/>
-                        </tr>
-                        <tr>
-                            <th><pb-i18n key="form.context-of-provenance"/></th>
-                            <td>[[provenanceContext]]</td>
-                        </tr>
+                        </tr>                       
                         <tr>
                             <th><pb-i18n key="form.type-of-inscription"/></th>
                             <td>[[inscriptionType]]</td>
@@ -178,25 +166,62 @@
                             <th><pb-i18n key="form.dating"/></th>
                             <td>[[date]]</td>
                         </tr>
-                 <!--   <tr>
-                            <th>Dating source</th>
-                            <td></td>
-                        </tr> -->
                         <tr>
                             <th><pb-i18n key="form.religion"/></th>
                             <td><pb-i18n key="[[religion]]"/></td>
-                        </tr>
-                        <tr>
-                            <th><pb-i18n key="form.historic-relevance"/></th>
-                            <td>[[historicRelevance]]</td>
-                        </tr>
+                        </tr>                        
+                           [[historicRelevance]]
                     </tbody>
                 </table>               
             </section>
+          <section>
+            <h2><pb-i18n key="metadata.additional"/></h2>
+            <table>              
+              <tbody>
+                <tr>
+                            <th><pb-i18n key="form.basis-of-verification"/></th>
+                            <td><pb-i18n key="[[verification]]"/></td>
+                        </tr>
+                        <tr>
+                            <th><pb-i18n key="form.date-of-verification"/></th>
+                            <td>[[verificationDate]]</td>
+                        </tr>    
+               [[provenanceHistory]] 
+              </tbody>
+                        
+            </table>
+          </section>
         </div></pb:template>
         </model>
-                    <model output="web" behaviour="metadata"/>
                 </elementSpec>
+         
+                <elementSpec ident="row" mode="change">
+                    <model predicate="@type eq 'metadata'" behaviour="inline">
+            <param name="th" value="cell[1]"/>
+            <param name="td" value="cell[2]/node()"/>
+            <pb:template xmlns="" xml:space="preserve"><tr>
+  <th><pb-i18n key="[[th]]"/></th>
+  <td>[[td]]</td>
+</tr></pb:template>
+        </model>
+                    <model predicate="@role='label'" behaviour="row">
+            <outputRendition xml:space="preserve">
+            font-weight: bold;
+            </outputRendition>
+        </model>
+                    <model behaviour="row">
+            <desc>Insert table row. </desc>
+        </model>
+                </elementSpec>
+                <elementSpec ident="seg" mode="change">
+                    <model predicate="ancestor::row[@type eq 'metadata']" behaviour="block">
+            <param name="key" value="@n"/>
+            <pb:template xmlns="" xml:space="preserve"><pb-i18n key="[[key]]"/></pb:template>
+        </model>
+                    <model behaviour="inline" useSourceRendition="true"/>
+                </elementSpec>
+                
+                <elementSpec ident="*" mode="add"/>
             </schemaSpec>
         </body>
     </text>
