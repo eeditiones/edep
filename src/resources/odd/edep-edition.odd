@@ -35,12 +35,12 @@
             </tagsDecl>
         </encodingDesc>
         <revisionDesc>
-            <change when="2022-08-14Z">Initial version</change>
+            <change when="2023-09-12Z">Initial version</change>
         </revisionDesc>
     </teiHeader>
     <text>
         <body>
-            <schemaSpec start="TEI teiCorpus" ident="edep" source="edep.odd">
+            <schemaSpec start="TEI teiCorpus" ident="edep-edition" source="edep.odd">
             <elementSpec ident="teiHeader" mode="change">
                     <model output="latex" behaviour="metadata"/>
                     <model output="fo" behaviour="omit"/>
