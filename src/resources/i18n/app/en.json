@@ -24,7 +24,7 @@
         "description-of-monument": "Description of monument",
         "material": "Material",
         "findspot": "Find spot",
-        "context-of-provenance": "Context of Provenance",
+        "context-of-provenance": "Find context",
         "year-of-find": "Year/date of find",
         "date": "Point in time",
         "date-before": "before",
@@ -65,7 +65,7 @@
         "dating": "Chronological data",
         "dating-placeholder": "YYYY, YYYY-MM or YYYY-MM-DD",
         "religion": "Religion",
-        "social-economic-legal history": "Social/economic/legal history",
+        "social-economic-legal-history": "Social/economic/legal history",
         "geography": "Geography/topography",
         "military": "Military",
         "status-of-editing": "Status of Editing",
@@ -129,5 +129,9 @@
         "pagan": "pagan",
         "jewish": "jewish",
         "christian": "christian"
+    },
+    "metadata": {
+    	"dimensions": "Dimensions",
+    	"additional": "Additional metadata"
     }
 }

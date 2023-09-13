@@ -65,7 +65,7 @@
         "dating": "Datierung",
         "dating-placeholder": "JJJJ, JJJJ-MM oder JJJJ-MM-TT",
         "religion": "Religion",
-        "social-economic-legal history": "Sozial-/Wirtschafts-/Rechtsgeschichte",
+        "social-economic-legal-history": "Sozial-/Wirtschafts-/Rechtsgeschichte",
         "geography": "Geographie",
         "military": "Militär",
         "status-of-editing": "Stand der Bearbeitung",
@@ -129,5 +129,9 @@
         "pagan": "pagan",
         "jewish": "jüdisch",
         "christian": "christlich"
+    },
+    "metadata": {
+    	"dimensions": "Maße",
+    	"additional": "Additional metadata"
     }
 }
