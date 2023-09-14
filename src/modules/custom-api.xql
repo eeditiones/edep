@@ -547,7 +547,7 @@ declare function api:render($request as map(*)) {
 };
 
 declare function api:upload($request as map(*)) {
-    api:file-upload(doc($config:inscription-templ), root($request?body))
+            api:file-upload(doc($config:inscription-templ), root($request?body))
 };
 
 (: Main function to handle the upload of an epidoc file to the app: the first argument is the
@@ -560,7 +560,7 @@ declare function api:file-upload($mainTmpl as document-node(), $input as documen
 
 (: Function to look in the input file for the equivalent element to the element being processed
 in the template  :)
-declare %private function api:find-counterpart($nodeTemplate as element(), $input as document-node()) as item()* {
+declare %private function api:find-counterpart($nodeTemplate as element(), $input as node()) as item()* {
     (: List of candidates is created based on the name of the element and its ancestors. In addition
     we look for the values of the attribute @type to disambiguate <msPart type="main"> from <msPart type="fragment">
     and for the values of @scheme to disambiguate the <keywords> elements :)
