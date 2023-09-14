@@ -315,7 +315,7 @@
                             <li data-ref="teiHeader//msPart">
                                 <template>
                                     <div>
-                                        <a href="#{@xml:id}">
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}">
                                             <fx-switch ref="@type">
                                                 <fx-case name="main">
                                                     <pb-i18n key="form.part-main"></pb-i18n>
@@ -330,37 +330,37 @@
                                         </a>
                                         <ul>
                                             <li>
-                                                <a href="#{@xml:id}-findspot"><pb-i18n key="form.findspot"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-findspot"><pb-i18n key="form.findspot"></pb-i18n></a>
                                             </li>
                                             <li>
-                                                <a href="#{@xml:id}-finddate"><pb-i18n key="form.year-of-find"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-finddate"><pb-i18n key="form.year-of-find"></pb-i18n></a>
                                             </li>
                                             <li>
-                                                <a href="#{@xml:id}-location"><pb-i18n key="form.last-recorded-location"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-location"><pb-i18n key="form.last-recorded-location"></pb-i18n></a>
                                             </li>
                                             <li>
-                                                <a href="#{@xml:id}-verification"><pb-i18n key="form.verification"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-verification"><pb-i18n key="form.verification"></pb-i18n></a>
                                             </li>
                                             <li>
-                                                <a href="#{@xml:id}-objectdesc"><pb-i18n key="form.object-description"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-objectdesc"><pb-i18n key="form.object-description"></pb-i18n></a>
                                             </li>
                                             <li>
-                                                <a href="#{@xml:id}-inscription-field"><pb-i18n key="form.inscription-field"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-inscription-field"><pb-i18n key="form.inscription-field"></pb-i18n></a>
                                             </li>
                                             <li>
-                                                <a href="#{@xml:id}-text-description"><pb-i18n key="form.text-description"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-text-description"><pb-i18n key="form.text-description"></pb-i18n></a>
                                             </li>
                                             <li>
-                                                <a href="#{@xml:id}-references"><pb-i18n key="form.references"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-references"><pb-i18n key="form.references"></pb-i18n></a>
                                             </li>
-                                            <li><a href="#{@xml:id}-edition"><pb-i18n key="form.edition">Textedition</pb-i18n></a></li>
+                                            <li><a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-edition"><pb-i18n key="form.edition">Textedition</pb-i18n></a></li>
                                         </ul>
                                     </div>
                                 </template>
                             </li>
-                            <li><a href="#commentary"><pb-i18n key="form.commentary"></pb-i18n></a></li>
-                            <li><a href="#chronology"><pb-i18n key="form.dating"></pb-i18n></a></li>
-                            <li><a href="#historic-relevance"><pb-i18n key="form.historic-relevance"></pb-i18n></a></li>
+                            <li><a href="edit/{instance('params')/collection}/{instance('params')/id}#commentary"><pb-i18n key="form.commentary"></pb-i18n></a></li>
+                            <li><a href="edit/{instance('params')/collection}/{instance('params')/id}#chronology"><pb-i18n key="form.dating"></pb-i18n></a></li>
+                            <li><a href="edit/{instance('params')/collection}/{instance('params')/id}#historic-relevance"><pb-i18n key="form.historic-relevance"></pb-i18n></a></li>
                         </ul>
                     </nav>
                     <fx-group ref="teiHeader" style='z-index:{}'>
