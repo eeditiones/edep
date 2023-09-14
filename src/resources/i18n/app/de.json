@@ -133,7 +133,7 @@
     "metadata": {
     	"dimensions": "Maße",
     	"additional": "Zusätzliche Metadaten",
-    	"modern-place": "Moderner Ortsname und Region",
-    	"ancient-place": "Antiker Ortsname und Provinz"
+    	"modern-place": "Moderne Ortsname und Region",
+    	"ancient-place": "Antike Ortsname und Provinz"
     }
 }
