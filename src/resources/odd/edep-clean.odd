@@ -229,13 +229,13 @@
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="keywords" mode="add">
-                <model predicate="not(term)" behaviour="omit">
+                <model predicate="not(descendant::term/node()) or not(descendant::term[@ref ne ''])" behaviour="omit">
             <desc>Delete when empty</desc>
         </model>
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="textClass" mode="add">
-                <model predicate="not(descendant::term)" behaviour="omit">
+                <model predicate="not(descendant::term/node()) or not(descendant::term[@ref ne ''])" behaviour="omit">
             <desc>Delete when empty (that is, any of the keywords elements contain
                         terms)</desc>
         </model>
