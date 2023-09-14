@@ -692,6 +692,33 @@
             }
           }
         }
+      },
+      "put": {
+        "summary": "update/add inscription",
+        "x-constraints": {
+          "group": "tei"
+        },
+        "operationId": "api:upload",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "inscription",
+            "content": {
+              "application/xml": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/render": {

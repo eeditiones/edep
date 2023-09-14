@@ -328,18 +328,17 @@ declare function api:inscription($request as map(*)) {
     let $collection := $config:data-root || "/" || $request?parameters?collection
     let $id := 
         if ($request?parameters?id and $request?parameters?id != '') then
-            let $store := xmldb:store($collection, concat($request?parameters?id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
+            let $store := xmldb:store($collection, concat($request?parameters?id, ".xml"), api:clean($request?body, (), true()))
             return $request?body//tei:idno[@type="EDEp"]/text()
         else if ($request?body//tei:idno[@type="EDEp"]/node()) then
             let $id := $request?body//tei:idno[@type="EDEp"]/text()
-            let $store := xmldb:store($collection, concat($id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
+            let $store := xmldb:store($collection, concat($id, ".xml"), api:clean($request?body, (), true()))
             return $request?body//tei:idno[@type="EDEp"]/text()
         else
             let $ids := sort(collection($collection)//tei:idno[@type="EDEp"]/text())
             let $id-new := if (empty($ids)) then "0000001" else format-number(xs:integer(replace($ids[last()], "E", "")) + 1, "0000000")
-            let $store := xmldb:store($collection, concat("E", $id-new, ".xml"), api:postprocess($request?body, "E" || $id-new) => api:clean-namespace())
+            let $store := xmldb:store($collection, concat("E", $id-new, ".xml"), api:clean($request?body, "E" || $id-new, true()))
             return concat("E", $id-new)
-
     return try {
         let $preprocessing := map {
             "parameters" : map {
@@ -358,7 +357,10 @@ declare function api:inscription-template($request as map(*)) {
     let $collection := $config:data-root || "/" || $request?parameters?collection
     let $doc :=
         if ($id and $id != '') then
-            collection($collection)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI
+            let $input := collection($collection)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI
+            let $merged := api:file-upload(doc($config:inscription-templ), root($input))
+            return
+                $merged
         else
             doc($config:inscription-templ)
     let $input :=
@@ -367,12 +369,18 @@ declare function api:inscription-template($request as map(*)) {
         else
             $doc
     let $return := api:preprocessing-copy($input)
-
     return try {
         $return
     } catch * {
         ()
     }
+};
+
+declare %private function api:clean($nodes as node()*, $edepId as xs:string?, $removeRedundant as xs:boolean?) {
+    let $output := api:postprocess($nodes, $edepId) => api:clean-namespace()
+    let $cleaned := if ($removeRedundant) then $pm-config:tei-transform($output, map{} , 'edep-clean.odd') else $output
+    return
+        $cleaned
 };
 
 declare %private function api:postprocess($nodes as node()*, $edepId as xs:string?) {
@@ -502,22 +510,6 @@ declare %private function  api:preprocessing-copy($nodes as node()*){
                     $node/@*,
                     $node/tei:div[@type="commentary"]
                 }
-            case element(tei:bibl) return
-                element { node-name($node) } {
-                    $node/@* except $node/@xml:id,
-                    attribute xml:id { $node/@xml:id },
-                    head(($node/tei:citedRange, <citedRange xmlns="http://www.tei-c.org/ns/1.0"></citedRange>)),
-                    head(($node/tei:ptr, <ptr target="" xmlns="http://www.tei-c.org/ns/1.0"/>)),
-                    head(($node/tei:note, <note xmlns="http://www.tei-c.org/ns/1.0"></note>))
-                }
-            case element(tei:layout) return
-                element { node-name($node) } {
-                    $node/@*,
-                    $node/tei:dimensions,
-                    head(($node/tei:rs[@type="paleography"], <rs xmlns="http://www.tei-c.org/ns/1.0" type="paleography" ref=""/>)),
-                    head(($node/tei:rs[@type="metric"], <rs xmlns="http://www.tei-c.org/ns/1.0" type="metric">no</rs>)),
-                    head(($node/tei:ab, <ab xmlns="http://www.tei-c.org/ns/1.0"/>))
-                }
             case element(tei:facsimile) return
                 ()
             case element () return  element {node-name($node)} { $node/@*, api:preprocessing-copy($node/node())}
@@ -552,6 +544,10 @@ declare function api:render($request as map(*)) {
                 $request?body
     return
         $pm-config:web-transform(api:clean-namespace($xml), map { "root": $xml, "webcomponents": 7 }, $config:default-odd)
+};
+
+declare function api:upload($request as map(*)) {
+    api:file-upload(doc($config:inscription-templ), root($request?body))
 };
 
 (: Main function to handle the upload of an epidoc file to the app: the first argument is the
