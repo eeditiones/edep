@@ -132,6 +132,8 @@
     },
     "metadata": {
     	"dimensions": "Dimensions",
-    	"additional": "Additional metadata"
+    	"additional": "Additional metadata",
+    	"modern-place": "Modern place name and region",
+    	"ancient-place": "Ancient place name and province"
     }
 }
