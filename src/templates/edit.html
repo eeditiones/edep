@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="utf-8"/>
+    <base href="${app}/" data-template="pages:parse-params"/>
     <title data-template="config:app-title"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"/>
     <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico"/>
@@ -87,7 +88,7 @@
 
                     <!-- ### if get called with an id param we load the data via submission ### -->
                     <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>
-                    <fx-model>
+                    <fx-model data-template="pages:parse-params">
                         <fx-action event="model-construct-done">
                             <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
                             <fx-send submission="s-load-inscription" if="exists(instance('params')/id)"></fx-send>
@@ -202,8 +203,12 @@
                         </fx-instance>
 
                         <!-- this instance holds queryString params from the Url of this page -->
-                        <fx-instance id="params" src="#querystring">
-
+                        <fx-instance id="params">
+                            <data>
+                                <id>${id}</id>
+                                <collection>${collection}</collection>
+                                <app>${app}</app>
+                            </data>
                         </fx-instance>
 
                         <fx-submission id="s-load-inscription"

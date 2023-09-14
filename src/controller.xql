@@ -28,7 +28,7 @@ declare function local:checkOriginWhitelist($regexes, $origin) {
         local:checkOriginWhitelist(tail($regexes), $origin)
 };
 
-if ($exist:path eq '') then
+if ($exist:path eq '' or matches($exist:path, "^/edit/[^/]+$")) then
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <redirect url="{request:get-uri()}/"/>
     </dispatch>

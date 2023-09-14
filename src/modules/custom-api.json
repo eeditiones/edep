@@ -25,6 +25,118 @@
     }
   },
   "paths": {
+    "/edit/{collection}/": {
+      "get": {
+        "summary": "Landing page for places",
+        "description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
+        "tags": [
+          "view"
+        ],
+        "operationId": "vapi:html",
+        "x-error-handler": "vapi:handle-error",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "edit"
+            }
+          },
+          {
+            "name": "collection",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "demo"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "HTML of the page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The document was not found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/edit/{collection}/{id}": {
+      "get": {
+        "summary": "Landing page for places",
+        "description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
+        "tags": [
+          "view"
+        ],
+        "operationId": "vapi:html",
+        "x-error-handler": "vapi:handle-error",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "edit"
+            }
+          },
+          {
+            "name": "collection",
+            "in": "path",
+            "schema": {
+              "type": "string",
+              "default": "demo"
+            },
+            "required": true
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "HTML of the page",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "The document was not found",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/orte": {
       "get": {
         "summary": "Landing page for places",

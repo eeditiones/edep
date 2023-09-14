@@ -325,7 +325,7 @@ declare function api:inscription($request as map(*)) {
             ()
     let $collection := $config:data-root || "/" || $request?parameters?collection
     let $id := 
-        if ($request?parameters?id) then
+        if ($request?parameters?id and $request?parameters?id != '') then
             let $store := xmldb:store($collection, concat($request?parameters?id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
             return $request?body//tei:idno[@type="EDEp"]/text()
         else if ($request?body//tei:idno[@type="EDEp"]/node()) then
@@ -355,7 +355,7 @@ declare function api:inscription-template($request as map(*)) {
     let $id := $request?parameters?id
     let $collection := $config:data-root || "/" || $request?parameters?collection
     let $doc :=
-        if ($id) then
+        if ($id and $id != '') then
             collection($collection)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI
         else
             doc($config:inscription-templ)

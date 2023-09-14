@@ -25,6 +25,7 @@ function checkDate(string) {
 
 window.addEventListener('DOMContentLoaded', () => {
     let language;
+    let endpoint;
 
     const navLinks = Array.from(document.querySelectorAll('nav a'));
     navLinks.forEach(link => {
@@ -45,6 +46,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     pbEvents.subscribe('pb-page-ready', null, (ev) => {
         language = ev.detail.language;
+        endpoint = ev.detail.endpoint;
     });
 
     const fore = document.querySelector('fx-fore');
@@ -54,7 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const output = document.getElementById('transcription-display');
     
         epidoc.addEventListener('update', (ev) => {
-            fetch('api/render', {
+            fetch(`${endpoint}/api/render`, {
                 method: 'POST',
                 body: ev.detail.content.outerHTML,
                 headers: {
