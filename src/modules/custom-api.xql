@@ -569,20 +569,23 @@ declare %private function api:find-counterpart($nodeTemplate as element(), $inpu
             satisfies $elName = ($nodeTemplate/ancestor::*/local-name())][count(ancestor::*) eq count($nodeTemplate/ancestor::*)]
         [every $typeValue in $nodeTemplate/ancestor-or-self::*[@type ne '']/@type
             satisfies $typeValue = ./ancestor-or-self::*/@type]
-        [if ($nodeTemplate/@scheme) then
-            .[@scheme eq $nodeTemplate/@scheme] else true()]
+        [every $scheme in $nodeTemplate/ancestor-or-self::*[@scheme ne '']/@scheme
+            satisfies $scheme = ./ancestor-or-self::*/@scheme]
     (: To make the final selection for the equivalent element we take into consideration
     the presence of @fore:type (so far only present in <div type="fragment")> and we just
     select the first one. The other fragments will be processed through api:reconstruct-tree() 
+    If the candidates are siblings, we also selected the first one.
     If at this point we have more than one candidate, throw an error with the element name :)
     let $counterpart :=    
         if ($nodeTemplate/@fore:type) then
             $candidates[1]
         else
-            if (count($candidates) <= 1) then
-                $candidates
+            if (count($candidates/parent::*) eq 1) then $candidates[1]
             else
-                error(xs:QName("ERROR"), "ambiguous elements with element name " || $candidates[1]/name())
+                if (count($candidates) <= 1) then
+                    $candidates
+                else
+                    error(xs:QName("ERROR"), "ambiguous elements with element name " || $candidates[1]/name())
     return
         $counterpart
 };
