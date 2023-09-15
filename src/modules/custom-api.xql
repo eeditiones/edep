@@ -563,14 +563,17 @@ in the template  :)
 declare %private function api:find-counterpart($nodeTemplate as element(), $input as node()) as item()* {
     (: List of candidates is created based on the name of the element and its ancestors. In addition
     we look for the values of the attribute @type to disambiguate <msPart type="main"> from <msPart type="fragment">
-    and for the values of @scheme to disambiguate the <keywords> elements :)
-    let $candidates := $input/descendant::*[local-name() eq $nodeTemplate/local-name()]
+    and for the values of @scheme to disambiguate the <keywords> elements 
+    When working on the main template, we look at all the ancestors, if we are
+    in a secondary template (see condition) we only check the parent :)
+    let $candidates := if ($nodeTemplate/ancestor-or-self::tei:TEI) then $input/descendant::*[local-name() eq $nodeTemplate/local-name()]
         [every $elName in ancestor::*/local-name()
             satisfies $elName = ($nodeTemplate/ancestor::*/local-name())][count(ancestor::*) eq count($nodeTemplate/ancestor::*)]
         [every $typeValue in $nodeTemplate/ancestor-or-self::*[@type ne '']/@type
             satisfies $typeValue = ./ancestor-or-self::*/@type]
         [every $scheme in $nodeTemplate/ancestor-or-self::*[@scheme ne '']/@scheme
             satisfies $scheme = ./ancestor-or-self::*/@scheme]
+            else $input/descendant::*[local-name() eq $nodeTemplate/local-name()][parent::*/local-name() eq $nodeTemplate/parent::*/local-name()]
     (: To make the final selection for the equivalent element we take into consideration
     the presence of @fore:type (so far only present in <div type="fragment")> and we just
     select the first one. The other fragments will be processed through api:reconstruct-tree() 
@@ -593,34 +596,94 @@ declare %private function api:find-counterpart($nodeTemplate as element(), $inpu
 declare %private function api:process-children($nodeTemplate as element(), $nodeInput as element()) as item()* {
     (: if the node from the input file only contais a text node, or mixed content, then get its children :)
     if ($nodeInput[((count(child::node()) eq 1) and (text()[string-length(replace(., '\s+', '')) ne 0])) or
-    ((text()[string-length(replace(., '\s+', '')) ne 0]) and child::element())]) then
-        $nodeInput/node()
+        ((text()[string-length(replace(., '\s+', '')) ne 0]) and child::element())]) 
+        then
+            api:complete-input($nodeInput/node())
     else
         (:if the node from the template is empty, get whatever its counterpart has :)
         if ($nodeTemplate/not(child::*)) then
-            $nodeInput/node()
+            api:complete-input($nodeInput/node())
         else
             (: else process each child from the template :)
             for $node in $nodeTemplate/*
             return
-                api:reconstruct-tree($node, $nodeInput/root())
+                api:reconstruct-tree($node, $nodeInput)
 };
 
-(:function to add @corresp values when the div element is copied from the template:)
-declare function api:add-corresp($nodeTemplate as element(), $input as node()) as element()+ {
- if ($input/descendant::tei:body/descendant::tei:div/@corresp)
- then 
-     let $correspVals := distinct-values($input/descendant::tei:div[@corresp]/@corresp)
-     for $corresp in $correspVals
-     let $att := attribute {'corresp'} {$corresp}
-     return 
-         element {QName("http://www.tei-c.org/ns/1.0", 'div')} {
-                      $nodeTemplate/@*[not(name() eq 'corresp')] | $att,
-                       $nodeTemplate/node()         
-         }
-    else 
-        $nodeTemplate 
+(:function to complete the input with elements that are in an secondary template :)
+declare %private function api:complete-input($nodes as node()*) as node()* {
+    for $node in $nodes 
+    return 
+        typeswitch($node)
+            case element(tei:bibl) return
+                let $templateBibl := (doc('/db/apps/edep/templates/fore/templates.xml')//tei:bibl)[1]
+                return 
+                    <bibl xmlns="http://www.tei-c.org/ns/1.0" xml:id="">
+                     {($node/node(),  $templateBibl/*[not(local-name() = $node/node()/local-name())])}
+                    </bibl>
+            case element(tei:msPart) return
+                let $templateMsPart := doc('/db/apps/edep/templates/fore/mspart-tmpl.xml')/tei:msPart
+                return api:process-additional-template($templateMsPart, $node)
+        default 
+            return $node
     };
+    
+    
+(: function to process msPart[@type eq 'fragment'] :)
+declare %private function api:process-additional-template($template as node()+, $input as node()) as node() {
+    let $id := $input/@xml:id
+    return
+        <msPart xml:id="{$id}" type="fragment" xmlns="http://www.tei-c.org/ns/1.0">
+            {for $node in $template/*[not(local-name() = ('div', 'facsimile'))] 
+            return 
+                api:reconstruct-tree($node, $input)}
+         </msPart>
+    };
+
+(:function to add @corresp attribute values when elements are copied from the template :)
+declare %private function api:add-corresp($nodeTemplate as element(), $input as node()) as element()+ {
+ if ($nodeTemplate[@corresp])
+ then
+     for $id in $input/root()/descendant::tei:msPart/@xml:id
+     let $correspVal:=  '#' || $id
+     let $att := attribute {'corresp'} {$correspVal}
+     return 
+         element {QName("http://www.tei-c.org/ns/1.0", $nodeTemplate/local-name())} {
+                      $nodeTemplate/@*[not(name() eq 'corresp')] | $att,
+                      $nodeTemplate/node()
+         }
+else 
+    $nodeTemplate
+     };
+    
+declare %private function api:compare-elements($nodeTemplate as element(), $nodeInput as element()) as element(){
+    if (deep-equal($nodeTemplate, $nodeInput)) then
+            $nodeTemplate
+    else
+        (: if the number of attributes is not the same, get the missing attributes from the template:)
+        if (count($nodeInput/@*) ne count($nodeTemplate/@*))
+        then                  
+            let $emptyAttsNames := for $att in $nodeTemplate/@*
+                return
+                    $att[not(name() = $nodeInput/@*/name())]/name()
+            let $emptyAtts := for $attName in $emptyAttsNames
+                return
+                    attribute {$attName} {""}                        
+            return
+            (: we return an element with all the attributes and then we process its contents :)
+                element {QName("http://www.tei-c.org/ns/1.0", $nodeTemplate/local-name())}
+                {
+                    $nodeInput/@* | $emptyAtts,
+                    api:process-children($nodeTemplate, $nodeInput)
+                }
+        else
+        (: if the number of attributes is the same, copy the attributes from the input element
+        and then process its children :)
+            element {QName("http://www.tei-c.org/ns/1.0", $nodeTemplate/local-name())} {
+                $nodeInput/@*,
+                api:process-children($nodeTemplate, $nodeInput)
+            }
+};
 
 (: Function that compares element nodes from the template with the input file :)
 declare %private function api:reconstruct-tree($tmplNodes as element()*, $input as node()*) as node()* {
@@ -629,76 +692,49 @@ declare %private function api:reconstruct-tree($tmplNodes as element()*, $input 
     let $counterpart := api:find-counterpart($tmpl, $input)
     return
     (: if we find an equivalent element, we return more than one item: on one hand, 
-    the result of processing the this “counterpart” element, on the other, additional
+    the result of processing the “counterpart” element, on the other, additional
     operations are done to handle repeateable elements :)
-        if ($counterpart) then
-            (: if the node it’s exactly the same in both form and input, copy the node :)
-            (if (deep-equal($tmpl, $counterpart)) then
-                $tmpl
-            else
-                (: if the number of attributes is not the same, get the missing attributes from the template:)
-                if (count($counterpart/@*) ne count($tmpl/@*))
-                then
-                    (:let $atts := for $att in $tmpl/@*
+        if ($counterpart) then 
+            (api:compare-elements($tmpl, $counterpart),
+                (: create as many div elements as necessary attending to the @corresp attributes :)
+                if ($counterpart[@corresp][local-name() = ('div')]) 
+                then 
+                    let $ids := $counterpart/root()/descendant::tei:msPart/@xml:id
+                    return 
+                        if (count($ids) gt count($counterpart/root()//tei:body//tei:div[@type eq $counterpart/@type]))
+                        then 
+                            let $corresps := for $id in $ids return '#' || $id
+                            for $corresp in $corresps[not(. = $counterpart/@corresp)]
+                            let $correspAtt := attribute {'corresp'} {$corresp}
                             return
-                                if ($counterpart/@*[name() eq $att/name()]) then
-                                    $counterpart/@*[name() eq $att]
-                                else
-                                    $att:)                    
-                    let $emptyAttsNames := for $att in $tmpl/@*
-                    return
-                        $att[not(name() = $counterpart/@*/name())]/name()
-                    let $emptyAtts := for $attName in $emptyAttsNames
-                    return
-                        attribute {$attName} {""}                        
-                    return
-                    (: we return an element with the all the attributes and then we process its contents :)
-                        element {QName("http://www.tei-c.org/ns/1.0", $name)}
-                        {
-                            $counterpart/@* | $emptyAtts,
-                            api:process-children($tmpl, $counterpart)
-                        }
-                else
-                (: if the number of attributes is the same, copy the attributes from the input element
-                and then process its children :)
-                    element {QName("http://www.tei-c.org/ns/1.0", $name)} {
-                        $counterpart/@*,
-                        api:process-children($tmpl, $counterpart)
-                    }, 
-                    (: Processing of repeteable elements. There are two possible scenarios
-                    Scenario 1: we have an attribute @fore:type which mean that we were only
+                                element {QName("http://www.tei-c.org/ns/1.0", 'div')} {
+                                    $tmpl/@*[not(name() eq 'corresp')] | $correspAtt,
+                                    $tmpl/node()
+                                    }
+                    
+                        else () 
+                else(),            
+                    (: Processing of other repeteable elements. There are two possible scenarios
+                    Scenario 1: we have an attribute @fore:type which means that we were only
                     processing the first “candidate”. We thus need to get its following siblings :)
                       if ($tmpl[@fore:type]) 
-                        then $counterpart/following-sibling::* 
+                      then $counterpart/following-sibling::* 
                       else 
-                      (: Second scenario: there are elements in the input file, not present in the template
-                      this would be the case of <msPart type='fragment'>, for example, since
-                      in the template we only have <msPart type='main'>. For those cases
+                        if ($counterpart/following-sibling::*[1][self::tei:msPart[@type eq 'fragment']])
+                        then api:complete-input($counterpart/following-sibling::tei:msPart[@type eq 'fragment'])
+                        else
+                      
+                      (: Second scenario: there are elements in the input file, not present in the template. For those cases
                       we look in the element in the input file being processed has a following-sibling
                       that it’s not present in the template :)
-                      if (not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
-                      $counterpart/following-sibling::*[not(local-name() = $tmpl/following-sibling::*/local-name())]
-                      else 
-(:                       create as many div elements as necessary attending to the @corresp value    :)
-                          if ($counterpart[ancestor::tei:body]/@corresp) 
-                          then 
-                            let $corresps := distinct-values($input/descendant::tei:body//tei:div/@corresp)
-                          return 
-                              if (count($corresps) gt count($input//tei:body//tei:div[@type eq $counterpart/@type]))
-                              then 
-                                  for $corresp in $corresps[not(. = $counterpart/@corresp)]
-                                  let $correspAtt := attribute {'corresp'} {$corresp}
-                                  return
-                                  element {QName("http://www.tei-c.org/ns/1.0", 'div')} {
-                                $tmpl/@*[not(name() eq 'corresp')] | $correspAtt,
-                                $tmpl/node()
-                    }
-                               else ()
-                               else ()
+                            if (not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
+                                $counterpart/following-sibling::*[not(local-name() = $tmpl/following-sibling::*/local-name())]
+                            else ()
                       
             )  
         else
             typeswitch($tmpl)
                 case element(tei:div) return api:add-corresp($tmpl, $input)
+                case element(tei:facsimile) return api:add-corresp($tmpl, $input)
                 default return $tmpl
 };
