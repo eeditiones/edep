@@ -552,7 +552,7 @@ declare function api:upload($request as map(*)) {
 
 (: Main function to handle the upload of an epidoc file to the app: the first argument is the
 template “epidoc-template.xml” and the second argument is the epidoc file to upload :)
-declare function api:file-upload($mainTmpl as document-node(), $input as document-node()) as node() {
+declare function api:file-upload($mainTmpl as document-node(), $input as node()) as node() {
     for $node in $mainTmpl/*
     return
         api:reconstruct-tree($node, $input)
@@ -605,6 +605,23 @@ declare %private function api:process-children($nodeTemplate as element(), $node
             return
                 api:reconstruct-tree($node, $nodeInput/root())
 };
+
+(:function to add @corresp values when the div element is copied from the template:)
+declare function api:add-corresp($nodeTemplate as element(), $input as node()) as element()+ {
+ if ($input/descendant::tei:body/descendant::tei:div/@corresp)
+ then 
+     let $correspVals := distinct-values($input/descendant::tei:div[@corresp]/@corresp)
+     for $corresp in $correspVals
+     let $att := attribute {'corresp'} {$corresp}
+     return 
+         element {QName("http://www.tei-c.org/ns/1.0", 'div')} {
+                      $nodeTemplate/@*[not(name() eq 'corresp')] | $att,
+                       $nodeTemplate/node()         
+         }
+    else 
+        $nodeTemplate 
+    };
+
 (: Function that compares element nodes from the template with the input file :)
 declare %private function api:reconstruct-tree($tmplNodes as element()*, $input as node()*) as node()* {
     for $tmpl in $tmplNodes
@@ -661,8 +678,27 @@ declare %private function api:reconstruct-tree($tmplNodes as element()*, $input 
                       that it’s not present in the template :)
                       if (not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
                       $counterpart/following-sibling::*[not(local-name() = $tmpl/following-sibling::*/local-name())]
-                      else ()
-                      )
-                     else
-            $tmpl
+                      else 
+(:                       create as many div elements as necessary attending to the @corresp value    :)
+                          if ($counterpart[ancestor::tei:body]/@corresp) 
+                          then 
+                            let $corresps := distinct-values($input/descendant::tei:body//tei:div/@corresp)
+                          return 
+                              if (count($corresps) gt count($input//tei:body//tei:div[@type eq $counterpart/@type]))
+                              then 
+                                  for $corresp in $corresps[not(. = $counterpart/@corresp)]
+                                  let $correspAtt := attribute {'corresp'} {$corresp}
+                                  return
+                                  element {QName("http://www.tei-c.org/ns/1.0", 'div')} {
+                                $tmpl/@*[not(name() eq 'corresp')] | $correspAtt,
+                                $tmpl/node()
+                    }
+                               else ()
+                               else ()
+                      
+            )  
+        else
+            typeswitch($tmpl)
+                case element(tei:div) return api:add-corresp($tmpl, $input)
+                default return $tmpl
 };
