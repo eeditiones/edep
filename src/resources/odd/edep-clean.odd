@@ -81,9 +81,8 @@
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="note" mode="add">
-                <model predicate="string-length(string(replace(., '\s+', ''))) eq 0" behaviour="omit">
-            <desc>Delete any note element that doesn’t have textual content other than white
-                        spaces</desc>
+                <model predicate="not(element()) or string-length(replace(text(), '\s+', '')) eq 0" behaviour="omit">
+            <desc>Delete any note element that doesn’t have textual content other than white spaces</desc>
         </model>
                 <model behaviour="copy"/>
             </elementSpec>
