@@ -573,6 +573,7 @@ declare %private function api:find-counterpart($nodeTemplate as element(), $inpu
             satisfies $typeValue = ./ancestor-or-self::*/@type]
         [every $scheme in $nodeTemplate/ancestor-or-self::*[@scheme ne '']/@scheme
             satisfies $scheme = ./ancestor-or-self::*/@scheme]
+        [if (@corresp = ./root()/descendant::tei:msPart[@type eq 'fragment']) then false() else true()]
             else $input/descendant::*[local-name() eq $nodeTemplate/local-name()][parent::*/local-name() eq $nodeTemplate/parent::*/local-name()]
     (: To make the final selection for the equivalent element we take into consideration
     the presence of @fore:type (so far only present in <div type="fragment")> and we just
@@ -632,11 +633,22 @@ declare %private function api:complete-input($nodes as node()*) as node()* {
 (: function to process msPart[@type eq 'fragment'] :)
 declare %private function api:process-additional-template($template as node()+, $input as node()) as node() {
     let $id := $input/@xml:id
+    let $inputDivs := $input/root()/descendant::tei:div[substring(@corresp, 2) = $id]
+         let $templateDivs := $template/tei:div[not(@type = $inputDivs/@type)]
+         let $correspAtt := attribute {'corresp'} {'#' || $id} 
+         let $reconstructedDivs := for $div in $templateDivs return 
+             element {QName("http://www.tei-c.org/ns/1.0", 'div')} {
+                      $template/@*[not(name() eq 'corresp')] | $correspAtt,
+                      $template/node()
+             }
     return
         <msPart xml:id="{$id}" type="fragment" xmlns="http://www.tei-c.org/ns/1.0">
-            {for $node in $template/*[not(local-name() = ('div', 'facsimile'))] 
+            { ($inputDivs, $reconstructedDivs,
+            for $node in $template/*[not(local-name() = ('div', 'facsimile'))] 
             return 
-                api:reconstruct-tree($node, $input)}
+                api:reconstruct-tree($node, $input)
+              )
+            }
          </msPart>
     };
 
@@ -697,23 +709,23 @@ declare %private function api:reconstruct-tree($tmplNodes as element()*, $input 
         if ($counterpart) then 
             (api:compare-elements($tmpl, $counterpart),
                 (: create as many div elements as necessary attending to the @corresp attributes :)
-                if ($counterpart[@corresp][local-name() = ('div')]) 
-                then 
-                    let $ids := $counterpart/root()/descendant::tei:msPart/@xml:id
-                    return 
-                        if (count($ids) gt count($counterpart/root()//tei:body//tei:div[@type eq $counterpart/@type]))
-                        then 
-                            let $corresps := for $id in $ids return '#' || $id
-                            for $corresp in $corresps[not(. = $counterpart/@corresp)]
-                            let $correspAtt := attribute {'corresp'} {$corresp}
-                            return
-                                element {QName("http://www.tei-c.org/ns/1.0", 'div')} {
-                                    $tmpl/@*[not(name() eq 'corresp')] | $correspAtt,
-                                    $tmpl/node()
-                                    }
-                    
-                        else () 
-                else(),            
+(:                if ($counterpart[@corresp][local-name() = ('div')]) :)
+(:                then :)
+(:                    let $ids := $counterpart/root()/descendant::tei:msPart/@xml:id:)
+(:                    return :)
+(:                        if (count($ids) gt count($counterpart/root()//tei:body//tei:div[@type eq $counterpart/@type])):)
+(:                        then :)
+(:                            let $corresps := for $id in $ids return '#' || $id:)
+(:                            for $corresp in $corresps[not(. = $counterpart/@corresp)]:)
+(:                            let $correspAtt := attribute {'corresp'} {$corresp}:)
+(:                            return:)
+(:                                element {QName("http://www.tei-c.org/ns/1.0", 'div')} {:)
+(:                                    $tmpl/@*[not(name() eq 'corresp')] | $correspAtt,:)
+(:                                    $tmpl/node():)
+(:                                    }:)
+(:                    :)
+(:                        else () :)
+(:                else(),            :)
                     (: Processing of other repeteable elements. There are two possible scenarios
                     Scenario 1: we have an attribute @fore:type which means that we were only
                     processing the first “candidate”. We thus need to get its following siblings :)
@@ -727,7 +739,7 @@ declare %private function api:reconstruct-tree($tmplNodes as element()*, $input 
                       (: Second scenario: there are elements in the input file, not present in the template. For those cases
                       we look in the element in the input file being processed has a following-sibling
                       that it’s not present in the template :)
-                            if (not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
+                            if (not($counterpart[not(local-name() eq 'div')]/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
                                 $counterpart/following-sibling::*[not(local-name() = $tmpl/following-sibling::*/local-name())]
                             else ()
                       
