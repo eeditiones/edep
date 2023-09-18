@@ -204,22 +204,37 @@
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="div" mode="add">
-                <model predicate="deep-equal(., following-sibling::*)" behaviour="omit"/>
+                <model predicate="(@type = ('apparatus', 'translation', 'commentary')) and (string-length(.) eq 0)" behaviour="omit">
+            <desc>Delete when empty</desc>
+        </model>
+                <model predicate="(@type eq 'commentary') and not(descendant::p) and not(descendant::ab)" behaviour="inline">
+            <desc>Wrap commentary content in ab element (if there aren’t p or ab
+                        elements)</desc>
+            <pb:template xmlns="" xml:space="preserve"><div xmlns="http://www.tei-c.org/ns/1.0" type="commentary"><ab>[[content]]</ab></div></pb:template>
+        </model>
+                <model predicate="(@type eq 'apparatus') and not(descendant::p|descendant::ab) " behaviour="inline">
+            <desc>Wrap apparatus content in ab element (if there aren’t p or ab
+                        elements)</desc>
+            <param name="corresp" value="@corresp"/>
+            <pb:template xmlns="" xml:space="preserve"><div xmlns="http://www.tei-c.org/ns/1.0" type="apparatus" corresp="[[corresp]]"><ab>[[content]]</ab></div></pb:template>
+        </model>
+                <model predicate="(@type eq 'translation') and not(descendant::p) and not(descendant::ab)" behaviour="inline">
+            <desc>Wrap translation content in ab element (if there aren’t p or ab
+                        elements)</desc>
+            <param name="corresp" value="@corresp"/>
+            <param name="resp" value="@resp"/>
+            <pb:template xmlns="" xml:space="preserve"><div xmlns="http://www.tei-c.org/ns/1.0" type="translation" corresp="[[corresp]]" resp="[[resp]]"><ab>[[content]]</ab></div></pb:template>
+        </model>
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="keywords" mode="add">
-                <model predicate="not(descendant::term/node()) or not(descendant::term[@ref ne ''])" behaviour="omit">
-            <desc>Delete when empty</desc>
+                <model predicate="not(*)" behaviour="inline">
+            <param name="scheme" value="@scheme"/>
+            <pb:template xmlns="" xml:space="preserve"><keywords xmlns="http://www.tei-c.org/ns/1.0" scheme="[[scheme]]"><term/></keywords></pb:template>
         </model>
                 <model behaviour="copy"/>
             </elementSpec>
-            <elementSpec ident="textClass" mode="add">
-                <model predicate="not(descendant::term/node()) or not(descendant::term[@ref ne ''])" behaviour="omit">
-            <desc>Delete when empty (that is, any of the keywords elements contain
-                        terms)</desc>
-        </model>
-                <model behaviour="copy"/>
-            </elementSpec>
+            <elementSpec ident="textClass" mode="add"/>
             <elementSpec ident="facsimile" mode="add">
                 <model predicate="not(graphic[@url])" behaviour="omit">
             <desc>Omit element if it doesn’t contain a child graphic element with @url</desc>
@@ -228,6 +243,14 @@
             </elementSpec>
             <elementSpec ident="author" mode="add">
                 <model predicate="string-length(.) eq 0" behaviour="omit"/>
+            </elementSpec>
+        <elementSpec ident="term" mode="add">
+                <model predicate="not(node()) and not(@ref) and (following-sibling::term or preceding-sibling::term)" behaviour="omit"/>
+                <model behaviour="copy"/>
+            </elementSpec>
+            <elementSpec ident="citedRange" mode="add">
+                <model predicate="not(node())" behaviour="omit"/>
+                <model behaviour="copy"/>
             </elementSpec>
         </schemaSpec>
     </text>
