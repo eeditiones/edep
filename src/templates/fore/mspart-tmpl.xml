@@ -16,7 +16,7 @@
     </msIdentifier>
     <msContents>
         <!-- 15) Inschriftengattung in @class -->
-        <msItem class="https://www.eagle-network.eu/voc/typeins/lod/51" type="">
+        <msItem class="" type="">
             <!-- 25) Sprache -->
             <textLang mainLang="lat"/>
             <!-- 12c) Überlieferung -->
@@ -73,7 +73,7 @@
                         <width></width>
                     </dimensions>
                     <!-- 34) Paläographie: kontrolliertes Vokabular -->
-                    <rs type="palaeography" ref="längliche Buchstaben"/>
+                    <rs type="palaeography" ref=""/>
                 </layout>
             </layoutDesc>
         </objectDesc>
