@@ -33,7 +33,7 @@
              submission="s-load-place"></fx-send>
   <fx-model>
 
-        <fx-instance id="i-geo" xpath-default-namespace="http://www.tei-c.org/ns/1.0"
+    <fx-instance id="i-geo" xpath-default-namespace="http://www.tei-c.org/ns/1.0"
                     src="templates/fore/data/geoid.xml">
       <data></data>
     </fx-instance>
@@ -43,11 +43,16 @@
     </fx-instance>
 
     <!-- full place record -->
-        <fx-instance id="i-place" xpath-default-namespace="http://www.tei-c.org/ns/1.0" src='templates/fore/data/geoid.xml'>
+    <fx-instance id="i-place" xpath-default-namespace="http://www.tei-c.org/ns/1.0" src='templates/fore/data/geoid.xml'>
       <data></data>
     </fx-instance>
 
-        <fx-instance id="g-vars">
+    <fx-instance id="province" src="../edep-data/province.json" type="json">{}</fx-instance>
+
+    <fx-instance id="country" src="../edep-data/country.json" type="json">{}</fx-instance>
+
+
+    <fx-instance id="g-vars">
       <data>
         <open>true</open>
         <place></place>
@@ -118,12 +123,12 @@
 
   <!-- 5) -->
   <fx-group class="geo-place" ref="instance('i-place')" style="display:{if(instance('g-vars')/open = 'true') then 'block' else 'none'};">
-    <fx-output ref="region[@type='province']">
+    <fx-output ref="instance('province')?*[?name = string(instance('i-place')//*:region[@type='province'])]?value">
             <label slot="label"><pb-i18n key="form.site-ancient-province"></pb-i18n></label>
     </fx-output>
 
     <!-- 6) -->
-    <fx-output ref="country">
+    <fx-output ref="instance('country')?*[?name = string(instance('i-place')//*:country)]?value">
             <label slot="label"><pb-i18n key="form.site-modern-country"></pb-i18n></label>
     </fx-output>
 

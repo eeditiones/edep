@@ -27,7 +27,6 @@
     <script type="module" src="resources/scripts/fore-dev.js"></script>
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
 
-    <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
 
     <!--
         when running with Fore on localhost for debugging with latest sources:
@@ -118,13 +117,15 @@
 
 
                         <fx-instance id="typeins" src="../edep-data/typeins.xml">
-
+                            <data></data>
                         </fx-instance>
                         <fx-instance id="objtyp" src="../edep-data/objtyp.xml">
-
+                            <data></data>
                         </fx-instance>
 
-                        <fx-instance id="material" src="../edep-data/material.xml"></fx-instance>
+                        <fx-instance id="material" src="../edep-data/material.xml">
+                            <data></data>
+                        </fx-instance>
 
                         <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
                             <data></data>
@@ -132,13 +133,12 @@
 
                         <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"
                                      xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-
+                            <data></data>
                         </fx-instance>
 
                         <fx-instance id="templates" src="templates/fore/templates.xml"
                                      xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-
-
+                            <data></data>
                         </fx-instance>
 
                         <fx-instance id="vars">
@@ -149,7 +149,7 @@
                                 <uuid></uuid>
                                 <geoid></geoid>
                                 <loggedin>hidden</loggedin>
-                                <xml-valid></xml-valid>
+                                <xml-valid>true</xml-valid>
                                 <history-term></history-term>
                                 <geography-term></geography-term>
                                 <military-term></military-term>
@@ -444,6 +444,7 @@
                                         <fx-control class="fore-control" ref="$corresp"
                                                     url="geo-picker.html"
                                                     initial="..">
+                                            <fx-refresh event="init" self="self"></fx-refresh>
                                         </fx-control>
 
                                         <!-- 10b) -->
@@ -483,9 +484,15 @@
 
                                         <h3><pb-i18n key="form.last-recorded-location"></pb-i18n></h3>
                                         <!-- 12a) -->
-                                        <fx-control ref="msIdentifier/repository">
-                                            <label><pb-i18n key="form.last-recorded-location">Aufbewahrung</pb-i18n></label>
-                                        </fx-control>
+                                        <div class='with-hint'>
+                                            <fx-control ref="msIdentifier/repository">
+                                                <label><pb-i18n key="form.last-recorded-location">Aufbewahrung</pb-i18n></label>
+                                            </fx-control>
+                                            <pb-popover>
+                                                <iron-icon icon="info-outline"></iron-icon>
+                                                <template slot="alternate"><pb-i18n key="form.hint-recorded-location"></pb-i18n></template>
+                                            </pb-popover>
+                                        </div>
 
                                         <!-- 12b) -->
                                         <div class="with-hint">
@@ -1288,7 +1295,8 @@
 
                         <!-- 26) -->
                         <fx-group ref="//msDesc" class="group-6" id="chronology">
-                            <h3><pb-i18n key="form.dating">Datierung</pb-i18n></h3>
+                            <h3><pb-i18n key="hint.date">Datierung</pb-i18n></h3>
+
 
                             <!-- 26), 27)-->
                             <fx-control ref="history/origin/origDate/@when-custom">
@@ -1297,16 +1305,28 @@
                                        class="widget"/>
                                 <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
                             </fx-control>
-                            <fx-control ref="history/origin/origDate/@notBefore-custom">
-                                <label><pb-i18n key="form.date-after">nach</pb-i18n></label>
-                                <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
-                                <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
-                            </fx-control>
-                            <fx-control ref="history/origin/origDate/@notAfter-custom">
-                                <label><pb-i18n key="form.date-before">vor</pb-i18n></label>
-                                <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
-                                <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
-                            </fx-control>
+                            <div class="with-hint">
+                                <fx-control ref="history/origin/origDate/@notBefore-custom">
+                                    <label><pb-i18n key="form.date-after">nach</pb-i18n></label>
+                                    <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
+                                    <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
+                                </fx-control>
+                                <pb-popover>
+                                    <iron-icon icon="info-outline"></iron-icon>
+                                    <template slot="alternate"><pb-i18n key="form.hint-date"></pb-i18n></template>
+                                </pb-popover>
+                            </div>
+                            <div class="with-hint">
+                                <fx-control ref="history/origin/origDate/@notAfter-custom">
+                                    <label><pb-i18n key="form.date-before">vor</pb-i18n></label>
+                                    <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
+                                    <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
+                                </fx-control>
+                                <pb-popover>
+                                    <iron-icon icon="info-outline"></iron-icon>
+                                    <template slot="alternate"><pb-i18n key="form.hint-date"></pb-i18n></template>
+                                </pb-popover>
+                            </div>
                             <fx-control ref="history/origin/origDate">
                                 <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                             </fx-control>
