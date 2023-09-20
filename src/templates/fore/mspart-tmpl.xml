@@ -57,9 +57,7 @@
                         <depth></depth>
                     </dimensions>
                     <!-- 14) Dekor -->
-                    <rs type="decoration" ref=""/>
-                    <!-- 24) Metrik -->
-                    <rs type="metric">no</rs>
+                    <rs type="decoration" ref=""/>                    
                 </support>
                 <!-- 13) Erhaltung -->
                 <condition>complete</condition>
@@ -74,6 +72,10 @@
                     </dimensions>
                     <!-- 34) Paläographie: kontrolliertes Vokabular -->
                     <rs type="palaeography" ref=""/>
+                    <!-- 24) Metrik -->
+                    <rs type="metric"/>
+                    <!-- Beschreibung -->
+                    <ab/>
                 </layout>
             </layoutDesc>
         </objectDesc>
@@ -84,7 +86,7 @@
                     <height></height>
                 </dimensions>
                 <!-- 39) Ligatur -->
-                <rs type="ligature">no</rs>
+                <rs type="ligature"/>
             </handNote>
         </handDesc>
     </physDesc>
