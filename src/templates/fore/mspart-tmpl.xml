@@ -57,7 +57,7 @@
                         <depth></depth>
                     </dimensions>
                     <!-- 14) Dekor -->
-                    <rs type="decoration" ref="https://www.eagle-network.eu/voc/decor/lod/1000"></rs>
+                    <rs type="decoration" ref=""/>
                     <!-- 24) Metrik -->
                     <rs type="metric">no</rs>
                 </support>
@@ -94,9 +94,7 @@
                                 am Ende nur hinein kopiert - siehe Kommentare -->
             <origPlace corresp="">
                 <!-- 5) Provinz / augusteische Region: kopiert aus Geodatenbank -->
-                <placeName type="province"></placeName>
                 <!-- 8) Fundort (antik): kopiert aus Geodatenbank -->
-                <placeName type="ancient" ref="https://pleiades.stoa.org/places/108818"></placeName>
             </origPlace>
         </origin>
         <!--
