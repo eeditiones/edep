@@ -152,11 +152,19 @@
             <fieldset class="case-content">
                 <legend><pb-i18n key="form.site-find-spot"></pb-i18n></legend>
                 <fx-control ref="placeName[@type='findspot']" id="findspot">
-                    <label><pb-i18n key="form.site-find-spot">Fundstelle</pb-i18n></label>
+                    <label><pb-i18n key="form.site-find-spot">Fundstelle</pb-i18n>
+                    <pb-popover>
+                        <iron-icon icon="info-outline"></iron-icon>
+                        <template slot="alternate"><pb-i18n key="form.hint-geodata-findspot"></pb-i18n></template>
+                    </pb-popover>
                     <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
                 </fx-control>
                 <fx-control ref="placeName[@type='modern']">
                     <label><pb-i18n key="form.site-modern-name">Fundort (modern)</pb-i18n></label>
+                    <pb-popover>
+                        <iron-icon icon="info-outline"></iron-icon>
+                        <template slot="alternate"><pb-i18n key="form.hint-geodata-findspot"></pb-i18n></template>
+                    </pb-popover>
                 </fx-control>
                 <fx-control ref="placeName[@type='ancient']">
                     <label><pb-i18n key="form.site-ancient-name"></pb-i18n></label>

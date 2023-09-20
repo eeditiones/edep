@@ -98,7 +98,9 @@
         "hint-translation": "Markup mit Hilfe der Toolbar möglich, z.B. von in der Inschrift genannter Personen durch Markieren mit <persName>.",
         "hint-commentary": "Markup mit Hilfe der Toolbar möglich, z. B. für Verweise auf in der Inschrift genannte Personen oder in der Bibliographie oder den Älteren Editionen zitierte Werke (s.o. ‚Transkription‘ und ‚Apparatus‘). ",
         "hint-date": "Sowohl für vage als auch für definierte Zeitspannen. Z.B. 244-247 n. Chr. eingeben in der Form: nach 243, vor 248; 3.-2. Jh. v. Chr. eingeben in der Form: nach -301, vor -100.",
-        "hint-recorded-location": "Nicht-editorische, häufig frühe Überlieferungen wie Zeichnungen, Scheden, Notizbücher, Codices etc."
+        "hint-recorded-location": "Nicht-editorische, häufig frühe Überlieferungen wie Zeichnungen, Scheden, Notizbücher, Codices etc.",
+        "hint-geodata-findspot": "Ort bzw. Stadtteil, Gebäude, Straßenname, Flur u. Ä. innerhalb von Fundort (modern)",
+        "hint-geodata-findspot-modern": "Eigenständige Gemeinde."
     },
     "status": {
         "intern": "intern",
