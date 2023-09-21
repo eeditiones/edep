@@ -574,17 +574,17 @@ declare %private function api:find-counterpart($nodeTemplate as element(), $inpu
         [every $scheme in $nodeTemplate/ancestor-or-self::*[@scheme ne '']/@scheme
             satisfies $scheme = ./ancestor-or-self::*/@scheme]
         [if (@corresp = ./root()/descendant::tei:msPart[@type eq 'fragment']) then false() else true()]
-            else $input/descendant::*[local-name() eq $nodeTemplate/local-name()][parent::*/local-name() eq $nodeTemplate/parent::*/local-name()]
+            else 
+                $input/descendant::*[local-name() eq $nodeTemplate/local-name()]
+                [parent::*/local-name() eq $nodeTemplate/parent::*/local-name()]
+                [if ($nodeTemplate[@type and (@type ne '')]) then self::*[@type eq $nodeTemplate/@type] else true()]
     (: To make the final selection for the equivalent element we take into consideration
     the presence of @fore:type (so far only present in <div type="fragment")> and we just
     select the first one. The other fragments will be processed through api:reconstruct-tree() 
     If the candidates are siblings, we also selected the first one.
     If at this point we have more than one candidate, throw an error with the element name :)
     let $counterpart :=    
-        if ($nodeTemplate/@fore:type) then
-            $candidates[1]
-        else
-            if (count($candidates/parent::*) eq 1) then $candidates[1]
+        if (count($candidates/parent::*) eq 1) then $candidates[1]
             else
                 if (count($candidates) <= 1) then
                     $candidates
@@ -631,7 +631,7 @@ declare %private function api:complete-input($nodes as node()*) as node()* {
     
     
 (: function to process msPart[@type eq 'fragment'] :)
-declare %private function api:process-additional-template($template as node()+, $input as node()) as node() {
+declare %private function api:process-additional-template($template as element(), $input as node()) as node() {
     let $id := $input/@xml:id
     let $inputDivs := $input/root()/descendant::tei:div[substring(@corresp, 2) = $id]
          let $templateDivs := $template/tei:div[not(@type = $inputDivs/@type)]
@@ -644,9 +644,10 @@ declare %private function api:process-additional-template($template as node()+, 
     return
         <msPart xml:id="{$id}" type="fragment" xmlns="http://www.tei-c.org/ns/1.0">
             { ($inputDivs, $reconstructedDivs,
-            for $node in $template/*[not(local-name() = ('div', 'facsimile'))] 
-            return 
-                api:reconstruct-tree($node, $input)
+(:            for $node in $template/*[not(local-name() = ('div', 'facsimile'))] :)
+(:            return :)
+(:                api:reconstruct-tree($node, $input):)
+            api:reconstruct-tree($template/*[not(local-name() = ('div', 'facsimile'))], $input)
               )
             }
          </msPart>
@@ -729,19 +730,17 @@ declare %private function api:reconstruct-tree($tmplNodes as element()*, $input 
                     (: Processing of other repeteable elements. There are two possible scenarios
                     Scenario 1: we have an attribute @fore:type which means that we were only
                     processing the first “candidate”. We thus need to get its following siblings :)
-                      if ($tmpl[@fore:type]) 
-                      then $counterpart/following-sibling::* 
-                      else 
-                        if ($counterpart/following-sibling::*[1][self::tei:msPart[@type eq 'fragment']])
+                        if ($counterpart[@type eq 'main']/following-sibling::*[1][self::tei:msPart[@type eq 'fragment']])
                         then api:complete-input($counterpart/following-sibling::tei:msPart[@type eq 'fragment'])
-                        else
+                        else ()
                       
                       (: Second scenario: there are elements in the input file, not present in the template. For those cases
                       we look in the element in the input file being processed has a following-sibling
-                      that it’s not present in the template :)
-                            if (not($counterpart[not(local-name() eq 'div')]/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
+                      that it’s not present in the template 
+                            if ($counterpart[not(local-name eq 'div')] and not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
                                 $counterpart/following-sibling::*[not(local-name() = $tmpl/following-sibling::*/local-name())]
-                            else ()
+                            else ():)
+                            
                       
             )  
         else
