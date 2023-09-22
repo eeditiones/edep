@@ -578,10 +578,7 @@ declare %private function api:find-counterpart($nodeTemplate as element(), $inpu
                 $input/descendant::*[local-name() eq $nodeTemplate/local-name()]
                 [parent::*/local-name() eq $nodeTemplate/parent::*/local-name()]
                 [if ($nodeTemplate[@type and (@type ne '')]) then self::*[@type eq $nodeTemplate/@type] else true()]
-    (: To make the final selection for the equivalent element we take into consideration
-    the presence of @fore:type (so far only present in <div type="fragment")> and we just
-    select the first one. The other fragments will be processed through api:reconstruct-tree() 
-    If the candidates are siblings, we also selected the first one.
+    (: If the candidates are siblings, we also selected the first one.
     If at this point we have more than one candidate, throw an error with the element name :)
     let $counterpart :=    
         if (count($candidates/parent::*) eq 1) then $candidates[1]
@@ -728,18 +725,18 @@ declare %private function api:reconstruct-tree($tmplNodes as element()*, $input 
 (:                        else () :)
 (:                else(),            :)
                     (: Processing of other repeteable elements. There are two possible scenarios
-                    Scenario 1: we have an attribute @fore:type which means that we were only
-                    processing the first “candidate”. We thus need to get its following siblings :)
+                    Scenario 1: we need to call a particular element an use the function that handles secondary
+                    templates, like for the element msPart[@type eq 'fragment'] :)
                         if ($counterpart[@type eq 'main']/following-sibling::*[1][self::tei:msPart[@type eq 'fragment']])
                         then api:complete-input($counterpart/following-sibling::tei:msPart[@type eq 'fragment'])
-                        else ()
+                        else
                       
                       (: Second scenario: there are elements in the input file, not present in the template. For those cases
                       we look in the element in the input file being processed has a following-sibling
-                      that it’s not present in the template 
+                      that it’s not present in the template :)
                             if ($counterpart[not(local-name eq 'div')] and not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
                                 $counterpart/following-sibling::*[not(local-name() = $tmpl/following-sibling::*/local-name())]
-                            else ():)
+                            else ()
                             
                       
             )  
