@@ -692,6 +692,33 @@
             }
           }
         }
+      },
+      "put": {
+        "summary": "update/add inscription",
+        "x-constraints": {
+          "group": "tei"
+        },
+        "operationId": "api:upload",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/xml": {
+              "schema": {
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "inscription",
+            "content": {
+              "application/xml": {
+                "schema": {
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/render": {
@@ -728,7 +755,50 @@
           }
         }
       }
-    }
+    },
+    		"/api/document/{id}/epidoc": {
+			"get": {
+				"summary": "Get the Epidoc source of a document",
+				"description": "Get the source of a document, either as XML, text or binary.",
+				"tags": ["documents"],
+				"operationId": "dapi:epidoc",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Content of the document",
+						"content": {
+							"application/xml": {
+								"schema": {
+									"type": "string"
+								}
+							},
+							"text/markdown": {
+								"schema": {
+									"type": "string"
+								}
+							},
+							"text/text": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"410": {
+						"description": "Document deleted"
+					}
+				}
+			}
+		}
   },
   "security": [
     {

@@ -16,7 +16,7 @@
     </msIdentifier>
     <msContents>
         <!-- 15) Inschriftengattung in @class -->
-        <msItem class="https://www.eagle-network.eu/voc/typeins/lod/51" type="">
+        <msItem class="" type="">
             <!-- 25) Sprache -->
             <textLang mainLang="lat"/>
             <!-- 12c) Überlieferung -->
@@ -57,9 +57,7 @@
                         <depth></depth>
                     </dimensions>
                     <!-- 14) Dekor -->
-                    <rs type="decoration" ref="https://www.eagle-network.eu/voc/decor/lod/1000"></rs>
-                    <!-- 24) Metrik -->
-                    <rs type="metric">no</rs>
+                    <rs type="decoration" ref=""/>                    
                 </support>
                 <!-- 13) Erhaltung -->
                 <condition>complete</condition>
@@ -73,7 +71,11 @@
                         <width></width>
                     </dimensions>
                     <!-- 34) Paläographie: kontrolliertes Vokabular -->
-                    <rs type="palaeography" ref="längliche Buchstaben"/>
+                    <rs type="palaeography" ref=""/>
+                    <!-- 24) Metrik -->
+                    <rs type="metric"/>
+                    <!-- Beschreibung -->
+                    <ab/>
                 </layout>
             </layoutDesc>
         </objectDesc>
@@ -84,7 +86,7 @@
                     <height></height>
                 </dimensions>
                 <!-- 39) Ligatur -->
-                <rs type="ligature">no</rs>
+                <rs type="ligature"/>
             </handNote>
         </handDesc>
     </physDesc>
@@ -94,9 +96,7 @@
                                 am Ende nur hinein kopiert - siehe Kommentare -->
             <origPlace corresp="">
                 <!-- 5) Provinz / augusteische Region: kopiert aus Geodatenbank -->
-                <placeName type="province"></placeName>
                 <!-- 8) Fundort (antik): kopiert aus Geodatenbank -->
-                <placeName type="ancient" ref="https://pleiades.stoa.org/places/108818"></placeName>
             </origPlace>
         </origin>
         <!--

@@ -155,7 +155,7 @@
                                 <military-term></military-term>
                                 <languages xml:lang="en">
                                     <lang code="cel">Celtic</lang>
-                                    <lang code="gre">Greek</lang>
+                                    <lang code="grc">Greek</lang>
                                     <lang code="heb">Hebrew</lang>
                                     <lang code="xib">Iberian</lang>
                                     <lang code="ita">Italic</lang>
@@ -166,7 +166,7 @@
                                 </languages>
                                 <languages xml:lang="de">
                                     <lang code="cel">Keltisch</lang>
-                                    <lang code="gre">Griechisch</lang>
+                                    <lang code="grc">Griechisch</lang>
                                     <lang code="heb">Hebräisch</lang>
                                     <lang code="xib">Iberisch</lang>
                                     <lang code="ita">Italisch</lang>
@@ -182,12 +182,12 @@
                                     <option lang="de" value="squeeze">Abklatsch</option>
                                     <option lang="de" value="photo">Foto</option>
                                     <option lang="de" value="drawing">Zeichnung</option>
-                                    <option lang="de" value="not seen">nicht gesehen</option>
+                                    <option lang="de" value="not-seen">nicht gesehen</option>
                                     <option lang="en" value="autopsy">Autopsy</option>
                                     <option lang="en" value="squeeze">Squeeze</option>
                                     <option lang="en" value="photo">Photo</option>
                                     <option lang="en" value="drawing">Drawing</option>
-                                    <option lang="en" value="not seen">not seen</option>
+                                    <option lang="en" value="not-seen">not seen</option>
                                 </verification>
                             </data>
                         </fx-instance>
@@ -729,7 +729,7 @@
 
                                         <!-- 34) -->
                                         <div class="alternatives">
-                                            <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='paleography']/@ref" update-event="input">
+                                            <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref" update-event="input">
                                                 <label><pb-i18n key="form.palaeography">Paläographie</pb-i18n></label>
                                                 <fx-items ref="instance('palaeo')/item" class="widget">
                                                     <template>
@@ -740,7 +740,7 @@
                                                     </template>
                                                 </fx-items>
                                             </fx-control>
-                                            <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='paleography']" update-event="input" class="{instance('vars')/hide}">
+                                            <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']" update-event="input" class="{instance('vars')/hide}">
                                                 <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
                                             </fx-control>
                                         </div>

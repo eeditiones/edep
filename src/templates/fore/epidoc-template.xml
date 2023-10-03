@@ -1,17 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://epidoc.stoa.org/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://epidoc.stoa.org/schema/latest/tei-epidoc.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<!-- Fehlende Felder da unklar: 34, 24 -->
+<?xml-model href="http://epidoc.stoa.org/schema/latest/tei-epidoc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://epidoc.stoa.org/schema/latest/tei-epidoc.rng" schematypens="http://purl.oclc.org/dsdl/schematron"?><!-- Fehlende Felder da unklar: 34, 24 -->
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
         <fileDesc>
             <titleStmt>
                 <!-- zusätzlich 0) freie Eingabe Textfeld -->
-                <title></title>
+                <title/>
                 <!-- 44) Bearbeiter der Inschriftenedition -->
-                <editor></editor>
+                <editor/>
                 <!-- 45) Bearbeiter des Datensatzes -->
-                <author></author>
+                <author/>
             </titleStmt>
             <publicationStmt>
                 <authority>Epigraphische Datenbank Heidelberg</authority>
@@ -25,18 +22,18 @@
                 <msDesc>
                     <msIdentifier>
                         <!-- 3) EDEp ID -->
-                        <idno type="EDEp"></idno>
+                        <idno type="EDEp"/>
                     </msIdentifier>
                     <physDesc>
                         <objectDesc>
                             <supportDesc>
                                 <support>
                                     <!-- 16a) Inschriftträger -->
-                                    <objectType ref=""></objectType>
+                                    <objectType ref=""/>
                                     <!-- 18) Material -->
-                                    <material ref=""></material>
+                                    <material ref=""/>
                                     <!-- 16b) Beschreibung Inschriftträger -->
-                                    <note></note>
+                                    <note/>
                                 </support>
                             </supportDesc>
                         </objectDesc>
@@ -52,7 +49,7 @@
                                 Im Content - falls exakte Datierung unmöglich; schließt die anderen Attribute aus
                                 @datingMethod - fixes Attribut, hier immer Julianisch
                             -->
-                            <origDate when-custom="" notBefore-custom="" notAfter-custom="" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar"></origDate>
+                            <origDate when-custom="" notBefore-custom="" notAfter-custom="" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar"/>
                         </origin>
                     </history>
                     <!-- msPart ist als Ganzes wiederholbar -->
@@ -62,9 +59,9 @@
                         <!--  ### end of runtime instance inlining -->
                         <msIdentifier>
                             <!-- 12a) Aufbewahrung -->
-                            <repository></repository>
+                            <repository/>
                             <!-- 4) TM-Nummer - manuelle Eingabe -->
-                            <idno type="TM"></idno>
+                            <idno type="TM"/>
                         </msIdentifier>
                         <msContents>
                             <!-- TODO: 12d) Verifizierungsgrundlage: Auswahlmenü: Abklatsch / nicht-gesehen -->
@@ -73,7 +70,7 @@
                             <msItem class="" type="">
                                 <!-- 25) Sprache -->
                                 <!-- TODO: Metrik logisch hierhin -->
-                                <textLang mainLang=""></textLang>
+                                <textLang mainLang=""/>
                                 <!-- 35b) Bibliographie-->
                                 <listBibl type="bibliography">
                                     <!-- Einträge wiederholbar -->
@@ -102,30 +99,30 @@
                                     <support>
                                         <dimensions>
                                             <!-- 19) Inschriftträger: Breite -->
-                                            <width></width>
+                                            <width/>
                                             <!-- 38) Inschriftträger: Höhe -->
-                                            <height></height>
+                                            <height/>
                                             <!-- 20) Inschriftträger: Tiefe -->
-                                            <depth></depth>
+                                            <depth/>
                                         </dimensions>
                                         <!-- 14) Dekor -->
-                                        <rs type="decoration" ref=""></rs>
+                                        <rs type="decoration" ref=""/>
                                     </support>
                                     <!-- 13) Erhaltung -->
-                                    <condition></condition>
+                                    <condition/>
                                 </supportDesc>
                                 <layoutDesc>
                                     <layout>
                                         <dimensions>
                                             <!-- 21) Inschriftfeld: Höhe -->
-                                            <height></height>
+                                            <height/>
                                             <!-- 22) Inschriftfeld: Breite -->
-                                            <width></width>
+                                            <width/>
                                         </dimensions>
                                         <!-- 34) Paläographie: kontrolliertes Vokabular -->
-                                        <rs type="palaeography" ref="" />
+                                        <rs type="palaeography" ref=""/>
                                         <!-- 24) Metrik -->
-                                        <rs type="metric"></rs>
+                                        <rs type="metric"/>
                                         <!-- Beschreibung -->
                                         <ab/>
                                     </layout>
@@ -135,10 +132,10 @@
                                 <handNote>
                                     <dimensions type="letterHeight">
                                         <!-- 23) Buchstabenhöhe -->
-                                        <height></height>
+                                        <height/>
                                     </dimensions>
                                     <!-- 39) Ligatur -->
-                                    <rs type="ligature"></rs>
+                                    <rs type="ligature"/>
                                 </handNote>
                             </handDesc>
                         </physDesc>
@@ -146,7 +143,7 @@
                             <origin>
                                 <!-- in @corresp wird die GeoID angegeben, andere Ortsangaben sind redundant und werden
                                     am Ende nur hinein kopiert - siehe Kommentare -->
-                                <origPlace corresp="" />
+                                <origPlace corresp=""/>
                             </origin>
                             <!--
                                 11) Fundjahr (Attribute auf <provenance>)
@@ -158,9 +155,9 @@
                             -->
                             <provenance type="found" when="" when-custom="" notBefore="" notAfter="">
                                 <!-- 10b) Fundkontext: nicht kopiert, freie Eingabe -->
-                                <note type="context"></note>
+                                <note type="context"/>
                             </provenance>
-                            <provenance type="history"></provenance>
+                            <provenance type="history"/>
                         </history>
 
 
@@ -176,15 +173,15 @@
                 <!-- Welche URI für lokale Klassifikation? -->
                 <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/religion">
                     <!-- 28) Religion - kontrolliertes Vokabular? -->
-                    <term ref="" />
+                    <term ref=""/>
                 </keywords>
                 <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/terms">
-                    <term ref="" />
+                    <term ref=""/>
                 </keywords>
             </textClass>
         </profileDesc>
         <!-- 33) Stand der Bearbeitung in @status -->
-        <revisionDesc status="draft"></revisionDesc>
+        <revisionDesc status="draft"/>
     </teiHeader>
     <!-- @corresp referenziert msPart -->
     <facsimile corresp="">
@@ -193,14 +190,14 @@
         <body>
             <div type="edition">
                 <!-- 41) Textedition: @corresp referenziert msPart - eingefügt aus jinn-codemirror. Required -->
-                <div type="textpart" subtype="fragment" n="a" corresp=""></div>
+                <div type="textpart" subtype="fragment" n="a" corresp="" xmlns:fore="http://teipublisher.com/ns/fore" fore:type="repeatable"/>
             </div>
             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
-            <div type="apparatus" corresp=""></div>
+            <div type="apparatus" corresp=""/>
             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-            <div type="translation" corresp="" resp=""></div>
+            <div type="translation" corresp="" resp=""/>
             <!-- 37) Kommentar: freier Inhalt. Nur einmal pro Dokument - eingefügt aus jinn-codemirror -->
-            <div type="commentary"></div>
+            <div type="commentary"/>
         </body>
     </text>
 </TEI>

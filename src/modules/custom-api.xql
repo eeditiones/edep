@@ -17,6 +17,8 @@ import module namespace errors = "http://e-editiones.org/roaster/errors";
 declare namespace json="http://www.json.org";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace sm="http://exist-db.org/xquery/securitymanager";
+declare namespace fore = "http://teipublisher.com/ns/fore";
+
 
 (:~
  : Keep this. This function does the actual lookup in the imported modules.
@@ -326,18 +328,17 @@ declare function api:inscription($request as map(*)) {
     let $collection := $config:data-root || "/" || $request?parameters?collection
     let $id := 
         if ($request?parameters?id and $request?parameters?id != '') then
-            let $store := xmldb:store($collection, concat($request?parameters?id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
+            let $store := xmldb:store($collection, concat($request?parameters?id, ".xml"), api:clean($request?body, (), true()))
             return $request?body//tei:idno[@type="EDEp"]/text()
         else if ($request?body//tei:idno[@type="EDEp"]/node()) then
             let $id := $request?body//tei:idno[@type="EDEp"]/text()
-            let $store := xmldb:store($collection, concat($id, ".xml"), api:postprocess($request?body, ()) => api:clean-namespace())
+            let $store := xmldb:store($collection, concat($id, ".xml"), api:clean($request?body, (), true()))
             return $request?body//tei:idno[@type="EDEp"]/text()
         else
             let $ids := sort(collection($collection)//tei:idno[@type="EDEp"]/text())
             let $id-new := if (empty($ids)) then "0000001" else format-number(xs:integer(replace($ids[last()], "E", "")) + 1, "0000000")
-            let $store := xmldb:store($collection, concat("E", $id-new, ".xml"), api:postprocess($request?body, "E" || $id-new) => api:clean-namespace())
+            let $store := xmldb:store($collection, concat("E", $id-new, ".xml"), api:clean($request?body, "E" || $id-new, true()))
             return concat("E", $id-new)
-
     return try {
         let $preprocessing := map {
             "parameters" : map {
@@ -356,7 +357,10 @@ declare function api:inscription-template($request as map(*)) {
     let $collection := $config:data-root || "/" || $request?parameters?collection
     let $doc :=
         if ($id and $id != '') then
-            collection($collection)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI
+            let $input := collection($collection)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI
+            let $merged := api:file-upload(doc($config:inscription-templ), root($input))
+            return
+                $merged
         else
             doc($config:inscription-templ)
     let $input :=
@@ -365,12 +369,18 @@ declare function api:inscription-template($request as map(*)) {
         else
             $doc
     let $return := api:preprocessing-copy($input)
-
     return try {
         $return
     } catch * {
         ()
     }
+};
+
+declare %private function api:clean($nodes as node()*, $edepId as xs:string?, $removeRedundant as xs:boolean?) {
+    let $output := api:postprocess($nodes, $edepId) => api:clean-namespace()
+    let $cleaned := if ($removeRedundant) then $pm-config:tei-transform($output, map{} , 'edep-clean.odd') else $output
+    return
+        $cleaned
 };
 
 declare %private function api:postprocess($nodes as node()*, $edepId as xs:string?) {
@@ -500,22 +510,6 @@ declare %private function  api:preprocessing-copy($nodes as node()*){
                     $node/@*,
                     $node/tei:div[@type="commentary"]
                 }
-            case element(tei:bibl) return
-                element { node-name($node) } {
-                    $node/@* except $node/@xml:id,
-                    attribute xml:id { $node/@xml:id },
-                    head(($node/tei:citedRange, <citedRange xmlns="http://www.tei-c.org/ns/1.0"></citedRange>)),
-                    head(($node/tei:ptr, <ptr target="" xmlns="http://www.tei-c.org/ns/1.0"/>)),
-                    head(($node/tei:note, <note xmlns="http://www.tei-c.org/ns/1.0"></note>))
-                }
-            case element(tei:layout) return
-                element { node-name($node) } {
-                    $node/@*,
-                    $node/tei:dimensions,
-                    head(($node/tei:rs[@type="paleography"], <rs xmlns="http://www.tei-c.org/ns/1.0" type="paleography" ref=""/>)),
-                    head(($node/tei:rs[@type="metric"], <rs xmlns="http://www.tei-c.org/ns/1.0" type="metric">no</rs>)),
-                    head(($node/tei:ab, <ab xmlns="http://www.tei-c.org/ns/1.0"/>))
-                }
             case element(tei:facsimile) return
                 ()
             case element () return  element {node-name($node)} { $node/@*, api:preprocessing-copy($node/node())}
@@ -550,4 +544,205 @@ declare function api:render($request as map(*)) {
                 $request?body
     return
         $pm-config:web-transform(api:clean-namespace($xml), map { "root": $xml, "webcomponents": 7 }, $config:default-odd)
+};
+
+declare function api:upload($request as map(*)) {
+            api:file-upload(doc($config:inscription-templ), root($request?body))
+};
+
+(: Main function to handle the upload of an epidoc file to the app: the first argument is the
+template “epidoc-template.xml” and the second argument is the epidoc file to upload :)
+declare function api:file-upload($mainTmpl as document-node(), $input as node()) as node() {
+    for $node in $mainTmpl/*
+    return
+        api:reconstruct-tree($node, $input)
+};
+
+(: Function to look in the input file for the equivalent element to the element being processed
+in the template  :)
+declare %private function api:find-counterpart($nodeTemplate as element(), $input as node()) as item()* {
+    (: List of candidates is created based on the name of the element and its ancestors. In addition
+    we look for the values of the attribute @type to disambiguate <msPart type="main"> from <msPart type="fragment">
+    and for the values of @scheme to disambiguate the <keywords> elements 
+    When working on the main template, we look at all the ancestors, if we are
+    in a secondary template (see condition) we only check the parent :)
+    let $candidates := if ($nodeTemplate/ancestor-or-self::tei:TEI) then $input/descendant::*[local-name() eq $nodeTemplate/local-name()]
+        [every $elName in ancestor::*/local-name()
+            satisfies $elName = ($nodeTemplate/ancestor::*/local-name())][count(ancestor::*) eq count($nodeTemplate/ancestor::*)]
+        [every $typeValue in $nodeTemplate/ancestor-or-self::*[@type ne '']/@type
+            satisfies $typeValue = ./ancestor-or-self::*/@type]
+        [every $scheme in $nodeTemplate/ancestor-or-self::*[@scheme ne '']/@scheme
+            satisfies $scheme = ./ancestor-or-self::*/@scheme]
+        [if (@corresp = ./root()/descendant::tei:msPart[@type eq 'fragment']) then false() else true()]
+            else 
+                $input/descendant::*[local-name() eq $nodeTemplate/local-name()]
+                [parent::*/local-name() eq $nodeTemplate/parent::*/local-name()]
+                [if ($nodeTemplate[@type and (@type ne '')]) then self::*[@type eq $nodeTemplate/@type] else true()]
+    (: If the candidates are siblings, we also selected the first one.
+    If at this point we have more than one candidate, throw an error with the element name :)
+    let $counterpart :=    
+        if (count($candidates/parent::*) eq 1) then $candidates[1]
+            else
+                if (count($candidates) <= 1) then
+                    $candidates
+                else
+                    error(xs:QName("ERROR"), "ambiguous elements with element name " || $candidates[1]/name())
+    return
+        $counterpart
+};
+(: Function to merge the contents of each element after the comparison :)
+declare %private function api:process-children($nodeTemplate as element(), $nodeInput as element()) as item()* {
+    (: if the node from the input file only contais a text node, or mixed content, then get its children :)
+    if ($nodeInput[((count(child::node()) eq 1) and (text()[string-length(replace(., '\s+', '')) ne 0])) or
+        ((text()[string-length(replace(., '\s+', '')) ne 0]) and child::element())]) 
+        then
+            api:complete-input($nodeInput/node())
+    else
+        (:if the node from the template is empty, get whatever its counterpart has :)
+        if ($nodeTemplate/not(child::*)) then
+            api:complete-input($nodeInput/node())
+        else
+            (: else process each child from the template :)
+            for $node in $nodeTemplate/*
+            return
+                api:reconstruct-tree($node, $nodeInput)
+};
+
+(:function to complete the input with elements that are in an secondary template :)
+declare %private function api:complete-input($nodes as node()*) as node()* {
+    for $node in $nodes 
+    return 
+        typeswitch($node)
+            case element(tei:bibl) return
+                let $templateBibl := (doc('/db/apps/edep/templates/fore/templates.xml')//tei:bibl)[1]
+                return 
+                    <bibl xmlns="http://www.tei-c.org/ns/1.0" xml:id="">
+                     {($node/node(),  $templateBibl/*[not(local-name() = $node/node()/local-name())])}
+                    </bibl>
+            case element(tei:msPart) return
+                let $templateMsPart := doc('/db/apps/edep/templates/fore/mspart-tmpl.xml')/tei:msPart
+                return api:process-additional-template($templateMsPart, $node)
+        default 
+            return $node
+    };
+    
+    
+(: function to process msPart[@type eq 'fragment'] :)
+declare %private function api:process-additional-template($template as element(), $input as node()) as node() {
+    let $id := $input/@xml:id
+    let $inputDivs := $input/root()/descendant::tei:div[substring(@corresp, 2) = $id]
+         let $templateDivs := $template/tei:div[not(@type = $inputDivs/@type)]
+         let $correspAtt := attribute {'corresp'} {'#' || $id} 
+         let $reconstructedDivs := for $div in $templateDivs return 
+             element {QName("http://www.tei-c.org/ns/1.0", 'div')} {
+                      $template/@*[not(name() eq 'corresp')] | $correspAtt,
+                      $template/node()
+             }
+    return
+        <msPart xml:id="{$id}" type="fragment" xmlns="http://www.tei-c.org/ns/1.0">
+            { ($inputDivs, $reconstructedDivs,
+(:            for $node in $template/*[not(local-name() = ('div', 'facsimile'))] :)
+(:            return :)
+(:                api:reconstruct-tree($node, $input):)
+            api:reconstruct-tree($template/*[not(local-name() = ('div', 'facsimile'))], $input)
+              )
+            }
+         </msPart>
+    };
+
+(:function to add @corresp attribute values when elements are copied from the template :)
+declare %private function api:add-corresp($nodeTemplate as element(), $input as node()) as element()+ {
+ if ($nodeTemplate[@corresp])
+ then
+     for $id in $input/root()/descendant::tei:msPart/@xml:id
+     let $correspVal:=  '#' || $id
+     let $att := attribute {'corresp'} {$correspVal}
+     return 
+         element {QName("http://www.tei-c.org/ns/1.0", $nodeTemplate/local-name())} {
+                      $nodeTemplate/@*[not(name() eq 'corresp')] | $att,
+                      $nodeTemplate/node()
+         }
+else 
+    $nodeTemplate
+     };
+    
+declare %private function api:compare-elements($nodeTemplate as element(), $nodeInput as element()) as element(){
+    if (deep-equal($nodeTemplate, $nodeInput)) then
+            $nodeTemplate
+    else
+        (: if the number of attributes is not the same, get the missing attributes from the template:)
+        if (count($nodeInput/@*) ne count($nodeTemplate/@*))
+        then                  
+            let $emptyAttsNames := for $att in $nodeTemplate/@*
+                return
+                    $att[not(name() = $nodeInput/@*/name())]/name()
+            let $emptyAtts := for $attName in $emptyAttsNames
+                return
+                    attribute {$attName} {""}                        
+            return
+            (: we return an element with all the attributes and then we process its contents :)
+                element {QName("http://www.tei-c.org/ns/1.0", $nodeTemplate/local-name())}
+                {
+                    $nodeInput/@* | $emptyAtts,
+                    api:process-children($nodeTemplate, $nodeInput)
+                }
+        else
+        (: if the number of attributes is the same, copy the attributes from the input element
+        and then process its children :)
+            element {QName("http://www.tei-c.org/ns/1.0", $nodeTemplate/local-name())} {
+                $nodeInput/@*,
+                api:process-children($nodeTemplate, $nodeInput)
+            }
+};
+
+(: Function that compares element nodes from the template with the input file :)
+declare %private function api:reconstruct-tree($tmplNodes as element()*, $input as node()*) as node()* {
+    for $tmpl in $tmplNodes
+    let $name := $tmpl/local-name()
+    let $counterpart := api:find-counterpart($tmpl, $input)
+    return
+    (: if we find an equivalent element, we return more than one item: on one hand, 
+    the result of processing the “counterpart” element, on the other, additional
+    operations are done to handle repeateable elements :)
+        if ($counterpart) then 
+            (api:compare-elements($tmpl, $counterpart),
+                (: create as many div elements as necessary attending to the @corresp attributes :)
+(:                if ($counterpart[@corresp][local-name() = ('div')]) :)
+(:                then :)
+(:                    let $ids := $counterpart/root()/descendant::tei:msPart/@xml:id:)
+(:                    return :)
+(:                        if (count($ids) gt count($counterpart/root()//tei:body//tei:div[@type eq $counterpart/@type])):)
+(:                        then :)
+(:                            let $corresps := for $id in $ids return '#' || $id:)
+(:                            for $corresp in $corresps[not(. = $counterpart/@corresp)]:)
+(:                            let $correspAtt := attribute {'corresp'} {$corresp}:)
+(:                            return:)
+(:                                element {QName("http://www.tei-c.org/ns/1.0", 'div')} {:)
+(:                                    $tmpl/@*[not(name() eq 'corresp')] | $correspAtt,:)
+(:                                    $tmpl/node():)
+(:                                    }:)
+(:                    :)
+(:                        else () :)
+(:                else(),            :)
+                    (: Processing of other repeteable elements. There are two possible scenarios
+                    Scenario 1: we need to call a particular element an use the function that handles secondary
+                    templates, like for the element msPart[@type eq 'fragment'] :)
+                        if ($counterpart[@type eq 'main']/following-sibling::*[1][self::tei:msPart[@type eq 'fragment']])
+                        then api:complete-input($counterpart/following-sibling::tei:msPart[@type eq 'fragment'])
+                        else
+                      
+                      (: Second scenario: there are elements in the input file, not present in the template. For those cases
+                      we look in the element in the input file being processed has a following-sibling
+                      that it’s not present in the template :)
+                            if ($counterpart[not(local-name eq 'div')] and not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
+                                $counterpart/following-sibling::*[not(local-name() = $tmpl/following-sibling::*/local-name())]
+                            else ()
+                            
+                      
+            )  
+        else
+            typeswitch($tmpl)
+                case element(tei:div) return api:add-corresp($tmpl, $input)
+                case element(tei:facsimile) return api:add-corresp($tmpl, $input)
+                default return $tmpl
 };
