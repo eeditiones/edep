@@ -733,8 +733,8 @@ declare %private function api:reconstruct-tree($tmplNodes as element()*, $input 
                       
                       (: Second scenario: there are elements in the input file, not present in the template. For those cases
                       we look in the element in the input file being processed has a following-sibling
-                      that it’s not present in the template :)
-                            if ($counterpart[not(local-name eq 'div')] and not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
+                      that it’s not present in the template. <div> elements are excluded to avoid the duplication of div[@type eq 'textpart'] of fragments:)
+                            if ($counterpart[not(local-name() eq 'div')] and not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
                                 $counterpart/following-sibling::*[not(local-name() = $tmpl/following-sibling::*/local-name())]
                             else ()
                             
