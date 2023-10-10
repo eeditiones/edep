@@ -438,13 +438,13 @@
                                     </fx-control>
 
                                     <fx-group id="{@xml:id}-findspot">
-                                        <h3><pb-i18n key="form.findspot">Fundort</pb-i18n></h3>
+                                        <h3><pb-i18n key="form.findspot">Fundort</pb-i18n>{history/origin/origPlace/@corresp}</h3>
                                         <!-- geoId from geodata -->
                                         <fx-var name="corresp" value="history/origin/origPlace/@corresp"></fx-var>
                                         <fx-control class="fore-control" ref="$corresp"
                                                     url="geo-picker.html"
                                                     initial="..">
-                                            <fx-refresh event="init" self="self"></fx-refresh>
+<!--  breaking:                       <fx-refresh event="init" self="self"></fx-refresh>-->
                                         </fx-control>
 
                                         <!-- 10b) -->

@@ -6,8 +6,8 @@
     <title data-template="config:app-title"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"/>
     <link rel="stylesheet" href="resources/css/edep-theme.css"/>
-    <script type="module" src="http://localhost:8090/index.js"/>
-  <!--    <script type="module" src="resources/scripts/fore-dev.js"></script>-->
+<!--    <script type="module" src="http://localhost:8090/index.js"/>-->
+      <script type="module" src="resources/scripts/fore-dev.js"></script>
     <link rel="stylesheet" href="resources/css/theme.css"/>
     <link rel="stylesheet" href="resources/css/fore.css"/>
     <link rel="stylesheet" href="resources/css/edep-theme.css"/>
@@ -18,19 +18,22 @@
 <body>
 <fx-fore id="geopicker">
     <fx-action event="visibilitychange" target="#document" if="event('target.visibilityState')='visible'">
-    <fx-message>document focus {event('target.visibilityState')}</fx-message>
-    <fx-send submission='s-load-places'></fx-send>
-  </fx-action>
-  <!--
-  This page allows to pick a `place` record with geo-data information for linkage
-  into the using TEI.
+      <fx-message>document focus {event('target.visibilityState')}</fx-message>
+      <fx-send submission='s-load-places'></fx-send>
+      <fx-send submission="s-load-place"></fx-send>
+    </fx-action>
+    <!--
+    This page allows to pick a `place` record with geo-data information for linkage
+    into the using TEI.
 
-  This will load data as necessary and just expects an `<place>` element as initial instance.
+    This will load data as necessary and just expects an `<place>` element as initial instance.
 
-  On selection of a value from the datalist the respective full record is fetched and displayed.
-  -->
-    <fx-send event="ready"
-             submission="s-load-place"></fx-send>
+    On selection of a value from the datalist the respective full record is fetched and displayed.
+    -->
+    <fx-action event="model-construct-done">
+      <fx-send submission="s-load-places"></fx-send>
+      <fx-send submission="s-load-place"></fx-send>
+    </fx-action>
   <fx-model>
 
     <fx-instance id="i-geo" xpath-default-namespace="http://www.tei-c.org/ns/1.0"
@@ -60,7 +63,7 @@
     </fx-instance>
 
     <!-- loads a single place - full record -->
-        <fx-submission id="s-load-place"
+      <fx-submission id="s-load-place"
                    ref="instance('i-geo')"
                    url="api/places/{instance('i-geo')/origPlace/@corresp}"
                        replace="instance"
