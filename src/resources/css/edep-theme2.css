@@ -770,6 +770,11 @@ input:focus, select:focus, textarea:focus{
     background-color: #35424b;
     color: #F0F0F0;
 }
+pb-popover > iron-icon{
+    display:inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+}
 legend{
     /*font-size:1.4rem;*/
     padding:1rem;

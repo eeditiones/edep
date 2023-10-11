@@ -98,14 +98,14 @@
 
         <fx-model>
             <fx-action event="model-construct-done">
-                <fx-send submission="s-login"/>
-                <fx-send submission="s-load-template"></fx-send>
+                <fx-send submission="s-login"></fx-send>
+                <fx-send submission="s-load"></fx-send>
             </fx-action>
 
-            <fx-instance xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                <data/>
+            <fx-instance src="templates/fore/place-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                <data></data>
             </fx-instance>
-            <fx-bind ref="placeName[@type='findspot']" required="true()"/>
+            <fx-bind ref="placeName[@type='findspot']" required="true()"></fx-bind>
 
             <fx-instance id="vars">
                 <data>
@@ -132,10 +132,6 @@
             <fx-submission id="s-load" method="get" url="api/places/{instance('query')/id}" replace="instance" validate="false">
             </fx-submission>
 
-            <fx-submission id="s-load-template" method="get" url="templates/fore/place-tmpl.xml" replace="instance" validate="false">
-
-            </fx-submission>
-
             <fx-submission id="s-reset" url="templates/fore/place-tmpl.xml" replace="instance">
             </fx-submission>
 
@@ -152,7 +148,7 @@
             <fieldset class="case-content">
                 <legend><pb-i18n key="form.site-find-spot"></pb-i18n></legend>
                 <fx-control ref="placeName[@type='findspot']" id="findspot">
-                    <label><pb-i18n key="form.site-find-spot">Fundstelle</pb-i18n>
+                    <label><pb-i18n key="form.site-find-spot">Fundstelle</pb-i18n></label>
                     <pb-popover>
                         <iron-icon icon="info-outline"></iron-icon>
                         <template slot="alternate"><pb-i18n key="form.hint-geodata-findspot"></pb-i18n></template>
