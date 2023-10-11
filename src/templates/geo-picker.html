@@ -20,6 +20,7 @@
     <fx-action event="visibilitychange" target="#document" if="event('target.visibilityState')='visible'">
     <fx-message>document focus {event('target.visibilityState')}</fx-message>
     <fx-send submission='s-load-places'></fx-send>
+      <fx-send submission="s-load-place"></fx-send>
   </fx-action>
   <!--
   This page allows to pick a `place` record with geo-data information for linkage
@@ -29,8 +30,10 @@
 
   On selection of a value from the datalist the respective full record is fetched and displayed.
   -->
-    <fx-send event="ready"
-             submission="s-load-place"></fx-send>
+    <fx-action event="model-construct-done">
+      <fx-send submission="s-load-places"></fx-send>
+      <fx-send submission="s-load-place"></fx-send>
+    </fx-action>
   <fx-model>
 
     <fx-instance id="i-geo" xpath-default-namespace="http://www.tei-c.org/ns/1.0"

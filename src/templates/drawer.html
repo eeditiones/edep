@@ -4,25 +4,6 @@
             <!-- language selector -->
             <pb-lang name="lang" data-template="pages:languages"/>
             <pb-collapse>
-                <h3 slot="collapse-trigger"><pb-i18n key="menu.documentation">Documentation</pb-i18n></h3>
-                <paper-listbox slot="collapse-content">
-                    <paper-item>
-                        <a href="${app}/doc/documentation.xml?odd=docbook.odd" data-template="lib:parse-params">
-                            <pb-i18n key="menu.documentation">Documentation</pb-i18n>
-                        </a>
-                    </paper-item>
-                    <paper-item>
-                        <a href="https://faq.teipublisher.com/">FAQ</a>
-                    </paper-item>
-                    <paper-item>
-                        <a href="${app}/doc/blog/" data-template="lib:parse-params"><pb-i18n key="menu.news">News</pb-i18n></a>
-                    </paper-item>
-                    <paper-item>
-                        <a href="https://unpkg.com/@teipublisher/pb-components@latest/dist/api.html" target="_blank">Webcomponents API</a>
-                    </paper-item>
-                </paper-listbox>
-            </pb-collapse>
-            <pb-collapse>
                 <h3 slot="collapse-trigger"><pb-i18n key="menu.download.title">Download</pb-i18n></h3>
                 <paper-listbox slot="collapse-content">
                     <paper-item>
@@ -54,6 +35,25 @@
                         <pb-edit-xml src="document1" data-i18n="[title]menu.download.view-tei" title="view-tei">
                             XML
                         </pb-edit-xml>
+                    </paper-item>
+                </paper-listbox>
+            </pb-collapse>
+            <pb-collapse>
+                <h3 slot="collapse-trigger"><pb-i18n key="menu.documentation">Documentation</pb-i18n></h3>
+                <paper-listbox slot="collapse-content">
+                    <paper-item>
+                        <a href="${app}/doc/documentation.xml?odd=docbook.odd" data-template="lib:parse-params">
+                            <pb-i18n key="menu.documentation">Documentation</pb-i18n>
+                        </a>
+                    </paper-item>
+                    <paper-item>
+                        <a href="https://faq.teipublisher.com/">FAQ</a>
+                    </paper-item>
+                    <paper-item>
+                        <a href="${app}/doc/blog/" data-template="lib:parse-params"><pb-i18n key="menu.news">News</pb-i18n></a>
+                    </paper-item>
+                    <paper-item>
+                        <a href="https://unpkg.com/@teipublisher/pb-components@latest/dist/api.html" target="_blank">Webcomponents API</a>
                     </paper-item>
                 </paper-listbox>
             </pb-collapse>
