@@ -794,7 +794,10 @@ legend{
     transition:opacity 0.8s;
     transition-delay:1s;
 }
-
+.tm-number{
+    display: grid;
+    grid-template-columns: 19rem 1rem;
+}
 .with-hint {
     grid-area: control;
     grid-template-columns: 1fr 1rem;

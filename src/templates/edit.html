@@ -85,11 +85,15 @@
                                         <fx-message event="update" target="#document" phase="capture">update</fx-message>
                     -->
 
-                    <!-- ### if get called with an id param we load the data via submission ### -->
-                    <fx-setfocus control="edeptitle" event="ready"></fx-setfocus>
+                    <fx-action event="ready">
+                        <fx-setfocus control="edeptitle"></fx-setfocus>
+                        <fx-dispatch name="load-geo-form" targetid="geo-loader"></fx-dispatch>
+                    </fx-action>
+
                     <fx-model data-template="pages:parse-params">
                         <fx-action event="model-construct-done">
                             <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
+                            <!-- ### if get called with an id param we load the data via submission ### -->
                             <fx-send submission="s-load-inscription" if="exists(instance('params')/id)"></fx-send>
                             <fx-setvalue ref="instance('vars')/inited">true</fx-setvalue>
                         </fx-action>
@@ -433,19 +437,25 @@
                                     </label>
 
                                     <!-- 4) -->
-                                    <fx-control ref="msIdentifier/idno">
+                                    <fx-control class="tm-number" ref="msIdentifier/idno">
                                         <label><pb-i18n key="form.tm">TM Nummer</pb-i18n></label>
                                     </fx-control>
 
                                     <fx-group id="{@xml:id}-findspot">
                                         <h3><pb-i18n key="form.findspot">Fundort</pb-i18n></h3>
                                         <!-- geoId from geodata -->
-                                        <fx-var name="corresp" value="history/origin/origPlace/@corresp"></fx-var>
-                                        <fx-control class="fore-control" ref="$corresp"
-                                                    url="geo-picker.html"
-                                                    initial="..">
-                                            <fx-refresh event="init" self="self"></fx-refresh>
-                                        </fx-control>
+                                        <!-- ### the geo form is loaded lazily - on 'ready' the 'load-geo-form' will be dispatched
+                                        and trigger the following load action which embeds the Fore control at 'geoform'.
+                                        This avoids race condition between container Fore and sub-Fore element. -->
+                                        <fx-load id="geo-loader" attach-to="#geoform" event="load-geo-form">
+                                            <template>
+                                                <fx-control class="fore-control" ref="history/origin/origPlace/@corresp"
+                                                            url="geo-picker.html"
+                                                            initial="..">
+                                                </fx-control>
+                                            </template>
+                                        </fx-load>
+                                        <div id="geoform"></div>
 
                                         <!-- 10b) -->
                                         <fx-control ref="history/provenance/note[@type='context']">
