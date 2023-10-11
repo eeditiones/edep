@@ -31,9 +31,9 @@ ENV PATH ${PATH}:${ANT_HOME}/bin
 
 FROM builder as tei
 
-ARG TEMPLATING_VERSION=1.0.2
-ARG PUBLISHER_LIB_VERSION=2.10.0
-ARG ROUTER_VERSION=0.5.1
+ARG TEMPLATING_VERSION=1.1.0
+ARG PUBLISHER_LIB_VERSION=4.0.0
+ARG ROUTER_VERSION=1.8.0
 # replace with name of your edition repository and choose branch to build
 ARG EDEP_VERSION=master
 
