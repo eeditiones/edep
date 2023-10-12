@@ -25,6 +25,7 @@
     <script type="module" src="resources/scripts/fore-dev.js"/>
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
 
+
     <!--
         when running with Fore on localhost for debugging with latest sources:
         1. uncomment this and comment above Fore import
@@ -125,27 +126,26 @@
 
 
                         <fx-instance id="typeins" src="../edep-data/typeins.xml">
-                            <data></data>
+                            <data/>
                         </fx-instance>
                         <fx-instance id="objtyp" src="../edep-data/objtyp.xml">
-                            <data></data>
+                            <data/>
                         </fx-instance>
+
                         <fx-instance id="material" src="../edep-data/material.xml">
-                            <data></data>
+                            <data/>
                         </fx-instance>
 
                         <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
                             <data/>
                         </fx-instance>
-                        
-                        <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml"
-                                     xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                            <data></data>
+
+                        <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                            <data/>
                         </fx-instance>
 
-                        <fx-instance id="templates" src="templates/fore/templates.xml"
-                                     xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                            <data></data>
+                        <fx-instance id="templates" src="templates/fore/templates.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                            <data/>
                         </fx-instance>
 
                         <fx-instance id="vars">
@@ -157,9 +157,9 @@
                                 <geoid/>
                                 <loggedin>hidden</loggedin>
                                 <xml-valid>true</xml-valid>
-                                <history-term></history-term>
-                                <geography-term></geography-term>
-                                <military-term></military-term>
+                                <history-term/>
+                                <geography-term/>
+                                <military-term/>
                                 <languages xml:lang="en">
                                     <lang code="cel">Celtic</lang>
                                     <lang code="grc">Greek</lang>
@@ -305,6 +305,7 @@
                             order by $term/name[@xml:lang = instance('vars')/language]
                             return $term
                         </fx-function>
+                    </fx-model>
                     <fx-action event="pb-i18n-update" target="#document">
                         <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'), instance('vars')/language/string())"/>
                         <fx-refresh force="force"/>
@@ -337,39 +338,69 @@
                                         </a>
                                         <ul>
                                             <li>
-
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-findspot"><pb-i18n key="form.findspot"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-findspot">
+                                                            <pb-i18n key="form.findspot"/>
+                                                        </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-finddate"><pb-i18n key="form.year-of-find"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-finddate">
+                                                            <pb-i18n key="form.year-of-find"/>
+                                                        </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-location"><pb-i18n key="form.last-recorded-location"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-location">
+                                                            <pb-i18n key="form.last-recorded-location"/>
+                                                        </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-verification"><pb-i18n key="form.verification"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-verification">
+                                                            <pb-i18n key="form.verification"/>
+                                                        </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-objectdesc"><pb-i18n key="form.object-description"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-objectdesc">
+                                                            <pb-i18n key="form.object-description"/>
+                                                        </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-inscription-field"><pb-i18n key="form.inscription-field"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-inscription-field">
+                                                            <pb-i18n key="form.inscription-field"/>
+                                                        </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-text-description"><pb-i18n key="form.text-description"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-text-description">
+                                                            <pb-i18n key="form.text-description"/>
+                                                        </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-references"><pb-i18n key="form.references"></pb-i18n></a>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-references">
+                                                            <pb-i18n key="form.references"/>
+                                                        </a>
                                             </li>
-                                            <li><a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-edition"><pb-i18n key="form.edition">Textedition</pb-i18n></a></li>
-
+                                            <li>
+                                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-edition">
+                                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
+                                                        </a>
+                                                    </li>
                                         </ul>
                                     </div>
                                 </template>
                             </li>
-                            <li><a href="edit/{instance('params')/collection}/{instance('params')/id}#commentary"><pb-i18n key="form.commentary"></pb-i18n></a></li>
-                            <li><a href="edit/{instance('params')/collection}/{instance('params')/id}#chronology"><pb-i18n key="form.dating"></pb-i18n></a></li>
-                            <li><a href="edit/{instance('params')/collection}/{instance('params')/id}#historic-relevance"><pb-i18n key="form.historic-relevance"></pb-i18n></a></li>
+                            <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}#commentary">
+                                            <pb-i18n key="form.commentary"/>
+                                        </a>
+                                    </li>
+                            <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}#chronology">
+                                            <pb-i18n key="form.dating"/>
+                                        </a>
+                                    </li>
+                            <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}#historic-relevance">
+                                            <pb-i18n key="form.historic-relevance"/>
+                                        </a>
+                                    </li>
                         </ul>
                     </nav>
                     <fx-group ref="teiHeader" style="z-index:{}">
@@ -534,14 +565,17 @@
                                                     <pb-i18n key="form.last-recorded-location"/>
                                                 </h3>
                                         <!-- 12a) -->
-
-                                        <div class='with-hint'>
+                                        <div class="with-hint">
                                             <fx-control ref="msIdentifier/repository">
-                                                <label><pb-i18n key="form.last-recorded-location">Aufbewahrung</pb-i18n></label>
+                                                <label>
+                                                            <pb-i18n key="form.last-recorded-location">Aufbewahrung</pb-i18n>
+                                                        </label>
                                             </fx-control>
                                             <pb-popover>
-                                                <iron-icon icon="info-outline"></iron-icon>
-                                                <template slot="alternate"><pb-i18n key="form.hint-recorded-location"></pb-i18n></template>
+                                                <iron-icon icon="info-outline"/>
+                                                <template slot="alternate">
+                                                            <pb-i18n key="form.hint-recorded-location"/>
+                                                        </template>
                                             </pb-popover>
                                         </div>
 
@@ -796,7 +830,9 @@
                                                 </h3>
                                         <!-- 24) -->
                                         <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='metric']" update-event="input">
-                                            <label><pb-i18n key="form.metre">Metrik</pb-i18n></label>
+                                            <label>
+                                                        <pb-i18n key="form.metre">Metrik</pb-i18n>
+                                                    </label>
                                             <select class="widget">
                                                 <option value="" data-i18n="form.unknown">unbekannt</option>
                                                 <option value="yes" data-i18n="decor.yes">Ja</option>
@@ -822,7 +858,9 @@
                                         <!-- 34) -->
                                         <div class="alternatives">
                                             <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref" update-event="input">
-                                                <label><pb-i18n key="form.palaeography">Paläographie</pb-i18n></label>
+                                                <label>
+                                                            <pb-i18n key="form.palaeography">Paläographie</pb-i18n>
+                                                        </label>
                                                 <fx-items ref="instance('palaeo')/item" class="widget">
                                                     <template>
                                                     <span class="fx-checkbox">
@@ -833,13 +871,17 @@
                                                 </fx-items>
                                             </fx-control>
                                             <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']" update-event="input" class="{instance('vars')/hide}">
-                                                <label><pb-i18n key="form.free-form">freie Angabe</pb-i18n></label>
+                                                <label>
+                                                            <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
+                                                        </label>
                                             </fx-control>
                                         </div>
 
                                         <!-- 39) -->
                                         <fx-control ref="physDesc/handDesc/handNote/rs" update-event="input">
-                                            <label><pb-i18n key="form.ligature">Ligatur</pb-i18n></label>
+                                            <label>
+                                                        <pb-i18n key="form.ligature">Ligatur</pb-i18n>
+                                                    </label>
                                             <select class="widget">
                                                 <option value="" data-i18n="form.unknown">unbekannt</option>
                                                 <option value="yes" data-i18n="decor.yes">Ja</option>
@@ -1386,8 +1428,10 @@
                         </fx-group>
 
                         <!-- 26) -->
-                        
-                            <h3><pb-i18n key="hint.date">Datierung</pb-i18n></h3>
+                        <fx-group ref="//msDesc" class="group-6" id="chronology">
+                            <h3>
+                                        <pb-i18n key="hint.date">Datierung</pb-i18n>
+                                    </h3>
 
 
                             <!-- 26), 27)-->
@@ -1401,30 +1445,42 @@
                                             <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
                                         </fx-alert>
                             </fx-control>
-
                             <div class="with-hint">
                                 <fx-control ref="history/origin/origDate/@notBefore-custom">
-                                    <label><pb-i18n key="form.date-after">nach</pb-i18n></label>
+                                    <label>
+                                                <pb-i18n key="form.date-after">nach</pb-i18n>
+                                            </label>
                                     <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
-                                    <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
+                                    <fx-alert>
+                                                <iron-icon icon="warning"/>
+                                                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+                                            </fx-alert>
                                 </fx-control>
                                 <pb-popover>
-                                    <iron-icon icon="info-outline"></iron-icon>
-                                    <template slot="alternate"><pb-i18n key="form.hint-date"></pb-i18n></template>
+                                    <iron-icon icon="info-outline"/>
+                                    <template slot="alternate">
+                                                <pb-i18n key="form.hint-date"/>
+                                            </template>
                                 </pb-popover>
                             </div>
                             <div class="with-hint">
                                 <fx-control ref="history/origin/origDate/@notAfter-custom">
-                                    <label><pb-i18n key="form.date-before">vor</pb-i18n></label>
+                                    <label>
+                                                <pb-i18n key="form.date-before">vor</pb-i18n>
+                                            </label>
                                     <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
-                                    <fx-alert><iron-icon icon="warning"></iron-icon><pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n></fx-alert>
+                                    <fx-alert>
+                                                <iron-icon icon="warning"/>
+                                                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+                                            </fx-alert>
                                 </fx-control>
                                 <pb-popover>
-                                    <iron-icon icon="info-outline"></iron-icon>
-                                    <template slot="alternate"><pb-i18n key="form.hint-date"></pb-i18n></template>
+                                    <iron-icon icon="info-outline"/>
+                                    <template slot="alternate">
+                                                <pb-i18n key="form.hint-date"/>
+                                            </template>
                                 </pb-popover>
                             </div>
-
                             <fx-control ref="history/origin/origDate">
                                 <label>
                                             <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
@@ -1452,7 +1508,7 @@
                             <!-- dummy switch to insert or delete 'term' elements in main instance -->
                             <fx-control ref="instance('vars')/history-term" value-prop="checked" update-event="input">
                                 <label for="historyTerm">
-                                            <pb-i18n key="form.social-economic-legal-history">Sozial-,Wirschafts-/Rechtsgeschichte</pb-i18n>
+                                            <pb-i18n key="form.social-economic-legal history">Sozial-,Wirschafts-/Rechtsgeschichte</pb-i18n>
                                         </label>
                                 <input id="historyTerm" type="checkbox" class="widget"/>
                                 <fx-insert event="value-changed" if="context()/text()='true'" ref="instance('default')//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']/term" origin="instance('templates')/term[@ref='#social-economic-legal-history']"/>
@@ -1543,8 +1599,9 @@
                                     </fx-action>
                                 </fx-trigger>
                                 <fx-trigger>
-
-                                    <a href="edit/workspace/"><pb-i18n key="form.new">Neuer Eintrag</pb-i18n></a>
+                                    <a href="edit/workspace/">
+                                                <pb-i18n key="form.new">Neuer Eintrag</pb-i18n>
+                                            </a>
                                 </fx-trigger>
                             </pb-restricted>
                             <fx-trigger>
