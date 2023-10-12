@@ -61,6 +61,10 @@
             <model behaviour="block">
                 <param name="content" value="author"/>
             </model>
+            <model behaviour="link">
+                <param name="content" value="'View'"/>
+                <param name="uri" value="$parameters?doc || '?odd=edep-edition'"/>
+            </model>
         </modelSequence>
                     <model output="web" behaviour="block"/>
                 </elementSpec>
