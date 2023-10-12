@@ -10,6 +10,8 @@ import module namespace pm-tei_simplePrint-print="http://www.tei-c.org/pm/models
 import module namespace pm-tei_simplePrint-latex="http://www.tei-c.org/pm/models/tei_simplePrint/latex/module" at "../transform/tei_simplePrint-latex-module.xql";
 import module namespace pm-tei_simplePrint-epub="http://www.tei-c.org/pm/models/tei_simplePrint/epub/module" at "../transform/tei_simplePrint-epub-module.xql";
 import module namespace pm-tei_simplePrint-fo="http://www.tei-c.org/pm/models/tei_simplePrint/fo/module" at "../transform/tei_simplePrint-fo-module.xql";
+import module namespace pm-edep-edition-web="http://www.tei-c.org/pm/models/edep-edition/web/module" at "../transform/edep-edition-web-module.xql";
+import module namespace pm-edep-edition-print="http://www.tei-c.org/pm/models/edep-edition/print/module" at "../transform/edep-edition-print-module.xql";
 import module namespace pm-docx-tei="http://www.tei-c.org/pm/models/docx/tei/module" at "../transform/docx-tei-module.xql";
 import module namespace pm-edep-clean-tei="http://www.tei-c.org/pm/models/edep-clean/tei/module" at "../transform/edep-clean-tei-module.xql";
 import module namespace pm-teipublisher-web="http://www.tei-c.org/pm/models/teipublisher/web/module" at "../transform/teipublisher-web-module.xql";
@@ -25,8 +27,9 @@ import module namespace pm-teipublisher_odds-fo="http://www.tei-c.org/pm/models/
 
 declare variable $pm-config:web-transform := function($xml as node()*, $parameters as map(*)?, $odd as xs:string?) {
     switch ($odd)
-    case "edep.odd" return pm-edep-web:transform($xml, $parameters)
+    case "edep-edition.odd" return pm-edep-edition-web:transform($xml, $parameters)
 case "tei_simplePrint.odd" return pm-tei_simplePrint-web:transform($xml, $parameters)
+case "edep-edition.odd" return pm-edep-edition-web:transform($xml, $parameters)
 case "teipublisher.odd" return pm-teipublisher-web:transform($xml, $parameters)
 case "teipublisher_odds.odd" return pm-teipublisher_odds-web:transform($xml, $parameters)
     default return pm-edep-web:transform($xml, $parameters)
@@ -35,14 +38,15 @@ case "teipublisher_odds.odd" return pm-teipublisher_odds-web:transform($xml, $pa
 };
             
 
-
+(:For print edep-edition.odd is the default :)
 declare variable $pm-config:print-transform := function($xml as node()*, $parameters as map(*)?, $odd as xs:string?) {
     switch ($odd)
     case "edep.odd" return pm-edep-print:transform($xml, $parameters)
 case "tei_simplePrint.odd" return pm-tei_simplePrint-print:transform($xml, $parameters)
+case "edep-edition.odd" return pm-edep-edition-print:transform($xml, $parameters)
 case "teipublisher.odd" return pm-teipublisher-print:transform($xml, $parameters)
 case "teipublisher_odds.odd" return pm-teipublisher_odds-print:transform($xml, $parameters)
-    default return pm-edep-print:transform($xml, $parameters)
+    default return pm-edep-edition-print:transform($xml, $parameters)
             
     
 };
@@ -88,7 +92,7 @@ case "teipublisher_odds.odd" return pm-teipublisher_odds-fo:transform($xml, $par
 declare variable $pm-config:tei-transform := function($xml as node()*, $parameters as map(*)?, $odd as xs:string?) {
     switch ($odd)
     case "docx.odd" return pm-docx-tei:transform($xml, $parameters)
-    case "edep-clean.odd" return pm-edep-clean-tei:transform($xml, $parameters)
+case "edep-clean.odd" return pm-edep-clean-tei:transform($xml, $parameters)
     default return error(QName("http://www.tei-c.org/tei-simple/pm-config", "error"), "No default ODD found for output mode tei")
             
     
