@@ -1,3 +1,13 @@
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--pb-heading-font-family);
 }
+
+
+#metadata th {
+    text-align:right;
+    padding-right: 1em;
+}
+
+#metadata td, th {
+    border-bottom: 1px solid #ddd;
+}
