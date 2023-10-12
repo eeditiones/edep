@@ -95,7 +95,7 @@ declare variable $config:default-view :="body";
  : The default HTML template used for viewing document content. This can be
  : overwritten by the teipublisher processing instruction inside a TEI document.
  :)
-declare variable $config:default-template :="view.html";
+declare variable $config:default-template :="edep.html";
 
 (:
  : The element to search by default, either 'tei:div' or 'tei:text'.
