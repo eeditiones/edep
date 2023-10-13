@@ -218,11 +218,13 @@
                     <model behaviour="inline" useSourceRendition="true"/>
                 </elementSpec>                 
             <elementSpec ident="div" mode="change">
-                    <modelSequence predicate="@type = ('translation', 'apparatus', 'edition', 'commentary') and child::node()">
-            <desc>Creation of headings for the different types of contents</desc>
+                    <modelSequence predicate="@type = ('translation', 'apparatus', 'textpart') and child::node() and (@type = following-sibling::div/@type or @type = preceding-sibling::div/@type)">
+            <desc>Creation of subheadings when there are multiple fragments</desc>
             <model behaviour="heading">
-                <param name="level" value="2"/>
-                <param name="content" value="upper-case(substring(@type, 1, 1)) || substring(@type, 2)"/>
+                <param name="level" value="3"/>
+                <param name="key" value="if (@type eq 'textpart') then 'edition' else @type"/>
+                <param name="title" value="let $id := substring(@corresp, 2) let $msPart := root(.)/descendant::msPart[@xml:id = $id] let $type := $msPart/@type let $pb := if ($type eq 'fragment') then &lt;pb-i18n key=&#34;form.part-fragment&#34;/&gt; else &lt;pb-i18n key=&#34;form.part-main&#34;/&gt; return if ($type eq 'main') then (' – ', $pb) else (' – ', $pb, count($msPart/preceding-sibling::msPart[@type eq 'fragment'] + 1))"/>
+                <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.[[key]]"/>  <span>[[title]]</span></pb:template>
             </model>
             <model behaviour="block"/>
         </modelSequence>
@@ -410,6 +412,42 @@
                     <model predicate="$parameters?lang='en'" behaviour="inline">
             <param name="content" value="string-join(*[@xml:lang eq 'de'], ', ')"/>
         </model>
+                </elementSpec>
+            <elementSpec ident="body" mode="change">
+                    <modelSequence>
+            <model behaviour="index">
+                <param name="type" value="'toc'"/>
+            </model>
+            <model behaviour="heading">
+                <desc>Ordering of div elements</desc>
+                <param name="level" value="2"/>
+                <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.edition"/></pb:template>
+            </model>
+            <model behaviour="block">
+                <param name="content" value="div[@type eq 'edition']"/>
+            </model>
+            <model predicate="div[@type eq 'apparatus']/node()" behaviour="heading">
+                <param name="level" value="2"/>
+                <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.apparatus"/></pb:template>
+            </model>
+            <model behaviour="block">
+                <param name="content" value="div[@type eq 'apparatus']"/>
+            </model>
+            <model predicate="div[@type eq 'translation']/node()" behaviour="heading">
+                <param name="level" value="2"/>
+                <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.translation"/></pb:template>
+            </model>
+            <model behaviour="block">
+                <param name="content" value="div[@type eq 'translation']"/>
+            </model>
+            <model predicate="div[@type eq 'commentary']/node()" behaviour="heading">
+                <param name="level" value="2"/>
+                <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.commentary"/></pb:template>
+            </model>
+            <model behaviour="block">
+                <param name="content" value="div[@type eq 'commentary']"/>
+            </model>
+        </modelSequence>
                 </elementSpec>
             </schemaSpec>
         </body>
