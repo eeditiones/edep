@@ -243,7 +243,7 @@
             <model behaviour="inline" cssClass="lb-hyphen">
                 <param name="content" value="'-'"/>
             </model>
-            <model behaviour="break">
+            <model behaviour="break" cssClass="lb">
                 <param name="type" value="'line'"/>
                 <param name="label" value="@n"/>
             </model>
@@ -260,12 +260,12 @@
         </model>
                     <modelSequence predicate="not(ancestor::choice) and not(following-sibling::abbr) and not(preceding-sibling::abbr)">
             <model behaviour="alternate" cssClass="choice">
-                <param name="default" value="if (./@cert='low')  then ('(',., '?)') else ('(',., ')')"/>
-                <param name="alternate" value="'.'"/>
-            </model>
-            <model behaviour="alternate" cssClass="choice-alternate">
                 <param name="default" value="'.'"/>
                 <param name="alternate" value="if (./@cert='low')  then ('(',., '?)') else ('(',., ')')"/>
+            </model>
+            <model behaviour="alternate" cssClass="choice-alternate">
+                <param name="default" value="if (./@cert='low')  then ('(',., '?)') else ('(',., ')')"/>
+                <param name="alternate" value="'.'"/>
             </model>
         </modelSequence>
                 </elementSpec>
@@ -446,6 +446,59 @@
             </model>
             <model behaviour="block">
                 <param name="content" value="div[@type eq 'commentary']"/>
+            </model>
+        </modelSequence>
+                </elementSpec>
+                                <elementSpec ident="choice" mode="change">
+                    <model output="print" predicate="sic and corr" behaviour="inline">
+            <param name="content" value="corr"/>
+        </model>
+                    <model output="print" predicate="abbr and expan" behaviour="inline">
+            <param name="content" value="expan"/>
+        </model>
+                    <model output="print" predicate="orig and reg" behaviour="inline">
+            <param name="content" value="reg"/>
+        </model>
+                    <model predicate="$parameters?mode='norm' and sic and corr" behaviour="alternate" cssClass="choice">
+            <param name="default" value="sic"/>
+            <param name="alternate" value="corr"/>
+        </model>
+                    <modelSequence predicate="sic and corr">
+            <model behaviour="alternate" cssClass="choice">
+                <param name="default" value="sic"/>
+                <param name="alternate" value="corr"/>
+            </model>
+            <model behaviour="alternate" cssClass="choice-alternate">
+                <param name="default" value="corr"/>
+                <param name="alternate" value="sic"/>
+            </model>
+        </modelSequence>
+                    <model predicate="$parameters?mode='norm' and abbr and expan" behaviour="alternate" cssClass="choice">
+            <param name="default" value="expan"/>
+            <param name="alternate" value="abbr"/>
+        </model>
+                    <modelSequence predicate="abbr and expan">
+            <model behaviour="alternate" cssClass="choice">
+                <param name="default" value="abbr"/>
+                <param name="alternate" value="expan"/>
+            </model>
+            <model behaviour="alternate" cssClass="choice-alternate">
+                <param name="default" value="expan"/>
+                <param name="alternate" value="abbr"/>
+            </model>
+        </modelSequence>
+                    <model predicate="$parameters?mode='norm' and orig and reg" behaviour="alternate" cssClass="choice">
+            <param name="default" value="reg"/>
+            <param name="alternate" value="orig"/>
+        </model>
+                    <modelSequence predicate="orig and reg">
+            <model behaviour="alternate" cssClass="choice">
+                <param name="default" value="orig"/>
+                <param name="alternate" value="reg"/>
+            </model>
+            <model behaviour="alternate" cssClass="choice-alternate">
+                <param name="default" value="reg"/>
+                <param name="alternate" value="orig"/>
             </model>
         </modelSequence>
                 </elementSpec>
