@@ -406,10 +406,10 @@
         </model>
                 </elementSpec>
                 <elementSpec ident="term" mode="add">
-                    <model predicate="$parameters?lang='de'" behaviour="inline">
+                    <model predicate="$parameters?language='de'" behaviour="inline">
             <param name="content" value="string-join(*[@xml:lang eq 'de'], ', ')"/>
         </model>
-                    <model predicate="$parameters?lang='en'" behaviour="inline">
+                    <model predicate="$parameters?language='en'" behaviour="inline">
             <param name="content" value="string-join(*[@xml:lang eq 'de'], ', ')"/>
         </model>
                 </elementSpec>
