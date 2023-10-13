@@ -68,10 +68,11 @@
             <param name="fieldDimensions" value="let $dimensionsEls := descendant::msPart[@type eq 'main']/descendant::layout/dimensions/*/text() return if ($dimensionsEls) then &lt;row&gt;&lt;cell&gt;metadata.dimensions&lt;/cell&gt;&lt;cell&gt;{string-join($dimensionsEls, ' × ')}&lt;/cell&gt;&lt;/row&gt; else ()"/>
             <param name="verification" value="let $subtype := descendant::msPart[@type eq 'main']/descendant::note[@type eq 'verification']/@subtype return 'verification.' || $subtype"/>
             <param name="verificationDate" value="descendant::msPart[@type eq 'main']/descendant::note[@type eq 'verification']/date/@when"/>
-            <param name="findSpot" value="let $fileName := '/db/apps/edep-data/places/' || descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp || '.xml' let $place := doc($fileName)//place return $place/placeName[@type eq 'findspot']/string()"/>
-            <param name="modernPlace" value="let $fileName := '/db/apps/edep-data/places/' || descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp || '.xml' let $place := doc($fileName)//place return $place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')'"/>
-            <param name="ancientPlace" value="let $fileName := '/db/apps/edep-data/places/' || descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp || '.xml' let $place := doc($fileName)//place return $place/placeName[@type eq 'ancient'] || ' (' || $place/region[@type eq 'province'] || ')'"/>
+            <param name="findSpot" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) return $place/placeName[@type eq 'findspot']/string()"/>
+            <param name="modernPlace" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) return $place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')'"/>
+            <param name="ancientPlace" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) return $place/placeName[@type eq 'ancient'] || ' (' || $place/region[@type eq 'province'] || ')'"/>
             <param name="msPart" value="descendant::msPart[@type eq 'fragment']"/>
+            <param name="placeUri" value="'/exist/apps/edep/geodata.html?id=' || descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp"/>
             <pb:template xmlns="" xml:space="preserve"><div id="metadata">
             <section class="main objectDesc">
                 <h2><pb-i18n key="form.object-description"/></h2>
@@ -94,15 +95,15 @@
                         </tr>
                        <tr>
                             <th><pb-i18n key="form.findspot"/></th>
-                             <td>[[findSpot]]</td>
+                             <td><a href="[[placeUri]]">[[findSpot]]</a></td>
                         </tr>                      
                         <tr>
-                            <th>Modern place name and region</th>
-                            <td>[[modernPlace]]</td>
+                            <th><pb-i18n key="metadata.modern-place"/></th>
+                            <td><a href="[[placeUri]]">[[modernPlace]]</a></td>
                         </tr>
                      <tr>
-                       <th>Ancient place name and province</th>
-                            <td>[[ancientPlace]]</td>
+                       <th><pb-i18n key="metadata.ancient-place"/></th>
+                            <td><a href="[[placeUri]]">[[ancientPlace]]</a></td>
                         </tr>
                       [[findContext]]
                         <tr>
@@ -501,6 +502,11 @@
                 <param name="alternate" value="orig"/>
             </model>
         </modelSequence>
+                </elementSpec>
+            <elementSpec ident="persName" mode="change">
+                    <model behaviour="link">
+            <param name="uri" value="'/exist/apps/edep/person.html?id=' || @key"/>
+        </model>
                 </elementSpec>
             </schemaSpec>
         </body>
