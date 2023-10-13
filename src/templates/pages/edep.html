@@ -81,7 +81,7 @@
                         <pb-navigation direction="backward" unit="page" emit="transcription" subscribe="transcription">
                             <paper-fab icon="icons:chevron-left"/>
                         </pb-navigation>
-                        <pb-view id="metadata-view1" src="document1" xpath="//teiHeader" view="single" subscribe="transcription">
+                        <pb-view id="metadata-view1" src="document1" xpath="//teiHeader" view="single" subscribe="transcription" use-language="use-language">
                          <pb-param name="header" value="metadata"/>
                         </pb-view> 
                         <pb-view id="view1" src="document1" column-separator=".tei-cb" append-footnotes="append-footnotes" subscribe="transcription" emit="transcription" use-language="use-language"/>
