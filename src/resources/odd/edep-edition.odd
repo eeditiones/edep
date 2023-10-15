@@ -217,9 +217,10 @@
             <model behaviour="heading">
                 <param name="level" value="3"/>
                 <param name="key" value="if (@type eq 'textpart') then 'edition' else @type"/>
-                <param name="type" value="let $id := substring(@corresp, 2) let $msPart := root(.)/descendant::msPart[@xml:id = $id] return $msPart/@type "/>
+                <param name="type" value="let $id := substring(@corresp, 2) let $msPart := root(.)/descendant::msPart[@xml:id = $id] return $msPart/@type"/>
                 <param name="count" value="let $id := substring(@corresp, 2) let $msPart := root(.)/descendant::msPart[@xml:id = $id]  return if ($msPart[@type eq 'fragment']) then count($msPart/preceding-sibling::msPart[@type eq 'fragment']) + 1 else ()"/>
-                <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.[[key]]"/> <span> – </span> <pb-i18n key="form.part-[[type]]"/> <span> [[count]]</span></pb:template>
+                <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.[[key]]"/> <span> – </span> <pb-i18n key="form.part-[[type]]"/> <span> 
+  [[count]]</span></pb:template>
             </model>
             <model behaviour="block"/>
         </modelSequence>
@@ -418,6 +419,9 @@
             <model behaviour="block">
                 <param name="content" value="div[@type eq 'commentary']"/>
             </model>
+            <model behaviour="block">
+                <param name="content" value="root(.)/descendant::facsimile/graphic"/>
+            </model>
         </modelSequence>
                 </elementSpec>
                                 <elementSpec ident="choice" mode="change">
@@ -486,6 +490,14 @@
         </model>
                     <model behaviour="link">
             <param name="uri" value="@target"/>
+        </model>
+                </elementSpec>
+                <elementSpec ident="graphic" mode="add">
+                    <model predicate="parent::facsimile" behaviour="webcomponent" cssClass="facs">
+            <param name="name" value="'pb-facs-link'"/>
+            <param name="emit" value="'transcription'"/>
+            <param name="facs" value="@url"/>
+            <param name="content" value="let $id := parent::facsimile/substring(@corresp, 2) let $msPart := root(.)/descendant::msPart[@xml:id = $id] let $type := $msPart/@type return ($type, if ($type eq 'fragment') then count($msPart/preceding-sibling::msPart[@type eq 'fragment']) + 1 else ())"/>
         </model>
                 </elementSpec>
             </schemaSpec>
