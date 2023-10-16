@@ -171,7 +171,7 @@
               </tbody>
                         
             </table>
-          </section>
+            </section>
             <section class="main references">
               <h2><pb-i18n key="form.references"/></h2>
               [[bibl]]
@@ -428,8 +428,19 @@
             <model behaviour="block">
                 <param name="content" value="div[@type eq 'commentary']"/>
             </model>
-            <model behaviour="block">
-                <param name="content" value="root(.)/descendant::facsimile/graphic"/>
+            <model predicate="root(.)/descendant::facsimile/graphic" behaviour="webcomponent">
+                <param name="name" value="'pb-facsimile'"/>
+                <param name="default-zoom-level" value="'1'"/>
+                <param name="show-navigator" value="'show-navigator'"/>
+                <param name="show-navigation-control" value="'show-navigation-control'"/>
+                <param name="subscribe" value="'transcription'"/>
+                <param name="id" value="'facsimile'"/>
+                <param name="base-uri" value="'https://heidicon.ub.uni-heidelberg.de/iiif/2/'"/>
+                <param name="facsimiles" value="let $imgs :=  root(.)/descendant::facsimile/graphic/@url return '[&amp;quot;' || replace(string-join($imgs, '&amp;quot;, &amp;quot;'),'https://heidicon.ub.uni-heidelberg.de/iiif/2/', '' ) || '&amp;quot;]'"/>
+                <param name="content" value="''"/>
+                <outputRendition xml:space="preserve">
+                height:45em;
+                </outputRendition>
             </model>
         </modelSequence>
                 </elementSpec>
@@ -502,11 +513,11 @@
         </model>
                 </elementSpec>
                 <elementSpec ident="graphic" mode="add">
-                    <model predicate="parent::facsimile" behaviour="webcomponent" cssClass="facs">
+                    <model predicate="1=2(: parent::facsimile :)" behaviour="webcomponent" cssClass="facs">
             <param name="name" value="'pb-facs-link'"/>
             <param name="emit" value="'transcription'"/>
             <param name="facs" value="@url"/>
-            <param name="content" value="let $id := parent::facsimile/substring(@corresp, 2) let $msPart := root(.)/descendant::msPart[@xml:id = $id] let $type := $msPart/@type return ($type, if ($type eq 'fragment') then count($msPart/preceding-sibling::msPart[@type eq 'fragment']) + 1 else ())"/>
+            <param name="label" value="let $id := parent::facsimile/substring(@corresp, 2) let $msPart := root(.)/descendant::msPart[@xml:id = $id] let $type := $msPart/@type return ($type, if ($type eq 'fragment') then 'Fragment_' || count($msPart/preceding-sibling::msPart[@type eq 'fragment']) + 1 else ())"/>
         </model>
                 </elementSpec>
             <elementSpec ident="bibl" mode="change">
