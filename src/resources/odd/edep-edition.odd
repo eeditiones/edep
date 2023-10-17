@@ -412,14 +412,14 @@
                 <param name="level" value="2"/>
                 <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.edition"/></pb:template>
             </model>
+            <model behaviour="block">
+                <param name="content" value="div[@type eq 'edition']"/>
+            </model>
             <model behaviour="paragraph">
-                <param name="content" value="'Edition by: ' ||  root(.)/descendant::titleStmt/editor"/>
+                <param name="content" value="'Edition by ' ||  root(.)/descendant::titleStmt/editor"/>
                 <outputRendition xml:space="preserve">
                 font-weight:bold
                 </outputRendition>
-            </model>
-            <model behaviour="block">
-                <param name="content" value="div[@type eq 'edition']"/>
             </model>
             <model predicate="div[@type eq 'apparatus']/node()" behaviour="heading">
                 <param name="level" value="2"/>
