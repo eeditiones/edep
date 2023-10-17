@@ -69,10 +69,11 @@
                 <param name="fieldDimensions" value="let $dimensionsEls := descendant::msPart[@type eq 'main']/descendant::layout/dimensions/*/text() return if ($dimensionsEls) then &lt;row&gt;&lt;cell&gt;metadata.dimensions&lt;/cell&gt;&lt;cell&gt;{string-join($dimensionsEls, ' × ')}&lt;/cell&gt;&lt;/row&gt; else ()"/>
                 <param name="verification" value="let $subtype := descendant::msPart[@type eq 'main']/descendant::note[@type eq 'verification']/@subtype return 'verification.' || $subtype"/>
                 <param name="verificationDate" value="descendant::msPart[@type eq 'main']/descendant::note[@type eq 'verification']/date/@when"/>
-                <param name="findSpot" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $url := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;form.findspot&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{url}&#34;&gt;{$place/placeName[@type eq 'findspot']/string()}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
-                <param name="modernPlace" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) return  let $url := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.modern-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{url}&#34;&gt;{$place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
-                <param name="ancientPlace" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $url := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.ancient-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{url}&#34;&gt;{$place/placeName[@type eq 'ancient'] || ' (' || $place/region[@type eq 'province'] || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
+                <param name="findSpot" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp  let $place := collection('/db/apps/edep-data/places')/id($id) let $uri := concat('/exist/apps/edep/geodata.html?id=', $id ) return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;form.findspot&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'findspot']/string()}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
+                <param name="modernPlace" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) return  let $uri := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.modern-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
+                <param name="ancientPlace" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $uri := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.ancient-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'ancient'] || ' (' || $place/region[@type eq 'province'] || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
                 <param name="bibl" value="descendant::msPart[@type eq 'main']/descendant::listBibl"/>
+                <param name="biblHeader" value="if (descendant::listbibl) then &lt;h2 xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;&lt;pb-i18n key=&#34;form.references&#34;/&gt;&lt;/h2&gt; else ()"/>
                 <pb:template xmlns="" xml:space="preserve"><div class="metadata">
             <section class="main objectDesc">
                 <h2><pb-i18n key="form.object-description"/></h2>
@@ -173,7 +174,7 @@
             </table>
             </section>
             <section class="main references">
-              <h2><pb-i18n key="form.references"/></h2>
+              [[biblHeader]]
               [[bibl]]
           </section>
         </div></pb:template>
@@ -228,6 +229,12 @@
   [[count]]</span></pb:template>
             </model>
             <model behaviour="block"/>
+            <model predicate="@resp" behaviour="paragraph">
+                <param name="content" value="'Translated by ' || @resp"/>
+                <outputRendition xml:space="preserve">
+                font-weight:bold
+                </outputRendition>
+            </model>
         </modelSequence>
                     <model predicate="@type='title_page'" behaviour="block">
             <outputRendition xml:space="preserve">
@@ -290,11 +297,12 @@
             <param name="fieldDimensions" value="let $dimensionsEls := descendant::layout/dimensions/*/text() return if ($dimensionsEls) then &lt;row&gt;&lt;cell&gt;metadata.dimensions&lt;/cell&gt;&lt;cell&gt;{string-join($dimensionsEls, ' × ')}&lt;/cell&gt;&lt;/row&gt; else ()"/>
             <param name="verification" value="let $subtype := descendant::note[@type eq 'verification']/@subtype return 'verification.' || $subtype"/>
             <param name="verificationDate" value="descendant::note[@type eq 'verification']/date/@when"/>
-            <param name="findSpot" value="let $id :=  descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $url := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;form.findspot&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{url}&#34;&gt;{$place/placeName[@type eq 'findspot']/string()}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
-            <param name="modernPlace" value="let $id :=  descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $uri := '/exist/apps/edep/places.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.modern-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{uri}&#34;&gt;{$place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
-            <param name="ancientPlace" value="let $id :=  descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $url := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.modern-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{url}&#34;&gt;{$place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
+            <param name="findSpot" value="let $id :=  descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $uri := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;form.findspot&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'findspot']/string()}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
+            <param name="modernPlace" value="let $id :=  descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $uri := '/exist/apps/edep/places.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.modern-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
+            <param name="ancientPlace" value="let $id :=  descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $uri := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.modern-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
             <param name="bibl" value="descendant::listBibl"/>
             <param name="count" value="' ' || count(preceding-sibling::msPart[@type eq 'fragment']) + 1"/>
+            <param name="biblHeader" value="if (descendant::listbibl) then &lt;h2 xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;&lt;pb-i18n key=&#34;form.references&#34;/&gt;&lt;/h2&gt; else ()"/>
             <pb:template xmlns="" xml:space="preserve">        <div class="metadata fragment">
             <h2><pb-i18n key="form.part-fragment"/>  [[count]]</h2>
             <section class="fragment objectDesc">
@@ -380,7 +388,7 @@
             </table>
           </section>
           <section class="fragment references">
-              <h2><pb-i18n key="form.references"/></h2>
+              [[biblHeader]]
               [[bibl]]
           </section>
         </div></pb:template>
@@ -391,7 +399,7 @@
             <param name="content" value="string-join(*[@xml:lang eq 'de'], ', ')"/>
         </model>
                     <model predicate="$parameters?language='en'" behaviour="inline">
-            <param name="content" value="string-join(*[@xml:lang eq 'de'], ', ')"/>
+            <param name="content" value="string-join(*[@xml:lang eq 'en'], ', ')"/>
         </model>
                 </elementSpec>
             <elementSpec ident="body" mode="change">
@@ -403,6 +411,12 @@
                 <desc>Ordering of div elements</desc>
                 <param name="level" value="2"/>
                 <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.edition"/></pb:template>
+            </model>
+            <model behaviour="paragraph">
+                <param name="content" value="'Edition by: ' ||  root(.)/descendant::titleStmt/editor"/>
+                <outputRendition xml:space="preserve">
+                font-weight:bold
+                </outputRendition>
             </model>
             <model behaviour="block">
                 <param name="content" value="div[@type eq 'edition']"/>
@@ -420,6 +434,12 @@
             </model>
             <model behaviour="block">
                 <param name="content" value="div[@type eq 'translation']"/>
+            </model>
+            <model predicate="div[@resp] and (count(div[@type eq 'translation']) eq 1)" behaviour="paragraph">
+                <param name="content" value="'Translated by ' || descendant::div[@type eq 'translation']/@resp"/>
+                <outputRendition xml:space="preserve">
+                font-weight:bold
+                </outputRendition>
             </model>
             <model predicate="div[@type eq 'commentary']/node()" behaviour="heading">
                 <param name="level" value="2"/>
@@ -502,16 +522,6 @@
             <param name="uri" value="'/exist/apps/edep/person.html?id=' || @key"/>
         </model>
                 </elementSpec>
-            <elementSpec ident="ref" mode="change">
-                    <model predicate="not(@target)" behaviour="inline"/>
-                    <model predicate="not(node())" behaviour="link">
-            <param name="content" value="@target"/>
-            <param name="uri" value="@target"/>
-        </model>
-                    <model behaviour="link">
-            <param name="uri" value="@target"/>
-        </model>
-                </elementSpec>
                 <elementSpec ident="graphic" mode="add">
                     <model predicate="1=2(: parent::facsimile :)" behaviour="webcomponent" cssClass="facs">
             <param name="name" value="'pb-facs-link'"/>
@@ -570,6 +580,16 @@
                     <model behaviour="block"/>
                 </elementSpec>
 
+            <elementSpec ident="ref" mode="change">
+                    <model predicate="not(@target)" behaviour="inline"/>
+                    <model predicate="not(node())" behaviour="link">
+            <param name="content" value="@target"/>
+            <param name="uri" value="@target"/>
+        </model>
+                    <model behaviour="link">
+            <param name="uri" value="@target"/>
+        </model>
+                </elementSpec>
             </schemaSpec>
         </body>
     </text>
