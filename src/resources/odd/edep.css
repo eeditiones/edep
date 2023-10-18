@@ -13,6 +13,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+.facs {
+    text-align:center;
+}
+            
+.facs p, .facs h4 {
+    margin-bottom:0;
+}
+            
+.facsLinks {
+    display:flex;
+    justify-content:space-around;
+}
+
+
 /*toggle between normalized/diplomatic view */
 
 	.choice-alternate {

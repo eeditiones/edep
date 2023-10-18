@@ -12,9 +12,11 @@
         <meta name="description" content="EDEp edition"/>
         <link rel="stylesheet" type="text/css" href="resources/fonts/font.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&amp;display=swap"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href="resources/css/theme.css"/>
         <link rel="stylesheet" href="resources/css/edep-theme.css"/>
-         <link rel="stylesheet" href="resources/css/edition.css"/>
+         <link rel="stylesheet" href="resources/css/edition.css"/> 
+         <script src="resources/scripts/edition.js"/>
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
         <style>
         
@@ -33,8 +35,7 @@
             }
 
             .content-body pb-facsimile {
-                height: 50em;
-                flex: 1;
+                height: 45em;
             }
             
             .content-body pb-navigation[direction=backward] {
@@ -45,9 +46,21 @@
                 right: 20px;
             }
             
-           #metadata-view1 {
-               width:50%;
-           }
+            main {
+                max-width: max-content;
+            }
+            
+            #metadata-view1 {
+                width:50%;
+            }
+            
+            
+            .edition-pannel {
+                display:flex;
+                flex-direction:column;
+                justify-content: flex-start;
+            }
+            
 
             @media (min-width: 769px) {
                 .toolbar pb-navigation {
@@ -83,15 +96,22 @@
                     </app-header>
                     <main class="content-body">
                         <pb-view id="metadata-view1" src="document1" xpath="//teiHeader" view="single" subscribe="transcription" use-language="use-language">
-                         <pb-param name="header" value="metadata"/>
+                         <pb-param name="view" value="metadata"/>
                         </pb-view> 
-                        <div>
-                            <pb-view id="view1" src="document1" column-separator=".tei-cb" append-footnotes="append-footnotes" subscribe="transcription" emit="transcription" use-language="use-language"/>
+                        <div class="edition-pannel">
+                        <pb-view id="view1" src="document1" column-separator=".tei-cb" append-footnotes="append-footnotes" subscribe="transcription" emit="transcription" use-language="use-language" wait-for="#metadata-view1"/>
+                          <pb-view id="facs" src="document1" xpath="//facsimile" subscribe="transcription" view="single" wait-for="#facsimile">
+                         <pb-param name="view" value="facsimile"/>
+                        </pb-view>
+                        <pb-facsimile subscribe="transcription" id="facsimile" base-uri="https://heidicon.ub.uni-heidelberg.de/iiif/2/" show-navigation-control="show-navigation-control" show-rotation-control="show-rotation-control" show-full-page-control="show-full-page-control" show-sequence-control="show-sequence-control" default-zoom-level="0">
+                         </pb-facsimile>
+                         
                         </div>
                     </main>
                 </app-header-layout>
             </app-drawer-layout>
         </pb-page>
         <div class="splash"/>
+
     </body>
 </html>

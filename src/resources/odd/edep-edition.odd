@@ -42,7 +42,7 @@
         <body>
             <schemaSpec start="TEI teiCorpus" ident="edep-edition" source="edep.odd">
                             <elementSpec ident="teiHeader" mode="change">
-                    <modelSequence predicate="$parameters?header='metadata'">
+                    <modelSequence predicate="$parameters?view='metadata'">
             <desc>Create metadata sections</desc>
             <model behaviour="block">
                 <param name="objectType" value="let $vocab := doc('/db/apps/edep-data/objtyp.xml') let $uris := tokenize(descendant::objectType/@ref, '\s+') for $uri in $uris return if ($uri) then  &lt;row type=&#34;metadata&#34;&gt; &lt;cell&gt;form.type-of-monument&lt;/cell&gt; &lt;cell&gt;&lt;term&gt;{$vocab//*[local-name() eq 'term'][@ref = $uri]/*}&lt;/term&gt;&lt;/cell&gt; &lt;/row&gt;  else ()"/>
@@ -278,7 +278,7 @@
         </modelSequence>
                 </elementSpec>
                 <elementSpec ident="msPart" mode="add">
-                    <model predicate="(@type eq 'fragment') and $parameters?header='metadata'" behaviour="block">
+                    <model predicate="(@type eq 'fragment') and $parameters?view='metadata'" behaviour="block">
             <param name="dimensions" value="let $dimensions:= descendant::supportDesc/descendant::dimensions/*/text() return if ($dimensions) then &lt;row type=&#34;metadata&#34;&gt; &lt;cell&gt;metadata.dimensions&lt;/cell&gt; &lt;cell&gt;{string-join($dimensions, ' × ')}&lt;/cell&gt; &lt;/row&gt; else ()"/>
             <param name="condition" value="let $condition := descendant::condition return 'preservation.' || $condition"/>
             <param name="decoration" value="let $vocab := doc('/db/apps/edep-data/decor.xml') let $uris := tokenize(descendant::supportDesc/descendant::rs[@type eq 'decoration']/@ref, '\s+') for $uri in $uris return $vocab//*[local-name() eq 'item'][@value = $uri]/@name"/>
@@ -395,11 +395,11 @@
         </model>
                 </elementSpec>
                 <elementSpec ident="term" mode="add">
-                    <model predicate="$parameters?language='de'" behaviour="inline">
-            <param name="content" value="string-join(*[@xml:lang eq 'de'], ', ')"/>
-        </model>
                     <model predicate="$parameters?language='en'" behaviour="inline">
             <param name="content" value="string-join(*[@xml:lang eq 'en'], ', ')"/>
+        </model>
+                    <model predicate="$parameters?language='de'" behaviour="inline">
+            <param name="content" value="string-join(*[@xml:lang eq 'de'], ', ')"/>
         </model>
                 </elementSpec>
             <elementSpec ident="body" mode="change">
@@ -447,20 +447,6 @@
             </model>
             <model behaviour="block">
                 <param name="content" value="div[@type eq 'commentary']"/>
-            </model>
-            <model predicate="root(.)/descendant::facsimile/graphic" behaviour="webcomponent">
-                <param name="name" value="'pb-facsimile'"/>
-                <param name="default-zoom-level" value="'1'"/>
-                <param name="show-navigator" value="'show-navigator'"/>
-                <param name="show-navigation-control" value="'show-navigation-control'"/>
-                <param name="subscribe" value="'transcription'"/>
-                <param name="id" value="'facsimile'"/>
-                <param name="base-uri" value="'https://heidicon.ub.uni-heidelberg.de/iiif/2/'"/>
-                <param name="facsimiles" value="let $imgs :=  root(.)/descendant::facsimile/graphic/@url return '[&amp;quot;' || replace(string-join($imgs, '&amp;quot;, &amp;quot;'),'https://heidicon.ub.uni-heidelberg.de/iiif/2/', '' ) || '&amp;quot;]'"/>
-                <param name="content" value="''"/>
-                <outputRendition xml:space="preserve">
-                height:45em;
-                </outputRendition>
             </model>
         </modelSequence>
                 </elementSpec>
@@ -522,23 +508,16 @@
             <param name="uri" value="'/exist/apps/edep/person.html?id=' || @key"/>
         </model>
                 </elementSpec>
-                <elementSpec ident="graphic" mode="add">
-                    <model predicate="1=2(: parent::facsimile :)" behaviour="webcomponent" cssClass="facs">
-            <param name="name" value="'pb-facs-link'"/>
-            <param name="emit" value="'transcription'"/>
-            <param name="facs" value="@url"/>
-            <param name="label" value="let $id := parent::facsimile/substring(@corresp, 2) let $msPart := root(.)/descendant::msPart[@xml:id = $id] let $type := $msPart/@type return ($type, if ($type eq 'fragment') then 'Fragment_' || count($msPart/preceding-sibling::msPart[@type eq 'fragment']) + 1 else ())"/>
-        </model>
-                </elementSpec>
+                 
             <elementSpec ident="bibl" mode="change">
-                    <model predicate="$parameters?header='metadata'" behaviour="listItem">
+                    <model predicate="$parameters?view='metadata'" behaviour="listItem">
             <param name="content" value="let $url :=  'https://api.zotero.org/groups/2519759/items/top?format=bib&amp;amp;tag=' || ptr/@target || '&amp;amp;style=digital-humanities-im-deutschsprachigen-raum&amp;amp;linkwrap=1' return (hc:send-request(&lt;hc:request method=&#34;GET&#34; href=&#34;{$url}&#34;&gt;&lt;/hc:request&gt;), citedRange)"/>
         </model>
                     <model predicate="parent::listBibl" behaviour="listItem"/>
                     <model behaviour="inline"/>
                 </elementSpec>
                 <elementSpec ident="listBibl" mode="change">
-                    <modelSequence predicate="($parameters?header='metadata') and (@type eq 'previousEditions')">
+                    <modelSequence predicate="($parameters?view='metadata') and (@type eq 'previousEditions')">
             <model behaviour="heading">
                 <param name="level" value="3"/>
                 <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.previous-editions"/></pb:template>
@@ -556,7 +535,7 @@
                 <param name="content" value="bibl"/>
             </model>
         </modelSequence>
-                    <modelSequence predicate="($parameters?header='metadata') and (@type eq 'bibliography')">
+                    <modelSequence predicate="($parameters?view='metadata') and (@type eq 'bibliography')">
             <model behaviour="heading">
                 <param name="level" value="3"/>
                 <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.bibliography"/></pb:template>
@@ -565,7 +544,7 @@
                 <param name="content" value="bibl"/>
             </model>
         </modelSequence>
-                    <modelSequence predicate="($parameters?header='metadata') and (@type eq 'images')">
+                    <modelSequence predicate="($parameters?view='metadata') and (@type eq 'images')">
             <model behaviour="heading">
                 <param name="level" value="3"/>
                 <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.images-dps"/></pb:template>
@@ -588,6 +567,25 @@
         </model>
                     <model behaviour="link">
             <param name="uri" value="@target"/>
+        </model>
+                </elementSpec>
+                <elementSpec ident="graphic" mode="change">
+                    <model predicate="$parameters?view='facsimile'" behaviour="inline">
+            <param name="facs" value="@url"/>
+            <param name="content" value="let $id := parent::facsimile/substring(@corresp, 2)  let $msPart := root(.)/descendant::msPart[@xml:id = $id]  let $type := $msPart/@type let $count := count(preceding-sibling::graphic) + 1 let $countFragment:= if ($type eq 'fragment') then count($msPart/preceding-sibling::msPart[@type eq 'fragment']) + 1 else () return if ($type eq 'main') then $count else $count || '(fragment ' || $countFragment || ')'"/>
+            <param name="uri" value="'https://heidicon.ub.uni-heidelberg.de/detail/' || substring-before(@url, '%')"/>
+            <pb:template xmlns="" xml:space="preserve"><a href="#">
+  <pb-facs-link facs="[[facs]]" emit="transcription" trigger="click">
+    <pb-popover>[[content]]
+    <template slot="alternate"><a href="[[uri]]" target="_blank">See details</a></template></pb-popover>
+  </pb-facs-link>
+</a></pb:template>
+        </model>
+                </elementSpec>
+                <elementSpec ident="facsimile" mode="add">
+                    <model predicate="$parameters?view='facsimile'" behaviour="block" cssClass="facs">
+            <param name="content" value="graphic"/>
+            <pb:template xmlns="" xml:space="preserve"><h4>Images</h4><p class="facsLinks">[[content]]</p></pb:template>
         </model>
                 </elementSpec>
             </schemaSpec>
