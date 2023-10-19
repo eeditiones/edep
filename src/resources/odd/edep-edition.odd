@@ -246,7 +246,7 @@
                 </elementSpec>
                 <elementSpec ident="TEI" mode="change"/>
                 <elementSpec ident="lb" mode="change">
-                    <model predicate="not(preceding-sibling::lb)" behaviour="omit"/>
+                    <model predicate="not(preceding::lb)" behaviour="omit"/>
                     <modelSequence predicate="@break=&#34;no&#34;">
             <model behaviour="inline" cssClass="lb-hyphen">
                 <param name="content" value="'-'"/>
@@ -255,11 +255,19 @@
                 <param name="type" value="'line'"/>
                 <param name="label" value="@n"/>
             </model>
+            <model predicate="number(@n) mod 4 = 0" behaviour="inline" cssClass="number-lb lb">
+                <param name="content" value="@n"/>
+            </model>
         </modelSequence>
-                    <model behaviour="break" cssClass="lb" useSourceRendition="true">
-            <param name="type" value="'line'"/>
-            <param name="label" value="@n"/>
-        </model>
+                    <modelSequence>
+            <model behaviour="break" cssClass="lb">
+                <param name="type" value="'line'"/>
+                <param name="label" value="@n"/>
+            </model>
+            <model predicate="number(@n) mod 4 = 0" behaviour="inline" cssClass="number-lb lb">
+                <param name="content" value="@n"/>
+            </model>
+        </modelSequence>
                 </elementSpec>
                 <elementSpec ident="ex" mode="change">
                     <model predicate="$parameters?mode='diplomatic' and not(ancestor::choice) and not(following-sibling::abbr) and not(preceding-sibling::abbr)" behaviour="alternate" cssClass="choice">
@@ -585,7 +593,30 @@
                 <elementSpec ident="facsimile" mode="add">
                     <model predicate="$parameters?view='facsimile'" behaviour="block" cssClass="facs">
             <param name="content" value="graphic"/>
-            <pb:template xmlns="" xml:space="preserve"><h4>Images</h4><p class="facsLinks">[[content]]</p></pb:template>
+            <pb:template xmlns="" xml:space="preserve"><h3>Images</h3><p class="facsLinks">[[content]]</p></pb:template>
+        </model>
+                </elementSpec>
+            <elementSpec ident="app" mode="add">
+                    <model predicate="parent::listApp" behaviour="listItem"/>
+                </elementSpec>
+                <elementSpec ident="listApp" mode="add">
+                    <model behaviour="list"/>
+                </elementSpec>
+                <elementSpec ident="note" mode="change">
+                    <model predicate="parent::app" behaviour="inline"/>
+                    <model predicate="&#34;sic&#34;" behaviour="inline">
+            <param name="inside" value="."/>
+            <param name="content" value="&#34;(!)&#34;"/>
+            <outputRendition xml:space="preserve">
+            color:red;
+            </outputRendition>
+        </model>
+                    <model behaviour="note">
+            <param name="place" value="@place"/>
+            <param name="label" value="@n"/>
+            <outputRendition xml:space="preserve">
+            
+            </outputRendition>
         </model>
                 </elementSpec>
             </schemaSpec>
