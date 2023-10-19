@@ -21,6 +21,7 @@
             <sourceDesc>
                 <msDesc>
                     <msIdentifier>
+                        <repository>Epigraphische Datenbank Heidelberg</repository>
                         <!-- 3) EDEp ID -->
                         <idno type="EDEp"/>
                     </msIdentifier>
