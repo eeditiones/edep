@@ -1,14 +1,32 @@
-// Funtion to hide both the <pb-facsimile> element and the <pb-view> element binded to the <facsimile> elements of the source.
-// The function looks for the elements <pb-facs-link> which are only created if a <facsimile> element exists in the source.
-
-function hidePb() {
-    const viewer = document.querySelector('pb-facsimile');
-    const facs = document.getElementById('facs');
-    const facsLinks = Array.from(facs.shadowRoot.querySelectorAll('pb-facs-link'));
-    if (facsLinks.length === 0) {
-        viewer.style.display = 'none';
-        facs.style.display = 'none';
-    }
+// Wrapper function
+function prepareContents() {
+   addPinPoint();
+   hideFacsimile();
 }
-// TODO: refactor function so as not to depend on a random wait
-window.addEventListener('load', setTimeout(hidePb, 1500), false)
+
+// Function to hide the element <pb-facsimile>
+function hideFacsimile() {
+    const viewer = document.querySelector('pb-facsimile');
+    pbEvents.subscribe('pb-facsimile-status', null, (ev) => {
+            if (ev.detail.status === 'fail') {
+                viewer.style.display = 'none';
+            } 
+        });
+}
+
+// Function to add contents to the map
+function addPinPoint() {
+    pbEvents.subscribe('pb-page-ready', null, function () {
+        const endpoint = document.querySelector("pb-page").getEndpoint();
+        const path = document.querySelector("pb-document").getAttribute('path');
+        const url = `${endpoint}/api/places/${path.replace("/", "%2F")}/findSpot`;
+        console.log(`fetching places from: ${url}`);
+        fetch(url).then(function (response) {
+            return response.json();
+        }).then(function (json) {
+            pbEvents.emit("pb-update-map", "map", json)
+        });
+    })
+}
+
+window.addEventListener('WebComponentsReady', prepareContents, false)

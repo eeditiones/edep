@@ -467,6 +467,57 @@
         }
       }
     },
+        "/api/places/{id}/findSpot": {
+        "get": {
+            "summary": "Retrieve the find spot of an inscription",
+            "description": "Retrieve a place in format required by pb-split-list",
+            "operationId": "custom:find-spot",
+			"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+            "responses": {
+                "200": {
+                    "description": "Categories and places to display",
+                    "content": {
+                        "application/json": {
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "items": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "categories": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "category": {
+                                                    "type": "string"
+                                                },
+                                                "count": {
+                                                    "type": "integer"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
     "/api/geopicker/places": {
       "get": {
         "summary": "shortlist of places for geodata-picker page",

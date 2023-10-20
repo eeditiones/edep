@@ -14,9 +14,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&amp;display=swap"/>
         <link rel="stylesheet" href="resources/css/theme.css"/>
         <link rel="stylesheet" href="resources/css/edep-theme.css"/>
-         <link rel="stylesheet" href="resources/css/edition.css"/> 
          <script src="resources/scripts/edition.js"/>
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
+        <script data-target="script-preload" type="module" src="pb-leaflet-map.js" data-template="pages:load-components"/>
         <style>
         
         
@@ -61,6 +61,11 @@
                 justify-content: flex-start;
             }
             
+            pb-leaflet-map {
+                height: 25em;
+                width:100%;
+            }
+            
 
             @media (min-width: 769px) {
                 .toolbar pb-navigation {
@@ -100,18 +105,20 @@
                         </pb-view> 
                         <div class="edition-pannel">
                         <pb-view id="view1" src="document1" column-separator=".tei-cb" append-footnotes="append-footnotes" subscribe="transcription" emit="transcription" use-language="use-language" wait-for="#metadata-view1"/>
-                          <pb-view id="facs" src="document1" xpath="//facsimile" subscribe="transcription" view="single" wait-for="#facsimile">
+                          <pb-view id="facs" src="document1" xpath="//facsimile" subscribe="transcription" view="single" not-found="">
                          <pb-param name="view" value="facsimile"/>
                         </pb-view>
-                        <pb-facsimile subscribe="transcription" id="facsimile" base-uri="https://heidicon.ub.uni-heidelberg.de/iiif/2/" show-navigation-control="show-navigation-control" show-rotation-control="show-rotation-control" show-full-page-control="show-full-page-control" show-sequence-control="show-sequence-control" default-zoom-level="0">
+                        <pb-facsimile subscribe="transcription" id="facsimile" base-uri="https://heidicon.ub.uni-heidelberg.de/iiif/2/" show-navigation-control="show-navigation-control" show-rotation-control="show-rotation-control" show-full-page-control="show-full-page-control" show-sequence-control="show-sequence-control" default-zoom-level="1" wait-for="#facs">
                          </pb-facsimile>
-                         
+                    <pb-leaflet-map id="map" subscribe="map" emit="map" zoom="2" cluster="" latitude="54" longitude="15">
+                         <pb-map-layer show="" base="" label="Mapbox OSM" url="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token={accessToken}" max-zoom="19" access-token="pk.eyJ1Ijoid29sZmdhbmdtbSIsImEiOiJjam1kMjVpMnUwNm9wM3JwMzdsNGhhcnZ0In0.v65crewF-dkNsPF3o1Q4uw" attribution="© Mapbox © OpenStreetMap">
+                         </pb-map-layer>
+                        </pb-leaflet-map>
                         </div>
                     </main>
                 </app-header-layout>
             </app-drawer-layout>
         </pb-page>
         <div class="splash"/>
-
     </body>
 </html>

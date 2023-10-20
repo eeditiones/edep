@@ -456,6 +456,12 @@
             <model behaviour="block">
                 <param name="content" value="div[@type eq 'commentary']"/>
             </model>
+            <model predicate="not(root(.)/descendant::facsimile)" behaviour="webcomponent">
+                <desc>Hack for the event 'pb-facsimile-status' to return 'fail' when there is no facsimile</desc>
+                <param name="name" value="'pb-facs-link'"/>
+                <param name="facs" value="'none'"/>
+                <param name="emit" value="'transcription'"/>
+            </model>
         </modelSequence>
                 </elementSpec>
                                 <elementSpec ident="choice" mode="change">
