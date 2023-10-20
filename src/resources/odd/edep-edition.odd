@@ -69,11 +69,11 @@
                 <param name="fieldDimensions" value="let $dimensionsEls := descendant::msPart[@type eq 'main']/descendant::layout/dimensions/*/text() return if ($dimensionsEls) then &lt;row&gt;&lt;cell&gt;metadata.dimensions&lt;/cell&gt;&lt;cell&gt;{string-join($dimensionsEls, ' × ')}&lt;/cell&gt;&lt;/row&gt; else ()"/>
                 <param name="verification" value="let $subtype := descendant::msPart[@type eq 'main']/descendant::note[@type eq 'verification']/@subtype return 'verification.' || $subtype"/>
                 <param name="verificationDate" value="descendant::msPart[@type eq 'main']/descendant::note[@type eq 'verification']/date/@when"/>
-                <param name="findSpot" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp  let $place := collection('/db/apps/edep-data/places')/id($id) let $uri := concat('/exist/apps/edep/geodata.html?id=', $id ) return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;form.findspot&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'findspot']/string()}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
-                <param name="modernPlace" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) return  let $uri := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.modern-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
-                <param name="ancientPlace" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $uri := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.ancient-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'ancient'] || ' (' || $place/region[@type eq 'province'] || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
+                <param name="findSpot" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp   let $place := collection('/db/apps/edep-data/places')/id($id) let $label := $place/placeName[@type eq 'findspot']/string() let $geo := tokenize($place/location/geo, ',\s*') return  &lt;pb-geolocation xmlns=&#34;http://www.w3.org/1999/xhtml&#34; event=&#34;click&#34; longitude=&#34;{$geo[2]}&#34; latitude=&#34;{$geo[1]}&#34; label=&#34;{label}&#34;&gt;{$label}&lt;/pb-geolocation&gt;"/>
+                <param name="modernPlace" value="let $id :=  descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id)  let $label := $place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')' return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.modern-place&lt;/cell&gt;&lt;cell&gt;{$label}&lt;/cell&gt;&lt;/row&gt; else ()"/>
+                <param name="ancientPlace" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id)  let $label := $place/placeName[@type eq 'ancient'] || ' (' || $place/region[@type eq 'province'] || ')' return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.ancient-place&lt;/cell&gt;&lt;cell&gt;{$label}&lt;/cell&gt;&lt;/row&gt; else ()"/>
                 <param name="bibl" value="descendant::msPart[@type eq 'main']/descendant::listBibl"/>
-                <param name="biblHeader" value="if (descendant::listbibl) then &lt;h2 xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;&lt;pb-i18n key=&#34;form.references&#34;/&gt;&lt;/h2&gt; else ()"/>
+                <param name="biblHeader" value="if (descendant::listBibl) then &lt;h2 xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;&lt;pb-i18n key=&#34;form.references&#34;/&gt;&lt;/h2&gt; else ()"/>
                 <pb:template xmlns="" xml:space="preserve"><div class="metadata">
             <section class="main objectDesc">
                 <h2><pb-i18n key="form.object-description"/></h2>
@@ -94,7 +94,10 @@
                             <th><pb-i18n key="form.decoration"/></th>
                             <td>[[decoration]]</td>
                         </tr>
-                        [[findSpot]]               
+                        <tr>
+                            <th><pb-i18n key="form.findspot"/></th>
+                            <td>[[findSpot]]</td>
+                        </tr>                 
                         [[modernPlace]]
                         [[ancientPlace]]
                         [[findContext]]
@@ -108,7 +111,7 @@
                         </tr>
                       [[tmID]] 
                     </tbody>
-                </table>                
+                </table>    
             </section>
             <section class="main inscription">
                 <h2><pb-i18n key="form.inscription-field"/></h2>
@@ -182,6 +185,7 @@
             <model behaviour="block">
                 <param name="content" value="descendant::msPart[@type eq 'fragment']"/>
             </model>
+            <model predicate="descendant::listBiblll" behaviour="pass-through"/>
         </modelSequence>
                     <model output="latex" behaviour="metadata"/>
                     <model output="fo" behaviour="omit"/>
@@ -305,9 +309,9 @@
             <param name="fieldDimensions" value="let $dimensionsEls := descendant::layout/dimensions/*/text() return if ($dimensionsEls) then &lt;row&gt;&lt;cell&gt;metadata.dimensions&lt;/cell&gt;&lt;cell&gt;{string-join($dimensionsEls, ' × ')}&lt;/cell&gt;&lt;/row&gt; else ()"/>
             <param name="verification" value="let $subtype := descendant::note[@type eq 'verification']/@subtype return 'verification.' || $subtype"/>
             <param name="verificationDate" value="descendant::note[@type eq 'verification']/date/@when"/>
-            <param name="findSpot" value="let $id :=  descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $uri := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;form.findspot&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'findspot']/string()}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
-            <param name="modernPlace" value="let $id :=  descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $uri := '/exist/apps/edep/places.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.modern-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
-            <param name="ancientPlace" value="let $id :=  descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id) let $uri := '/exist/apps/edep/geodata.html?id=' || $id return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.modern-place&lt;/cell&gt;&lt;cell&gt;&lt;ref target=&#34;{$uri}&#34;&gt;{$place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')'}&lt;/ref&gt;&lt;/cell&gt;&lt;/row&gt; else ()"/>
+            <param name="findSpot" value="'test'"/>
+            <param name="modernPlace" value="let $id :=  descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id)  let $label := $place/placeName[@type eq 'modern'] || ' (' || $place/region[@type eq 'modern'] || ', ' || upper-case($place/country) || ')' return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.modern-place&lt;/cell&gt;&lt;cell&gt;{$label}&lt;/cell&gt;&lt;/row&gt; else ()"/>
+            <param name="ancientPlace" value="let $id := descendant::msPart[@type eq 'main']/descendant::origPlace/@corresp let $place := collection('/db/apps/edep-data/places')/id($id)  let $label := $place/placeName[@type eq 'ancient'] || ' (' || $place/region[@type eq 'province'] || ')' return  if ($id) then &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;metadata.ancient-place&lt;/cell&gt;&lt;cell&gt;{$label}&lt;/cell&gt;&lt;/row&gt; else ()"/>
             <param name="bibl" value="descendant::listBibl"/>
             <param name="count" value="' ' || count(preceding-sibling::msPart[@type eq 'fragment']) + 1"/>
             <param name="biblHeader" value="if (descendant::listbibl) then &lt;h2 xmlns=&#34;http://www.w3.org/1999/xhtml&#34;&gt;&lt;pb-i18n key=&#34;form.references&#34;/&gt;&lt;/h2&gt; else ()"/>
@@ -326,7 +330,10 @@
                             <th><pb-i18n key="form.decoration"/></th>
                             <td>[[decoration]]</td>
                         </tr>
-                      [[findSpot]]               
+                       <tr>
+                            <th><pb-i18n key="form.findspot"/></th>
+                            <td>[[findSpot]]</td>
+                        </tr>               
                       [[modernPlace]]
                       [[ancientPlace]]
                       [[findContext]]

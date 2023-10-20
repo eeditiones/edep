@@ -12,6 +12,11 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 1px solid #ddd;
 }
 
+pb-geolocation {
+    color: var(--pb-link-color);
+    text-decoration:underline;
+}
+
 
 .facs {
     text-align:center;

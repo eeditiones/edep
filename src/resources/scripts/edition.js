@@ -1,6 +1,6 @@
 // Wrapper function
 function prepareContents() {
-   addPinPoint();
+(:   addPinPoint();:)
    hideFacsimile();
 }
 
@@ -24,8 +24,12 @@ function addPinPoint() {
         fetch(url).then(function (response) {
             return response.json();
         }).then(function (json) {
-            pbEvents.emit("pb-update-map", "map", json)
+            pbEvents.emit("pb-update-map", "map", json);
+           
         });
+     /*   const pb = document.querySelector('#map-findSpot')
+        const map = pb.shadowRoot.querySelector('#map')
+        map.invalidateSize(); */
     })
 }
 
