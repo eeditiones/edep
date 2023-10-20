@@ -1,6 +1,6 @@
 // Wrapper function
 function prepareContents() {
-(:   addPinPoint();:)
+//   addPinPoint();
    hideFacsimile();
 }
 
