@@ -17,6 +17,14 @@ pb-geolocation {
     text-decoration:underline;
 }
 
+.person, .bibl {
+    color: var(--pb-link-color);
+}
+
+a:link, a:visited, a:hover {
+    color: var(--pb-link-color);
+    text-decoration: none;
+}
 
 .facs {
     text-align:center;

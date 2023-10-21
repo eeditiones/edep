@@ -62,7 +62,7 @@
                 <param name="inscriptionType" value="let $vocab := doc('/db/apps/edep-data/typeins.xml') let $uris := tokenize(descendant::msPart[@type eq 'main']/descendant::msItem/@class, '\s+') for $uri in $uris return &lt;cell&gt;&lt;term&gt;{$vocab//*[local-name() eq 'term'][@ref = $uri]/node()}&lt;/term&gt;&lt;/cell&gt;"/>
                 <param name="metre" value="descendant::msPart[@type eq 'main']/descendant::rs[@type eq 'metric']"/>
                 <param name="language" value="let $element := descendant::msPart[@type eq 'main']/descendant::textLang return string-join(($element/@mainLang, tokenize($element/@otherLangs, '\s+')), ', ')"/>
-                <param name="date" value="let $element := descendant::origDate let $range := $element/@notBefore-custom || ' – ' || $element/@notAfter-custom let $exact := $element/@when-custom let $string := $element/string() return if ($exact) then $string || ' (' || $exact || ')' else if ($range) then $string || ' (' || $range || ')' else $string"/>
+                <param name="date" value="let $element := descendant::origDate let $range := $element/format-number(number(@notBefore-custom), '0') || ' – ' || $element/format-number(number(@notAfter-custom) ,'0') let $exact := $element/number(@when-custom) let $string := $element/string() return if ($exact) then $string || ' (' || format-number($exact, '0') || ')' else if ($range) then $string || ' (' || $range || ')' else $string"/>
                 <param name="religion" value="let $attVal := descendant::keywords[@scheme eq 'https://edh.ub.uni-heidelberg.de/edep/religion']/term/@ref return 'religion.' || substring($attVal, 2)"/>
                 <param name="historicRelevance" value="let $terms := descendant::keywords[@scheme eq 'https://edh.ub.uni-heidelberg.de/edep/terms']/term/@ref return if ($terms) then  &lt;row type=&#34;metadata&#34;&gt;&lt;cell&gt;form.historic-relevance&lt;/cell&gt;&lt;cell&gt;{ for $term in $terms return &lt;seg n=&#34;form.{substring($term, 2)}&#34;/&gt; }&lt;/cell&gt;&lt;/row&gt; else ()"/>
                 <param name="ligature" value="descendant::msPart[@type eq 'main']/descendant::handDesc/descendant::rs[@type eq 'ligature']"/>
@@ -185,7 +185,6 @@
             <model behaviour="block">
                 <param name="content" value="descendant::msPart[@type eq 'fragment']"/>
             </model>
-            <model predicate="descendant::listBiblll" behaviour="pass-through"/>
         </modelSequence>
                     <model output="latex" behaviour="metadata"/>
                     <model output="fo" behaviour="omit"/>
@@ -468,6 +467,7 @@
                 <param name="name" value="'pb-facs-link'"/>
                 <param name="facs" value="'none'"/>
                 <param name="emit" value="'transcription'"/>
+                <param name="content" value="''"/>
             </model>
         </modelSequence>
                 </elementSpec>
@@ -525,14 +525,22 @@
         </modelSequence>
                 </elementSpec>
             <elementSpec ident="persName" mode="change">
-                    <model behaviour="link">
-            <param name="uri" value="'/exist/apps/edep/person.html?id=' || @key"/>
+                    <model predicate="@key" behaviour="pass-through">
+            <param name="names" value="doc('/db/apps/edep-data/people/' || @key || '.xml')/person/descendant::name"/>
+            <param name="type" value="let $type := @type/string() return if ($type) then &lt;item&gt;type: {$type}&lt;/item&gt; else ()"/>
+            <param name="gender" value="doc('/db/apps/edep-data/people/' || @key || '.xml')/person/@sex"/>
+            <pb:template xmlns="" xml:space="preserve"><pb-popover class="person">
+    <span slot="default">[[content]]</span>
+    <template slot="alternate"><ul>[[type]] [[names]] <li>gender: [[gender]]</li></ul> </template>
+</pb-popover></pb:template>
         </model>
                 </elementSpec>
                  
             <elementSpec ident="bibl" mode="change">
-                    <model predicate="$parameters?view='metadata'" behaviour="listItem">
-            <param name="content" value="let $url :=  'https://api.zotero.org/groups/2519759/items/top?format=bib&amp;amp;tag=' || ptr/@target || '&amp;amp;style=digital-humanities-im-deutschsprachigen-raum&amp;amp;linkwrap=1' return (hc:send-request(&lt;hc:request method=&#34;GET&#34; href=&#34;{$url}&#34;&gt;&lt;/hc:request&gt;), citedRange)"/>
+                    <model predicate="$parameters?view='metadata'" behaviour="pass-through">
+            <param name="bibl" value="let $url :=  'https://api.zotero.org/groups/2519759/items/top?format=bib&amp;amp;tag=' || ptr/@target || '&amp;amp;style=digital-humanities-im-deutschsprachigen-raum&amp;amp;linkwrap=1' let $request:= hc:send-request(&lt;hc:request method=&#34;GET&#34; href=&#34;{$url}&#34;&gt;&lt;/hc:request&gt;) let $div := $request/descendant::*[@class eq 'csl-entry'][1] return $div/node()"/>
+            <param name="citedRange" value="if (citedRange) then ' pp.' || citedRange else ()"/>
+            <pb:template xmlns="" xml:space="preserve"><li>[[bibl]] [[citedRange]]</li></pb:template>
         </model>
                     <model predicate="parent::listBibl" behaviour="listItem"/>
                     <model behaviour="inline"/>
@@ -582,6 +590,13 @@
 
             <elementSpec ident="ref" mode="change">
                     <model predicate="not(@target)" behaviour="inline"/>
+                    <model predicate="@type eq 'bibl'" behaviour="pass-through">
+            <param name="bibl" value="let $url :=  'https://api.zotero.org/groups/2519759/items/top?format=bib&amp;amp;tag=' || substring(@target, 2) || '&amp;amp;style=digital-humanities-im-deutschsprachigen-raum&amp;amp;linkwrap=1' let $request:= hc:send-request(&lt;hc:request method=&#34;GET&#34; href=&#34;{$url}&#34;&gt;&lt;/hc:request&gt;) let $div := $request/descendant::*[@class eq 'csl-entry'][1] return $div/node()"/>
+            <pb:template xmlns="" xml:space="preserve"><pb-popover class="bibl">
+    <span slot="default">[[content]]</span>
+    <template slot="alternate">[[bibl]]</template>
+</pb-popover></pb:template>
+        </model>
                     <model predicate="not(node())" behaviour="link">
             <param name="content" value="@target"/>
             <param name="uri" value="@target"/>
@@ -630,6 +645,12 @@
             <outputRendition xml:space="preserve">
             
             </outputRendition>
+        </model>
+                </elementSpec>
+                <elementSpec ident="person" mode="add"/>
+                <elementSpec ident="name" mode="change">
+                    <model predicate="ancestor::person and node()" behaviour="listItem">
+            <param name="content" value="@type || ': ' || node()"/>
         </model>
                 </elementSpec>
             </schemaSpec>
