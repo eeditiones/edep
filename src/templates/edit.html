@@ -177,7 +177,7 @@
                                     <lang code="lat">Latein</lang>
                                     <lang code="nxm">Numidisch</lang>
                                     <lang code="xxx">Palmyrisch</lang>
-                                    <lang code="xpu">Phoenicisch-Punisch</lang>
+                                    <lang code="xpu">Phönizisch-Punisch</lang>
                                 </languages>
                                 <language>en</language>
                                 <inited>false</inited>
@@ -726,7 +726,21 @@
                                         </fx-control>
                                         <!-- 25) -->
                                         <fx-control ref="msContents/msItem/textLang/@mainLang">
-                                            <label><pb-i18n key="form.language">Sprache</pb-i18n></label>
+                                            <label><pb-i18n key="form.languageMain">Hauptsprache</pb-i18n></label>
+                                            <fx-items ref="instance('vars')/languages[@xml:lang=instance('vars')/language]/lang" class="widget">
+                                                <template>
+                                                <span class="fx-checkbox">
+                                                    <input type="radio" value="{@code}"/>
+                                                    <label>{.}</label>
+                                                </span>
+                                                </template>
+                                            </fx-items>
+                                        </fx-control>
+
+                                        <fx-control ref="msContents/msItem/textLang/@otherLangs">
+                                            <label>
+                                                <pb-i18n key="form.languageOther">Andere Sprachen</pb-i18n>
+                                            </label>
                                             <fx-items ref="instance('vars')/languages[@xml:lang=instance('vars')/language]/lang" class="widget">
                                                 <template>
                                                 <span class="fx-checkbox">
@@ -735,7 +749,11 @@
                                                 </span>
                                                 </template>
                                             </fx-items>
-                                        </fx-control>
+                                          </fx-control>
+                                          
+                                          <fx-control ref="msContents/msItem/textLang">
+                                            <label><pb-i18n key="form.languageFree">Andere Sprachen oder Kommentare</pb-i18n></label>
+                                          </fx-control>
 
                                         <!-- 34) -->
                                         <div class="alternatives">
