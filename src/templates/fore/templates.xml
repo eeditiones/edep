@@ -37,6 +37,10 @@
         </bibl>
     </listBibl>
 
-    <graphic url=""></graphic>
+    <graphic url=""/>
+    
+    <note type="verification" subtype="">
+        <date when=""/>
+    </note>
 
 </body>

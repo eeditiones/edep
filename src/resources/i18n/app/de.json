@@ -39,6 +39,8 @@
         "verification": "Verifizierung",
         "basis-of-verification": "Verfizierungsgrundlage",
         "date-of-verification": "Datum der Verifizierung",
+        "hint-add-verification": "Verfizierung hinzufügen",
+        "hint-delete-verification": "Verfizierung lösche",
         "preservation": "Erhaltung",
         "decoration": "Dekor",
         "type-of-inscription": "Inschriftengattung",

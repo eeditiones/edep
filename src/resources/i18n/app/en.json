@@ -39,6 +39,8 @@
         "verification": "Verification",
         "basis-of-verification": "Basis of verification",
         "date-of-verification": "Date of verification",
+        "hint-add-verification": "Record an observation",
+        "hint-delete-verification": "Delete observation",
         "preservation": "Preservation",
         "decoration": "Decoration",
         "type-of-inscription": "Type of inscription",
