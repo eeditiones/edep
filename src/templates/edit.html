@@ -729,8 +729,8 @@
                                             <label><pb-i18n key="form.languageMain">Hauptsprache</pb-i18n></label>
                                             <fx-items ref="instance('vars')/languages[@xml:lang=instance('vars')/language]/lang" class="widget">
                                                 <template>
-                                                <span class="fx-checkbox">
-                                                    <input type="radio" value="{@code}"/>
+                                                <span>
+                                                    <input type="radio" name="mainLanguage" value="{@code}"/>
                                                     <label>{.}</label>
                                                 </span>
                                                 </template>
