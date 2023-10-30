@@ -159,6 +159,23 @@ declare function api:output-place($list, $category as xs:string, $search as xs:s
             </div>
     }
 };
+declare function api:find-spot($request as map(*)) {
+    let $doc := xmldb:decode($request?parameters?id)
+    let $xml:= doc($config:data-root || '/' || $doc)
+    let $placeIds := $xml//tei:origPlace/@corresp
+    let $places := for $placeId in $placeIds return collection($config:data-root || "/places")/id($placeId)
+    return
+        array { 
+                for $place in $places 
+                let $tokenized := tokenize($place/tei:location/tei:geo, ',\s*')
+                return 
+                map {
+                    "latitude":$tokenized[1],
+                    "longitude":$tokenized[2],
+                    "label":$place/tei:placeName[@type eq 'findspot']/string()
+                }
+        }
+};
 
 declare function api:load-place($request as map(*)) {
     let $return := doc(concat($config:places, $request?parameters?id, ".xml"))

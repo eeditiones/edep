@@ -13,6 +13,9 @@
                     <!-- TODO this toolbar should only appear once per Documents papercard -->
                     <app-toolbar>
                         <pb-restricted login="login" group="tei">
+                            <a href="${app}/edit/${ident}" data-template="pages:parse-params">
+                                <paper-icon-button icon="icons:create"></paper-icon-button>
+                            </a>
                             <pb-ajax url="api/document/${ident}" method="delete" emit="docs" event="pb-search-resubmit" 
                                 confirm="browse.confirmDeletion" quiet="" data-template="pages:parse-params">
                                 <paper-icon-button icon="icons:delete"></paper-icon-button>

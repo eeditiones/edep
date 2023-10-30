@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"/>
+        <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico"/>
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-16.png" sizes="16x16"/>
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-24.png" sizes="24x24"/>
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-32.png" sizes="32x32"/>
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-64.png" sizes="64x64"/>
+
+        <title data-template="config:app-title"/>
+        <meta name="description" content="EDEp edition"/>
+        <link rel="stylesheet" type="text/css" href="resources/fonts/font.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&amp;display=swap"/>
+        <link rel="stylesheet" href="resources/css/theme.css"/>
+        <link rel="stylesheet" href="resources/css/edep-theme.css"/>
+        <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
+        <script data-target="script-preload" type="module" src="pb-leaflet-map.js" data-template="pages:load-components"/>
+        <script src="resources/scripts/edition.js"/>
+         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""/>
+
+        <style>
+        
+        
+            .content-body {
+                position: relative;
+                display: flex;
+                justify-content: center;
+            }
+
+            .content-body pb-navigation {
+                position: fixed;
+                bottom: 45%;
+                --paper-fab-background: #35424b;
+                color: white;
+            }
+
+            .content-body pb-facsimile {
+                height: 45em;
+            }
+            
+            .content-body pb-navigation[direction=backward] {
+                left: 20px;
+            }
+
+            .content-body pb-navigation[direction=forward] {
+                right: 20px;
+            }
+            
+            main {
+                max-width: max-content;
+            }
+            
+            #metadata-view1 {
+                width:50%;
+            }
+            
+            
+            .edition-pannel {
+                padding-left:2em;
+                display:flex;
+                flex-direction:column;
+                justify-content: flex-start;
+            }
+            
+            pb-leaflet-map {
+                position: fixed;
+                top: 200px;
+                right: 5px;
+                width: 480px;
+                height: 360px;
+                z-index:100;
+            }
+            
+
+            @media (min-width: 769px) {
+                .toolbar pb-navigation {
+                    display: none;
+                }
+            }
+
+            @media (max-width: 769px) {
+                .content-body pb-navigation {
+                    display: none;
+                }
+                pb-facsimile {
+                    display: none;
+            }
+            
+
+        </style>
+    </head>
+
+    <body>
+        <pb-page data-template="pages:pb-page" unresolved="unresolved" require-language="" locales="resources/i18n/{{ns}}/{{lng}}.json"
+            url-ignore="selectors">
+            <pb-document id="document1" data-template="pages:pb-document"/>
+            <app-drawer-layout force-narrow="force-narrow">
+                <app-drawer data-template="lib:include" data-template-path="templates/drawer.html"/>
+                <app-header-layout>
+                    <app-header slot="header" reveals="reveals" fixed="fixed" effects="waterfall">
+                        <app-toolbar data-template="lib:include" data-template-path="templates/menu.html"/>
+                        <app-toolbar data-template="lib:include" data-template-path="templates/toolbar.html">
+                            <pb-toggle-feature name="norm" selector=".choice,.choice-alternate,.lb,.lb-hyphen" emit="transcription" subscribe="transcription" default="off" data-target="toolbar-end">
+                            <pb-i18n key="document.normalized">Normalized View</pb-i18n>
+                        </pb-toggle-feature>
+                        </app-toolbar>
+                    </app-header>
+                    <main class="content-body">
+                        <pb-view id="metadata-view1" src="document1" xpath="//teiHeader" view="single" subscribe="transcription" use-language="use-language">
+                            <pb-param name="view" value="metadata"/>
+                         </pb-view> 
+                        <div class="edition-pannel">
+                            <pb-leaflet-map id="map" zoom="6" toggle="">
+                                    <pb-map-layer show="" base="" label="OpenTopo Map" url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png" max-zoom="19" attribution="© Mapbox © OpenStreetMap"/>
+                            </pb-leaflet-map>      
+                            <pb-view id="view1" src="document1" column-separator=".tei-cb" append-footnotes="append-footnotes" subscribe="transcription" emit="transcription" use-language="use-language" wait-for="#metadata-view1"/>
+                            <pb-view id="facs" src="document1" xpath="//facsimile" subscribe="transcription" view="single" not-found="">
+                                <pb-param name="view" value="facsimile"/>
+                            </pb-view>
+                            <pb-facsimile subscribe="transcription" id="facsimile" base-uri="https://heidicon.ub.uni-heidelberg.de/iiif/2/" show-navigation-control="show-navigation-control" show-rotation-control="show-rotation-control" show-full-page-control="show-full-page-control" show-sequence-control="show-sequence-control" default-zoom-level="1" wait-for="#facs"/>
+                        </div>
+                    </main>
+                </app-header-layout>
+            </app-drawer-layout>
+        </pb-page>
+        <div class="splash"/>
+    </body>
+</html>

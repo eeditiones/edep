@@ -38,3 +38,12 @@ a:link, a:visited, a:hover {
     color: var(--pb-link-color);
     text-decoration: none;
 }
+
+.document-info pb-restricted {
+    display: inherit;
+}
+
+.document-info pb-restricted {
+    display: inherit;
+    --pb-link-color: var(--pb-color-primary);
+}
