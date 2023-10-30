@@ -1,4 +1,4 @@
-<msPart xml:id="" type="fragment" xmlns="http://www.tei-c.org/ns/1.0">
+<msPart xmlns="http://www.tei-c.org/ns/1.0" xml:id="" type="fragment">
     <!--  ### runtime instance inlining these divs which finally end up in the body -->
     <!-- 41) Textedition: @corresp referenziert msPart - eingefügt aus jinn-codemirror. Required -->
     <div type="textpart" subtype="fragment" n="a" corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8"/>
@@ -37,11 +37,7 @@
             <!-- 35c) Bilder-->
             <listBibl type="images">
             </listBibl>
-            <!-- 12d in @subtype -->
-            <note type="verification" subtype="">
-                <!-- 12e -->
-                <date when=""/>
-            </note>
+            <!-- 12d (verification) goes here -->
         </msItem>
     </msContents>
     <physDesc>

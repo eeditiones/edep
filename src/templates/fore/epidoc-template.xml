@@ -71,7 +71,7 @@
                             <msItem class="" type="">
                                 <!-- 25) Sprache -->
                                 <!-- TODO: Metrik logisch hierhin -->
-                                <textLang mainLang=""/>
+                                <textLang mainLang="" otherLangs=""/>
                                 <!-- 35b) Bibliographie-->
                                 <listBibl type="bibliography">
                                     <!-- Einträge wiederholbar -->
@@ -89,9 +89,7 @@
                                 <listBibl type="images">
                                     <!-- Einträge wiederholbar - optional -->
                                 </listBibl>
-                                <note type="verification" subtype="">
-                                    <date when=""/>
-                                </note>
+                                 <!-- 12d (verification) goes here -->
                             </msItem>
                         </msContents>
                         <physDesc>
@@ -191,7 +189,7 @@
         <body>
             <div type="edition">
                 <!-- 41) Textedition: @corresp referenziert msPart - eingefügt aus jinn-codemirror. Required -->
-                <div type="textpart" subtype="fragment" n="a" corresp="" xmlns:fore="http://teipublisher.com/ns/fore" fore:type="repeatable"/>
+                <div xmlns:fore="http://teipublisher.com/ns/fore" type="textpart" subtype="fragment" n="a" corresp="" fore:type="repeatable"/>
             </div>
             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
             <div type="apparatus" corresp=""/>

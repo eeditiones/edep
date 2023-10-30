@@ -47,7 +47,14 @@
         select {
             width: 100%;
         }
-
+                
+        .fx-radio input {
+            width:auto !important;
+        }
+        
+        .fx-radio label {
+            display:inline !important;
+        }
     </style>
 </head>
 
@@ -180,7 +187,7 @@
                                     <lang code="lat">Latein</lang>
                                     <lang code="nxm">Numidisch</lang>
                                     <lang code="xxx">Palmyrisch</lang>
-                                    <lang code="xpu">Phoenicisch-Punisch</lang>
+                                    <lang code="xpu">Phönizisch-Punisch</lang>
                                 </languages>
                                 <language>en</language>
                                 <inited>false</inited>
@@ -689,32 +696,57 @@
                                         </fieldset>
                                     </fx-group>
 
-                                    <fx-group id="{@xml:id}-verification">
-                                        <h3>
-                                                    <pb-i18n key="form.verification">Verifizierung</pb-i18n>
-                                                </h3>
-                                        <!-- 12b-12e missing -->
-                                        <fx-control class="verification" ref="msContents/msItem/note[@type='verification']/@subtype">
-                                            <label>
-                                                        <pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n>
-                                                    </label>
-                                            <fx-items ref="instance('vars')/verification/option[@lang=instance('vars')/language]" class="widget">
-                                                <template>
-                                                    <span id="checkbox">
-                                                          <input type="checkbox" value="{@value}"/>
-                                                          <label slot="label">{.}</label>
-                                                    </span>
-                                                </template>
-                                            </fx-items>
-                                        </fx-control>
-
-                                        <fx-control ref="msContents/msItem/note[@type='verification']/date/@when">
-                                            <label>
-                                                        <pb-i18n key="form.date-of-verification">Datum der Verifizierung</pb-i18n>
-                                                    </label>
-                                            <input placeholder="YYYY-MM-DD" class="widget"/>
-                                        </fx-control>
-                                    </fx-group>
+                                    <fieldset id="{@xml:id}-verification">
+                                        <legend>
+                                            <h3>
+                                                <pb-i18n key="form.verification">Verifizierung</pb-i18n>
+                                            </h3>
+                                            <!-- 12b-12e missing -->
+                                            <fx-trigger class="add">
+                                            <pb-popover>
+                                                <iron-icon icon="add-circle-outline"/>
+                                                <template slot="alternate"><pb-i18n key="form.hint-add-verification"/></template>
+                                            </pb-popover>
+                                                <fx-insert context="msContents/msItem" ref="note"
+                                                    origin="instance('templates')/note[@type='verification']"/>
+                                            </fx-trigger>
+                                        </legend>
+                                        <fx-repeat class="nested-repeat" ref="msContents/msItem/note[@type='verification']"
+                                            id="r-verification">
+                                            <template>
+                                                <fx-group>
+                                                    <fx-control class="verification" ref="@subtype">
+                                                        <label>
+                                                            <pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n>
+                                                        </label>
+                                                        <fx-items
+                                                            ref="instance('vars')/verification/option[@lang=instance('vars')/language]"
+                                                            class="widget">
+                                                            <template>
+                                                                <span class="fx-radio">
+                                                                    <input type="radio" name="subtype" value="{@value}"/>
+                                                                    <label>{.}</label>
+                                                                </span>
+                                                            </template>
+                                                        </fx-items>
+                                                    </fx-control>
+                                                    <fx-control ref="date/@when">
+                                                        <label>
+                                                            <pb-i18n key="form.date-of-verification">Datum der Verifizierung</pb-i18n>
+                                                        </label>
+                                                        <input placeholder="YYYY-MM-DD" class="widget"/>
+                                                    </fx-control>
+                                                </fx-group>
+                                                <fx-trigger>
+                                                    <pb-popover>
+                                                        <iron-icon icon="add-circle-outline"/>
+                                                        <template slot="alternate"><pb-i18n key="form.hint-delete-verification"/></template>
+                                                    </pb-popover>
+                                                    <fx-delete ref="."/>
+                                                </fx-trigger>
+                                            </template>
+                                        </fx-repeat>
+                                    </fieldset>
 
                                     <fx-group id="{@xml:id}-objectdesc">
                                         <h3>
@@ -830,9 +862,7 @@
                                                 </h3>
                                         <!-- 24) -->
                                         <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='metric']" update-event="input">
-                                            <label>
-                                                        <pb-i18n key="form.metre">Metrik</pb-i18n>
-                                                    </label>
+                                            <label><pb-i18n key="form.metre">Metrik</pb-i18n></label>
                                             <select class="widget">
                                                 <option value="" data-i18n="form.unknown">unbekannt</option>
                                                 <option value="yes" data-i18n="decor.yes">Ja</option>
@@ -842,9 +872,21 @@
                                         </fx-control>
                                         <!-- 25) -->
                                         <fx-control ref="msContents/msItem/textLang/@mainLang">
+                                            <label><pb-i18n key="form.languageMain">Hauptsprache</pb-i18n></label>
+                                            <fx-items ref="instance('vars')/languages[@xml:lang=instance('vars')/language]/lang" class="widget">
+                                                <template>
+                                                <span>
+                                                    <input type="radio" name="mainLanguage" value="{@code}"/>
+                                                    <label>{.}</label>
+                                                </span>
+                                                </template>
+                                            </fx-items>
+                                        </fx-control>
+
+                                        <fx-control ref="msContents/msItem/textLang/@otherLangs">
                                             <label>
-                                                        <pb-i18n key="form.language">Sprache</pb-i18n>
-                                                    </label>
+                                                <pb-i18n key="form.languageOther">Andere Sprachen</pb-i18n>
+                                            </label>
                                             <fx-items ref="instance('vars')/languages[@xml:lang=instance('vars')/language]/lang" class="widget">
                                                 <template>
                                                 <span class="fx-checkbox">
@@ -853,7 +895,11 @@
                                                 </span>
                                                 </template>
                                             </fx-items>
-                                        </fx-control>
+                                          </fx-control>
+                                          
+                                          <fx-control ref="msContents/msItem/textLang">
+                                            <label><pb-i18n key="form.languageFree">Andere Sprachen oder Kommentare</pb-i18n></label>
+                                          </fx-control>
 
                                         <!-- 34) -->
                                         <div class="alternatives">
@@ -879,9 +925,7 @@
 
                                         <!-- 39) -->
                                         <fx-control ref="physDesc/handDesc/handNote/rs" update-event="input">
-                                            <label>
-                                                        <pb-i18n key="form.ligature">Ligatur</pb-i18n>
-                                                    </label>
+                                            <label><pb-i18n key="form.ligature">Ligatur</pb-i18n></label>
                                             <select class="widget">
                                                 <option value="" data-i18n="form.unknown">unbekannt</option>
                                                 <option value="yes" data-i18n="decor.yes">Ja</option>
