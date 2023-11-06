@@ -46,7 +46,7 @@
             <desc>Create metadata sections</desc>
             <model behaviour="block">
                 <param name="objectType" value="let $vocab := doc('/db/apps/edep-data/objtyp.xml') let $uris := tokenize(descendant::objectType/@ref, '\s+') for $uri in $uris return if ($uri) then  &lt;row type=&#34;metadata&#34;&gt; &lt;cell&gt;form.type-of-monument&lt;/cell&gt; &lt;cell&gt;&lt;term&gt;{$vocab//*[local-name() eq 'term'][@ref = $uri]/*}&lt;/term&gt;&lt;/cell&gt; &lt;/row&gt;  else ()"/>
-                <param name="material" value="let $vocab := doc('/db/apps/edep-data/material.xml') let $uris := tokenize(descendant::material/@ref, '\s+') for $uri in $uris return &lt;cell&gt;&lt;term&gt;{$vocab//*[local-name() eq 'term'][@ref = $uri]/node()}&lt;/term&gt;&lt;/cell&gt;"/>
+                <param name="material" value="let $vocab := doc('/db/apps/edep-data/material.xml') let $uris := tokenize(descendant::material/@ref, '\s+') for $uri in $uris return $vocab//*[local-name() eq 'term'][@ref = $uri]/*[@xml:lang=$parameters?language]"/>
                 <param name="description" value="let $desc := descendant::support/note/string() return if($desc) then &lt;row type=&#34;metadata&#34;&gt; &lt;cell&gt;form.description-of-monument&lt;/cell&gt; &lt;cell&gt;{$desc}&lt;/cell&gt; &lt;/row&gt; else ()"/>
                 <param name="dimensions" value="let $dimensions:= descendant::msPart[@type eq 'main']/descendant::supportDesc/descendant::dimensions/*/text() return if ($dimensions) then &lt;row type=&#34;metadata&#34;&gt; &lt;cell&gt;metadata.dimensions&lt;/cell&gt; &lt;cell&gt;{string-join($dimensions, ' × ')}&lt;/cell&gt; &lt;/row&gt; else ()"/>
                 <param name="condition" value="let $condition := descendant::msPart[@type eq 'main']/descendant::condition return 'preservation.' || $condition"/>
@@ -82,7 +82,7 @@
                       [[objectType]] 
                         <tr>
                             <th><pb-i18n key="form.material"/></th>
-                            [[material]]
+                            <td>[[material]]</td>
                         </tr>
                         [[description]] 
                         [[dimensions]] 
@@ -282,10 +282,6 @@
                 <param name="default" value="'.'"/>
                 <param name="alternate" value="if (./@cert='low')  then ('(',., '?)') else ('(',., ')')"/>
             </model>
-            <model behaviour="alternate" cssClass="choice-alternate">
-                <param name="default" value="if (./@cert='low')  then ('(',., '?)') else ('(',., ')')"/>
-                <param name="alternate" value="'.'"/>
-            </model>
         </modelSequence>
                 </elementSpec>
                 <elementSpec ident="msPart" mode="add">
@@ -429,7 +425,8 @@
             <model behaviour="block">
                 <param name="content" value="div[@type eq 'edition']"/>
             </model>
-            <model behaviour="paragraph">
+            <model predicate="root(.)/descendant::titleStmt/editor/node()" behaviour="paragraph">
+                <desc>Output editor</desc>
                 <param name="content" value="'Edition by ' ||  root(.)/descendant::titleStmt/editor"/>
                 <outputRendition xml:space="preserve">
                 font-weight:bold
@@ -538,11 +535,10 @@
                  
             <elementSpec ident="bibl" mode="change">
                     <model predicate="$parameters?view='metadata'" behaviour="pass-through">
-                        <param name="link" value="'https://api.zotero.org/groups/2519759/items/top?format=bib&amp;amp;tag=' || ptr/@target || '&amp;amp;style=digital-humanities-im-deutschsprachigen-raum&amp;amp;linkwrap=1'"/>
-                        <!--param name="bibl" value="let $url :=  'https://api.zotero.org/groups/2519759/items/top?format=bib&amp;amp;tag=' || ptr/@target || '&amp;amp;style=digital-humanities-im-deutschsprachigen-raum&amp;amp;linkwrap=1' let $request:= hc:send-request(&lt;hc:request method=&#34;GET&#34; href=&#34;{$url}&#34;&gt;&lt;/hc:request&gt;) let $div := $request/descendant::*[@class eq 'csl-entry'][1] return $div/node()"/-->
-                        <param name="citedRange" value="if (citedRange) then ' pp.' || citedRange else ()"/>
-                        <pb:template xmlns="" xml:space="preserve"><pb-load url="[[link]]" auto="" silent="" plain="" no-credentials=""></pb-load> <div>[[citedRange]]</div></pb:template>
-                    </model>
+            <param name="link" value="'https://api.zotero.org/groups/2519759/items/top?format=bib&amp;amp;tag=' || ptr/@target || '&amp;amp;style=digital-humanities-im-deutschsprachigen-raum&amp;amp;linkwrap=1'"/>
+            <param name="citedRange" value="if (citedRange) then ' pp.' || citedRange else ()"/>
+            <pb:template xmlns="" xml:space="preserve"><pb-load url="[[link]]" auto="" silent="" plain="" no-credentials=""/> <div>[[citedRange]]</div></pb:template>
+        </model>
                     <model predicate="parent::listBibl" behaviour="listItem"/>
                     <model behaviour="inline"/>
                 </elementSpec>
