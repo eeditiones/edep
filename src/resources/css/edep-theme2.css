@@ -724,7 +724,7 @@ jinn-epidoc-editor [slot] *, jinn-xml-editor [slot] *, jinn-epidoc-editor::part(
     border: 1px solid transparent;
     background-color: inherit;
 }
-jinn-xml-editor [slot] *:hover, jinn-epidoc-editor [slot] *:hover, jinn-epidoc-editor::part(button):hover {
+jinn-xml-editor [slot] > *:hover, jinn-epidoc-editor [slot] > *:hover, jinn-epidoc-editor::part(button):hover {
     border: 1px solid orange;
 }
 jinn-xml-editor [slot] .sep, jinn-epidoc-editor [slot] .sep {
