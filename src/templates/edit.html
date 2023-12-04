@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="resources/css/edep-theme.css" media="screen"/>
     <link rel="stylesheet" href="resources/css/edep-theme2.css" media="screen"/>
     <link rel="stylesheet" href="resources/css/geo-picker.css" media="screen"/>
-    <link rel="stylesheet" href="resources/css/zotero-picker.css" media="screen"/>
     <link rel="stylesheet" href="transform/edep.css" media="screen"/>
     <!-- Uncomment if jinn-codemirror is running on 8000 -->
     <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
@@ -76,7 +75,6 @@
                 <fx-fore show-confirmation="show-confirmation">
 
                     <fx-action event="ready">
-                        <fx-setfocus control="edeptitle"></fx-setfocus>
                         <fx-dispatch name="load-geo-form" targetid="geo-loader"></fx-dispatch>
                     </fx-action>
 
@@ -287,7 +285,7 @@
                         <h3>Navigation</h3>
                         <ul>
                             <li>
-                                <a href="#object">
+                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#object">
                                     <pb-i18n key="form.object">Objekt</pb-i18n>
                                 </a>
                             </li>
@@ -295,7 +293,7 @@
                             <li data-ref="teiHeader//msPart">
                                 <template>
                                     <div>
-                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}">
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}">
                                             <fx-switch ref="@type">
                                                 <fx-case name="main">
                                                     <pb-i18n key="form.part-main"/>
@@ -310,69 +308,66 @@
                                         </a>
                                         <ul>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-findspot">
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-findspot">
                                                             <pb-i18n key="form.findspot"/>
                                                         </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-finddate">
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-finddate">
                                                             <pb-i18n key="form.year-of-find"/>
                                                         </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-location">
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-location">
                                                             <pb-i18n key="form.last-recorded-location"/>
                                                         </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-verification">
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-verification">
                                                             <pb-i18n key="form.verification"/>
                                                         </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-objectdesc">
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-objectdesc">
                                                             <pb-i18n key="form.object-description"/>
                                                         </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-inscription-field">
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-inscription-field">
                                                             <pb-i18n key="form.inscription-field"/>
                                                         </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-text-description">
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-text-description">
                                                             <pb-i18n key="form.text-description"/>
                                                         </a>
                                             </li>
                                             <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-references">
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-references">
                                                             <pb-i18n key="form.references"/>
                                                         </a>
                                             </li>
                                             <li>
-                                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}#{@xml:id}-edition">
+                                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-edition">
                                                             <pb-i18n key="form.edition">Textedition</pb-i18n>
                                                         </a>
                                                     </li>
-                                            <li>
-                                                <a href="zotero://select/items/bbt:lat">Zotero</a>
-                                            </li>
                                         </ul>
                                     </div>
                                 </template>
                             </li>
                             <li>
-                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#commentary">
+                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#commentary">
                                     <pb-i18n key="form.commentary"/>
                                 </a>
                             </li>
                             <li>
-                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#chronology">
+                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#chronology">
                                     <pb-i18n key="form.dating"/>
                                 </a>
                             </li>
                             <li>
-                                <a href="edit/{instance('params')/collection}/{instance('params')/id}#historic-relevance">
+                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#historic-relevance">
                                     <pb-i18n key="form.historic-relevance"/>
                                 </a>
                             </li>
@@ -583,8 +578,8 @@
                                         <fieldset>
                                             <legend>
                                                 <label>
-                                                            <pb-i18n key="form.transmission">Überlieferung</pb-i18n>
-                                                        </label>
+                                                    <pb-i18n key="form.transmission">Überlieferung</pb-i18n>
+                                                </label>
                                                 <fx-trigger class="add" title="Überlieferung hinzufügen">
                                                     <iron-icon icon="add-circle-outline" title="Überlieferung hinzufügen"/>
 
@@ -598,7 +593,11 @@
                                                 <template>
                                                     <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"/>
                                                     <div>
-                                                        <fx-control ref="ptr/@target" url="zotero-picker.html" initial=".." class="fore-control" update-event="input">
+                                                        <fx-control ref="ptr/@target" update-event="change">
+                                                            <label>
+                                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
+                                                              </label>
+                                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
                                                         </fx-control>
                                                         <fx-control ref="citedRange">
                                                             <label>
@@ -661,7 +660,7 @@
                                         </fieldset>
                                     </fx-group>
 
-                                    <fieldset id="{@xml:id}-verification">
+                                    <fx-group id="{@xml:id}-verification">
                                         <legend>
                                             <h3>
                                                 <pb-i18n key="form.verification">Verifizierung</pb-i18n>
@@ -711,7 +710,7 @@
                                                 </fx-trigger>
                                             </template>
                                         </fx-repeat>
-                                    </fieldset>
+                                    </fx-group>
 
                                     <fx-group id="{@xml:id}-objectdesc">
                                         <h3>
@@ -920,7 +919,11 @@
                                             <fx-repeat class="nested-repeat" id="r-editions" ref="msContents/msItem/listBibl[@type='previousEditions']/bibl">
                                                 <template>
                                                     <div>
-                                                        <fx-control ref="ptr/@target" url="zotero-picker.html" initial=".." class="fore-control" update-event="input">
+                                                        <fx-control ref="ptr/@target" update-event="change">
+                                                            <label>
+                                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
+                                                              </label>
+                                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
                                                         </fx-control>
                                                         <fx-control ref="citedRange">
                                                             <label>
@@ -1005,7 +1008,11 @@
                                                     <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"/>
 
                                                     <div>
-                                                        <fx-control ref="ptr/@target" url="zotero-picker.html" initial=".." class="fore-control" update-event="input">
+                                                        <fx-control ref="ptr/@target" update-event="change">
+                                                            <label>
+                                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
+                                                              </label>
+                                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
                                                         </fx-control>
                                                         <fx-control ref="citedRange">
                                                             <label>
@@ -1087,7 +1094,11 @@
                                             <fx-repeat class="nested-repeat" id="r-images" ref="msContents/msItem/listBibl[@type='images']/bibl">
                                                 <template>
                                                     <div>
-                                                        <fx-control ref="ptr/@target" url="zotero-picker.html" initial=".." class="fore-control" update-event="input">
+                                                        <fx-control ref="ptr/@target" update-event="change">
+                                                            <label>
+                                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
+                                                              </label>
+                                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
                                                         </fx-control>
                                                         <fx-control ref="citedRange">
                                                             <label>
@@ -1235,19 +1246,16 @@
                                                         <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
                                                     </div>
                                                 </jinn-epidoc-editor>
-                                                <!--fx-action event="value-changed">
-                                                    <fx-send submission="s-render"></fx-send>
-                                                </fx-action-->
                                             </fx-control>
                                             <h4>
-                                                        <pb-i18n key="form.display">Display</pb-i18n>
-                                                    </h4>
+                                                <pb-i18n key="form.display">Display</pb-i18n>
+                                            </h4>
                                             <div id="transcription-display"/>
                                         </div>
                                         <div class="block">
                                             <h4>
-                                                        <pb-i18n key="form.apparatus">Apparatus</pb-i18n>
-                                                    </h4>
+                                                <pb-i18n key="form.apparatus">Apparatus</pb-i18n>
+                                            </h4>
                                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
                                             <fx-control class="apparatus editor" ref="div[@type='apparatus']" as="node" update-event="blur">
                                                 <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Should contain a &lt;listApp&gt; with nested &lt;app&gt;]">

@@ -59,6 +59,11 @@ function epidocEditor () {
         .pipe(dest("build/resources/scripts"))
 }
 
+function editorStyles() {
+    return src("node_modules/@jinntec/jinn-codemirror/css/*")
+        .pipe(dest("build/resources/css"))
+}
+
 // datalist-ajax
 function datalistAjax () {
     return src("node_modules/datalist-ajax/dist/datalist-ajax.min.js")
@@ -95,7 +100,7 @@ function fore() {
 }
 
 const copyModules = parallel(
-    epidocEditor, datalistAjax,
+    epidocEditor, editorStyles, datalistAjax,
     pbStyles, pbImages, pbComponents, 
     pbLib, fore
 )

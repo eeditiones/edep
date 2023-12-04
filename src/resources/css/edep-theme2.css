@@ -112,9 +112,6 @@ nav a:hover{
     color: var(--pb-color-inverse);
 }
 
-.csl-bib-body{
-    margin-left:17.8rem;
-}
 .visited[required].isEmpty .widget, .visited[invalid] .widget{
     background:red;
     color:white;
@@ -283,7 +280,6 @@ fx-trigger.add iron-icon{
     color:var(--pb-color-green);
 
 }
-
 
 /* Fore styling */
 body, .wrapper{
@@ -479,7 +475,7 @@ fx-control.editor {
     display:block;
 }
 
-fx-control .widget, fx-control .xml-editor {
+fx-control > .widget, fx-control > .xml-editor {
     grid-area:control;
     background: white;
     pointer-events: all;
@@ -924,3 +920,10 @@ legend{
 }
 */
 
+jinn-zotero-picker {
+    white-space: normal;
+}
+
+.nested-repeat jinn-zotero-picker input {
+    width: auto;
+}
