@@ -90,6 +90,9 @@
                                     <!-- Einträge wiederholbar - optional -->
                                 </listBibl>
                                  <!-- 12d (verification) goes here -->
+                                 <note type="verification" subtype="not-seen">
+                                    <date when=""/>
+                                </note>
                             </msItem>
                         </msContents>
                         <physDesc>
