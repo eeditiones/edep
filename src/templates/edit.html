@@ -1465,7 +1465,7 @@
                             <!-- dummy switch to insert or delete 'term' elements in main instance -->
                             <fx-control ref="instance('vars')/history-term" value-prop="checked" update-event="input">
                                 <label for="historyTerm">
-                                            <pb-i18n key="form.social-economic-legal history">Sozial-,Wirschafts-/Rechtsgeschichte</pb-i18n>
+                                            <pb-i18n key="form.social-economic-legal-history">Sozial-,Wirschafts-/Rechtsgeschichte</pb-i18n>
                                         </label>
                                 <input id="historyTerm" type="checkbox" class="widget"/>
                                 <fx-insert event="value-changed" if="context()/text()='true'" ref="instance('default')//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']/term" origin="instance('templates')/term[@ref='#social-economic-legal-history']"/>
