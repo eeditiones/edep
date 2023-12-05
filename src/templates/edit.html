@@ -166,7 +166,7 @@
                                 <language>en</language>
                                 <inited>false</inited>
                                 <verification>
-                                    <option lang="de" value="autopsy">Autopsy</option>
+                                    <option lang="de" value="autopsy">Autopsie</option>
                                     <option lang="de" value="squeeze">Abklatsch</option>
                                     <option lang="de" value="photo">Foto</option>
                                     <option lang="de" value="drawing">Zeichnung</option>
@@ -688,6 +688,7 @@
                                                             class="widget">
                                                             <template>
                                                                 <span class="fx-radio">
+                                                                    <!-- Erzeugt Probleme bei mehreren Items: "name" ist gleich -->
                                                                     <input type="radio" name="subtype" value="{@value}"/>
                                                                     <label>{.}</label>
                                                                 </span>
@@ -703,7 +704,7 @@
                                                 </fx-group>
                                                 <fx-trigger>
                                                     <pb-popover>
-                                                        <iron-icon icon="add-circle-outline"/>
+                                                        <iron-icon icon="remove-circle-outline"/>
                                                         <template slot="alternate"><pb-i18n key="form.hint-delete-verification"/></template>
                                                     </pb-popover>
                                                     <fx-delete ref="."/>
@@ -748,7 +749,7 @@
                                                 <label>
                                                     <pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n>
                                                 </label>
-                                                <fx-items ref="instance('typeins')/term" class="widget">
+                                                <fx-items ref="sortNames(instance('typeins')/term)" class="widget">
                                                     <template>
                                                         <span class="fx-checkbox">
                                                             <input type="checkbox" value="{@ref}"/>
