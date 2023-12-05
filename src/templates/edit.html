@@ -397,7 +397,7 @@
                                 <label>
                                     <pb-i18n key="form.type-of-monument">Inschriftträger</pb-i18n>
                                 </label>
-                                <select ref="instance('objtyp')/term" class="widget" selection="open">
+                                <select ref="sortNames(instance('objtyp')/term)" class="widget" selection="open">
                                     <template>
                                         <option value="{@ref}">{name[@xml:lang = instance('vars')/language]}</option>
                                     </template>
