@@ -47,13 +47,13 @@
                     <main>
                         <pb-custom-form id="options" auto-submit="paper-input,paper-icon-button" emit="transcription">
                             <div>
-                                <paper-input id="query" name="search" label="Suche" data-template="templates:form-control">
+                                <paper-input id="query" name="search" label="Suche" data-i18n="[label]search.search" data-template="templates:form-control">
                                     <paper-icon-button icon="search" slot="suffix"></paper-icon-button>
                                 </paper-input>
                                 <a href="person.html">
                                     <paper-button title="Neuer Fundort">
                                         <iron-icon icon="icons:add"></iron-icon>
-                                        Neu
+                                        <pb-i18n key="form.new"></pb-i18n>
                                     </paper-button>
                                 </a>
                             </div>
