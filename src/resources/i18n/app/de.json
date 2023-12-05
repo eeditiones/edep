@@ -140,5 +140,14 @@
     	"additional": "Zusätzliche Metadaten",
     	"modern-place": "Moderne Ort und moderne Region",
     	"ancient-place": "Antiker Ort und antike Provinz"
+    },
+    "person": {
+        "occupation": "Beruf",
+        "status": "Sozialer Status",
+        "sex": "Geschlecht",
+        "deity": "Gottheit",
+        "female": "weiblich",
+        "male": "männlich",
+        "work": "Werk"
     }
 }

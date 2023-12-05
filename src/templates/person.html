@@ -175,7 +175,7 @@
                                 <fieldset>
                                     <legend>Person</legend>
                                     <fx-control ref="persName/name[@type='god']">
-                                        <label>Gott</label>
+                                        <label data-i18n="person.deity">Gott</label>
                                     </fx-control>
                                     <fx-control ref="persName/name[@type='praenomen']">
                                         <label>Praenomen</label>
@@ -202,15 +202,15 @@
                                         <label>Origo</label>
                                     </fx-control>
                                     <fx-control ref="@sex">
-                                        <label>Geschlecht</label>
+                                        <label data-i18n="person.sex"></label>
                                         <select class="widget">
                                             <option></option>
-                                            <option value="M" selected="selected">Männlich</option>
-                                            <option value="F">Weiblich</option>
+                                            <option value="M" selected="selected" data-i18n="person.male">Männlich</option>
+                                            <option value="F" data-i18n="person.female">Weiblich</option>
                                         </select>
                                     </fx-control>
                                     <fx-control ref="state[@type='status']">
-                                        <label>Sozialer Status</label>
+                                        <label data-i18n="person.status">Sozialer Status</label>
                                         <select class="widget" ref="instance('status')/item" selection="open">
                                             <template>
                                                 <option value="{@key}">{@key}</option>
@@ -218,12 +218,12 @@
                                         </select>
                                     </fx-control>
                                     <fx-control ref="occupation">
-                                        <label>Beruf</label>
+                                        <label data-i18n="person.occupation">Beruf</label>
                                     </fx-control>
 
                                     <fieldset>
                                         <legend>
-                                            <label>Referenzen</label>
+                                            <label data-i18n="form.references">Referenzen</label>
                                             <fx-trigger class="add" title="Referenz hinzufügen">
                                                 <iron-icon icon="add-circle-outline" title="Referenz hinzufügen"></iron-icon>
 
@@ -237,7 +237,7 @@
                                             <template>
                                                 <div class="inline-form">
                                                     <fx-control ref="@type">
-                                                        <label>Type: </label>
+                                                        <label><pb-i18n key="person.work">Work</pb-i18n></label>
                                                         <select class="widget" selection="open">
                                                             <option value="pir">PIR</option>
                                                             <option value="plre">PLRE</option>
@@ -255,7 +255,7 @@
                                     <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
                                     <div class="actions">
                                         <fx-trigger id="save" class="saveBtn">
-                                            <button type="submit">Speichern</button>
+                                            <button type="submit"><pb-i18n key="form.save">Save</pb-i18n></button>
                                             <fx-send submission="s-create" if="not(exists(instance('params')/id))"></fx-send>
                                             <fx-send submission="s-save" if="exists(instance('params')/id)"></fx-send>
                                         </fx-trigger>
