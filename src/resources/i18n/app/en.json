@@ -102,10 +102,11 @@
         "hint-apparatus": "You may use the toolbar to provide the text with markup, e. g. for references to a title listed in the previous editions, click on <ref>, and enter the ZoteroTag as value of @target.",
         "hint-translation": "You may use the toolbar to provide the text with markup, e. g. to tag mentioned people again via <persName>.",
         "hint-commentary": "You may use the toolbar to provide the text with markup, e. g. for references to mentioned people as well as to works cited in the previous editions or in the bibliography (see above ‘transcription’ and ‘apparatus’). ",
-        "hint-date": "For vague as well as for defined time periods. For e.g. 244-247 AD type: after 243, before 248, for 3rd-2nd century BC type: after -301, before -100.",
+        "hint-dating": "Fixed points in time or time periods: for e.g. 244-247 AD type: after 243, before 248, for 3rd-2nd century BC type: after -301, before -100.",
         "hint-recorded-location": "Non-editing, usually early transmissions like drawings, sheets, notebooks, codices etc.",
         "hint-geodata-findspot": "Town or city district, building, street name, hallway (and similar) of Site (modern)",
-        "hint-geodata-findspot-modern": "Independent municipality."
+        "hint-geodata-findspot-modern": "Independent municipality.",
+        "verse": "Verse"
     },
     "status": {
         "intern": "internal",
@@ -149,5 +150,8 @@
         "female": "Female",
         "male": "Male",
         "work": "Work"
+    },
+    "place": {
+        "geolocation": "Geolocation"
     }
 }

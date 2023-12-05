@@ -714,6 +714,7 @@ jinn-xml-editor [slot], jinn-epidoc-editor [slot] {
     column-gap: 4px;
     align-items: center;
     overflow-x: auto;
+    flex-wrap: wrap;
     /*width: 100%;*/
 }
 jinn-epidoc-editor [slot] *, jinn-xml-editor [slot] *, jinn-epidoc-editor::part(button) {

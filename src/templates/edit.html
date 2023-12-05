@@ -1334,7 +1334,7 @@
                                                         <button data-command="snippet" data-params="&lt;gap reason=&#34;lost&#34; extent=&#34;unknown&#34; unit=&#34;character&#34;/&gt;$|1|" title="Gap, extent unknown"><iron-icon icon="editor:space-bar"></iron-icon>?</button>
                                                         <button data-command="snippet" data-params="&lt;gap reason=&#34;lost&#34; quantity=&#34;$|1|&#34; unit=&#34;$|2:line|&#34;/&gt;$|3|" title="Gap, extent known"><iron-icon icon="editor:space-bar"></iron-icon></button>
                                                         <button data-command="snippet" data-params='&lt;hi rend="ligature">$|_|&lt;/hi>' title="Ligature">Lig</button>
-                                                        <button data-command="snippet" data-params='&lt;l met="$|1|" real="$|2|">$|_|&lt;/l>' title="Metric">Metric</button>
+                                                        <button data-command="snippet" data-params='&lt;l met="$|1|" real="$|2|">$|_|&lt;/l>' title="Metric"><pb-i18n key="form.verse">Verse</pb-i18n></button>
                                                         <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
                                                     </div>
                                                 </jinn-epidoc-editor>
@@ -1479,8 +1479,14 @@
                         <!-- 26) -->
                         <fx-group ref="//msDesc" class="group-6" id="chronology">
                             <h3>
-                                        <pb-i18n key="hint.date">Datierung</pb-i18n>
-                                    </h3>
+                                <pb-i18n key="hint.date">Datierung</pb-i18n>
+                                <pb-popover>
+                                    <iron-icon icon="info-outline"/>
+                                    <template slot="alternate">
+                                        <pb-i18n key="form.hint-dating"/>
+                                    </template>
+                                </pb-popover>
+                            </h3>
 
 
                             <!-- 26), 27)-->
@@ -1505,12 +1511,6 @@
                                                 <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
                                             </fx-alert>
                                 </fx-control>
-                                <pb-popover>
-                                    <iron-icon icon="info-outline"/>
-                                    <template slot="alternate">
-                                                <pb-i18n key="form.hint-date"/>
-                                            </template>
-                                </pb-popover>
                             </div>
                             <div class="with-hint">
                                 <fx-control ref="history/origin/origDate/@notAfter-custom">
@@ -1523,12 +1523,6 @@
                                                 <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
                                             </fx-alert>
                                 </fx-control>
-                                <pb-popover>
-                                    <iron-icon icon="info-outline"/>
-                                    <template slot="alternate">
-                                                <pb-i18n key="form.hint-date"/>
-                                            </template>
-                                </pb-popover>
                             </div>
                             <fx-control ref="history/origin/origDate" as="node" update-event="blur">
                                 <label>
