@@ -275,6 +275,11 @@
                             order by $term/name[@xml:lang = instance('vars')/language]
                             return $term
                         </fx-function>
+                        <fx-function signature="sortLang($langs as element()*) as element()*" type="text/xquery">
+                            for $term in $langs
+                            order by $term
+                            return $term
+                        </fx-function>
                     </fx-model>
                     <fx-action event="pb-i18n-update" target="#document">
                         <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'), instance('vars')/language/string())"/>
@@ -835,7 +840,7 @@
                                         <!-- 25) -->
                                         <fx-control ref="msContents/msItem/textLang/@mainLang">
                                             <label><pb-i18n key="form.languageMain">Hauptsprache</pb-i18n></label>
-                                            <fx-items ref="instance('vars')/languages[@xml:lang=instance('vars')/language]/lang" class="widget">
+                                            <fx-items ref="sortLang(instance('vars')/languages[@xml:lang=instance('vars')/language]/lang)" class="widget">
                                                 <template>
                                                 <span>
                                                     <input type="radio" name="mainLanguage" value="{@code}"/>
@@ -849,7 +854,7 @@
                                             <label>
                                                 <pb-i18n key="form.languageOther">Andere Sprachen</pb-i18n>
                                             </label>
-                                            <fx-items ref="instance('vars')/languages[@xml:lang=instance('vars')/language]/lang" class="widget">
+                                            <fx-items ref="sortLang(instance('vars')/languages[@xml:lang=instance('vars')/language]/lang)" class="widget">
                                                 <template>
                                                 <span class="fx-checkbox">
                                                     <input type="checkbox" value="{@code}"/>
