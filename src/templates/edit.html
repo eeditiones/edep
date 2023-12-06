@@ -570,11 +570,17 @@
                                         <div class="with-hint">
                                             <fx-control ref="msIdentifier/repository">
                                                 <label>
-                                                            <pb-i18n key="form.last-recorded-location">Aufbewahrung</pb-i18n>
-                                                        </label>
+                                                    <pb-i18n key="form.last-recorded-location">Aufbewahrung</pb-i18n>
+                                                </label>
                                             </fx-control>
                                         </div>
 
+                                        <fx-control ref="msIdentifier/repository/@key">
+                                            <label>
+                                                <pb-i18n key="form.gnd">GND ID</pb-i18n>
+                                            </label>
+                                        </fx-control>
+                                        
                                         <!-- 12b) -->
                                         <div class="with-hint">
                                             <fx-control ref=".//provenance[@type='history']" as="node" update-event="blur">
@@ -980,8 +986,8 @@
                                         <fieldset>
                                             <legend>
                                                 <label>
-                                                            <pb-i18n key="form.previous-editions">Ältere Editionen</pb-i18n>
-                                                        </label>
+                                                    <pb-i18n key="form.previous-editions">Ältere Editionen</pb-i18n>
+                                                </label>
                                                 <fx-trigger class="add" title="Ältere Edition hinzufügen">
                                                     <iron-icon icon="add-circle-outline"/>
 

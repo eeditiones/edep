@@ -10,7 +10,7 @@
     <facsimile corresp="#F5771067f-65fb-47af-9a84-8e9d7dd393a8"/>
     <msIdentifier>
         <!-- 12a) Aufbewahrung -->
-        <repository></repository>
+        <repository key=""></repository>
         <!-- 4) TM-Nummer -->
         <idno type="TM"></idno>
     </msIdentifier>

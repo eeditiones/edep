@@ -60,7 +60,7 @@
                         <!--  ### end of runtime instance inlining -->
                         <msIdentifier>
                             <!-- 12a) Aufbewahrung -->
-                            <repository/>
+                            <repository key=""/>
                             <!-- 4) TM-Nummer - manuelle Eingabe -->
                             <idno type="TM"/>
                         </msIdentifier>
