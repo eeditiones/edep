@@ -72,8 +72,8 @@
         <name xml:lang="en">letters getting bigger</name>
     </item>
     <item ref="#letters-potruding">
-        <name xml:lang="de">Buchstaben nach oben herausragend</name>
-        <name xml:lang="en">letters protruding upwards</name>
+        <name xml:lang="de">Longa Buchstaben</name>
+        <name xml:lang="en">longa letters</name>
     </item>
     <item ref="#letters-erased">
         <name xml:lang="de">Buchstaben eradiert</name>
