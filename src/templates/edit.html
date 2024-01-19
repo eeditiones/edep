@@ -280,6 +280,15 @@
                             order by $term
                             return $term
                         </fx-function>
+                        <fx-function signature="computeBiblId($bibls as element()*) as xs:string" type="text/xquery">
+                            max((
+                                0,
+                                for $bibl in $bibls/@xml:id
+                                where starts-with($bibl, 'bibl-')
+                                return
+                                    xs:int(substring-after($bibl, 'bibl-'))
+                            )) + 1
+                        </fx-function>
                     </fx-model>
                     <fx-action event="pb-i18n-update" target="#document">
                         <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'), instance('vars')/language/string())"/>
@@ -627,9 +636,8 @@
                                                 <fx-trigger class="add" title="Überlieferung hinzufügen">
                                                     <iron-icon icon="add-circle-outline" title="Überlieferung hinzufügen"/>
 
-                                                    <fx-insert context="msContents/msItem/listBibl[@type='transmission']" ref="bibl" origin="instance('templates')//bibl">
-
-                                                    </fx-insert>
+                                                    <fx-insert context="msContents/msItem/listBibl[@type='transmission']" ref="bibl" origin="instance('templates')//bibl"></fx-insert>
+                                                    <fx-setvalue ref="(msContents/msItem/listBibl[@type='transmission']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
                                                     <fx-refresh control="r-transmission"/>
                                                 </fx-trigger>
                                             </legend>
@@ -648,56 +656,47 @@
                                                                 <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
                                                             </label>
                                                         </fx-control>
-                                                        <fieldset>
-                                                            <legend>
+                                                        <div class="with-hint">
+                                                            <fx-control ref="@xml:id">
                                                                 <label>
-                                                                    <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
+                                                                    <pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n>
                                                                 </label>
-                                                            </legend>
-                                                            <div class="with-hint">
-                                                                <fx-control ref="@xml:id">
-                                                                    <label>
-                                                                        <pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n>
-                                                                    </label>
-                                                                </fx-control>
-                                                                <pb-popover>
-                                                                    <iron-icon icon="info-outline"/>
-                                                                    <template slot="alternate">
-                                                                        <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                    </template>
-                                                                </pb-popover>
-                                                            </div>
+                                                            </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"/>
+                                                                <template slot="alternate">
+                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                </template>
+                                                            </pb-popover>
+                                                        </div>
 
-                                                            <div class="with-hint">
-                                                                <fx-control ref="note" as="node" update-event="blur">
-                                                                    <label>
-                                                                        <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
-                                                                    </label>
-                                                                    <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]" schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
-                                                                        <div slot="toolbar">
-                                                                            <pb-popover>
-                                                                                <iron-icon icon="info-outline"/>
-                                                                                <template slot="alternate">
-                                                                                    <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                                                                </template>
-                                                                            </pb-popover>
-                                                                            <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                            <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                                            <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;</button>
-                                                                            <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
-                                                                            <button data-command="snippet" data-params="&lt;placeName key=&#34;$|1|&#34;&gt;$|_|&lt;/placeName&gt;" title="placeName">&lt;placeName&gt;</button>
-                                                                        </div>
-                                                                    </jinn-xml-editor>
-                                                                </fx-control>
-                                                                <pb-popover>
-                                                                    <iron-icon icon="info-outline"/>
-                                                                    <template slot="alternate">
-                                                                        <pb-i18n key="form.hint-reference2"/>
-                                                                    </template>
-                                                                </pb-popover>
-                                                            </div>
-                                                        </fieldset>
+                                                        <div class="with-hint">
+                                                            <fx-control ref="note" as="node" update-event="blur">
+                                                                <label>
+                                                                    <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
+                                                                </label>
+                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]" schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
+                                                                    <div slot="toolbar">
+                                                                        <pb-popover>
+                                                                            <iron-icon icon="info-outline"/>
+                                                                            <template slot="alternate">
+                                                                                <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
+                                                                            </template>
+                                                                        </pb-popover>
+                                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
+                                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
+                                                                    </div>
+                                                                </jinn-xml-editor>
+                                                            </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"/>
+                                                                <template slot="alternate">
+                                                                    <pb-i18n key="form.hint-reference2"/>
+                                                                </template>
+                                                            </pb-popover>
+                                                        </div>
                                                     </div>
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="Überlieferung löschen"/>
@@ -739,7 +738,7 @@
                                                             <template>
                                                                 <span class="fx-radio">
                                                                     <!-- Erzeugt Probleme bei mehreren Items: "name" ist gleich -->
-                                                                    <input type="radio" name="subtype" value="{@value}"/>
+                                                                    <input type="radio" name="subtype-{index('r-verification')}" value="{@value}"/>
                                                                     <label>{.}</label>
                                                                 </span>
                                                             </template>
@@ -992,6 +991,7 @@
                                                     <iron-icon icon="add-circle-outline"/>
 
                                                     <fx-insert context="msContents/msItem/listBibl[@type='previousEditions']" ref="bibl" origin="instance('templates')//bibl"/>
+                                                    <fx-setvalue ref="(msContents/msItem/listBibl[@type='previousEditions']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
                                                     <fx-refresh control="r-editions"/>
                                                 </fx-trigger>
                                             </legend>
@@ -1009,59 +1009,48 @@
                                                                 <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
                                                             </label>
                                                         </fx-control>
-                                                        <fieldset>
-                                                            <legend>
+                                                        <div class="with-hint">
+                                                            <fx-control ref="@xml:id">
                                                                 <label>
-                                                                    <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
+                                                                    <pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n>
                                                                 </label>
-                                                            </legend>
-
-                                                            <div class="with-hint">
-                                                                <fx-control ref="@xml:id">
-                                                                    <label>
-                                                                        <pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n>
-                                                                    </label>
-                                                                </fx-control>
-                                                                <pb-popover>
-                                                                    <iron-icon icon="info-outline"/>
-                                                                    <template slot="alternate">
-                                                                        <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                    </template>
-                                                                </pb-popover>
-                                                            </div>
-                                                            <div class="with-hint">
-                                                                <fx-control ref="note" as="node" update-event="blur">
-                                                                    <label>
-                                                                        <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
-                                                                    </label>
-                                                                    <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]" schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
-                                                                        <div slot="toolbar">
-                                                                            <pb-popover>
-                                                                                <iron-icon icon="info-outline"/>
-                                                                                <template slot="alternate">
-                                                                                    <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                                                                </template>
-                                                                            </pb-popover>
-                                                                            <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
-                                                                            </button>
-                                                                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                            <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
-                                                                            </button>
-                                                                            <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;
-                                                                            </button>
-                                                                            <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
-                                                                            <button data-command="snippet" data-params="&lt;placeName key=&#34;$|1|&#34;&gt;$|_|&lt;/placeName&gt;" title="placeName">&lt;placeName&gt;</button>
-                                                                        </div>
-                                                                    </jinn-xml-editor>
-                                                                </fx-control>
-                                                                <pb-popover>
-                                                                    <iron-icon icon="info-outline"/>
-                                                                    <template slot="alternate">
-                                                                        <pb-i18n key="form.hint-reference2"/>
-                                                                    </template>
-                                                                </pb-popover>
-                                                            </div>
-                                                        </fieldset>
+                                                            </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"/>
+                                                                <template slot="alternate">
+                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                </template>
+                                                            </pb-popover>
+                                                        </div>
+                                                        <div class="with-hint">
+                                                            <fx-control ref="note" as="node" update-event="blur">
+                                                                <label>
+                                                                    <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
+                                                                </label>
+                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]" schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
+                                                                    <div slot="toolbar">
+                                                                        <pb-popover>
+                                                                            <iron-icon icon="info-outline"/>
+                                                                            <template slot="alternate">
+                                                                                <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
+                                                                            </template>
+                                                                        </pb-popover>
+                                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
+                                                                        </button>
+                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
+                                                                        </button>
+                                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
+                                                                    </div>
+                                                                </jinn-xml-editor>
+                                                            </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"/>
+                                                                <template slot="alternate">
+                                                                    <pb-i18n key="form.hint-reference2"/>
+                                                                </template>
+                                                            </pb-popover>
+                                                        </div>
                                                     </div>
 
                                                     <fx-trigger>
@@ -1078,14 +1067,14 @@
                                         <fieldset>
                                             <legend>
                                                 <label>
-                                                            <pb-i18n key="form.bibliography">Bibliographie</pb-i18n>
-                                                        </label>
+                                                    <pb-i18n key="form.bibliography">Bibliographie</pb-i18n>
+                                                </label>
                                                 <fx-trigger class="add" title="Bibliographie hinzufügen">
                                                     <iron-icon icon="add-circle-outline"/>
 
                                                     <fx-insert context="msContents/msItem/listBibl[@type='bibliography']" ref="bibl" origin="instance('templates')//bibl"/>
+                                                    <fx-setvalue ref="(msContents/msItem/listBibl[@type='bibliography']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
                                                     <fx-refresh control="r-biblio"/>
-
                                                 </fx-trigger>
                                             </legend>
                                             <fx-repeat class="nested-repeat" id="r-biblio" ref="msContents/msItem/listBibl[@type='bibliography']/bibl">
@@ -1101,61 +1090,49 @@
                                                         </fx-control>
                                                         <fx-control ref="citedRange">
                                                             <label>
-                                                                        <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
-                                                                    </label>
+                                                                <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
+                                                            </label>
                                                         </fx-control>
-                                                        <fieldset>
-                                                            <legend>
+                                                        <div class="with-hint">
+                                                            <fx-control ref="@xml:id">
                                                                 <label>
-                                                                            <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
-                                                                        </label>
-                                                            </legend>
-                                                            <div class="with-hint">
-                                                                <fx-control ref="@xml:id">
-                                                                    <label>
-                                                                                <pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n>
-                                                                            </label>
-                                                                </fx-control>
-                                                                <pb-popover>
-                                                                    <iron-icon icon="info-outline"/>
-                                                                    <template slot="alternate">
-                                                                        <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                    </template>
-                                                                </pb-popover>
-                                                            </div>
-                                                            <div class="with-hint">
-                                                                <fx-control ref="note" as="node" update-event="blur">
-                                                                    <label>
-                                                                                <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
-                                                                            </label>
-                                                                    <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" schema-root="note" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Inline text/markup or sequence of paragraphs]">
-                                                                        <div slot="toolbar">
-                                                                            <pb-popover>
-                                                                                <iron-icon icon="info-outline"/>
-                                                                                <template slot="alternate">
-                                                                                    <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                                                                </template>
-                                                                            </pb-popover>
-                                                                            <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
-                                                                            </button>
-                                                                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                            <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
-                                                                            </button>
-                                                                            <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;
-                                                                            </button>
-                                                                            <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
-                                                                            <button data-command="snippet" data-params="&lt;placeName key=&#34;$|1|&#34;&gt;$|_|&lt;/placeName&gt;" title="placeName">&lt;placeName&gt;</button>
-                                                                        </div>
-                                                                    </jinn-xml-editor>
-                                                                </fx-control>
-                                                                <pb-popover>
-                                                                    <iron-icon icon="info-outline"/>
-                                                                    <template slot="alternate">
-                                                                                <pb-i18n key="form.hint-reference2"/>
+                                                                    <pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n>
+                                                                </label>
+                                                            </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"/>
+                                                                <template slot="alternate">
+                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                </template>
+                                                            </pb-popover>
+                                                        </div>
+                                                        <div class="with-hint">
+                                                            <fx-control ref="note" as="node" update-event="blur">
+                                                                <label>
+                                                                    <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
+                                                                </label>
+                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" schema-root="note" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Inline text/markup or sequence of paragraphs]">
+                                                                    <div slot="toolbar">
+                                                                        <pb-popover>
+                                                                            <iron-icon icon="info-outline"/>
+                                                                            <template slot="alternate">
+                                                                                <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
                                                                             </template>
-                                                                </pb-popover>
-                                                            </div>
-                                                        </fieldset>
+                                                                        </pb-popover>
+                                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
+                                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
+                                                                    </div>
+                                                                </jinn-xml-editor>
+                                                            </fx-control>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"/>
+                                                                <template slot="alternate">
+                                                                            <pb-i18n key="form.hint-reference2"/>
+                                                                        </template>
+                                                            </pb-popover>
+                                                        </div>
                                                     </div>
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="Bibliographie löschen"/>
