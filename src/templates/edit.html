@@ -645,6 +645,16 @@
                                                 <template>
                                                     <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"/>
                                                     <div>
+                                                        <div class="output">
+                                                            <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
+                                                            <fx-output ref="@xml:id"></fx-output>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"/>
+                                                                <template slot="alternate">
+                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                </template>
+                                                            </pb-popover>
+                                                        </div>
                                                         <fx-control ref="ptr/@target" update-event="change">
                                                             <label>
                                                                 <pb-i18n key="form.reference">Referenz</pb-i18n>
@@ -656,19 +666,6 @@
                                                                 <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
                                                             </label>
                                                         </fx-control>
-                                                        <div class="with-hint">
-                                                            <fx-control ref="@xml:id">
-                                                                <label>
-                                                                    <pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n>
-                                                                </label>
-                                                            </fx-control>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"/>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                        </div>
 
                                                         <div class="with-hint">
                                                             <fx-control ref="note" as="node" update-event="blur">
@@ -998,6 +995,16 @@
                                             <fx-repeat class="nested-repeat" id="r-editions" ref="msContents/msItem/listBibl[@type='previousEditions']/bibl">
                                                 <template>
                                                     <div>
+                                                        <div class="output">
+                                                            <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
+                                                            <fx-output ref="@xml:id"></fx-output>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"/>
+                                                                <template slot="alternate">
+                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                </template>
+                                                            </pb-popover>
+                                                        </div>
                                                         <fx-control ref="ptr/@target" update-event="change">
                                                             <label>
                                                                 <pb-i18n key="form.reference">Referenz</pb-i18n>
@@ -1009,19 +1016,6 @@
                                                                 <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
                                                             </label>
                                                         </fx-control>
-                                                        <div class="with-hint">
-                                                            <fx-control ref="@xml:id">
-                                                                <label>
-                                                                    <pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n>
-                                                                </label>
-                                                            </fx-control>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"/>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                        </div>
                                                         <div class="with-hint">
                                                             <fx-control ref="note" as="node" update-event="blur">
                                                                 <label>
@@ -1082,6 +1076,16 @@
                                                     <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"/>
 
                                                     <div>
+                                                        <div class="output">
+                                                            <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
+                                                            <fx-output ref="@xml:id"></fx-output>
+                                                            <pb-popover>
+                                                                <iron-icon icon="info-outline"/>
+                                                                <template slot="alternate">
+                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                                </template>
+                                                            </pb-popover>
+                                                        </div>
                                                         <fx-control ref="ptr/@target" update-event="change">
                                                             <label>
                                                                 <pb-i18n key="form.reference">Referenz</pb-i18n>
@@ -1093,19 +1097,6 @@
                                                                 <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
                                                             </label>
                                                         </fx-control>
-                                                        <div class="with-hint">
-                                                            <fx-control ref="@xml:id">
-                                                                <label>
-                                                                    <pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n>
-                                                                </label>
-                                                            </fx-control>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"/>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                        </div>
                                                         <div class="with-hint">
                                                             <fx-control ref="note" as="node" update-event="blur">
                                                                 <label>

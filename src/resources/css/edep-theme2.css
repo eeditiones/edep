@@ -425,7 +425,7 @@ fieldset control{
     text-align:right;
 }
 
-fx-control, fx-output, .nested-repeat fieldset legend {
+fx-control, fx-output, .output, .nested-repeat fieldset legend {
     display: grid;
     grid-template-columns: 16rem 1rem 1fr;
     row-gap: 0.2rem;
@@ -436,6 +436,15 @@ fx-control, fx-output, .nested-repeat fieldset legend {
     grid-column-gap: 0.5rem;
     width: calc(100% - 1rem);
 }
+
+.output label {
+    text-align: right;
+}
+
+.output fx-output {
+    grid-area: control;
+}
+
 .material fx-control fx-items{
     grid-area:unset;
 }
@@ -464,9 +473,11 @@ fx-items.material-list{
 fx-control{
     /*pointer-events: none;*/
 }
-fx-control label{
+
+fx-control label, .output label {
     grid-area:label;
 }
+
 fx-control [icon="info-outline"]{
     grid-area:icon;
     cursor:pointer;
@@ -808,6 +819,27 @@ legend{
     grid-area:hint;
     align-self: start;
 }
+.output {
+    display: grid;
+    grid-template-columns: 16rem 1rem 1fr 1rem;
+    grid-template-areas:
+        "label icon control hint";
+    margin: 0.5rem 0;
+    grid-column-gap: 0.5rem;
+    width: calc(100% - 1rem);
+}
+
+.output label {
+    grid-area: label;
+}
+.output fx-output {
+    grid-area: control;
+    margin: 0;
+}
+.output pb-popover {
+    grid-area: hint;
+}
+
 /* lds-roller */
 .lds-roller {
     display: block;
