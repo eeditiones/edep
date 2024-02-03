@@ -729,17 +729,11 @@
                                                         <label>
                                                             <pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n>
                                                         </label>
-                                                        <fx-items
-                                                            ref="instance('vars')/verification/option[@lang=instance('vars')/language]"
-                                                            class="widget">
+                                                        <select class="widget" ref="instance('vars')/verification/option[@lang=instance('vars')/language]">
                                                             <template>
-                                                                <span class="fx-radio">
-                                                                    <!-- Erzeugt Probleme bei mehreren Items: "name" ist gleich -->
-                                                                    <input type="radio" name="subtype-{index('r-verification')}" value="{@value}"/>
-                                                                    <label>{.}</label>
-                                                                </span>
+                                                                <option value="{@value}">{.}</option>
                                                             </template>
-                                                        </fx-items>
+                                                        </select>
                                                     </fx-control>
                                                     <fx-control ref="date/@when">
                                                         <label>
