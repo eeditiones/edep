@@ -176,12 +176,7 @@ fx-case.selected-case{
     position:relative;
     padding:1rem;
 }
-#places iron-icon{
-    width:3rem;
-    height:3rem;
-    background: #00b0ff;
-    border-radius: 50%;
-}
+
 #places .toggle-view{
     position:absolute;
     right:1rem;
@@ -821,23 +816,27 @@ legend{
 }
 .output {
     display: grid;
-    grid-template-columns: 16rem 1rem 1fr 1rem;
+    grid-template-columns: 16rem 2rem auto 1rem;
     grid-template-areas:
         "label icon control hint";
     margin: 0.5rem 0;
     grid-column-gap: 0.5rem;
     width: calc(100% - 1rem);
+    align-items: center;
 }
 
 .output label {
     grid-area: label;
 }
-.output fx-output {
+.output div {
     grid-area: control;
     margin: 0;
 }
+.output div > fx-output, .output div > fx-trigger {
+    display: inline;
+}
 .output pb-popover {
-    grid-area: hint;
+    grid-area: icon;
 }
 
 /* lds-roller */
@@ -960,4 +959,9 @@ jinn-zotero-picker {
 
 .nested-repeat jinn-zotero-picker input {
     width: auto;
+}
+
+.hint {
+    font-size: var(--pb-footnote-font-size);
+    margin-top: 0;
 }
