@@ -1,101 +1,101 @@
 <data>
-    <item ref="#actuaria">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/actuaria">
         <name xml:lang="de">Actuaria</name>
         <name xml:lang="en">actuaria</name>
     </item>
-    <item ref="#quadrata">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/quadrata">
         <name xml:lang="de">Quadrata</name>
         <name xml:lang="en">quadrata </name>
     </item>
-    <item ref="#italics">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/italics">
         <name xml:lang="de">Kursivschrift</name>
         <name xml:lang="en">cursive</name>
     </item>
-    <item ref="#letters-prolonged">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/letters-prolonged">
         <name xml:lang="de">längliche Buchstaben</name>
         <name xml:lang="en">elongated letters</name>
     </item>
-    <item ref="#libraria">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/libraria">
         <name xml:lang="de">Libraria</name>
         <name xml:lang="en">libraria</name>
     </item>
-    <item ref="#uniziale">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/uniziale">
         <name xml:lang="de">Unziale</name>
         <name xml:lang="en">uncial</name>
     </item>
-    <item ref="#deep-engraved">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/deep-engraved">
         <name xml:lang="de">tief eingemeißelt</name>
         <name xml:lang="en">deeply carved</name>
     </item>
-    <item ref="#filled">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/filled">
         <name xml:lang="de">ausgemalt</name>
         <name xml:lang="en">coloured/painted</name>
     </item>
-    <item ref="#narrow">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/narrow">
         <name xml:lang="de">eng geschrieben</name>
         <name xml:lang="en">tightly written</name>
     </item>
-    <item ref="#negligent-engraved">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/negligent-engraved">
         <name xml:lang="de">nachlässig gemeißelt</name>
         <name xml:lang="en">carelessly carved</name>
     </item>
-    <item ref="#carefully-engraved">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/carefully-engraved">
         <name xml:lang="de">sorgfältig gemeißelt</name>
         <name xml:lang="en">carefully carved</name>
     </item>
-    <item ref="#evenly-distributed">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/evenly-distributed">
         <name xml:lang="de">gleichmäßig angeordnet</name>
         <name xml:lang="en">evenly arranged</name>
     </item>
-    <item ref="#scratched">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/scratched">
         <name xml:lang="de">geritzt</name>
         <name xml:lang="en">scratched (graffiti)</name>
     </item>
-    <item ref="#painted">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/painted">
         <name xml:lang="de">aufgemalt</name>
         <name xml:lang="en">painted</name>
     </item>
-    <item ref="#mosaic">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/mosaic">
         <name xml:lang="de">Mosaikinschrift</name>
         <name xml:lang="en">mosaic inscription</name>
     </item>
-    <item ref="#litterae-aureae">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/litterae-aureae">
         <name xml:lang="de">litterae aureae</name>
         <name xml:lang="en">litterae aureae</name>
     </item>
-    <item ref="#letters-decreasing">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/letters-decreasing">
         <name xml:lang="de">Buchstaben kleiner werdend</name>
         <name xml:lang="en">letters getting smaller</name>
     </item>
-    <item ref="#letters-increasing">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/letters-increasing">
         <name xml:lang="de">Buchstaben größer werdend</name>
         <name xml:lang="en">letters getting bigger</name>
     </item>
-    <item ref="#letters-potruding">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/letters-potruding">
         <name xml:lang="de">Longa Buchstaben</name>
         <name xml:lang="en">longa letters</name>
     </item>
-    <item ref="#letters-erased">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/letters-erased">
         <name xml:lang="de">Buchstaben eradiert</name>
         <name xml:lang="en">letters erased</name>
     </item>
-    <item ref="#letters-rubbed">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/letters-rubbed">
         <name xml:lang="de">Buchstaben abgerieben</name>
         <name xml:lang="en">letters rubbed off</name>
     </item>
-    <item ref="#letters-erodet">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/letters-erodet">
         <name xml:lang="de">Buchstaben verwittert</name>
         <name xml:lang="en">letters weathered</name>
     </item>
-    <item ref="#letters-missing">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/letters-missing">
         <name xml:lang="de">Buchstaben verschwunden</name>
         <name xml:lang="en">letters disappeared</name>
     </item>
-    <item ref="#dowel-hole">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/dowel-hole">
         <name xml:lang="de">Dübellöcher erhalten</name>
         <name xml:lang="en">dowel holes preserved</name>
     </item>
-    <item ref="#overwritten">
+    <item ref="https://edep.adw.uni-heidelberg.de/paleography/overwritten">
         <name xml:lang="de">Stein mehrfach beschrieben</name>
         <name xml:lang="en">described several times</name>
     </item>

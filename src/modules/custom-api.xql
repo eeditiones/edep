@@ -382,7 +382,7 @@ declare function api:inscription-template($request as map(*)) {
             doc($config:inscription-templ)
     let $input :=
         if (util:document-name($doc) = "epidoc-template.xml") then
-            api:preprocessing-uuid($doc, util:uuid())
+            api:preprocessing-uuid($doc, "part" || util:uuid())
         else
             $doc
     let $return := api:preprocessing-copy($input)
