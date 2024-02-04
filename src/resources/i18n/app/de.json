@@ -113,7 +113,8 @@
         "hint-geodata-findspot-modern": "Eigenständige Gemeinde.",
         "hint-previous-editions": "Es wird empfohlen, die älteren Editionen in chronologischer Reihenfolge nach deren Entstehungsjahr einzutragen (von der Ältesten beginnend).",
         "hint-references": "Die verschiedenen bibliographischen Einträge sind durch Verweise auf eine Zotero-Library zu erstellen. Eine Verknüpfung zu Ihrer Library kann hier eingerichtet werden.",
-        "verse": "Vers"
+        "verse": "Vers",
+        "visibility": "Sichtbarkeit"
     },
     "status": {
         "intern": "intern",

@@ -634,6 +634,7 @@ declare %private function api:complete-input($nodes as node()*) as node()* {
                 let $templateBibl := (doc('/db/apps/edep/templates/fore/templates.xml')//tei:bibl)[1]
                 return 
                     <bibl xmlns="http://www.tei-c.org/ns/1.0" xml:id="{$node/@xml:id}">
+                    { ($node/@type, $templateBibl/@type)[1] }
                      {($node/node(),  $templateBibl/*[not(local-name() = $node/node()/local-name())])}
                     </bibl>
             case element(tei:msPart) return

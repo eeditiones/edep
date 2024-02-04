@@ -112,7 +112,8 @@
         "hint-geodata-findspot-modern": "Independent municipality.",
         "hint-previous-editions": "It is recommended to enter the previous editions in chronological order of appearance (beginning from the oldest).",
         "hint-references": "All the bibliographic titles have to be entered by referring to a Zotero-Library. You may set up the link to your library here.",
-        "verse": "Verse"
+        "verse": "Verse",
+        "visibility": "Display"
     },
     "status": {
         "intern": "internal",

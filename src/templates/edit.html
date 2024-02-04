@@ -1119,27 +1119,32 @@
                                                                 <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
                                                             </label>
                                                         </fx-control>
-                                                        <div>
-                                                            <fx-control ref="note" as="node" update-event="blur">
-                                                                <label>
-                                                                    <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
-                                                                </label>
-                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" schema-root="note" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Inline text/markup or sequence of paragraphs]">
-                                                                    <div slot="toolbar">
-                                                                        <pb-popover>
-                                                                            <iron-icon icon="info-outline"/>
-                                                                            <template slot="alternate">
-                                                                                <pb-i18n key="form.hint-biblio-note">Hint</pb-i18n>
-                                                                            </template>
-                                                                        </pb-popover>
-                                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
-                                                            </fx-control>
-                                                        </div>
+                                                        <fx-control ref="note" as="node" update-event="blur">
+                                                            <label>
+                                                                <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
+                                                            </label>
+                                                            <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" schema-root="note" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Inline text/markup or sequence of paragraphs]">
+                                                                <div slot="toolbar">
+                                                                    <pb-popover>
+                                                                        <iron-icon icon="info-outline"/>
+                                                                        <template slot="alternate">
+                                                                            <pb-i18n key="form.hint-biblio-note">Hint</pb-i18n>
+                                                                        </template>
+                                                                    </pb-popover>
+                                                                    <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                                                                    <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                                    <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
+                                                                    <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
+                                                                </div>
+                                                            </jinn-xml-editor>
+                                                        </fx-control>
+                                                        <fx-control ref="@type" update-event="input">
+                                                            <label><pb-i18n key="form.visibility"></pb-i18n></label>
+                                                            <select class="widget" static="static">
+                                                                <option value="public" data-i18n="status.public">public</option>
+                                                                <option value="internal" data-i18n="status.intern">internal</option>
+                                                            </select>
+                                                        </fx-control>
                                                     </div>
                                                     <fx-trigger>
                                                         <iron-icon icon="remove-circle-outline" title="Bibliographie löschen"/>

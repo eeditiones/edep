@@ -24,7 +24,7 @@
     <!-- 32) Militär: ja = vorhanden -->
     <term ref="#military"/>
 
-    <bibl xml:id="">
+    <bibl xml:id="" type="public">
         <ptr target=""/>
         <note></note>
         <citedRange></citedRange>
