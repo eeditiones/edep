@@ -92,6 +92,7 @@
                                  <!-- 12d (verification) goes here -->
                                  <note type="verification" subtype="not-seen">
                                     <date when=""/>
+                                    <persName/>
                                 </note>
                             </msItem>
                         </msContents>

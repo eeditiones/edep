@@ -746,6 +746,11 @@
                                                         </label>
                                                         <input placeholder="YYYY-MM-DD" class="widget"/>
                                                     </fx-control>
+                                                    <fx-control ref="persName">
+                                                        <label>
+                                                            <pb-i18n key="form.verification-by">Verifizierer</pb-i18n>
+                                                        </label>
+                                                    </fx-control>
                                                 </fx-group>
                                                 <fx-trigger>
                                                     <pb-popover>
@@ -1258,10 +1263,11 @@
                                                 </h3>
                                         <div class="block" id="{@xml:id}-transcript">
                                             <h4>
-                                                        <pb-i18n key="form.transcription">Transkription</pb-i18n>
-                                                    </h4>
+                                                <pb-i18n key="form.transcription">Transkription</pb-i18n>
+                                            </h4>
                                             <fx-control class="transcription editor" ref="div[@type='textpart']" as="node" update-event="blur">
                                                 <jinn-epidoc-editor id="transcriptionEditor" unwrap="unwrap" class="widget" show-leiden="" schema="resources/scripts/tei.json" schema-root="div" mode="leiden_plus">
+                                                    <h5 slot="leiden-header">Leiden+ Editor</h5>
                                                     <div slot="leiden-toolbar">
                                                         <pb-popover>
                                                             <iron-icon icon="info-outline"/>
@@ -1285,6 +1291,7 @@
                                                         <button data-command="gap" data-mode="edcs">[...]</button>
                                                         <button data-command="convert" data-mode="edcs">Convert to Leiden+</button>
                                                     </div>
+                                                    <h5 slot="xml-header">EpiDoc XML Editor</h5>
                                                     <div slot="xml-toolbar">
                                                         <pb-popover>
                                                             <iron-icon icon="info-outline"/>

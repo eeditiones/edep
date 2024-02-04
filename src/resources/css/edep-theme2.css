@@ -728,12 +728,29 @@ jinn-epidoc-editor [slot] *, jinn-xml-editor [slot] *, jinn-epidoc-editor::part(
     border: 1px solid transparent;
     background-color: inherit;
 }
+
+jinn-epidoc-editor [slot] .label {
+    display: block;
+    width: 10em;
+    font-weight: bold;
+}
+
 jinn-xml-editor [slot] > *:hover, jinn-epidoc-editor [slot] > *:hover, jinn-epidoc-editor::part(button):hover {
     border: 1px solid orange;
 }
+
+jinn-epidoc-editor [slot] > .label:hover {
+    border: none;
+}
+
 jinn-xml-editor [slot] .sep, jinn-epidoc-editor [slot] .sep {
     border-right: 1px solid #e0e0e0;
 }
+
+jinn-epidoc-editor::part(status), jinn-xml-editor::part(status) {
+    color: red;
+}
+
 input:focus, select:focus, textarea:focus{
     background: lightyellow;
 }
