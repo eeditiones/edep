@@ -374,7 +374,10 @@ declare function api:inscription-template($request as map(*)) {
     let $collection := $config:data-root || "/" || $request?parameters?collection
     let $doc :=
         if ($id and $id != '') then
-            let $input := collection($collection)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI
+            let $input := (
+                collection($collection)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI,
+                collection($collection)//tei:idno[. = $id]/ancestor::tei:TEI
+            )[1]
             let $merged := api:file-upload(doc($config:inscription-templ), root($input))
             return
                 $merged
@@ -669,7 +672,7 @@ declare %private function api:process-additional-template($template as element()
     };
 
 (:function to add @corresp attribute values when elements are copied from the template :)
-declare %private function api:add-corresp($nodeTemplate as element(), $input as node()) as element()+ {
+declare %private function api:add-corresp($nodeTemplate as element(), $input as node()) as element()* {
  if ($nodeTemplate[@corresp])
  then
      for $id in $input/root()/descendant::tei:msPart/@xml:id
