@@ -33,7 +33,7 @@ fx-fore#geopicker{
     display: grid;
     grid-template-areas: "control clear add";
     grid-template-columns: 1fr 2rem 2rem;
-    margin-left:0.25rem;
+    margin-left:-1.5rem;
     justify-content: left;
     align-items: center;
     grid-gap:0.5rem;
