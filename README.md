@@ -8,7 +8,7 @@ EDEp implements an editor and toolbox for epigraphic data adhering to the EpiDoc
 * the TEI Processing Model for output transformations: rather than using hand-written transformations we describe them in a declarative way in TEI itself
 * a component for looking up bibliographic references in Zotero
 
-The current state of most components should be considered an **early beta**, i.e. they are fully usable, but still under development.
+The current state of the application itself should be considered an **early beta**, i.e. fully usable, but still under development. The forms framework ([fore](https://jinntec.github.io/Fore/doc/index.html)) as well as the [web components](https://github.com/JinnElements/jinn-codemirror) for editing Leiden and XML are **production ready** and have already been tested extensively in other applications.
 
 ## Installation
 
@@ -71,3 +71,35 @@ To extend the form to include an additional element or attribute, one would proc
 1. edit [epidoc-template.xml](src/templates/fore/epidoc-template.xml) and add the missing element or attribute. If it should be part of an `msPart` (i.e. target the inscription), make sure to also modify [mspart-tmpl.xml](src/templates/fore/mspart-tmpl.xml) in the same way. If the element or attribute belongs to a repeatable section, check [templates.xml](src/templates/fore/templates.xml).
 2. add a form control to [edit.html](src/templates/edit.html) and bind it to the element/attribute.
 
+Many fields in the form may contain inline TEI/XML. We have thus developed an XML editor component (based on the excellent codemirror library), which can be plugged into the form to replace any plain-text input field:
+
+```html
+<fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="blur">
+    <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
+        <div slot="toolbar">
+            <pb-popover>
+                <iron-icon icon="info-outline"/>
+                <template slot="alternate">
+                    <pb-i18n key="form.hint-commentary">Hint</pb-i18n>
+                </template>
+            </pb-popover>
+            <button data-command="selectElement" title="Select element around current cursor position">
+                &lt;|&gt;
+            </button>
+            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;
+            </button>
+            <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
+            </button>
+            <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;
+            </button>
+            <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
+            <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
+            <button data-command="snippet" data-params="&lt;citedRange&gt;$|1|&lt;/citedRange&gt;" title="citedRange">&lt;citedRange&gt;</button>
+        </div>
+    </jinn-xml-editor>
+</fx-control>
+```
+
+Important here is that the value returned by `jinn-xml-editor` will be an XML node rather than plain text. This has to be indicated via the `as="node"` attribute on `fx-control`. We also don't want to slow down editing by updating the EpiDoc with every key press, so the `update-event` is set to `blur`, which means updates will take place only after the user left the editing area.
+
+The editor features context-sensitive suggestions for elements and attributes while typing. The schema used for suggestions is configured via `schema="resources/scripts/tei.json"` and has been auto-generated from the latest TEI P5 guidelines. One can limit the root element to start editing at via the `schema-root` attribute. In the example above, the root element being edited is a `div`.
