@@ -101,25 +101,13 @@
                     <app-header slot="header" reveals="reveals" fixed="fixed" effects="waterfall">
                         <app-toolbar data-template="lib:include" data-template-path="templates/menu.html"/>
                         <app-toolbar data-template="lib:include" data-template-path="templates/toolbar.html">
-                            <pb-toggle-feature name="norm" selector=".choice,.choice-alternate,.lb,.lb-hyphen" emit="transcription" subscribe="transcription" default="off" data-target="toolbar-end">
+                            <!--pb-toggle-feature name="norm" selector=".choice,.choice-alternate,.lb,.lb-hyphen" emit="transcription" subscribe="transcription" default="off" data-target="toolbar-end">
                             <pb-i18n key="document.normalized">Normalized View</pb-i18n>
-                        </pb-toggle-feature>
+                            </pb-toggle-feature-->
                         </app-toolbar>
                     </app-header>
                     <main class="content-body">
-                        <pb-view id="metadata-view1" src="document1" xpath="//teiHeader" view="single" subscribe="transcription" use-language="use-language">
-                            <pb-param name="view" value="metadata"/>
-                         </pb-view> 
-                        <div class="edition-pannel">
-                            <pb-leaflet-map id="map" zoom="6" toggle="">
-                                    <pb-map-layer show="" base="" label="OpenTopo Map" url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png" max-zoom="19" attribution="© Mapbox © OpenStreetMap"/>
-                            </pb-leaflet-map>      
-                            <pb-view id="view1" src="document1" column-separator=".tei-cb" append-footnotes="append-footnotes" subscribe="transcription" emit="transcription" use-language="use-language" wait-for="#metadata-view1"/>
-                            <pb-view id="facs" src="document1" xpath="//facsimile" subscribe="transcription" view="single" not-found="">
-                                <pb-param name="view" value="facsimile"/>
-                            </pb-view>
-                            <pb-facsimile subscribe="transcription" id="facsimile" base-uri="https://heidicon.ub.uni-heidelberg.de/iiif/2/" show-navigation-control="show-navigation-control" show-rotation-control="show-rotation-control" show-full-page-control="show-full-page-control" show-sequence-control="show-sequence-control" default-zoom-level="1" wait-for="#facs"/>
-                        </div>
+                        <pb-view src="document1" view="single" subscribe="transcription" use-language="use-language"></pb-view>
                     </main>
                 </app-header-layout>
             </app-drawer-layout>

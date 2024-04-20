@@ -343,7 +343,7 @@ declare variable $config:default-odd :="edep.odd";
  : make sure to run modules/generate-pm-config.xql to update the main configuration
  : module for transformations (modules/pm-config.xql).
  :)
-declare variable $config:odd-available :=("edep.odd", "teipublisher_odds.odd", "teipublisher.odd", "tei_simplePrint.odd", "edep-clean.odd", "edep-edition.odd");
+declare variable $config:odd-available :=("edep.odd", "teipublisher_odds.odd", "teipublisher.odd", "tei_simplePrint.odd", "edep-clean.odd", "edep-output.odd");
 
 (:~
  : List of ODD files which are used internally only, i.e. not for displaying information

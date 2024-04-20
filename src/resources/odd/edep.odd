@@ -53,7 +53,7 @@
                     <modelSequence output="web" predicate="$parameters?header='short'">
             <model predicate="title/node()" behaviour="link">
                 <param name="content" value="title[1]"/>
-                <param name="uri" value="$parameters?doc || '?odd=edep-edition'"/>
+                <param name="uri" value="$parameters?doc || '?odd=edep-output'"/>
             </model>
             <model behaviour="block">
                 <param name="content" value="subsequence(title, 2)"/>

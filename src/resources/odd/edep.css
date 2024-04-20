@@ -1,7 +1,16 @@
-h1, h2, h3, h4, h5, h6 {
+h1 {
     font-family: var(--pb-heading-font-family);
+    font-size: 1.5em;
 }
 
+h2 {
+    font-size: var(--pb-content-font-size);
+    font-weight: normal;
+}
+
+h2::after {
+    content: ":";
+}
 
 .metadata th {
     text-align:right;
@@ -73,3 +82,27 @@ a:link, a:visited, a:hover {
 	.lb-hyphen.toggle {
         display: none;
     }
+
+.csep > :not(:last-child)::after {
+    content: ", ";
+}
+
+.csep > :empty::after {
+    content: "";
+}
+
+.csep:lang(en) *::first-letter {
+    text-transform: lowercase;
+}
+
+.csep::first-letter {
+    text-transform: uppercase;
+}
+
+pb-tabs {
+    margin-bottom: 1rem;
+}
+
+.norm {
+    text-transform: uppercase;
+}
