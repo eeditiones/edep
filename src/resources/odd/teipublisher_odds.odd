@@ -85,6 +85,13 @@
               <elementRef key="outputRendition" minOccurs="0" maxOccurs="unbounded"/>
             </sequence>
           </content>
+          <attList>
+            <attDef usage="opt" ident="mode" ns="http://teipublisher.com/1.0">
+              <datatype>
+                <dataRef key="publisher.ident"/>
+              </datatype>
+            </attDef>
+          </attList>
         </elementSpec>
         <elementSpec ident="behaviour" ns="http://teipublisher.com/1.0" mode="add">
           <desc>Define a processing model behaviour based on a template expression. It combines one or more <gi>pb:param</gi> parameter definitions with a single <gi>pb:template</gi>.</desc>
