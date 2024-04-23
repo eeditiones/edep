@@ -32,10 +32,6 @@ RUN curl -L -o apache-ant-${ANT_VERSION}-bin.tar.gz https://downloads.apache.org
 
 ENV PATH ${PATH}:${ANT_HOME}/bin
 
-# RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - \
-#     && apt-get install -y nodejs \
-#     && curl -L https://www.npmjs.com/install.sh | sh
-
 FROM builder as tei
 
 ARG TEMPLATING_VERSION=1.1.0
@@ -71,7 +67,7 @@ RUN curl -L -o /tmp/templating-${TEMPLATING_VERSION}.xar http://exist-db.org/exi
 
 FROM duncdrum/existdb:6.2.0-debug-j8
 
-COPY --from=tei /tmp/edep/build/*.xar /exist/autodeploy/
+COPY --from=tei /tmp/edep/dist/*.xar /exist/autodeploy/
 COPY --from=tei /tmp/*.xar /exist/autodeploy/
 
 WORKDIR /exist
