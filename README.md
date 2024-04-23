@@ -19,9 +19,9 @@ You may either
 1. install the application into an existing eXist instance or
 2. use the docker image
 
-Using option 1, the application requires at least Java version 8 and eXist version 6.2.0. Details of the installation process are described in the [TEI Publisher documentation](https://tei-publisher.com/exist/apps/tei-publisher/documentation/exist-installation). You may skip the last step: *Installing TEI Publisher*, which is not needed for EDEp, but open the dashboard as described. Next, download the EDEp application and data package. Install those one after the other: either click on the *Upload* button and select the downloaded `edep-*.xar` or drag and drop it onto the button.
+Using option 1, the application requires at least Java version 8 and eXist version 6.2.0. Details of the installation process are described in the [TEI Publisher documentation](https://tei-publisher.com/exist/apps/tei-publisher/documentation/exist-installation). You may skip the last step: *Installing TEI Publisher*, which is not needed for EDEp, but open the dashboard as described. Next, download the EDEp application and data package from the [GitHub release page](https://github.com/eeditiones/edep/releases). Install those one after the other: either click on the *Upload* button and select the downloaded `edep-*.xar` or drag and drop it onto the button.
 
-Option 2 is recommended for new users and easier if you would like a working environment without having to install Java and eXist. You need docker installed though. Windows and Mac users may download the [docker desktop](https://www.docker.com/products/docker-desktop) application. After install, open a shell and run the following pull command:
+Option 2 is **recommended** for new users and easier if you would like a working environment without having to install Java and eXist. You need docker installed though. Windows and Mac users may download the [docker desktop](https://www.docker.com/products/docker-desktop) application. After install, open a shell and run the following pull command:
 
 ```sh
 docker pull ghcr.io/eeditiones/edep:latest
