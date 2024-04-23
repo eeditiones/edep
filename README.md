@@ -1,4 +1,6 @@
-# EDEp – Editing Tools for Digital Epigraphy
+![EDEp Icon](src/icon.png)
+
+# Editing Tools for Digital Epigraphy
 
 EDEp implements an editor and toolbox for epigraphic data adhering to the EpiDoc guidelines. Rather than developing yet another project-specific solution, our aim was to create a versatile toolbox, designed for customizability and extensibility. This repository contains the main application package. You may install and use it as is. However, it was designed to be modified, extended and adopted using the different parts of the toolbox. Those are in particular:
 
@@ -19,11 +21,25 @@ You may either
 
 Using option 1, the application requires at least Java version 8 and eXist version 6.2.0. Details of the installation process are described in the [TEI Publisher documentation](https://tei-publisher.com/exist/apps/tei-publisher/documentation/exist-installation). You may skip the last step: *Installing TEI Publisher*, which is not needed for EDEp, but open the dashboard as described. Next, download the EDEp application and data package. Install those one after the other: either click on the *Upload* button and select the downloaded `edep-*.xar` or drag and drop it onto the button.
 
-Option 2 is recommended for new users and easier if you would like a working environment without having to install Java and eXist. You need docker installed though. Windows and Mac users may download the [docker desktop](https://www.docker.com/products/docker-desktop) application.
+Option 2 is recommended for new users and easier if you would like a working environment without having to install Java and eXist. You need docker installed though. Windows and Mac users may download the [docker desktop](https://www.docker.com/products/docker-desktop) application. After install, open a shell and run the following pull command:
+
+```sh
+docker pull ghcr.io/eeditiones/edep:latest
+```
+
+Afterwards, either start a container from the image using the run command:
+
+```sh
+docker run -p 8080:8080 --name edep ghcr.io/eeditiones/edep:latest
+```
+
+Alternatively use docker desktop to launch a container, but remember to specify a port mapping for the 8080 port.
+
+If everything went fine, the eXist database should be available on port 8080 and you can access its dashboard using the URL `http://localhost:8080/exist` in your browser.
 
 ## First Use
 
-Once installed, click on the *EDEp* application icon in the dashboard. The application should welcome you with the start page, showing two collections: *Demo* and *Workspace*.
+Once eXist is up and running, click on the *EDEp* application icon in the dashboard. The application should welcome you with the start page, showing two collections: *Demo* and *Workspace*.
 
 ![start page](doc/edep-start.png)
 
@@ -35,7 +51,7 @@ Log in by clicking the *login* button in the top right corner of the page. The d
 
 ## Customization
 
-**Important note**: just like TEI, EpiDoc is **not** a standard in the sense that there's only one way to encode things. It does not strictly regulate every little detail, but rather tries to provide a common base. Many aspects depend on the concrete research object and will necessarily differ. Therefore you cannot expect that the editor will consume every possible variation of EpiDoc out of the box. It should handle the common denominator, i.e. common parts like titles, transcriptions, translations or commentaries, but may fail to correctly interpret other details of your encoding, which require further customization.
+**Important note**: just like TEI, EpiDoc is **not** a standard in the sense that there's only one way to encode things. It does not strictly standardize every little detail, but rather tries to provide a common base. Many aspects depend on the concrete research object and will necessarily differ. Therefore you cannot expect that the editor will consume every possible variation of EpiDoc out of the box. It should handle the common denominator, i.e. common parts like titles, transcriptions, translations or commentaries, but may fail to correctly interpret other details of your encoding, which require further customization.
 
 The editor is based on the forms framework [fore](https://jinntec.github.io/Fore/doc/index.html), which implements declarative user interfaces in plain HTML. The main editing form resides in [edit.html](src/templates/edit.html). This is an HTML5 file using so called *web components* for the form and some of the dynamic functionality. Web components are part of the W3C HTML5 standard and interpreted directly by the browser. They do not require any server-side processing.
 
@@ -103,3 +119,13 @@ Many fields in the form may contain inline TEI/XML. We have thus developed an XM
 Important here is that the value returned by `jinn-xml-editor` will be an XML node rather than plain text. This has to be indicated via the `as="node"` attribute on `fx-control`. We also don't want to slow down editing by updating the EpiDoc with every key press, so the `update-event` is set to `blur`, which means updates will take place only after the user left the editing area.
 
 The editor features context-sensitive suggestions for elements and attributes while typing. The schema used for suggestions is configured via `schema="resources/scripts/tei.json"` and has been auto-generated from the latest TEI P5 guidelines. One can limit the root element to start editing at via the `schema-root` attribute. In the example above, the root element being edited is a `div`.
+
+### Treatment of empty elements/attributes
+
+As explained above, the form works directly on the EpiDoc TEI XML. However, note that missing elements or attributes will be regarded as irrelevant by the form and the corresponding controls will be hidden. This is by design and conceptually an important feature! It is thus required that you **provide an empty placeholder** in the XML templates for every element or attribute to be edited in the form. For example, the template for the `<provenance>` element specifies empty attributes for `when` and `when-custom` even though those are mutually exclusive:
+
+```xml
+<provenance type="found" when="" when-custom="" notBefore="" notAfter="">
+```
+
+Also, because TEI does not allow empty attributes or elements in most places, a cleanup procedure is run on the resulting EpiDoc TEI before storing the edited document. In the reverse direction, i.e. when importing EpiDoc into the editor, empty elements/attributes will be re-inserted where necessary as given in the XML templates. This works automatically and should not need any customization, but if you encounter issues in this area, please report.
