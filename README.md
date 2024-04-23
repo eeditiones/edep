@@ -129,3 +129,9 @@ As explained above, the form works directly on the EpiDoc TEI XML. However, note
 ```
 
 Also, because TEI does not allow empty attributes or elements in most places, a cleanup procedure is run on the resulting EpiDoc TEI before storing the edited document. In the reverse direction, i.e. when importing EpiDoc into the editor, empty elements/attributes will be re-inserted where necessary as given in the XML templates. This works automatically and should not need any customization, but if you encounter issues in this area, please report.
+
+## Building and Development
+
+To build the application package you need Java > 8, nodejs with npm, and the Java build tool, [ant](https://ant.apache.org/), to be available on your system. With everything in place, just running `ant` inside the application directory should automatically install required dependencies and provide a `.xar` package in directory `dist`, which can be uploaded to eXist via the dashboard.
+
+A better alternative for development is to use Visual Studio Code with a [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers). This provides a docker environment with all necessary tools already installed. The application is prepared for this and opening the directory in Visual Studio Code should automatically provide you the option to reopen the project in a container. This is also the way in which we developed the application.
