@@ -4,13 +4,13 @@
 
 EDEp implements an editor and toolbox for epigraphic data adhering to the EpiDoc guidelines. Rather than developing yet another project-specific solution, our aim was to create a versatile toolbox, designed for customizability and extensibility. This repository contains the main application package. You may install and use it as is. However, it was designed to be modified, extended and adopted using the different parts of the toolbox. Those are in particular:
 
-* a declarative forms framework in modern HTML, which operates on the actual TEI XML: no data mapping required
+* based on a [declarative forms framework](https://jinntec.github.io/Fore/doc/index.html) in modern HTML, which operates on the actual TEI XML: no data mapping required
 * web components for transcribing inscriptions using Leiden markup
 * components allowing controlled XML editing for specific micro-environments within the larger form
-* the TEI Processing Model for output transformations: rather than using hand-written transformations we describe them in a declarative way in TEI itself
+* ODDS based on the TEI Processing Model for output transformations: rather than using hand-written transformations we describe them in a declarative way in TEI itself
 * a component for looking up bibliographic references in Zotero
 
-The current state of the application itself should be considered an **early beta**, i.e. fully usable, but still under development. The forms framework ([fore](https://jinntec.github.io/Fore/doc/index.html)) as well as the [web components](https://github.com/JinnElements/jinn-codemirror) for editing Leiden and XML are **production ready** and have already been tested extensively in other applications.
+The current state of the application itself should be considered an **early beta**, i.e. fully usable, but still under development.
 
 ## Installation
 
