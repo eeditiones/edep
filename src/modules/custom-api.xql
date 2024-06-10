@@ -376,9 +376,15 @@ declare function api:inscription-template($request as map(*)) {
         if ($id and $id != '') then
             let $input := (
                 collection($collection)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI,
-                collection($collection)//tei:idno[. = $id]/ancestor::tei:TEI
+                collection($collection)//tei:idno[. = $id]/ancestor::tei:TEI,
+                doc($collection || "/" || $id || ".xml")/tei:TEI
             )[1]
-            let $merged := api:file-upload(doc($config:inscription-templ), root($input))
+            let $withParts :=
+                if ($input//tei:msPart[@type="main"]) then
+                    $input
+                else
+                    document { api:to-ms-part($input) }
+            let $merged := api:file-upload(doc($config:inscription-templ), root($withParts))
             return
                 $merged
         else
@@ -471,7 +477,7 @@ declare function api:clean-namespace($nodes as node()*) {
                 $node
 };
 
-declare %private function  api:preprocessing-uuid($nodes as node()*, $uuid as xs:string){
+declare %private function api:preprocessing-uuid($nodes as node()*, $uuid as xs:string){
     for $node in $nodes
     return
         typeswitch($node)
@@ -536,24 +542,6 @@ declare %private function  api:preprocessing-copy($nodes as node()*){
         default return api:preprocessing-copy($node/node())
 };
 
-
-
-declare %private function api:merge($input as element()?, $template as element()) {
-    if ($input) then
-        element { node-name($input) } {
-            $input/@*,
-            for $child in $template/*
-            let $inputChild := $input/*[node-name(.)=node-name($child)]
-            return
-                if ($inputChild) then
-                    api:merge($inputChild, $child)
-                else
-                    $child
-        }
-    else
-        $template
-};
-
 declare function api:render($request as map(*)) {
     let $type := $request?parameters?type
     let $xml := 
@@ -567,7 +555,7 @@ declare function api:render($request as map(*)) {
 };
 
 declare function api:upload($request as map(*)) {
-            api:file-upload(doc($config:inscription-templ), root($request?body))
+    api:file-upload(doc($config:inscription-templ), root($request?body))
 };
 
 (: Main function to handle the upload of an epidoc file to the app: the first argument is the
@@ -576,6 +564,96 @@ declare function api:file-upload($mainTmpl as document-node(), $input as node())
     for $node in $mainTmpl/*
     return
         api:reconstruct-tree($node, $input)
+};
+
+declare function api:to-ms-part($nodes as node()*) {
+    for $node in $nodes
+    return
+        typeswitch ($node)
+            case element(tei:msDesc) return
+                element { node-name($node) } {
+                    $node/tei:msIdentifier,
+                    if ($node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support) then
+                        <physDesc xmlns="http://www.tei-c.org/ns/1.0">
+                            <objectDesc>
+                                <supportDesc>
+                                    <support>
+                                    {
+                                        let $supp := $node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support
+                                        return (
+                                            $supp/tei:objectType,
+                                            $supp/tei:material,
+                                            $supp/tei:note
+                                        )
+                                    }
+                                    </support>
+                                </supportDesc>
+                            </objectDesc>
+                        </physDesc>
+                    else
+                        (),
+                    if ($node/tei:history/tei:origin/tei:origDate) then
+                        <history xmlns="http://www.tei-c.org/ns/1.0">
+                            <origin>
+                            { $node/tei:history/tei:origin/tei:origDate }
+                            </origin>
+                        </history>
+                    else
+                        (),
+                    <msPart xml:id="part-main" xmlns="http://www.tei-c.org/ns/1.0" type="main">
+                        <msIdentifier>
+                            <repository/>
+                        </msIdentifier>
+                        { $node/tei:msContents }
+                        {
+                            if ($node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support) then
+                                <physDesc xmlns="http://www.tei-c.org/ns/1.0">
+                                    <objectDesc>
+                                        <supportDesc>
+                                            <support>
+                                            { 
+                                                $node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:dimensions,
+                                                $node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:rs
+                                            }
+                                            </support>
+                                            { $node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:condition }
+                                        </supportDesc>
+                                        {
+                                            $node/tei:physDesc/tei:objectDesc/tei:layoutDesc
+                                        }
+                                    </objectDesc>
+                                </physDesc>
+                            else
+                                ()
+                        }
+                        {
+                            if ($node/tei:history/tei:provenance) then
+                                <history>
+                                    { $node/tei:history/tei:provenance }
+                                </history>
+                            else
+                                ()
+                        }
+                    </msPart>
+                }
+            case element(tei:div) return
+                if ($node/@type = "edition" and not($node/tei:div[@type='textpart'])) then
+                    <div type="edition" xmlns="http://www.tei-c.org/ns/1.0">
+                        <div type="textpart" subtype="fragment" corresp="#part-main">{ $node/node() }</div>
+                    </div>
+                else
+                    element { node-name($node) } {
+                        $node/@* except $node/@corresp,
+                        attribute corresp { "#part-main" },
+                        $node/node()
+                    }
+            case element() return
+                element { node-name($node) } {
+                    $node/@*,
+                    api:to-ms-part($node/node())
+                }
+            default return
+                $node
 };
 
 (: Function to look in the input file for the equivalent element to the element being processed
