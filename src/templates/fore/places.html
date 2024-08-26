@@ -103,19 +103,19 @@
             </fx-action>
 
             <fx-instance src="templates/fore/place-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                <data></data>
+                <data/>
             </fx-instance>
-            <fx-bind ref="placeName[@type='findspot']" required="true()"></fx-bind>
+            <fx-bind ref="placeName[@type='findspot']" required="true()"/>
 
             <fx-instance id="vars">
                 <data>
                     <loggedin>hidden</loggedin>
                 </data>
             </fx-instance>
-            <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
+            <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"/>
 
             <fx-instance id="query" src="#querystring">
-                <data></data>
+                <data/>
             </fx-instance>
 
             <fx-instance id="province" src="../edep-data/province.json" type="json">{}</fx-instance>
@@ -125,15 +125,13 @@
             <fx-submission id="s-save" method="post" url="api/places/{instance('query')/id}" replace="instance">
                 <fx-action event="submit-done">
                     <fx-message>Ort wurde gespeichert</fx-message>
-                    <fx-send submission="s-load"></fx-send>
+                    <fx-send submission="s-load"/>
                 </fx-action>
                 <fx-message event="submit-error">couldn't be saved</fx-message>
             </fx-submission>
-            <fx-submission id="s-load" method="get" url="api/places/{instance('query')/id}" replace="instance" validate="false">
-            </fx-submission>
+            <fx-submission id="s-load" method="get" url="api/places/{instance('query')/id}" replace="instance" validate="false"/>
 
-            <fx-submission id="s-reset" url="templates/fore/place-tmpl.xml" replace="instance">
-            </fx-submission>
+            <fx-submission id="s-reset" url="templates/fore/place-tmpl.xml" replace="instance"/>
 
             <fx-instance id="login" type="json">{}</fx-instance>
             <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance"
@@ -197,15 +195,15 @@
                     <fx-trigger class="saveBtn" debounce="1000">
                         <button><pb-i18n key="form.save"></pb-i18n></button>
                         <fx-action>
-                            <fx-send submission="s-login"></fx-send>
-                            <fx-send submission="s-save"></fx-send>
+                            <fx-send submission="s-login"/>
+                            <fx-send submission="s-save"/>
                         </fx-action>
                     </fx-trigger>
                     <fx-trigger>
-                        <a href="geodata.html"><pb-i18n key="form.new"></pb-i18n></a>
+                        <a href="geodata.html"><pb-i18n key="form.new"/></a>
                     </fx-trigger>
                     <fx-trigger>
-                        <a href="orte"><pb-i18n key="form.list"></pb-i18n></a>
+                        <a href="orte"><pb-i18n key="form.list"/></a>
                     </fx-trigger>
                 </section>
             </fieldset>
