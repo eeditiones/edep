@@ -271,8 +271,9 @@
                             return checkDate($value);
                         </fx-function>
                         <fx-function signature="sortNames($terms as element()*) as element()*" type="text/xquery">
+                            let $lang := instance('vars')/language
                             for $term in $terms
-                            order by $term/name[@xml:lang = instance('vars')/language]
+                            order by $term/name[@xml:lang = $lang]
                             return $term
                         </fx-function>
                         <fx-function signature="sortLang($langs as element()*) as element()*" type="text/xquery">
