@@ -74,9 +74,7 @@
             <main id="main" class="editor">
                 <fx-fore show-confirmation="show-confirmation">
 
-                    <fx-action event="ready">
-                        <fx-dispatch name="load-geo-form" targetid="geo-loader"></fx-dispatch>
-                    </fx-action>
+                  
 
                     <fx-model data-template="pages:parse-params">
                         <fx-action event="model-construct-done">
@@ -499,15 +497,12 @@
                                         <!-- ### the geo form is loaded lazily - on 'ready' the 'load-geo-form' will be dispatched
                                         and trigger the following load action which embeds the Fore control at 'geoform'.
                                         This avoids race condition between container Fore and sub-Fore element. -->
-                                        <fx-load id="geo-loader" attach-to="#geoform" event="load-geo-form">
-                                            <template>
+                                
                                                 <fx-control class="fore-control" ref="history/origin/origPlace/@corresp"
-                                                            url="geo-picker.html"
+                                                            src="geo-picker.html"
                                                             initial="..">
                                                 </fx-control>
-                                            </template>
-                                        </fx-load>
-                                        <div id="geoform"></div>
+
 
                                         <!-- 10b) -->
                                         <fx-control ref="history/provenance/note[@type='context']" as="node" update-event="blur">
