@@ -99,7 +99,8 @@
         <fx-model>
             <fx-action event="model-construct-done">
                 <fx-send submission="s-login"></fx-send>
-                <fx-send submission="s-load"></fx-send>
+                <!-- TODO: is this needed? The `if` is needed, otherwise a different endpoint may be called -->
+                <fx-send submission="s-load" if="exists(instance('query')/id)"></fx-send>
             </fx-action>
 
             <fx-instance src="templates/fore/place-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
