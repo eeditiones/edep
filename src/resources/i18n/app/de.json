@@ -41,6 +41,7 @@
         "date-of-verification": "Datum der Verifizierung",
         "hint-add-verification": "Verfizierung hinzufügen",
         "hint-delete-verification": "Verfizierung lösche",
+        "hint-delete-fragment": "Fragment löschen",
         "verification-by": "Verifizierer",
         "preservation": "Erhaltung",
         "decoration": "Dekor",

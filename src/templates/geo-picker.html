@@ -18,7 +18,6 @@
 <body>
 <fx-fore id="geopicker">
     <fx-action event="visibilitychange" target="#document" if="event('target.visibilityState')='visible'">
-    <fx-message>document focus {event('target.visibilityState')}</fx-message>
     <fx-send submission='s-load-places'></fx-send>
       <fx-send submission="s-load-place"></fx-send>
   </fx-action>

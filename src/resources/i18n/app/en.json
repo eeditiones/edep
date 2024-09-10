@@ -41,6 +41,7 @@
         "date-of-verification": "Date of verification",
         "hint-add-verification": "Record an observation",
         "hint-delete-verification": "Delete observation",
+        "hint-delete-fragment": "Delete fragment",
         "verification-by": "Verificator",
         "preservation": "Preservation",
         "decoration": "Decoration",
