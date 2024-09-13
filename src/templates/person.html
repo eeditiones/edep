@@ -53,17 +53,17 @@
                         <fx-fore id="person">
 
                             <fx-action event="ready" if="uri-param('id') != ''">
-                                <fx-send submission="s-load"/>
+                                <fx-send submission="s-load"></fx-send>
                             </fx-action>
                     
                             <fx-model>
                                 <fx-action event="model-construct-done">
-                                    <fx-send submission="s-login"/>
+                                    <fx-send submission="s-login"></fx-send>
                                     <fx-send submission="s-load-template"></fx-send>
                                 </fx-action>
                     
-                                <fx-instance xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                                    <data/>
+                                <fx-instance id="default" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
                                 </fx-instance>
                     
                                 <fx-instance id="tribus">
@@ -109,23 +109,29 @@
                                 </fx-instance>
                                 <fx-instance id="status">
                                     <data>
-                                        <item key="Herrscher / Herrscherhaus"/>
-                                        <item key="Senatorenstand"/>
-                                        <item key="Ritterstand"/>
-                                        <item key="Dekurionenstand"/>
-                                        <item key="höhere Gemeindeverwaltung"/>
-                                        <item key="subalterne Beamte"/>
-                                        <item key="Domänen- / niedere Gemeindeverwaltung"/>
-                                        <item key="Augustalen"/>
-                                        <item key="Freigelassene"/>
-                                        <item key="Sklaven"/>
-                                        <item key="Sonstige"/>
+                                        <item key="Herrscher / Herrscherhaus"></item>
+                                        <item key="Senatorenstand"></item>
+                                        <item key="Ritterstand"></item>
+                                        <item key="Dekurionenstand"></item>
+                                        <item key="höhere Gemeindeverwaltung"></item>
+                                        <item key="subalterne Beamte"></item>
+                                        <item key="Domänen- / niedere Gemeindeverwaltung"></item>
+                                        <item key="Augustalen"></item>
+                                        <item key="Freigelassene"></item>
+                                        <item key="Sklaven"></item>
+                                        <item key="Sonstige"></item>
                                     </data>
                                 </fx-instance>
                                 <fx-instance id="vars">
                                     <data>
                                         <loggedin>hidden</loggedin>
+                                        <idno type=""></idno>
                                     </data>
+                                </fx-instance>
+                                <fx-instance id="templ" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <person>
+                                        <idno type=""></idno>
+                                    </person>
                                 </fx-instance>
                                 <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
                     
@@ -167,7 +173,7 @@
                             </fx-model>
                     
                             
-                                <fx-output ref="instance('default')/person/@xml:id"/>
+                                <fx-output ref="instance('default')/@xml:id"/>
                                 <fieldset>
                                     <legend>Person</legend>
                                     <fx-control ref="persName/name[@type='god']">
@@ -240,7 +246,8 @@
                                                             <option value="wikidata">Wikidata</option>
                                                         </select>
                                                     </fx-control>
-                                                    <fx-control ref="." class="flex-2">
+                                                    <fx-control ref=".">
+                                                        <input/>
                                                     </fx-control>
                                                 </div>
                                             </template>
@@ -290,5 +297,4 @@
     </pb-page>
     <div class="splash"/>
 </body>
-
 </html>
