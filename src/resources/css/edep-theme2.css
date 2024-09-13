@@ -21,6 +21,23 @@ body{
     box-sizing: border-box;
 }
 
+details{
+    border:thin solid var(--paper-grey-300);
+    border-radius: 0.3rem;
+    position: relative;
+    padding: 1rem;
+    margin-bottom:1rem;
+
+    summary{
+        padding: 0.5rem 0;
+    }
+
+    &[open] summary{
+        border-bottom:thin solid var(--paper-grey-300);
+        margin-bottom:1em;
+        padding-bottom:1em;
+    }
+}
 @media (min-width: 1200px) {
     .editor > fx-fore {
         display: block;
@@ -37,6 +54,21 @@ nav #addFragment{
     button{
         font-size: 0.8rem;
     }
+}
+#expander {
+    transform: rotate(90deg);
+    height: 2rem;
+    width: 2rem;
+    padding: 0;
+    background: transparent;
+    border: thin solid var(--paper-grey-300);
+    transform-origin: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+
+}
+#expander:hover{
+    background: var(--paper-grey-300);
 }
 
 .editor > fx-fore nav {
@@ -266,6 +298,7 @@ fx-trigger.delete button{
 fx-trigger.add{
     text-align:right;
     display:inline-block;
+    margin-top:0.5rem;
 }
 
 fx-repeat fx-trigger.add {
@@ -389,8 +422,35 @@ fx-group.padded {
 .fragment{
     border:thin solid var(--pb-link-color);
     border-radius:0.3rem;
-    padding-top: 1rem;
+    padding: 1rem;
+
+    details{
+        border-color:var(--paper-grey-600);
+        margin:1rem;
+
+
+
+        &[open] summary{
+            border-bottom-color:var(--paper-grey-600);
+        }
+
+        &[open] summary .add{
+            display: block;
+        }
+
+    }
 }
+summary{
+    font-size: 1.2rem;
+    font-family: var(--pb-heading-font-family);
+    font-weight: var(--pb-heading-font-weight);
+    line-height: var(--pb-heading-line-height);
+
+    &> .add{
+        display: none;
+    }
+}
+
 .fragment > label {
     position:absolute;
     top:0;
@@ -816,7 +876,11 @@ input:focus, select:focus, textarea:focus{
 .selected-case fx-output {
     display: block !important;
 }
-
+#historic-relevance{
+    fx-control{
+        grid-template-columns: 17rem 1rem 1fr;
+    }
+}
 #places-list {
     border-collapse: collapse;
     width: 100%;

@@ -20,7 +20,7 @@
     <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
     <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"/>
 
-    <!--        <script type="module" src="http://localhost:8090/index.js"></script>-->
+<!--            <script type="module" src="http://localhost:8090/index.js"></script>-->
     <script type="module" src="resources/scripts/fore-dev.js"></script>
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
 
@@ -297,6 +297,24 @@
                               found.scrollIntoView({block: "start", inline: "nearest", behavior:"smooth"});
                             }
                         </fx-function>
+<!--
+                        <fx-function signature="expander() as xs:boolean" type="text/javascript">
+                            const expander = document.querySelector('#expander');
+                            const details = document.querySelectorAll('details');
+
+                            if(expander.classList.contains('expanded')){
+                                Array.from(details).foreach(d => {
+                                    details.removeAttribute('open');
+                                });
+                            }else{
+                                Array.from(details).foreach(d => {
+                                    details.setAttribute('open','open');
+                                    expander.classList.addClass('expanded');
+                                });
+                            }
+                            return true;
+                        </fx-function>
+-->
                     </fx-model>
                     <fx-action event="pb-i18n-update" target="#document">
                         <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'), instance('vars')/language/string())"></fx-setvalue>
@@ -306,6 +324,7 @@
                     <nav>
                         <h3>Navigation</h3>
                         <ul>
+<!--
                           <li>
                             <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
                               <button>
@@ -316,10 +335,15 @@
                               </fx-dispatch>
                             </fx-trigger>
                           </li>
+-->
                             <li>
                                 <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#object">
                                     <pb-i18n key="form.object">Objekt</pb-i18n>
                                 </a>
+<!--                                <fx-trigger id="expander">-->
+                                    <button id="expander" onclick="expander()">&lt; &gt;</button>
+<!--                                    <fx-call function="expander()"></fx-call>-->
+<!--                                </fx-trigger>-->
                             </li>
 
                             <li class="nav-fragments" data-ref="teiHeader//msPart">
@@ -388,6 +412,17 @@
                                     </div>
                                 </template>
                             </li>
+                            <li>
+                                <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
+                                    <button>
+                                        <pb-i18n key="form.add"></pb-i18n>
+                                    </button>
+                                    <fx-dispatch name="click" targetid="addFragBtn">
+                                        <fx-call function="scrollto('#parts [repeat-index]')" event="action-performed"></fx-call>
+                                    </fx-dispatch>
+                                </fx-trigger>
+                            </li>
+
                             <li>
                                 <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#commentary">
                                     <pb-i18n key="form.commentary"/>
@@ -460,10 +495,8 @@
                             <!-- there's no 17) -->
 
                             <!-- 18) -->
-                            <fieldset class="material">
-                                <legend>
-                                    <pb-i18n key="form.material">Material</pb-i18n>
-                                </legend>
+                            <details>
+                                <summary><pb-i18n key="form.material">Material</pb-i18n></summary>
                                 <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" class="orange block" style="margin-top:0;">
                                     <fx-items ref="sortNames(instance('material')/term)" class="widget material-list">
                                         <template>
@@ -474,7 +507,7 @@
                                         </template>
                                     </fx-items>
                                 </fx-control>
-                            </fieldset>
+                            </details>
                         </fx-group>
 
                         <fx-repeat id="parts" ref=".//msPart">
@@ -517,19 +550,12 @@
                                         <label><pb-i18n key="form.tm">TM Nummer</pb-i18n></label>
                                     </fx-control>
 
-                                    <fx-group id="{@xml:id}-findspot">
-                                        <h3>
-                                            <pb-i18n key="form.findspot">Fundort</pb-i18n>
-                                        </h3>
-                                        <!-- geoId from geodata -->
-                                        <!-- ### the geo form is loaded lazily - on 'ready' the 'load-geo-form' will be dispatched
-                                        and trigger the following load action which embeds the Fore control at 'geoform'.
-                                        This avoids race condition between container Fore and sub-Fore element. -->
-                                
-                                                <fx-control class="fore-control" ref="history/origin/origPlace/@corresp"
-                                                            src="geo-picker.html"
-                                                            initial="..">
-                                                </fx-control>
+                                    <details id="{@xml:id}-findspot">
+                                        <summary><pb-i18n key="form.findspot">Fundort</pb-i18n></summary>
+                                        <fx-control class="fore-control" ref="history/origin/origPlace/@corresp"
+                                                    src="geo-picker.html"
+                                                    initial="..">
+                                        </fx-control>
 
 
                                         <!-- 10b) -->
@@ -552,58 +578,55 @@
                                                 </div>
                                             </jinn-xml-editor>
                                         </fx-control>
-                                    </fx-group>
+
+                                    </details>
 
                                     <!-- 11) -->
 
                                     <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
                                     <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
-                                    <fx-group id="{@xml:id}-finddate">
-                                        <h3>
-                                                    <pb-i18n key="form.year-of-find">Fundjahr/-datum</pb-i18n>
-                                                </h3>
+                                    <details id="{@xml:id}-finddate">
+                                        <summary><pb-i18n key="form.year-of-find">Fundjahr/-datum</pb-i18n></summary>
                                         <fx-control ref="history/provenance/@when">
                                             <label>
-                                                        <pb-i18n key="form.date">Zeitpunkt</pb-i18n>
-                                                    </label>
+                                                <pb-i18n key="form.date">Zeitpunkt</pb-i18n>
+                                            </label>
                                             <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
                                             <fx-alert>
-                                                        <iron-icon icon="warning"/>
-                                                        <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
-                                                    </fx-alert>
+                                                <iron-icon icon="warning"/>
+                                                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+                                            </fx-alert>
                                         </fx-control>
                                         <fx-control ref="history/provenance/@notBefore">
                                             <label>
-                                                        <pb-i18n key="form.date-after">nach</pb-i18n>
-                                                    </label>
+                                                <pb-i18n key="form.date-after">nach</pb-i18n>
+                                            </label>
                                             <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
                                             <fx-alert>
-                                                        <iron-icon icon="warning"/>
-                                                        <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
-                                                    </fx-alert>
+                                                <iron-icon icon="warning"/>
+                                                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+                                            </fx-alert>
                                         </fx-control>
                                         <fx-control ref="history/provenance/@notAfter">
                                             <label>
-                                                        <pb-i18n key="form.date-before">vor</pb-i18n>
-                                                    </label>
+                                                <pb-i18n key="form.date-before">vor</pb-i18n>
+                                            </label>
                                             <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
                                             <fx-alert>
-                                                        <iron-icon icon="warning"/>
-                                                        <pb-i18n key="form.invalid-date">Ungültiges Datum</pb-i18n>
-                                                    </fx-alert>
+                                                <iron-icon icon="warning"/>
+                                                <pb-i18n key="form.invalid-date">Ungültiges Datum</pb-i18n>
+                                            </fx-alert>
                                         </fx-control>
                                         <fx-control ref="history/provenance/@when-custom">
                                             <label>
-                                                        <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
-                                                    </label>
+                                                <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
+                                            </label>
                                         </fx-control>
-                                    </fx-group>
+                                    </details>
 
-                                    <fx-group id="{@xml:id}-location">
+                                    <details id="{@xml:id}-location">
 
-                                        <h3>
-                                                    <pb-i18n key="form.last-recorded-location"/>
-                                                </h3>
+                                        <summary><pb-i18n key="form.last-recorded-location"/></summary>
                                         <!-- 12a) -->
                                         <div class="with-hint">
                                             <fx-control ref="msIdentifier/repository">
@@ -733,23 +756,20 @@
                                                 </template>
                                             </fx-repeat>
                                         </fieldset>
-                                    </fx-group>
+                                    </details>
 
-                                    <fx-group id="{@xml:id}-verification">
-                                        <legend>
-                                            <h3>
-                                                <pb-i18n key="form.verification">Verifizierung</pb-i18n>
-                                            </h3>
+                                    <details id="{@xml:id}-verification">
+                                        <summary><pb-i18n key="form.verification">Verifizierung</pb-i18n>
                                             <!-- 12b-12e missing -->
                                             <fx-trigger class="add">
-                                            <pb-popover>
-                                                <iron-icon icon="add-circle-outline"/>
-                                                <template slot="alternate"><pb-i18n key="form.hint-add-verification"/></template>
-                                            </pb-popover>
+                                                <pb-popover>
+                                                    <iron-icon icon="add-circle-outline"/>
+                                                    <template slot="alternate"><pb-i18n key="form.hint-add-verification"/></template>
+                                                </pb-popover>
                                                 <fx-insert context="msContents/msItem" ref="note"
                                                            origin="instance('templates')/note[@type='verification']"></fx-insert>
                                             </fx-trigger>
-                                        </legend>
+                                        </summary>
                                         <fx-repeat class="nested-repeat" ref="msContents/msItem/note[@type='verification']"
                                             id="r-verification">
                                             <template>
@@ -785,12 +805,12 @@
                                                 </fx-trigger>
                                             </template>
                                         </fx-repeat>
-                                    </fx-group>
+                                    </details>
 
-                                    <fx-group id="{@xml:id}-objectdesc">
-                                        <h3>
+                                    <details id="{@xml:id}-objectdesc">
+                                        <summary>
                                             <pb-i18n key="form.object-description">Objektbeschreibung</pb-i18n>
-                                        </h3>
+                                        </summary>
 
                                         <!-- 13) -->
                                         <fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
@@ -861,11 +881,11 @@
                                         </fx-control>
 
                                         <!-- 34) -->
-                                    </fx-group>
-                                    <fx-group id="{@xml:id}-inscription-field">
-                                        <h3>
+                                    </details>
+                                    <details id="{@xml:id}-inscription-field">
+                                        <summary>
                                             <pb-i18n key="form.inscription-field">Inschriftfeld</pb-i18n>
-                                        </h3>
+                                        </summary>
                                         <!-- 21) -->
                                         <fx-control class="measurement" ref="physDesc/objectDesc/layoutDesc/layout/dimensions/height">
                                             <label>
@@ -903,13 +923,13 @@
                                                 </div>
                                             </jinn-xml-editor>
                                         </fx-control>
-                                    </fx-group>
+                                    </details>
 
 
-                                    <fx-group id="{@xml:id}-text-description">
-                                        <h3>
+                                    <details id="{@xml:id}-text-description">
+                                        <summary>
                                             <pb-i18n key="form.text-description"/>
-                                        </h3>
+                                        </summary>
                                         <!-- 24) -->
                                         <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='metric']" update-event="input">
                                             <label><pb-i18n key="form.metre">Metrik</pb-i18n></label>
@@ -997,12 +1017,12 @@
                                             </select>
                                         </fx-control>
 
-                                    </fx-group>
+                                    </details>
 
                                     <fx-var name="frag" value="'#' || ./@xml:id"></fx-var>
 
-                                    <fx-group class="group-6" id="{@xml:id}-references">
-                                        <h3>
+                                    <details class="group-6" id="{@xml:id}-references">
+                                        <summary>
                                             <pb-i18n key="form.references">Referenzen</pb-i18n>
                                             <pb-popover>
                                                 <iron-icon icon="info-outline"></iron-icon>
@@ -1010,7 +1030,7 @@
                                                     <pb-i18n key="form.hint-references"></pb-i18n>
                                                 </template>
                                             </pb-popover>
-                                        </h3>
+                                        </summary>
 
                                         <!-- 35a) Ältere Editionen -->
                                         <fieldset>
@@ -1285,11 +1305,11 @@
                                                 </template>
                                             </fx-repeat>
                                         </fieldset>
-                                    </fx-group>
-                                    <fx-group class="group-6" id="{@xml:id}-edition">
-                                        <h3>
-                                                    <pb-i18n key="form.edition">Textedition</pb-i18n>
-                                                </h3>
+                                    </details>
+                                    <details class="group-6" id="{@xml:id}-edition">
+                                        <summary>
+                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
+                                        </summary>
                                         <div class="block" id="{@xml:id}-transcript">
                                             <h4>
                                                 <pb-i18n key="form.transcription">Transkription</pb-i18n>
@@ -1417,7 +1437,7 @@
                                                             <pb-i18n key="form.translated-by">Übersetzer/in</pb-i18n>: </label>
                                             </fx-control>
                                         </div>
-                                    </fx-group>
+                                    </details>
                                 </div>
 
                                 <fx-trigger class="delete {if(@type='main' or count(./preceding-sibling::msPart) = 0) then 'hidden' else ''}">
@@ -1459,10 +1479,10 @@
                         This won't call the update-cycle for each event as the replace action in its current form does not
                         call it. The control will refresh the UI when the control looses focus (onblur).
                         -->
-                        <fx-group class="group-10" id="commentary">
-                            <h3>
-                                        <pb-i18n key="form.commentary">Kommentar</pb-i18n>
-                                    </h3>
+                        <details class="group-10" id="commentary">
+                            <summary>
+                                <pb-i18n key="form.commentary">Kommentar</pb-i18n>
+                            </summary>
                             <fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="blur">
                                 <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
@@ -1487,11 +1507,11 @@
                                     </div>
                                 </jinn-xml-editor>
                             </fx-control>
-                        </fx-group>
+                        </details>
 
                         <!-- 26) -->
-                        <fx-group ref="//msDesc" class="group-6" id="chronology">
-                            <h3>
+                        <details ref="//msDesc" class="group-6" id="chronology">
+                            <summary>
                                 <pb-i18n key="form.dating">Datierung</pb-i18n>
                                 <pb-popover>
                                     <iron-icon icon="info-outline"/>
@@ -1499,11 +1519,11 @@
                                         <pb-i18n key="form.hint-dating"/>
                                     </template>
                                 </pb-popover>
-                            </h3>
+                            </summary>
 
 
                             <!-- 26), 27)-->
-                            <fx-control ref="history/origin/origDate/@when-custom">
+                            <fx-control ref="//msDesc/history/origin/origDate/@when-custom">
                                 <label>
                                             <pb-i18n key="form.date">Zeitpunkt</pb-i18n>
                                         </label>
@@ -1514,7 +1534,7 @@
                                         </fx-alert>
                             </fx-control>
                             <div class="with-hint">
-                                <fx-control ref="history/origin/origDate/@notBefore-custom">
+                                <fx-control ref="//msDesc/history/origin/origDate/@notBefore-custom">
                                     <label>
                                                 <pb-i18n key="form.date-after">nach</pb-i18n>
                                             </label>
@@ -1526,7 +1546,7 @@
                                 </fx-control>
                             </div>
                             <div class="with-hint">
-                                <fx-control ref="history/origin/origDate/@notAfter-custom">
+                                <fx-control ref="//msDesc/history/origin/origDate/@notAfter-custom">
                                     <label>
                                                 <pb-i18n key="form.date-before">vor</pb-i18n>
                                             </label>
@@ -1537,7 +1557,7 @@
                                             </fx-alert>
                                 </fx-control>
                             </div>
-                            <fx-control ref="history/origin/origDate" as="node" update-event="blur">
+                            <fx-control ref="//msDesc/history/origin/origDate" as="node" update-event="blur">
                                 <label>
                                             <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
                                         </label>
@@ -1556,12 +1576,12 @@
                                     </div>
                                 </jinn-xml-editor>
                             </fx-control>
-                        </fx-group>
+                        </details>
 
-                        <fx-group ref="profileDesc" id="historic-relevance">
-                            <h3>
-                                        <pb-i18n key="form.historic-relevance"/>
-                                    </h3>
+                        <details ref="profileDesc" id="historic-relevance">
+                            <summary>
+                                <pb-i18n key="form.historic-relevance"/>
+                            </summary>
                             <!-- 28)  -->
                             <fx-control ref="textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/religion']/term/@ref" update-event="input">
                                 <label>
@@ -1610,7 +1630,7 @@
                                 <fx-delete event="value-changed" if="context()/text()='false'" ref="instance('default')//term[@ref='#military']"/>
                             </fx-control>
 
-                        </fx-group>
+                        </details>
 
                         <!-- 35b) -->
                         <!-- 35a) -->

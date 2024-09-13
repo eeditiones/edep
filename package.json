@@ -1,6 +1,6 @@
 {
   "name": "edep",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Editionstools für eine digitale Epigraphik",
   "dependencies": {
     "@jinntec/fore": "^2.2.0",

@@ -52,7 +52,7 @@
                 <main>
                         <fx-fore id="person">
 
-                            <fx-action event="ready" if="exists(instance('query')/id)">
+                            <fx-action event="ready" if="uri-param('id') != ''">
                                 <fx-send submission="s-load"/>
                             </fx-action>
                     
@@ -129,11 +129,7 @@
                                 </fx-instance>
                                 <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
                     
-                                <fx-instance id="query" src="#querystring">
-                                    <data></data>
-                                </fx-instance>
-                    
-                                <fx-submission id="s-save" method="post" url="api/people/{instance('query')/id}" replace="instance">
+                                <fx-submission id="s-save" method="post" url="api/people/{uri-param('id')}" replace="instance">
                                     <fx-action event="submit-done">
                                         <fx-message>Ort wurde gespeichert</fx-message>
                                         <fx-send submission="s-load"></fx-send>
@@ -151,7 +147,7 @@
                                     </fx-action>
                                 </fx-submission>
 
-                                <fx-submission id="s-load" method="get" url="api/people/{instance('query')/id}" replace="instance" validate="false">
+                                <fx-submission id="s-load" method="get" url="api/people/{uri-param('id')}" replace="instance" validate="false">
                                 </fx-submission>
                     
                                 <fx-submission id="s-load-template" method="get" url="templates/fore/person-tmpl.xml" replace="instance" validate="false">
@@ -256,8 +252,8 @@
                                     <div class="actions">
                                         <fx-trigger id="save" class="saveBtn">
                                             <button type="submit"><pb-i18n key="form.save">Save</pb-i18n></button>
-                                            <fx-send submission="s-create" if="not(exists(instance('params')/id))"></fx-send>
-                                            <fx-send submission="s-save" if="exists(instance('params')/id)"></fx-send>
+                                            <fx-send submission="s-create" if="uri-param('id') = ''"></fx-send>
+                                            <fx-send submission="s-save" if="uri-param('id') != ''"></fx-send>
                                         </fx-trigger>
                                     </div>
                                 </pb-restricted>

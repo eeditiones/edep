@@ -18,9 +18,9 @@
 <body>
 <fx-fore id="geopicker">
     <fx-action event="visibilitychange" target="#document" if="event('target.visibilityState')='visible'">
-    <fx-send submission='s-load-places'></fx-send>
+      <fx-send submission='s-load-places'></fx-send>
       <fx-send submission="s-load-place"></fx-send>
-  </fx-action>
+    </fx-action>
   <!--
   This page allows to pick a `place` record with geo-data information for linkage
   into the using TEI.
@@ -85,7 +85,7 @@
     </fx-submission>
   </fx-model>
 
-  <div class="geopicker-control">
+<!--  <div class="geopicker-control">-->
     <div class="with-hint">
       <fx-control ref="instance('i-geo')/origPlace/@corresp" update-event="input">
           <label>GeoId</label>
@@ -106,22 +106,34 @@
           <!-- return the @corresp to the binding control -->
           <fx-return ref='.'></fx-return>
         </fx-action>
+        <iron-icon icon="close">
+          <fx-action event="click">
+            <!-- reset @corresp to empty -->
+            <fx-setvalue ref="instance('i-geo')/origPlace/@corresp"></fx-setvalue>
+            <!-- open group to display details -->
+            <fx-setvalue ref="instance('g-vars')/open">false</fx-setvalue>
+            <fx-refresh force="force"></fx-refresh>
+          </fx-action>
+        </iron-icon>
+
       </fx-control>
       <pb-popover>
         <iron-icon icon="info-outline"></iron-icon>
         <template slot="alternate"><pb-i18n key="form.hint-geoid">XML:ID</pb-i18n></template>
       </pb-popover>
     </div>
+<!--
     <iron-icon icon="close">
       <fx-action event="click">
-        <!-- reset @corresp to empty -->
+        &lt;!&ndash; reset @corresp to empty &ndash;&gt;
         <fx-setvalue ref="instance('i-geo')/origPlace/@corresp"></fx-setvalue>
-        <!-- open group to display details -->
+        &lt;!&ndash; open group to display details &ndash;&gt;
         <fx-setvalue ref="instance('g-vars')/open">false</fx-setvalue>
         <fx-refresh force="force"></fx-refresh>
       </fx-action>
     </iron-icon>
-  </div>
+-->
+<!--  </div>-->
 
   <!-- 5) -->
   <fx-group class="geo-place" ref="instance('i-place')" style="display:{if(instance('g-vars')/open = 'true') then 'block' else 'none'};">

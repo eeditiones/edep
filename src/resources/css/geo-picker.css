@@ -30,15 +30,17 @@ fx-fore#geopicker{
 }
 
 #geopicker{
-    .geopicker-control {
-        iron-icon[icon=close]{
-            margin-left:-9rem;
-        }
-    }
     .with-hint{
         grid-template-columns: initial;
+        margin-left:-1rem;
+        align-items: center;
+
+        fx-control{
+            align-items: center;
+        }
     }
 }
+/*
 #geopicker .geopicker-control {
     width: 100%;
     display: grid;
@@ -64,6 +66,7 @@ fx-fore#geopicker{
     grid-area: add;
     margin-left:-1rem;
 }
+*/
 
 #geopicker fx-repeat-attributes{
     display: none;
@@ -72,11 +75,11 @@ fx-fore#geopicker{
     /*grid-area: clear;*/
     align-self:center;
     border-radius: 50%;
+    margin-left:-0.25rem;
 }
 #geopicker iron-icon:hover{
     background: #ddd;
 }
-
 #geopicker fx-repeat{
     margin-top:1.5rem;
     height:40vh;
