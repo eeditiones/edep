@@ -10,7 +10,6 @@ html{
     --group-8-1-bg:#ce93d8;
     --group-9-bg:#81c784;
     --group-10-bg: #f9c74f;
-
     --jinn-codemirror-background-color: white;
     scroll-behavior: smooth;
     scroll-padding-top:5rem;
@@ -22,6 +21,23 @@ body{
     box-sizing: border-box;
 }
 
+details{
+    border:thin solid var(--paper-grey-300);
+    border-radius: 0.3rem;
+    position: relative;
+    padding: 1rem;
+    margin-bottom:1rem;
+
+    summary{
+        padding: 0.5rem 0;
+    }
+
+    &[open] summary{
+        border-bottom:thin solid var(--paper-grey-300);
+        margin-bottom:1em;
+        padding-bottom:1em;
+    }
+}
 @media (min-width: 1200px) {
     .editor > fx-fore {
         display: block;
@@ -34,45 +50,81 @@ body{
     }
 }
 
+nav #addFragment{
+    button{
+        font-size: 0.8rem;
+    }
+}
+#expander {
+    transform: rotate(90deg);
+    height: 2rem;
+    width: 2rem;
+    padding: 0;
+    background: transparent;
+    border: thin solid var(--paper-grey-300);
+    transform-origin: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+
+}
+#expander:hover{
+    background: var(--paper-grey-300);
+}
+
 .editor > fx-fore nav {
-    position:fixed;
-    height: 100vh;
+    position: fixed;
+    height: calc(100vh - 9rem);
     background: #efefef;
     left: 0;
     padding: 1rem;
     z-index: 10;
-    top:4.2rem;
+    top: 4.2rem;
+    overflow: auto;
 }
 
 .editor > fx-fore fx-group[ref=teiHeader] {
     margin-left: 12rem;
 }
 
-nav h3 {
-    margin-top: 0;
+nav{
+
+    h3 {
+        margin-top: 0;
+    }
+    ul {
+        padding: 0;
+        margin:0;
+        list-style: none;
+
+        ul {
+            margin-left: 1em;
+        }
+    }
+
+    a,
+    a:visited,
+    a:link{
+        color:#333;
+        display: inline-block;
+        padding: 0.25rem 0;
+    }
+    a:hover{
+        background: white;
+        padding: 0.3rem;
+        border-radius: 0.1rem;
+    }
+
+    .nav-fragments{
+
+        [repeat-index]{
+            background:white;
+            border-radius:0.25rem;
+            padding:0.25rem;
+        }
+    }
 }
 
-nav ul {
-    padding: 0;
-    margin:0;
-    list-style: none;
-}
 
-nav ul ul {
-    margin-left: 1em;
-}
-nav a,
-nav a:visited,
-nav a:link{
-    color:#333;
-    display: inline-block;
-    padding: 0.25rem 0;
-}
-nav a:hover{
-    background: white;
-    padding: 0.3rem;
-    border-radius: 0.1rem;
-}
 
 .buttonBar {
     display: flex;
@@ -235,6 +287,7 @@ fx-trigger button{
 }
 fx-trigger.add button{
     background: var(--pb-color-green);
+    cursor:pointer;
 }
 fx-trigger.delete{
     text-align:right;
@@ -245,12 +298,13 @@ fx-trigger.delete button{
 fx-trigger.add{
     text-align:right;
     display:inline-block;
+    margin-top:0.5rem;
 }
 
-fx-repeat fx-trigger.add{
+fx-repeat fx-trigger.add {
     position: absolute;
-    bottom:-0.75rem;
-    right:1.75rem;
+    bottom: -0.75rem;
+    right: -0.75rem;
     background: white;
     padding-top: 0 0.3rem;
     z-index: 10;
@@ -368,8 +422,35 @@ fx-group.padded {
 .fragment{
     border:thin solid var(--pb-link-color);
     border-radius:0.3rem;
-    padding-top: 1rem;
+    padding: 1rem;
+
+    details{
+        border-color:var(--paper-grey-600);
+        margin:1rem;
+
+
+
+        &[open] summary{
+            border-bottom-color:var(--paper-grey-600);
+        }
+
+        &[open] summary .add{
+            display: block;
+        }
+
+    }
 }
+summary{
+    font-size: 1.2rem;
+    font-family: var(--pb-heading-font-family);
+    font-weight: var(--pb-heading-font-weight);
+    line-height: var(--pb-heading-line-height);
+
+    &> .add{
+        display: none;
+    }
+}
+
 .fragment > label {
     position:absolute;
     top:0;
@@ -384,7 +465,7 @@ fx-group.padded {
 fieldset{
     border-radius: 0.3rem;
     /*width:100%;*/
-    border:thin solid var(--paper-grey-500);
+    border:thin solid var(--paper-grey-300);
     position: relative;
     padding-bottom: 1rem;
 }
@@ -520,6 +601,13 @@ fx-control.block{
     display:block;
     width:100%;
 }
+
+fx-control:has(jinn-xml-editor){
+    display: block;
+    margin-top:1rem;
+}
+
+
 .bib-output {
     margin-left: 17.8rem;
 }
@@ -543,6 +631,7 @@ fx-group fx-group {
     border:thin solid var(--paper-grey-600);
     /*padding:1rem;*/
 }
+
 
 fx-group + fx-group {
     margin-top: 1rem;
@@ -580,6 +669,15 @@ fx-repeatitem{
     /*background: var(--paper-blue-grey-50);*/
     border-radius: 0.3rem;
     /*padding: 0.5rem;*/
+
+    fx-control:has(jinn-xml-editor){
+        margin-left:1rem;
+        margin-bottom:1rem;
+    }
+
+    .with-hint{
+        grid-template-columns: auto 2rem;
+    }
 }
 
 fx-inspector[open]{
@@ -607,6 +705,7 @@ fx-items {
 .nested-repeat fx-repeatitem{
     display: grid;
     grid-template-columns: auto 3rem;
+    background: var(--paper-grey-50);
 
 }
 .nested-repeat textarea{
@@ -622,6 +721,10 @@ fx-var{
 
 .nested-repeat{
     /*margin-top:1rem;*/
+
+    fx-group{
+        border:none;
+    }
 }
 /*
 .nested-repeat label{
@@ -631,7 +734,7 @@ fx-var{
 
 .nested-repeat fx-repeatitem{
     postion:relative;
-    margin-bottom:0.5rem;
+    margin:1rem;
     border:thin solid var(--paper-grey-400);
 }
 .nested-repeat fx-control input{
@@ -657,6 +760,19 @@ pb-login{
     font-size: 1.2rem;
     font-weight: 500;
 
+}
+
+#parts > fx-repeatitem{
+
+    fx-trigger:nth-child(1) [icon=remove-circle-outline]{
+        color: var(--pb-link-color);
+        position: absolute;
+        right: 0.5rem;
+        top:-0.1rem;
+        width: 2.5rem;
+        height:2.5rem;
+        background: white;
+    }
 }
 /*
 .repeat-wrapper{
@@ -693,10 +809,12 @@ pb-login{
     width:100%;
     display: block;
 }
-[icon='remove-circle-outline']{
-    color:var(--pb-link-color);
-    position:absolute;
-    right:0.5rem;
+[icon='remove-circle-outline'] {
+    color: var(--pb-link-color);
+    position: absolute;
+    right: -0.75rem;
+    top: -0.75rem;
+    background: white;
 }
 fx-control[required]::after{
     content:'';
@@ -758,7 +876,11 @@ input:focus, select:focus, textarea:focus{
 .selected-case fx-output {
     display: block !important;
 }
-
+#historic-relevance{
+    fx-control{
+        grid-template-columns: 17rem 1rem 1fr;
+    }
+}
 #places-list {
     border-collapse: collapse;
     width: 100%;
@@ -821,10 +943,10 @@ legend{
 }
 .with-hint {
     grid-area: control;
-    grid-template-columns: 1fr 1rem;
     display: grid;
     grid-template-areas: "control hint";
     align-items: center;
+    /*grid-template-columns: 1fr 2rem;*/
     /*width: calc(100% - 2rem);*/
 }
 .with-hint pb-popover{
@@ -971,7 +1093,8 @@ legend{
 */
 
 jinn-zotero-picker {
-    white-space: normal;
+    white-space: pre-line;
+    overflow: auto;
 }
 
 .nested-repeat jinn-zotero-picker input {

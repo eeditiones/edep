@@ -28,15 +28,26 @@ fx-fore#geopicker{
 [icon="add-circle-outline"]{
     color:black;
 }
-#geopicker .geopicker-control{
+
+#geopicker{
+    .with-hint{
+        grid-template-columns: initial;
+        margin-left:-1rem;
+        align-items: center;
+
+        fx-control{
+            align-items: center;
+        }
+    }
+}
+/*
+#geopicker .geopicker-control {
     width: 100%;
     display: grid;
-    grid-template-areas: "control clear add";
-    grid-template-columns: 1fr 2rem 2rem;
-    margin-left:0.25rem;
-    justify-content: left;
+    grid-template-areas: "control clear";
+    grid-template-columns: 1fr 2rem;
     align-items: center;
-    grid-gap:0.5rem;
+    grid-gap: 1rem;
 }
 .geopicker-control fx-control{
     grid-area: control;
@@ -45,9 +56,8 @@ fx-fore#geopicker{
     column-gap: 2rem;
 }
 .geopicker-control label{
-    width: 23rem;
+    width: 24rem;
     text-align: right;
-
 }
 .geopicker-control iron-icon{
     grid-area: clear;
@@ -56,6 +66,7 @@ fx-fore#geopicker{
     grid-area: add;
     margin-left:-1rem;
 }
+*/
 
 #geopicker fx-repeat-attributes{
     display: none;
@@ -64,11 +75,11 @@ fx-fore#geopicker{
     /*grid-area: clear;*/
     align-self:center;
     border-radius: 50%;
+    margin-left:-0.25rem;
 }
 #geopicker iron-icon:hover{
     background: #ddd;
 }
-
 #geopicker fx-repeat{
     margin-top:1.5rem;
     height:40vh;

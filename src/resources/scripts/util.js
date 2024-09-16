@@ -13,7 +13,25 @@ function createUUID() {
     return 'F' + uuid;
 }
 
+function expander(){
+    const expander = document.querySelector('#expander');
+    const details = document.querySelectorAll('details');
 
+    if(expander.classList.contains('expanded')){
+        Array.from(details).forEach(d => {
+            d.removeAttribute('open');
+            expander.classList.remove('expanded');
+            expander.innerHTML = '&lt; &gt;';
+        });
+    }else{
+        Array.from(details).forEach(d => {
+            d.setAttribute('open','open');
+            expander.classList.add('expanded');
+            expander.innerHTML = '&gt; &lt;';
+        });
+    }
+
+}
 function checkDate(string) {
     if(string.length === 0 ) return true;// allow empty
     const val = new Date(string);

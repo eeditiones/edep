@@ -20,9 +20,9 @@
     <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
     <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"/>
 
-    <!--    <script type="module" src="http://localhost:8090/index.js"/>-->
-    <script type="module" src="resources/scripts/fore-dev.js"/>
-    <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"/>
+<!--            <script type="module" src="http://localhost:8090/index.js"></script>-->
+    <script type="module" src="resources/scripts/fore-dev.js"></script>
+    <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
 
     <style>
         .valid{
@@ -85,60 +85,60 @@
                         </fx-action>
 
                         <fx-instance id="default" src="api/inscription" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                            <data/>
+                            <data></data>
                         </fx-instance>
 
                         <fx-bind ref="instance('default')">
                             <fx-bind ref=".//fileDesc/titleStmt/title" required="true()" constraint="string-length(.) != 0">
                             </fx-bind>
                             <fx-bind ref=".//history/provenance">
-                                <fx-bind ref="./@when" constraint="checkDate(.)"/>
-                                <fx-bind ref="./@notBefore" constraint="checkDate(.)"/>
-                                <fx-bind ref="./@notAfter" constraint="checkDate(.)"/>
+                                <fx-bind ref="./@when" constraint="checkDate(.)"></fx-bind>
+                                <fx-bind ref="./@notBefore" constraint="checkDate(.)"></fx-bind>
+                                <fx-bind ref="./@notAfter" constraint="checkDate(.)"></fx-bind>
                             </fx-bind>
                             <fx-bind ref=".//history/origin/origDate">
-                                <fx-bind ref="./@when-custom" constraint="checkDate(.)"/>
-                                <fx-bind ref="./@notBefore-custom" constraint="checkDate(.)"/>
-                                <fx-bind ref="./@notAfter-custom" constraint="checkDate(.)"/>
+                                <fx-bind ref="./@when-custom" constraint="checkDate(.)"></fx-bind>
+                                <fx-bind ref="./@notBefore-custom" constraint="checkDate(.)"></fx-bind>
+                                <fx-bind ref="./@notAfter-custom" constraint="checkDate(.)"></fx-bind>
                             </fx-bind>
                         </fx-bind>
 
 
                         <fx-instance id="typeins" src="../edep-data/typeins.xml">
-                            <data/>
+                            <data></data>
                         </fx-instance>
                         <fx-instance id="objtyp" src="../edep-data/objtyp.xml">
-                            <data/>
+                            <data></data>
                         </fx-instance>
 
                         <fx-instance id="material" src="../edep-data/material.xml">
-                            <data/>
+                            <data></data>
                         </fx-instance>
 
                         <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
-                            <data/>
+                            <data></data>
                         </fx-instance>
 
                         <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                            <data/>
+                            <data></data>
                         </fx-instance>
 
                         <fx-instance id="templates" src="templates/fore/templates.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                            <data/>
+                            <data></data>
                         </fx-instance>
 
                         <fx-instance id="vars">
                             <data>
                                 <display-leiden>hidden</display-leiden>
                                 <can-delete>false</can-delete>
-                                <parent/>
-                                <uuid/>
-                                <geoid/>
+                                <parent></parent>
+                                <uuid></uuid>
+                                <geoid></geoid>
                                 <loggedin>hidden</loggedin>
                                 <xml-valid>true</xml-valid>
-                                <history-term/>
-                                <geography-term/>
-                                <military-term/>
+                                <history-term></history-term>
+                                <geography-term></geography-term>
+                                <military-term></military-term>
                                 <languages xml:lang="en">
                                     <lang code="cel">Celtic</lang>
                                     <lang code="grc">Greek</lang>
@@ -177,9 +177,9 @@
                                 </verification>
                             </data>
                         </fx-instance>
-                        <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"/>
-                        <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"/>
-                        <fx-bind ref="instance('vars')/xml-valid" calculate="editorsValid()" constraint=".='true'"/>
+                        <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
+                        <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
+                        <fx-bind ref="instance('vars')/xml-valid" calculate="editorsValid()" constraint=".='true'"></fx-bind>
 
 
                         <fx-instance id="tmp">
@@ -206,11 +206,11 @@
                                 <!--
                                 ### initializing state for 30) 31) 32) dummy switches
                                 -->
-                                <fx-setvalue ref="instance('vars')/history-term" value="if(exists(instance('default')//term[@ref='#social-economic-legal-history'])) then 'true' else 'false'"/>
+                                <fx-setvalue ref="instance('vars')/history-term" value="if(exists(instance('default')//term[@ref='#social-economic-legal-history'])) then 'true' else 'false'"></fx-setvalue>
 
-                                <fx-setvalue ref="instance('vars')/geography-term" value="if(exists(instance('default')//term[@ref='#geography'])) then 'true' else 'false'"/>
+                                <fx-setvalue ref="instance('vars')/geography-term" value="if(exists(instance('default')//term[@ref='#geography'])) then 'true' else 'false'"></fx-setvalue>
 
-                                <fx-setvalue ref="instance('vars')/military-term" value="if(exists(instance('default')//term[@ref='#military'])) then 'true' else 'false'"/>
+                                <fx-setvalue ref="instance('vars')/military-term" value="if(exists(instance('default')//term[@ref='#military'])) then 'true' else 'false'"></fx-setvalue>
 
                             </fx-action>
                         </fx-submission>
@@ -220,10 +220,8 @@
                                         <pb-i18n key="form.data-saved"/>
                                     </fx-message>
                             <fx-action event="submit-error">
-                                <fx-message>
-                                            <pb-i18n key="form.save-failed"/>
-                                        </fx-message>
-                                <fx-action src="resources/scripts/showErrors.js"/>
+                                <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
+                                <fx-action src="resources/scripts/showErrors.js"></fx-action>
                             </fx-action>
                         </fx-submission>
 
@@ -235,7 +233,7 @@
                                 <fx-message>
                                             <pb-i18n key="form.save-failed"/>
                                         </fx-message>
-                                <fx-action src="resources/scripts/showErrors.js"/>
+                                <fx-action src="resources/scripts/showErrors.js"></fx-action>
                             </fx-action>
                         </fx-submission>
 
@@ -293,22 +291,62 @@
                             navigator.clipboard.writeText($value);
                             return $value;
                         </fx-function>
+                        <fx-function signature="scrollto($selector as xs:string) as xs:string" type="text/javascript">
+                            const found = document.querySelector($selector);
+                            if(found){
+                              found.scrollIntoView({block: "start", inline: "nearest", behavior:"smooth"});
+                            }
+                        </fx-function>
+<!--
+                        <fx-function signature="expander() as xs:boolean" type="text/javascript">
+                            const expander = document.querySelector('#expander');
+                            const details = document.querySelectorAll('details');
+
+                            if(expander.classList.contains('expanded')){
+                                Array.from(details).foreach(d => {
+                                    details.removeAttribute('open');
+                                });
+                            }else{
+                                Array.from(details).foreach(d => {
+                                    details.setAttribute('open','open');
+                                    expander.classList.addClass('expanded');
+                                });
+                            }
+                            return true;
+                        </fx-function>
+-->
                     </fx-model>
                     <fx-action event="pb-i18n-update" target="#document">
-                        <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'), instance('vars')/language/string())"/>
-                        <fx-refresh force="force"/>
+                        <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'), instance('vars')/language/string())"></fx-setvalue>
+                        <fx-refresh force="force"></fx-refresh>
                     </fx-action>
 
                     <nav>
                         <h3>Navigation</h3>
                         <ul>
+<!--
+                          <li>
+                            <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
+                              <button>
+                                <pb-i18n key="form.add"></pb-i18n>
+                              </button>
+                              <fx-dispatch name="click" targetid="addFragBtn">
+                                <fx-call function="scrollto('#parts [repeat-index]')" event="action-performed"></fx-call>
+                              </fx-dispatch>
+                            </fx-trigger>
+                          </li>
+-->
                             <li>
                                 <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#object">
                                     <pb-i18n key="form.object">Objekt</pb-i18n>
                                 </a>
+<!--                                <fx-trigger id="expander">-->
+                                    <button id="expander" onclick="expander()">&lt; &gt;</button>
+<!--                                    <fx-call function="expander()"></fx-call>-->
+<!--                                </fx-trigger>-->
                             </li>
 
-                            <li data-ref="teiHeader//msPart">
+                            <li class="nav-fragments" data-ref="teiHeader//msPart">
                                 <template>
                                     <div>
                                         <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}">
@@ -374,6 +412,17 @@
                                     </div>
                                 </template>
                             </li>
+                            <li>
+                                <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
+                                    <button>
+                                        <pb-i18n key="form.add"></pb-i18n>
+                                    </button>
+                                    <fx-dispatch name="click" targetid="addFragBtn">
+                                        <fx-call function="scrollto('#parts [repeat-index]')" event="action-performed"></fx-call>
+                                    </fx-dispatch>
+                                </fx-trigger>
+                            </li>
+
                             <li>
                                 <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#commentary">
                                     <pb-i18n key="form.commentary"/>
@@ -446,10 +495,8 @@
                             <!-- there's no 17) -->
 
                             <!-- 18) -->
-                            <fieldset class="material">
-                                <legend>
-                                    <pb-i18n key="form.material">Material</pb-i18n>
-                                </legend>
+                            <details>
+                                <summary><pb-i18n key="form.material">Material</pb-i18n></summary>
                                 <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" class="orange block" style="margin-top:0;">
                                     <fx-items ref="sortNames(instance('material')/term)" class="widget material-list">
                                         <template>
@@ -460,11 +507,25 @@
                                         </template>
                                     </fx-items>
                                 </fx-control>
-                            </fieldset>
+                            </details>
                         </fx-group>
 
                         <fx-repeat id="parts" ref=".//msPart">
                             <template>
+                                <fx-trigger class="delete {if(@type='main' or count(./preceding-sibling::msPart) = 0) then 'hidden' else ''} remove-fragment">
+                                    <iron-icon icon="remove-circle-outline"></iron-icon>
+<!--
+                                    <pb-popover>
+                                        <iron-icon icon="remove-circle-outline"></iron-icon>
+                                        <template slot="alternate"><pb-i18n key="form.hint-delete-fragment"></pb-i18n></template>
+                                    </pb-popover>
+-->
+                                    <fx-confirm message="really delete this fragment?">
+                                        <fx-delete ref="."></fx-delete>
+                                    </fx-confirm>
+                                    <fx-refresh control="parts"></fx-refresh>
+                                </fx-trigger>
+
                                 <div class="fragment" id="{@xml:id}">
                                     <label>
                                         <pb-popover>
@@ -485,23 +546,16 @@
                                     </label>
 
                                     <!-- 4) -->
-                                    <fx-control class="tm-number" ref="msIdentifier/idno">
+                                    <fx-control id="tm-number" class="tm-number" ref="msIdentifier/idno">
                                         <label><pb-i18n key="form.tm">TM Nummer</pb-i18n></label>
                                     </fx-control>
 
-                                    <fx-group id="{@xml:id}-findspot">
-                                        <h3>
-                                            <pb-i18n key="form.findspot">Fundort</pb-i18n>
-                                        </h3>
-                                        <!-- geoId from geodata -->
-                                        <!-- ### the geo form is loaded lazily - on 'ready' the 'load-geo-form' will be dispatched
-                                        and trigger the following load action which embeds the Fore control at 'geoform'.
-                                        This avoids race condition between container Fore and sub-Fore element. -->
-                                
-                                                <fx-control class="fore-control" ref="history/origin/origPlace/@corresp"
-                                                            src="geo-picker.html"
-                                                            initial="..">
-                                                </fx-control>
+                                    <details id="{@xml:id}-findspot">
+                                        <summary><pb-i18n key="form.findspot">Fundort</pb-i18n></summary>
+                                        <fx-control class="fore-control" ref="history/origin/origPlace/@corresp"
+                                                    src="geo-picker.html"
+                                                    initial="..">
+                                        </fx-control>
 
 
                                         <!-- 10b) -->
@@ -524,58 +578,55 @@
                                                 </div>
                                             </jinn-xml-editor>
                                         </fx-control>
-                                    </fx-group>
+
+                                    </details>
 
                                     <!-- 11) -->
 
                                     <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
                                     <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
-                                    <fx-group id="{@xml:id}-finddate">
-                                        <h3>
-                                                    <pb-i18n key="form.year-of-find">Fundjahr/-datum</pb-i18n>
-                                                </h3>
+                                    <details id="{@xml:id}-finddate">
+                                        <summary><pb-i18n key="form.year-of-find">Fundjahr/-datum</pb-i18n></summary>
                                         <fx-control ref="history/provenance/@when">
                                             <label>
-                                                        <pb-i18n key="form.date">Zeitpunkt</pb-i18n>
-                                                    </label>
+                                                <pb-i18n key="form.date">Zeitpunkt</pb-i18n>
+                                            </label>
                                             <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
                                             <fx-alert>
-                                                        <iron-icon icon="warning"/>
-                                                        <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
-                                                    </fx-alert>
+                                                <iron-icon icon="warning"/>
+                                                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+                                            </fx-alert>
                                         </fx-control>
                                         <fx-control ref="history/provenance/@notBefore">
                                             <label>
-                                                        <pb-i18n key="form.date-after">nach</pb-i18n>
-                                                    </label>
+                                                <pb-i18n key="form.date-after">nach</pb-i18n>
+                                            </label>
                                             <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
                                             <fx-alert>
-                                                        <iron-icon icon="warning"/>
-                                                        <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
-                                                    </fx-alert>
+                                                <iron-icon icon="warning"/>
+                                                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+                                            </fx-alert>
                                         </fx-control>
                                         <fx-control ref="history/provenance/@notAfter">
                                             <label>
-                                                        <pb-i18n key="form.date-before">vor</pb-i18n>
-                                                    </label>
+                                                <pb-i18n key="form.date-before">vor</pb-i18n>
+                                            </label>
                                             <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
                                             <fx-alert>
-                                                        <iron-icon icon="warning"/>
-                                                        <pb-i18n key="form.invalid-date">Ungültiges Datum</pb-i18n>
-                                                    </fx-alert>
+                                                <iron-icon icon="warning"/>
+                                                <pb-i18n key="form.invalid-date">Ungültiges Datum</pb-i18n>
+                                            </fx-alert>
                                         </fx-control>
                                         <fx-control ref="history/provenance/@when-custom">
                                             <label>
-                                                        <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
-                                                    </label>
+                                                <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
+                                            </label>
                                         </fx-control>
-                                    </fx-group>
+                                    </details>
 
-                                    <fx-group id="{@xml:id}-location">
+                                    <details id="{@xml:id}-location">
 
-                                        <h3>
-                                                    <pb-i18n key="form.last-recorded-location"/>
-                                                </h3>
+                                        <summary><pb-i18n key="form.last-recorded-location"/></summary>
                                         <!-- 12a) -->
                                         <div class="with-hint">
                                             <fx-control ref="msIdentifier/repository">
@@ -639,7 +690,7 @@
 
                                                     <fx-insert context="msContents/msItem/listBibl[@type='transmission']" ref="bibl" origin="instance('templates')//bibl"></fx-insert>
                                                     <fx-setvalue ref="(msContents/msItem/listBibl[@type='transmission']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
-                                                    <fx-refresh control="r-transmission"/>
+                                                    <fx-refresh control="r-transmission"></fx-refresh>
                                                 </fx-trigger>
                                             </legend>
                                             <fx-repeat class="nested-repeat" id="r-transmission" ref="msContents/msItem/listBibl[@type='transmission']/bibl">
@@ -697,31 +748,28 @@
                                                         </div>
                                                     </div>
                                                     <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="Überlieferung löschen"/>
-                                                        <fx-delete ref="."/>
-                                                        <fx-refresh control="r-transmission"/>
+                                                        <iron-icon icon="remove-circle-outline" title="Überlieferung löschen"></iron-icon>
+                                                        <fx-delete ref="."></fx-delete>
+                                                        <fx-refresh control="r-transmission"></fx-refresh>
                                                     </fx-trigger>
 
                                                 </template>
                                             </fx-repeat>
                                         </fieldset>
-                                    </fx-group>
+                                    </details>
 
-                                    <fx-group id="{@xml:id}-verification">
-                                        <legend>
-                                            <h3>
-                                                <pb-i18n key="form.verification">Verifizierung</pb-i18n>
-                                            </h3>
+                                    <details id="{@xml:id}-verification">
+                                        <summary><pb-i18n key="form.verification">Verifizierung</pb-i18n>
                                             <!-- 12b-12e missing -->
                                             <fx-trigger class="add">
-                                            <pb-popover>
-                                                <iron-icon icon="add-circle-outline"/>
-                                                <template slot="alternate"><pb-i18n key="form.hint-add-verification"/></template>
-                                            </pb-popover>
+                                                <pb-popover>
+                                                    <iron-icon icon="add-circle-outline"/>
+                                                    <template slot="alternate"><pb-i18n key="form.hint-add-verification"/></template>
+                                                </pb-popover>
                                                 <fx-insert context="msContents/msItem" ref="note"
-                                                    origin="instance('templates')/note[@type='verification']"/>
+                                                           origin="instance('templates')/note[@type='verification']"></fx-insert>
                                             </fx-trigger>
-                                        </legend>
+                                        </summary>
                                         <fx-repeat class="nested-repeat" ref="msContents/msItem/note[@type='verification']"
                                             id="r-verification">
                                             <template>
@@ -750,19 +798,19 @@
                                                 </fx-group>
                                                 <fx-trigger>
                                                     <pb-popover>
-                                                        <iron-icon icon="remove-circle-outline"/>
-                                                        <template slot="alternate"><pb-i18n key="form.hint-delete-verification"/></template>
+                                                        <iron-icon icon="remove-circle-outline"></iron-icon>
+                                                        <template slot="alternate"><pb-i18n key="form.hint-delete-verification"></pb-i18n></template>
                                                     </pb-popover>
-                                                    <fx-delete ref="."/>
+                                                    <fx-delete ref="."></fx-delete>
                                                 </fx-trigger>
                                             </template>
                                         </fx-repeat>
-                                    </fx-group>
+                                    </details>
 
-                                    <fx-group id="{@xml:id}-objectdesc">
-                                        <h3>
+                                    <details id="{@xml:id}-objectdesc">
+                                        <summary>
                                             <pb-i18n key="form.object-description">Objektbeschreibung</pb-i18n>
-                                        </h3>
+                                        </summary>
 
                                         <!-- 13) -->
                                         <fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
@@ -833,11 +881,11 @@
                                         </fx-control>
 
                                         <!-- 34) -->
-                                    </fx-group>
-                                    <fx-group id="{@xml:id}-inscription-field">
-                                        <h3>
+                                    </details>
+                                    <details id="{@xml:id}-inscription-field">
+                                        <summary>
                                             <pb-i18n key="form.inscription-field">Inschriftfeld</pb-i18n>
-                                        </h3>
+                                        </summary>
                                         <!-- 21) -->
                                         <fx-control class="measurement" ref="physDesc/objectDesc/layoutDesc/layout/dimensions/height">
                                             <label>
@@ -875,13 +923,13 @@
                                                 </div>
                                             </jinn-xml-editor>
                                         </fx-control>
-                                    </fx-group>
+                                    </details>
 
 
-                                    <fx-group id="{@xml:id}-text-description">
-                                        <h3>
+                                    <details id="{@xml:id}-text-description">
+                                        <summary>
                                             <pb-i18n key="form.text-description"/>
-                                        </h3>
+                                        </summary>
                                         <!-- 24) -->
                                         <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='metric']" update-event="input">
                                             <label><pb-i18n key="form.metre">Metrik</pb-i18n></label>
@@ -969,12 +1017,12 @@
                                             </select>
                                         </fx-control>
 
-                                    </fx-group>
+                                    </details>
 
-                                    <fx-var name="frag" value="'#' || ./@xml:id"/>
+                                    <fx-var name="frag" value="'#' || ./@xml:id"></fx-var>
 
-                                    <fx-group class="group-6" id="{@xml:id}-references">
-                                        <h3>
+                                    <details class="group-6" id="{@xml:id}-references">
+                                        <summary>
                                             <pb-i18n key="form.references">Referenzen</pb-i18n>
                                             <pb-popover>
                                                 <iron-icon icon="info-outline"></iron-icon>
@@ -982,7 +1030,7 @@
                                                     <pb-i18n key="form.hint-references"></pb-i18n>
                                                 </template>
                                             </pb-popover>
-                                        </h3>
+                                        </summary>
 
                                         <!-- 35a) Ältere Editionen -->
                                         <fieldset>
@@ -997,11 +1045,11 @@
                                                     </pb-popover>
                                                 </label>
                                                 <fx-trigger class="add" title="Ältere Edition hinzufügen">
-                                                    <iron-icon icon="add-circle-outline"/>
+                                                    <iron-icon icon="add-circle-outline"></iron-icon>
 
-                                                    <fx-insert context="msContents/msItem/listBibl[@type='previousEditions']" ref="bibl" origin="instance('templates')//bibl"/>
+                                                    <fx-insert context="msContents/msItem/listBibl[@type='previousEditions']" ref="bibl" origin="instance('templates')//bibl"></fx-insert>
                                                     <fx-setvalue ref="(msContents/msItem/listBibl[@type='previousEditions']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
-                                                    <fx-refresh control="r-editions"/>
+                                                    <fx-refresh control="r-editions"></fx-refresh>
                                                 </fx-trigger>
                                             </legend>
                                             <fx-repeat class="nested-repeat" id="r-editions" ref="msContents/msItem/listBibl[@type='previousEditions']/bibl">
@@ -1060,9 +1108,9 @@
                                                     </div>
 
                                                     <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="delete Bibliographie"/>
-                                                        <fx-delete ref="."/>
-                                                        <fx-refresh control="r-editions"/>
+                                                        <iron-icon icon="remove-circle-outline" title="delete Bibliographie"></iron-icon>
+                                                        <fx-delete ref="."></fx-delete>
+                                                        <fx-refresh control="r-editions"></fx-refresh>
                                                     </fx-trigger>
 
                                                 </template>
@@ -1076,11 +1124,11 @@
                                                     <pb-i18n key="form.bibliography">Bibliographie</pb-i18n>
                                                 </label>
                                                 <fx-trigger class="add" title="Bibliographie hinzufügen">
-                                                    <iron-icon icon="add-circle-outline"/>
+                                                    <iron-icon icon="add-circle-outline"></iron-icon>
 
-                                                    <fx-insert context="msContents/msItem/listBibl[@type='bibliography']" ref="bibl" origin="instance('templates')//bibl"/>
+                                                    <fx-insert context="msContents/msItem/listBibl[@type='bibliography']" ref="bibl" origin="instance('templates')//bibl"></fx-insert>
                                                     <fx-setvalue ref="(msContents/msItem/listBibl[@type='bibliography']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
-                                                    <fx-refresh control="r-biblio"/>
+                                                    <fx-refresh control="r-biblio"></fx-refresh>
                                                 </fx-trigger>
                                             </legend>
                                             <fx-repeat class="nested-repeat" id="r-biblio" ref="msContents/msItem/listBibl[@type='bibliography']/bibl">
@@ -1143,9 +1191,9 @@
                                                         </fx-control>
                                                     </div>
                                                     <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="Bibliographie löschen"/>
-                                                        <fx-delete ref="."/>
-                                                        <fx-refresh control="r-biblio"/>
+                                                        <iron-icon icon="remove-circle-outline" title="Bibliographie löschen"></iron-icon>
+                                                        <fx-delete ref="."></fx-delete>
+                                                        <fx-refresh control="r-biblio"></fx-refresh>
                                                     </fx-trigger>
 
                                                 </template>
@@ -1162,9 +1210,9 @@
                                                 <fx-trigger class="add" title="Bilder (Fotos, Zeichnungen, Abklatsche) hinzufügen">
                                                     <iron-icon icon="add-circle-outline"/>
                                                     <fx-action>
-                                                        <fx-insert context="msContents/msItem/listBibl[@type='images']" ref="bibl" origin="instance('templates')//listBibl[@type='images']/bibl"/>
+                                                        <fx-insert context="msContents/msItem/listBibl[@type='images']" ref="bibl" origin="instance('templates')//listBibl[@type='images']/bibl"></fx-insert>
                                                         <fx-setvalue ref="(msContents/msItem/listBibl[@type='images']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
-                                                        <fx-refresh control="r-images"/>
+                                                        <fx-refresh control="r-images"></fx-refresh>
                                                     </fx-action>
                                                 </fx-trigger>
                                             </legend>
@@ -1221,9 +1269,9 @@
                                                         </div>
                                                     </div>
                                                     <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="delete image"/>
-                                                        <fx-delete ref="."/>
-                                                        <fx-refresh control="r-images"/>
+                                                        <iron-icon icon="remove-circle-outline" title="delete image"></iron-icon>
+                                                        <fx-delete ref="."></fx-delete>
+                                                        <fx-refresh control="r-images"></fx-refresh>
                                                     </fx-trigger>
 
                                                 </template>
@@ -1239,7 +1287,7 @@
                                                 <fx-trigger class="add" title="Abbildung hinzufügen">
                                                     <iron-icon icon="add-circle-outline"/>
 
-                                                    <fx-insert context="facsimile" ref="graphic" origin="instance('templates')/graphic"/>
+                                                    <fx-insert context="facsimile" ref="graphic" origin="instance('templates')/graphic"></fx-insert>
                                                     <!--                                                       <fx-refresh control="r-pics"></fx-refresh>-->
                                                 </fx-trigger>
                                             </legend>
@@ -1250,18 +1298,18 @@
                                                     </fx-control>
 
                                                     <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="delete image"/>
-                                                        <fx-delete ref="."/>
+                                                        <iron-icon icon="remove-circle-outline" title="delete image"></iron-icon>
+                                                        <fx-delete ref="."></fx-delete>
                                                     </fx-trigger>
 
                                                 </template>
                                             </fx-repeat>
                                         </fieldset>
-                                    </fx-group>
-                                    <fx-group class="group-6" id="{@xml:id}-edition">
-                                        <h3>
-                                                    <pb-i18n key="form.edition">Textedition</pb-i18n>
-                                                </h3>
+                                    </details>
+                                    <details class="group-6" id="{@xml:id}-edition">
+                                        <summary>
+                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
+                                        </summary>
                                         <div class="block" id="{@xml:id}-transcript">
                                             <h4>
                                                 <pb-i18n key="form.transcription">Transkription</pb-i18n>
@@ -1325,7 +1373,7 @@
                                             <h4>
                                                 <pb-i18n key="form.display">Display</pb-i18n>
                                             </h4>
-                                            <div id="transcription-display"/>
+                                            <div id="transcription-display"></div>
                                         </div>
                                         <div class="block">
                                             <h4>
@@ -1389,38 +1437,40 @@
                                                             <pb-i18n key="form.translated-by">Übersetzer/in</pb-i18n>: </label>
                                             </fx-control>
                                         </div>
-                                    </fx-group>
+                                    </details>
                                 </div>
 
                                 <fx-trigger class="delete {if(@type='main' or count(./preceding-sibling::msPart) = 0) then 'hidden' else ''}">
                                     <button>Löschen</button>
-                                    <fx-delete ref="."/>
-                                    <fx-refresh control="parts"/>
+                                    <fx-confirm message="really delete?">
+                                        <fx-delete ref="."></fx-delete>
+                                    </fx-confirm>
+                                    <fx-refresh control="parts"></fx-refresh>
                                 </fx-trigger>
 
 
                             </template>
                         </fx-repeat>
 
-                        <fx-trigger class="add" title="msPart hinzufügen">
-                            <button>
-                                        <pb-i18n key="form.add"/>
+                        <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
+                            <button id="addFragBtn">
+                                <pb-i18n key="form.add"></pb-i18n>
                                     </button>
                             <fx-action>
                                 <!-- insert a new msPart  -->
-                                <fx-insert ref="//msPart" origin="instance('mspart')"/>
+                                <fx-insert ref="//msPart" origin="instance('mspart')"></fx-insert>
                                 <!-- update and refresh so the repeat index is updated -->
-                                <fx-update/>
-                                <fx-refresh/>
+                                <fx-update></fx-update>
+                                <fx-refresh></fx-refresh>
                                 <!-- setting generated id on new msPart -->
-                                <fx-var name="uuid" value="gen-id()"/>
-                                <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="$uuid"/>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='textpart']/@corresp" value="'#' || $uuid"/>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='apparatus']/@corresp" value="'#' || $uuid"/>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='translation']/@corresp" value="'#' || $uuid"/>
-                                <fx-setvalue ref="//msPart[index('parts')]/facsimile/@corresp" value="'#' || $uuid"/>
-                                <fx-setvalue ref="//msPart[index('parts')]/@type" value="'fragment'"/>
-                                <fx-refresh control="parts"/>
+                                <fx-var name="uuid" value="gen-id()"></fx-var>
+                                <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="$uuid"></fx-setvalue>
+                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='textpart']/@corresp" value="'#' || $uuid"></fx-setvalue>
+                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='apparatus']/@corresp" value="'#' || $uuid"></fx-setvalue>
+                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='translation']/@corresp" value="'#' || $uuid"></fx-setvalue>
+                                <fx-setvalue ref="//msPart[index('parts')]/facsimile/@corresp" value="'#' || $uuid"></fx-setvalue>
+                                <fx-setvalue ref="//msPart[index('parts')]/@type" value="'fragment'"></fx-setvalue>
+                                <fx-refresh control="parts"></fx-refresh>
 
                             </fx-action>
                         </fx-trigger>
@@ -1429,10 +1479,10 @@
                         This won't call the update-cycle for each event as the replace action in its current form does not
                         call it. The control will refresh the UI when the control looses focus (onblur).
                         -->
-                        <fx-group class="group-10" id="commentary">
-                            <h3>
-                                        <pb-i18n key="form.commentary">Kommentar</pb-i18n>
-                                    </h3>
+                        <details class="group-10" id="commentary">
+                            <summary>
+                                <pb-i18n key="form.commentary">Kommentar</pb-i18n>
+                            </summary>
                             <fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="blur">
                                 <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
@@ -1457,11 +1507,11 @@
                                     </div>
                                 </jinn-xml-editor>
                             </fx-control>
-                        </fx-group>
+                        </details>
 
                         <!-- 26) -->
-                        <fx-group ref="//msDesc" class="group-6" id="chronology">
-                            <h3>
+                        <details ref="//msDesc" class="group-6" id="chronology">
+                            <summary>
                                 <pb-i18n key="form.dating">Datierung</pb-i18n>
                                 <pb-popover>
                                     <iron-icon icon="info-outline"/>
@@ -1469,11 +1519,11 @@
                                         <pb-i18n key="form.hint-dating"/>
                                     </template>
                                 </pb-popover>
-                            </h3>
+                            </summary>
 
 
                             <!-- 26), 27)-->
-                            <fx-control ref="history/origin/origDate/@when-custom">
+                            <fx-control ref="//msDesc/history/origin/origDate/@when-custom">
                                 <label>
                                             <pb-i18n key="form.date">Zeitpunkt</pb-i18n>
                                         </label>
@@ -1484,7 +1534,7 @@
                                         </fx-alert>
                             </fx-control>
                             <div class="with-hint">
-                                <fx-control ref="history/origin/origDate/@notBefore-custom">
+                                <fx-control ref="//msDesc/history/origin/origDate/@notBefore-custom">
                                     <label>
                                                 <pb-i18n key="form.date-after">nach</pb-i18n>
                                             </label>
@@ -1496,7 +1546,7 @@
                                 </fx-control>
                             </div>
                             <div class="with-hint">
-                                <fx-control ref="history/origin/origDate/@notAfter-custom">
+                                <fx-control ref="//msDesc/history/origin/origDate/@notAfter-custom">
                                     <label>
                                                 <pb-i18n key="form.date-before">vor</pb-i18n>
                                             </label>
@@ -1507,7 +1557,7 @@
                                             </fx-alert>
                                 </fx-control>
                             </div>
-                            <fx-control ref="history/origin/origDate" as="node" update-event="blur">
+                            <fx-control ref="//msDesc/history/origin/origDate" as="node" update-event="blur">
                                 <label>
                                             <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
                                         </label>
@@ -1526,12 +1576,12 @@
                                     </div>
                                 </jinn-xml-editor>
                             </fx-control>
-                        </fx-group>
+                        </details>
 
-                        <fx-group ref="profileDesc" id="historic-relevance">
-                            <h3>
-                                        <pb-i18n key="form.historic-relevance"/>
-                                    </h3>
+                        <details ref="profileDesc" id="historic-relevance">
+                            <summary>
+                                <pb-i18n key="form.historic-relevance"/>
+                            </summary>
                             <!-- 28)  -->
                             <fx-control ref="textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/religion']/term/@ref" update-event="input">
                                 <label>
@@ -1580,7 +1630,7 @@
                                 <fx-delete event="value-changed" if="context()/text()='false'" ref="instance('default')//term[@ref='#military']"/>
                             </fx-control>
 
-                        </fx-group>
+                        </details>
 
                         <!-- 35b) -->
                         <!-- 35a) -->
@@ -1652,14 +1702,14 @@
             </main>
 
             <footer class="version">
-                App: v<span data-template="pages:version"/> / web components: v<pb-version/>
+                App: v<span data-template="pages:version"></span> / web components: v<pb-version></pb-version>
             </footer>
         </app-header-layout>
     </app-drawer-layout>
 </pb-page>
-<div class="splash"/>
+<div class="splash"></div>
 
-<script src="./resources/scripts/util.js" type="text/javascript"/>
+<script src="./resources/scripts/util.js" type="text/javascript"></script>
 <!--fx-devtools></fx-devtools-->
 
 

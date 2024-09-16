@@ -52,18 +52,18 @@
                 <main>
                         <fx-fore id="person">
 
-                            <fx-action event="ready" if="exists(instance('query')/id)">
-                                <fx-send submission="s-load"/>
+                            <fx-action event="ready" if="uri-param('id') != ''">
+                                <fx-send submission="s-load"></fx-send>
                             </fx-action>
                     
                             <fx-model>
                                 <fx-action event="model-construct-done">
-                                    <fx-send submission="s-login"/>
+                                    <fx-send submission="s-login"></fx-send>
                                     <fx-send submission="s-load-template"></fx-send>
                                 </fx-action>
                     
-                                <fx-instance xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                                    <data/>
+                                <fx-instance id="default" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
                                 </fx-instance>
                     
                                 <fx-instance id="tribus">
@@ -109,31 +109,33 @@
                                 </fx-instance>
                                 <fx-instance id="status">
                                     <data>
-                                        <item key="Herrscher / Herrscherhaus"/>
-                                        <item key="Senatorenstand"/>
-                                        <item key="Ritterstand"/>
-                                        <item key="Dekurionenstand"/>
-                                        <item key="höhere Gemeindeverwaltung"/>
-                                        <item key="subalterne Beamte"/>
-                                        <item key="Domänen- / niedere Gemeindeverwaltung"/>
-                                        <item key="Augustalen"/>
-                                        <item key="Freigelassene"/>
-                                        <item key="Sklaven"/>
-                                        <item key="Sonstige"/>
+                                        <item key="Herrscher / Herrscherhaus"></item>
+                                        <item key="Senatorenstand"></item>
+                                        <item key="Ritterstand"></item>
+                                        <item key="Dekurionenstand"></item>
+                                        <item key="höhere Gemeindeverwaltung"></item>
+                                        <item key="subalterne Beamte"></item>
+                                        <item key="Domänen- / niedere Gemeindeverwaltung"></item>
+                                        <item key="Augustalen"></item>
+                                        <item key="Freigelassene"></item>
+                                        <item key="Sklaven"></item>
+                                        <item key="Sonstige"></item>
                                     </data>
                                 </fx-instance>
                                 <fx-instance id="vars">
                                     <data>
                                         <loggedin>hidden</loggedin>
+                                        <idno type=""></idno>
                                     </data>
+                                </fx-instance>
+                                <fx-instance id="templ" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <person>
+                                        <idno type=""></idno>
+                                    </person>
                                 </fx-instance>
                                 <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
                     
-                                <fx-instance id="query" src="#querystring">
-                                    <data></data>
-                                </fx-instance>
-                    
-                                <fx-submission id="s-save" method="post" url="api/people/{instance('query')/id}" replace="instance">
+                                <fx-submission id="s-save" method="post" url="api/people/{uri-param('id')}" replace="instance">
                                     <fx-action event="submit-done">
                                         <fx-message>Ort wurde gespeichert</fx-message>
                                         <fx-send submission="s-load"></fx-send>
@@ -151,7 +153,7 @@
                                     </fx-action>
                                 </fx-submission>
 
-                                <fx-submission id="s-load" method="get" url="api/people/{instance('query')/id}" replace="instance" validate="false">
+                                <fx-submission id="s-load" method="get" url="api/people/{uri-param('id')}" replace="instance" validate="false">
                                 </fx-submission>
                     
                                 <fx-submission id="s-load-template" method="get" url="templates/fore/person-tmpl.xml" replace="instance" validate="false">
@@ -171,7 +173,7 @@
                             </fx-model>
                     
                             
-                                <fx-output ref="instance('default')/person/@xml:id"/>
+                                <fx-output ref="instance('default')/@xml:id"/>
                                 <fieldset>
                                     <legend>Person</legend>
                                     <fx-control ref="persName/name[@type='god']">
@@ -244,7 +246,8 @@
                                                             <option value="wikidata">Wikidata</option>
                                                         </select>
                                                     </fx-control>
-                                                    <fx-control ref="." class="flex-2">
+                                                    <fx-control ref=".">
+                                                        <input/>
                                                     </fx-control>
                                                 </div>
                                             </template>
@@ -256,8 +259,8 @@
                                     <div class="actions">
                                         <fx-trigger id="save" class="saveBtn">
                                             <button type="submit"><pb-i18n key="form.save">Save</pb-i18n></button>
-                                            <fx-send submission="s-create" if="not(exists(instance('params')/id))"></fx-send>
-                                            <fx-send submission="s-save" if="exists(instance('params')/id)"></fx-send>
+                                            <fx-send submission="s-create" if="uri-param('id') = ''"></fx-send>
+                                            <fx-send submission="s-save" if="uri-param('id') != ''"></fx-send>
                                         </fx-trigger>
                                     </div>
                                 </pb-restricted>
@@ -294,5 +297,4 @@
     </pb-page>
     <div class="splash"/>
 </body>
-
 </html>
