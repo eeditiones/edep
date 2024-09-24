@@ -186,7 +186,7 @@
         </model>
                 </elementSpec>
                 <elementSpec ident="text()" mode="add">
-                    <model predicate="following-sibling::lb[@break=&#34;no&#34;]" behaviour="text">
+                    <model predicate="following-sibling::*[1][@break=&#34;no&#34;]" behaviour="text">
             <param name="content" value="replace(., '[\s\n]+$', '')"/>
         </model>
                     <model behaviour="text"/>
