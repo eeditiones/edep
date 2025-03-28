@@ -799,8 +799,9 @@ pb-login{
     margin-bottom:1rem;
     margin-top: 0;
 }
-.title label{
+.title label {
     display:block;
+    justify-self: flex-start;
 }
 .title input{
     font-size:1.4rem;

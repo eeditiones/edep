@@ -472,7 +472,7 @@
                             </fx-control>
 
                             <!-- 16b) -->
-                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/note" as="node" update-event="blur">
+                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/note" as="node" update-event="leave">
                                 <label>
                                     <pb-i18n key="form.description-of-monument">Beschreibung Inschriftträger</pb-i18n>
                                 </label>
@@ -559,7 +559,7 @@
 
 
                                         <!-- 10b) -->
-                                        <fx-control ref="history/provenance/note[@type='context']" as="node" update-event="blur">
+                                        <fx-control ref="history/provenance/note[@type='context']" as="node" update-event="leave">
                                             <label>
                                                 <pb-i18n key="form.context-of-provenance">Fundkontext</pb-i18n>
                                             </label>
@@ -644,7 +644,7 @@
                                         
                                         <!-- 12b) -->
                                         <div class="with-hint">
-                                            <fx-control ref=".//provenance[@type='history']" as="node" update-event="blur">
+                                            <fx-control ref=".//provenance[@type='history']" as="node" update-event="leave">
                                                 <label>
                                                             <pb-i18n key="form.other-events">Weitere Ereignisse</pb-i18n>
                                                         </label>
@@ -726,7 +726,7 @@
                                                         </fx-control>
 
                                                         <div>
-                                                            <fx-control ref="note" as="node" update-event="blur">
+                                                            <fx-control ref="note" as="node" update-event="leave">
                                                                 <label>
                                                                     <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
                                                                 </label>
@@ -904,7 +904,7 @@
                                                 <pb-i18n key="form.letter-size">Buchstabenhöhe</pb-i18n>
                                             </label>
                                         </fx-control>
-                                        <fx-control ref="physDesc/objectDesc/layoutDesc/layout/ab" as="node" update-event="blur">
+                                        <fx-control ref="physDesc/objectDesc/layoutDesc/layout/ab" as="node" update-event="leave">
                                             <label>
                                                 <pb-i18n key="form.description">Beschreibung</pb-i18n>
                                             </label>
@@ -986,7 +986,7 @@
                                                     </template>
                                                 </fx-items>
                                             </fx-control>
-                                            <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']" class="{instance('vars')/hide}" as="node" update-event="blur">
+                                            <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']" class="{instance('vars')/hide}" as="node" update-event="leave">
                                                 <label>
                                                     <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
                                                 </label>
@@ -1083,7 +1083,7 @@
                                                             </label>
                                                         </fx-control>
                                                         <div>
-                                                            <fx-control ref="note" as="node" update-event="blur">
+                                                            <fx-control ref="note" as="node" update-event="leave">
                                                                 <label>
                                                                     <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
                                                                 </label>
@@ -1163,7 +1163,7 @@
                                                                 <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
                                                             </label>
                                                         </fx-control>
-                                                        <fx-control ref="note" as="node" update-event="blur">
+                                                        <fx-control ref="note" as="node" update-event="leave">
                                                             <label>
                                                                 <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
                                                             </label>
@@ -1247,7 +1247,7 @@
                                                                     </label>
                                                         </fx-control>
                                                         <div>
-                                                            <fx-control ref="note" as="node" update-event="blur">
+                                                            <fx-control ref="note" as="node" update-event="leave">
                                                                 <label>
                                                                     <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
                                                                 </label>
@@ -1314,7 +1314,7 @@
                                             <h4>
                                                 <pb-i18n key="form.transcription">Transkription</pb-i18n>
                                             </h4>
-                                            <fx-control class="transcription editor" ref="div[@type='textpart']" as="node" update-event="blur">
+                                            <fx-control class="transcription editor" ref="div[@type='textpart']" as="node" update-event="leave">
                                                 <jinn-epidoc-editor id="transcriptionEditor" unwrap="unwrap" class="widget" show-leiden="" schema="resources/scripts/tei.json" schema-root="div" mode="leiden_plus">
                                                     <h5 slot="leiden-header">Leiden+ Editor</h5>
                                                     <div slot="leiden-toolbar">
@@ -1380,7 +1380,7 @@
                                                 <pb-i18n key="form.apparatus">Apparatus</pb-i18n>
                                             </h4>
                                             <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
-                                            <fx-control class="apparatus editor" ref="div[@type='apparatus']" as="node" update-event="blur">
+                                            <fx-control class="apparatus editor" ref="div[@type='apparatus']" as="node" update-event="leave">
                                                 <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Should contain a &lt;listApp&gt; with nested &lt;app&gt;]">
                                                     <div slot="toolbar">
                                                         <pb-popover>
@@ -1411,7 +1411,7 @@
                                                         <pb-i18n key="form.translation">Übersetzung</pb-i18n>
                                                     </h4>
                                             <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-                                            <fx-control class="translation editor" ref="div[@type='translation']" as="node" update-event="blur">
+                                            <fx-control class="translation editor" ref="div[@type='translation']" as="node" update-event="leave">
                                                 <jinn-xml-editor id="translation" unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
                                                     <div slot="toolbar">
                                                         <pb-popover>
@@ -1483,7 +1483,7 @@
                             <summary>
                                 <pb-i18n key="form.commentary">Kommentar</pb-i18n>
                             </summary>
-                            <fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="blur">
+                            <fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="leave">
                                 <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
                                         <pb-popover>
@@ -1557,7 +1557,7 @@
                                             </fx-alert>
                                 </fx-control>
                             </div>
-                            <fx-control ref="//msDesc/history/origin/origDate" as="node" update-event="blur">
+                            <fx-control ref="//msDesc/history/origin/origDate" as="node" update-event="leave">
                                 <label>
                                             <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
                                         </label>
