@@ -379,12 +379,7 @@ declare function api:inscription-template($request as map(*)) {
                 collection($collection)//tei:idno[. = $id]/ancestor::tei:TEI,
                 doc($collection || "/" || $id || ".xml")/tei:TEI
             )[1]
-            let $withParts :=
-                if ($input//tei:msPart[@type="main"]) then
-                    $input
-                else
-                    document { api:to-ms-part($input) }
-            let $merged := api:file-upload(doc($config:inscription-templ), root($withParts))
+            let $merged := api:file-upload(doc($config:inscription-templ), root(document {api:to-ms-part($input)}))
             return
                 $merged
         else
@@ -432,15 +427,15 @@ declare %private function api:postprocess($nodes as node()*, $edepId as xs:strin
                 element { node-name($node) } {
                     $node/@*,
                     api:postprocess($node/tei:teiHeader, $edepId),
-                    root($node)//tei:msPart/tei:facsimile,
+                    root($node)//tei:facsimile,
                     api:postprocess($node/tei:text, $edepId)
                 }
             case element(tei:body) return
                 element { node-name($node) } {
                     $node/@*,
-                    root($node)//tei:msPart/tei:div[@type=('apparatus', 'translation')],
+                    root($node)//tei:div[@type=('apparatus', 'translation')],
                     <div type="edition" xmlns="http://www.tei-c.org/ns/1.0">
-                    { root($node)//tei:msPart/tei:div[@type='textpart'] }
+                    { root($node)//tei:div[@type='textpart'] }
                     </div>,
                     $node/tei:div[@type = "commentary"]
                 }
@@ -547,7 +542,7 @@ declare function api:render($request as map(*)) {
     let $xml := 
         switch ($type)
             case "transcription" return
-                $request?body//tei:msPart/tei:div[@type="textpart"]
+                $request?body//tei:div[@type="textpart"]
             default return
                 $request?body
     return
@@ -570,72 +565,6 @@ declare function api:to-ms-part($nodes as node()*) {
     for $node in $nodes
     return
         typeswitch ($node)
-            case element(tei:msDesc) return
-                element { node-name($node) } {
-                    $node/tei:msIdentifier,
-                    if ($node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support) then
-                        <physDesc xmlns="http://www.tei-c.org/ns/1.0">
-                            <objectDesc>
-                                <supportDesc>
-                                    <support>
-                                    {
-                                        let $supp := $node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support
-                                        return (
-                                            $supp/tei:objectType,
-                                            $supp/tei:material,
-                                            $supp/tei:note
-                                        )
-                                    }
-                                    </support>
-                                </supportDesc>
-                            </objectDesc>
-                        </physDesc>
-                    else
-                        (),
-                    if ($node/tei:history/tei:origin/tei:origDate) then
-                        <history xmlns="http://www.tei-c.org/ns/1.0">
-                            <origin>
-                            { $node/tei:history/tei:origin/tei:origDate }
-                            </origin>
-                        </history>
-                    else
-                        (),
-                    <msPart xml:id="part-main" xmlns="http://www.tei-c.org/ns/1.0" type="main">
-                        <msIdentifier>
-                            <repository/>
-                        </msIdentifier>
-                        { $node/tei:msContents }
-                        {
-                            if ($node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support) then
-                                <physDesc xmlns="http://www.tei-c.org/ns/1.0">
-                                    <objectDesc>
-                                        <supportDesc>
-                                            <support>
-                                            { 
-                                                $node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:dimensions,
-                                                $node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:rs
-                                            }
-                                            </support>
-                                            { $node/tei:physDesc/tei:objectDesc/tei:supportDesc/tei:support/tei:condition }
-                                        </supportDesc>
-                                        {
-                                            $node/tei:physDesc/tei:objectDesc/tei:layoutDesc
-                                        }
-                                    </objectDesc>
-                                </physDesc>
-                            else
-                                ()
-                        }
-                        {
-                            if ($node/tei:history/tei:provenance) then
-                                <history>
-                                    { $node/tei:history/tei:provenance }
-                                </history>
-                            else
-                                ()
-                        }
-                    </msPart>
-                }
             case element(tei:div) return
                 if ($node/@type = "edition" and not($node/tei:div[@type='textpart'])) then
                     <div type="edition" xmlns="http://www.tei-c.org/ns/1.0">
@@ -718,9 +647,9 @@ declare %private function api:complete-input($nodes as node()*) as node()* {
                     { ($node/@type, $templateBibl/@type)[1] }
                      {($node/node(),  $templateBibl/*[not(local-name() = $node/node()/local-name())])}
                     </bibl>
-            case element(tei:msPart) return
+            (: case element(tei:msPart) return
                 let $templateMsPart := doc('/db/apps/edep/templates/fore/mspart-tmpl.xml')/tei:msPart
-                return api:process-additional-template($templateMsPart, $node)
+                return api:process-additional-template($templateMsPart, $node) :)
         default 
             return $node
     };
