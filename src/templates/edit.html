@@ -453,7 +453,7 @@
                                     </h3>
                             <!-- 3) -->
 
-                            <fx-output ref=".//msDesc/msIdentifier/idno" class="edepid">
+                            <fx-output ref=".//idno[@type='EDEp']" class="edepid">
                                 <label slot="label">
                                     <pb-i18n key="form.edepid">EDEp ID</pb-i18n>
                                 </label>
@@ -471,8 +471,12 @@
                                 </select>
                             </fx-control>
 
+                            <fx-control id="tm-number" class="tm-number" ref=".//msIdentifier/idno[@type='TM']">
+                                <label><pb-i18n key="form.tm">TM</pb-i18n></label>
+                            </fx-control>
+
                             <!-- 16b) -->
-                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/note" as="node" update-event="leave">
+                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/note[not(@type)]" as="node" update-event="leave">
                                 <label>
                                     <pb-i18n key="form.description-of-monument">Beschreibung Inschriftträger</pb-i18n>
                                 </label>

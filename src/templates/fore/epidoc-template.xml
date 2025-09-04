@@ -9,6 +9,10 @@
                 <editor/>
                 <!-- 45) Bearbeiter des Datensatzes -->
                 <author/>
+                <respStmt>
+                    <resp when=""></resp>
+                    <persName/>
+                </respStmt>
             </titleStmt>
             <publicationStmt>
                 <authority>Epigraphische Datenbank Heidelberg</authority>
@@ -21,23 +25,65 @@
             <sourceDesc>
                 <msDesc>
                     <msIdentifier>
-                        <repository>Epigraphische Datenbank Heidelberg</repository>
+                        <!-- 12a) Aufbewahrung -->
+                        <repository key=""/>                        
+                        <idno type="inventory"/>
                         <!-- 3) EDEp ID -->
                         <idno type="EDEp"/>
+                        <!-- 4) TM-Nummer - manuelle Eingabe -->
+                        <idno type="TM"/>
                     </msIdentifier>
                     <physDesc>
                         <objectDesc>
                             <supportDesc>
                                 <support>
+                                    <!-- 14) Dekor -->
+                                    <note type="decoration" corresp=""/>
                                     <!-- 16a) Inschriftträger -->
                                     <objectType ref=""/>
                                     <!-- 18) Material -->
                                     <material ref=""/>
                                     <!-- 16b) Beschreibung Inschriftträger -->
                                     <note/>
+                                    <dimensions>
+                                        <!-- Inschriftträger: Breite -->
+                                        <width/>
+                                        <!-- Inschriftträger: Höhe -->
+                                        <height/>
+                                        <!-- Inschriftträger: Tiefe -->
+                                        <depth/>
+                                    </dimensions>
                                 </support>
+                                <!-- 13) Erhaltung -->
+                                <condition/>
                             </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <dimensions>
+                                        <!-- Inschriftfeld: Höhe -->
+                                        <height/>
+                                        <!-- Inschriftfeld: Breite -->
+                                        <width/>
+                                    </dimensions>
+                                    <!-- 34) Paläographie: kontrolliertes Vokabular -->
+                                    <note type="palaeography" corresp=""/>
+                                    <!-- 24) Metrik -->
+                                    <note type="metric"/>
+                                    <!-- Beschreibung -->
+                                    <ab/>
+                                </layout>
+                            </layoutDesc>
                         </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions type="letterHeight">
+                                    <!-- 23) Buchstabenhöhe -->
+                                    <height/>
+                                </dimensions>
+                                <!-- 39) Ligatur -->
+                                <rs type="ligature"/>
+                            </handNote>
+                        </handDesc>
                     </physDesc>
                     <history>
                         <origin>
@@ -51,7 +97,23 @@
                                 @datingMethod - fixes Attribut, hier immer Julianisch
                             -->
                             <origDate when-custom="" notBefore-custom="" notAfter-custom="" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar"/>
+                            <!-- in @corresp wird die GeoID angegeben, andere Ortsangaben sind redundant und werden
+                                am Ende nur hinein kopiert - siehe Kommentare -->
+                            <origPlace corresp=""/>
                         </origin>
+                        <!--
+                            11) Fundjahr (Attribute auf <provenance>)
+
+                            @when - Korrekte Datumsangabe, entweder nur Jahr oder xs:date YYYY-MM-DD
+                            @notBefore - wie @when aber gemeint als "nach"
+                            @notAfter - wie @when aber gemeint als "vor"
+                            @when-custom - falls exakte Datierung unmöglich; schließt die anderen Attribute aus
+                        -->
+                        <provenance type="found" when="" when-custom="" notBefore="" notAfter="">
+                            <!-- 10b) Fundkontext: nicht kopiert, freie Eingabe -->
+                            <note type="context"></note>
+                        </provenance>
+                        <provenance type="history"></provenance>
                     </history>
                     <!-- msPart ist als Ganzes wiederholbar -->
                     <!-- @xml:id erforderlich für Referenzierung unten -->
@@ -166,6 +228,23 @@
 
                     </msPart>
                 </msDesc>
+                <listBibl>
+                    <listBibl type="bibliography">
+                        <!-- Einträge wiederholbar -->
+                    </listBibl>
+                    <!-- 12c) Überlieferung -->
+                    <listBibl type="transmission">
+                        <!-- Einträge wiederholbar -->
+                    </listBibl>
+                    <!-- 35a) Ältere Editionen -->
+                    <listBibl type="previousEditions">
+                        <!-- Einträge wiederholbar - optional -->
+                    </listBibl>
+                    <!-- 35c) Bilder: Verweis auf Literatur, in der Abbildung vorhanden -->
+                    <listBibl type="images">
+                        <!-- Einträge wiederholbar - optional -->
+                    </listBibl>
+                </listBibl>
             </sourceDesc>
         </fileDesc>
         <encodingDesc>
