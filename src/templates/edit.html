@@ -1432,28 +1432,6 @@
                             </template>
                         </fx-repeat>
 
-                        <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
-                            <button id="addFragBtn">
-                                <pb-i18n key="form.add"></pb-i18n>
-                                    </button>
-                            <fx-action>
-                                <!-- insert a new msPart  -->
-                                <!-- update and refresh so the repeat index is updated -->
-                                <fx-update></fx-update>
-                                <fx-refresh></fx-refresh>
-                                <!-- setting generated id on new msPart -->
-                                <fx-var name="uuid" value="gen-id()"></fx-var>
-                                <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="$uuid"></fx-setvalue>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='textpart']/@corresp" value="'#' || $uuid"></fx-setvalue>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='apparatus']/@corresp" value="'#' || $uuid"></fx-setvalue>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='translation']/@corresp" value="'#' || $uuid"></fx-setvalue>
-                                <fx-setvalue ref="//msPart[index('parts')]/facsimile/@corresp" value="'#' || $uuid"></fx-setvalue>
-                                <fx-setvalue ref="//msPart[index('parts')]/@type" value="'fragment'"></fx-setvalue>
-                                <fx-refresh control="parts"></fx-refresh>
-
-                            </fx-action>
-                        </fx-trigger>
-
                         <!--
                         This won't call the update-cycle for each event as the replace action in its current form does not
                         call it. The control will refresh the UI when the control looses focus (onblur).
