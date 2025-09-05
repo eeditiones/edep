@@ -877,65 +877,65 @@
                                 <fx-trigger class="add" title="Ältere Edition hinzufügen">
                                     <iron-icon icon="add-circle-outline"></iron-icon>
 
-                                                    <fx-insert context="msContents/msItem/listBibl[@type='previousEditions']" ref="bibl" origin="instance('templates')//bibl"></fx-insert>
-                                                    <fx-setvalue ref="(msContents/msItem/listBibl[@type='previousEditions']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
-                                                    <fx-refresh control="r-editions"></fx-refresh>
+                                    <fx-insert context="listBibl[@type='previousEditions']" ref="bibl" origin="instance('templates')//bibl"></fx-insert>
+                                    <fx-setvalue ref="(listBibl[@type='previousEditions']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
+                                    <fx-refresh control="r-editions"></fx-refresh>
+                                </fx-trigger>
+                            </legend>
+                            <fx-repeat class="nested-repeat" id="r-editions" ref="listBibl[@type='previousEditions']/bibl">
+                                <template>
+                                    <div>
+                                        <div class="output">
+                                            <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
+                                            <div>
+                                                <fx-output ref="@xml:id"></fx-output>
+                                                <fx-trigger>
+                                                    <iron-icon class="widget" icon="icons:content-copy"></iron-icon>
+                                                    <fx-call function="clipboard(@xml:id)"></fx-call>
                                                 </fx-trigger>
-                                            </legend>
-                                            <fx-repeat class="nested-repeat" id="r-editions" ref="msContents/msItem/listBibl[@type='previousEditions']/bibl">
-                                                <template>
-                                                    <div>
-                                                        <div class="output">
-                                                            <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                            <div>
-                                                                <fx-output ref="@xml:id"></fx-output>
-                                                                <fx-trigger>
-                                                                    <iron-icon class="widget" icon="icons:content-copy"></iron-icon>
-                                                                    <fx-call function="clipboard(@xml:id)"></fx-call>
-                                                                </fx-trigger>
-                                                            </div>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"/>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                        </div>
-                                                        <fx-control ref="ptr/@target" update-event="change">
-                                                            <label>
-                                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
-                                                              </label>
-                                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
-                                                        </fx-control>
-                                                        <fx-control ref="citedRange">
-                                                            <label>
-                                                                <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
-                                                            </label>
-                                                        </fx-control>
-                                                        <div>
-                                                            <fx-control ref="note" as="node" update-event="leave">
-                                                                <label>
-                                                                    <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
-                                                                </label>
-                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]" schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
-                                                                    <div slot="toolbar">
-                                                                        <pb-popover>
-                                                                            <iron-icon icon="info-outline"/>
-                                                                            <template slot="alternate">
-                                                                                <pb-i18n key="form.hint-biblio-note">Hint</pb-i18n>
-                                                                            </template>
-                                                                        </pb-popover>
-                                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
-                                                                        </button>
-                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
-                                                                        </button>
-                                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
-                                                            </fx-control>
-                                                        </div>
+                                            </div>
+                                            <pb-popover>
+                                                <iron-icon icon="info-outline"/>
+                                                <template slot="alternate">
+                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                </template>
+                                            </pb-popover>
+                                        </div>
+                                        <fx-control ref="ptr/@target" update-event="change">
+                                            <label>
+                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
+                                                </label>
+                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
+                                        </fx-control>
+                                        <fx-control ref="citedRange">
+                                            <label>
+                                                <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
+                                            </label>
+                                        </fx-control>
+                                        <div>
+                                            <fx-control ref="note" as="node" update-event="leave">
+                                                <label>
+                                                    <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
+                                                </label>
+                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]" schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
+                                                    <div slot="toolbar">
+                                                        <pb-popover>
+                                                            <iron-icon icon="info-outline"/>
+                                                            <template slot="alternate">
+                                                                <pb-i18n key="form.hint-biblio-note">Hint</pb-i18n>
+                                                            </template>
+                                                        </pb-popover>
+                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
+                                                        </button>
+                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
+                                                        </button>
+                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
                                                     </div>
+                                                </jinn-xml-editor>
+                                            </fx-control>
+                                        </div>
+                                    </div>
 
                                     <fx-trigger>
                                         <iron-icon icon="remove-circle-outline" title="delete Bibliographie"></iron-icon>
@@ -956,14 +956,14 @@
                                 <fx-trigger class="add" title="Bibliographie hinzufügen">
                                     <iron-icon icon="add-circle-outline"></iron-icon>
 
-                                                    <fx-insert context="msContents/msItem/listBibl[@type='bibliography']" ref="bibl" origin="instance('templates')//bibl"></fx-insert>
-                                                    <fx-setvalue ref="(msContents/msItem/listBibl[@type='bibliography']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
-                                                    <fx-refresh control="r-biblio"></fx-refresh>
-                                                </fx-trigger>
-                                            </legend>
-                                            <fx-repeat class="nested-repeat" id="r-biblio" ref="msContents/msItem/listBibl[@type='bibliography']/bibl">
-                                                <template>
-                                                    <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"/>
+                                    <fx-insert context="listBibl[@type='bibliography']" ref="bibl" origin="instance('templates')//bibl"></fx-insert>
+                                    <fx-setvalue ref="(listBibl[@type='bibliography']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
+                                    <fx-refresh control="r-biblio"></fx-refresh>
+                                </fx-trigger>
+                            </legend>
+                            <fx-repeat class="nested-repeat" id="r-biblio" ref="listBibl[@type='bibliography']/bibl">
+                                <template>
+                                    <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"/>
 
                                     <div>
                                         <div class="output">
@@ -1031,78 +1031,78 @@
 
                         </fieldset>
 
-                                        <!-- 35c) Bilder: Verweis auf Literatur, in der Abbildung vorhanden -->
-                                        <fieldset>
-                                            <legend>
-                                                <label>
-                                                            <pb-i18n key="form.images-dps">Bilder (Fotos, Zeichnungen, Abklatsche)</pb-i18n>
-                                                        </label>
-                                                <fx-trigger class="add" title="Bilder (Fotos, Zeichnungen, Abklatsche) hinzufügen">
-                                                    <iron-icon icon="add-circle-outline"/>
-                                                    <fx-action>
-                                                        <fx-insert context="msContents/msItem/listBibl[@type='images']" ref="bibl" origin="instance('templates')//listBibl[@type='images']/bibl"></fx-insert>
-                                                        <fx-setvalue ref="(msContents/msItem/listBibl[@type='images']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
-                                                        <fx-refresh control="r-images"></fx-refresh>
-                                                    </fx-action>
+                        <!-- 35c) Bilder: Verweis auf Literatur, in der Abbildung vorhanden -->
+                        <fieldset>
+                            <legend>
+                                <label>
+                                            <pb-i18n key="form.images-dps">Bilder (Fotos, Zeichnungen, Abklatsche)</pb-i18n>
+                                        </label>
+                                <fx-trigger class="add" title="Bilder (Fotos, Zeichnungen, Abklatsche) hinzufügen">
+                                    <iron-icon icon="add-circle-outline"/>
+                                    <fx-action>
+                                        <fx-insert context="listBibl[@type='images']" ref="bibl" origin="instance('templates')//listBibl[@type='images']/bibl"></fx-insert>
+                                        <fx-setvalue ref="(listBibl[@type='images']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
+                                        <fx-refresh control="r-images"></fx-refresh>
+                                    </fx-action>
+                                </fx-trigger>
+                            </legend>
+                            <fx-repeat class="nested-repeat" id="r-images" ref="listBibl[@type='images']/bibl">
+                                <template>
+                                    <div>
+                                        <div class="output">
+                                            <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
+                                            <div>
+                                                <fx-output ref="@xml:id"></fx-output>
+                                                <fx-trigger>
+                                                    <iron-icon class="widget" icon="icons:content-copy"></iron-icon>
+                                                    <fx-call function="clipboard(@xml:id)"></fx-call>
                                                 </fx-trigger>
-                                            </legend>
-                                            <fx-repeat class="nested-repeat" id="r-images" ref="msContents/msItem/listBibl[@type='images']/bibl">
-                                                <template>
-                                                    <div>
-                                                        <div class="output">
-                                                            <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                            <div>
-                                                                <fx-output ref="@xml:id"></fx-output>
-                                                                <fx-trigger>
-                                                                    <iron-icon class="widget" icon="icons:content-copy"></iron-icon>
-                                                                    <fx-call function="clipboard(@xml:id)"></fx-call>
-                                                                </fx-trigger>
-                                                            </div>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"/>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                        </div>
-                                                        <fx-control ref="ptr/@target" update-event="change">
-                                                            <label>
-                                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
-                                                              </label>
-                                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
-                                                        </fx-control>
-                                                        <fx-control ref="citedRange">
-                                                            <label>
-                                                                        <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
-                                                                    </label>
-                                                        </fx-control>
-                                                        <div>
-                                                            <fx-control ref="note" as="node" update-event="leave">
-                                                                <label>
-                                                                    <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
-                                                                </label>
-                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" schema-root="note" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Inline text/markup or sequence of paragraphs]">
-                                                                    <div slot="toolbar">
-                                                                        <pb-popover>
-                                                                            <iron-icon icon="info-outline"/>
-                                                                            <template slot="alternate">
-                                                                                <pb-i18n key="form.hint-biblio-note">Hint</pb-i18n>
-                                                                            </template>
-                                                                        </pb-popover>
-                                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
-                                                            </fx-control>
-                                                        </div>
+                                            </div>
+                                            <pb-popover>
+                                                <iron-icon icon="info-outline"/>
+                                                <template slot="alternate">
+                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
+                                                </template>
+                                            </pb-popover>
+                                        </div>
+                                        <fx-control ref="ptr/@target" update-event="change">
+                                            <label>
+                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
+                                                </label>
+                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
+                                        </fx-control>
+                                        <fx-control ref="citedRange">
+                                            <label>
+                                                        <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
+                                                    </label>
+                                        </fx-control>
+                                        <div>
+                                            <fx-control ref="note" as="node" update-event="leave">
+                                                <label>
+                                                    <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
+                                                </label>
+                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" schema-root="note" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Inline text/markup or sequence of paragraphs]">
+                                                    <div slot="toolbar">
+                                                        <pb-popover>
+                                                            <iron-icon icon="info-outline"/>
+                                                            <template slot="alternate">
+                                                                <pb-i18n key="form.hint-biblio-note">Hint</pb-i18n>
+                                                            </template>
+                                                        </pb-popover>
+                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
+                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
                                                     </div>
-                                                    <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="delete image"></iron-icon>
-                                                        <fx-delete ref="."></fx-delete>
-                                                        <fx-refresh control="r-images"></fx-refresh>
-                                                    </fx-trigger>
+                                                </jinn-xml-editor>
+                                            </fx-control>
+                                        </div>
+                                    </div>
+                                    <fx-trigger>
+                                        <iron-icon icon="remove-circle-outline" title="delete image"></iron-icon>
+                                        <fx-delete ref="."></fx-delete>
+                                        <fx-refresh control="r-images"></fx-refresh>
+                                    </fx-trigger>
 
                                 </template>
                             </fx-repeat>
