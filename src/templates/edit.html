@@ -25,7 +25,7 @@
     <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
 
     <style>
-        .valid{
+        .valid {
             position:fixed;
             bottom:0;
             left:0;
@@ -376,13 +376,18 @@
                                     </li>
                                     <li>
                                         <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-text-description">
-                                                    <pb-i18n key="form.text-description"/>
-                                                </a>
+                                            <pb-i18n key="form.text-description"/>
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-references">
-                                                    <pb-i18n key="form.references"/>
-                                                </a>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#languages">
+                                            <pb-i18n key="form.language"/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#references">
+                                            <pb-i18n key="form.references"/>
+                                        </a>
                                     </li>
                                     <li>
                                                 <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-edition">
@@ -480,7 +485,7 @@
                             </details>
                         </fx-group>
 
-                        <fx-group ref="fileDesc/sourceDesc/msDesc">
+                        <fx-group ref="fileDesc/sourceDesc/msDesc" id="inscription">
                             <h3>Inscription</h3>
 
                         <!-- FINDSPOT -->                            
@@ -769,7 +774,7 @@
                     </fx-group>
 
                     <fx-group ref="profileDesc">
-                        <details id="{@xml:id}-languages">
+                        <details id="languages">
                             <summary><pb-i18n key="form.languages">Language(s)</pb-i18n></summary>
                             <fx-trigger class="add">
                                 <pb-popover>
