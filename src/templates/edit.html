@@ -627,59 +627,9 @@
                             </div>
                         </details>
 
-                                    <details id="{@xml:id}-verification">
-                                        <summary><pb-i18n key="form.verification">Verifizierung</pb-i18n>
-                                            <!-- 12b-12e missing -->
-                                            <fx-trigger class="add">
-                                                <pb-popover>
-                                                    <iron-icon icon="add-circle-outline"/>
-                                                    <template slot="alternate"><pb-i18n key="form.hint-add-verification"/></template>
-                                                </pb-popover>
-                                                <fx-insert context="msContents/msItem" ref="note"
-                                                           origin="instance('templates')/note[@type='verification']"></fx-insert>
-                                            </fx-trigger>
-                                        </summary>
-                                        <fx-repeat class="nested-repeat" ref="msContents/msItem/note[@type='verification']"
-                                            id="r-verification">
-                                            <template>
-                                                <fx-group>
-                                                    <fx-control class="verification" ref="@subtype">
-                                                        <label>
-                                                            <pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n>
-                                                        </label>
-                                                        <select class="widget" ref="instance('vars')/verification/option[@lang=instance('vars')/language]">
-                                                            <template>
-                                                                <option value="{@value}">{.}</option>
-                                                            </template>
-                                                        </select>
-                                                    </fx-control>
-                                                    <fx-control ref="date/@when">
-                                                        <label>
-                                                            <pb-i18n key="form.date-of-verification">Datum der Verifizierung</pb-i18n>
-                                                        </label>
-                                                        <input placeholder="YYYY-MM-DD" class="widget"/>
-                                                    </fx-control>
-                                                    <fx-control ref="persName">
-                                                        <label>
-                                                            <pb-i18n key="form.verification-by">Verifizierer</pb-i18n>
-                                                        </label>
-                                                    </fx-control>
-                                                </fx-group>
-                                                <fx-trigger>
-                                                    <pb-popover>
-                                                        <iron-icon icon="remove-circle-outline"></iron-icon>
-                                                        <template slot="alternate"><pb-i18n key="form.hint-delete-verification"></pb-i18n></template>
-                                                    </pb-popover>
-                                                    <fx-delete ref="."></fx-delete>
-                                                </fx-trigger>
-                                            </template>
-                                        </fx-repeat>
-                                    </details>
-
-                                    <details id="{@xml:id}-objectdesc">
-                                        <summary>
-                                            <pb-i18n key="form.object-description">Objektbeschreibung</pb-i18n>
-                                        </summary>
+                        <!-- OBJECT DESCRIPTION -->                            
+                        <details id="{@xml:id}-objectdesc">
+                            <summary><pb-i18n key="form.object-description">Objektbeschreibung</pb-i18n></summary>
 
                             <!-- 13) -->
                             <fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
