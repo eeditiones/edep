@@ -417,6 +417,8 @@
                             <label><pb-i18n key="form.title"/></label>
                         </fx-control>
                         <!--            <span>Sprachselector hier</span>-->
+
+                        <!-- OBJECT -->
                         <fx-group id="object">
                             <h3><pb-i18n key="form.object">Objekt</pb-i18n></h3>
                             <!-- 3) -->
@@ -1421,7 +1423,7 @@
                             </div>
                             <fx-control ref="//msDesc/history/origin/origDate" as="node" update-event="leave">
                                 <label>
-                                            <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
+                                            <pb-i18n key="form.remarks">Beschreibung/Kommentare</pb-i18n>
                                         </label>
                                 <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
                                     <div slot="toolbar">
