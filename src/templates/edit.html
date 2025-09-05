@@ -414,28 +414,20 @@
                     </nav>
                     <fx-group ref="teiHeader" style="z-index:{}">
                         <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
-                            <label>
-                                        <pb-i18n key="form.title"/>
-                                    </label>
+                            <label><pb-i18n key="form.title"/></label>
                         </fx-control>
                         <!--            <span>Sprachselector hier</span>-->
                         <fx-group id="object">
-                            <h3>
-                                        <pb-i18n key="form.object">Objekt</pb-i18n>
-                                    </h3>
+                            <h3><pb-i18n key="form.object">Objekt</pb-i18n></h3>
                             <!-- 3) -->
 
-                            <fx-output ref=".//idno[@type='EDEp']" class="edepid">
-                                <label slot="label">
-                                    <pb-i18n key="form.edepid">EDEp ID</pb-i18n>
-                                </label>
+                            <fx-output ref="//idno[@type='EDEp']" class="edepid">
+                                <label slot="label"><pb-i18n key="form.edepid">EDEp ID</pb-i18n></label>
                             </fx-output>
 
                             <!-- 16a) -->
                             <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType/@ref" update-event="input">
-                                <label>
-                                    <pb-i18n key="form.type-of-monument">Inschriftträger</pb-i18n>
-                                </label>
+                                <label><pb-i18n key="form.type-of-monument">Inschriftträger</pb-i18n></label>
                                 <select ref="sortNames(instance('objtyp')/term)" class="widget" selection="open">
                                     <template>
                                         <option value="{@ref}">{name[@xml:lang = instance('vars')/language]}</option>
@@ -443,7 +435,7 @@
                                 </select>
                             </fx-control>
 
-                            <fx-control id="tm-number" class="tm-number" ref=".//msIdentifier/idno[@type='TM']">
+                            <fx-control id="tm-number" class="tm-number" ref="//msIdentifier/idno[@type='TM']">
                                 <label><pb-i18n key="form.tm">TM</pb-i18n></label>
                             </fx-control>
 
