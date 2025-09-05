@@ -119,10 +119,6 @@
                             <data></data>
                         </fx-instance>
 
-                        <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                            <data></data>
-                        </fx-instance>
-
                         <fx-instance id="templates" src="templates/fore/templates.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
                             <data></data>
                         </fx-instance>
@@ -324,18 +320,19 @@
                     <nav>
                         <h3>Navigation</h3>
                         <ul>
-<!--
+
                           <li>
                             <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
                               <button>
                                 <pb-i18n key="form.add"></pb-i18n>
                               </button>
-                              <fx-dispatch name="click" targetid="addFragBtn">
-                                <fx-call function="scrollto('#parts [repeat-index]')" event="action-performed"></fx-call>
-                              </fx-dispatch>
+                              <!-- TODO clone current document content into a child document with a new id and 
+                               - TEI/@corresp pointing to this one's xml:id
+                               - TEI/@type set to 'partial' 
+                               -->
                             </fx-trigger>
                           </li>
--->
+
                             <li>
                                 <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#object">
                                     <pb-i18n key="form.object">Objekt</pb-i18n>
@@ -345,84 +342,59 @@
 <!--                                    <fx-call function="expander()"></fx-call>-->
 <!--                                </fx-trigger>-->
                             </li>
-
-                            <li class="nav-fragments" data-ref="teiHeader//msPart">
-                                <template>
-                                    <div>
-                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}">
-                                            <fx-switch ref="@type">
-                                                <fx-case name="main">
-                                                    <pb-i18n key="form.part-main"/>
-                                                </fx-case>
-                                                <fx-case name="fragment">
-                                                    <span>
-                                                        <pb-i18n key="form.part-fragment"/>
-                                                        {(' ', count(preceding-sibling::msPart[@type='fragment']) + 1)}
-                                                    </span>
-                                                </fx-case>
-                                            </fx-switch>
-                                        </a>
-                                        <ul>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-findspot">
-                                                            <pb-i18n key="form.findspot"/>
-                                                        </a>
+                            <li class="nav-fragments" data-ref="teiHeader">
+                                <ul>
+                                    <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-findspot">
+                                                    <pb-i18n key="form.findspot"/>
+                                                </a>
+                                    </li>
+                                    <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-finddate">
+                                                    <pb-i18n key="form.year-of-find"/>
+                                                </a>
+                                    </li>
+                                    <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-location">
+                                                    <pb-i18n key="form.last-recorded-location"/>
+                                                </a>
+                                    </li>
+                                    <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-verification">
+                                                    <pb-i18n key="form.verification"/>
+                                                </a>
+                                    </li>
+                                    <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-objectdesc">
+                                                    <pb-i18n key="form.object-description"/>
+                                                </a>
+                                    </li>
+                                    <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-inscription-field">
+                                                    <pb-i18n key="form.inscription-field"/>
+                                                </a>
+                                    </li>
+                                    <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-text-description">
+                                                    <pb-i18n key="form.text-description"/>
+                                                </a>
+                                    </li>
+                                    <li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-references">
+                                                    <pb-i18n key="form.references"/>
+                                                </a>
+                                    </li>
+                                    <li>
+                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-edition">
+                                                    <pb-i18n key="form.edition">Textedition</pb-i18n>
+                                                </a>
                                             </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-finddate">
-                                                            <pb-i18n key="form.year-of-find"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-location">
-                                                            <pb-i18n key="form.last-recorded-location"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-verification">
-                                                            <pb-i18n key="form.verification"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-objectdesc">
-                                                            <pb-i18n key="form.object-description"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-inscription-field">
-                                                            <pb-i18n key="form.inscription-field"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-text-description">
-                                                            <pb-i18n key="form.text-description"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-references">
-                                                            <pb-i18n key="form.references"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-edition">
-                                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
-                                                        </a>
-                                                    </li>
-                                        </ul>
-                                    </div>
-                                </template>
+                                </ul>
                             </li>
-                            <li>
-                                <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
-                                    <button>
-                                        <pb-i18n key="form.add"></pb-i18n>
-                                    </button>
-                                    <fx-dispatch name="click" targetid="addFragBtn">
-                                        <fx-call function="scrollto('#parts [repeat-index]')" event="action-performed"></fx-call>
-                                    </fx-dispatch>
-                                </fx-trigger>
+                            <li class="nav-fragments" data-ref="teiHeader">
+                                FRAGMENTS (if available)
+                                <!-- TODO show links to children (fragment documents)-->
                             </li>
-
                             <li>
                                 <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#commentary">
                                     <pb-i18n key="form.commentary"/>
@@ -1462,7 +1434,6 @@
                                     </button>
                             <fx-action>
                                 <!-- insert a new msPart  -->
-                                <fx-insert ref="//msPart" origin="instance('mspart')"></fx-insert>
                                 <!-- update and refresh so the repeat index is updated -->
                                 <fx-update></fx-update>
                                 <fx-refresh></fx-refresh>
