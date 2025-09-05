@@ -480,53 +480,18 @@
                             </details>
                         </fx-group>
 
-                        <fx-repeat id="parts" ref=".//msPart">
-                            <template>
-                                <fx-trigger class="delete {if(@type='main' or count(./preceding-sibling::msPart) = 0) then 'hidden' else ''} remove-fragment">
-                                    <iron-icon icon="remove-circle-outline"></iron-icon>
-<!--
-                                    <pb-popover>
-                                        <iron-icon icon="remove-circle-outline"></iron-icon>
-                                        <template slot="alternate"><pb-i18n key="form.hint-delete-fragment"></pb-i18n></template>
-                                    </pb-popover>
--->
-                                    <fx-confirm message="really delete this fragment?">
-                                        <fx-delete ref="."></fx-delete>
-                                    </fx-confirm>
-                                    <fx-refresh control="parts"></fx-refresh>
-                                </fx-trigger>
+                        <fx-group ref="fileDesc/sourceDesc/msDesc">
+                            <h3>Inscription</h3>
 
-                                <div class="fragment" id="{@xml:id}">
-                                    <label>
-                                        <pb-popover>
-                                            <fx-switch ref="@type">
-                                                <fx-case name="main">
-                                                    <pb-i18n key="form.part-main"/>
-                                                    <iron-icon icon="info-outline"/>
-                                                </fx-case>
-                                                <fx-case name="fragment">
-                                                    <pb-i18n key="form.part-fragment"/>
-                                                    <iron-icon icon="info-outline"/>
-                                                </fx-case>
-                                            </fx-switch>
-                                            <template slot="alternate">
-                                                <pb-i18n key="form.hint-part-type"/>
-                                            </template>
-                                        </pb-popover>
-                                    </label>
+                        <!-- FINDSPOT -->                            
+                        <details id="{@xml:id}-findspot">
+                            <summary><pb-i18n key="form.findspot">Fundort</pb-i18n></summary>
 
-                                    <!-- 4) -->
-                                    <fx-control id="tm-number" class="tm-number" ref="msIdentifier/idno">
-                                        <label><pb-i18n key="form.tm">TM Nummer</pb-i18n></label>
-                                    </fx-control>
-
-                                    <details id="{@xml:id}-findspot">
-                                        <summary><pb-i18n key="form.findspot">Fundort</pb-i18n></summary>
-                                        <fx-control class="fore-control" ref="history/origin/origPlace/@corresp"
-                                                    src="geo-picker.html"
-                                                    initial="..">
-                                        </fx-control>
-
+                            <!-- TODO: load place info -->
+                            <fx-control class="fore-control" ref="history/origin/origPlace/@corresp"
+                                        src="geo-picker.html"
+                                        initial="..">
+                            </fx-control>
 
                              <!-- 10b) -->
                              <fx-control ref="history/provenance[@type='found']/note[@type='context']" as="node" update-event="leave">
@@ -801,18 +766,118 @@
 
                         </details>
 
-                                    <fx-var name="frag" value="'#' || ./@xml:id"></fx-var>
+                    </fx-group>
 
-                                    <details class="group-6" id="{@xml:id}-references">
-                                        <summary>
-                                            <pb-i18n key="form.references">Referenzen</pb-i18n>
-                                            <pb-popover>
-                                                <iron-icon icon="info-outline"></iron-icon>
-                                                <template slot="alternate">
-                                                    <pb-i18n key="form.hint-references"></pb-i18n>
-                                                </template>
-                                            </pb-popover>
-                                        </summary>
+                    <fx-group ref="profileDesc">
+                        <details id="{@xml:id}-languages">
+                            <summary><pb-i18n key="form.languages">Language(s)</pb-i18n></summary>
+                            <fx-trigger class="add">
+                                <pb-popover>
+                                    <iron-icon icon="add-circle-outline"/>
+                                    <template slot="alternate"><pb-i18n key="form.hint-add-verification"/></template>
+                                </pb-popover>
+                                <fx-insert context="langUsage" ref="language"
+                                           origin="instance('templates')/language"></fx-insert>
+                            </fx-trigger>
+
+                            <fx-repeat class="nested-repeat" ref="langUsage/language[not(note)]"
+                        id="r-language">
+                        <template>
+                            <fx-group>
+                                <fx-control class="verification" ref="@ident">
+                                    <label>
+                                        <pb-i18n key="form.language">Language</pb-i18n>
+                                    </label>
+                                    <select class="widget" ref="instance('vars')/languages[@xml:lang=instance('vars')/language]/lang">
+                                        <template>
+                                            <option value="{@code}">{.}</option>
+                                        </template>
+                                    </select>
+                                </fx-control>
+                                
+                                <fx-control ref="@ana">
+                                    <label>
+                                        <pb-i18n key="form.languageMain">Hauptsprache</pb-i18n>
+                                    </label>
+                                </fx-control>
+                            </fx-group>
+                            <fx-trigger>
+                                <pb-popover>
+                                    <iron-icon icon="remove-circle-outline"></iron-icon>
+                                    <template slot="alternate"><pb-i18n key="form.hint-delete-language"></pb-i18n></template>
+                                </pb-popover>
+                                <fx-delete ref="."></fx-delete>
+                            </fx-trigger>
+                        </template>
+                    </fx-repeat>
+
+                            <fx-control ref="langUsage/language[@ident='']/note">
+                                <label><pb-i18n key="form.languageFree">Andere Sprachen oder Kommentare</pb-i18n></label>
+                            </fx-control>
+
+                        </details>
+                    </fx-group>
+
+                <details id="{@xml:id}-verification">
+                    <summary><pb-i18n key="form.verification">Verifizierung</pb-i18n>
+                        <!-- 12b-12e missing -->
+                        <fx-trigger class="add">
+                            <pb-popover>
+                                <iron-icon icon="add-circle-outline"/>
+                                <template slot="alternate"><pb-i18n key="form.hint-add-verification"/></template>
+                            </pb-popover>
+                            <fx-insert context="fileDesc/titleStmt" ref="respStmt"
+                                       origin="instance('templates')/respStmt"></fx-insert>
+                        </fx-trigger>
+                    </summary>
+                    <fx-repeat class="nested-repeat" ref="fileDesc/titleStmt/respStmt"
+                        id="r-verification">
+                        <template>
+                            <fx-group>
+                                <fx-control class="verification" ref="resp">
+                                    <label>
+                                        <pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n>
+                                    </label>
+                                    <select class="widget" ref="instance('vars')/verification/option[@lang=instance('vars')/language]">
+                                        <template>
+                                            <option value="{@value}">{.}</option>
+                                        </template>
+                                    </select>
+                                </fx-control>
+                                <fx-control ref="resp/@when">
+                                    <label>
+                                        <pb-i18n key="form.date-of-verification">Datum der Verifizierung</pb-i18n>
+                                    </label>
+                                    <input placeholder="YYYY-MM-DD" class="widget"/>
+                                </fx-control>
+                                <fx-control ref="persName">
+                                    <label>
+                                        <pb-i18n key="form.verification-by">Verifizierer</pb-i18n>
+                                    </label>
+                                </fx-control>
+                            </fx-group>
+                            <fx-trigger>
+                                <pb-popover>
+                                    <iron-icon icon="remove-circle-outline"></iron-icon>
+                                    <template slot="alternate"><pb-i18n key="form.hint-delete-verification"></pb-i18n></template>
+                                </pb-popover>
+                                <fx-delete ref="."></fx-delete>
+                            </fx-trigger>
+                        </template>
+                    </fx-repeat>
+                </details>
+
+                <fx-group ref="fileDesc/sourceDesc/listBibl">
+                    <details class="group-6" id="{@xml:id}-references">
+                        <summary>
+                            <pb-i18n key="form.references">Referenzen</pb-i18n>
+                            <pb-popover>
+                                <iron-icon icon="info-outline"></iron-icon>
+                                <template slot="alternate">
+                                    <pb-i18n key="form.hint-references"></pb-i18n>
+                                </template>
+                            </pb-popover>
+                        </summary>
 
                         <!-- 12c) Überlieferung -->
                         <fieldset>
@@ -1167,10 +1232,20 @@
                                         <fx-delete ref="."></fx-delete>
                                     </fx-trigger>
 
-                                                </template>
-                                            </fx-repeat>
-                                        </fieldset>
-                                    </details>
+                                </template>
+                            </fx-repeat>
+                        </fieldset>
+                    </details>
+                </fx-group>
+    <!-- NEW VERSION ends here;  -->
+
+    <!-- TODO review and port remaining bits  -->
+                        <fx-repeat id="parts" ref=".//msPart">
+                            <!-- try to get rid of -->
+                            <template>
+                                <div class="fragment" id="{@xml:id}">
+                                    <!-- 4) -->
+
                                     <details class="group-6" id="{@xml:id}-edition">
                                         <summary>
                                             <pb-i18n key="form.edition">Textedition</pb-i18n>
