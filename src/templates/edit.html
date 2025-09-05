@@ -526,26 +526,26 @@
                                         </fx-control>
 
 
-                                        <!-- 10b) -->
-                                        <fx-control ref="history/provenance/note[@type='context']" as="node" update-event="leave">
-                                            <label>
-                                                <pb-i18n key="form.context-of-provenance">Fundkontext</pb-i18n>
-                                            </label>
-                                            <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
-                                                <div slot="toolbar">
-                                                    <pb-popover>
-                                                        <iron-icon icon="info-outline"/>
-                                                        <template slot="alternate">
-                                                            <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                                        </template>
-                                                    </pb-popover>
-                                                    <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                    <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                    <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                    <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                </div>
-                                            </jinn-xml-editor>
-                                        </fx-control>
+                             <!-- 10b) -->
+                             <fx-control ref="history/provenance[@type='found']/note[@type='context']" as="node" update-event="leave">
+                                <label>
+                                    <pb-i18n key="form.context-of-provenance">Fundkontext</pb-i18n>
+                                </label>
+                                <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
+                                    <div slot="toolbar">
+                                        <pb-popover>
+                                            <iron-icon icon="info-outline"/>
+                                            <template slot="alternate">
+                                                <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
+                                            </template>
+                                        </pb-popover>
+                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
+                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
+                                    </div>
+                                </jinn-xml-editor>
+                            </fx-control>
 
                                     </details>
 
