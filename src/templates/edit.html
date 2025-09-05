@@ -780,54 +780,53 @@
                                             <pb-i18n key="form.object-description">Objektbeschreibung</pb-i18n>
                                         </summary>
 
-                                        <!-- 13) -->
-                                        <fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
-                                            <label>
-                                                <pb-i18n key="form.preservation">Erhaltung</pb-i18n>
-                                            </label>
-                                            <select class="widget">
-                                                <option value="" data-i18n="form.unknown">unbekannt</option>
-                                                <option value="complete" data-i18n="preservation.complete">vollständig</option>
-                                                <option value="fragmentary" data-i18n="preservation.fragmentary">fragmentarisch</option>
-                                            </select>
-                                        </fx-control>
+                            <!-- 13) -->
+                            <fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
+                                <label>
+                                    <pb-i18n key="form.preservation">Erhaltung</pb-i18n>
+                                </label>
+                                <select class="widget">
+                                    <option value="" data-i18n="form.unknown">unbekannt</option>
+                                    <option value="complete" data-i18n="preservation.complete">vollständig</option>
+                                    <option value="fragmentary" data-i18n="preservation.fragmentary">fragmentarisch</option>
+                                </select>
+                            </fx-control>
 
-                                        <!-- 14) -->
-                                        <fx-control ref="physDesc/objectDesc/supportDesc/support/rs/@ref" update-event="input">
-                                            <label>
-                                                <pb-i18n key="form.decoration">Dekor</pb-i18n>
-                                            </label>
-                                            <select class="widget">
-                                                <option value="" data-i18n="form.unknown">unbekannt</option>
-                                                <option value="https://www.eagle-network.eu/voc/decor/lod/2000" data-i18n="decor.yes">Ja</option>
-                                                <option value="https://www.eagle-network.eu/voc/decor/lod/1000" data-i18n="decor.no">Nein</option>
-                                                <option value="https://edep.adw.uni-heidelberg.de/decor/uncertain" data-i18n="decor.uncertain">unsicher</option>
-                                            </select>
-                                        </fx-control>
+                            <!-- 14) -->
+                            <fx-control ref="physDesc/objectDesc/supportDesc/support/note[@type='decoration']/@corresp" update-event="input">
+                                <label>
+                                    <pb-i18n key="form.decoration">Dekor</pb-i18n>
+                                </label>
+                                <select class="widget">
+                                    <option value="" data-i18n="form.unknown">unbekannt</option>
+                                    <option value="https://www.eagle-network.eu/voc/decor/lod/2000" data-i18n="decor.yes">Ja</option>
+                                    <option value="https://www.eagle-network.eu/voc/decor/lod/1000" data-i18n="decor.no">Nein</option>
+                                    <option value="https://edep.adw.uni-heidelberg.de/decor/uncertain" data-i18n="decor.uncertain">unsicher</option>
+                                </select>
+                            </fx-control>
 
-                                        <!-- 15) -->
-                                        <div class="alternatives">
-                                            <fx-control ref="msContents/msItem/@class" update-event="input">
-                                                <label>
-                                                    <pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n>
-                                                </label>
-                                                <fx-items ref="sortNames(instance('typeins')/term)" class="widget">
-                                                    <template>
-                                                        <span class="fx-checkbox">
-                                                            <input type="checkbox" value="{@ref}"/>
-                                                            <label>{name[@xml:lang = instance('vars')/language]}</label>
-                                                        </span>
-                                                    </template>
-                                                </fx-items>
-                                            </fx-control>
+                            <!-- 15) -->
+                            <div class="alternatives">
+                                <fx-control ref="msContents/@class" update-event="input">
+                                    <label>
+                                        <pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n>
+                                    </label>
+                                    <fx-items ref="sortNames(instance('typeins')/term)" class="widget">
+                                        <template>
+                                            <span class="fx-checkbox">
+                                                <input type="checkbox" value="{@ref}"/>
+                                                <label>{name[@xml:lang = instance('vars')/language]}</label>
+                                            </span>
+                                        </template>
+                                    </fx-items>
+                                </fx-control>
 
-
-                                            <fx-control ref="msContents/msItem/@type">
-                                                <label>
-                                                    <pb-i18n key="form.free-form">Freie Eingabe</pb-i18n>
-                                                </label>
-                                            </fx-control>
-                                        </div>
+                                <fx-control ref="msContents/summary">
+                                    <label>
+                                        <pb-i18n key="form.free-form">Freie Eingabe</pb-i18n>
+                                    </label>
+                                </fx-control>
+                            </div>
 
                                         <!-- 38) -->
                                         <fx-control class="measurement" ref="physDesc/objectDesc/supportDesc/support/dimensions/height">
