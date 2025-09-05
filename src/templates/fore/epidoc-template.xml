@@ -33,6 +33,9 @@
                         <!-- 4) TM-Nummer - manuelle Eingabe -->
                         <idno type="TM"/>
                     </msIdentifier>
+                    <msContents class="">
+                        <summary/>
+                    </msContents>
                     <physDesc>
                         <objectDesc>
                             <supportDesc>
@@ -88,6 +91,31 @@
                     <history>
                         <origin>
                             <!--
+                                TODO: rethink encoding of dates so this is consistent and applicable for a range or projects
+
+                                first thoughts:
+
+                                - almost all inscriptions fall into pre-Gregorian times
+                                - nobody ever computes precise duration on ancient dates, so W3C considerations about processing of dates are not that important
+                                - very few inscriptions have precise date down to a day, therefore 11days difference between Julian and Gregorian is inconsequential
+                                - for notBefore/notAfter or when with just a year or year-month, difference between Julian and Gregorian is also pretty much inconsequential
+
+                                potential solution: 
+
+                                - use `notBefore/notAfter` together with `@calendar` (if at all necessary); skip `@when` and use the text content of the element to provide any remarks on the date
+                                - for very rare cases when precise date is available use `when-custom` and `datingMethod`
+
+                                This way all date ranges are *always* in notBefore/notAfter; 
+                                we only have one set of dating attributes to process for machine-readable
+                                we match typical way of encoding dates (although there are exceptions that use the *-custom even for date ranges)
+
+                                ISicily http://sicily.classics.ox.ac.uk/services/inscription/ISic000001.xml
+                                <origDate datingMethod="#julian" notBefore-custom="0050" notAfter-custom="0300" evidence="lettering textual-context">between later 1st and 3rd century CE</origDate>
+
+                                PYU Inscriptions https://zenodo.org/records/1207290
+
+                                <origDate calendar="Julian" notBefore="0200" notAfter="1300" precision="medium">Undated. Certainly no earlier than 200 CE, and unlikely to be later than 1300. </origDate>
+                                
                                 26) und 27) Datierung (zusammenfassen?)
 
                                 @when-custom - Korrekte Datumsangabe, entweder nur Jahr oder xs:date YYYY-MM-DD
@@ -115,14 +143,8 @@
                         </provenance>
                         <provenance type="history"/>
                     </history>
-                    <!-- msPart ist als Ganzes wiederholbar -->
-                    <!-- @xml:id erforderlich für Referenzierung unten -->
-                   
                 </msDesc>
                 <listBibl>
-                    <listBibl type="bibliography">
-                        <!-- Einträge wiederholbar -->
-                    </listBibl>
                     <!-- 12c) Überlieferung -->
                     <listBibl type="transmission">
                         <!-- Einträge wiederholbar -->
@@ -130,6 +152,9 @@
                     <!-- 35a) Ältere Editionen -->
                     <listBibl type="previousEditions">
                         <!-- Einträge wiederholbar - optional -->
+                    </listBibl>
+                    <listBibl type="bibliography">
+                        <!-- Einträge wiederholbar -->
                     </listBibl>
                     <!-- 35c) Bilder: Verweis auf Literatur, in der Abbildung vorhanden -->
                     <listBibl type="images">
@@ -152,6 +177,10 @@
                     <term ref=""/>
                 </keywords>
             </textClass>
+            <langUsage>
+                <language ident=""><note></note></language>
+                <language ident="lat" ana="main"></language>
+            </langUsage>
         </profileDesc>
         <!-- 33) Stand der Bearbeitung in @status -->
         <revisionDesc status="draft"/>
