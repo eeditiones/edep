@@ -38,10 +38,14 @@
     </listBibl>
 
     <graphic url=""/>
+
+    <language ident="lat" ana=""/>
     
-    <note type="verification" subtype="">
-        <date when=""/>
+    <respStmt>
+        <resp when=""/>
         <persName/>
-    </note>
+    </respStmt>
+
+    <editor role="digital"/>
 
 </body>
