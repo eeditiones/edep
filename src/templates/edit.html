@@ -867,14 +867,24 @@
                     </fx-repeat>
                 </details>
 
-                <fx-group ref="fileDesc/sourceDesc/listBibl">
-                    <details class="group-6" id="{@xml:id}-references">
+                <fx-group ref="fileDesc/sourceDesc/listBibl" id="references">
+                    <h2>
+                        <pb-i18n key="form.references">Referenzen</pb-i18n>
+                        <pb-popover>
+                            <iron-icon icon="info-outline"></iron-icon>
+                            <template slot="alternate">
+                                <pb-i18n key="form.hint-references"></pb-i18n>
+                            </template>
+                        </pb-popover>
+                    </h2>
+
+                    <details class="group-6">
                         <summary>
-                            <pb-i18n key="form.references">Referenzen</pb-i18n>
+                            <pb-i18n key="form.transmission">Überlieferung</pb-i18n>
                             <pb-popover>
-                                <iron-icon icon="info-outline"></iron-icon>
+                                <iron-icon icon="info-outline"/>
                                 <template slot="alternate">
-                                    <pb-i18n key="form.hint-references"></pb-i18n>
+                                    <pb-i18n key="form.hint-recorded-location"/>
                                 </template>
                             </pb-popover>
                         </summary>
@@ -884,12 +894,7 @@
                             <legend>
                                 <label>
                                     <pb-i18n key="form.transmission">Überlieferung</pb-i18n>
-                                    <pb-popover>
-                                        <iron-icon icon="info-outline"/>
-                                        <template slot="alternate">
-                                            <pb-i18n key="form.hint-recorded-location"/>
-                                        </template>
-                                    </pb-popover>
+                        
                                 </label>
                                 <fx-trigger class="add" title="Überlieferung hinzufügen">
                                     <iron-icon icon="add-circle-outline" title="Überlieferung hinzufügen"/>
@@ -961,18 +966,23 @@
                                 </template>
                             </fx-repeat>
                         </fieldset>
-
+                    </details>
+                    <details class="group-6">
+                        <summary>
+                            <pb-i18n key="form.previous-editions">Ältere Editionen</pb-i18n>
+                            <pb-popover>
+                                <iron-icon icon="info-outline"></iron-icon>
+                                <template slot="alternate">
+                                    <pb-i18n key="form.hint-previous-editions"></pb-i18n>
+                                </template>
+                            </pb-popover>
+                        </summary>
                         <!-- 35a) Ältere Editionen -->
                         <fieldset>
                             <legend>
                                 <label>
                                     <pb-i18n key="form.previous-editions">Ältere Editionen</pb-i18n>
-                                    <pb-popover>
-                                        <iron-icon icon="info-outline"></iron-icon>
-                                        <template slot="alternate">
-                                            <pb-i18n key="form.hint-previous-editions"></pb-i18n>
-                                        </template>
-                                    </pb-popover>
+                                    
                                 </label>
                                 <fx-trigger class="add" title="Ältere Edition hinzufügen">
                                     <iron-icon icon="add-circle-outline"></iron-icon>
@@ -1046,7 +1056,17 @@
                                 </template>
                             </fx-repeat>
                         </fieldset>
-
+                    </details>
+                    <details class="group-6">
+                        <summary>
+                            <pb-i18n key="form.bibliography">Bibliographie</pb-i18n>
+                            <pb-popover>
+                                <iron-icon icon="info-outline"></iron-icon>
+                                <template slot="alternate">
+                                    <pb-i18n key="form.hint-bibliography"></pb-i18n>
+                                </template>
+                            </pb-popover>
+                        </summary>
                         <!-- 35b) -->
                         <fieldset>
                             <legend>
@@ -1130,7 +1150,17 @@
                             </fx-repeat>
 
                         </fieldset>
-
+                    </details>
+                    <details class="group-6">
+                        <summary>
+                            <pb-i18n key="form.images-dps">Bilder (Fotos, Zeichnungen, Abklatsche)</pb-i18n>
+                            <pb-popover>
+                                <iron-icon icon="info-outline"></iron-icon>
+                                <template slot="alternate">
+                                    <pb-i18n key="form.hint-images"></pb-i18n>
+                                </template>
+                            </pb-popover>
+                        </summary>                        
                         <!-- 35c) Bilder: Verweis auf Literatur, in der Abbildung vorhanden -->
                         <fieldset>
                             <legend>
@@ -1207,7 +1237,17 @@
                                 </template>
                             </fx-repeat>
                         </fieldset>
-
+                    </details>
+                    <details class="group-6">
+                        <summary>
+                            <pb-i18n key="form.images">Abbildungen (URLs)</pb-i18n>
+                            <pb-popover>
+                                <iron-icon icon="info-outline"></iron-icon>
+                                <template slot="alternate">
+                                    <pb-i18n key="form.hint-images"></pb-i18n>
+                                </template>
+                            </pb-popover>
+                        </summary>    
                         <!-- 35d) Abbildungen -->
                         <fieldset>
                             <legend>
