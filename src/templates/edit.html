@@ -360,9 +360,9 @@
                                                 </a>
                                     </li>
                                     <li>
-                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-verification">
-                                                    <pb-i18n key="form.verification"/>
-                                                </a>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#verification">
+                                            <pb-i18n key="form.verification"/>
+                                        </a>
                                     </li>
                                     <li>
                                         <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-objectdesc">
@@ -779,7 +779,7 @@
                             <fx-trigger class="add">
                                 <pb-popover>
                                     <iron-icon icon="add-circle-outline"/>
-                                    <template slot="alternate"><pb-i18n key="form.hint-add-verification"/></template>
+                                    <template slot="alternate"><pb-i18n key="form.hint-add-language"/></template>
                                 </pb-popover>
                                 <fx-insert context="langUsage" ref="language"
                                            origin="instance('templates')/language"></fx-insert>
@@ -789,7 +789,7 @@
                         id="r-language">
                         <template>
                             <fx-group>
-                                <fx-control class="verification" ref="@ident">
+                                <fx-control ref="@ident">
                                     <label>
                                         <pb-i18n key="form.language">Language</pb-i18n>
                                     </label>
@@ -823,9 +823,8 @@
                         </details>
                     </fx-group>
 
-                <details id="{@xml:id}-verification">
+                <details id="verification">
                     <summary><pb-i18n key="form.verification">Verifizierung</pb-i18n>
-                        <!-- 12b-12e missing -->
                         <fx-trigger class="add">
                             <pb-popover>
                                 <iron-icon icon="add-circle-outline"/>
@@ -835,41 +834,56 @@
                                        origin="instance('templates')/respStmt"></fx-insert>
                         </fx-trigger>
                     </summary>
-                    <fx-repeat class="nested-repeat" ref="fileDesc/titleStmt/respStmt"
-                        id="r-verification">
-                        <template>
-                            <fx-group>
-                                <fx-control class="verification" ref="resp">
-                                    <label>
-                                        <pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n>
-                                    </label>
-                                    <select class="widget" ref="instance('vars')/verification/option[@lang=instance('vars')/language]">
-                                        <template>
-                                            <option value="{@value}">{.}</option>
-                                        </template>
-                                    </select>
-                                </fx-control>
-                                <fx-control ref="resp/@when">
-                                    <label>
-                                        <pb-i18n key="form.date-of-verification">Datum der Verifizierung</pb-i18n>
-                                    </label>
-                                    <input placeholder="YYYY-MM-DD" class="widget"/>
-                                </fx-control>
-                                <fx-control ref="persName">
-                                    <label>
-                                        <pb-i18n key="form.verification-by">Verifizierer</pb-i18n>
-                                    </label>
-                                </fx-control>
-                            </fx-group>
-                            <fx-trigger>
+                    <fieldset>
+                        <legend>
+                            <label>
+                                <pb-i18n key="form.verification">Verifizierung</pb-i18n>
+                            </label>
+                            <fx-trigger class="add">
                                 <pb-popover>
-                                    <iron-icon icon="remove-circle-outline"></iron-icon>
-                                    <template slot="alternate"><pb-i18n key="form.hint-delete-verification"></pb-i18n></template>
+                                    <iron-icon icon="add-circle-outline"/>
+                                    <template slot="alternate"><pb-i18n key="form.hint-add-verification"/></template>
                                 </pb-popover>
-                                <fx-delete ref="."></fx-delete>
+                                <fx-insert context="fileDesc/titleStmt" ref="respStmt"
+                                           origin="instance('templates')//respStmt"></fx-insert>
                             </fx-trigger>
-                        </template>
-                    </fx-repeat>
+                        </legend>
+                        <fx-repeat class="nested-repeat" ref="fileDesc/titleStmt/respStmt"
+                            id="r-verification">
+                            <template>
+                                <fx-group>
+                                    <fx-control class="verification" ref="resp">
+                                        <label>
+                                            <pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n>
+                                        </label>
+                                        <select class="widget" ref="instance('vars')/verification/option[@lang=instance('vars')/language]">
+                                            <template>
+                                                <option value="{@value}">{.}</option>
+                                            </template>
+                                        </select>
+                                    </fx-control>
+                                    <fx-control ref="resp/@when">
+                                        <label>
+                                            <pb-i18n key="form.date-of-verification">Datum der Verifizierung</pb-i18n>
+                                        </label>
+                                        <input placeholder="YYYY-MM-DD" class="widget"/>
+                                    </fx-control>
+                                    <fx-control ref="persName">
+                                        <label>
+                                            <pb-i18n key="form.verification-by">Verifizierer</pb-i18n>
+                                        </label>
+                                    </fx-control>
+                                </fx-group>
+                                <fx-trigger>
+                                    <pb-popover>
+                                        <iron-icon icon="remove-circle-outline"></iron-icon>
+                                        <template slot="alternate"><pb-i18n key="form.hint-delete-verification"></pb-i18n></template>
+                                    </pb-popover>
+                                    <fx-delete ref="."></fx-delete>
+                                </fx-trigger>
+                            </template>
+                        </fx-repeat>
+                    </fieldset>
                 </details>
 
                 <fx-group ref="fileDesc/sourceDesc/listBibl" id="references">
