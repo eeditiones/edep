@@ -379,19 +379,14 @@ declare function api:inscription-template($request as map(*)) {
                 collection($collection)//tei:idno[. = $id]/ancestor::tei:TEI,
                 doc($collection || "/" || $id || ".xml")/tei:TEI
             )[1]
-            let $merged := api:file-upload(doc($config:inscription-templ), root(document {api:to-ms-part($input)}))
+            let $merged := api:file-upload(doc($config:inscription-templ), root($input))
             return
                 $merged
         else
             doc($config:inscription-templ)
-    let $input :=
-        if (util:document-name($doc) = "epidoc-template.xml") then
-            api:preprocessing-uuid($doc, "part" || util:uuid())
-        else
-            $doc
-    let $return := api:preprocessing-copy($input)
+    
     return try {
-        $return
+        $doc
     } catch * {
         ()
     }
@@ -472,77 +467,12 @@ declare function api:clean-namespace($nodes as node()*) {
                 $node
 };
 
-declare %private function api:preprocessing-uuid($nodes as node()*, $uuid as xs:string){
-    for $node in $nodes
-    return
-        typeswitch($node)
-            case document-node() return
-                document { api:preprocessing-uuid($node/node(), $uuid) }
-            case element (tei:msPart) return 
-                element {node-name($node)} {
-                    attribute xml:id {$uuid},
-                    $node/@* except $node/@xml:id,
-                    $node/node()
-                }
-            case element (tei:facsimile) return 
-                element { node-name($node) } {
-                    attribute corresp {concat("#",$uuid)},
-                    $node/node()
-                }
-            case element (tei:div) return
-                if ($node/@type = "commentary") then
-                    $node
-                else if ($node/@type = "edition") then
-                    api:preprocessing-uuid($node/node(), $uuid)
-                else
-                    element { node-name($node) } {
-                        $node/@* except $node/@corresp,
-                        attribute corresp {concat("#",$uuid)},
-                        $node/node()
-                    }
-            case element () return 
-                element { node-name($node) } { 
-                    $node/@*, 
-                    api:preprocessing-uuid($node/node(), $uuid)
-                }
-            default return
-                $node
-};
-
-declare %private function  api:preprocessing-copy($nodes as node()*){
-    for $node in $nodes
-    return
-        typeswitch($node)
-            case comment () return $node
-            case text() return $node
-            case element (tei:msPart) return
-                let $corresp := '#' || $node/@xml:id
-                return
-                    element { node-name($node) } {
-                        $node/@*, 
-                        api:preprocessing-copy($node/node()),
-                        root($node)//tei:body//tei:div[@type="textpart"][@corresp=$corresp],
-                        root($node)//tei:body//tei:div[@type="apparatus"][@corresp=$corresp],
-                        root($node)//tei:body//tei:div[@type="translation"][@corresp=$corresp],
-                        root($node)//tei:facsimile[@corresp=$corresp]
-                    }
-            case element(tei:body) return
-                element { node-name($node) } {
-                    $node/@*,
-                    $node/tei:div[@type="commentary"]
-                }
-            case element(tei:facsimile) return
-                ()
-            case element () return  element {node-name($node)} { $node/@*, api:preprocessing-copy($node/node())}
-        default return api:preprocessing-copy($node/node())
-};
-
 declare function api:render($request as map(*)) {
     let $type := $request?parameters?type
     let $xml := 
         switch ($type)
             case "transcription" return
-                $request?body//tei:div[@type="textpart"]
+                $request?body//tei:div[@type="edition"]
             default return
                 $request?body
     return
@@ -559,30 +489,6 @@ declare function api:file-upload($mainTmpl as document-node(), $input as node())
     for $node in $mainTmpl/*
     return
         api:reconstruct-tree($node, $input)
-};
-
-declare function api:to-ms-part($nodes as node()*) {
-    for $node in $nodes
-    return
-        typeswitch ($node)
-            case element(tei:div) return
-                if ($node/@type = "edition" and not($node/tei:div[@type='textpart'])) then
-                    <div type="edition" xmlns="http://www.tei-c.org/ns/1.0">
-                        <div type="textpart" subtype="fragment" corresp="#part-main">{ $node/node() }</div>
-                    </div>
-                else
-                    element { node-name($node) } {
-                        $node/@* except $node/@corresp,
-                        attribute corresp { "#part-main" },
-                        $node/node()
-                    }
-            case element() return
-                element { node-name($node) } {
-                    $node/@*,
-                    api:to-ms-part($node/node())
-                }
-            default return
-                $node
 };
 
 (: Function to look in the input file for the equivalent element to the element being processed
@@ -647,37 +553,10 @@ declare %private function api:complete-input($nodes as node()*) as node()* {
                     { ($node/@type, $templateBibl/@type)[1] }
                      {($node/node(),  $templateBibl/*[not(local-name() = $node/node()/local-name())])}
                     </bibl>
-            (: case element(tei:msPart) return
-                let $templateMsPart := doc('/db/apps/edep/templates/fore/mspart-tmpl.xml')/tei:msPart
-                return api:process-additional-template($templateMsPart, $node) :)
-        default 
-            return $node
+            default 
+                return $node
     };
     
-    
-(: function to process msPart[@type eq 'fragment'] :)
-declare %private function api:process-additional-template($template as element(), $input as node()) as node() {
-    let $id := $input/@xml:id
-    let $inputDivs := $input/root()/descendant::tei:div[substring(@corresp, 2) = $id]
-         let $templateDivs := $template/tei:div[not(@type = $inputDivs/@type)]
-         let $correspAtt := attribute {'corresp'} {'#' || $id} 
-         let $reconstructedDivs := for $div in $templateDivs return 
-             element {QName("http://www.tei-c.org/ns/1.0", 'div')} {
-                      $template/@*[not(name() eq 'corresp')] | $correspAtt,
-                      $template/node()
-             }
-    return
-        <msPart xml:id="{$id}" type="fragment" xmlns="http://www.tei-c.org/ns/1.0">
-            { ($inputDivs, $reconstructedDivs,
-(:            for $node in $template/*[not(local-name() = ('div', 'facsimile'))] :)
-(:            return :)
-(:                api:reconstruct-tree($node, $input):)
-            api:reconstruct-tree($template/*[not(local-name() = ('div', 'facsimile'))], $input)
-              )
-            }
-         </msPart>
-    };
-
 (:function to add @corresp attribute values when elements are copied from the template :)
 declare %private function api:add-corresp($nodeTemplate as element(), $input as node()) as element()* {
  if ($nodeTemplate[@corresp])
