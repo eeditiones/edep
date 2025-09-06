@@ -74,9 +74,7 @@ For example, the form field for the state of preservation is defined in the HTML
 
 HTML elements starting with `fx-` belong to *Fore*, the forms framework. *Fore* was designed to preserve the good parts of the – now outdated – XForms standard and takes them to the next level. As with all powerful tools, it requires a bit of time to fully grasp the concepts and understand how they work together. We suggest to read the [article series](https://medium.com/@joern.turner/fore-elements-explained-part-1-89fc41ec6923), which explains the available elements.
 
-The `@ref` attribute binds the form control to the element selected by the given XPath expression, in this case: `physDesc/objectDesc/supportDesc/condition` within the outer `msPart`. All labels are multi-lingual (German and English) by default, which is why we use the `<pb-i18n>` tag and `data-i18n` attributes to reference translation keys. Translations for all labels can be found in [src/resources/i18n/app](src/resources/i18n/app).
-
-The design decision to use `msPart` was made to support inscriptions consisting of multiple fragments on the same object. EDEp therefore distinguishes between properties which apply to the object as a whole and those specific to the inscription. Consequently every EpiDoc document in EDEp has at least one `msPart` for the main inscription. Note however, that support for multiple fragments is still a bit lacking and needs more work.
+The `@ref` attribute binds the form control to the element selected by the given XPath expression, in this case: `physDesc/objectDesc/supportDesc/condition`. All labels are multi-lingual (German and English) by default, which is why we use the `<pb-i18n>` tag and `data-i18n` attributes to reference translation keys. Translations for all labels can be found in [src/resources/i18n/app](src/resources/i18n/app).
 
 When creating a new document, the editor starts by loading an empty [EpiDoc template](src/templates/fore/epidoc-template.xml). This contains placeholders for all the elements covered by the form. Some elements, e.g. bibliographic entries, are repeatable, which means you can add more of the same type. Sub-templates for those elements are mostly located in [templates.xml](src/templates/fore/templates.xml).
 
@@ -84,13 +82,13 @@ The form also needs some auxiliary data lists, e.g. for object types, materials 
 
 To extend the form to include an additional element or attribute, one would proceed as follows:
 
-1. edit [epidoc-template.xml](src/templates/fore/epidoc-template.xml) and add the missing element or attribute. If it should be part of an `msPart` (i.e. target the inscription), make sure to also modify [mspart-tmpl.xml](src/templates/fore/mspart-tmpl.xml) in the same way. If the element or attribute belongs to a repeatable section, check [templates.xml](src/templates/fore/templates.xml).
+1. edit [epidoc-template.xml](src/templates/fore/epidoc-template.xml) and add the missing element or attribute. If the element or attribute belongs to a repeatable section, check [templates.xml](src/templates/fore/templates.xml).
 2. add a form control to [edit.html](src/templates/edit.html) and bind it to the element/attribute.
 
-Many fields in the form may contain inline TEI/XML. We have thus developed an XML editor component (based on the excellent codemirror library), which can be plugged into the form to replace any plain-text input field:
+Many fields in the form may contain inline TEI/XML. We have thus developed an XML editor component (based on the codemirror library), which can be plugged into the form to replace any plain-text input field:
 
 ```html
-<fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="blur">
+<fx-control class="commentary editor" ref="div[@type='commentary']" as="node" update-event="blur">
     <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
         <div slot="toolbar">
             <pb-popover>
@@ -135,3 +133,11 @@ Also, because TEI does not allow empty attributes or elements in most places, a 
 To build the application package you need Java > 8, nodejs with npm, and the Java build tool, [ant](https://ant.apache.org/), to be available on your system. With everything in place, just running `ant` inside the application directory should automatically install required dependencies and provide a `.xar` package in directory `dist`, which can be uploaded to eXist via the dashboard.
 
 A better alternative for development is to use Visual Studio Code with a [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers). This provides a docker environment with all necessary tools already installed. The application is prepared for this and opening the directory in Visual Studio Code should automatically provide you the option to reopen the project in a container. This is also the way in which we developed the application.
+
+## MT: Remarks on the form
+
+- I'd move inscription type and its freeform remarks to the OBJECT section on top
+- Let's talk about dates again
+- Chronological data could be renamed to Dating and moved up
+- citedRange in commentaries replaced with `seg type="citedRange"` but this may be completely unnecessary anyway
+- Languages are extracted into their own section
