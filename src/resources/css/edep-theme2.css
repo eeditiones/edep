@@ -627,10 +627,15 @@ fx-group > label {
     position:absolute;
     top: 0;
 }
+
+fx-group fx-group {
+    border:none;
+}
+
+/* 
 fx-group fx-group {
     border:thin solid var(--paper-grey-600);
-    /*padding:1rem;*/
-}
+} */
 
 
 fx-group + fx-group {
