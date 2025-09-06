@@ -322,7 +322,7 @@
                         <ul>
 
                           <li>
-                            <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
+                            <fx-trigger id="addChild" class="add" title="create child document">
                               <button>
                                 <pb-i18n key="form.add"></pb-i18n>
                               </button>
@@ -390,10 +390,10 @@
                                         </a>
                                     </li>
                                     <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-edition">
-                                                    <pb-i18n key="form.edition">Textedition</pb-i18n>
-                                                </a>
-                                            </li>
+                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#edition">
+                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="nav-fragments" data-ref="teiHeader">
@@ -1298,194 +1298,8 @@
                 </fx-group>
     <!-- NEW VERSION ends here;  -->
 
-    <!-- TODO review and port remaining bits  -->
-                        <fx-repeat id="parts" ref=".//msPart">
-                            <!-- try to get rid of -->
-                            <template>
-                                <div class="fragment" id="{@xml:id}">
-                                    <!-- 4) -->
-
-                                    <details class="group-6" id="{@xml:id}-edition">
-                                        <summary>
-                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
-                                        </summary>
-                                        <div class="block" id="{@xml:id}-transcript">
-                                            <h4>
-                                                <pb-i18n key="form.transcription">Transkription</pb-i18n>
-                                            </h4>
-                                            <fx-control class="transcription editor" ref="div[@type='textpart']" as="node" update-event="leave">
-                                                <jinn-epidoc-editor id="transcriptionEditor" unwrap="unwrap" class="widget" show-leiden="" schema="resources/scripts/tei.json" schema-root="div" mode="leiden_plus">
-                                                    <h5 slot="leiden-header">Leiden+ Editor</h5>
-                                                    <div slot="leiden-toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon icon="info-outline"/>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-transcription-prefix">Hint</pb-i18n>
-                                                                <a href="https://papyri.info/docs/leiden_plus" target="_blank">Leiden+</a>
-                                                                <pb-i18n key="form.hint-transcription">Hint</pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="snippet" data-mode="leiden_plus" data-params="($|_|)" title="Abbreviation parenthesis">(abc)</button>
-                                                        <button data-command="expan" data-mode="leiden_plus" title="Expanded abbreviation">(a(bcd))</button>
-                                                        <button data-command="erasure" data-mode="leiden_plus" title="Erasure">〚abc〛</button>
-                                                        <button data-command="unclear" data-mode="leiden_plus" title="Unclear">ạ</button>
-                                                        <button data-command="snippet" data-mode="leiden_plus" data-params="~|$|_||~$|2:gr|" title="Language switch">~|...|~</button>
-                                                        <button data-command="div" data-mode="leiden_plus" title="Division">&lt;=...</button>
-                                                        <button data-command="snippet" data-mode="leiden_plus" title="Part" data-params="&lt;D=.$|A|.part&lt;=$|_|=&gt;=D&gt;">&lt;D=.A.part...</button>
-                                                        <button data-command="snippet" data-mode="leiden_plus" title="Column" data-params="&lt;D=.$|i|.column&lt;=$|_|=&gt;=D&gt;">&lt;D=.i.column...</button>
-                                                        <button data-command="snippet" data-mode="leiden_plus" title="Recto/Verso" data-params="&lt;D=.$|r|&lt;=$|_|=&gt;=D&gt;">&lt;D=.r...</button>
-                                                        <button data-command="fixNewlines" data-mode="leiden_plus" title="Add missing line numbers">↩</button>
-                                                        <button data-command="erasure" data-mode="edcs">〚abc〛</button>
-                                                        <button data-command="gap" data-mode="edcs">[...]</button>
-                                                        <button data-command="convert" data-mode="edcs">Convert to Leiden+</button>
-                                                    </div>
-                                                    <h5 slot="xml-header">EpiDoc XML Editor</h5>
-                                                    <div slot="xml-toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon icon="info-outline"/>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-transcription2">Hint</pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                        <button data-command="snippet" data-params="&lt;ab&gt;$|_|&lt;/ab&gt;" title="Insert ab">&lt;ab&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;supplied reason=&#34;lost&#34;&gt;$|_|&lt;/supplied&gt;" title="Insert supplied">&lt;supplied&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;expan&gt;&lt;abbr&gt;$|1|&lt;/abbr&gt;&lt;ex&gt;$|_|&lt;/ex&gt;&lt;/expan&gt;$|3|" title="Insert expan/abbr">&lt;expan&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;gap reason=&#34;lost&#34; extent=&#34;unknown&#34; unit=&#34;character&#34;/&gt;$|1|" title="Gap, extent unknown"><iron-icon icon="editor:space-bar"></iron-icon>?</button>
-                                                        <button data-command="snippet" data-params="&lt;gap reason=&#34;lost&#34; quantity=&#34;$|1|&#34; unit=&#34;$|2:line|&#34;/&gt;$|3|" title="Gap, extent known"><iron-icon icon="editor:space-bar"></iron-icon></button>
-                                                        <button data-command="snippet" data-params='&lt;hi rend="ligature">$|_|&lt;/hi>' title="Ligature">Lig</button>
-                                                        <pb-popover>
-                                                            <button data-command="snippet" data-params='&lt;l met="$|1|" real="$|2|">$|_|&lt;/l>' title="Metric"><pb-i18n key="form.verse">Verse</pb-i18n></button>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-verse"></pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
-                                                    </div>
-                                                </jinn-epidoc-editor>
-                                            </fx-control>
-                                            <h4>
-                                                <pb-i18n key="form.display">Display</pb-i18n>
-                                            </h4>
-                                            <div id="transcription-display"></div>
-                                        </div>
-                                        <div class="block">
-                                            <h4>
-                                                <pb-i18n key="form.apparatus">Apparatus</pb-i18n>
-                                            </h4>
-                                            <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
-                                            <fx-control class="apparatus editor" ref="div[@type='apparatus']" as="node" update-event="leave">
-                                                <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Should contain a &lt;listApp&gt; with nested &lt;app&gt;]">
-                                                    <div slot="toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon icon="info-outline"/>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
-                                                        </button>
-                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;listApp&gt;$|_|&lt;/listApp&gt;" title="Insert apparatus list">&lt;listApp&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;app loc=&#34;$|1|&#34;&gt;&lt;note&gt;$|_|&lt;/note&gt;&lt;/app&gt;" title="Insert apparatus entry">&lt;app&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                        <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
-                                                        <button data-command="snippet" data-params="'&lt;citedRange&gt;$|1|&lt;/citedRange&gt;" title="citedRange">&lt;citedRange&gt;</button>
-                                                    </div>
-                                                </jinn-xml-editor>
-                                            </fx-control>
-                                        </div>
-
-                                        <div class="block">
-                                            <h4>
-                                                        <pb-i18n key="form.translation">Übersetzung</pb-i18n>
-                                                    </h4>
-                                            <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-                                            <fx-control class="translation editor" ref="div[@type='translation']" as="node" update-event="leave">
-                                                <jinn-xml-editor id="translation" unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
-                                                    <div slot="toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon icon="info-outline"/>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-translation">Hint</pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
-                                                        </button>
-                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
-                                                    </div>
-                                                </jinn-xml-editor>
-                                            </fx-control>
-                                            <!-- 43) Übersetzer/in -->
-                                            <fx-control class="translator" ref="div[@type='translation']/@resp">
-                                                <label>
-                                                            <pb-i18n key="form.translated-by">Übersetzer/in</pb-i18n>: </label>
-                                            </fx-control>
-                                        </div>
-                                    </details>
-                                </div>
-
-                                <fx-trigger class="delete {if(@type='main' or count(./preceding-sibling::msPart) = 0) then 'hidden' else ''}">
-                                    <button>Löschen</button>
-                                    <fx-confirm message="really delete?">
-                                        <fx-delete ref="."></fx-delete>
-                                    </fx-confirm>
-                                    <fx-refresh control="parts"></fx-refresh>
-                                </fx-trigger>
-
-
-                            </template>
-                        </fx-repeat>
-
-                        <!--
-                        This won't call the update-cycle for each event as the replace action in its current form does not
-                        call it. The control will refresh the UI when the control looses focus (onblur).
-                        -->
-                        <details class="group-10" id="commentary">
-                            <summary>
-                                <pb-i18n key="form.commentary">Kommentar</pb-i18n>
-                            </summary>
-                            <fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="leave">
-                                <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
-                                    <div slot="toolbar">
-                                        <pb-popover>
-                                            <iron-icon icon="info-outline"/>
-                                            <template slot="alternate">
-                                                <pb-i18n key="form.hint-commentary">Hint</pb-i18n>
-                                            </template>
-                                        </pb-popover>
-                                        <button data-command="selectElement" title="Select element around current cursor position">
-                                            &lt;|&gt;
-                                        </button>
-                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;
-                                        </button>
-                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
-                                        </button>
-                                        <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;
-                                        </button>
-                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                        <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
-                                        <button data-command="snippet" data-params="&lt;seg type=&#34;citedRange&#34;&gt;$|_|&lt;/seg&gt;" title="Insert pages">&lt;seg&gt;</button>
-                                        <!-- <button data-command="snippet" data-params="&lt;citedRange&gt;$|1|&lt;/citedRange&gt;" title="citedRange">&lt;citedRange&gt;</button> -->
-                                    </div>
-                                </jinn-xml-editor>
-                            </fx-control>
-                        </details>
-
+                        
+                        
                         <!-- 26) -->
                         <details ref="//msDesc" class="group-6" id="chronology">
                             <summary>
@@ -1634,7 +1448,179 @@
                                     <option value="public" data-i18n="status.public">öffentlich</option>
                                 </select>
                             </fx-control>
+                        </fx-group>
 
+                        <fx-group ref="//body">
+                            <!-- EDITION and COMMENTARY together as they are all stored in BODY -->
+                            <details class="group-6" id="edition">
+                                <summary>
+                                    <pb-i18n key="form.edition">Textedition</pb-i18n>
+                                </summary>
+                                <div class="block" id="{@xml:id}-transcript">
+                                    <h4>
+                                        <pb-i18n key="form.transcription">Transkription</pb-i18n>
+                                    </h4>
+                                    <fx-control class="transcription editor" ref="div[@type='edition']" as="node" update-event="leave">
+                                        <jinn-epidoc-editor id="transcriptionEditor" unwrap="unwrap" class="widget" show-leiden="" schema="resources/scripts/tei.json" schema-root="div" mode="leiden_plus">
+                                            <h5 slot="leiden-header">Leiden+ Editor</h5>
+                                            <div slot="leiden-toolbar">
+                                                <pb-popover>
+                                                    <iron-icon icon="info-outline"/>
+                                                    <template slot="alternate">
+                                                        <pb-i18n key="form.hint-transcription-prefix">Hint</pb-i18n>
+                                                        <a href="https://papyri.info/docs/leiden_plus" target="_blank">Leiden+</a>
+                                                        <pb-i18n key="form.hint-transcription">Hint</pb-i18n>
+                                                    </template>
+                                                </pb-popover>
+                                                <button data-command="snippet" data-mode="leiden_plus" data-params="($|_|)" title="Abbreviation parenthesis">(abc)</button>
+                                                <button data-command="expan" data-mode="leiden_plus" title="Expanded abbreviation">(a(bcd))</button>
+                                                <button data-command="erasure" data-mode="leiden_plus" title="Erasure">〚abc〛</button>
+                                                <button data-command="unclear" data-mode="leiden_plus" title="Unclear">ạ</button>
+                                                <button data-command="snippet" data-mode="leiden_plus" data-params="~|$|_||~$|2:gr|" title="Language switch">~|...|~</button>
+                                                <button data-command="div" data-mode="leiden_plus" title="Division">&lt;=...</button>
+                                                <button data-command="snippet" data-mode="leiden_plus" title="Part" data-params="&lt;D=.$|A|.part&lt;=$|_|=&gt;=D&gt;">&lt;D=.A.part...</button>
+                                                <button data-command="snippet" data-mode="leiden_plus" title="Column" data-params="&lt;D=.$|i|.column&lt;=$|_|=&gt;=D&gt;">&lt;D=.i.column...</button>
+                                                <button data-command="snippet" data-mode="leiden_plus" title="Recto/Verso" data-params="&lt;D=.$|r|&lt;=$|_|=&gt;=D&gt;">&lt;D=.r...</button>
+                                                <button data-command="fixNewlines" data-mode="leiden_plus" title="Add missing line numbers">↩</button>
+                                                <button data-command="erasure" data-mode="edcs">〚abc〛</button>
+                                                <button data-command="gap" data-mode="edcs">[...]</button>
+                                                <button data-command="convert" data-mode="edcs">Convert to Leiden+</button>
+                                            </div>
+                                            <h5 slot="xml-header">EpiDoc XML Editor</h5>
+                                            <div slot="xml-toolbar">
+                                                <pb-popover>
+                                                    <iron-icon icon="info-outline"/>
+                                                    <template slot="alternate">
+                                                        <pb-i18n key="form.hint-transcription2">Hint</pb-i18n>
+                                                    </template>
+                                                </pb-popover>
+                                                <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
+                                                <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
+                                                <button data-command="snippet" data-params="&lt;ab&gt;$|_|&lt;/ab&gt;" title="Insert ab">&lt;ab&gt;
+                                                </button>
+                                                <button data-command="snippet" data-params="&lt;supplied reason=&#34;lost&#34;&gt;$|_|&lt;/supplied&gt;" title="Insert supplied">&lt;supplied&gt;
+                                                </button>
+                                                <button data-command="snippet" data-params="&lt;expan&gt;&lt;abbr&gt;$|1|&lt;/abbr&gt;&lt;ex&gt;$|_|&lt;/ex&gt;&lt;/expan&gt;$|3|" title="Insert expan/abbr">&lt;expan&gt;
+                                                </button>
+                                                <button data-command="snippet" data-params="&lt;gap reason=&#34;lost&#34; extent=&#34;unknown&#34; unit=&#34;character&#34;/&gt;$|1|" title="Gap, extent unknown"><iron-icon icon="editor:space-bar"></iron-icon>?</button>
+                                                <button data-command="snippet" data-params="&lt;gap reason=&#34;lost&#34; quantity=&#34;$|1|&#34; unit=&#34;$|2:line|&#34;/&gt;$|3|" title="Gap, extent known"><iron-icon icon="editor:space-bar"></iron-icon></button>
+                                                <button data-command="snippet" data-params='&lt;hi rend="ligature">$|_|&lt;/hi>' title="Ligature">Lig</button>
+                                                <pb-popover>
+                                                    <button data-command="snippet" data-params='&lt;l met="$|1|" real="$|2|">$|_|&lt;/l>' title="Metric"><pb-i18n key="form.verse">Verse</pb-i18n></button>
+                                                    <template slot="alternate">
+                                                        <pb-i18n key="form.hint-verse"></pb-i18n>
+                                                    </template>
+                                                </pb-popover>
+                                                <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
+                                            </div>
+                                        </jinn-epidoc-editor>
+                                    </fx-control>
+                                    <h4>
+                                        <pb-i18n key="form.display">Display</pb-i18n>
+                                    </h4>
+                                    <div id="transcription-display"></div>
+                                </div>
+                                <div class="block">
+                                    <h4>
+                                        <pb-i18n key="form.apparatus">Apparatus</pb-i18n>
+                                    </h4>
+                                    <!-- 36) Apparatus - eingefügt aus jinn-codemirror -->
+                                    <fx-control class="apparatus editor" ref="div[@type='apparatus']" as="node" update-event="leave">
+                                        <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Should contain a &lt;listApp&gt; with nested &lt;app&gt;]">
+                                            <div slot="toolbar">
+                                                <pb-popover>
+                                                    <iron-icon icon="info-outline"/>
+                                                    <template slot="alternate">
+                                                        <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
+                                                    </template>
+                                                </pb-popover>
+                                                <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
+                                                </button>
+                                                <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
+                                                </button>
+                                                <button data-command="snippet" data-params="&lt;listApp&gt;$|_|&lt;/listApp&gt;" title="Insert apparatus list">&lt;listApp&gt;
+                                                </button>
+                                                <button data-command="snippet" data-params="&lt;app loc=&#34;$|1|&#34;&gt;&lt;note&gt;$|_|&lt;/note&gt;&lt;/app&gt;" title="Insert apparatus entry">&lt;app&gt;
+                                                </button>
+                                                <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
+                                                <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
+                                                <button data-command="snippet" data-params="'&lt;citedRange&gt;$|1|&lt;/citedRange&gt;" title="citedRange">&lt;citedRange&gt;</button>
+                                            </div>
+                                        </jinn-xml-editor>
+                                    </fx-control>
+                                </div>
+
+                                <!-- TRANSLATION -->
+
+                                <div class="block">
+                                    <h4>
+                                                <pb-i18n key="form.translation">Übersetzung</pb-i18n>
+                                            </h4>
+                                    <!-- 42) Übersetzung: @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
+                                    <fx-control class="translation editor" ref="div[@type='translation']" as="node" update-event="leave">
+                                        <jinn-xml-editor id="translation" unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
+                                            <div slot="toolbar">
+                                                <pb-popover>
+                                                    <iron-icon icon="info-outline"/>
+                                                    <template slot="alternate">
+                                                        <pb-i18n key="form.hint-translation">Hint</pb-i18n>
+                                                    </template>
+                                                </pb-popover>
+                                                <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
+                                                </button>
+                                                <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
+                                                <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
+                                                </button>
+                                                <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;
+                                                </button>
+                                                <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
+                                            </div>
+                                        </jinn-xml-editor>
+                                    </fx-control>
+                                    <!-- 43) Übersetzer/in -->
+                                    <fx-control class="translator" ref="div[@type='translation']/@resp">
+                                        <label>
+                                                    <pb-i18n key="form.translated-by">Übersetzer/in</pb-i18n>: </label>
+                                    </fx-control>
+                                </div>
+                            </details>
+
+                            <!--
+                            This won't call the update-cycle for each event as the replace action in its current form does not
+                            call it. The control will refresh the UI when the control looses focus (onblur).
+                            -->
+                            <details class="group-10" id="commentary">
+                                <summary>
+                                    <pb-i18n key="form.commentary">Kommentar</pb-i18n>
+                                </summary>
+                                <fx-control class="commentary editor" ref="div[@type='commentary']" as="node" update-event="leave">
+                                    <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
+                                        <div slot="toolbar">
+                                            <pb-popover>
+                                                <iron-icon icon="info-outline"/>
+                                                <template slot="alternate">
+                                                    <pb-i18n key="form.hint-commentary">Hint</pb-i18n>
+                                                </template>
+                                            </pb-popover>
+                                            <button data-command="selectElement" title="Select element around current cursor position">
+                                                &lt;|&gt;
+                                            </button>
+                                            <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;
+                                            </button>
+                                            <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
+                                            </button>
+                                            <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;
+                                            </button>
+                                            <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
+                                            <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
+                                            <button data-command="snippet" data-params="&lt;seg type=&#34;citedRange&#34;&gt;$|_|&lt;/seg&gt;" title="Insert pages">&lt;seg&gt;</button>
+                                            <!-- <button data-command="snippet" data-params="&lt;citedRange&gt;$|1|&lt;/citedRange&gt;" title="citedRange">&lt;citedRange&gt;</button> -->
+                                        </div>
+                                    </jinn-xml-editor>
+                                </fx-control>
+                            </details>
                         </fx-group>
 
                         <section class="buttonBar">
