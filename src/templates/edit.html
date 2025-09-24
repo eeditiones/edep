@@ -2389,13 +2389,11 @@
                                         </pb-popover>
                                     </summary>
                                     <fx-group
-                                        ref="fileDesc/sourceDesc/msDesc"
+                                        ref="fileDesc/sourceDesc/msDesc/history/origin/origDate"
                                         id="chronology"
                                     >
                                         <!-- 26), 27)-->
-                                        <fx-control
-                                            ref="history/origin/origDate/@when-custom"
-                                        >
+                                        <fx-control ref="@when-custom">
                                             <label>
                                                 <pb-i18n key="form.date"
                                                     >Zeitpunkt</pb-i18n
@@ -2414,9 +2412,7 @@
                                             </fx-alert>
                                         </fx-control>
                                         <div class="with-hint">
-                                            <fx-control
-                                                ref="history/origin/origDate/@notBefore-custom"
-                                            >
+                                            <fx-control ref="@notBefore-custom">
                                                 <label>
                                                     <pb-i18n
                                                         key="form.date-after"
@@ -2439,9 +2435,7 @@
                                             </fx-control>
                                         </div>
                                         <div class="with-hint">
-                                            <fx-control
-                                                ref="history/origin/origDate/@notAfter-custom"
-                                            >
+                                            <fx-control ref="@notAfter-custom">
                                                 <label>
                                                     <pb-i18n
                                                         key="form.date-before"
@@ -2464,7 +2458,7 @@
                                             </fx-control>
                                         </div>
                                         <fx-control
-                                            ref="history/origin/origDate"
+                                            ref="."
                                             as="node"
                                             update-event="leave"
                                         >
