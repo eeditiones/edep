@@ -745,148 +745,21 @@
                                         >
                                     </fx-output>
 
-                                    <fx-group
-                                        ref="fileDesc/sourceDesc/msDesc/physDesc/objectDesc"
+                                    <!-- 16a) -->
+
+                                    <fx-control
+                                        id="tm-number"
+                                        class="tm-number"
+                                        ref="//msIdentifier/idno[@type='TM']"
                                     >
-                                        <!-- 16a) -->
-                                        <fx-control
-                                            ref="supportDesc/support/objectType/@ref"
-                                            update-event="input"
+                                        <label
+                                            ><pb-i18n key="form.tm"
+                                                >TM</pb-i18n
+                                            ></label
                                         >
-                                            <label
-                                                ><pb-i18n
-                                                    key="form.type-of-monument"
-                                                    >Inschriftträger</pb-i18n
-                                                ></label
-                                            >
-                                            <select
-                                                ref="sortNames(instance('objtyp')/term)"
-                                                class="widget"
-                                                selection="open"
-                                            >
-                                                <template>
-                                                    <option value="{@ref}">
-                                                        {name[@xml:lang =
-                                                        instance('vars')/language]}
-                                                    </option>
-                                                </template>
-                                            </select>
-                                        </fx-control>
+                                    </fx-control>
 
-                                        <fx-control
-                                            id="tm-number"
-                                            class="tm-number"
-                                            ref="//msIdentifier/idno[@type='TM']"
-                                        >
-                                            <label
-                                                ><pb-i18n key="form.tm"
-                                                    >TM</pb-i18n
-                                                ></label
-                                            >
-                                        </fx-control>
-
-                                        <!-- 16b) -->
-                                        <fx-control
-                                            ref="supportDesc/support/note[not(@type)]"
-                                            as="node"
-                                            update-event="leave"
-                                        >
-                                            <label>
-                                                <pb-i18n
-                                                    key="form.description-of-monument"
-                                                    >Beschreibung
-                                                    Inschriftträger</pb-i18n
-                                                >
-                                            </label>
-                                            <jinn-xml-editor
-                                                unwrap="unwrap"
-                                                class="widget"
-                                                placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                schema="resources/scripts/tei.json"
-                                                schema-root="provenance"
-                                                namespace="http://www.tei-c.org/ns/1.0"
-                                            >
-                                                <div slot="toolbar">
-                                                    <pb-popover>
-                                                        <iron-icon
-                                                            icon="info-outline"
-                                                        />
-                                                        <template
-                                                            slot="alternate"
-                                                        >
-                                                            <pb-i18n
-                                                                key="form.hint-apparatus"
-                                                                >Hint</pb-i18n
-                                                            >
-                                                        </template>
-                                                    </pb-popover>
-                                                    <button
-                                                        data-command="selectElement"
-                                                        title="Select element around current cursor position"
-                                                    >
-                                                        &lt;|&gt;
-                                                    </button>
-                                                    <button
-                                                        data-command="encloseWith"
-                                                        title="Enclose selection in new element"
-                                                    >
-                                                        &lt;...&gt;
-                                                    </button>
-                                                    <button
-                                                        data-command="removeEnclosing"
-                                                        title="Remove enclosing tags"
-                                                        class="sep"
-                                                    >
-                                                        &lt;X&gt;
-                                                    </button>
-                                                    <button
-                                                        data-command="snippet"
-                                                        data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
-                                                        title="Insert reference"
-                                                    >
-                                                        &lt;ref&gt;
-                                                    </button>
-                                                </div>
-                                            </jinn-xml-editor>
-                                        </fx-control>
-
-                                        <!-- there's no 17) -->
-
-                                        <!-- 18) -->
-                                        <details>
-                                            <summary>
-                                                <pb-i18n key="form.material"
-                                                    >Material</pb-i18n
-                                                >
-                                            </summary>
-                                            <fx-control
-                                                ref="supportDesc/support/material/@ref"
-                                                class="orange block"
-                                                style="margin-top: 0"
-                                            >
-                                                <fx-items
-                                                    ref="sortNames(instance('material')/term)"
-                                                    class="widget material-list"
-                                                >
-                                                    <template>
-                                                        <div
-                                                            class="fx-checkbox"
-                                                        >
-                                                            <input
-                                                                type="checkbox"
-                                                                value="{@ref}"
-                                                            />
-                                                            <label
-                                                                >{name[@xml:lang
-                                                                =
-                                                                instance('vars')/language]}</label
-                                                            >
-                                                        </div>
-                                                    </template>
-                                                </fx-items>
-                                            </fx-control>
-                                        </details>
-                                    </fx-group>
+                                    <!-- there's no 17) -->
                                 </fx-group>
 
                                 <fx-group
@@ -1088,7 +961,7 @@
                                         <!-- 12b) -->
                                         <div class="with-hint">
                                             <fx-control
-                                                ref=".//provenance[@type='history']"
+                                                ref="history/provenance[@type='history']"
                                                 as="node"
                                                 update-event="leave"
                                             >
@@ -1178,76 +1051,246 @@
                                                 >Objektbeschreibung</pb-i18n
                                             >
                                         </summary>
+                                        <fx-group ref="physDesc/objectDesc">
+                                            <fx-group ref="supportDesc/support">
+                                                <fx-control
+                                                    ref="objectType/@ref"
+                                                    update-event="input"
+                                                >
+                                                    <label
+                                                        ><pb-i18n
+                                                            key="form.type-of-monument"
+                                                            >Inschriftträger</pb-i18n
+                                                        ></label
+                                                    >
+                                                    <select
+                                                        ref="sortNames(instance('objtyp')/term)"
+                                                        class="widget"
+                                                        selection="open"
+                                                    >
+                                                        <template>
+                                                            <option
+                                                                value="{@ref}"
+                                                            >
+                                                                {name[@xml:lang
+                                                                =
+                                                                instance('vars')/language]}
+                                                            </option>
+                                                        </template>
+                                                    </select>
+                                                </fx-control>
 
-                                        <!-- 13) -->
-                                        <fx-control
-                                            ref="physDesc/objectDesc/supportDesc/condition"
-                                            update-event="input"
-                                        >
-                                            <label>
-                                                <pb-i18n key="form.preservation"
-                                                    >Erhaltung</pb-i18n
+                                                <!-- 16b) -->
+                                                <fx-control
+                                                    ref="note[not(@type)]"
+                                                    as="node"
+                                                    update-event="leave"
                                                 >
-                                            </label>
-                                            <select class="widget">
-                                                <option
-                                                    value=""
-                                                    data-i18n="form.unknown"
-                                                >
-                                                    unbekannt
-                                                </option>
-                                                <option
-                                                    value="complete"
-                                                    data-i18n="preservation.complete"
-                                                >
-                                                    vollständig
-                                                </option>
-                                                <option
-                                                    value="fragmentary"
-                                                    data-i18n="preservation.fragmentary"
-                                                >
-                                                    fragmentarisch
-                                                </option>
-                                            </select>
-                                        </fx-control>
+                                                    <label>
+                                                        <pb-i18n
+                                                            key="form.description-of-monument"
+                                                            >Beschreibung
+                                                            Inschriftträger</pb-i18n
+                                                        >
+                                                    </label>
+                                                    <jinn-xml-editor
+                                                        unwrap="unwrap"
+                                                        class="widget"
+                                                        placeholder="[Inline text/markup or sequence of paragraphs]"
+                                                        schema="resources/scripts/tei.json"
+                                                        schema-root="provenance"
+                                                        namespace="http://www.tei-c.org/ns/1.0"
+                                                    >
+                                                        <div slot="toolbar">
+                                                            <pb-popover>
+                                                                <iron-icon
+                                                                    icon="info-outline"
+                                                                />
+                                                                <template
+                                                                    slot="alternate"
+                                                                >
+                                                                    <pb-i18n
+                                                                        key="form.hint-apparatus"
+                                                                        >Hint</pb-i18n
+                                                                    >
+                                                                </template>
+                                                            </pb-popover>
+                                                            <button
+                                                                data-command="selectElement"
+                                                                title="Select element around current cursor position"
+                                                            >
+                                                                &lt;|&gt;
+                                                            </button>
+                                                            <button
+                                                                data-command="encloseWith"
+                                                                title="Enclose selection in new element"
+                                                            >
+                                                                &lt;...&gt;
+                                                            </button>
+                                                            <button
+                                                                data-command="removeEnclosing"
+                                                                title="Remove enclosing tags"
+                                                                class="sep"
+                                                            >
+                                                                &lt;X&gt;
+                                                            </button>
+                                                            <button
+                                                                data-command="snippet"
+                                                                data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
+                                                                title="Insert reference"
+                                                            >
+                                                                &lt;ref&gt;
+                                                            </button>
+                                                        </div>
+                                                    </jinn-xml-editor>
+                                                </fx-control>
 
-                                        <!-- 14) -->
-                                        <fx-control
-                                            ref="physDesc/objectDesc/supportDesc/support/note[@type='decoration']/@corresp"
-                                            update-event="input"
-                                        >
-                                            <label>
-                                                <pb-i18n key="form.decoration"
-                                                    >Dekor</pb-i18n
+                                                <!-- 18) -->
+                                                <details>
+                                                    <summary>
+                                                        <pb-i18n
+                                                            key="form.material"
+                                                            >Material</pb-i18n
+                                                        >
+                                                    </summary>
+                                                    <fx-control
+                                                        ref="material/@ref"
+                                                        class="orange block"
+                                                        style="margin-top: 0"
+                                                    >
+                                                        <fx-items
+                                                            ref="sortNames(instance('material')/term)"
+                                                            class="widget material-list"
+                                                        >
+                                                            <template>
+                                                                <div
+                                                                    class="fx-checkbox"
+                                                                >
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        value="{@ref}"
+                                                                    />
+                                                                    <label
+                                                                        >{name[@xml:lang
+                                                                        =
+                                                                        instance('vars')/language]}</label
+                                                                    >
+                                                                </div>
+                                                            </template>
+                                                        </fx-items>
+                                                    </fx-control>
+                                                </details>
+
+                                                <!-- 38) -->
+                                                <fx-control
+                                                    class="measurement"
+                                                    ref="dimensions/height"
                                                 >
-                                            </label>
-                                            <select class="widget">
-                                                <option
-                                                    value=""
-                                                    data-i18n="form.unknown"
+                                                    <label>
+                                                        <pb-i18n
+                                                            key="form.height"
+                                                            >Höhe</pb-i18n
+                                                        >
+                                                    </label>
+                                                </fx-control>
+                                                <!-- 19) -->
+                                                <fx-control
+                                                    class="measurement"
+                                                    ref="dimensions/width"
                                                 >
-                                                    unbekannt
-                                                </option>
-                                                <option
-                                                    value="https://www.eagle-network.eu/voc/decor/lod/2000"
-                                                    data-i18n="decor.yes"
+                                                    <label>
+                                                        <pb-i18n
+                                                            key="form.width"
+                                                            >Breite</pb-i18n
+                                                        >
+                                                    </label>
+                                                </fx-control>
+                                                <!-- 20) -->
+                                                <fx-control
+                                                    class="measurement"
+                                                    ref="dimensions/depth"
                                                 >
-                                                    Ja
-                                                </option>
-                                                <option
-                                                    value="https://www.eagle-network.eu/voc/decor/lod/1000"
-                                                    data-i18n="decor.no"
+                                                    <label>
+                                                        <pb-i18n
+                                                            key="form.depth"
+                                                            >Tiefe</pb-i18n
+                                                        >
+                                                    </label>
+                                                </fx-control>
+
+                                                <!-- 14) -->
+                                                <fx-control
+                                                    ref="note[@type='decoration']/@corresp"
+                                                    update-event="input"
                                                 >
-                                                    Nein
-                                                </option>
-                                                <option
-                                                    value="https://edep.adw.uni-heidelberg.de/decor/uncertain"
-                                                    data-i18n="decor.uncertain"
-                                                >
-                                                    unsicher
-                                                </option>
-                                            </select>
-                                        </fx-control>
+                                                    <label>
+                                                        <pb-i18n
+                                                            key="form.decoration"
+                                                            >Dekor</pb-i18n
+                                                        >
+                                                    </label>
+                                                    <select class="widget">
+                                                        <option
+                                                            value=""
+                                                            data-i18n="form.unknown"
+                                                        >
+                                                            unbekannt
+                                                        </option>
+                                                        <option
+                                                            value="https://www.eagle-network.eu/voc/decor/lod/2000"
+                                                            data-i18n="decor.yes"
+                                                        >
+                                                            Ja
+                                                        </option>
+                                                        <option
+                                                            value="https://www.eagle-network.eu/voc/decor/lod/1000"
+                                                            data-i18n="decor.no"
+                                                        >
+                                                            Nein
+                                                        </option>
+                                                        <option
+                                                            value="https://edep.adw.uni-heidelberg.de/decor/uncertain"
+                                                            data-i18n="decor.uncertain"
+                                                        >
+                                                            unsicher
+                                                        </option>
+                                                    </select>
+                                                </fx-control>
+                                            </fx-group>
+
+                                            <!-- 13) -->
+                                            <fx-control
+                                                ref="supportDesc/condition"
+                                                update-event="input"
+                                            >
+                                                <label>
+                                                    <pb-i18n
+                                                        key="form.preservation"
+                                                        >Erhaltung</pb-i18n
+                                                    >
+                                                </label>
+                                                <select class="widget">
+                                                    <option
+                                                        value=""
+                                                        data-i18n="form.unknown"
+                                                    >
+                                                        unbekannt
+                                                    </option>
+                                                    <option
+                                                        value="complete"
+                                                        data-i18n="preservation.complete"
+                                                    >
+                                                        vollständig
+                                                    </option>
+                                                    <option
+                                                        value="fragmentary"
+                                                        data-i18n="preservation.fragmentary"
+                                                    >
+                                                        fragmentarisch
+                                                    </option>
+                                                </select>
+                                            </fx-control>
+                                        </fx-group>
 
                                         <!-- 15) -->
                                         <div class="alternatives">
@@ -1294,40 +1337,6 @@
                                                 </label>
                                             </fx-control>
                                         </div>
-
-                                        <!-- 38) -->
-                                        <fx-control
-                                            class="measurement"
-                                            ref="physDesc/objectDesc/supportDesc/support/dimensions/height"
-                                        >
-                                            <label>
-                                                <pb-i18n key="form.height"
-                                                    >Höhe</pb-i18n
-                                                >
-                                            </label>
-                                        </fx-control>
-                                        <!-- 19) -->
-                                        <fx-control
-                                            class="measurement"
-                                            ref="physDesc/objectDesc/supportDesc/support/dimensions/width"
-                                        >
-                                            <label>
-                                                <pb-i18n key="form.width"
-                                                    >Breite</pb-i18n
-                                                >
-                                            </label>
-                                        </fx-control>
-                                        <!-- 20) -->
-                                        <fx-control
-                                            class="measurement"
-                                            ref="physDesc/objectDesc/supportDesc/support/dimensions/depth"
-                                        >
-                                            <label>
-                                                <pb-i18n key="form.depth"
-                                                    >Tiefe</pb-i18n
-                                                >
-                                            </label>
-                                        </fx-control>
                                     </details>
 
                                     <!-- INSCRIPTION FIELD -->
