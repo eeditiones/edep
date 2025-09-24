@@ -715,13 +715,7 @@
                                     </li>
                                 </ul>
                             </nav>
-                            <fx-group
-                                ref="teiHeader"
-                                style="
-                                    z-index: {
-                                    }
-                                "
-                            >
+                            <fx-group ref="teiHeader" style="">
                                 <fx-control
                                     id="edeptitle"
                                     class="title"
@@ -752,7 +746,7 @@
                                     </fx-output>
 
                                     <fx-group
-                                        ref="sourceDesc/msDesc/physDesc/objectDesc"
+                                        ref="fileDesc/sourceDesc/msDesc/physDesc/objectDesc"
                                     >
                                         <!-- 16a) -->
                                         <fx-control
@@ -855,41 +849,44 @@
                                                 </div>
                                             </jinn-xml-editor>
                                         </fx-control>
-                                    </fx-group>
 
-                                    <!-- there's no 17) -->
+                                        <!-- there's no 17) -->
 
-                                    <!-- 18) -->
-                                    <details>
-                                        <summary>
-                                            <pb-i18n key="form.material"
-                                                >Material</pb-i18n
+                                        <!-- 18) -->
+                                        <details>
+                                            <summary>
+                                                <pb-i18n key="form.material"
+                                                    >Material</pb-i18n
+                                                >
+                                            </summary>
+                                            <fx-control
+                                                ref="supportDesc/support/material/@ref"
+                                                class="orange block"
+                                                style="margin-top: 0"
                                             >
-                                        </summary>
-                                        <fx-control
-                                            ref="supportDesc/support/material/@ref"
-                                            class="orange block"
-                                            style="margin-top: 0"
-                                        >
-                                            <fx-items
-                                                ref="sortNames(instance('material')/term)"
-                                                class="widget material-list"
-                                            >
-                                                <template>
-                                                    <div class="fx-checkbox">
-                                                        <input
-                                                            type="checkbox"
-                                                            value="{@ref}"
-                                                        />
-                                                        <label
-                                                            >{name[@xml:lang =
-                                                            instance('vars')/language]}</label
+                                                <fx-items
+                                                    ref="sortNames(instance('material')/term)"
+                                                    class="widget material-list"
+                                                >
+                                                    <template>
+                                                        <div
+                                                            class="fx-checkbox"
                                                         >
-                                                    </div>
-                                                </template>
-                                            </fx-items>
-                                        </fx-control>
-                                    </details>
+                                                            <input
+                                                                type="checkbox"
+                                                                value="{@ref}"
+                                                            />
+                                                            <label
+                                                                >{name[@xml:lang
+                                                                =
+                                                                instance('vars')/language]}</label
+                                                            >
+                                                        </div>
+                                                    </template>
+                                                </fx-items>
+                                            </fx-control>
+                                        </details>
+                                    </fx-group>
                                 </fx-group>
 
                                 <fx-group
