@@ -781,33 +781,35 @@
                                         </summary>
 
                                         <!-- TODO: load place info -->
-                                        <fx-control
-                                            class="fore-control"
-                                            ref="history/origin/origPlace/@corresp"
-                                            src="geo-picker.html"
-                                            initial=".."
-                                        >
-                                        </fx-control>
-
-                                        <!-- 10b) -->
-                                        <fx-control
-                                            ref="history/provenance[@type='found']/note[@type='context']"
-                                            as="node"
-                                            update-event="leave"
-                                        >
-                                            <label>
-                                                <pb-i18n
-                                                    key="form.context-of-provenance"
-                                                    >Fundkontext</pb-i18n
-                                                >
-                                            </label>
-                                            <edep-xml-editor
-                                                class="widget"
-                                                placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                schema-root="provenance"
+                                        <fx-group ref="history">
+                                            <fx-control
+                                                class="fore-control"
+                                                ref="origin/origPlace/@corresp"
+                                                src="geo-picker.html"
+                                                initial=".."
                                             >
-                                            </edep-xml-editor>
-                                        </fx-control>
+                                            </fx-control>
+
+                                            <!-- 10b) -->
+                                            <fx-control
+                                                ref="provenance[@type='found']/note[@type='context']"
+                                                as="node"
+                                                update-event="leave"
+                                            >
+                                                <label>
+                                                    <pb-i18n
+                                                        key="form.context-of-provenance"
+                                                        >Fundkontext</pb-i18n
+                                                    >
+                                                </label>
+                                                <edep-xml-editor
+                                                    class="widget"
+                                                    placeholder="[Inline text/markup or sequence of paragraphs]"
+                                                    schema-root="provenance"
+                                                >
+                                                </edep-xml-editor>
+                                            </fx-control>
+                                        </fx-group>
                                     </details>
 
                                     <!-- FIND DATE -->
@@ -817,74 +819,78 @@
                                                 >Fundjahr/-datum</pb-i18n
                                             >
                                         </summary>
-                                        <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
-                                        <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
-                                        <fx-control
-                                            ref="history/provenance/@when"
-                                        >
-                                            <label
-                                                ><pb-i18n key="form.date"
-                                                    >Zeitpunkt</pb-i18n
-                                                ></label
-                                            >
-                                            <input
-                                                placeholder="YYYY, YYYY-MM oder YYYY-MM-DD"
-                                                class="widget"
-                                            />
-                                            <fx-alert>
-                                                <iron-icon icon="warning" />
-                                                <pb-i18n key="form.date-invalid"
-                                                    >Ungültiges Datum</pb-i18n
+
+                                        <fx-group ref="history/provenance">
+                                            <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
+                                            <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
+                                            <fx-control ref="@when">
+                                                <label
+                                                    ><pb-i18n key="form.date"
+                                                        >Zeitpunkt</pb-i18n
+                                                    ></label
                                                 >
-                                            </fx-alert>
-                                        </fx-control>
-                                        <fx-control
-                                            ref="history/provenance/@notBefore"
-                                        >
-                                            <label
-                                                ><pb-i18n key="form.date-after"
-                                                    >nach</pb-i18n
-                                                ></label
-                                            >
-                                            <input
-                                                placeholder="YYYY, YYYY-MM oder YYYY-MM-DD"
-                                                class="widget"
-                                            />
-                                            <fx-alert>
-                                                <iron-icon icon="warning" />
-                                                <pb-i18n key="form.date-invalid"
-                                                    >Ungültiges Datum</pb-i18n
+                                                <input
+                                                    placeholder="YYYY, YYYY-MM oder YYYY-MM-DD"
+                                                    class="widget"
+                                                />
+                                                <fx-alert>
+                                                    <iron-icon icon="warning" />
+                                                    <pb-i18n
+                                                        key="form.date-invalid"
+                                                        >Ungültiges
+                                                        Datum</pb-i18n
+                                                    >
+                                                </fx-alert>
+                                            </fx-control>
+                                            <fx-control ref="@notBefore">
+                                                <label
+                                                    ><pb-i18n
+                                                        key="form.date-after"
+                                                        >nach</pb-i18n
+                                                    ></label
                                                 >
-                                            </fx-alert>
-                                        </fx-control>
-                                        <fx-control
-                                            ref="history/provenance/@notAfter"
-                                        >
-                                            <label
-                                                ><pb-i18n key="form.date-before"
-                                                    >vor</pb-i18n
-                                                ></label
-                                            >
-                                            <input
-                                                placeholder="YYYY, YYYY-MM oder YYYY-MM-DD"
-                                                class="widget"
-                                            />
-                                            <fx-alert>
-                                                <iron-icon icon="warning" />
-                                                <pb-i18n key="form.invalid-date"
-                                                    >Ungültiges Datum</pb-i18n
+                                                <input
+                                                    placeholder="YYYY, YYYY-MM oder YYYY-MM-DD"
+                                                    class="widget"
+                                                />
+                                                <fx-alert>
+                                                    <iron-icon icon="warning" />
+                                                    <pb-i18n
+                                                        key="form.date-invalid"
+                                                        >Ungültiges
+                                                        Datum</pb-i18n
+                                                    >
+                                                </fx-alert>
+                                            </fx-control>
+                                            <fx-control ref="@notAfter">
+                                                <label
+                                                    ><pb-i18n
+                                                        key="form.date-before"
+                                                        >vor</pb-i18n
+                                                    ></label
                                                 >
-                                            </fx-alert>
-                                        </fx-control>
-                                        <fx-control
-                                            ref="history/provenance/@when-custom"
-                                        >
-                                            <label
-                                                ><pb-i18n key="form.free-form"
-                                                    >freie Angabe</pb-i18n
-                                                ></label
-                                            >
-                                        </fx-control>
+                                                <input
+                                                    placeholder="YYYY, YYYY-MM oder YYYY-MM-DD"
+                                                    class="widget"
+                                                />
+                                                <fx-alert>
+                                                    <iron-icon icon="warning" />
+                                                    <pb-i18n
+                                                        key="form.invalid-date"
+                                                        >Ungültiges
+                                                        Datum</pb-i18n
+                                                    >
+                                                </fx-alert>
+                                            </fx-control>
+                                            <fx-control ref="@when-custom">
+                                                <label
+                                                    ><pb-i18n
+                                                        key="form.free-form"
+                                                        >freie Angabe</pb-i18n
+                                                    ></label
+                                                >
+                                            </fx-control>
+                                        </fx-group>
                                     </details>
 
                                     <!-- PRESENT LOCATION -->
