@@ -168,39 +168,45 @@
                                 </fx-instance>
 
                                 <fx-bind ref="instance('default')">
-                                    <fx-bind
-                                        ref=".//fileDesc/titleStmt/title"
-                                        required="true()"
-                                        constraint="string-length(.) != 0"
-                                    >
-                                    </fx-bind>
-                                    <fx-bind ref=".//history/provenance">
+                                    <fx-bind ref="teiHeader">
                                         <fx-bind
-                                            ref="./@when"
-                                            constraint="checkDate(.)"
-                                        ></fx-bind>
+                                            ref="fileDesc/titleStmt/title"
+                                            required="true()"
+                                            constraint="string-length(.) &gt; 0"
+                                        >
+                                        </fx-bind>
                                         <fx-bind
-                                            ref="./@notBefore"
-                                            constraint="checkDate(.)"
-                                        ></fx-bind>
-                                        <fx-bind
-                                            ref="./@notAfter"
-                                            constraint="checkDate(.)"
-                                        ></fx-bind>
-                                    </fx-bind>
-                                    <fx-bind ref=".//history/origin/origDate">
-                                        <fx-bind
-                                            ref="./@when-custom"
-                                            constraint="checkDate(.)"
-                                        ></fx-bind>
-                                        <fx-bind
-                                            ref="./@notBefore-custom"
-                                            constraint="checkDate(.)"
-                                        ></fx-bind>
-                                        <fx-bind
-                                            ref="./@notAfter-custom"
-                                            constraint="checkDate(.)"
-                                        ></fx-bind>
+                                            ref="fileDesc/sourceDesc/msDesc/history"
+                                        >
+                                            <fx-bind ref="provenance">
+                                                <fx-bind
+                                                    ref="./@when"
+                                                    constraint="checkDate(.)"
+                                                ></fx-bind>
+                                                <fx-bind
+                                                    ref="./@notBefore"
+                                                    constraint="checkDate(.)"
+                                                ></fx-bind>
+                                                <fx-bind
+                                                    ref="./@notAfter"
+                                                    constraint="checkDate(.)"
+                                                ></fx-bind>
+                                            </fx-bind>
+                                            <fx-bind ref="origin/origDate">
+                                                <fx-bind
+                                                    ref="./@when-custom"
+                                                    constraint="checkDate(.)"
+                                                ></fx-bind>
+                                                <fx-bind
+                                                    ref="./@notBefore-custom"
+                                                    constraint="checkDate(.)"
+                                                ></fx-bind>
+                                                <fx-bind
+                                                    ref="./@notAfter-custom"
+                                                    constraint="checkDate(.)"
+                                                ></fx-bind>
+                                            </fx-bind>
+                                        </fx-bind>
                                     </fx-bind>
                                 </fx-bind>
 
@@ -555,9 +561,9 @@
                                                     key="form.add"
                                                 ></pb-i18n>
                                             </button>
-                                            <!-- TODO clone current document content into a child document with a new id and 
+                                            <!-- TODO clone current document content into a child document with a new id and
                                - TEI/@corresp pointing to this one's xml:id
-                               - TEI/@type set to 'partial' 
+                               - TEI/@type set to 'partial'
                                -->
                                         </fx-trigger>
                                     </li>
@@ -745,105 +751,111 @@
                                         >
                                     </fx-output>
 
-                                    <!-- 16a) -->
-                                    <fx-control
-                                        ref="//physDesc/objectDesc/supportDesc/support/objectType/@ref"
-                                        update-event="input"
+                                    <fx-group
+                                        ref="sourceDesc/msDesc/physDesc/objectDesc"
                                     >
-                                        <label
-                                            ><pb-i18n
-                                                key="form.type-of-monument"
-                                                >Inschriftträger</pb-i18n
-                                            ></label
+                                        <!-- 16a) -->
+                                        <fx-control
+                                            ref="supportDesc/support/objectType/@ref"
+                                            update-event="input"
                                         >
-                                        <select
-                                            ref="sortNames(instance('objtyp')/term)"
-                                            class="widget"
-                                            selection="open"
-                                        >
-                                            <template>
-                                                <option value="{@ref}">
-                                                    {name[@xml:lang =
-                                                    instance('vars')/language]}
-                                                </option>
-                                            </template>
-                                        </select>
-                                    </fx-control>
-
-                                    <fx-control
-                                        id="tm-number"
-                                        class="tm-number"
-                                        ref="//msIdentifier/idno[@type='TM']"
-                                    >
-                                        <label
-                                            ><pb-i18n key="form.tm"
-                                                >TM</pb-i18n
-                                            ></label
-                                        >
-                                    </fx-control>
-
-                                    <!-- 16b) -->
-                                    <fx-control
-                                        ref="//physDesc/objectDesc/supportDesc/support/note[not(@type)]"
-                                        as="node"
-                                        update-event="leave"
-                                    >
-                                        <label>
-                                            <pb-i18n
-                                                key="form.description-of-monument"
-                                                >Beschreibung
-                                                Inschriftträger</pb-i18n
+                                            <label
+                                                ><pb-i18n
+                                                    key="form.type-of-monument"
+                                                    >Inschriftträger</pb-i18n
+                                                ></label
                                             >
-                                        </label>
-                                        <jinn-xml-editor
-                                            unwrap="unwrap"
-                                            class="widget"
-                                            placeholder="[Inline text/markup or sequence of paragraphs]"
-                                            schema="resources/scripts/tei.json"
-                                            schema-root="provenance"
-                                            namespace="http://www.tei-c.org/ns/1.0"
+                                            <select
+                                                ref="sortNames(instance('objtyp')/term)"
+                                                class="widget"
+                                                selection="open"
+                                            >
+                                                <template>
+                                                    <option value="{@ref}">
+                                                        {name[@xml:lang =
+                                                        instance('vars')/language]}
+                                                    </option>
+                                                </template>
+                                            </select>
+                                        </fx-control>
+
+                                        <fx-control
+                                            id="tm-number"
+                                            class="tm-number"
+                                            ref="//msIdentifier/idno[@type='TM']"
                                         >
-                                            <div slot="toolbar">
-                                                <pb-popover>
-                                                    <iron-icon
-                                                        icon="info-outline"
-                                                    />
-                                                    <template slot="alternate">
-                                                        <pb-i18n
-                                                            key="form.hint-apparatus"
-                                                            >Hint</pb-i18n
+                                            <label
+                                                ><pb-i18n key="form.tm"
+                                                    >TM</pb-i18n
+                                                ></label
+                                            >
+                                        </fx-control>
+
+                                        <!-- 16b) -->
+                                        <fx-control
+                                            ref="supportDesc/support/note[not(@type)]"
+                                            as="node"
+                                            update-event="leave"
+                                        >
+                                            <label>
+                                                <pb-i18n
+                                                    key="form.description-of-monument"
+                                                    >Beschreibung
+                                                    Inschriftträger</pb-i18n
+                                                >
+                                            </label>
+                                            <jinn-xml-editor
+                                                unwrap="unwrap"
+                                                class="widget"
+                                                placeholder="[Inline text/markup or sequence of paragraphs]"
+                                                schema="resources/scripts/tei.json"
+                                                schema-root="provenance"
+                                                namespace="http://www.tei-c.org/ns/1.0"
+                                            >
+                                                <div slot="toolbar">
+                                                    <pb-popover>
+                                                        <iron-icon
+                                                            icon="info-outline"
+                                                        />
+                                                        <template
+                                                            slot="alternate"
                                                         >
-                                                    </template>
-                                                </pb-popover>
-                                                <button
-                                                    data-command="selectElement"
-                                                    title="Select element around current cursor position"
-                                                >
-                                                    &lt;|&gt;
-                                                </button>
-                                                <button
-                                                    data-command="encloseWith"
-                                                    title="Enclose selection in new element"
-                                                >
-                                                    &lt;...&gt;
-                                                </button>
-                                                <button
-                                                    data-command="removeEnclosing"
-                                                    title="Remove enclosing tags"
-                                                    class="sep"
-                                                >
-                                                    &lt;X&gt;
-                                                </button>
-                                                <button
-                                                    data-command="snippet"
-                                                    data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
-                                                    title="Insert reference"
-                                                >
-                                                    &lt;ref&gt;
-                                                </button>
-                                            </div>
-                                        </jinn-xml-editor>
-                                    </fx-control>
+                                                            <pb-i18n
+                                                                key="form.hint-apparatus"
+                                                                >Hint</pb-i18n
+                                                            >
+                                                        </template>
+                                                    </pb-popover>
+                                                    <button
+                                                        data-command="selectElement"
+                                                        title="Select element around current cursor position"
+                                                    >
+                                                        &lt;|&gt;
+                                                    </button>
+                                                    <button
+                                                        data-command="encloseWith"
+                                                        title="Enclose selection in new element"
+                                                    >
+                                                        &lt;...&gt;
+                                                    </button>
+                                                    <button
+                                                        data-command="removeEnclosing"
+                                                        title="Remove enclosing tags"
+                                                        class="sep"
+                                                    >
+                                                        &lt;X&gt;
+                                                    </button>
+                                                    <button
+                                                        data-command="snippet"
+                                                        data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
+                                                        title="Insert reference"
+                                                    >
+                                                        &lt;ref&gt;
+                                                    </button>
+                                                </div>
+                                            </jinn-xml-editor>
+                                        </fx-control>
+                                    </fx-group>
 
                                     <!-- there's no 17) -->
 
@@ -855,7 +867,7 @@
                                             >
                                         </summary>
                                         <fx-control
-                                            ref="//physDesc/objectDesc/supportDesc/support/material/@ref"
+                                            ref="supportDesc/support/material/@ref"
                                             class="orange block"
                                             style="margin-top: 0"
                                         >
