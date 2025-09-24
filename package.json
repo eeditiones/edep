@@ -3,7 +3,7 @@
   "version": "1.9.1",
   "description": "Editionstools für eine digitale Epigraphik",
   "dependencies": {
-    "@jinntec/fore": "^2.4.1",
+    "@jinntec/fore": "^2.6.0",
     "@jinntec/jinn-codemirror": "1.17.6",
     "@teipublisher/pb-components": "2.12.10",
     "datalist-ajax": "1.0.2"
@@ -20,7 +20,7 @@
     "copy": "gulp copyStatic",
     "start": "web-dev-server --node-resolve --watch --open",
     "lint": "eslint --ext .js,.html . --ignore-path .gitignore prettier \"**/*.js\" \"**/*.html\" --check --ignore-path .gitignore",
-     "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore; prettier \"**/*.js\" \"**/*.html\" --write --ignore-path .gitignore"
+    "format": "eslint --ext .js,.html . --fix --ignore-path .gitignore; prettier \"**/*.js\" \"**/*.html\" --write --ignore-path .gitignore"
   },
   "devDependencies": {
     "@existdb/gulp-exist": "^4.3.1",
@@ -64,7 +64,7 @@
   "prettier": {
     "singleQuote": true,
     "arrowParens": "avoid",
-	"tabWidth": 4
+    "tabWidth": 4
   },
   "husky": {
     "hooks": {}
