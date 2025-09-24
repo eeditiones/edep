@@ -730,7 +730,7 @@
                                 <!--            <span>Sprachselector hier</span>-->
 
                                 <!-- OBJECT -->
-                                <fx-group id="object">
+                                <fx-group ref="fileDesc/sourceDesc/msDesc/msIdentifier" id="object">                          
                                     <h3>
                                         <pb-i18n key="form.object"
                                             >Objekt</pb-i18n
@@ -739,7 +739,7 @@
                                     <!-- 3) -->
 
                                     <fx-output
-                                        ref="//idno[@type='EDEp']"
+                                        ref="idno[@type='EDEp']"
                                         class="edepid"
                                     >
                                         <label slot="label"
@@ -754,7 +754,7 @@
                                     <fx-control
                                         id="tm-number"
                                         class="tm-number"
-                                        ref="//msIdentifier/idno[@type='TM']"
+                                        ref="idno[@type='TM']"
                                     >
                                         <label
                                             ><pb-i18n key="form.tm"
