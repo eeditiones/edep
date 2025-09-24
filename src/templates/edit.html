@@ -1438,7 +1438,7 @@
                                                 </jinn-xml-editor>
                                             </fx-control>
                                         </fx-group>
-                                        
+
                                         <!-- 23) -->
                                         <fx-control
                                             class="measurement"
@@ -1459,9 +1459,13 @@
                                                 key="form.text-description"
                                             />
                                         </summary>
+                                        <fx-group
+                                            ref="physDesc/objectDesc/layoutDesc/layout"
+                                            id="layout"
+                                        >
                                         <!-- 24) -->
                                         <fx-control
-                                            ref="physDesc/objectDesc/layoutDesc/layout/note[@type='metric']"
+                                            ref="note[@type='metric']"
                                             update-event="input"
                                         >
                                             <label
@@ -1502,7 +1506,7 @@
                                         <!-- 34) -->
                                         <div class="alternatives">
                                             <fx-control
-                                                ref="physDesc/objectDesc/layoutDesc/layout/note[@type='palaeography']/@corresp"
+                                                ref="note[@type='palaeography']/@corresp"
                                                 update-event="input"
                                             >
                                                 <label>
@@ -1532,7 +1536,7 @@
                                             </fx-control>
                                             <fx-control
                                                 id="input34"
-                                                ref="physDesc/objectDesc/layoutDesc/layout/note[@type='palaeography']"
+                                                ref="note[@type='palaeography']"
                                                 class="{instance('vars')/hide}"
                                                 as="node"
                                                 update-event="leave"
@@ -1595,6 +1599,7 @@
                                                 </jinn-xml-editor>
                                             </fx-control>
                                         </div>
+                                        </fx-group>
 
                                         <!-- 39) -->
                                         <fx-control
