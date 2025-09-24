@@ -65,6 +65,10 @@
         <script type="module" src="resources/scripts/fore-dev.js"></script>
         <script
             type="module"
+            src="resources/scripts/edep-xml-editor.js"
+        ></script>
+        <script
+            type="module"
             src="pb-components-bundle.js"
             data-template="pages:load-components"
         ></script>
@@ -797,56 +801,12 @@
                                                     >Fundkontext</pb-i18n
                                                 >
                                             </label>
-                                            <jinn-xml-editor
-                                                unwrap="unwrap"
+                                            <edep-xml-editor
                                                 class="widget"
                                                 placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                schema="resources/scripts/tei.json"
                                                 schema-root="provenance"
-                                                namespace="http://www.tei-c.org/ns/1.0"
                                             >
-                                                <div slot="toolbar">
-                                                    <pb-popover>
-                                                        <iron-icon
-                                                            icon="info-outline"
-                                                        />
-                                                        <template
-                                                            slot="alternate"
-                                                        >
-                                                            <pb-i18n
-                                                                key="form.hint-apparatus"
-                                                                >Hint</pb-i18n
-                                                            >
-                                                        </template>
-                                                    </pb-popover>
-                                                    <button
-                                                        data-command="selectElement"
-                                                        title="Select element around current cursor position"
-                                                    >
-                                                        &lt;|&gt;
-                                                    </button>
-                                                    <button
-                                                        data-command="encloseWith"
-                                                        title="Enclose selection in new element"
-                                                    >
-                                                        &lt;...&gt;
-                                                    </button>
-                                                    <button
-                                                        data-command="removeEnclosing"
-                                                        title="Remove enclosing tags"
-                                                        class="sep"
-                                                    >
-                                                        &lt;X&gt;
-                                                    </button>
-                                                    <button
-                                                        data-command="snippet"
-                                                        data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
-                                                        title="Insert reference"
-                                                    >
-                                                        &lt;ref&gt;
-                                                    </button>
-                                                </div>
-                                            </jinn-xml-editor>
+                                            </edep-xml-editor>
                                         </fx-control>
                                     </details>
 
@@ -972,63 +932,12 @@
                                                         Ereignisse</pb-i18n
                                                     ></label
                                                 >
-                                                <jinn-xml-editor
-                                                    unwrap="unwrap"
+                                                <edep-xml-editor
                                                     class="widget"
                                                     placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                    schema="resources/scripts/tei.json"
                                                     schema-root="provenance"
-                                                    namespace="http://www.tei-c.org/ns/1.0"
                                                 >
-                                                    <div slot="toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon
-                                                                icon="info-outline"
-                                                            />
-                                                            <template
-                                                                slot="alternate"
-                                                            >
-                                                                <pb-i18n
-                                                                    key="form.hint-apparatus"
-                                                                    >Hint</pb-i18n
-                                                                >
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button
-                                                            data-command="selectElement"
-                                                            title="Select element around current cursor position"
-                                                        >
-                                                            &lt;|&gt;
-                                                        </button>
-                                                        <button
-                                                            data-command="encloseWith"
-                                                            title="Enclose selection in new element"
-                                                        >
-                                                            &lt;...&gt;
-                                                        </button>
-                                                        <button
-                                                            data-command="removeEnclosing"
-                                                            title="Remove enclosing tags"
-                                                            class="sep"
-                                                        >
-                                                            &lt;X&gt;
-                                                        </button>
-                                                        <button
-                                                            data-command="snippet"
-                                                            data-params="&lt;placeName key=&#34;$|1|&#34;&gt;$|_|&lt;/placeName&gt;"
-                                                            title="placeName"
-                                                        >
-                                                            &lt;placeName&gt;
-                                                        </button>
-                                                        <button
-                                                            data-command="snippet"
-                                                            data-params="&lt;orgName key=&#34;$|1|&#34;&gt;$|_|&lt;/orgName&gt;"
-                                                            title="orgName"
-                                                        >
-                                                            &lt;orgName&gt;
-                                                        </button>
-                                                    </div>
-                                                </jinn-xml-editor>
+                                                </edep-xml-editor>
                                             </fx-control>
                                             <pb-popover>
                                                 <iron-icon
@@ -1093,56 +1002,12 @@
                                                             Inschriftträger</pb-i18n
                                                         >
                                                     </label>
-                                                    <jinn-xml-editor
-                                                        unwrap="unwrap"
+                                                    <edep-xml-editor
                                                         class="widget"
                                                         placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                        schema="resources/scripts/tei.json"
                                                         schema-root="provenance"
-                                                        namespace="http://www.tei-c.org/ns/1.0"
                                                     >
-                                                        <div slot="toolbar">
-                                                            <pb-popover>
-                                                                <iron-icon
-                                                                    icon="info-outline"
-                                                                />
-                                                                <template
-                                                                    slot="alternate"
-                                                                >
-                                                                    <pb-i18n
-                                                                        key="form.hint-apparatus"
-                                                                        >Hint</pb-i18n
-                                                                    >
-                                                                </template>
-                                                            </pb-popover>
-                                                            <button
-                                                                data-command="selectElement"
-                                                                title="Select element around current cursor position"
-                                                            >
-                                                                &lt;|&gt;
-                                                            </button>
-                                                            <button
-                                                                data-command="encloseWith"
-                                                                title="Enclose selection in new element"
-                                                            >
-                                                                &lt;...&gt;
-                                                            </button>
-                                                            <button
-                                                                data-command="removeEnclosing"
-                                                                title="Remove enclosing tags"
-                                                                class="sep"
-                                                            >
-                                                                &lt;X&gt;
-                                                            </button>
-                                                            <button
-                                                                data-command="snippet"
-                                                                data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
-                                                                title="Insert reference"
-                                                            >
-                                                                &lt;ref&gt;
-                                                            </button>
-                                                        </div>
-                                                    </jinn-xml-editor>
+                                                    </edep-xml-editor>
                                                 </fx-control>
 
                                                 <!-- 18) -->
@@ -1386,56 +1251,12 @@
                                                         >Beschreibung</pb-i18n
                                                     ></label
                                                 >
-                                                <jinn-xml-editor
-                                                    unwrap="unwrap"
+                                                <edep-xml-editor
                                                     class="widget"
                                                     placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                    schema="resources/scripts/tei.json"
                                                     schema-root="provenance"
-                                                    namespace="http://www.tei-c.org/ns/1.0"
                                                 >
-                                                    <div slot="toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon
-                                                                icon="info-outline"
-                                                            />
-                                                            <template
-                                                                slot="alternate"
-                                                            >
-                                                                <pb-i18n
-                                                                    key="form.hint-apparatus"
-                                                                    >Hint</pb-i18n
-                                                                >
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button
-                                                            data-command="selectElement"
-                                                            title="Select element around current cursor position"
-                                                        >
-                                                            &lt;|&gt;
-                                                        </button>
-                                                        <button
-                                                            data-command="encloseWith"
-                                                            title="Enclose selection in new element"
-                                                        >
-                                                            &lt;...&gt;
-                                                        </button>
-                                                        <button
-                                                            data-command="removeEnclosing"
-                                                            title="Remove enclosing tags"
-                                                            class="sep"
-                                                        >
-                                                            &lt;X&gt;
-                                                        </button>
-                                                        <button
-                                                            data-command="snippet"
-                                                            data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
-                                                            title="Insert reference"
-                                                        >
-                                                            &lt;ref&gt;
-                                                        </button>
-                                                    </div>
-                                                </jinn-xml-editor>
+                                                </edep-xml-editor>
                                             </fx-control>
                                         </fx-group>
 
@@ -1548,56 +1369,12 @@
                                                             Angabe</pb-i18n
                                                         >
                                                     </label>
-                                                    <jinn-xml-editor
-                                                        unwrap="unwrap"
+                                                    <edep-xml-editor
                                                         class="widget"
                                                         placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                        schema="resources/scripts/tei.json"
                                                         schema-root="provenance"
-                                                        namespace="http://www.tei-c.org/ns/1.0"
                                                     >
-                                                        <div slot="toolbar">
-                                                            <pb-popover>
-                                                                <iron-icon
-                                                                    icon="info-outline"
-                                                                />
-                                                                <template
-                                                                    slot="alternate"
-                                                                >
-                                                                    <pb-i18n
-                                                                        key="form.hint-apparatus"
-                                                                        >Hint</pb-i18n
-                                                                    >
-                                                                </template>
-                                                            </pb-popover>
-                                                            <button
-                                                                data-command="selectElement"
-                                                                title="Select element around current cursor position"
-                                                            >
-                                                                &lt;|&gt;
-                                                            </button>
-                                                            <button
-                                                                data-command="encloseWith"
-                                                                title="Enclose selection in new element"
-                                                            >
-                                                                &lt;...&gt;
-                                                            </button>
-                                                            <button
-                                                                data-command="removeEnclosing"
-                                                                title="Remove enclosing tags"
-                                                                class="sep"
-                                                            >
-                                                                &lt;X&gt;
-                                                            </button>
-                                                            <button
-                                                                data-command="snippet"
-                                                                data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
-                                                                title="Insert reference"
-                                                            >
-                                                                &lt;ref&gt;
-                                                            </button>
-                                                        </div>
-                                                    </jinn-xml-editor>
+                                                    </edep-xml-editor>
                                                 </fx-control>
                                             </div>
                                         </fx-group>
@@ -2004,58 +1781,12 @@
                                                                         >Anmerkungen</pb-i18n
                                                                     >
                                                                 </label>
-                                                                <jinn-xml-editor
-                                                                    unwrap="unwrap"
+                                                                <edep-xml-editor
                                                                     class="widget"
-                                                                    schema="resources/scripts/tei.json"
                                                                     placeholder="[Inline text/markup or sequence of paragraphs]"
                                                                     schema-root="note"
-                                                                    namespace="http://www.tei-c.org/ns/1.0"
                                                                 >
-                                                                    <div
-                                                                        slot="toolbar"
-                                                                    >
-                                                                        <pb-popover>
-                                                                            <iron-icon
-                                                                                icon="info-outline"
-                                                                            />
-                                                                            <template
-                                                                                slot="alternate"
-                                                                            >
-                                                                                <pb-i18n
-                                                                                    key="form.hint-biblio-note"
-                                                                                    >Hint</pb-i18n
-                                                                                >
-                                                                            </template>
-                                                                        </pb-popover>
-                                                                        <button
-                                                                            data-command="selectElement"
-                                                                            title="Select element around current cursor position"
-                                                                        >
-                                                                            &lt;|&gt;
-                                                                        </button>
-                                                                        <button
-                                                                            data-command="encloseWith"
-                                                                            title="Enclose selection in new element"
-                                                                        >
-                                                                            &lt;...&gt;
-                                                                        </button>
-                                                                        <button
-                                                                            data-command="removeEnclosing"
-                                                                            title="Remove enclosing tags"
-                                                                            class="sep"
-                                                                        >
-                                                                            &lt;X&gt;
-                                                                        </button>
-                                                                        <button
-                                                                            data-command="snippet"
-                                                                            data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
-                                                                            title="Insert reference"
-                                                                        >
-                                                                            &lt;ref&gt;
-                                                                        </button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
+                                                                </edep-xml-editor>
                                                             </fx-control>
                                                         </div>
                                                     </div>
@@ -2204,58 +1935,12 @@
                                                                         >Anmerkungen</pb-i18n
                                                                     >
                                                                 </label>
-                                                                <jinn-xml-editor
-                                                                    unwrap="unwrap"
+                                                                <edep-xml-editor
                                                                     class="widget"
-                                                                    schema="resources/scripts/tei.json"
                                                                     placeholder="[Inline text/markup or sequence of paragraphs]"
                                                                     schema-root="note"
-                                                                    namespace="http://www.tei-c.org/ns/1.0"
                                                                 >
-                                                                    <div
-                                                                        slot="toolbar"
-                                                                    >
-                                                                        <pb-popover>
-                                                                            <iron-icon
-                                                                                icon="info-outline"
-                                                                            />
-                                                                            <template
-                                                                                slot="alternate"
-                                                                            >
-                                                                                <pb-i18n
-                                                                                    key="form.hint-biblio-note"
-                                                                                    >Hint</pb-i18n
-                                                                                >
-                                                                            </template>
-                                                                        </pb-popover>
-                                                                        <button
-                                                                            data-command="selectElement"
-                                                                            title="Select element around current cursor position"
-                                                                        >
-                                                                            &lt;|&gt;
-                                                                        </button>
-                                                                        <button
-                                                                            data-command="encloseWith"
-                                                                            title="Enclose selection in new element"
-                                                                        >
-                                                                            &lt;...&gt;
-                                                                        </button>
-                                                                        <button
-                                                                            data-command="removeEnclosing"
-                                                                            title="Remove enclosing tags"
-                                                                            class="sep"
-                                                                        >
-                                                                            &lt;X&gt;
-                                                                        </button>
-                                                                        <button
-                                                                            data-command="snippet"
-                                                                            data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
-                                                                            title="Insert reference"
-                                                                        >
-                                                                            &lt;ref&gt;
-                                                                        </button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
+                                                                </edep-xml-editor>
                                                             </fx-control>
                                                         </div>
                                                     </div>
@@ -2407,58 +2092,12 @@
                                                                     >Anmerkungen</pb-i18n
                                                                 >
                                                             </label>
-                                                            <jinn-xml-editor
-                                                                unwrap="unwrap"
+                                                            <edep-xml-editor
                                                                 class="widget"
-                                                                schema="resources/scripts/tei.json"
                                                                 schema-root="note"
-                                                                namespace="http://www.tei-c.org/ns/1.0"
                                                                 placeholder="[Inline text/markup or sequence of paragraphs]"
                                                             >
-                                                                <div
-                                                                    slot="toolbar"
-                                                                >
-                                                                    <pb-popover>
-                                                                        <iron-icon
-                                                                            icon="info-outline"
-                                                                        />
-                                                                        <template
-                                                                            slot="alternate"
-                                                                        >
-                                                                            <pb-i18n
-                                                                                key="form.hint-biblio-note"
-                                                                                >Hint</pb-i18n
-                                                                            >
-                                                                        </template>
-                                                                    </pb-popover>
-                                                                    <button
-                                                                        data-command="selectElement"
-                                                                        title="Select element around current cursor position"
-                                                                    >
-                                                                        &lt;|&gt;
-                                                                    </button>
-                                                                    <button
-                                                                        data-command="encloseWith"
-                                                                        title="Enclose selection in new element"
-                                                                    >
-                                                                        &lt;...&gt;
-                                                                    </button>
-                                                                    <button
-                                                                        data-command="removeEnclosing"
-                                                                        title="Remove enclosing tags"
-                                                                        class="sep"
-                                                                    >
-                                                                        &lt;X&gt;
-                                                                    </button>
-                                                                    <button
-                                                                        data-command="snippet"
-                                                                        data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
-                                                                        title="Insert reference"
-                                                                    >
-                                                                        &lt;ref&gt;
-                                                                    </button>
-                                                                </div>
-                                                            </jinn-xml-editor>
+                                                            </edep-xml-editor>
                                                         </fx-control>
                                                         <fx-control
                                                             ref="@type"
@@ -2635,58 +2274,12 @@
                                                                         >Anmerkungen</pb-i18n
                                                                     >
                                                                 </label>
-                                                                <jinn-xml-editor
-                                                                    unwrap="unwrap"
+                                                                <edep-xml-editor
                                                                     class="widget"
-                                                                    schema="resources/scripts/tei.json"
                                                                     schema-root="note"
-                                                                    namespace="http://www.tei-c.org/ns/1.0"
                                                                     placeholder="[Inline text/markup or sequence of paragraphs]"
                                                                 >
-                                                                    <div
-                                                                        slot="toolbar"
-                                                                    >
-                                                                        <pb-popover>
-                                                                            <iron-icon
-                                                                                icon="info-outline"
-                                                                            />
-                                                                            <template
-                                                                                slot="alternate"
-                                                                            >
-                                                                                <pb-i18n
-                                                                                    key="form.hint-biblio-note"
-                                                                                    >Hint</pb-i18n
-                                                                                >
-                                                                            </template>
-                                                                        </pb-popover>
-                                                                        <button
-                                                                            data-command="selectElement"
-                                                                            title="Select element around current cursor position"
-                                                                        >
-                                                                            &lt;|&gt;
-                                                                        </button>
-                                                                        <button
-                                                                            data-command="encloseWith"
-                                                                            title="Enclose selection in new element"
-                                                                        >
-                                                                            &lt;...&gt;
-                                                                        </button>
-                                                                        <button
-                                                                            data-command="removeEnclosing"
-                                                                            title="Remove enclosing tags"
-                                                                            class="sep"
-                                                                        >
-                                                                            &lt;X&gt;
-                                                                        </button>
-                                                                        <button
-                                                                            data-command="snippet"
-                                                                            data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
-                                                                            title="Insert reference"
-                                                                        >
-                                                                            &lt;ref&gt;
-                                                                        </button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
+                                                                </edep-xml-editor>
                                                             </fx-control>
                                                         </div>
                                                     </div>
@@ -2874,56 +2467,13 @@
                                                     >Beschreibung/Kommentare</pb-i18n
                                                 >
                                             </label>
-                                            <jinn-xml-editor
-                                                unwrap="unwrap"
+                                            <edep-xml-editor
                                                 class="widget"
                                                 placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                schema="resources/scripts/tei.json"
                                                 schema-root="provenance"
-                                                namespace="http://www.tei-c.org/ns/1.0"
                                             >
-                                                <div slot="toolbar">
-                                                    <pb-popover>
-                                                        <iron-icon
-                                                            icon="info-outline"
-                                                        />
-                                                        <template
-                                                            slot="alternate"
-                                                        >
-                                                            <pb-i18n
-                                                                key="form.hint-apparatus"
-                                                                >Hint</pb-i18n
-                                                            >
-                                                        </template>
-                                                    </pb-popover>
-                                                    <button
-                                                        data-command="selectElement"
-                                                        title="Select element around current cursor position"
-                                                    >
-                                                        &lt;|&gt;
-                                                    </button>
-                                                    <button
-                                                        data-command="encloseWith"
-                                                        title="Enclose selection in new element"
-                                                    >
-                                                        &lt;...&gt;
-                                                    </button>
-                                                    <button
-                                                        data-command="removeEnclosing"
-                                                        title="Remove enclosing tags"
-                                                        class="sep"
-                                                    >
-                                                        &lt;X&gt;
-                                                    </button>
-                                                    <button
-                                                        data-command="snippet"
-                                                        data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;"
-                                                        title="Insert reference"
-                                                    >
-                                                        &lt;ref&gt;
-                                                    </button>
-                                                </div>
-                                            </jinn-xml-editor>
+                                                \
+                                            </edep-xml-editor>
                                         </fx-control>
                                     </fx-group>
                                 </details>
