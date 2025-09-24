@@ -1,3 +1,3 @@
-(e) => {
-  console.log('event highlight', e);
-}
+e => {
+    console.log('event highlight', e);
+};
