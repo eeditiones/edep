@@ -755,31 +755,29 @@
                                                 </fx-control>
 
                                                 <!-- 18) -->
-                                                <details>
-                                                    <summary>
-                                                        <pb-i18n key="form.material">Material</pb-i18n>
-                                                    </summary>
+                                                <div class="alternatives">
                                                     <fx-control
                                                         ref="material/@ref"
-                                                        class="orange block"
+                                                        
                                                         style="margin-top: 0"
                                                     >
+                                                    <label>
+                                                        <pb-i18n key="form.material">Material</pb-i18n>
+                                                    </label>
                                                         <fx-items
                                                             ref="sortNames(instance('material')/term)"
-                                                            class="widget material-list"
+                                                            class="widget"
                                                         >
                                                             <template>
-                                                                <div class="fx-checkbox">
-                                                                    <input type="checkbox" value="{@ref}" />
-                                                                    <label
-                                                                        >{name[@xml:lang =
-                                                                        instance('vars')/language]}</label
-                                                                    >
-                                                                </div>
+                                                                
+                                                                    <span class="fx-checkbox">
+                                                                        <input type="checkbox" value="{@ref}" />
+                                                                        <label>{name[@xml:lang = instance('vars')/language]}</label>
+                                                                    </span>
                                                             </template>
                                                         </fx-items>
                                                     </fx-control>
-                                                </details>                             
+                                                </div>
                                             </fx-group>
 
                                             <!-- 13) -->
