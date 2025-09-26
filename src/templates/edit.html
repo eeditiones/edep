@@ -468,26 +468,22 @@
                                                 >
                                                     <pb-i18n key="form.language" />
                                                 </a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="edit/{instance('params')/collection}/{instance('params')/id}.xml#references"
-                                                >
-                                                    <pb-i18n key="form.references" />
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="edit/{instance('params')/collection}/{instance('params')/id}.xml#edition"
-                                                >
-                                                    <pb-i18n key="form.edition">Textedition</pb-i18n>
-                                                </a>
-                                            </li>
+                                            </li>                                       
                                         </ul>
                                     </li>
-                                    <li class="nav-fragments" data-ref="teiHeader">
-                                        FRAGMENTS (if available)
-                                        <!-- TODO show links to children (fragment documents)-->
+                                    <li>
+                                        <a
+                                            href="edit/{instance('params')/collection}/{instance('params')/id}.xml#references"
+                                        >
+                                            <pb-i18n key="form.references" />
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="edit/{instance('params')/collection}/{instance('params')/id}.xml#edition"
+                                        >
+                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
+                                        </a>
                                     </li>
                                     <li>
                                         <a
@@ -509,6 +505,10 @@
                                         >
                                             <pb-i18n key="form.historic-relevance" />
                                         </a>
+                                    </li>
+                                    <li class="nav-fragments">
+                                        FRAGMENTS (if available)
+                                        <!-- TODO show links to children (fragment documents)-->
                                     </li>
                                 </ul>
                             </nav>
@@ -827,7 +827,7 @@
                                             <pb-i18n key="form.inscription-field">Inschriftfeld</pb-i18n>
                                         </summary>
 
-                                        <fx-group ref="physDesc/objectDesc/layoutDesc/layout" id="layout">
+                                        <fx-group ref="physDesc/objectDesc/layoutDesc/layout" id="dimensions">
                                             <!-- 21) -->
                                             <fx-control class="measurement" ref="dimensions/height">
                                                 <label><pb-i18n key="form.height">Höhe</pb-i18n></label>
@@ -2173,7 +2173,7 @@
                                         update-event="leave"
                                     >
                                         <jinn-xml-editor
-                                            id="commentary"
+                                            id="commentary-editor"
                                             class="widget"
                                             unwrap="unwrap"
                                             placeholder="[Inline text/markup or sequence of paragraphs]"
