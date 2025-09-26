@@ -8,6 +8,7 @@
     },
     "form": {
         "unknown": "unkown",
+        "id": "Identifier",
         "object": "Object",
         "object-description": "Description of object",
         "text-description": "Description of text",
