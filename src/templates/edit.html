@@ -137,7 +137,7 @@
                                     <data></data>
                                 </fx-instance>
 
-                                <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
+                                <fx-instance id="palaeo" src="../edep-data/palaeographie.xml">
                                     <data></data>
                                 </fx-instance>
 
@@ -885,7 +885,7 @@
                                                     <label>
                                                         <pb-i18n key="form.palaeography">Paläographie</pb-i18n>
                                                     </label>
-                                                    <fx-items ref="instance('palaeo')/item" class="widget">
+                                                    <fx-items ref="instance('palaeo')/term" class="widget">
                                                         <template>
                                                             <span class="fx-checkbox">
                                                                 <input type="checkbox" value="{@ref}" />
