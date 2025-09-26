@@ -931,7 +931,7 @@
                                 <fx-group ref="profileDesc">
                                     <details id="languages">
                                         <summary>
-                                            <pb-i18n key="form.languages">Language(s)</pb-i18n>
+                                            <pb-i18n key="form.language">Language(s)</pb-i18n>
                                         </summary>
                                         <fx-trigger class="add">
                                             <pb-popover>
@@ -949,7 +949,7 @@
 
                                         <fx-repeat
                                             class="nested-repeat"
-                                            ref="langUsage/language[not(note)]"
+                                            ref="langUsage/language[not(note)][@ident!='']"
                                             id="r-language"
                                         >
                                             <template>
