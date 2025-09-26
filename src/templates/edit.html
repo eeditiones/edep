@@ -669,66 +669,7 @@
                                             <pb-i18n key="form.object-description">Objektbeschreibung</pb-i18n>
                                         </summary>
                                         <fx-group ref="physDesc/objectDesc">
-                                            <fx-group ref="supportDesc/support">
-                                                <fx-control ref="objectType/@ref" update-event="input">
-                                                    <label
-                                                        ><pb-i18n key="form.type-of-monument"
-                                                            >Inschriftträger</pb-i18n
-                                                        ></label
-                                                    >
-                                                    <select
-                                                        ref="sortNames(instance('objtyp')/term)"
-                                                        class="widget"
-                                                        selection="open"
-                                                    >
-                                                        <template>
-                                                            <!-- prettier-ignore -->
-                                                            <option value="{@ref}">{name[@xml:lang = instance('vars')/language]}</option>
-                                                        </template>
-                                                    </select>
-                                                </fx-control>
-
-                                                <!-- 16b) -->
-                                                <fx-control ref="note[not(@type)]" as="node" update-event="leave">
-                                                    <label>
-                                                        <pb-i18n key="form.description-of-monument"
-                                                            >Beschreibung Inschriftträger</pb-i18n
-                                                        >
-                                                    </label>
-                                                    <edep-xml-editor
-                                                        class="widget"
-                                                        placeholder="[Inline text/markup or sequence of paragraphs]"
-                                                        schema-root="provenance"
-                                                    >
-                                                    </edep-xml-editor>
-                                                </fx-control>
-
-                                                <!-- 18) -->
-                                                <details>
-                                                    <summary>
-                                                        <pb-i18n key="form.material">Material</pb-i18n>
-                                                    </summary>
-                                                    <fx-control
-                                                        ref="material/@ref"
-                                                        class="orange block"
-                                                        style="margin-top: 0"
-                                                    >
-                                                        <fx-items
-                                                            ref="sortNames(instance('material')/term)"
-                                                            class="widget material-list"
-                                                        >
-                                                            <template>
-                                                                <div class="fx-checkbox">
-                                                                    <input type="checkbox" value="{@ref}" />
-                                                                    <label
-                                                                        >{name[@xml:lang =
-                                                                        instance('vars')/language]}</label
-                                                                    >
-                                                                </div>
-                                                            </template>
-                                                        </fx-items>
-                                                    </fx-control>
-                                                </details>
+                                            <fx-group ref="supportDesc/support">                                        
 
                                                 <!-- 38) -->
                                                 <fx-control class="measurement" ref="dimensions/height">
@@ -779,6 +720,66 @@
                                                         </option>
                                                     </select>
                                                 </fx-control>
+
+                                                <!-- 16b) -->
+                                                <fx-control ref="note[not(@type)]" as="node" update-event="leave">
+                                                    <label>
+                                                        <pb-i18n key="form.description-of-monument"
+                                                            >Beschreibung Inschriftträger</pb-i18n
+                                                        >
+                                                    </label>
+                                                    <edep-xml-editor
+                                                        class="widget"
+                                                        placeholder="[Inline text/markup or sequence of paragraphs]"
+                                                        schema-root="provenance"
+                                                    >
+                                                    </edep-xml-editor>
+                                                </fx-control>
+
+                                                <fx-control ref="objectType/@ref" update-event="input">
+                                                    <label
+                                                        ><pb-i18n key="form.type-of-monument"
+                                                            >Inschriftträger</pb-i18n
+                                                        ></label
+                                                    >
+                                                    <select
+                                                        ref="sortNames(instance('objtyp')/term)"
+                                                        class="widget"
+                                                        selection="open"
+                                                    >
+                                                        <template>
+                                                            <!-- prettier-ignore -->
+                                                            <option value="{@ref}">{name[@xml:lang = instance('vars')/language]}</option>
+                                                        </template>
+                                                    </select>
+                                                </fx-control>
+
+                                                <!-- 18) -->
+                                                <details>
+                                                    <summary>
+                                                        <pb-i18n key="form.material">Material</pb-i18n>
+                                                    </summary>
+                                                    <fx-control
+                                                        ref="material/@ref"
+                                                        class="orange block"
+                                                        style="margin-top: 0"
+                                                    >
+                                                        <fx-items
+                                                            ref="sortNames(instance('material')/term)"
+                                                            class="widget material-list"
+                                                        >
+                                                            <template>
+                                                                <div class="fx-checkbox">
+                                                                    <input type="checkbox" value="{@ref}" />
+                                                                    <label
+                                                                        >{name[@xml:lang =
+                                                                        instance('vars')/language]}</label
+                                                                    >
+                                                                </div>
+                                                            </template>
+                                                        </fx-items>
+                                                    </fx-control>
+                                                </details>                             
                                             </fx-group>
 
                                             <!-- 13) -->
