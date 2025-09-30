@@ -2,7 +2,7 @@
     <div class="drawer-content">
         <pb-media-query query="max-width: 1023px">
             <!-- language selector -->
-            <pb-lang name="lang" data-template="pages:languages" />
+            <pb-lang name="lang" data-template="pages:languages"></pb-lang>
             <pb-collapse>
                 <h3 slot="collapse-trigger">
                     <pb-i18n key="menu.download.title">Download</pb-i18n>
@@ -14,9 +14,8 @@
                             src="document1"
                             dialog="downloadDialog"
                             data-i18n="[title]menu.download.pdf-latex"
-                            title="i18n(pdf-latex)"
-                        >
-                            <pb-i18n key="menu.download.pdf-latex" />
+                            title="i18n(pdf-latex)">
+                            <pb-i18n key="menu.download.pdf-latex"></pb-i18n>
                         </pb-download>
                     </paper-item>
                     <paper-item>
@@ -26,9 +25,8 @@
                             dialog="downloadDialog"
                             data-i18n="[title]menu.download.latex-source"
                             title="i18n(pdf-latex)"
-                            source="source"
-                        >
-                            <pb-i18n key="menu.download.latex-source" />
+                            source="source">
+                            <pb-i18n key="menu.download.latex-source"></pb-i18n>
                         </pb-download>
                     </paper-item>
                     <paper-item>
@@ -37,9 +35,8 @@
                             src="document1"
                             dialog="downloadDialog"
                             data-i18n="[title]menu.download.pdf-fo"
-                            title="pdf-fo"
-                        >
-                            <pb-i18n key="menu.download.pdf-fo" />
+                            title="pdf-fo">
+                            <pb-i18n key="menu.download.pdf-fo"></pb-i18n>
                         </pb-download>
                     </paper-item>
                     <paper-item>
@@ -49,9 +46,8 @@
                             dialog="downloadDialog"
                             data-i18n="[title]menu.download.fo-source"
                             title="i18n(pdf-fo)"
-                            source="source"
-                        >
-                            <pb-i18n key="menu.download.fo-source" />
+                            source="source">
+                            <pb-i18n key="menu.download.fo-source"></pb-i18n>
                         </pb-download>
                     </paper-item>
                     <paper-item>
@@ -59,17 +55,12 @@
                             type="epub"
                             src="document1"
                             data-i18n="[title]menu.download.epub"
-                            dialog="downloadDialog"
-                        >
+                            dialog="downloadDialog">
                             ePUB
                         </pb-download>
                     </paper-item>
                     <paper-item>
-                        <pb-edit-xml
-                            src="document1"
-                            data-i18n="[title]menu.download.view-tei"
-                            title="view-tei"
-                        >
+                        <pb-edit-xml src="document1" data-i18n="[title]menu.download.view-tei" title="view-tei">
                             XML
                         </pb-edit-xml>
                     </paper-item>
@@ -81,29 +72,20 @@
                 </h3>
                 <paper-listbox slot="collapse-content">
                     <paper-item>
-                        <a
-                            href="${app}/doc/documentation.xml?odd=docbook.odd"
-                            data-template="lib:parse-params"
-                        >
-                            <pb-i18n key="menu.documentation"
-                                >Documentation</pb-i18n
-                            >
+                        <a href="${app}/doc/documentation.xml?odd=docbook.odd" data-template="lib:parse-params">
+                            <pb-i18n key="menu.documentation">Documentation</pb-i18n>
                         </a>
                     </paper-item>
                     <paper-item>
                         <a href="https://faq.teipublisher.com/">FAQ</a>
                     </paper-item>
                     <paper-item>
-                        <a
-                            href="${app}/doc/blog/"
-                            data-template="lib:parse-params"
-                            ><pb-i18n key="menu.news">News</pb-i18n></a
+                        <a href="${app}/doc/blog/" data-template="lib:parse-params">
+                            <pb-i18n key="menu.news">News</pb-i18n></a
                         >
                     </paper-item>
                     <paper-item>
-                        <a
-                            href="https://unpkg.com/@teipublisher/pb-components@latest/dist/api.html"
-                            target="_blank"
+                        <a href="https://unpkg.com/@teipublisher/pb-components@latest/dist/api.html" target="_blank"
                             >Webcomponents API</a
                         >
                     </paper-item>
@@ -116,21 +98,13 @@
                     </h3>
                     <paper-listbox slot="collapse-content">
                         <paper-item>
-                            <pb-download
-                                data-template="pages:edit-odd-link"
-                                src="document1"
-                            >
-                                <pb-i18n key="menu.admin.edit-odd"
-                                    >Edit ODD</pb-i18n
-                                >
+                            <pb-download data-template="pages:edit-odd-link" src="document1">
+                                <pb-i18n key="menu.admin.edit-odd">Edit ODD</pb-i18n>
                             </pb-download>
                         </paper-item>
                         <paper-item>
-                            <a
-                                href="${app}/manage.html"
-                                data-template="lib:parse-params"
-                            >
-                                <pb-i18n key="menu.admin.appGenerator" />
+                            <a href="${app}/manage.html" data-template="lib:parse-params">
+                                <pb-i18n key="menu.admin.appGenerator"></pb-i18n>
                             </a>
                         </paper-item>
                     </paper-listbox>
@@ -145,16 +119,14 @@
                 name="view"
                 on="page"
                 off="div"
-                init-from-view="init-from-view"
-                ><pb-i18n key="document.view-type"
-                    >Page View</pb-i18n
-                ></pb-toggle-feature
+                init-from-view="init-from-view">
+                <pb-i18n key="document.view-type">Page View</pb-i18n></pb-toggle-feature
             >
             <pb-edit-xml src="document1">
-                <paper-button alt="Edit source"
-                    ><iron-icon icon="icons:code" />
-                    <pb-i18n key="menu.download.view-tei"
-                /></paper-button>
+                <paper-button alt="Edit source">
+                    <iron-icon icon="icons:code"></iron-icon>
+                    <pb-i18n key="menu.download.view-tei"></pb-i18n
+                ></paper-button>
             </pb-edit-xml>
         </div>
     </div>

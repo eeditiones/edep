@@ -5,8 +5,7 @@
 /**
  * @param {Snippet[]} snippets
  */
-const makeToolbarHTML = snippets => {
-    return `
+const makeToolbarHTML = snippets => `
         <div slot="toolbar">
             <pb-popover>
                 <iron-icon icon="info-outline" />
@@ -40,11 +39,10 @@ const makeToolbarHTML = snippets => {
                     title="${title}"
                 >
                     &lt;${label}&gt;
-                </button> `
+                </button> `,
             )}
         </div>
     `;
-};
 
 /**
  * A jinn-xml-editor preconfigured for EDEP
@@ -94,8 +92,7 @@ class EdepXMLEditor extends HTMLElement {
                   {
                       label: 'ref',
                       title: 'Insert reference',
-                      snippet:
-                          '&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;',
+                      snippet: '&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;',
                   },
               ];
 

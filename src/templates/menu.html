@@ -1,41 +1,33 @@
 <app-toolbar class="menubar">
     <a href="${app}/index.html" class="logo" data-template="lib:parse-params" />
     <pb-media-query query="min-width: 1024px">
-        <a href="${app}/index.html" data-template="lib:parse-params"
-            ><pb-i18n key="menu.inscriptions"></pb-i18n
+        <a href="${app}/index.html" data-template="lib:parse-params">
+            <pb-i18n key="menu.inscriptions"></pb-i18n>
+        </a>
+        <a href="${app}/orte" target="_blank" data-template="lib:parse-params">
+            <pb-i18n key="menu.geodata"></pb-i18n
         ></a>
-        <a href="${app}/orte" target="_blank" data-template="lib:parse-params"
-            ><pb-i18n key="menu.geodata"></pb-i18n
+        <a href="${app}/personen" data-template="lib:parse-params" target="_blank">
+            <pb-i18n key="menu.people"></pb-i18n
         ></a>
-        <a
-            href="${app}/personen"
-            data-template="lib:parse-params"
-            target="_blank"
-            ><pb-i18n key="menu.people"></pb-i18n
-        ></a>
-        <a href="${app}/about.xml" data-template="lib:parse-params"
-            ><pb-i18n key="menu.about"></pb-i18n
-        ></a>
+        <a href="${app}/about.xml" data-template="lib:parse-params">
+            <pb-i18n key="menu.about"></pb-i18n>
+        </a>
         <div id="custom" style="display: none"></div>
         <pb-restricted login="login">
             <paper-menu-button>
-                <a href="#" slot="dropdown-trigger"
-                    ><pb-i18n key="menu.admin.title">Admin</pb-i18n></a
-                >
+                <a href="#" slot="dropdown-trigger">
+                    <pb-i18n key="menu.admin.title">Admin</pb-i18n>
+                </a>
                 <paper-listbox slot="dropdown-content">
                     <paper-item data-template="pages:edit-odd-list" />
                     <!--paper-item>
                         <pb-download url="api/apps/download">
-                            <pb-i18n key="appgen.xar-download">Download App as .xar</pb-i18n>
+                        <pb-i18n key="appgen.xar-download">Download App as .xar</pb-i18n>
                         </pb-download>
-                    </paper-item-->
+                        </paper-item-->
                     <paper-item>
-                        <a
-                            href="${app}/api.html"
-                            data-template="lib:parse-params"
-                            target="_blank"
-                            >API Documentation</a
-                        >
+                        <a href="${app}/api.html" data-template="lib:parse-params" target="_blank">API Documentation</a>
                     </paper-item>
                 </paper-listbox>
             </paper-menu-button>

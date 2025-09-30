@@ -12,10 +12,10 @@ const pkg = require('./package.json');
 const { version, license } = pkg;
 
 // read metadata from .existdb.json
-const { package, servers } = require('./.existdb.json');
-const replacements = [package, { version, license }];
+const { package: existPackage, servers } = require('./.existdb.json');
+const replacements = [existPackage, { version, license }];
 
-const packageUri = package.namespace;
+const packageUri = existPackage.namespace;
 const serverInfo = servers.localhost;
 const target = serverInfo.root;
 
@@ -46,7 +46,7 @@ function templates() {
         .pipe(
             rename(path => {
                 path.extname = '';
-            })
+            }),
         )
         .pipe(dest('build/'));
 }
@@ -59,68 +59,45 @@ exports['watch:tmpl'] = watchTemplates;
 
 // epidoc editor
 function epidocEditor() {
-    return src('node_modules/@jinntec/jinn-codemirror/dist/*').pipe(
-        dest('build/resources/scripts')
-    );
+    return src('node_modules/@jinntec/jinn-codemirror/dist/*').pipe(dest('build/resources/scripts'));
 }
 
 function editorStyles() {
-    return src('node_modules/@jinntec/jinn-codemirror/css/*').pipe(
-        dest('build/resources/css')
-    );
+    return src('node_modules/@jinntec/jinn-codemirror/css/*').pipe(dest('build/resources/css'));
 }
 
 // datalist-ajax
 function datalistAjax() {
     return src('node_modules/datalist-ajax/dist/datalist-ajax.min.js').pipe(
-        dest('build/resources/scripts/datalist-ajax/datalist-ajax.min.js')
+        dest('build/resources/scripts/datalist-ajax/datalist-ajax.min.js'),
     );
 }
 
 // components styles
 function pbStyles() {
-    return src('node_modules/@teipublisher/pb-components/css').pipe(
-        dest('build/resources/css')
-    );
+    return src('node_modules/@teipublisher/pb-components/css').pipe(dest('build/resources/css'));
 }
 
 // components lib
 function pbLib() {
-    return src('node_modules/@teipublisher/pb-components/lib').pipe(
-        dest('build/resources/lib')
-    );
+    return src('node_modules/@teipublisher/pb-components/lib').pipe(dest('build/resources/lib'));
 }
 
 // components images
 function pbImages() {
-    return src('node_modules/@teipublisher/pb-components/images').pipe(
-        dest('build/resources/images')
-    );
+    return src('node_modules/@teipublisher/pb-components/images').pipe(dest('build/resources/images'));
 }
 
 // pb-components
 function pbComponents() {
-    return src('node_modules/@teipublisher/pb-components/i18n/common').pipe(
-        dest('build/resources/i18n/common')
-    );
+    return src('node_modules/@teipublisher/pb-components/i18n/common').pipe(dest('build/resources/i18n/common'));
 }
 
 function fore() {
-    return src('node_modules/@jinntec/fore/dist/*').pipe(
-        dest('build/resources/scripts/')
-    );
+    return src('node_modules/@jinntec/fore/dist/*').pipe(dest('build/resources/scripts/'));
 }
 
-const copyModules = parallel(
-    epidocEditor,
-    editorStyles,
-    datalistAjax,
-    pbStyles,
-    pbImages,
-    pbComponents,
-    pbLib,
-    fore
-);
+const copyModules = parallel(epidocEditor, editorStyles, datalistAjax, pbStyles, pbImages, pbComponents, pbLib, fore);
 exports['copy:modules'] = copyModules;
 
 /**
@@ -153,19 +130,19 @@ function watchEs() {
 }
 exports['watch:es'] = watchEs;
 
-const static =
+const staticGlob =
     'src/**/*.{xml,html,xq,xquery,xql,xqm,xsl,xconf,json,css,svg,js,map,png,jpg,ico,woff,woff2,eot,ttf,odd}';
 
 /**
  * copy html templates, XSL stylesheet, XMLs and XQueries to 'build'
  */
 function copyStatic() {
-    return src(static).pipe(dest('build'));
+    return src(staticGlob).pipe(dest('build'));
 }
 exports.copy = copyStatic;
 
 function watchStatic() {
-    watch(static, series(copyStatic));
+    watch(staticGlob, series(copyStatic));
 }
 exports['watch:static'] = watchStatic;
 
@@ -186,42 +163,25 @@ function watchBuild() {
 }
 
 // construct the current xar name from available data
-const packageName = () => `${package.target}-${pkg.version}.xar`;
+const packageName = () => `${existPackage.target}-${pkg.version}.xar`;
 
 /**
  * create XAR package in repo root
  */
 function createXar() {
-    return src('build/**/*', { base: 'build' })
-        .pipe(zip(packageName()))
-        .pipe(dest('./dist'));
+    return src('build/**/*', { base: 'build' }).pipe(zip(packageName())).pipe(dest('./dist'));
 }
 
 /**
  * upload and install the latest built XAR
  */
 function installXar() {
-    return src('dist/' + packageName()).pipe(
-        existClient.install({ packageUri })
-    );
+    return src('dist/' + packageName()).pipe(existClient.install({ packageUri }));
 }
 
 // composed tasks
-const build = series(
-    clean,
-    styles,
-    minifyEs,
-    templates,
-    copyStatic,
-    copyModules
-);
-const watchAll = parallel(
-    watchStyles,
-    watchEs,
-    watchStatic,
-    watchTemplates,
-    watchBuild
-);
+const build = series(clean, styles, minifyEs, templates, copyStatic, copyModules);
+const watchAll = parallel(watchStyles, watchEs, watchStatic, watchTemplates, watchBuild);
 
 exports.build = build;
 exports.watch = watchAll;

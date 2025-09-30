@@ -6,19 +6,11 @@
  */
 
 function disableButtons(disable, range) {
-    document
-        .querySelectorAll('.annotation-action:not([data-type=edit])')
-        .forEach(button => {
-            button.disabled = disable;
-        });
-    const editBtn = document.querySelector(
-        '.annotation-action[data-type=edit]'
-    );
-    if (
-        !disable &&
-        range.startContainer === range.endContainer &&
-        range.startContainer.nodeType === Node.TEXT_NODE
-    ) {
+    document.querySelectorAll('.annotation-action:not([data-type=edit])').forEach(button => {
+        button.disabled = disable;
+    });
+    const editBtn = document.querySelector('.annotation-action[data-type=edit]');
+    if (!disable && range.startContainer === range.endContainer && range.startContainer.nodeType === Node.TEXT_NODE) {
         editBtn.disabled = false;
     } else {
         editBtn.disabled = true;
@@ -116,11 +108,9 @@ window.addEventListener('WebComponentsReady', () => {
             saveBtn.style.display = '';
         }
         form.style.display = '';
-        form.querySelectorAll(`.annotation-form:not(.${type})`).forEach(
-            elem => {
-                elem.style.display = 'none';
-            }
-        );
+        form.querySelectorAll(`.annotation-form:not(.${type})`).forEach(elem => {
+            elem.style.display = 'none';
+        });
         form.querySelectorAll(`.annotation-form.${type}`).forEach(elem => {
             elem.style.display = '';
         });
@@ -134,12 +124,9 @@ window.addEventListener('WebComponentsReady', () => {
                     field.value = data[key];
                 }
             });
-            form.querySelectorAll('pb-repeat').forEach(repeat =>
-                repeat.setData(data)
-            );
+            form.querySelectorAll('pb-repeat').forEach(repeat => repeat.setData(data));
         } else if (type === 'edit') {
-            form.querySelector('.annotation-form.edit [name=content]').value =
-                selection;
+            form.querySelector('.annotation-form.edit [name=content]').value = selection;
         }
     }
 
@@ -267,9 +254,7 @@ window.addEventListener('WebComponentsReady', () => {
                     properties: data,
                 });
             } catch (e) {
-                document
-                    .getElementById('runtime-error-dialog')
-                    .show('Error', e);
+                document.getElementById('runtime-error-dialog').show('Error', e);
             }
         }
     }
@@ -298,9 +283,7 @@ window.addEventListener('WebComponentsReady', () => {
                         return response.json();
                     }
                     if (response.status === 401 || response.status === 403) {
-                        document
-                            .getElementById('permission-denied-dialog')
-                            .show();
+                        document.getElementById('permission-denied-dialog').show();
                         throw new Error(response.statusText);
                     }
                     document.getElementById('error-dialog').show();
@@ -312,43 +295,32 @@ window.addEventListener('WebComponentsReady', () => {
                     document.getElementById('json').innerText = '';
                     document.getElementById('output').code = json.content;
                     if (doStore) {
-                        window.localStorage.removeItem(
-                            `tei-publisher.annotations.${doc.path}`
-                        );
-                        window.localStorage.removeItem(
-                            `tei-publisher.annotations.${doc.path}.history`
-                        );
+                        window.localStorage.removeItem(`tei-publisher.annotations.${doc.path}`);
+                        window.localStorage.removeItem(`tei-publisher.annotations.${doc.path}.history`);
                         view.clearHistory();
                         hideForm();
                         window.pbEvents.emit('pb-refresh', 'transcription', {
                             preserveScroll: true,
                         });
                     } else {
-                        document.getElementById('json').innerText =
-                            JSON.stringify(annotations, null, 2);
+                        document.getElementById('json').innerText = JSON.stringify(annotations, null, 2);
                         json.changes.forEach(change => {
-                            const pre =
-                                document.createElement('pb-code-highlight');
+                            const pre = document.createElement('pb-code-highlight');
                             pre.setAttribute('language', 'xml');
                             pre.textContent = change;
                             changeList.appendChild(pre);
                         });
                     }
                     resolve(json.content);
-                    fetch(
-                        `${endpoint}/api/preview?odd=${
-                            doc.odd
-                        }.odd&base=${encodeURIComponent(endpoint)}%2F`,
-                        {
-                            method: 'POST',
-                            mode: 'cors',
-                            credentials: 'same-origin',
-                            headers: {
-                                'Content-Type': 'application/xml',
-                            },
-                            body: json.content,
-                        }
-                    )
+                    fetch(`${endpoint}/api/preview?odd=${doc.odd}.odd&base=${encodeURIComponent(endpoint)}%2F`, {
+                        method: 'POST',
+                        mode: 'cors',
+                        credentials: 'same-origin',
+                        headers: {
+                            'Content-Type': 'application/xml',
+                        },
+                        body: json.content,
+                    })
                         .then(response => response.text())
                         .then(html => {
                             const iframe = document.getElementById('html');
@@ -398,15 +370,12 @@ window.addEventListener('WebComponentsReady', () => {
         window.pbEvents.emit('pb-start-update', 'transcription', {});
         enablePreview = false;
         const data = form.serializeForm();
-        const checkboxes = document.querySelectorAll(
-            '#occurrences li paper-checkbox:not([checked])'
-        );
+        const checkboxes = document.querySelectorAll('#occurrences li paper-checkbox:not([checked])');
         if (checkboxes.length > 0) {
             view.saveHistory();
             try {
                 checkboxes.forEach(cb => {
-                    cb.checked =
-                        selectOccurrence(data, cb._options, true) !== null;
+                    cb.checked = selectOccurrence(data, cb._options, true) !== null;
                 });
                 view.refreshMarkers();
             } catch (e) {
@@ -432,18 +401,13 @@ window.addEventListener('WebComponentsReady', () => {
             hideForm();
         }
         if (view.annotations.length > 0) {
-            document
-                .getElementById('confirm-reload-dialog')
-                .confirm()
-                .then(reload);
+            document.getElementById('confirm-reload-dialog').confirm().then(reload);
         } else {
             reload();
         }
     });
     // reload the preview action
-    document
-        .getElementById('reload-preview')
-        .addEventListener('click', () => preview(view.annotations));
+    document.getElementById('reload-preview').addEventListener('click', () => preview(view.annotations));
     // undo action
     document.getElementById('undo-history').addEventListener('click', () => {
         hideForm();
@@ -453,9 +417,7 @@ window.addEventListener('WebComponentsReady', () => {
     const saveDocBtn = document.getElementById('document-save');
     saveDocBtn.addEventListener('click', () => preview(view.annotations, true));
     if (saveDocBtn.dataset.shortcut) {
-        window.hotkeys(saveDocBtn.dataset.shortcut, () =>
-            preview(view.annotations, true)
-        );
+        window.hotkeys(saveDocBtn.dataset.shortcut, () => preview(view.annotations, true));
     }
 
     // save and download merged TEI to local file
@@ -498,22 +460,18 @@ window.addEventListener('WebComponentsReady', () => {
         });
     });
 
-    document
-        .querySelector('#form-ref [slot="prefix"]')
-        .addEventListener('click', () => {
-            window.pbEvents.emit('pb-authority-lookup', 'transcription', {
-                type,
-                query: text,
-            });
-            authorityDialog.open();
+    document.querySelector('#form-ref [slot="prefix"]').addEventListener('click', () => {
+        window.pbEvents.emit('pb-authority-lookup', 'transcription', {
+            type,
+            query: text,
         });
+        authorityDialog.open();
+    });
 
     // check if annotations were saved to local storage
     const doc = view.getDocument();
     if (doc && doc.path) {
-        const ranges = window.localStorage.getItem(
-            `tei-publisher.annotations.${doc.path}`
-        );
+        const ranges = window.localStorage.getItem(`tei-publisher.annotations.${doc.path}`);
         if (ranges) {
             const annotations = JSON.parse(ranges);
             if (annotations.length > 0) {
@@ -521,23 +479,14 @@ window.addEventListener('WebComponentsReady', () => {
                     .getElementById('restore-dialog')
                     .confirm()
                     .then(() => {
-                        console.log(
-                            'loading annotations from local storage: %o',
-                            annotations
-                        );
+                        console.log('loading annotations from local storage: %o', annotations);
                         view.annotations = annotations;
-                        const history = window.localStorage.getItem(
-                            `tei-publisher.annotations.${doc.path}.history`
-                        );
+                        const history = window.localStorage.getItem(`tei-publisher.annotations.${doc.path}.history`);
                         if (history) {
                             view.clearHistory(JSON.parse(history));
                         }
-                        window.localStorage.removeItem(
-                            `tei-publisher.annotations.${doc.path}`
-                        );
-                        window.localStorage.removeItem(
-                            `tei-publisher.annotations.${doc.path}.history`
-                        );
+                        window.localStorage.removeItem(`tei-publisher.annotations.${doc.path}`);
+                        window.localStorage.removeItem(`tei-publisher.annotations.${doc.path}.history`);
                         preview(annotations);
                     });
             }
@@ -578,25 +527,18 @@ window.addEventListener('WebComponentsReady', () => {
             actionHandler(button);
         });
     });
-    window.pbEvents.subscribe('pb-authority-select', 'transcription', ev =>
-        authoritySelected(ev.detail)
-    );
+    window.pbEvents.subscribe('pb-authority-select', 'transcription', ev => authoritySelected(ev.detail));
     window.pbEvents.subscribe('pb-selection-changed', 'transcription', ev => {
         disableButtons(!ev.detail.hasContent, ev.detail.range);
         if (ev.detail.hasContent) {
-            selection = ev.detail.range
-                .cloneContents()
-                .textContent.replace(/\s+/g, ' ');
+            selection = ev.detail.range.cloneContents().textContent.replace(/\s+/g, ' ');
         }
     });
     /* Annotations changed: reload the preview panels */
     window.pbEvents.subscribe('pb-annotations-changed', 'transcription', ev => {
         const doc = view.getDocument();
         if (doc && doc.path) {
-            window.localStorage.setItem(
-                `tei-publisher.annotations.${doc.path}`,
-                JSON.stringify(ev.detail.ranges)
-            );
+            window.localStorage.setItem(`tei-publisher.annotations.${doc.path}`, JSON.stringify(ev.detail.ranges));
         }
         if (enablePreview && !ev.detail.refresh) {
             preview(ev.detail.ranges);
@@ -607,7 +549,7 @@ window.addEventListener('WebComponentsReady', () => {
         if (doc && doc.path) {
             window.localStorage.setItem(
                 `tei-publisher.annotations.${doc.path}.history`,
-                JSON.stringify(view.getHistory())
+                JSON.stringify(view.getHistory()),
             );
         }
     });
@@ -650,9 +592,7 @@ window.addEventListener('WebComponentsReady', () => {
                         div.appendChild(h);
                         const pre = document.createElement('pre');
                         pre.className = 'error-notFound';
-                        const json = JSON.parse(
-                            ev.detail.span.dataset.annotation
-                        );
+                        const json = JSON.parse(ev.detail.span.dataset.annotation);
                         pre.innerText = JSON.stringify(json, null, 2);
                         div.appendChild(pre);
                         ev.detail.container.innerHTML = '';

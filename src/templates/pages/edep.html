@@ -1,74 +1,33 @@
+<!doctype html>
 <html>
     <head>
         <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
-        />
-        <link
-            rel="shortcut icon"
-            type="image/x-icon"
-            href="resources/images/favicon.ico"
-        />
-        <link
-            rel="shortcut icon"
-            type="image/png"
-            href="resources/images/favicon-16.png"
-            sizes="16x16"
-        />
-        <link
-            rel="shortcut icon"
-            type="image/png"
-            href="resources/images/favicon-24.png"
-            sizes="24x24"
-        />
-        <link
-            rel="shortcut icon"
-            type="image/png"
-            href="resources/images/favicon-32.png"
-            sizes="32x32"
-        />
-        <link
-            rel="shortcut icon"
-            type="image/png"
-            href="resources/images/favicon-64.png"
-            sizes="64x64"
-        />
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" />
+        <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico" />
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-16.png" sizes="16x16" />
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-24.png" sizes="24x24" />
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-32.png" sizes="32x32" />
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-64.png" sizes="64x64" />
 
-        <title data-template="config:app-title" />
+        <title data-template="config:app-title"></title>
         <meta name="description" content="EDEp edition" />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="resources/fonts/font.css"
-        />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Oswald&amp;display=swap"
-        />
+        <link rel="stylesheet" type="text/css" href="resources/fonts/font.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald&amp;display=swap" />
         <link rel="stylesheet" href="resources/css/theme.css" />
         <link rel="stylesheet" href="resources/css/edep-theme.css" />
-        <script
-            type="module"
-            src="pb-components-bundle.js"
-            data-template="pages:load-components"
-        />
+        <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
         <script
             data-target="script-preload"
             type="module"
             src="pb-leaflet-map.js"
-            data-template="pages:load-components"
-        />
-        <script src="resources/scripts/edition.js" />
+            data-template="pages:load-components"></script>
+        <script src="resources/scripts/edition.js"></script>
         <script
             src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-            crossorigin=""
-        />
+            crossorigin=""></script>
 
         <style>
-
-
             .content-body {
                 position: relative;
                 display: flex;
@@ -86,11 +45,11 @@
                 height: 45em;
             }
 
-            .content-body pb-navigation[direction=backward] {
+            .content-body pb-navigation[direction='backward'] {
                 left: 20px;
             }
 
-            .content-body pb-navigation[direction=forward] {
+            .content-body pb-navigation[direction='forward'] {
                 right: 20px;
             }
 
@@ -99,14 +58,13 @@
             }
 
             #metadata-view1 {
-                width:50%;
+                width: 50%;
             }
 
-
             .edition-pannel {
-                padding-left:2em;
-                display:flex;
-                flex-direction:column;
+                padding-left: 2em;
+                display: flex;
+                flex-direction: column;
                 justify-content: flex-start;
             }
 
@@ -116,9 +74,8 @@
                 right: 5px;
                 width: 480px;
                 height: 360px;
-                z-index:100;
+                z-index: 100;
             }
-
 
             @media (min-width: 769px) {
                 .toolbar pb-navigation {
@@ -132,6 +89,7 @@
                 }
                 pb-facsimile {
                     display: none;
+                }
             }
         </style>
     </head>
@@ -142,29 +100,14 @@
             unresolved="unresolved"
             require-language=""
             locales="resources/i18n/{{ns}}/{{lng}}.json"
-            url-ignore="selectors"
-        >
-            <pb-document id="document1" data-template="pages:pb-document" />
+            url-ignore="selectors">
+            <pb-document id="document1" data-template="pages:pb-document"></pb-document>
             <app-drawer-layout force-narrow="force-narrow">
-                <app-drawer
-                    data-template="lib:include"
-                    data-template-path="templates/drawer.html"
-                />
+                <app-drawer data-template="lib:include" data-template-path="templates/drawer.html"></app-drawer>
                 <app-header-layout>
-                    <app-header
-                        slot="header"
-                        reveals="reveals"
-                        fixed="fixed"
-                        effects="waterfall"
-                    >
-                        <app-toolbar
-                            data-template="lib:include"
-                            data-template-path="templates/menu.html"
-                        />
-                        <app-toolbar
-                            data-template="lib:include"
-                            data-template-path="templates/toolbar.html"
-                        >
+                    <app-header slot="header" reveals="reveals" fixed="fixed" effects="waterfall">
+                        <app-toolbar data-template="lib:include" data-template-path="templates/menu.html"></app-toolbar>
+                        <app-toolbar data-template="lib:include" data-template-path="templates/toolbar.html">
                             <!--pb-toggle-feature name="norm" selector=".choice,.choice-alternate,.lb,.lb-hyphen" emit="transcription" subscribe="transcription" default="off" data-target="toolbar-end">
                             <pb-i18n key="document.normalized">Normalized View</pb-i18n>
                             </pb-toggle-feature-->
@@ -175,12 +118,11 @@
                             src="document1"
                             view="single"
                             subscribe="transcription"
-                            use-language="use-language"
-                        ></pb-view>
+                            use-language="use-language"></pb-view>
                     </main>
                 </app-header-layout>
             </app-drawer-layout>
         </pb-page>
-        <div class="splash" />
+        <div class="splash"></div>
     </body>
 </html>

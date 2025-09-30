@@ -19,10 +19,7 @@ function addPinPoint() {
     pbEvents.subscribe('pb-page-ready', null, () => {
         const endpoint = document.querySelector('pb-page').getEndpoint();
         const path = document.querySelector('pb-document').getAttribute('path');
-        const url = `${endpoint}/api/places/${path.replace(
-            '/',
-            '%2F'
-        )}/findSpot`;
+        const url = `${endpoint}/api/places/${path.replace('/', '%2F')}/findSpot`;
         console.log(`fetching places from: ${url}`);
         fetch(url)
             .then(response => response.json())
