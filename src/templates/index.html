@@ -221,7 +221,7 @@
                     <div class="drawer-content">
                         <pb-media-query query="(max-width: 1023px)">
                             <!-- language selector -->
-                            <pb-lang name="lang" data-template="pages:languages" />
+                            <pb-lang name="lang" data-template="pages:languages"></pb-lang>
                         </pb-media-query>
                     </div>
                 </app-drawer>
@@ -267,7 +267,7 @@
                                         subscribe="docs"></pb-paginate>
                                     <a slot="toolbar" href="${app}/edit/workspace/" data-template="pages:parse-params">
                                         <paper-button>
-                                            <iron-icon icon="icons:add" />
+                                            <iron-icon icon="icons:add"></iron-icon>
                                             <pb-i18n key="form.new"></pb-i18n>
                                         </paper-button>
                                     </a>
@@ -281,9 +281,9 @@
                                             title="Recompile ODD"
                                             data-i18n="[title]odd.manage.regenerate-all">
                                             <h3 slot="title">
-                                                <pb-i18n key="odd.manage.regenerate-all" />
+                                                <pb-i18n key="odd.manage.regenerate-all"></pb-i18n>
                                             </h3>
-                                            <paper-icon-button icon="icons:update" />
+                                            <paper-icon-button icon="icons:update"></paper-icon-button>
                                         </pb-ajax>
                                     </pb-restricted>
                                 </pb-browse-docs>
@@ -294,7 +294,7 @@
                                         id="upload"
                                         emit="docs"
                                         subscribe="docs"
-                                        accept=".xml, .tei, .odd, .docx, .mei" />
+                                        accept=".xml, .tei, .odd, .docx, .mei"></pb-upload>
                                 </aside>
                             </pb-restricted>
                         </section>
