@@ -19,8 +19,8 @@
     "deploy": "gulp install",
     "copy": "gulp copyStatic",
     "start": "web-dev-server --node-resolve --watch --open",
-    "lint": "eslint --ext .js,.html . --ignore-path .gitignore prettier \"**/*.js\" \"**/*.html\" --check --ignore-path .gitignore",
-    "format": "eslint --ext .js,.html . --fix;  prettier \"**/*.js\" \"**/*.html\" --write --ignore-path .gitignore"
+    "lint": "eslint --ext .js,.html . && prettier \"**/*.js\" \"**/*.html\" --check --ignore-path .gitignore",
+    "format": "eslint --ext .js,.html . --fix; prettier \"**/*.js\" \"**/*.html\" --write --ignore-path .gitignore"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
