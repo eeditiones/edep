@@ -24,7 +24,10 @@ export default defineConfig([
             // Titles are commonly filled from data-template
             '@html-eslint/require-title': 'off',
 
-            // Disable stylistic rules. We have prettier for that
+            // doctype is lowercased by prettier. Which is incompatible with exist reading html as xml
+            '@html-eslint/require-doctype': 'off',
+
+			// Disable stylistic rules. We have prettier for that
             '@html-eslint/indent': 'off',
             '@html-eslint/element-newline': 'off',
             '@html-eslint/no-trailing-spaces': 'off',
