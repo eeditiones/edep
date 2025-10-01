@@ -3,11 +3,14 @@ import globals from 'globals';
 import js from '@eslint/js';
 import html from '@html-eslint/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import pluginCypress from 'eslint-plugin-cypress/flat';
+
 export default defineConfig([
     { ignores: ['node_modules', 'build'] },
     { files: ['**/*.{js,mjs,cjs}'] },
     { files: ['**/*.{js,mjs,cjs}'], languageOptions: { globals: globals.browser } },
     { files: ['**/*.{js,mjs,cjs}'], plugins: { js } },
+    { files: ['cypress/**/*.js'], plugins: { cypress: pluginCypress } },
     {
         files: ['**/*.html'],
         ...html.configs['flat/recommended'],
