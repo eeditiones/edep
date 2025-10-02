@@ -37,6 +37,10 @@ details{
         margin-bottom:1em;
         padding-bottom:1em;
     }
+
+}
+details > fx-group{
+    padding:1rem 0;
 }
 @media (min-width: 1200px) {
     .editor > fx-fore {
@@ -911,6 +915,9 @@ input:focus, select:focus, textarea:focus{
 }
 #findspot-ctrl{
     display:block;
+}
+#findspot-ctrl pb-popover{
+    margin-left:2rem;
 }
 #places-list {
     border-collapse: collapse;
