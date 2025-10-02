@@ -30,7 +30,7 @@ main {
 @media (min-width: 1200px) {
     main {
         max-width: 1400px;
-        margin:1.5rem;
+        padding-left: 18rem;
     }
 }
 

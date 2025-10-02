@@ -82,9 +82,6 @@ nav #addFragment{
     overflow: auto;
 }
 
-.editor > fx-fore fx-group[ref=teiHeader] {
-    margin-left: 12rem;
-}
 
 nav{
 
@@ -357,6 +354,27 @@ fx-group[ref="teiHeader"]{
     margin:0;
     min-width: 46rem;
 }
+fx-group:has(> h2){
+    border:thin solid var(--paper-grey-300);
+}
+fx-group.bordered{
+    border:thin solid var(--paper-grey-300);
+}
+
+fx-group#object{
+    fx-output, fx-control{
+        display:block;
+        padding:0.5rem 0;
+    }
+    fx-output{
+        margin-left:0;
+    }
+    border:thin solid var(--paper-grey-300);
+}
+.outer-group{
+    padding-left: 0;
+}
+
 .edepid{
     font-size: 1.4rem;
     margin-left:1.5rem;
@@ -628,9 +646,11 @@ fx-group > label {
     top: 0;
 }
 
+/*
 fx-group fx-group {
     border:none;
 }
+*/
 
 /* 
 fx-group fx-group {
@@ -692,6 +712,8 @@ fx-inspector[open]{
 input.widget, select.widget{
     border:none;
     border-bottom:thin solid;
+    padding:0.25rem;
+    font-size: 1rem;
 }
 
 fx-items {
@@ -886,6 +908,9 @@ input:focus, select:focus, textarea:focus{
     fx-control{
         grid-template-columns: 17rem 1rem 1fr;
     }
+}
+#findspot-ctrl{
+    display:block;
 }
 #places-list {
     border-collapse: collapse;
@@ -1110,4 +1135,25 @@ jinn-zotero-picker {
 .hint {
     font-size: var(--pb-footnote-font-size);
     margin-top: 0;
+}
+
+.valid {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background: red;
+    color: white;
+}
+
+select {
+    width: 100%;
+}
+
+.fx-radio input {
+    width: auto !important;
+}
+
+.fx-radio label {
+    display: inline !important;
 }

@@ -25,28 +25,6 @@
         <script type="module" src="resources/scripts/edep-xml-editor.js"></script>
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
 
-        <style>
-            .valid {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                padding: 1rem;
-                background: red;
-                color: white;
-            }
-
-            select {
-                width: 100%;
-            }
-
-            .fx-radio input {
-                width: auto !important;
-            }
-
-            .fx-radio label {
-                display: inline !important;
-            }
-        </style>
     </head>
 
     <body>
@@ -366,8 +344,8 @@
                                 <fx-refresh force="force"></fx-refresh>
                             </fx-action>
 
-                            <nav>
-                                <h3>Navigation</h3>
+                            <nav aria-labelledby="navigation">
+                                <div id="navigation">Navigation</div>
                                 <ul>
                                     <li>
                                         <fx-trigger id="addChild" class="add" title="create child document">
@@ -479,19 +457,21 @@
                                     </li>
                                 </ul>
                             </nav>
-                            <fx-group ref="teiHeader" style="">
-                                <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
-                                    <label>
-                                        <pb-i18n key="form.title"></pb-i18n>
-                                    </label>
-                                </fx-control>
+                            <fx-group ref="teiHeader" aria-labelledby="title-lbl" class="outer-group">
+                                <h1 id="title-lbl">
+                                    <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
+                                        <label>
+                                            <pb-i18n key="form.title"></pb-i18n>
+                                        </label>
+                                    </fx-control>
+                                </h1>
                                 <!--            <span>Sprachselector hier</span>-->
 
                                 <!-- IDENTIFIERs -->
-                                <fx-group ref="fileDesc/sourceDesc/msDesc/msIdentifier" id="object">
-                                    <h3>
+                                <fx-group ref="fileDesc/sourceDesc/msDesc/msIdentifier" id="object" aria-labelledby="identifier-lbl">
+                                    <h2 id="identifier-lbl">
                                         <pb-i18n key="form.identifier">Identifier</pb-i18n>
-                                    </h3>
+                                    </h2>
                                     <!-- 3) -->
 
                                     <fx-output ref="idno[@type='EDEp']" class="edepid">
@@ -511,8 +491,8 @@
                                     <!-- there's no 17) -->
                                 </fx-group>
 
-                                <fx-group ref="fileDesc/sourceDesc/msDesc" id="inscription">
-                                    <h3>Inscription</h3>
+                                <fx-group ref="fileDesc/sourceDesc/msDesc" id="inscription" aria-labelledby="inscription-lbl">
+                                    <h2 id="inscription-lbl">Inscription</h2>
 
                                     <!-- FINDSPOT -->
                                     <details id="findspot">
@@ -522,7 +502,7 @@
 
                                         <!-- TODO: load place info -->
                                         <fx-group ref="history">
-                                            <fx-control
+                                            <fx-control id="findspot-ctrl"
                                                 class="fore-control"
                                                 ref="origin/origPlace/@corresp"
                                                 src="geo-picker.html"
@@ -901,9 +881,9 @@
                                     </details>
                                 </fx-group>
 
-                                <fx-group ref="profileDesc">
+                                <fx-group ref="profileDesc" class="outer-group" aria-labelledby="profile-lbl">
                                     <details id="languages">
-                                        <summary>
+                                        <summary id="profile-lbl">
                                             <pb-i18n key="form.language">Language(s)</pb-i18n>
                                         </summary>
                                         <fx-trigger class="add">
@@ -1049,7 +1029,7 @@
                                 </details>
 
                                 <fx-group ref="fileDesc/sourceDesc/listBibl" id="references">
-                                    <h3>
+                                    <h2>
                                         <pb-i18n key="form.references">Referenzen</pb-i18n>
                                         <pb-popover>
                                             <iron-icon icon="info-outline"></iron-icon>
@@ -1057,7 +1037,7 @@
                                                 <pb-i18n key="form.hint-references"></pb-i18n>
                                             </template>
                                         </pb-popover>
-                                    </h3>
+                                    </h2>
 
                                     <details class="group-6">
                                         <summary>
@@ -1683,7 +1663,7 @@
 
                                 <!-- 47) -->
                                 <!-- 45) -->
-                                <fx-group>
+                                <fx-group class="bordered">
                                     <!-- 44) -->
                                     <fx-control
                                         ref="fileDesc/titleStmt/editor"
@@ -1707,7 +1687,7 @@
                                     </fx-control>
                                 </fx-group>
                             </fx-group>
-                            <fx-group ref="text/body">
+                            <fx-group ref="text/body" class="outer-group">
                                 <!-- EDITION and COMMENTARY together as they are all stored in BODY -->
                                 <details class="group-6" id="edition">
                                     <summary>
