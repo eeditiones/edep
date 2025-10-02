@@ -1,0 +1,111 @@
+<details id="bibliography" class="group-6">
+    <summary>
+        <pb-i18n key="form.bibliography">Bibliographie</pb-i18n>
+        <pb-popover>
+            <iron-icon icon="info-outline"></iron-icon>
+            <template slot="alternate">
+                <pb-i18n key="form.hint-bibliography"></pb-i18n>
+            </template>
+        </pb-popover>
+    </summary>
+    <!-- 35b) -->
+    <fieldset>
+        <legend>
+            <label>
+                <pb-i18n key="form.bibliography">Bibliographie</pb-i18n>
+            </label>
+            <fx-trigger class="add" title="Bibliographie hinzufügen">
+                <iron-icon icon="add-circle-outline"></iron-icon>
+
+                <fx-insert
+                  context="listBibl[@type='bibliography']"
+                  ref="bibl"
+                  origin="instance('templates')//bibl"></fx-insert>
+                <fx-setvalue
+                  ref="(listBibl[@type='bibliography']/bibl)[last()]/@xml:id"
+                  value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
+                <fx-refresh control="r-biblio"></fx-refresh>
+            </fx-trigger>
+        </legend>
+        <fx-repeat
+          class="nested-repeat"
+          id="r-biblio"
+          ref="listBibl[@type='bibliography']/bibl">
+            <template>
+                <fx-var
+                  name="current"
+                  value="count(./preceding-sibling::bibl) + 1"></fx-var>
+
+                <div>
+                    <div class="output">
+                        <label>
+                            <pb-i18n key="form.biblio-abbreviation"
+                            >Kürzel</pb-i18n
+                            ></label
+                        >
+                        <div>
+                            <fx-output ref="@xml:id"></fx-output>
+                            <fx-trigger>
+                                <iron-icon
+                                  class="widget"
+                                  icon="icons:content-copy"></iron-icon>
+                                <fx-call function="clipboard(@xml:id)"></fx-call>
+                            </fx-trigger>
+                        </div>
+                        <pb-popover>
+                            <iron-icon icon="info-outline"></iron-icon>
+                            <template slot="alternate">
+                                <pb-i18n key="form.hint-biblio-abbreviation"
+                                >XML:ID</pb-i18n
+                                >
+                            </template>
+                        </pb-popover>
+                    </div>
+                    <fx-control ref="ptr/@target" update-event="change">
+                        <label>
+                            <pb-i18n key="form.reference">Referenz</pb-i18n>
+                        </label>
+                        <jinn-zotero-picker
+                          class="widget"
+                          group="2519759"></jinn-zotero-picker>
+                    </fx-control>
+                    <fx-control ref="citedRange">
+                        <label>
+                            <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
+                        </label>
+                    </fx-control>
+                    <fx-control ref="note" as="node" update-event="leave">
+                        <label>
+                            <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
+                        </label>
+                        <edep-xml-editor
+                          class="widget"
+                          schema-root="note"
+                          placeholder="[Inline text/markup or sequence of paragraphs]">
+                        </edep-xml-editor>
+                    </fx-control>
+                    <fx-control ref="@type" update-event="input">
+                        <label>
+                            <pb-i18n key="form.visibility"></pb-i18n>
+                        </label>
+                        <select class="widget" static="static">
+                            <option value="public" data-i18n="status.public">
+                                public
+                            </option>
+                            <option value="internal" data-i18n="status.intern">
+                                internal
+                            </option>
+                        </select>
+                    </fx-control>
+                </div>
+                <fx-trigger>
+                    <iron-icon
+                      icon="remove-circle-outline"
+                      title="Bibliographie löschen"></iron-icon>
+                    <fx-delete ref="."></fx-delete>
+                    <fx-refresh control="r-biblio"></fx-refresh>
+                </fx-trigger>
+            </template>
+        </fx-repeat>
+    </fieldset>
+</details>

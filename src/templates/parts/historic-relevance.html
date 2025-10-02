@@ -1,0 +1,88 @@
+<details ref="profileDesc" id="historic-relevance">
+    <summary>
+        <pb-i18n key="form.historic-relevance"></pb-i18n>
+    </summary>
+    <!-- 28)  -->
+    <fx-control
+      ref="textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/religion']/term/@ref"
+      update-event="input">
+        <label>
+            <pb-i18n key="form.religion">Religion</pb-i18n>
+        </label>
+        <select class="widget" multiple="multiple" static="static">
+            <option value="#pagan" data-i18n="religion.pagan">pagan</option>
+            <option value="#jewish" data-i18n="religion.jewish">jüdisch</option>
+            <option value="#christian" data-i18n="religion.christian">
+                christlich
+            </option>
+        </select>
+    </fx-control>
+    <!-- 29) missing -->
+    <!-- 30) -->
+    <!-- dummy switch to insert or delete 'term' elements in main instance -->
+    <fx-control
+      ref="instance('vars')/history-term"
+      value-prop="checked"
+      update-event="input">
+        <label for="historyTerm">
+            <pb-i18n key="form.social-economic-legal-history"
+            >Sozial-,Wirschafts-/Rechtsgeschichte</pb-i18n
+            >
+        </label>
+        <input id="historyTerm" type="checkbox" class="widget" />
+        <fx-insert
+          event="value-changed"
+          if="context()/text()='true'"
+          ref="instance('default')//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']/term"
+          origin="instance('templates')/term[@ref='#social-economic-legal-history']"></fx-insert>
+
+        <fx-delete
+          event="value-changed"
+          if="context()/text()='false'"
+          ref="instance('default')//term[@ref='#social-economic-legal-history']"></fx-delete>
+    </fx-control>
+
+    <!-- 31) -->
+    <!-- dummy switch to insert or delete 'term' elements in main instance -->
+    <fx-control
+      ref="instance('vars')/geography-term"
+      value-prop="checked"
+      update-event="input">
+        <label for="geographyTerm">
+            <pb-i18n key="form.geography">Geographie / Topographie</pb-i18n>
+        </label>
+        <input id="geographyTerm" type="checkbox" class="widget" />
+        <fx-insert
+          event="value-changed"
+          if="context()/text()='true'"
+          ref="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']/term"
+          origin="instance('templates')/term[@ref='#geography']"></fx-insert>
+
+        <fx-delete
+          event="value-changed"
+          if="context()/text()='false'"
+          ref="instance('default')//term[@ref='#geography']"></fx-delete>
+    </fx-control>
+
+    <!-- 32) -->
+    <!-- dummy switch to insert or delete 'term' elements in main instance -->
+    <fx-control
+      ref="instance('vars')/military-term"
+      value-prop="checked"
+      update-event="input">
+        <label for="militaryTerm">
+            <pb-i18n key="form.military">Militär</pb-i18n>
+        </label>
+        <input id="militaryTerm" type="checkbox" class="widget" />
+        <fx-insert
+          event="value-changed"
+          if="context()/text()='true'"
+          ref="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']/term"
+          origin="instance('templates')/term[@ref='#military']"></fx-insert>
+
+        <fx-delete
+          event="value-changed"
+          if="context()/text()='false'"
+          ref="instance('default')//term[@ref='#military']"></fx-delete>
+    </fx-control>
+</details>

@@ -1,0 +1,69 @@
+<details id="text-description">
+    <summary>
+        <pb-i18n key="form.text-description"></pb-i18n>
+    </summary>
+    <fx-group ref="physDesc/objectDesc/layoutDesc/layout" id="layout">
+        <!-- 24) -->
+        <fx-control ref="note[@type='metric']" update-event="input">
+            <label>
+                <pb-i18n key="form.metre">Metrik</pb-i18n>
+            </label>
+            <select class="widget">
+                <option value="" data-i18n="form.unknown">unbekannt</option>
+                <option value="yes" data-i18n="decor.yes">Ja</option>
+                <option value="no" data-i18n="decor.no">Nein</option>
+                <option value="partim" data-i18n="metric.partim">Partim</option>
+            </select>
+        </fx-control>
+
+        <!-- NB: languages extracted to a separate section, because this pulls data from a different section of the TEI header -->
+
+        <!-- 34) -->
+        <div class="alternatives">
+            <fx-control
+              ref="note[@type='palaeography']/@corresp"
+              update-event="input">
+                <label>
+                    <pb-i18n key="form.palaeography">Paläographie</pb-i18n>
+                </label>
+                <fx-items ref="instance('palaeo')/term" class="widget">
+                    <template>
+                                                            <span class="fx-checkbox">
+                                                                <input type="checkbox" value="{@ref}" />
+                                                                <label
+                                                                >{name[@xml:lang=instance('vars')/language]}</label
+                                                                >
+                                                            </span>
+                    </template>
+                </fx-items>
+            </fx-control>
+            <fx-control
+              id="input34"
+              ref="note[@type='palaeography']"
+              class="{instance('vars')/hide}"
+              as="node"
+              update-event="leave">
+                <label>
+                    <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
+                </label>
+                <edep-xml-editor
+                  class="widget"
+                  placeholder="[Inline text/markup or sequence of paragraphs]"
+                  schema-root="provenance">
+                </edep-xml-editor>
+            </fx-control>
+        </div>
+    </fx-group>
+
+    <!-- 39) -->
+    <fx-control ref="physDesc/handDesc/handNote/note" update-event="input">
+        <label>
+            <pb-i18n key="form.ligature">Ligatur</pb-i18n>
+        </label>
+        <select class="widget">
+            <option value="" data-i18n="form.unknown">unbekannt</option>
+            <option value="yes" data-i18n="decor.yes">Ja</option>
+            <option value="no" data-i18n="decor.no">Nein</option>
+        </select>
+    </fx-control>
+</details>

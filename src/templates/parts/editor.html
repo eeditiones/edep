@@ -1,0 +1,23 @@
+<fx-group id="editor" class="bordered">
+    <!-- 44) -->
+    <fx-control
+      ref="fileDesc/titleStmt/editor"
+      title="Author of the epigraphic edition">
+        <label>
+            <pb-i18n key="form.author-epigraphic-edition"
+            >Bearbeiter der Inschriftenedition</pb-i18n
+            >
+        </label>
+    </fx-control>
+
+    <!-- 33) -->
+    <fx-control ref="revisionDesc/@status" update-event="input">
+        <label>
+            <pb-i18n key="form.status-of-editing">Stand der Bearbeitung</pb-i18n>
+        </label>
+        <select class="widget">
+            <option value="draft" data-i18n="status.intern">intern</option>
+            <option value="public" data-i18n="status.public">öffentlich</option>
+        </select>
+    </fx-control>
+</fx-group>

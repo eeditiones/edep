@@ -1,0 +1,146 @@
+<details id="objectdesc">
+    <summary>
+        <pb-i18n key="form.object-description">Objektbeschreibung</pb-i18n>
+    </summary>
+    <fx-group ref="physDesc/objectDesc">
+        <fx-group ref="supportDesc/support">
+            <!-- 38) -->
+            <fx-control class="measurement" ref="dimensions/height">
+                <label>
+                    <pb-i18n key="form.height">Höhe</pb-i18n>
+                </label>
+            </fx-control>
+            <!-- 19) -->
+            <fx-control class="measurement" ref="dimensions/width">
+                <label>
+                    <pb-i18n key="form.width">Breite</pb-i18n>
+                </label>
+            </fx-control>
+            <!-- 20) -->
+            <fx-control class="measurement" ref="dimensions/depth">
+                <label>
+                    <pb-i18n key="form.depth">Tiefe</pb-i18n>
+                </label>
+            </fx-control>
+
+            <!-- 14) could be moved to decoDesc/decoNote -->
+            <fx-control
+              ref="note[@type='decoration']/@corresp"
+              update-event="input">
+                <label>
+                    <pb-i18n key="form.decoration">Dekor</pb-i18n>
+                </label>
+                <select class="widget">
+                    <option value="" data-i18n="form.unknown">unbekannt</option>
+                    <option
+                      value="https://www.eagle-network.eu/voc/decor/lod/2000"
+                      data-i18n="decor.yes">
+                        Ja
+                    </option>
+                    <option
+                      value="https://www.eagle-network.eu/voc/decor/lod/1000"
+                      data-i18n="decor.no">
+                        Nein
+                    </option>
+                    <option
+                      value="https://edep.adw.uni-heidelberg.de/decor/uncertain"
+                      data-i18n="decor.uncertain">
+                        unsicher
+                    </option>
+                </select>
+            </fx-control>
+
+            <!-- 16b) -->
+            <fx-control ref="note[not(@type)]" as="node" update-event="leave">
+                <label>
+                    <pb-i18n key="form.description-of-monument"
+                    >Beschreibung Inschriftträger</pb-i18n
+                    >
+                </label>
+                <edep-xml-editor
+                  class="widget"
+                  placeholder="[Inline text/markup or sequence of paragraphs]"
+                  schema-root="provenance">
+                </edep-xml-editor>
+            </fx-control>
+
+            <fx-control ref="objectType/@ref" update-event="input">
+                <label>
+                    <pb-i18n key="form.type-of-monument"
+                    >Inschriftträger</pb-i18n
+                    ></label
+                >
+                <select
+                  ref="sortNames(instance('objtyp')/term)"
+                  class="widget"
+                  selection="open">
+                    <template>
+                        <!-- prettier-ignore -->
+                        <option value="{@ref}">{name[@xml:lang = instance('vars')/language]}</option>
+                    </template>
+                </select>
+            </fx-control>
+
+            <!-- 18) -->
+            <div class="alternatives">
+                <fx-control ref="material/@ref" style="margin-top: 0">
+                    <label>
+                        <pb-i18n key="form.material">Material</pb-i18n>
+                    </label>
+                    <fx-items
+                      ref="sortNames(instance('material')/term)"
+                      class="widget">
+                        <template>
+                                                                <span class="fx-checkbox">
+                                                                    <input type="checkbox" value="{@ref}" />
+                                                                    <label
+                                                                    >{name[@xml:lang =
+                                                                        instance('vars')/language]}</label
+                                                                    >
+                                                                </span>
+                        </template>
+                    </fx-items>
+                </fx-control>
+            </div>
+        </fx-group>
+
+        <!-- 13) -->
+        <fx-control ref="supportDesc/condition" update-event="input">
+            <label>
+                <pb-i18n key="form.preservation">Erhaltung</pb-i18n>
+            </label>
+            <select class="widget">
+                <option value="" data-i18n="form.unknown">unbekannt</option>
+                <option value="complete" data-i18n="preservation.complete">
+                    vollständig
+                </option>
+                <option value="fragmentary" data-i18n="preservation.fragmentary">
+                    fragmentarisch
+                </option>
+            </select>
+        </fx-control>
+    </fx-group>
+
+    <!-- 15) -->
+    <div class="alternatives">
+        <fx-control ref="msContents/@class" update-event="input">
+            <label>
+                <pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n>
+            </label>
+            <fx-items ref="sortNames(instance('typeins')/term)" class="widget">
+                <template>
+                                                        <span class="fx-checkbox">
+                                                            <input type="checkbox" value="{@ref}" />
+                                                            <label>{name[@xml:lang = instance('vars')/language]}</label>
+                                                        </span>
+                </template>
+            </fx-items>
+        </fx-control>
+
+        <fx-control ref="msContents/summary">
+            <label>
+                <pb-i18n key="form.free-form">Freie Eingabe</pb-i18n>
+            </label>
+        </fx-control>
+    </div>
+</details>

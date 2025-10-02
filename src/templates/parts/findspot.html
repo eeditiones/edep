@@ -1,0 +1,31 @@
+<!-- context: fileDesc/sourceDesc/msDesc-->
+<details id="findspot">
+    <summary>
+        <pb-i18n key="form.findspot">Fundort</pb-i18n>
+    </summary>
+
+    <!-- TODO: load place info -->
+    <fx-group ref="history">
+        <fx-control id="findspot-ctrl"
+                    class="fore-control"
+                    ref="origin/origPlace/@corresp"
+                    src="geo-picker.html"
+                    initial="..">
+        </fx-control>
+
+        <!-- 10b) -->
+        <fx-control
+          ref="provenance[@type='found']/note[@type='context']"
+          as="node"
+          update-event="leave">
+            <label>
+                <pb-i18n key="form.context-of-provenance">Fundkontext</pb-i18n>
+            </label>
+            <edep-xml-editor
+              class="widget"
+              placeholder="[Inline text/markup or sequence of paragraphs]"
+              schema-root="provenance">
+            </edep-xml-editor>
+        </fx-control>
+    </fx-group>
+</details>

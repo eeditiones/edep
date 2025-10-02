@@ -1,0 +1,45 @@
+<details id="finddate">
+    <summary>
+        <pb-i18n key="form.year-of-find">Fundjahr/-datum</pb-i18n>
+    </summary>
+
+    <fx-group ref="history/provenance">
+        <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
+        <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
+        <fx-control ref="@when">
+            <label>
+                <pb-i18n key="form.date">Zeitpunkt</pb-i18n>
+            </label>
+            <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget" />
+            <fx-alert>
+                <iron-icon icon="warning"></iron-icon>
+                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+            </fx-alert>
+        </fx-control>
+        <fx-control ref="@notBefore">
+            <label>
+                <pb-i18n key="form.date-after">nach</pb-i18n>
+            </label>
+            <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget" />
+            <fx-alert>
+                <iron-icon icon="warning"></iron-icon>
+                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+            </fx-alert>
+        </fx-control>
+        <fx-control ref="@notAfter">
+            <label>
+                <pb-i18n key="form.date-before">vor</pb-i18n>
+            </label>
+            <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget" />
+            <fx-alert>
+                <iron-icon icon="warning"></iron-icon>
+                <pb-i18n key="form.invalid-date">Ungültiges Datum</pb-i18n>
+            </fx-alert>
+        </fx-control>
+        <fx-control ref="@when-custom">
+            <label>
+                <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
+            </label>
+        </fx-control>
+    </fx-group>
+</details>
