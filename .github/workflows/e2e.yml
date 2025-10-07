@@ -121,4 +121,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: CiM-exist-${{ matrix.exist-version }}-screenshots
-          path: test/cypress/screenshots/
+          path: cypress/screenshots/
