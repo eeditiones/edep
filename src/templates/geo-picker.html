@@ -56,7 +56,9 @@
 
                 <fx-instance id="province" src="../edep-data/province.json" type="json">{}</fx-instance>
 
-                <fx-instance id="country" src="../edep-data/country.json" type="json">{}</fx-instance>
+                <fx-instance id="country" src="../edep-data/country.xml" type="xml"
+                    ><vocabulary></vocabulary
+                ></fx-instance>
 
                 <fx-instance id="g-vars">
                     <data>
@@ -89,6 +91,8 @@
                     <fx-message event="submit-done">places have been reloaded</fx-message>
                 </fx-submission>
             </fx-model>
+
+            <fx-var name="lang" value="instance('vars')/language"></fx-var>
 
             <!--  <div class="geopicker-control">-->
             <div class="with-hint">
@@ -154,7 +158,8 @@
                 </fx-output>
 
                 <!-- 6) -->
-                <fx-output ref="instance('country')?*[?name = string(instance('i-place')//*:country)]?value">
+                <fx-output
+                    ref="instance('country')/term[@xml:id = string(instance('i-place')//*:country)]/name[@xml:lang=$lang]">
                     <label slot="label">
                         <pb-i18n key="form.site-modern-country"></pb-i18n>
                     </label>

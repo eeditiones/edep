@@ -122,7 +122,7 @@
                                     <data></data>
                                 </fx-instance>
 
-                                <fx-instance id="vars">
+                                <fx-instance id="vars" shared="true">
                                     <data>
                                         <display-leiden>hidden</display-leiden>
                                         <can-delete>false</can-delete>
@@ -343,6 +343,8 @@
                                     value="shortlang(event('language'), instance('vars')/language/string())"></fx-setvalue>
                                 <fx-refresh force="force"></fx-refresh>
                             </fx-action>
+
+                            <fx-var name="lang" value="instance('vars')/language"></fx-var>
 
                             <nav aria-labelledby="navigation">
                                 <div id="navigation">Navigation</div>

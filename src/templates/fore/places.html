@@ -122,7 +122,9 @@
 
                     <fx-instance id="province" src="../edep-data/province.json" type="json">{}</fx-instance>
 
-                    <fx-instance id="country" src="../edep-data/country.json" type="json">{}</fx-instance>
+                    <fx-instance id="country" src="../edep-data/country.xml" type="xml"
+                        ><vocabulary></vocabulary
+                    ></fx-instance>
 
                     <fx-submission id="s-save" method="post" url="api/places/{instance('query')/id}" replace="instance">
                         <fx-action event="submit-done">
@@ -153,6 +155,8 @@
                         <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
                     </fx-submission>
                 </fx-model>
+
+                <fx-var name="lang" value="instance('vars')/language"></fx-var>
 
                 <fx-output ref="instance('default')/place/@xml:id"></fx-output>
                 <fieldset class="case-content">
@@ -206,9 +210,9 @@
                         <label>
                             <pb-i18n key="form.site-modern-country"></pb-i18n>
                         </label>
-                        <select ref="instance('country')?*" class="widget" selection="open" static="static">
+                        <select ref="instance('country')/term" class="widget" selection="open" static="static">
                             <template>
-                                <option value="{?name}">{?value}</option>
+                                <option value="{@xml:id}">{name[@xml:lang=$lang]}</option>
                             </template>
                         </select>
                     </fx-control>

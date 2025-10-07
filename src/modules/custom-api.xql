@@ -39,7 +39,7 @@ declare function api:writing($request as map(*)) {
     }
 };
 
-declare function api:typeins($request as map(*)) {         
+declare function api:typeins($request as map(*)) {
     try {
         <root>{doc($config:data-root || "/typeins.xml")}</root>
     } catch * {
@@ -65,7 +65,7 @@ declare function api:objtyp($request as map(*)) {
 
 declare function api:decor($request as map(*)) {
    try {
-        <root>{doc($config:data-root || "/decor.xml")/items/item}</root> 
+        <root>{doc($config:data-root || "/decor.xml")/items/item}</root>
     } catch * {
         ()
     }
@@ -89,13 +89,13 @@ declare function api:places-browse($request as map(*)) {
             collection($config:data-root || "/places")//tei:place[contains(@xml:id, $search)]
         else
             collection($config:data-root || "/places")//tei:place
-    let $sorted := 
+    let $sorted :=
         for $place in $places
         order by $place/tei:placeName[@type="modern"]
         return
             $place
-    let $letter := 
-        if (count($places) < $limit) then 
+    let $letter :=
+        if (count($places) < $limit) then
             "Alle"
         else if ($letterParam = '') then
             substring($sorted[1], 1, 1) => upper-case()
@@ -165,10 +165,10 @@ declare function api:find-spot($request as map(*)) {
     let $placeIds := $xml//tei:origPlace/@corresp
     let $places := for $placeId in $placeIds return collection($config:data-root || "/places")/id($placeId)
     return
-        array { 
-                for $place in $places 
+        array {
+                for $place in $places
                 let $tokenized := tokenize($place/tei:location/tei:geo, ',\s*')
-                return 
+                return
                 map {
                     "latitude":$tokenized[1],
                     "longitude":$tokenized[2],
@@ -177,13 +177,13 @@ declare function api:find-spot($request as map(*)) {
         }
 };
 
-declare function api:load-place($request as map(*)) {
-    let $return := doc(concat($config:places, $request?parameters?id, ".xml"))
-    return try {
-        $return
-    } catch * {
-        ()
-    }
+declare function api:load-place ($request as map(*)) {
+    let $loc := concat($config:places, $request?parameters?id, ".xml")
+    return if (not(doc-available($loc))) then
+        error($errors:NOT_FOUND)
+    else
+        let $return := doc($loc)
+        return try { $return } catch * { () }
 };
 
 declare function api:geopicker-places($request as map(*)) {
@@ -217,7 +217,7 @@ declare function api:places-add($request as map(*)) {
             let $store := xmldb:store($config:places, concat("G", $id-new, ".xml"), $request?body)
             let $update := update insert attribute xml:id {concat("G", $id-new)} into doc(concat($config:places, "G", $id-new, ".xml"))/tei:place
             return concat("G",$id-new)
-             
+
 
     return try {
         doc(concat($config:places, $id, ".xml"))
@@ -235,13 +235,13 @@ declare function api:people-browse($request as map(*)) {
             collection($config:data-root || "/people")//tei:person[ft:query(tei:persName, $search || '*')]
         else
             collection($config:data-root || "/people")//tei:person
-    let $sorted := 
+    let $sorted :=
         for $person in $people
         order by $person/tei:persName[@type='nomen']
         return
             $person
-    let $letter := 
-        if (count($people) < $limit) then 
+    let $letter :=
+        if (count($people) < $limit) then
             "Alle"
         else if ($letterParam = '') then
             substring($sorted[1], 1, 1) => upper-case()
@@ -298,12 +298,12 @@ declare function api:output-person($list, $category as xs:string, $search as xs:
 };
 
 declare function api:load-person($request as map(*)) {
-    let $return := doc(concat($config:people, $request?parameters?id, ".xml"))
-    return try {
-        $return
-    } catch * {
-        ()
-    }
+    let $loc := concat($config:people, $request?parameters?id, ".xml")
+    return if (not(doc-available($loc))) then
+        error($errors:NOT_FOUND)
+    else
+        let $return := doc($loc)
+        return try { $return } catch * { () }
 };
 
 declare function api:person-add($request as map(*)) {
@@ -320,14 +320,14 @@ declare function api:person-add($request as map(*)) {
             let $id-new := if (empty($ids)) then "000000" else format-number(xs:integer(replace($ids[last()], "P", "")) + 1, "000000")
             let $withId :=
                 <person xmlns="http://www.tei-c.org/ns/1.0" xml:id="P{$id-new}">
-                { 
+                {
                     $request?body//tei:person/@sex,
-                    $request?body/tei:person/* 
+                    $request?body/tei:person/*
                 }
                 </person>
             let $store := xmldb:store($config:people, concat("P", $id-new, ".xml"), $withId)
             return concat("P",$id-new)
-             
+
 
     return try {
         doc(concat($config:people, $id, ".xml"))
@@ -337,13 +337,13 @@ declare function api:person-add($request as map(*)) {
 };
 
 declare function api:inscription($request as map(*)) {
-    let $check-collection := 
-        if(not(xmldb:collection-available($config:inscription))) then 
-            xmldb:create-collection("/", $config:inscription) 
-        else 
+    let $check-collection :=
+        if(not(xmldb:collection-available($config:inscription))) then
+            xmldb:create-collection("/", $config:inscription)
+        else
             ()
     let $collection := $config:data-root || "/" || $request?parameters?collection
-    let $id := 
+    let $id :=
         if ($request?parameters?id and $request?parameters?id != '') then
             let $store := xmldb:store($collection, concat($request?parameters?id, ".xml"), api:clean($request?body, (), true()))
             return $request?body//tei:idno[@type="EDEp"]/text()
@@ -384,7 +384,7 @@ declare function api:inscription-template($request as map(*)) {
                 $merged
         else
             doc($config:inscription-templ)
-    
+
     return try {
         $doc
     } catch * {
@@ -438,9 +438,9 @@ declare %private function api:postprocess($nodes as node()*, $edepId as xs:strin
                 element { node-name($node) } {
                     $node/@*,
                     $node/tei:change[@type='created'],
-                    <change xmlns="http://www.tei-c.org/ns/1.0" 
-                        type="{if (empty($node/tei:change)) then 'created' else 'changed'}" 
-                        when="{current-dateTime()}" 
+                    <change xmlns="http://www.tei-c.org/ns/1.0"
+                        type="{if (empty($node/tei:change)) then 'created' else 'changed'}"
+                        when="{current-dateTime()}"
                         who="{sm:id()//sm:real/sm:username/string()}"/>
                 }
             case element() return
@@ -469,7 +469,7 @@ declare function api:clean-namespace($nodes as node()*) {
 
 declare function api:render($request as map(*)) {
     let $type := $request?parameters?type
-    let $xml := 
+    let $xml :=
         switch ($type)
             case "transcription" return
                 $request?body//tei:div[@type="edition"]
@@ -496,7 +496,7 @@ in the template  :)
 declare %private function api:find-counterpart($nodeTemplate as element(), $input as node()) as item()* {
     (: List of candidates is created based on the name of the element and its ancestors. In addition
     we look for the values of the attribute @type to disambiguate <msPart type="main"> from <msPart type="fragment">
-    and for the values of @scheme to disambiguate the <keywords> elements 
+    and for the values of @scheme to disambiguate the <keywords> elements
     When working on the main template, we look at all the ancestors, if we are
     in a secondary template (see condition) we only check the parent :)
     let $candidates := if ($nodeTemplate/ancestor-or-self::tei:TEI) then $input/descendant::*[local-name() eq $nodeTemplate/local-name()]
@@ -507,13 +507,13 @@ declare %private function api:find-counterpart($nodeTemplate as element(), $inpu
         [every $scheme in $nodeTemplate/ancestor-or-self::*[@scheme ne '']/@scheme
             satisfies $scheme = ./ancestor-or-self::*/@scheme]
         [if (@corresp = ./root()/descendant::tei:msPart[@type eq 'fragment']) then false() else true()]
-            else 
+            else
                 $input/descendant::*[local-name() eq $nodeTemplate/local-name()]
                 [parent::*/local-name() eq $nodeTemplate/parent::*/local-name()]
                 [if ($nodeTemplate[@type and (@type ne '')]) then self::*[@type eq $nodeTemplate/@type] else true()]
     (: If the candidates are siblings, we also selected the first one.
     If at this point we have more than one candidate, throw an error with the element name :)
-    let $counterpart :=    
+    let $counterpart :=
         if (count($candidates/parent::*) eq 1) then $candidates[1]
             else
                 if (count($candidates) <= 1) then
@@ -527,7 +527,7 @@ declare %private function api:find-counterpart($nodeTemplate as element(), $inpu
 declare %private function api:process-children($nodeTemplate as element(), $nodeInput as element()) as item()* {
     (: if the node from the input file only contais a text node, or mixed content, then get its children :)
     if ($nodeInput[((count(child::node()) eq 1) and (text()[string-length(replace(., '\s+', '')) ne 0])) or
-        ((text()[string-length(replace(., '\s+', '')) ne 0]) and child::element())]) 
+        ((text()[string-length(replace(., '\s+', '')) ne 0]) and child::element())])
         then
             api:complete-input($nodeInput/node())
     else
@@ -543,20 +543,20 @@ declare %private function api:process-children($nodeTemplate as element(), $node
 
 (:function to complete the input with elements that are in an secondary template :)
 declare %private function api:complete-input($nodes as node()*) as node()* {
-    for $node in $nodes 
-    return 
+    for $node in $nodes
+    return
         typeswitch($node)
             case element(tei:bibl) return
                 let $templateBibl := (doc('/db/apps/edep/templates/fore/templates.xml')//tei:bibl)[1]
-                return 
+                return
                     <bibl xmlns="http://www.tei-c.org/ns/1.0" xml:id="{$node/@xml:id}">
                     { ($node/@type, $templateBibl/@type)[1] }
                      {($node/node(),  $templateBibl/*[not(local-name() = $node/node()/local-name())])}
                     </bibl>
-            default 
+            default
                 return $node
     };
-    
+
 (:function to add @corresp attribute values when elements are copied from the template :)
 declare %private function api:add-corresp($nodeTemplate as element(), $input as node()) as element()* {
  if ($nodeTemplate[@corresp])
@@ -564,28 +564,28 @@ declare %private function api:add-corresp($nodeTemplate as element(), $input as 
      for $id in $input/root()/descendant::tei:msPart/@xml:id
      let $correspVal:=  '#' || $id
      let $att := attribute {'corresp'} {$correspVal}
-     return 
+     return
          element {QName("http://www.tei-c.org/ns/1.0", $nodeTemplate/local-name())} {
                       $nodeTemplate/@*[not(name() eq 'corresp')] | $att,
                       $nodeTemplate/node()
          }
-else 
+else
     $nodeTemplate
      };
-    
+
 declare %private function api:compare-elements($nodeTemplate as element(), $nodeInput as element()) as element(){
     if (deep-equal($nodeTemplate, $nodeInput)) then
             $nodeTemplate
     else
         (: if the number of attributes is not the same, get the missing attributes from the template:)
         if (count($nodeInput/@*) ne count($nodeTemplate/@*))
-        then                  
+        then
             let $emptyAttsNames := for $att in $nodeTemplate/@*
                 return
                     $att[not(name() = $nodeInput/@*/name())]/name()
             let $emptyAtts := for $attName in $emptyAttsNames
                 return
-                    attribute {$attName} {""}                        
+                    attribute {$attName} {""}
             return
             (: we return an element with all the attributes and then we process its contents :)
                 element {QName("http://www.tei-c.org/ns/1.0", $nodeTemplate/local-name())}
@@ -608,10 +608,10 @@ declare %private function api:reconstruct-tree($tmplNodes as element()*, $input 
     let $name := $tmpl/local-name()
     let $counterpart := api:find-counterpart($tmpl, $input)
     return
-    (: if we find an equivalent element, we return more than one item: on one hand, 
+    (: if we find an equivalent element, we return more than one item: on one hand,
     the result of processing the “counterpart” element, on the other, additional
     operations are done to handle repeateable elements :)
-        if ($counterpart) then 
+        if ($counterpart) then
             (api:compare-elements($tmpl, $counterpart),
                 (: create as many div elements as necessary attending to the @corresp attributes :)
 (:                if ($counterpart[@corresp][local-name() = ('div')]) :)
@@ -637,16 +637,16 @@ declare %private function api:reconstruct-tree($tmplNodes as element()*, $input 
                         if ($counterpart[@type eq 'main']/following-sibling::*[1][self::tei:msPart[@type eq 'fragment']])
                         then api:complete-input($counterpart/following-sibling::tei:msPart[@type eq 'fragment'])
                         else
-                      
+
                       (: Second scenario: there are elements in the input file, not present in the template. For those cases
                       we look in the element in the input file being processed has a following-sibling
                       that it’s not present in the template. <div> elements are excluded to avoid the duplication of div[@type eq 'textpart'] of fragments:)
                             if ($counterpart[not(local-name() eq 'div')] and not($counterpart/following-sibling::*[local-name() = $tmpl/following-sibling::*/local-name()])) then
                                 $counterpart/following-sibling::*[not(local-name() = $tmpl/following-sibling::*/local-name())]
                             else ()
-                            
-                      
-            )  
+
+
+            )
         else
             typeswitch($tmpl)
                 case element(tei:div) return api:add-corresp($tmpl, $input)
