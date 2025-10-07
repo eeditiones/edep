@@ -54,7 +54,9 @@
                     <data></data>
                 </fx-instance>
 
-                <fx-instance id="province" src="../edep-data/province.json" type="json">{}</fx-instance>
+                <fx-instance id="province" src="../edep-data/province.xml" type="xml"
+                    ><vocabulary></vocabulary
+                ></fx-instance>
 
                 <fx-instance id="country" src="../edep-data/country.xml" type="xml"
                     ><vocabulary></vocabulary
@@ -151,7 +153,7 @@
                 ref="instance('i-place')"
                 style="display:{if(instance('g-vars')/open = 'true') then 'block' else 'none'};">
                 <fx-output
-                    ref="instance('province')?*[?name = string(instance('i-place')//*:region[@type='province'])]?value">
+                    ref="instance('province')/term[@xml:id = instance('i-place')//*:region[@type='province']]/name[@xml:lang=$lang]">
                     <label slot="label">
                         <pb-i18n key="form.site-ancient-province"></pb-i18n>
                     </label>
