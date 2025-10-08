@@ -66,13 +66,6 @@ function editorStyles() {
     return src('node_modules/@jinntec/jinn-codemirror/css/*').pipe(dest('build/resources/css'));
 }
 
-// datalist-ajax
-function datalistAjax() {
-    return src('node_modules/datalist-ajax/dist/datalist-ajax.min.js').pipe(
-        dest('build/resources/scripts/datalist-ajax/datalist-ajax.min.js'),
-    );
-}
-
 // components styles
 function pbStyles() {
     return src('node_modules/@teipublisher/pb-components/css').pipe(dest('build/resources/css'));
@@ -97,7 +90,7 @@ function fore() {
     return src('node_modules/@jinntec/fore/dist/*').pipe(dest('build/resources/scripts/'));
 }
 
-const copyModules = parallel(epidocEditor, editorStyles, datalistAjax, pbStyles, pbImages, pbComponents, pbLib, fore);
+const copyModules = parallel(epidocEditor, editorStyles, pbStyles, pbImages, pbComponents, pbLib, fore);
 exports['copy:modules'] = copyModules;
 
 /**
