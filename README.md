@@ -78,6 +78,8 @@ The `@ref` attribute binds the form control to the element selected by the given
 
 When creating a new document, the editor starts by loading an empty [EpiDoc template](src/templates/fore/epidoc-template.xml). This contains placeholders for all the elements covered by the form. Some elements, e.g. bibliographic entries, are repeatable, which means you can add more of the same type. Sub-templates for those elements are mostly located in [templates.xml](src/templates/fore/templates.xml).
 
+The entire pre-processing pipeline is started via `custom-api.xql/api:file-upload` which in turn call on other functions to convert the input.
+
 The form also needs some auxiliary data lists, e.g. for object types, materials and much more, which are mostly loaded from the data package.
 
 To extend the form to include an additional element or attribute, one would proceed as follows:

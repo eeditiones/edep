@@ -133,7 +133,7 @@
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="listBibl" mode="add">
-                <model predicate="not(bibl)" behaviour="omit">
+                <model predicate="not(child::*)" behaviour="omit">
             <desc>Clean-up of an empty listBibl element</desc>
         </model>
                 <model behaviour="copy"/>

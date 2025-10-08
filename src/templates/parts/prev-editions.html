@@ -40,12 +40,11 @@
                             ></label
                         >
                         <div>
-                            <fx-output ref="@xml:id"></fx-output>
                             <fx-trigger>
                                 <iron-icon
                                   class="widget"
                                   icon="icons:content-copy"></iron-icon>
-                                <fx-call function="clipboard(@xml:id)"></fx-call>
+                                <fx-call function="clipboard(@corresp)"></fx-call>
                             </fx-trigger>
                         </div>
                         <pb-popover>
@@ -57,7 +56,7 @@
                             </template>
                         </pb-popover>
                     </div>
-                    <fx-control ref="ptr/@target" update-event="change">
+                    <fx-control ref="@corresp" update-event="change">
                         <label>
                             <pb-i18n key="form.reference">Referenz</pb-i18n>
                         </label>

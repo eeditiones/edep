@@ -22,14 +22,12 @@
     <!-- 32) Militär: ja = vorhanden -->
     <term ref="#military"/>
 
-    <bibl xml:id="" type="public">
-        <ptr target=""/>
+    <bibl type="public" corresp="">
         <note></note>
         <citedRange></citedRange>
     </bibl>
-    <listBibl type="images">
-        <bibl xml:id="">
-            <ptr target=""/>
+    <listBibl type="images">    
+        <bibl corresp="">
             <note></note>
             <citedRange></citedRange>
         </bibl>
@@ -45,5 +43,4 @@
     </respStmt>
 
     <editor role="digital"/>
-
 </body>
