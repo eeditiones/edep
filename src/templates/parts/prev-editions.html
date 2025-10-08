@@ -21,9 +21,6 @@
                   context="listBibl[@type='previousEditions']"
                   ref="bibl"
                   origin="instance('templates')//bibl"></fx-insert>
-                <fx-setvalue
-                  ref="(listBibl[@type='previousEditions']/bibl)[last()]/@xml:id"
-                  value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
                 <fx-refresh control="r-editions"></fx-refresh>
             </fx-trigger>
         </legend>
