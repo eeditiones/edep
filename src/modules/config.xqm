@@ -337,7 +337,7 @@ declare variable $config:zotero-api-base := "https://api.zotero.org";
 declare variable $config:zotero-api-key := "";
 
 (: Your group id :)
-declare variable $config:zotero-group-id  := "2529759";
+declare variable $config:zotero-group-id  := "2519759";
 
 (: Base dir where all groups live; must already exist :)
 declare variable $config:zotero-base-dir := $config:data-root || "/zotero/groups";
