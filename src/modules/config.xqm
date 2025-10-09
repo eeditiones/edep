@@ -19,11 +19,11 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 (:~
  : Define where places are located
- :)
  declare variable $config:places := $config:data-root || "/places/";
  declare variable $config:people := $config:data-root || "/people/";
  declare variable $config:inscription := $config:data-root || "/workspace/";
  declare variable $config:inscription-templ := $config:app-root || "/templates/fore/epidoc-template.xml";
+ :)
 
 (:~~
  : The version of the pb-components webcomponents library to be used by this app.
@@ -320,6 +320,33 @@ declare variable $config:context-path :=
  : The root of the collection hierarchy containing data.
  :)
 declare variable $config:data-root := repo:get-root() || "edep-data";
+
+(:~
+ : Define where places are located
+ :)
+ declare variable $config:places := $config:data-root || "/places/";
+ declare variable $config:people := $config:data-root || "/people/";
+ declare variable $config:inscription := $config:data-root || "/workspace/";
+ declare variable $config:inscription-templ := $config:app-root || "/templates/fore/epidoc-template.xml";
+
+(:  ZOTERO CONFIG :)
+(: Base URL of Zotero Web API :)
+declare variable $config:zotero-api-base := "https://api.zotero.org";
+
+(: Optional API key; leave empty for public groups :)
+declare variable $config:zotero-api-key := "";
+
+(: Your group id :)
+declare variable $config:zotero-group-id  := "2529759";
+
+(: Base dir where all groups live; must already exist :)
+declare variable $config:zotero-base-dir := $config:data-root || "/zotero/groups";
+
+(: Derived paths for this group :)
+declare variable $config:zotero-group-dir := $config:zotero-base-dir || "/" || $config:zotero-group-id;
+declare variable $config:zotero-items-dir := $config:zotero-group-dir || "/items";
+declare variable $config:zotero-meta-path := $config:zotero-group-dir || "/meta.json";
+
 
 (:~
  : The root of the collection hierarchy whose files should be displayed
