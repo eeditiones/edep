@@ -53,10 +53,17 @@ declare %private function zotero:headers($extra as element(http:header)*) as ele
 };
 
 (: split an absolute DB path into (collection, resource name) :)
-declare %private function zotero:path-split($abs as xs:string) as map(*) {
+(:declare %private function zotero:path-split($abs as xs:string) as map(*) {
   let $name := tokenize($abs, "/")[last()]
   let $coll := substring($abs, 1, string-length($abs) - string-length($name) - 1)
   return map{"coll": $coll, "name": $name}
+};:)
+(: ───────────────── path helper (normalized) ───────────────── :)
+declare %private function zotero:path-split($abs as xs:string) as map(*) {
+  let $norm := replace($abs, '/+$', '')                     (: drop trailing '/' :)
+  let $name := tokenize($norm, '/')[last()]
+  let $coll := substring($norm, 1, string-length($norm) - string-length($name) - 1)
+  return map{ "coll": $coll, "name": $name }
 };
 
 declare %private function zotero:resource-exists($coll as xs:string, $name as xs:string) as xs:boolean {
@@ -106,13 +113,34 @@ declare %private function zotero:read-meta() as map(*) {
       "application/json"
     )
 };:)
+(: overwrite meta.json with new libraryVersion + syncedAt :)
+(:
 declare %private function zotero:write-meta($lmv as xs:integer) as xs:string {
   let $ps   := zotero:path-split($config:zotero-meta-path)
+  let $_rm  := try { xmldb:remove($ps?coll, $ps?name) } catch * { () }
   let $json := serialize(
-                map{ "libraryVersion": $lmv, "syncedAt": current-dateTime() },
-                map{ "method":"json", "indent": true() }
-              )
+                 map{ "libraryVersion": $lmv, "syncedAt": current-dateTime() },
+                 map{ "method":"json", "indent": true() }
+               )
   return xmldb:store($ps?coll, $ps?name, $json, "application/json")
+};
+:)
+
+(: ─────────── overwrite meta.json; return true() on success ─────────── :)
+declare %private function zotero:write-meta($lmv as xs:integer) as xs:boolean {
+  let $ps   := zotero:path-split($config:zotero-meta-path)
+  let $json := serialize(
+                 map{ "libraryVersion": $lmv, "syncedAt": current-dateTime() },
+                 map{ "method":"json", "indent": true() }
+               )
+  let $_rm  := try { xmldb:remove($ps?coll, $ps?name) } catch * { () }
+  return
+    try {
+      let $_ := xmldb:store($ps?coll, $ps?name, $json, "application/json")
+      return true()
+    } catch * {
+      false()
+    }
 };
 
 (: store one item <key>.json into items dir — 4-arg store :)
@@ -223,6 +251,8 @@ declare function zotero:sync($config as map(*)) as xs:string {
 };
 
 (: MAIN :)
+(: INLINE sync — writes meta.json on BOTH 304 and 200 :)
+(: ─────────── sync: ALWAYS writes meta.json (200 and 304) ─────────── :)
 declare function zotero:sync($config as map(*), $root as element()) as xs:string {
   response:set-header("Content-Type","application/json"),
 
@@ -230,7 +260,6 @@ declare function zotero:sync($config as map(*), $root as element()) as xs:string
   let $since  := xs:integer(($meta?libraryVersion, 0)[1])
 
   let $base   := concat($config:zotero-api-base, "/groups/", string($config:zotero-group-id), "/items")
-  (: IMPORTANT: '&' escaped as &amp; in XML :)
   let $href   := concat($base,
                         "?since=", encode-for-uri(string($since)),
                         "&amp;limit=100",
@@ -251,20 +280,33 @@ declare function zotero:sync($config as map(*), $root as element()) as xs:string
 
   return serialize(
     if (empty($respSeq)) then
-      map{ "status":"error", "reason":"http:send-request failed", "requestHref": $href }
+      map{
+        "status"      : "error",
+        "reason"      : "http:send-request failed",
+        "requestHref" : $href,
+        "metaPath"    : $config:zotero-meta-path
+      }
     else
       let $resp   := $respSeq[1]
       let $status := xs:integer($resp/@status)
       return
         if ($status = 304) then
-          (: **WRITE META EVEN ON 304** to update syncedAt :)
-          let $_m := zotero:write-meta($since)
-          return map{ "status":"ok", "updated": 0, "libraryVersion": $since }
+          let $ok := zotero:write-meta($since)
+          return map{
+            "status"         : "ok",
+            "updated"        : 0,
+            "libraryVersion" : $since,
+            "metaWriteOk"    : $ok,
+            "metaPath"       : $config:zotero-meta-path
+          }
         else if ($status != 200) then
           let $errBody := try { util:binary-to-string($respSeq[2]) } catch * { "" }
           return map{
-            "status":"error", "httpStatus": $status,
-            "errorBody": $errBody, "requestHref": $href
+            "status"      : "error",
+            "httpStatus"  : $status,
+            "errorBody"   : $errBody,
+            "requestHref" : $href,
+            "metaPath"    : $config:zotero-meta-path
           }
         else
           let $raw   := try { util:binary-to-string($respSeq[2]) } catch * { "" }
@@ -274,15 +316,26 @@ declare function zotero:sync($config as map(*), $root as element()) as xs:string
           let $items := if ($arr instance of array(*)) then $arr else array{}
           let $c1    := zotero:ingest-page($items)
 
-          let $next  := zotero:next-link($resp)
+          let $next  := (
+            for $line in $resp/http:header[lower-case(@name)='link']/@value/string()
+            let $parts := tokenize($line, ",")
+            for $p in $parts
+            where contains($p, 'rel="next"') or contains($p, "rel='next'")
+            return normalize-space(substring-before(substring-after($p, "<"), ">"))
+          )[1]
           let $cN    := if ($next = '') then 0 else zotero:sync-follow($next, 0)
 
           let $lmvStr := ($resp/http:header[lower-case(@name)='last-modified-version']/@value)[1]
           let $lmv    := if (exists($lmvStr) and normalize-space($lmvStr) ne "") then xs:integer($lmvStr) else $since
 
-          (: **ALWAYS** persist the latest LMV & timestamp :)
-          let $_m := zotero:write-meta($lmv)
+          let $ok := zotero:write-meta($lmv)
 
-          return map{ "status":"ok", "updated": $c1 + $cN, "libraryVersion": $lmv }
+          return map{
+            "status"         : "ok",
+            "updated"        : $c1 + $cN,
+            "libraryVersion" : $lmv,
+            "metaWriteOk"    : $ok,
+            "metaPath"       : $config:zotero-meta-path
+          }
   , map{ "method":"json", "indent": true() })
 };

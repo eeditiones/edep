@@ -807,7 +807,7 @@
         }
       }
     },
-    		"/api/document/{id}/epidoc": {
+    "/api/document/{id}/epidoc": {
 			"get": {
 				"summary": "Get the Epidoc source of a document",
 				"description": "Get the source of a document, either as XML, text or binary.",
@@ -849,7 +849,41 @@
 					}
 				}
 			}
-		}
+		},
+        "/api/zotero/sync": {
+          "get": {
+            "summary": "Incrementally sync local cache.",
+            "tags": ["zotero"],
+            "operationId": "zotero:sync",
+            "responses": {
+              "200": {
+                "description": "Sync result.",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "string",
+                          "example": "ok"
+                        },
+                        "updated": {
+                          "type": "integer"
+                        },
+                        "libraryVersion": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "304": {
+                "description": "No updates."
+              }
+            }
+          }
+        }
   },
   "security": [
     {

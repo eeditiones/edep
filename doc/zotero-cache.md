@@ -7,13 +7,18 @@ This document describes the local Zotero cache used by the app, the expected col
 
 ---
 
+## Preconditions
+
+* you must install edep-data.xar BEFORE edep.xar so the latter can create the necessary structure (see below)
+
+
 ## 1) Collection layout
 
 Only the **group** collection is created dynamically by the post‑install script. The **base** and **items** collections are expected to exist after installation.
 
 ```
-/db
-└── zotero-cache/                        (collection)   [pre-created]
+/edep-data
+└── zotero/                        (collection)   [pre-created]
     └── groups/                          (collection)   [pre-created]
         └── <GROUP_ID>/                  (collection)   [created by post-install]
             ├── items/                   (collection)   [created by post-install]
