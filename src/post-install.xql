@@ -125,25 +125,41 @@ declare function local:zotero-path-split($abs as xs:string) as map(*) {
 };
 
 (: seed meta.json if missing; returns true() if written :)
+(: seed meta.json if missing, then align its permissions to the parent collection :)
 declare function local:zotero-seed-meta-if-missing($abs as xs:string) as xs:boolean {
   let $ps := local:zotero-path-split($abs)
   return
     if (not(xmldb:collection-available($ps?coll))) then false()
-    else if (local:zotero-resource-exists($ps?coll, $ps?name)) then false()
     else
-      try {
-        let $_ := xmldb:store(
-          $ps?coll, $ps?name,
-          serialize(
-            map{ "libraryVersion": 0, "syncedAt": current-dateTime() },
-            map{ "method":"json", "indent": true() }
-          ),
-          "application/json"
-        )
-        return true()
-      } catch * {
-        false()
-      }
+      let $exists  := local:zotero-resource-exists($ps?coll, $ps?name)
+      let $created :=
+        if ($exists) then false()
+        else
+          try {
+            let $_ := xmldb:store(
+              $ps?coll, $ps?name,
+              serialize(
+                map { "libraryVersion": 0, "syncedAt": current-dateTime() },
+                map { "method":"json", "indent": true() }
+              ),
+              "application/json"
+            )
+            return true()
+          } catch * { false() }
+      (: ALWAYS try to align perms (whether created just now or already existed) :)
+      let $_fixPerms :=
+        try {
+          let $resPath := concat($ps?coll, "/", $ps?name)
+          let $p       := sm:get-permissions($ps?coll)
+          let $owner   := string(($p/@owner, "guest")[1])
+          let $group   := string(($p/@group, "guest")[1])
+          let $mode    := string(($p/@mode,  "rw-rw-r--")[1])
+          let $_1 := sm:chown($resPath, "edep")
+          let $_2 := sm:chgrp($resPath, "tei")
+          let $_3 := sm:chmod($resPath, $mode)
+          return ()
+        } catch * { () }
+      return $created
 };
 
 (: PUBLIC: ensure base, group, items; then seed meta :)
