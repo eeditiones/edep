@@ -287,3 +287,86 @@ declare function zotero:sync($config as map(*), $root as element()) {
   return serialize($payload, map{ "method":"json", "indent": true() })
 };
 
+(: ─── Wrappers so Roaster can resolve any arity ─── :)
+declare function zotero:items-search() as xs:string {
+  zotero:items-search(map{}, <root/>)
+};
+
+declare function zotero:items-search($config as map(*)) as xs:string {
+  zotero:items-search($config, <root/>)
+};
+
+(: ─── MAIN: GET /api/zotero/items/search ─── :)
+declare function zotero:items-search($config as map(*), $root as element()) as xs:string {
+  response:set-header("Content-Type", "application/json"),
+
+  let $coll  := $config:zotero-items-dir
+  let $qIn   := lower-case(normalize-space(request:get-parameter("q", "")))
+  let $tagIn := lower-case(normalize-space(request:get-parameter("tag", "")))
+  let $limIn := request:get-parameter("limit", "15")
+  let $limit := let $n := try { xs:integer($limIn) } catch * { 15 }
+                return if ($n lt 1) then 15 else $n
+
+  let $names :=
+    if (xmldb:collection-available($coll))
+    then for $n in xmldb:get-child-resources($coll)
+         where ends-with($n, ".json")
+         return $n
+    else ()
+
+  let $matches :=
+    for $name in $names
+    let $uri := concat($coll, "/", $name)
+    let $bin := try { util:binary-doc($uri) } catch * { () }
+    let $txt := if (exists($bin)) then util:binary-to-string($bin) else ""
+    where string-length($txt) gt 0
+    let $data := try { parse-json($txt) } catch * { map{} }
+
+    let $key  := string(( $data?key, replace($name, "\.json$", "") )[1])
+
+    (: tag filter :)
+    let $hasTag :=
+      if ($tagIn = "") then true()
+      else if ($data?tags instance of array(*)) then
+        some $i in 1 to array:size($data?tags)
+        satisfies lower-case(string((array:get($data?tags, $i)?tag)[1])) = $tagIn
+      else false()
+
+    (: q filter over title + creators + DOI — SAFE coalescing :)
+    let $title    := lower-case(string(($data?title)[1]))
+    let $creators :=
+      if ($data?creators instance of array(*)) then
+        string-join(
+          for $i in 1 to array:size($data?creators)
+          let $c  := array:get($data?creators, $i)
+          let $ln := string(($c?lastName)[1])
+          let $fn := string(($c?firstName)[1])
+          let $nm := string(($c?name)[1])
+          let $parts := ($ln, $fn, $nm)
+          let $nonEmpty := for $p in $parts where normalize-space($p) ne "" return $p
+          let $one := normalize-space(string-join($nonEmpty, " "))
+          where $one ne ""
+          return $one
+        , " ")
+      else ""
+    let $doi      := lower-case(string((($data?DOI, $data?doi)[1])))
+
+    let $hay := normalize-space(string-join(($title, $creators, $doi), " "))
+    let $okQ := ($qIn = "") or contains($hay, $qIn)
+
+    where $hasTag and $okQ
+    return map{ "key": $key, "data": $data }
+
+  let $total    := count($matches)
+  let $limited  := subsequence($matches, 1, $limit)
+  let $_hdr     := response:set-header("X-Total-Count", string($total))
+
+  let $payload := map{
+    "query":    map{ "q": $qIn, "tag": $tagIn, "limit": $limit },
+    "total":    $total,                       (: matches before limit :)
+    "returned": count($limited),              (: items in this page :)
+    "items":    array { $limited }            (: [{key,data}, …] :)
+  }
+
+  return serialize($payload, map{ "method": "json", "indent": true() })
+};

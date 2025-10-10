@@ -808,65 +808,112 @@
       }
     },
     "/api/document/{id}/epidoc": {
-			"get": {
-				"summary": "Get the Epidoc source of a document",
-				"description": "Get the source of a document, either as XML, text or binary.",
-				"tags": ["documents"],
-				"operationId": "dapi:epidoc",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Content of the document",
-						"content": {
-							"application/xml": {
-								"schema": {
-									"type": "string"
-								}
-							},
-							"text/markdown": {
-								"schema": {
-									"type": "string"
-								}
-							},
-							"text/text": {
-								"schema": {
-									"type": "string"
-								}
-							}
-						}
-					},
-					"410": {
-						"description": "Document deleted"
-					}
-				}
-			}
-		},
-        "/api/zotero/sync": {
-          "get": {
-            "summary": "Incrementally sync local cache.",
-            "tags": ["zotero"],
-            "operationId": "zotero:sync",
+        "get": {
+            "summary": "Get the Epidoc source of a document",
+            "description": "Get the source of a document, either as XML, text or binary.",
+            "tags": ["documents"],
+            "operationId": "dapi:epidoc",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
             "responses": {
-              "200": {
-                "description": "Sync result.",
-                "content": {
-                  "text/plain": { "schema": { "type": "string" } }                }
-              },
-              "304": {
-                "description": "No updates."
-              }
+                "200": {
+                    "description": "Content of the document",
+                    "content": {
+                        "application/xml": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        "text/markdown": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        "text/text": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "410": {
+                    "description": "Document deleted"
+                }
             }
+        }
+    },
+    "/api/zotero/sync": {
+      "get": {
+        "summary": "Incrementally sync local cache.",
+        "tags": ["zotero"],
+        "operationId": "zotero:sync",
+        "responses": {
+          "200": {
+            "description": "Sync result.",
+            "content": {
+              "text/plain": { "schema": { "type": "string" } }
+            }
+          },
+          "304": {
+            "description": "No updates."
           }
         }
+      }
+    },
+    "/api/zotero/items/search": {
+        "get": {
+          "summary": "Search cached items. JSON only.",
+          "tags": ["zotero"],
+          "operationId": "zotero:items-search",
+          "parameters": [
+              {
+                  "in": "query",
+                  "name": "q",
+                  "schema": {
+                      "type": "string",
+                      "default": "Ama"
+                  },
+                  "description": "Full-text over title/creators/DOI."
+              },
+              {
+                  "in": "query",
+                  "name": "tag",
+                  "schema": {
+                      "type": "string"
+                  },
+                  "description": "Restrict to items having this tag."
+              },
+              {
+                  "in": "query",
+                  "name": "limit",
+                  "schema": {
+                      "type": "integer",
+                      "default": 15
+                  }
+              }
+          ],
+          "responses": {
+              "200": {
+                  "description": "Array of items (key + data).",
+                  "content": {
+                      "text/plain": {
+                          "schema": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              }
+          }
+        }
+      }
   },
   "security": [
     {
