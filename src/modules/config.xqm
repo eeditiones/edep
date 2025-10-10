@@ -346,6 +346,7 @@ declare variable $config:zotero-base-dir := $config:data-root || "/zotero/groups
 declare variable $config:zotero-group-dir := $config:zotero-base-dir || "/" || $config:zotero-group-id;
 declare variable $config:zotero-items-dir := $config:zotero-group-dir || "/items";
 declare variable $config:zotero-meta-path := $config:zotero-group-dir || "/meta.json";
+declare variable $config:zotero-style := "digital-humanities-im-deutschsprachigen-raum";
 
 
 (:~

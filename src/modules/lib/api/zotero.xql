@@ -93,17 +93,30 @@ declare %private function zotero:store-item($key as xs:string, $data as map(*)) 
 };
 
 
-(: Ingest one page of items :)
+(: Ingest one page of items including bib :)
 declare %private function zotero:ingest-page($arr as array(*)) as xs:integer {
-  let $n :=
-    for $it in $arr?*
-        let $k := $it?key
-        let $d := $it?data
-        where exists($k) and exists($d)
-        return zotero:store-item($k, $d)
-  return count($arr?*)
+  let $n := array:size($arr)
+  return
+    if ($n = 0) then 0
+    else
+      sum(
+        for $i in 1 to $n
+        let $item   := array:get($arr, $i)
+        let $key    := string(($item?key, $item?data?key)[1])
+        let $data   := $item?data
+        let $bib    := $item?bib
+        let $toSave :=
+          if (exists($data)) then
+            if (exists($bib)) then map:merge(($data, map{"bib": string($bib)}))
+            else $data
+          else
+            (: extremely rare, but if Zotero returned only a bib :)
+            map{"bib": string($bib)}
+        let $_ :=
+          if ($key != "") then zotero:store-item($key, $toSave) else ()
+        return if ($key != "") then 1 else 0
+      )
 };
-
 declare %private function zotero:next-link($resp as element(http:response)) as xs:string {
   let $links := $resp/http:header[lower-case(@name) = 'link']/@value/string()
   let $cands :=
@@ -188,7 +201,9 @@ declare function zotero:sync($config as map(*), $root as element()) as xs:string
   let $href   := concat($base,
                         "?since=", encode-for-uri(string($since)),
                         "&amp;limit=100",
-                        "&amp;include=data")
+                        "&amp;include=data,bib",
+                        "&amp;format=json",
+                        "&amp;style=$config:zotero-style")
 
   let $req :=
     <http:request method="GET" href="{$href}">
