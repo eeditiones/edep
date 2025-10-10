@@ -191,19 +191,23 @@ declare function zotero:sync($config as map(*)) as xs:string {
 (: MAIN :)
 (: INLINE sync — writes meta.json on BOTH 304 and 200 :)
 (: ─────────── sync: ALWAYS writes meta.json (200 and 304) ─────────── :)
-declare function zotero:sync($config as map(*), $root as element()) as xs:string {
+declare function zotero:sync($config as map(*), $root as element()) {
   response:set-header("Content-Type","application/json"),
 
   let $meta   := try { zotero:read-meta() } catch * { map{ "libraryVersion": 0 } }
   let $since  := xs:integer(($meta?libraryVersion, 0)[1])
 
   let $base   := concat($config:zotero-api-base, "/groups/", string($config:zotero-group-id), "/items")
-  let $href   := concat($base,
-                        "?since=", encode-for-uri(string($since)),
-                        "&amp;limit=100",
-                        "&amp;include=data,bib",
-                        "&amp;format=json",
-                        "&amp;style=$config:zotero-style")
+
+  (: IMPORTANT: & must be &amp; inside attributes; style value must be encoded :)
+  let $href   := concat(
+                    $base,
+                    "?since=", encode-for-uri(string($since)),
+                    "&amp;limit=100",
+                    "&amp;include=data,bib",
+                    "&amp;format=json",
+                    "&amp;style=",$config:zotero-style
+                 )
 
   let $req :=
     <http:request method="GET" href="{$href}">
@@ -218,7 +222,7 @@ declare function zotero:sync($config as map(*), $root as element()) as xs:string
 
   let $respSeq := try { http:send-request($req) } catch * { () }
 
-  return serialize(
+  let $payload :=
     if (empty($respSeq)) then
       map{
         "status"      : "error",
@@ -256,13 +260,15 @@ declare function zotero:sync($config as map(*), $root as element()) as xs:string
           let $items := if ($arr instance of array(*)) then $arr else array{}
           let $c1    := zotero:ingest-page($items)
 
-          let $next  := (
+          (: make $next a STRING so we never pass () into sync-follow :)
+          let $next  := string((
             for $line in $resp/http:header[lower-case(@name)='link']/@value/string()
             let $parts := tokenize($line, ",")
             for $p in $parts
             where contains($p, 'rel="next"') or contains($p, "rel='next'")
             return normalize-space(substring-before(substring-after($p, "<"), ">"))
-          )[1]
+          )[1])
+
           let $cN    := if ($next = '') then 0 else zotero:sync-follow($next, 0)
 
           let $lmvStr := ($resp/http:header[lower-case(@name)='last-modified-version']/@value)[1]
@@ -277,5 +283,7 @@ declare function zotero:sync($config as map(*), $root as element()) as xs:string
             "metaWriteOk"    : $ok,
             "metaPath"       : $config:zotero-meta-path
           }
-  , map{ "method":"json", "indent": true() })
+
+  return serialize($payload, map{ "method":"json", "indent": true() })
 };
+
