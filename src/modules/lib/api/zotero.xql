@@ -7,9 +7,7 @@ declare namespace http  = "http://expath.org/ns/http-client";
 declare namespace xmldb = "http://exist-db.org/xquery/xmldb";
 declare namespace util  = "http://exist-db.org/xquery/util";
 import module namespace response = "http://exist-db.org/xquery/response";
-(: Import your config module — update the path :)
-import module namespace config = "http://www.tei-c.org/tei-simple/config"
-  at "../../config.xqm";
+import module namespace config = "http://www.tei-c.org/tei-simple/config" at "../../config.xqm";
 
 (: ─────────────────────────────────────────────────────────
    Helpers
@@ -18,21 +16,6 @@ import module namespace config = "http://www.tei-c.org/tei-simple/config"
 declare %private function zotero:json($v as item()*) as xs:string {
   serialize($v, map{"method":"json","indent":true()})
 };
-
-(: Build headers; Authorization omitted if key is empty :)
-(:
-declare %private function zotero:headers($extra as element(http:header)*) as element(http:header)* {
-  let $apiVer := <http:header name="Zotero-API-Version" value="3"/>
-  let $accept := <http:header name="Accept" value="application/json"/>
-  let $ua     := <http:header name="User-Agent" value="edep/1.9 (exist-6.4; fore; contact: you@example.org)"/>
-  let $auth   :=
-    if (normalize-space($config:zotero-api-key) ne "") then (
-      <http:header name="Zotero-API-Key" value="{ $config:zotero-api-key }"/>,
-      <http:header name="Authorization" value="{ concat('Bearer ', $config:zotero-api-key) }"/>
-    ) else ()
-  return ($apiVer, $accept, $ua, $auth, $extra)
-};
-:)
 
 (: grab header values case-insensitively :)
 declare %private function zotero:header($resp as element(http:response), $name as xs:string) as xs:string* {
@@ -52,12 +35,6 @@ declare %private function zotero:headers($extra as element(http:header)*) as ele
   return ($apiVer, $accept, $ua, $auth, $extra)
 };
 
-(: split an absolute DB path into (collection, resource name) :)
-(:declare %private function zotero:path-split($abs as xs:string) as map(*) {
-  let $name := tokenize($abs, "/")[last()]
-  let $coll := substring($abs, 1, string-length($abs) - string-length($name) - 1)
-  return map{"coll": $coll, "name": $name}
-};:)
 (: ───────────────── path helper (normalized) ───────────────── :)
 declare %private function zotero:path-split($abs as xs:string) as map(*) {
   let $norm := replace($abs, '/+$', '')                     (: drop trailing '/' :)
@@ -70,20 +47,6 @@ declare %private function zotero:resource-exists($coll as xs:string, $name as xs
   if (not(xmldb:collection-available($coll))) then false()
   else some $r in xmldb:get-child-resources($coll) satisfies ($r = $name)
 };
-(: read meta.json as JSON; create a template if missing — uses util:binary-doc :)
-(:declare %private function zotero:read-meta() as map(*) {
-  let $ps := zotero:path-split($config:zotero-meta-path)
-  return
-    if (not(xmldb:collection-available($ps?coll))) then
-      map{"libraryVersion": 0, "syncedAt": ""}
-    else if (zotero:resource-exists($ps?coll, $ps?name)) then
-      let $bin := util:binary-doc($config:zotero-meta-path)
-      return try { parse-json(util:binary-to-string($bin)) }
-             catch * { map{"libraryVersion": 0, "syncedAt": ""} }
-    else (
-      map{"libraryVersion": 0, "syncedAt": ""}
-    )
-};:)
 
 declare %private function zotero:read-meta() as map(*) {
   let $ps := zotero:path-split($config:zotero-meta-path)
@@ -101,30 +64,6 @@ declare %private function zotero:read-meta() as map(*) {
         else
           try { parse-json($txt) } catch * { map{ "libraryVersion": 0, "syncedAt": "" } }
 };
-
-(: write meta.json — 4-arg store to set media type :)
-(:declare %private function zotero:write-meta($lmv as xs:integer) as xs:string {
-  let $ps := zotero:path-split($config:zotero-meta-path)
-  return
-    if (not(xmldb:collection-available($ps?coll))) then ""
-    else xmldb:store(
-      $ps?coll, $ps?name,
-      serialize(map{"libraryVersion": $lmv, "syncedAt": current-dateTime()}, map{"method":"json","indent": true()}),
-      "application/json"
-    )
-};:)
-(: overwrite meta.json with new libraryVersion + syncedAt :)
-(:
-declare %private function zotero:write-meta($lmv as xs:integer) as xs:string {
-  let $ps   := zotero:path-split($config:zotero-meta-path)
-  let $_rm  := try { xmldb:remove($ps?coll, $ps?name) } catch * { () }
-  let $json := serialize(
-                 map{ "libraryVersion": $lmv, "syncedAt": current-dateTime() },
-                 map{ "method":"json", "indent": true() }
-               )
-  return xmldb:store($ps?coll, $ps?name, $json, "application/json")
-};
-:)
 
 (: ─────────── overwrite meta.json; return true() on success ─────────── :)
 declare %private function zotero:write-meta($lmv as xs:integer) as xs:boolean {
@@ -165,18 +104,6 @@ declare %private function zotero:ingest-page($arr as array(*)) as xs:integer {
   return count($arr?*)
 };
 
-(: returns exactly one xs:string: the rel="next" URL or '' :)
-(:declare %private function zotero:next-link($resp as element(http:response)) as xs:string {
-  let $links := $resp/http:header[lower-case(@name) = 'link']/@value/string()
-  let $cands :=
-    for $line in $links
-    let $parts := tokenize($line, ',')
-    for $p in $parts
-    where contains($p, 'rel="next"') or contains($p, "rel='next'")
-    let $u := normalize-space(substring-before(substring-after($p, '<'), '>'))
-    return $u
-  return string-join((($cands)[1]), '')  :)(: coerce () → '' :)(:
-};:)
 declare %private function zotero:next-link($resp as element(http:response)) as xs:string {
   let $links := $resp/http:header[lower-case(@name) = 'link']/@value/string()
   let $cands :=
@@ -189,7 +116,6 @@ declare %private function zotero:next-link($resp as element(http:response)) as x
   return string-join((($cands)[1]), '')  (: () -> '' :)
 };
 
-(: Follow pagination :)
 (: follow pagination; $next may be empty :)
 declare %private function zotero:sync-follow($next as xs:string?, $acc as xs:integer) as xs:integer {
   if (empty($next) or $next = '') then $acc
@@ -220,7 +146,6 @@ declare %private function zotero:sync-follow($next as xs:string?, $acc as xs:int
    ───────────────────────────────────────────────────────── :)
 
 (: primary worker: keep your existing sync($config,$root) unchanged :)
-(: declare function zotero:sync($config as map(*), $root as element()) as xs:string { ... }; :)
 
 declare function zotero:debug-exports() as xs:string {
   let $ns  := "http://example.org/zotero"
