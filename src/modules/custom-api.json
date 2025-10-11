@@ -886,6 +886,25 @@
         }
       }
     },
+    "/api/zotero/items/suggest": {
+      "get": {
+        "summary": "Lightweight suggestions for autocomplete (key, tag, label HTML).",
+        "tags": ["zotero"],
+        "operationId": "zotero:items-suggest",
+        "parameters": [
+          { "in": "query", "name": "q", "schema": { "type": "string" } },
+          { "in": "query", "name": "tag", "schema": { "type": "string" } },
+          { "in": "query", "name": "limit", "schema": { "type": "integer", "default": 8 } },
+          { "in": "query", "name": "top", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Suggestion list",
+            "content": { "text/plain": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    },
     "/api/zotero/items/search": {
         "get": {
           "summary": "Search cached items. JSON only.",

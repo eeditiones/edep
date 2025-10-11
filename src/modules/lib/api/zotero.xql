@@ -753,3 +753,107 @@ declare function zotero:item-bib($request as map(*), $root as element()) as empt
       $emit("<!-- missing key or tag parameter -->")
     )
 };
+
+(: ── wrappers ── :)
+declare function zotero:items-suggest() as xs:string {
+  zotero:items-suggest(map{}, <root/>)
+};
+
+declare function zotero:items-suggest($request as map(*)) as xs:string {
+  zotero:items-suggest($request, <root/>)
+};
+
+(: serialize a tiny HTML safely :)
+declare %private function zotero:_as-html($n as node()) as xs:string {
+  serialize($n, map { "method":"html", "omit-xml-declaration": true(), "indent": false() })
+};
+
+(: MAIN: GET /api/zotero/items/suggest?q=&tag=&limit=&top=1 :)
+declare function zotero:items-suggest($request as map(*), $root as element()) as xs:string {
+  response:set-header("Content-Type", "application/json"),
+
+  let $coll   := $config:zotero-items-dir
+  let $qIn    := lower-case(normalize-space(request:get-parameter("q", "")))
+  let $tagIn  := lower-case(normalize-space(request:get-parameter("tag", "")))
+  let $limIn  := request:get-parameter("limit", "8")
+  let $limit  := let $n := try { xs:integer($limIn) } catch * { 8 }
+                 return if ($n lt 1) then 8 else $n
+  let $topIn  := request:get-parameter("top", "1")
+  let $topOnly:= not($topIn = ("0","false","no"))
+
+  let $names :=
+    if (xmldb:collection-available($coll))
+    then xmldb:get-child-resources($coll)[ends-with(., ".json")]
+    else ()
+
+  let $matches :=
+    for $name in $names
+    let $uri := concat($coll, "/", $name)
+    let $bin := try { util:binary-doc($uri) } catch * { () }
+    let $txt := if (exists($bin)) then util:binary-to-string($bin) else ""
+    where $txt ne ""
+    let $data := try { parse-json($txt) } catch * { map{} }
+
+    (: skip non-top-level if requested :)
+    let $parent := string(($data?parentItem)[1])
+    where (not($topOnly)) or (normalize-space($parent) = "")
+
+    (: quick tag set :)
+    let $tags :=
+      if ($data?tags instance of array(*)) then
+        for $i in 1 to array:size($data?tags)
+        return lower-case(normalize-space(string((array:get($data?tags, $i)?tag)[1])))
+      else ()
+    let $primaryTag := string(($tags[1], "")[1])
+
+    (: tag filter :)
+    where ($tagIn = "") or (some $t in $tags satisfies $t = $tagIn)
+
+    (: build haystack for q over title/creators/DOI :)
+    let $title := lower-case(string(($data?title)[1]))
+    let $creators :=
+      if ($data?creators instance of array(*)) then
+        string-join(
+          for $i in 1 to array:size($data?creators)
+          let $c  := array:get($data?creators, $i)
+          let $ln := string(($c?lastName)[1])
+          let $fn := string(($c?firstName)[1])
+          let $nm := string(($c?name)[1])
+          let $parts := ($ln, $fn, $nm)
+          let $nonEmpty := for $p in $parts where normalize-space($p) ne "" return $p
+          let $one := normalize-space(string-join($nonEmpty, " "))
+          where $one ne ""
+          return $one
+        , " ")
+      else ""
+    let $doi := lower-case(string((($data?DOI, $data?doi)[1])))
+    let $hay := normalize-space(string-join(($title, $creators, $doi), " "))
+
+    where ($qIn = "") or contains($hay, $qIn)
+
+    (: display label: cached bib or title fallback :)
+    let $bib := string(($data?bib)[1])
+    let $label :=
+      if (normalize-space($bib) ne "") then $bib
+      else zotero:_as-html(<span class="zotero-title">{ $title }</span>)
+
+    let $key := string(($data?key, replace($name, "\.json$", ""))[1])
+
+    return map{
+      "key":   $key,
+      "tag":   $primaryTag,
+      "label": $label
+    }
+
+  let $total   := count($matches)
+  let $limited := subsequence($matches, 1, $limit)
+
+  let $payload := map{
+    "query":    map{ "q": $qIn, "tag": $tagIn, "limit": $limit, "top": $topOnly },
+    "total":    $total,
+    "returned": count($limited),
+    "items":    array { $limited }
+  }
+
+  return serialize($payload, map{ "method":"json", "indent": true() })
+};
