@@ -11,10 +11,18 @@ This document describes the local Zotero cache used by the app, the expected col
 
 * you must install edep-data.xar BEFORE edep.xar so the latter can create the necessary structure (see below)
 
+## What is does
 
-## 1) Collection layout
+* Syncs the items of a specific configured group to a eXist-db collection including its `bib` properties.
+* maintains a meta.json to track version
 
-Only the **group** collection is created dynamically by the post‑install script. The **base** and **items** collections are expected to exist after installation.
+
+## Collection layout
+
+The following structure will be created during post-install.
+
+Note: Currently only one group is supported for syncing. However the structure allows to store 
+multiple groups with their items. 
 
 ```
 /edep-data
@@ -54,7 +62,7 @@ One file per Zotero item **key**. Stored content is the **pristine Zotero `data`
 
 ---
 
-## 2) Config module (`config.xqm`)
+## Config module (`config.xqm`)
 
 The application reads **config variables** directly (hyphenated names), and also provides **function wrappers** for legacy callers. Keep both to avoid router/package regressions.
 
@@ -71,6 +79,7 @@ declare variable $config:zotero-base-dir  as xs:string  := "/db/zotero-cache/gro
 declare variable $config:zotero-group-dir as xs:string  := concat($config:zotero-base-dir, "/", $config:zotero-group-id);
 declare variable $config:zotero-items-dir as xs:string  := concat($config:zotero-group-dir, "/items");
 declare variable $config:zotero-meta-path as xs:string  := concat($config:zotero-group-dir, "/meta.json");
+declare variable $config:zotero-style := "digital-humanities-im-deutschsprachigen-raum";
 ```
 
 **Notes**
@@ -79,7 +88,7 @@ declare variable $config:zotero-meta-path as xs:string  := concat($config:zotero
 
 ---
 
-## 3) Installation bootstrap (`post-install.xql`)
+## Installation bootstrap (`post-install.xql`)
 
 The post‑install script should:
 1. Create collections: `$config:zotero-base-dir`, `$config:zotero-group-dir`, `$config:zotero-items-dir` (stepwise under `/db`).
@@ -94,7 +103,7 @@ A minimal post‑install does:
 
 ---
 
-## 4) Sync endpoint
+## Sync endpoint
 
 **Route**: `POST /api/z/sync` → `zotero:sync`  
 **Behavior**: Incremental, paginated sync from Zotero group into local cache.
@@ -129,7 +138,7 @@ If Zotero returns `304 Not Modified`, the local API responds with:
 
 ---
 
-## 5) Router wiring (Roaster)
+## Router wiring (Roaster)
 
 Example OpenAPI snippet (YAML):
 ```yaml
@@ -160,7 +169,7 @@ declare function zotero:sync($config as map(*), $root as element()) as xs:string
 
 ---
 
-## 6) Troubleshooting
+## Troubleshooting
 
 - **make sure edep-data.xar has been installed before edep.xar**
   post-install of edep.xar creates the needed collections in edep-data
@@ -176,7 +185,7 @@ declare function zotero:sync($config as map(*), $root as element()) as xs:string
 
 ---
 
-## 7) Trigger sync (curl)
+## Trigger sync (curl)
 ```bash
 curl -X POST 'http://localhost:8080/api/z/sync'
 ```
@@ -186,7 +195,3 @@ You should see JSON like:
 { "status":"ok", "updated": 123, "libraryVersion": 4567 }
 ```
 
----
-
-*Document version:* 1.0  
-*Last updated:* generated for the current build.
