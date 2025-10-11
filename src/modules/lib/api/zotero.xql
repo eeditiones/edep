@@ -183,15 +183,15 @@ declare function zotero:sync() as xs:string {
   response:set-header("Content-Type","application/json"),
   zotero:sync(map{}, <root/>)
 };
-declare function zotero:sync($config as map(*)) as xs:string {
+declare function zotero:sync($request as map(*)) as xs:string {
   response:set-header("Content-Type","application/json"),
-  zotero:sync($config, <root/>)
+  zotero:sync($request, <root/>)
 };
 
 (: MAIN :)
 (: INLINE sync — writes meta.json on BOTH 304 and 200 :)
 (: ─────────── sync: ALWAYS writes meta.json (200 and 304) ─────────── :)
-declare function zotero:sync($config as map(*), $root as element()) {
+declare function zotero:sync($request as map(*), $root as element()) {
   response:set-header("Content-Type","application/json"),
 
   let $meta   := try { zotero:read-meta() } catch * { map{ "libraryVersion": 0 } }
@@ -292,18 +292,18 @@ declare function zotero:items-search() as xs:string {
   zotero:items-search(map{}, <root/>)
 };
 
-declare function zotero:items-search($config as map(*)) as xs:string {
-  zotero:items-search($config, <root/>)
+declare function zotero:items-search($request as map(*)) as xs:string {
+  zotero:items-search($request, <root/>)
 };
 
 (: ─── MAIN: GET /api/zotero/items/search ─── :)
-declare function zotero:items-search($config as map(*), $root as element()) as xs:string {
+declare function zotero:items-search($request as map(*), $root as element()) as xs:string {
   response:set-header("Content-Type", "application/json"),
 
   let $coll  := $config:zotero-items-dir
   let $qIn   := lower-case(normalize-space(request:get-parameter("q", "")))
   let $tagIn := lower-case(normalize-space(request:get-parameter("tag", "")))
-  let $limIn := request:get-parameter("limit", "15")
+  let $limIn := $request?parameters?limit
   let $limit := let $n := try { xs:integer($limIn) } catch * { 15 }
                 return if ($n lt 1) then 15 else $n
 
@@ -370,3 +370,4 @@ declare function zotero:items-search($config as map(*), $root as element()) as x
 
   return serialize($payload, map{ "method": "json", "indent": true() })
 };
+
