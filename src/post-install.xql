@@ -5,6 +5,7 @@ import module namespace pmc="http://www.tei-c.org/tei-simple/xquery/config";
 import module namespace odd="http://www.tei-c.org/tei-simple/odd2odd";
 import module namespace config="http://www.tei-c.org/tei-simple/config" at "modules/config.xqm";
 import module namespace tpu="http://www.tei-c.org/tei-publisher/util" at "util.xql";
+import module namespace zotero="http://e-editiones.org/edep/api/zotero" at "modules/lib/api/zotero.xql";
 
 declare namespace repo="http://exist-db.org/xquery/repo";
 
@@ -167,6 +168,7 @@ declare function local:zotero-ensure-layout() as map(*) {
   let $_b := local:mkcol-abs($config:zotero-base-dir)
   let $_g := local:mkcol-abs($config:zotero-group-dir)
   let $_i := local:mkcol-abs($config:zotero-items-dir)
+  let $_h := local:mkcol-abs($config:zotero-items-xml-dir)
 
   let $metaSeeded := local:zotero-seed-meta-if-missing($config:zotero-meta-path)
 
@@ -176,12 +178,14 @@ declare function local:zotero-ensure-layout() as map(*) {
       "base":  xmldb:collection-available($config:zotero-base-dir),
       "group": xmldb:collection-available($config:zotero-group-dir),
       "items": xmldb:collection-available($config:zotero-items-dir),
+      "items-xml": xmldb:collection-available($config:zotero-items-xml-dir),
       "metaSeeded": $metaSeeded
     },
     "paths": map{
       "base":  $config:zotero-base-dir,
       "group": $config:zotero-group-dir,
       "items": $config:zotero-items-dir,
+      "items-xml": $config:zotero-items-xml-dir,
       "meta":  $config:zotero-meta-path
     }
   }
@@ -201,6 +205,7 @@ local:mkcol($target, "transform"),
 local:generate-code($target),
 local:create-data-collection(),
 local:zotero-ensure-layout(),
+zotero:assert-config(),
 xmldb:reindex('/db/apps/edep-data'),
 let $pmuConfig := pmc:generate-pm-config(($config:odd-available, $config:odd-internal), $config:default-odd, $config:odd-root)
 return

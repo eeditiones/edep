@@ -13,7 +13,7 @@ import module namespace config="http://www.tei-c.org/tei-simple/config" at "conf
 import module namespace pm-config="http://www.tei-c.org/tei-simple/pm-config" at "pm-config.xql";
 import module namespace tpu="http://www.tei-c.org/tei-publisher/util" at "lib/util.xql";
 import module namespace errors = "http://e-editiones.org/roaster/errors";
-import module namespace zotero = "http://teipublisher.com/api/zotero" at "lib/api/zotero.xql";
+import module namespace zotero = "http://e-editiones.org/edep/api/zotero" at "lib/api/zotero.xql";
 
 declare namespace json="http://www.json.org";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
