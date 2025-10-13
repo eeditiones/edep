@@ -1,36 +1,50 @@
 <html lang="en">
 <head>
-    <!--    <base href="${app}" data-template="pages:parse-params" />-->
     <meta charset="utf-8" />
-    <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>zotero</title>
 
-    <link rel="stylesheet" href="resources/css/fore.css" media="screen" />
-    <!--    <link href="clock.css" rel="stylesheet">-->
-    <script type="module" src="resources/scripts/fore-dev.js"></script>
-    <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>
+    <link rel="stylesheet" href="resources/css/fore.css" />
+    <link rel="stylesheet" href="resources/css/zotero-autocomplete.css" />
 
+<!--    <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>-->
+<!--    <script type="module" src="resources/scripts/fore-dev.js"></script>-->
+    <script type="module">
+      import './resources/scripts/zotero-autocomplete.js';
+      await customElements.whenDefined('zotero-autocomplete');
+      import './resources/scripts/fore-dev.js';
+    </script>
+
+    <style>
+        fx-control, label { display:block; }
+        .wrapper { max-width: 740px; margin: 2rem auto; padding: 1rem; }
+    </style>
 </head>
 <body>
 <div class="wrapper">
-    <zotero-autocomplete
-        endpoint="../api/zotero/items/suggest"
-        bib-endpoint="../api/zotero/items/bib"
-        tag=""
-        limit="8"
-        minlength="2"
-        debounce="250">
-    </zotero-autocomplete>
-</div>
+    <fx-fore>
+        <fx-model>
+            <fx-instance>
+                <data>
+                    <value>JECUYVKL</value>
+                </data>
+            </fx-instance>
+        </fx-model>
 
-<script>
-  // Listen for selection
-  document.querySelector('zotero-autocomplete')
-    .addEventListener('zotero-select', (e) => {
-      console.log('Selected:', e.detail); // { key, title, bib }
-      // e.g., insert e.detail.bib into your UI
-    });
-</script>
+        <fx-control ref="value" update-event="value-changed">
+            <label>Zotero Value</label>
+            <zotero-autocomplete
+                class="widget"
+                endpoint="../api/zotero/items/suggest"
+                bib-endpoint="../api/zotero/items/bib"
+                limit="8"
+                minlength="2"
+                debounce="250">
+            </zotero-autocomplete>
+        </fx-control>
+
+        <p>Selected key: <fx-output ref="value"></fx-output></p>
+    </fx-fore>
+</div>
 </body>
 </html>
