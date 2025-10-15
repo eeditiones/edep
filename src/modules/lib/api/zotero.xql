@@ -43,36 +43,10 @@ declare variable $zotero:META_PATH as xs:string := $config:zotero-meta-path;
 
 (: API constants :)
 declare variable $zotero:API_BASE  as xs:string := $config:zotero-api-base;
-declare variable $zotero:GROUP_ID  as xs:string := string($config:zotero-group-id);
+declare variable $zotero:GROUP_ID  as xs:string := $config:zotero-group-id;
 declare variable $zotero:STYLE     as xs:string := $config:zotero-style;
-declare variable $zotero:API_KEY   as xs:string := ($config:zotero-api-key, "")[1];
+declare variable $zotero:API_KEY   as xs:string := $config:zotero-api-key;
 
-(: Call once (e.g. from post-install) to assert config and create needed collections. :)
-declare function zotero:assert-config() as map(*) {
-  let $problems :=
-    (
-      if (not(starts-with($zotero:ITEMS_DIR, "/db/"))) then "items-dir must be an absolute collection" else (),
-      if (not(starts-with($zotero:XML_DIR,   "/db/"))) then "xml-dir must be an absolute collection"   else (),
-      if (not(xmldb:collection-available($zotero:GROUP_BASE)))
-        then concat("group-base missing: ", $zotero:GROUP_BASE) else ()
-    )
-  return
-    if (exists($problems)) then
-      map{ "ok": false(), "errors": array{ $problems } }
-    else (
-      (: ensure items/xml collections exist; do it once here, not in hot paths :)
-      if (not(xmldb:collection-available($zotero:ITEMS_DIR))) then
-        xmldb:create-collection($zotero:ITEMS_DIR, "") else (),
-      if (not(xmldb:collection-available($zotero:XML_DIR))) then
-        xmldb:create-collection($zotero:XML_DIR, "") else (),
-      map{
-        "ok": true(),
-        "itemsDir": $zotero:ITEMS_DIR,
-        "xmlDir":   $zotero:XML_DIR,
-        "meta":     $zotero:META_PATH
-      }
-    )
-};
 declare %private function zotero:_xml-matches($i as element(item), $q as xs:string) as xs:boolean {
   if ($q = "") then true()
   else
@@ -124,13 +98,6 @@ declare %private function zotero:write-meta($lv as xs:integer) as xs:boolean {
     } catch * {
       false()
     }
-};
-
-(: ====== XML mirror helpers (one file per item) ====== :)
-declare %private function zotero:xml-ensure-collection() as empty-sequence() {
-  if (not(xmldb:collection-available($config:zotero-items-xml-dir))) then
-    xmldb:create-collection($config:zotero-items-xml-dir, "")
-  else ()
 };
 
 declare %private function zotero:xml-from-json($data as map(*), $bib as xs:string?) as element(item) {
@@ -229,14 +196,12 @@ declare %private function zotero:sync-follow($next as xs:string, $acc as xs:inte
 };
 
 (: ====== SYNC endpoint ====== :)
-declare function zotero:sync() as xs:string { zotero:sync(map{}, <root/>) };
-declare function zotero:sync($request as map(*)) as xs:string { zotero:sync($request, <root/>) };
-
-declare function zotero:sync($request as map(*), $root as element()) as xs:string {
+declare function zotero:sync($request as map(*)) {
   response:set-header("Content-Type","application/json"),
 
   let $meta  := try { zotero:read-meta() } catch * { map{ "libraryVersion": 0 } }
   let $since := xs:integer(($meta?libraryVersion, 0)[1])
+  let $log := util:log('info','USER ' || sm:id()//sm:real/sm:username/string())
 
   let $base  := concat($zotero:API_BASE, "/groups/", $zotero:GROUP_ID, "/items")
   let $qs    := string-join((
@@ -326,10 +291,7 @@ declare function zotero:sync($request as map(*), $root as element()) as xs:strin
 };
 
 (: ====== SUGGEST (lightweight for autocomplete) ====== :)
-declare function zotero:items-suggest() as xs:string { zotero:items-suggest(map{}, <root/>) };
-declare function zotero:items-suggest($request as map(*)) as xs:string { zotero:items-suggest($request, <root/>) };
-
-declare function zotero:items-suggest($request as map(*), $root as element()) as xs:string {
+declare function zotero:items-suggest($request as map(*)) {
   response:set-header("Content-Type", "application/json"),
   let $q     := lower-case(normalize-space(request:get-parameter("q", "")))
   let $tag   := lower-case(normalize-space(request:get-parameter("tag", "")))
@@ -354,10 +316,8 @@ declare function zotero:items-suggest($request as map(*), $root as element()) as
   return serialize($arr, map{ "method":"json", "indent": true() })
 };
 
-declare function zotero:items-search() as xs:string { zotero:items-search(map{}, <root/>) };
-declare function zotero:items-search($request as map(*)) as xs:string { zotero:items-search($request, <root/>) };
 
-declare function zotero:items-search($request as map(*), $root as element()) as xs:string {
+declare function zotero:items-search($request as map(*)) {
   response:set-header("Content-Type", "application/json"),
   let $q     := lower-case(normalize-space(request:get-parameter("q", "")))
   let $tag   := lower-case(normalize-space(request:get-parameter("tag", "")))
@@ -394,8 +354,6 @@ declare function zotero:items-search($request as map(*), $root as element()) as 
 };
 
 (: ====== BIB HTML SNIPPET (streams raw HTML) ====== :)
-declare function zotero:item-bib() as empty-sequence() { zotero:item-bib(map{}, <root/>) };
-declare function zotero:item-bib($request as map(*)) as empty-sequence() { zotero:item-bib($request, <root/>) };
 
 declare %private function zotero:_fallback-html($title as xs:string) as xs:string {
   serialize(<span class="zotero-title">{ $title }</span>, map{"method":"html","omit-xml-declaration":true(),"indent":false()})
@@ -407,7 +365,7 @@ declare %private function zotero:_load-json($key as xs:string) as map(*)? {
   return if ($txt ne "") then try { parse-json($txt) } catch * { () } else ()
 };
 
-declare function zotero:item-bib($request as map(*), $root as element()) as empty-sequence() {
+declare function zotero:item-bib($request as map(*)) {
   response:set-header("Content-Type", "text/html; charset=UTF-8"),
 
   let $key  := normalize-space(request:get-parameter("key", ""))
