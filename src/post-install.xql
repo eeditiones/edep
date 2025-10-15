@@ -5,7 +5,6 @@ import module namespace pmc="http://www.tei-c.org/tei-simple/xquery/config";
 import module namespace odd="http://www.tei-c.org/tei-simple/odd2odd";
 import module namespace config="http://www.tei-c.org/tei-simple/config" at "modules/config.xqm";
 import module namespace tpu="http://www.tei-c.org/tei-publisher/util" at "util.xql";
-import module namespace zotero="http://e-editiones.org/edep/api/zotero" at "modules/lib/api/zotero.xql";
 
 declare namespace repo="http://exist-db.org/xquery/repo";
 
@@ -205,7 +204,6 @@ local:mkcol($target, "transform"),
 local:generate-code($target),
 local:create-data-collection(),
 local:zotero-ensure-layout(),
-zotero:assert-config(),
 xmldb:reindex('/db/apps/edep-data'),
 let $pmuConfig := pmc:generate-pm-config(($config:odd-available, $config:odd-internal), $config:default-odd, $config:odd-root)
 return
