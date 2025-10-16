@@ -850,44 +850,6 @@
             }
         }
     },
-    "/api/zotero/sync": {
-      "get": {
-        "security": [{ "cookieAuth": [] }],
-        "summary": "Incrementally sync local cache.",
-        "tags": ["zotero"],
-        "operationId": "zotero:sync",
-        "responses": {
-          "200": {
-            "description": "Sync result.",
-            "content": {
-              "text/plain": { "schema": { "type": "string" } }
-            }
-          },
-          "304": {
-            "description": "No updates."
-          }
-        }
-      }
-    },
-    "/api/zotero/items/bib": {
-      "get": {
-        "security": [{ "basicAuth": [] }],
-        "summary": "Return a single cached item's bibliography (HTML) by key or tag.",
-        "tags": ["zotero"],
-        "operationId": "zotero:item-bib",
-        "parameters": [
-          { "in": "query", "name": "key", "schema": { "type": "string" }, "description": "Item key (preferred)." },
-          { "in": "query", "name": "tag", "schema": { "type": "string" }, "description": "Fallback: first item with this tag." }
-        ],
-        "responses": {
-          "200": {
-            "description": "HTML snippet (CSL bib or title fallback).",
-            "content": { "text/html": { "schema": { "type": "string" } } }
-          },
-          "404": { "description": "No matching item found." }
-        }
-      }
-    },
     "/api/zotero/items/suggest": {
       "get": {
         "security": [{ "basicAuth": [] }],

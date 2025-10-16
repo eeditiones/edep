@@ -2845,7 +2845,25 @@
 				}
 			}
         },
-        "/api/register/{type}/{id}" : {
+		"/api/zotero/sync": {
+			"get": {
+				"summary": "Incrementally sync local cache.",
+				"tags": ["zotero"],
+				"operationId": "zotero:sync",
+				"responses": {
+					"200": {
+						"description": "Sync result.",
+						"content": {
+							"text/plain": { "schema": { "type": "string" } }
+						}
+					},
+					"304": {
+						"description": "No updates."
+					}
+				}
+			}
+		},
+		"/api/register/{type}/{id}" : {
             "post": {
                 "summary": "Create a local entry",
                 "description": "Create a local register entry based on the provided data",
