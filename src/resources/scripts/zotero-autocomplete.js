@@ -225,12 +225,48 @@ class ZoteroAutocomplete extends HTMLElement {
         }
     }
 
-    async _fetchBib(key) {
-        const url = new URL(this._bibEndpoint, window.location.href);
-        url.searchParams.set('key', key);
-        const res = await fetch(url.toString(), { credentials: 'include' });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        return await res.text();
+    // NEW: local helper to read bib from already loaded results (no network)
+    // NEW: local helper to read bib from already loaded results (no network)
+    _getBib(id) {
+        const needle = (id || '').trim().toLowerCase();
+        if (!needle) return '';
+
+        const items = Array.isArray(this._results) ? this._results : [];
+        const hit = items.find(it => {
+            const tag = (it && it.tag ? String(it.tag) : '').toLowerCase();
+            const key = (it && it.key ? String(it.key) : '').toLowerCase();
+            return tag === needle || key === needle;
+        });
+        return hit && typeof hit.bib === 'string' ? hit.bib : '';
+    }
+
+    // REPLACE your current _fetchBib with this version
+    async _fetchBib(id) {
+        // 1) try already-loaded suggestions
+        const local = this._getBib(id);
+        if (local) return local;
+
+        // 2) fallback for preset values: resolve one item by tag
+        const tag = (id || '').trim();
+        if (!tag) return '';
+
+        try {
+            // keep your existing endpoint; resolve relative to the current document URL
+            const url = new URL(this.api || '/exist/apps/edep/api/zotero/items/suggest', document.baseURI);
+            url.searchParams.set('tag', tag);
+            url.searchParams.set('limit', '1');
+
+            const resp = await fetch(url.toString(), {
+                headers: { Accept: 'application/json' },
+                credentials: 'include',
+            });
+            if (!resp.ok) return '';
+
+            const arr = await resp.json();
+            return Array.isArray(arr) && arr.length && typeof arr[0].bib === 'string' ? arr[0].bib : '';
+        } catch (_) {
+            return '';
+        }
     }
 
     /* ===== render list ===== */
