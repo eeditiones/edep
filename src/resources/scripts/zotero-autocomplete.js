@@ -15,6 +15,7 @@ class ZoteroAutocomplete extends HTMLElement {
         this._debounceMs = 250;
         this._minlen = 2;
         this._uidBase = Math.random().toString(36).slice(2);
+        this._value = ''; // ← ALWAYS the TAG that Fore should get
 
         // light DOM markup
         this.classList.add('za');
@@ -105,30 +106,38 @@ class ZoteroAutocomplete extends HTMLElement {
 
     /* ===== Fore contract ===== */
     get value() {
-        return this.$input?.dataset.key || '';
+        // VALUE IS THE TAG (not the visible text)
+        return this._value || '';
     }
     set value(v) {
-        const key = String(v || '').trim();
-        if (!key) {
+        // v is TAG
+        const tag = String(v || '').trim();
+        if (!tag) {
             this.clear();
             this._notifyValueChanged();
             return;
         }
 
-        this.$input.dataset.key = key;
-        this._selected = { key, title: '', bib: '' };
-        this._fetchBib(key)
+        // store tag as the component value
+        this._value = tag;
+        this.$input.dataset.tag = tag; // keep for debugging/inspection
+
+        this._selected = { tag, title: '', bib: '' };
+
+        // resolve bib using local cache first, then single request by tag
+        this._fetchBib(tag)
             .then(html => {
                 this._selected.bib = html || '';
                 const plain = this._stripHtml(html || '') || '';
-                this.$input.value = plain;
-                this._showOverlay(html || plain);
+                // show something human-friendly; we only know the tag here
+                this.$input.value = plain || tag;
+                this._showOverlay(html || plain || tag);
                 this._toggleClear();
                 this._notifyValueChanged();
             })
             .catch(() => {
-                this.$input.value = key;
-                this._showOverlay(key);
+                this.$input.value = tag;
+                this._showOverlay(tag);
                 this._toggleClear();
                 this._notifyValueChanged();
             });
@@ -148,16 +157,10 @@ class ZoteroAutocomplete extends HTMLElement {
         const opts = { bubbles: true, composed: true };
         const withDetail = name => new CustomEvent(name, { ...opts, detail: { value: val } });
 
-        // fire on host
+        // fire on host ONLY (avoid inner input events that would expose human text)
         this.dispatchEvent(new Event('input', opts));
         this.dispatchEvent(new Event('change', opts));
         this.dispatchEvent(withDetail('value-changed'));
-        // and on inner input (compat)
-        if (this.$input) {
-            this.$input.dispatchEvent(new Event('input', opts));
-            this.$input.dispatchEvent(new Event('change', opts));
-            this.$input.dispatchEvent(withDetail('value-changed'));
-        }
     }
 
     /* ===== public helpers ===== */
@@ -165,8 +168,9 @@ class ZoteroAutocomplete extends HTMLElement {
         return this._selected || null;
     }
     clear() {
+        this._value = '';
         this.$input.value = '';
-        this.$input.dataset.key = '';
+        this.$input.dataset.tag = '';
         this._selected = null;
         this._render([]);
         this._hideOverlay();
@@ -183,7 +187,8 @@ class ZoteroAutocomplete extends HTMLElement {
         // real typing → drop selection & overlay and notify empty value
         if (this._selected) {
             this._selected = null;
-            this.$input.dataset.key = '';
+            this._value = '';
+            this.$input.dataset.tag = '';
             this._hideOverlay();
             this._notifyValueChanged();
         }
@@ -202,19 +207,42 @@ class ZoteroAutocomplete extends HTMLElement {
             const res = await fetch(url.toString(), { credentials: 'include' });
             if (!res.ok) throw new Error('HTTP ' + res.status);
             const data = await res.json();
+
+            // Robust mapping: pull tag from several possible shapes
+            const firstTag = obj => {
+                if (!obj) return '';
+                if (typeof obj.tag === 'string') return obj.tag;
+                if (Array.isArray(obj.tags) && obj.tags.length && typeof obj.tags[0]?.tag === 'string')
+                    return obj.tags[0].tag;
+                if (
+                    obj.data &&
+                    Array.isArray(obj.data.tags) &&
+                    obj.data.tags.length &&
+                    typeof obj.data.tags[0]?.tag === 'string'
+                )
+                    return obj.data.tags[0].tag;
+                if (typeof obj.topTag === 'string') return obj.topTag;
+                if (typeof obj.matchTag === 'string') return obj.matchTag;
+                return '';
+            };
+
             let list = (Array.isArray(data) ? data : data.items || [])
                 .map(it => ({
                     key: it.key || it.data?.key || '',
+                    tag: it.tag || firstTag(it) || '',
                     title: it.title || it.data?.title || '',
                     bib: it.bib || it.html || '',
                 }))
-                .filter(x => x.key);
+                // keep items that have at least a tag (we need tag for value)
+                .filter(x => x.tag);
 
-            // If no bib included, fetch snippets for visible set
+            // If no bib included, fetch snippets for visible set (by TAG)
             if (list.length && !list[0].bib) {
                 const limited = list.slice(0, this._limit);
-                const htmls = await Promise.all(limited.map(i => this._fetchBib(i.key).catch(() => '')));
-                limited.forEach((i, idx) => (i.bib = htmls[idx] || this._escape(i.title || '[untitled]')));
+                const htmls = await Promise.all(
+                    limited.map(i => (i.tag ? this._fetchBib(i.tag).catch(() => '') : Promise.resolve(''))),
+                );
+                limited.forEach((i, idx) => (i.bib = htmls[idx] || this._escape(i.title || i.tag || '[untitled]')));
                 list = limited;
             }
             this._render(list);
@@ -224,33 +252,30 @@ class ZoteroAutocomplete extends HTMLElement {
         }
     }
 
-    // NEW: local helper to read bib from already loaded results (no network)
-    // NEW: local helper to read bib from already loaded results (no network)
+    // Local helper: read bib from current rendered items (no network)
     _getBib(id) {
         const needle = (id || '').trim().toLowerCase();
         if (!needle) return '';
 
-        const items = Array.isArray(this._results) ? this._results : [];
+        const items = Array.isArray(this._items) ? this._items : [];
         const hit = items.find(it => {
             const tag = (it && it.tag ? String(it.tag) : '').toLowerCase();
             const key = (it && it.key ? String(it.key) : '').toLowerCase();
-            return tag === needle || key === needle;
+            return (tag && tag === needle) || (key && key === needle);
         });
+
         return hit && typeof hit.bib === 'string' ? hit.bib : '';
     }
 
-    // REPLACE your current _fetchBib with this version
+    // Use cached suggestions first; if not found (preset value), resolve once by TAG
     async _fetchBib(id) {
-        // 1) try already-loaded suggestions
         const local = this._getBib(id);
         if (local) return local;
 
-        // 2) fallback for preset values: resolve one item by tag
         const tag = (id || '').trim();
         if (!tag) return '';
 
         try {
-            // keep your existing endpoint; resolve relative to the current document URL
             const url = new URL(this._endpoint, document.baseURI);
             url.searchParams.set('tag', tag);
             url.searchParams.set('limit', '1');
@@ -286,9 +311,9 @@ class ZoteroAutocomplete extends HTMLElement {
             li.id = id;
             li.setAttribute('role', 'option');
             li.setAttribute('data-idx', String(idx));
-            li.setAttribute('data-key', it.key);
+            li.setAttribute('data-tag', it.tag || '');
             li.tabIndex = -1;
-            li.innerHTML = `<div class="za-bib">${it.bib || this._escape(it.title || '[untitled]')}</div>`;
+            li.innerHTML = `<div class="za-bib">${it.bib || this._escape(it.title || it.tag || '[untitled]')}</div>`;
             li.addEventListener('mouseenter', () => this._setActive(idx, true));
             this.$list.appendChild(li);
         });
@@ -372,14 +397,6 @@ class ZoteroAutocomplete extends HTMLElement {
         const related = e.relatedTarget;
         if (!this.contains(related)) this._render([]);
     }
-    /*  _handleFocus() {
-        const q = this.$input.value.trim();
-        if (q.length >= this._minlen && this._items.length) {
-            this.$list.classList.add('is-open');
-            this.$input.setAttribute('aria-expanded', 'true');
-        }
-        this._toggleClear();
-    } */
     _handleFocus() {
         // if overlay is active, ensure no text selection band is visible
         if (this.$field?.classList.contains('has-overlay')) {
@@ -439,19 +456,26 @@ class ZoteroAutocomplete extends HTMLElement {
     _choose(idx) {
         const item = this._items[idx];
         if (!item) return;
+
+        // Store selection
         this._selected = item;
-        const plain = this._stripHtml(item.bib) || item.title || '';
+        const plain = this._stripHtml(item.bib) || item.title || item.tag || '';
         this.$input.value = plain;
-        this.$input.dataset.key = item.key;
+
+        // VALUE MUST BE TAG (not key, not title)
+        this._value = item.tag || '';
+        this.$input.dataset.tag = this._value;
+
         this._render([]); // hide menu
         this._showOverlay(item.bib || plain);
         this._toggleClear();
 
-        this._notifyValueChanged(); // Fore: emit
+        // Fore: emit (value == tag)
+        this._notifyValueChanged();
         this.dispatchEvent(
             new CustomEvent('zotero-select', {
                 bubbles: true,
-                detail: { key: item.key, title: item.title || '', bib: item.bib || '' },
+                detail: { key: item.key, tag: item.tag, title: item.title || '', bib: item.bib || '' },
             }),
         );
     }

@@ -202,6 +202,8 @@ declare function zotero:sync($request as map(*)) {
   let $meta  := try { zotero:read-meta() } catch * { map{ "libraryVersion": 0 } }
   let $since := xs:integer(($meta?libraryVersion, 0)[1])
   let $log := util:log('info','USER ' || sm:id()//sm:real/sm:username/string())
+  let $user := $request?user
+  let $log := util:log('info','REQUEST USER ' || sm:id()//sm:real/sm:username/string())
 
   let $base  := concat($zotero:API_BASE, "/groups/", $zotero:GROUP_ID, "/items")
   let $qs    := string-join((
@@ -214,6 +216,7 @@ declare function zotero:sync($request as map(*)) {
                   else ()
                ), "&amp;")
   let $href  := concat($base, "?", $qs)
+  let $log := util:log('info','HREF ' || $href)
 
   let $req :=
     <http:request method="GET">
@@ -310,7 +313,8 @@ declare function zotero:items-suggest($request as map(*)) {
     return map{
       "key":   string($i/@key),
       "title": string($i/title),
-      "bib":   if ($i/bib/@html = "true") then string($i/bib) else ""
+      "bib":   if ($i/bib/@html = "true") then string($i/bib) else "",
+      "tag": data($i//tag[1])
     }
   }
   return serialize($arr, map{ "method":"json", "indent": true() })
