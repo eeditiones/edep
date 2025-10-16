@@ -1,5 +1,6 @@
-// resources/scripts/zotero-autocomplete.js
-// Light-DOM web component with Fore-friendly events & multiline overlay
+/*
+ Light-DOM web component with Fore-friendly events & multiline overlay
+ */
 class ZoteroAutocomplete extends HTMLElement {
     static get observedAttributes() {
         return ['endpoint', 'bib-endpoint', 'tag', 'limit', 'minlength', 'debounce', 'value', 'name'];
@@ -50,7 +51,6 @@ class ZoteroAutocomplete extends HTMLElement {
     connectedCallback() {
         // config
         this._endpoint = this.getAttribute('endpoint') || '/api/zotero/items/suggest';
-        this._bibEndpoint = this.getAttribute('bib-endpoint') || '/api/zotero/items/bib';
         this._tag = this.getAttribute('tag') || '';
         this._limit = parseInt(this.getAttribute('limit') || '8', 10);
         this._minlen = parseInt(this.getAttribute('minlength') || String(this._minlen), 10);
@@ -90,7 +90,6 @@ class ZoteroAutocomplete extends HTMLElement {
     attributeChangedCallback(name, _old, value) {
         if (!this.isConnected) return;
         if (name === 'endpoint') this._endpoint = value || this._endpoint;
-        if (name === 'bib-endpoint') this._bibEndpoint = value || this._bibEndpoint;
         if (name === 'tag') this._tag = value || '';
         if (name === 'limit') this._limit = parseInt(value || '8', 10);
         if (name === 'minlength') this._minlen = parseInt(value || '2', 10);
