@@ -15,12 +15,14 @@
         <link rel="stylesheet" href="resources/css/edep-theme2.css" media="screen" />
         <link rel="stylesheet" href="resources/css/geo-picker.css" media="screen" />
         <link rel="stylesheet" href="transform/edep.css" media="screen" />
+        <link rel="stylesheet" href="resources/css/zotero-autocomplete.css" media="screen" />
         <!-- Uncomment if jinn-codemirror is running on 8000 -->
         <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
         <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
 
         <!--        <script type="module" src="http://localhost:8090/index.js"></script>-->
         <script type="module" src="resources/scripts/fore-dev.js"></script>
+        <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>
         <script type="module" src="resources/scripts/edep-xml-editor.js"></script>
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
     </head>
@@ -122,6 +124,7 @@
 
                                 <fx-instance id="vars" shared="true">
                                     <data>
+                                        <appdir>${app}</appdir>
                                         <display-leiden>hidden</display-leiden>
                                         <can-delete>false</can-delete>
                                         <parent></parent>

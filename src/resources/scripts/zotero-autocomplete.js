@@ -3,19 +3,24 @@
  */
 class ZoteroAutocomplete extends HTMLElement {
     static get observedAttributes() {
-        return ['endpoint', 'bib-endpoint', 'tag', 'limit', 'minlength', 'debounce', 'value', 'name'];
+        return ['endpoint', 'tag', 'limit', 'debounce', 'value', 'name', 'wait-ready'];
     }
 
     constructor() {
         super();
         // state
+        this.fore = {};
         this._items = [];
         this._active = -1;
         this._selected = null;
         this._debounceMs = 250;
         this._minlen = 2;
         this._uidBase = Math.random().toString(36).slice(2);
-        this._value = ''; // ← ALWAYS the TAG that Fore should get
+        this._value = ''; // Fore-facing value (TAG)
+        this._deferUntilReady = this.hasAttribute('wait-ready');
+        this._ready = !this._deferUntilReady;
+        this._pendingValue = null; // value set before ready is fired
+        this._readyHandler = null;
 
         // light DOM markup
         this.classList.add('za');
@@ -50,12 +55,14 @@ class ZoteroAutocomplete extends HTMLElement {
     }
 
     connectedCallback() {
-        // config
+        // config (initial — may be template, re-read on 'ready' if deferred)
         this._endpoint = this.getAttribute('endpoint') || '/api/zotero/items/suggest';
         this._tag = this.getAttribute('tag') || '';
         this._limit = parseInt(this.getAttribute('limit') || '8', 10);
         this._minlen = parseInt(this.getAttribute('minlength') || String(this._minlen), 10);
         this._debounceMs = parseInt(this.getAttribute('debounce') || String(this._debounceMs), 10);
+        this._deferUntilReady = this.hasAttribute('wait-ready');
+        this._ready = !this._deferUntilReady;
 
         // listeners
         this.$input.addEventListener('input', this._onInput);
@@ -70,12 +77,27 @@ class ZoteroAutocomplete extends HTMLElement {
         const nameAttr = this.getAttribute('name');
         if (nameAttr) this.$input.name = nameAttr;
 
-        // ensure at least one notification after connect
-        queueMicrotask(() => this._notifyValueChanged());
+        if (this._deferUntilReady) {
+            // wait for Fore to resolve template attributes & models
+            this._readyHandler = () => this._onReadyOnce();
+            document.addEventListener('ready', this._readyHandler, { once: true });
+            // document.addEventListener('model-construct-done', this._readyHandler, { once: true });
 
-        // preset value via attribute (fires notifications as well)
-        const initVal = this.getAttribute('value');
-        if (initVal) this.value = initVal;
+            // If a preset value is already present, stash it so we can resolve after 'ready'
+            const initVal = this.getAttribute('value');
+            if (initVal) {
+                this._pendingValue = String(initVal).trim();
+                // provide a harmless placeholder so users see *something* before ready
+                this.$input.value = this._pendingValue;
+                this._showOverlay(this._pendingValue);
+                this._toggleClear();
+            }
+        } else {
+            // normal immediate init
+            queueMicrotask(() => this._notifyValueChanged());
+            const initVal = this.getAttribute('value');
+            if (initVal) this.value = initVal;
+        }
     }
 
     disconnectedCallback() {
@@ -86,6 +108,11 @@ class ZoteroAutocomplete extends HTMLElement {
         this.removeEventListener('focusout', this._onBlur);
         this.removeEventListener('focusin', this._onFocus);
         this.$clear.removeEventListener('click', this._onClear);
+        if (this._readyHandler) {
+            document.removeEventListener('ready', this._readyHandler);
+            // document.removeEventListener('model-construct-done', this._readyHandler);
+            this._readyHandler = null;
+        }
     }
 
     attributeChangedCallback(name, _old, value) {
@@ -101,7 +128,47 @@ class ZoteroAutocomplete extends HTMLElement {
             this.$input?.addEventListener('input', this._onInput);
         }
         if (name === 'name' && value) this.$input.name = value;
-        if (name === 'value' && value !== this.value) this.value = value || '';
+        if (name === 'wait-ready') this._deferUntilReady = this.hasAttribute('wait-ready');
+
+        if (name === 'value' && value !== this.value) {
+            // If deferring, just stash it until ready
+            if (this._deferUntilReady && !this._ready) {
+                this._pendingValue = String(value || '').trim();
+                // lightweight placeholder (no network before ready)
+                this.$input.value = this._pendingValue;
+                this._showOverlay(this._pendingValue);
+                this._toggleClear();
+            } else {
+                this.value = value || '';
+            }
+        }
+    }
+
+    // Called once when Fore emits 'ready' (or 'model-construct-done')
+    _onReadyOnce() {
+        this._ready = true;
+        // re-read endpoint after template resolution
+        this._endpoint = this.getAttribute('endpoint') || this._endpoint;
+
+        // Prefer pending value set via property/attribute before ready; else attribute value
+        const start =
+            (this._pendingValue && this._pendingValue.trim()) ||
+            (this.getAttribute('value') && this.getAttribute('value').trim()) ||
+            '';
+
+        if (start) {
+            // Apply now with full resolution (fetch bib if needed)
+            this._pendingValue = null;
+            this.value = start;
+        } else {
+            this._notifyValueChanged();
+        }
+        // cleanup listeners
+        if (this._readyHandler) {
+            document.removeEventListener('ready', this._readyHandler);
+            document.removeEventListener('model-construct-done', this._readyHandler);
+            this._readyHandler = null;
+        }
     }
 
     /* ===== Fore contract ===== */
@@ -118,9 +185,21 @@ class ZoteroAutocomplete extends HTMLElement {
             return;
         }
 
-        // store tag as the component value
+        // If we’re deferring and not ready yet, just stage and show placeholder (no fetch)
+        if (this._deferUntilReady && !this._ready) {
+            this._pendingValue = tag;
+            this._value = tag;
+            this.$input.dataset.tag = tag;
+            this.$input.value = tag;
+            this._showOverlay(tag);
+            this._toggleClear();
+            // Do not notify yet; Fore will sync on ready
+            return;
+        }
+
+        // store tag as the component value (ready path)
         this._value = tag;
-        this.$input.dataset.tag = tag; // keep for debugging/inspection
+        this.$input.dataset.tag = tag;
 
         this._selected = { tag, title: '', bib: '' };
 
@@ -132,12 +211,14 @@ class ZoteroAutocomplete extends HTMLElement {
                 // show something human-friendly; we only know the tag here
                 this.$input.value = plain || tag;
                 this._showOverlay(html || plain || tag);
+                this._setTagHints(tag);
                 this._toggleClear();
                 this._notifyValueChanged();
             })
             .catch(() => {
                 this.$input.value = tag;
                 this._showOverlay(tag);
+                this._setTagHints(tag);
                 this._toggleClear();
                 this._notifyValueChanged();
             });
@@ -157,7 +238,7 @@ class ZoteroAutocomplete extends HTMLElement {
         const opts = { bubbles: true, composed: true };
         const withDetail = name => new CustomEvent(name, { ...opts, detail: { value: val } });
 
-        // fire on host ONLY (avoid inner input events that would expose human text)
+        // fire on host ONLY (avoid inner input events that expose human text)
         this.dispatchEvent(new Event('input', opts));
         this.dispatchEvent(new Event('change', opts));
         this.dispatchEvent(withDetail('value-changed'));
@@ -169,12 +250,30 @@ class ZoteroAutocomplete extends HTMLElement {
     }
     clear() {
         this._value = '';
+        this._pendingValue = null;
         this.$input.value = '';
         this.$input.dataset.tag = '';
         this._selected = null;
         this._render([]);
         this._hideOverlay();
         this._toggleClear();
+    }
+
+    _setTagHints(tag) {
+        const t = tag && String(tag).trim() ? `tag: ${tag.trim()}` : '';
+        if (this.$overlay) {
+            if (t) {
+                this.$overlay.setAttribute('title', t);
+                this.$overlay.setAttribute('aria-label', t);
+            } else {
+                this.$overlay.removeAttribute('title');
+                this.$overlay.removeAttribute('aria-label');
+            }
+        }
+        if (this.$input) {
+            if (t) this.$input.setAttribute('title', t);
+            else this.$input.removeAttribute('title');
+        }
     }
 
     /* ===== input/search ===== */
@@ -229,11 +328,10 @@ class ZoteroAutocomplete extends HTMLElement {
             let list = (Array.isArray(data) ? data : data.items || [])
                 .map(it => ({
                     key: it.key || it.data?.key || '',
-                    tag: it.tag || firstTag(it) || '',
+                    tag: (it.tag || firstTag(it) || '').trim(),
                     title: it.title || it.data?.title || '',
                     bib: it.bib || it.html || '',
                 }))
-                // keep items that have at least a tag (we need tag for value)
                 .filter(x => x.tag);
 
             // If no bib included, fetch snippets for visible set (by TAG)
@@ -259,8 +357,8 @@ class ZoteroAutocomplete extends HTMLElement {
 
         const items = Array.isArray(this._items) ? this._items : [];
         const hit = items.find(it => {
-            const tag = (it && it.tag ? String(it.tag) : '').toLowerCase();
-            const key = (it && it.key ? String(it.key) : '').toLowerCase();
+            const tag = (it && it.tag ? String(it.tag) : '').trim().toLowerCase();
+            const key = (it && it.key ? String(it.key) : '').trim().toLowerCase();
             return (tag && tag === needle) || (key && key === needle);
         });
 
@@ -463,11 +561,12 @@ class ZoteroAutocomplete extends HTMLElement {
         this.$input.value = plain;
 
         // VALUE MUST BE TAG (not key, not title)
-        this._value = item.tag || '';
+        this._value = (item.tag || '').trim();
         this.$input.dataset.tag = this._value;
 
         this._render([]); // hide menu
         this._showOverlay(item.bib || plain);
+        this._setTagHints(this._value);
         this._toggleClear();
 
         // Fore: emit (value == tag)
