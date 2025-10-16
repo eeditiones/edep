@@ -252,7 +252,7 @@ class ZoteroAutocomplete extends HTMLElement {
 
         try {
             // keep your existing endpoint; resolve relative to the current document URL
-            const url = new URL(this.api || '/exist/apps/edep/api/zotero/items/suggest', document.baseURI);
+            const url = new URL(this._endpoint, document.baseURI);
             url.searchParams.set('tag', tag);
             url.searchParams.set('limit', '1');
 
