@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport" />
+    <title>Fore: Trigger Button with Spinner</title>
+
+    <!-- Fore runtime & base styles (use your own paths) -->
+    <link rel="stylesheet" href="resources/css/fore.css" media="screen" />
+    <script type="module" src="resources/scripts/fore-dev.js"></script>
+
+    <style>
+        /* --------- Theme tokens (tweak freely) --------- */
+        :root{
+            --btn-bg: #1e293b;           /* slate-800 */
+            --btn-bg-hover:#0f172a;      /* slate-900 */
+            --btn-fg:#ffffff;            /* white */
+            --btn-ring:rgba(59,130,246,.5); /* blue-500/50 */
+        }
+
+        /* --------- Button base --------- */
+        .btn{
+            --_bg: var(--btn-bg);
+            --_fg: var(--btn-fg);
+            appearance:none;
+            border:0;
+            border-radius:999px;
+            padding:.7rem 1.1rem;
+            font:600 1rem ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial;
+            color:var(--_fg);
+            background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)), var(--_bg);
+            display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+            position:relative;
+            cursor:pointer;
+            transition:transform .12s ease, box-shadow .2s ease, background-color .2s ease, opacity .2s ease;
+            box-shadow:0 1px 1px rgba(0,0,0,.15), 0 8px 20px rgba(2,6,23,.35);
+        }
+        .btn:hover{ background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03)), var(--btn-bg-hover); }
+        .btn:active{ transform: translateY(1px); }
+        .btn:focus-visible{ outline:none; box-shadow:0 0 0 4px var(--btn-ring), 0 1px 1px rgba(0,0,0,.15), 0 8px 20px rgba(2,6,23,.35); }
+        .loader {
+            border: 2px solid #f3f3f3; /* Light grey */
+            border-top: 2px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            opacity: 0;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        fx-trigger.running .loader {
+            opacity: 1;
+        }
+
+          /* Optional: prevent double-clicks while running */
+          fx-trigger.running .btn{ pointer-events:none; opacity:.95; }
+
+        /* Optional: prevent double-clicks while running */
+        fx-trigger.running .btn{ pointer-events:none; opacity:.9; }
+
+
+        h1{margin:0 0 .5rem; font-weight:700;}
+        .meta{color:#94a3b8}
+
+        section{
+            margin:1rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+
+    <fx-fore>
+        <fx-model>
+            <fx-instance type="json" id="default">
+                {
+                    "updated": "-",
+                    "libraryVersion": "-"
+                }
+            </fx-instance>
+            <fx-instance id="helper">
+                <data>
+                    <running>notrunning</running>
+                </data>
+            </fx-instance>
+
+            <fx-submission id="sync" url="../api/zotero/sync" method="get" replace="instance" validate="false">
+                <fx-action event="submit">
+                    <fx-refresh force="true"></fx-refresh>
+                </fx-action>
+                <fx-action event="submit-done">
+                  <fx-setvalue ref="instance('helper')/running">notrunning</fx-setvalue>
+                  <fx-refresh force="true"></fx-refresh>
+                </fx-action>
+                <fx-action event="submit-error">
+                  <fx-setvalue ref="instance('helper')/running">notrunning</fx-setvalue>
+                  <fx-refresh force="true"></fx-refresh>
+                </fx-action>
+            </fx-submission>
+        </fx-model>
+
+        <h1>Zotero Sync Page</h1>
+
+        <!-- AVT applies either 'running' or 'notrunning' to the fx-trigger -->
+
+        <fx-trigger class="{instance('helper')/running}">
+      <!-- Set running immediately on click, before sending -->
+            <button class="btn" aria-live="polite">
+                <span class="label">Sync Zotero</span>
+                <span class="loader"></span>
+            </button>
+              <!-- Defer just enough to allow a paint so the spinner animates -->
+            <fx-action>
+                <fx-setvalue ref="instance('helper')/running">running</fx-setvalue>
+                <fx-reset instance="default"></fx-reset>
+                <fx-refresh force="true"></fx-refresh>
+            </fx-action>
+            <fx-send submission="sync" wait="5000"></fx-send>
+        </fx-trigger>
+
+        <section>
+            <div class="meta">updated items: {?updated}</div>
+            <div class="meta">library version: {?libraryVersion}</div>
+        </section>
+    </fx-fore>
+</div>
+</body>
+</html>
