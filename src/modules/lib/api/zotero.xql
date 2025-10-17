@@ -369,37 +369,3 @@ declare %private function zotero:_load-json($key as xs:string) as map(*)? {
   return if ($txt ne "") then try { parse-json($txt) } catch * { () } else ()
 };
 
-declare function zotero:item-bib($request as map(*)) {
-  response:set-header("Content-Type", "text/html; charset=UTF-8"),
-
-  let $key  := normalize-space(request:get-parameter("key", ""))
-  let $tag  := lower-case(normalize-space(request:get-parameter("tag", "")))
-  let $emit := function($html as xs:string) as empty-sequence() {
-    response:stream-binary(util:string-to-binary($html), "text/html", ()), ()
-  }
-
-  return
-    if ($key ne "") then
-      let $x := doc(concat($config:zotero-items-xml-dir, "/", $key, ".xml"))/item
-      return
-        if (empty($x)) then ( response:set-status-code(404), $emit("<!-- no cached item for key -->") )
-        else
-          let $bib := if ($x/bib/@html="true") then string($x/bib) else ""
-          return
-            if ($bib ne "") then $emit($bib)
-            else
-              let $json := zotero:_load-json($key)
-              let $title := string(($json?data?title, "")[1])
-              return $emit(zotero:_fallback-html($title))
-    else if ($tag ne "") then
-      let $x := (collection($config:zotero-items-xml-dir)/item[normalize-space(@parentItem) = "" and tags/tag = $tag])[1]
-      return
-        if (empty($x)) then ( response:set-status-code(404), $emit("<!-- no top-level item with that tag -->") )
-        else
-          let $bib := if ($x/bib/@html="true") then string($x/bib) else ""
-          return
-            if ($bib ne "") then $emit($bib)
-            else $emit(zotero:_fallback-html(string($x/title)))
-    else
-      ( response:set-status-code(400), $emit("<!-- missing key or tag parameter -->") )
-};
