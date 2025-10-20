@@ -25,13 +25,13 @@
                     <label>
                         <pb-i18n key="form.language">Language</pb-i18n>
                     </label>
-                    <select
+                    <select 
                       class="widget"
-                      ref="instance('vars')/languages[@xml:lang=instance('vars')/language]/lang">
+                      ref="instance('languages')/term">
                         <template>
-                            <option value="{@code}">{.}</option>
+                            <option value="{@xml:id}">{name[@xml:lang=instance('vars')/language]}</option>
                         </template>
-                    </select>
+                    </select>             
                 </fx-control>
 
                 <fx-control ref="@ana">
