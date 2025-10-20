@@ -84,7 +84,7 @@
                                     <height/>
                                 </dimensions>
                                 <!-- 39) Ligatur -->
-                                <rs type="ligature"/>
+                                <note type="ligature"/>
                             </handNote>
                         </handDesc>
                     </physDesc>
