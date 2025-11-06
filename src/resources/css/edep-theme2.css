@@ -114,7 +114,10 @@ nav{
         padding: 0.3rem;
         border-radius: 0.1rem;
     }
-
+    li{
+        display: flex;
+        justify-content: space-between;
+    }
     .nav-fragments{
 
         [repeat-index]{
@@ -649,7 +652,11 @@ fx-group > label {
     position:absolute;
     top: 0;
 }
-
+fx-group.neutral{
+    padding: 0;
+    border:none;
+    background:none;
+}
 /*
 fx-group fx-group {
     border:none;

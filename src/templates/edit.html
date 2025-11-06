@@ -21,7 +21,8 @@
         <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
 
         <!--        <script type="module" src="http://localhost:8090/index.js"></script>-->
-        <script type="module" src="resources/scripts/fore-dev.js"></script>
+        <script type="module" src="resources/scripts/fore/fore-dev.js"></script>
+        <script type="module" src="resources/scripts/fore/fx-lens.js"></script>
         <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>
         <script type="module" src="resources/scripts/edep-xml-editor.js"></script>
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
@@ -334,7 +335,11 @@
                             <fx-var name="lang" value="instance('vars')/language"></fx-var>
 
                             <nav aria-labelledby="navigation">
-                                <div id="navigation">Navigation</div>
+                                <div class="toolbar">
+                                    <button id="expander" onclick="expander()">&lt; &gt;</button>
+                                </div>
+
+<!--                                <div id="navigation">Navigation</div>-->
                                 <ul>
                                     <li>
                                         <fx-trigger id="addChild" class="add" title="create child document">
@@ -348,97 +353,124 @@
                                         </fx-trigger>
                                     </li>
 
+<!--
                                     <li>
                                         <a
-                                            href="edit/{instance('params')/collection}/{instance('params')/id}.xml#object">
+                                            href="{uri-path()}#object">
                                             <pb-i18n key="form.object">Objekt</pb-i18n>
                                         </a>
-                                        <!--                                <fx-trigger id="expander">-->
                                         <button id="expander" onclick="expander()">&lt; &gt;</button>
-                                        <!--                                    <fx-call function="expander()"></fx-call>-->
-                                        <!--                                </fx-trigger>-->
                                     </li>
-                                    <li class="nav-fragments" data-ref="teiHeader">
+-->
+<!--                                    <li class="nav-fragments" data-ref="teiHeader">-->
+<!--
+                                    <li class="nav-fragments">
                                         <ul>
+-->
                                             <li>
                                                 <a
-                                                    href="edit/{instance('params')/collection}/{instance('params')/id}.xml#findspot">
+                                                    href="{uri-path()}#object">
+                                                    <pb-i18n key="form.identifier">Identifier</pb-i18n>
+                                                </a>
+<!--                                                <input type="checkbox" id="object-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="{uri-path()}#findspot">
                                                     <pb-i18n key="form.findspot"></pb-i18n>
                                                 </a>
+                                                <input type="checkbox" id="findspot-checkbox" title="expand/collapse"/>
                                             </li>
                                             <li>
+
                                                 <a
-                                                    href="edit/{instance('params')/collection}/{instance('params')/id}.xml#finddate">
+                                                    href="{uri-path()}#finddate">
                                                     <pb-i18n key="form.year-of-find"></pb-i18n>
                                                 </a>
+                                                <input type="checkbox" id="finddate-checkbox" title="expand/collapse"/>
                                             </li>
                                             <li>
                                                 <a
-                                                    href="edit/{instance('params')/collection}/{instance('params')/id}.xml#location">
+                                                    href="{uri-path()}#location">
                                                     <pb-i18n key="form.last-recorded-location"></pb-i18n>
                                                 </a>
+                                                <input type="checkbox" id="location-checkbox" title="expand/collapse"/>
                                             </li>
                                             <li>
                                                 <a
-                                                    href="edit/{instance('params')/collection}/{instance('params')/id}.xml#verification">
+                                                    href="{uri-path()}#verification">
                                                     <pb-i18n key="form.verification"></pb-i18n>
                                                 </a>
+                                                <input type="checkbox" id="verification-checkbox" title="expand/collapse"/>
                                             </li>
                                             <li>
                                                 <a
-                                                    href="edit/{instance('params')/collection}/{instance('params')/id}.xml#objectdesc">
+                                                    href="{uri-path()}#objectdesc">
                                                     <pb-i18n key="form.object-description"></pb-i18n>
                                                 </a>
+                                                <input type="checkbox" id="objectdesc-checkbox" title="expand/collapse"/>
                                             </li>
                                             <li>
                                                 <a
-                                                    href="edit/{instance('params')/collection}/{instance('params')/id}.xml#inscription-field">
+                                                    href="{uri-path()}#inscription-field">
                                                     <pb-i18n key="form.inscription-field"></pb-i18n>
                                                 </a>
+                                                <input type="checkbox" id="inscription-field-checkbox" title="expand/collapse"/>
                                             </li>
                                             <li>
                                                 <a
-                                                    href="edit/{instance('params')/collection}/{instance('params')/id}.xml#text-description">
+                                                    href="{uri-path()}#text-description">
                                                     <pb-i18n key="form.text-description"></pb-i18n>
                                                 </a>
+                                                <input type="checkbox" id="text-description-checkbox" title="expand/collapse"/>
                                             </li>
                                             <li>
                                                 <a
-                                                    href="edit/{instance('params')/collection}/{instance('params')/id}.xml#languages">
+                                                    href="{uri-path()}#languages">
                                                     <pb-i18n key="form.language"></pb-i18n>
                                                 </a>
+                                                <input type="checkbox" id="languages-checkbox" title="expand/collapse"/>
                                             </li>
+<!--
                                         </ul>
                                     </li>
+-->
+<!--
                                     <li>
                                         <a
-                                            href="edit/{instance('params')/collection}/{instance('params')/id}.xml#references">
+                                            href="{uri-path()}#references">
                                             <pb-i18n key="form.references"></pb-i18n>
                                         </a>
+                                        <input type="checkbox" id="references-checkbox" title="expand/collapse"/>
                                     </li>
+-->
                                     <li>
                                         <a
-                                            href="edit/{instance('params')/collection}/{instance('params')/id}.xml#edition">
+                                            href="{uri-path()}#edition">
                                             <pb-i18n key="form.edition">Textedition</pb-i18n>
                                         </a>
+                                        <input type="checkbox" id="edition-checkbox" title="expand/collapse"/>
                                     </li>
                                     <li>
                                         <a
-                                            href="edit/{instance('params')/collection}/{instance('params')/id}.xml#commentary">
+                                            href="{uri-path()}#commentary">
                                             <pb-i18n key="form.commentary"></pb-i18n>
                                         </a>
+                                        <input type="checkbox" id="commentary-checkbox" title="expand/collapse"/>
                                     </li>
                                     <li>
                                         <a
-                                            href="edit/{instance('params')/collection}/{instance('params')/id}.xml#chronology">
+                                            href="{uri-path()}#chronology">
                                             <pb-i18n key="form.dating"></pb-i18n>
                                         </a>
+                                        <input type="checkbox" id="chronology-checkbox" title="expand/collapse"/>
                                     </li>
                                     <li>
                                         <a
-                                            href="edit/{instance('params')/collection}/{instance('params')/id}.xml#historic-relevance">
+                                            href="{uri-path()}#historic-relevance">
                                             <pb-i18n key="form.historic-relevance"></pb-i18n>
                                         </a>
+                                        <input type="checkbox" id="historic-relevance-checkbox" title="expand/collapse"/>
                                     </li>
                                     <li class="nav-fragments">
                                         FRAGMENTS (if available)
@@ -464,11 +496,17 @@
                                     data-template-path="templates/parts/object.html"
                                     data-template-replace="true"></div>
 
+<!--
                                 <fx-group
                                     ref="fileDesc/sourceDesc/msDesc"
                                     id="inscription"
                                     aria-labelledby="inscription-lbl">
                                     <h2 id="inscription-lbl">Inscription</h2>
+-->
+                                <fx-group
+                                    ref="fileDesc/sourceDesc/msDesc"
+                                    id="inscription"
+                                    class="neutral">
 
                                     <!-- FINDSPOT -->
                                     <!-- fileDesc/sourceDesc/msDesc/history -->
@@ -532,7 +570,8 @@
                                     data-template-path="templates/parts/verification.html"
                                     data-template-replace="true"></div>
 
-                                <fx-group ref="fileDesc/sourceDesc/listBibl" id="references">
+                                <fx-group ref="fileDesc/sourceDesc/listBibl" id="references" class="neutral">
+<!--
                                     <h2>
                                         <pb-i18n key="form.references">Referenzen</pb-i18n>
                                         <pb-popover>
@@ -542,6 +581,7 @@
                                             </template>
                                         </pb-popover>
                                     </h2>
+-->
 
                                     <div
                                         id="transmission"
