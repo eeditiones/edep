@@ -61,11 +61,13 @@ window.addEventListener('DOMContentLoaded', () => {
             const id = parent.getAttribute('href').split('#')[1];
             const el = document.getElementById(id);
             if (el) {
+                /*
                 el.scrollIntoView({
                     block: 'start',
                     inline: 'nearest',
                     behavior: 'smooth',
                 });
+*/
                 setTimeout(() => {
                     el.setAttribute('open', 'open');
                 }, 400);
