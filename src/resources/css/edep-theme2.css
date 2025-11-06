@@ -107,17 +107,20 @@ nav{
     a:link{
         color:#333;
         display: inline-block;
-        padding: 0.25rem 0;
+        padding: 0.25rem;
+        width: 100%;
     }
     a:hover{
         background: white;
-        padding: 0.3rem;
+        /*padding: 0.3rem;*/
         border-radius: 0.1rem;
     }
     li{
         display: flex;
         justify-content: space-between;
+        max-width: 12rem;
     }
+
     .nav-fragments{
 
         [repeat-index]{
@@ -126,6 +129,11 @@ nav{
             padding:0.25rem;
         }
     }
+    .nav-devider{
+        border-bottom: thin solid var(--paper-grey-300);
+        margin-bottom: 1rem;
+    }
+
 }
 
 
@@ -341,7 +349,7 @@ body, .wrapper{
     /* font-family: "Kimberley"; */
 }
 button{
-    font-size: 1.2rem;
+    /*font-size: 1.2rem;*/
     padding: 0.5rem 1rem;
 }
 

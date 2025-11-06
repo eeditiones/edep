@@ -57,6 +57,24 @@ window.addEventListener('DOMContentLoaded', () => {
             const parent = e.target.closest('a');
             parent.style.textDecoration = 'underline';
             parent.style.fontWeight = '700';
+
+            const id = parent.getAttribute('href').split('#')[1];
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({
+                    block: 'start',
+                    inline: 'nearest',
+                    behavior: 'smooth',
+                });
+                setTimeout(() => {
+                    el.setAttribute('open', 'open');
+                }, 400);
+            }
+            /*
+            const parentLi = e.target.closest('li');
+            const check = parentLi.querySelector('input');
+            check.checked = true;
+*/
         });
     });
 

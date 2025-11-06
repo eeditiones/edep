@@ -25,6 +25,7 @@
 <!--        <script type="module" src="resources/scripts/fore/fx-lens.js"></script>-->
         <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>
         <script type="module" src="resources/scripts/edep-xml-editor.js"></script>
+        <script type="module" src="resources/scripts/navigation.js"></script>
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
     </head>
 
@@ -341,17 +342,6 @@
 
 <!--                                <div id="navigation">Navigation</div>-->
                                 <ul>
-                                    <li>
-                                        <fx-trigger id="addChild" class="add" title="create child document">
-                                            <button>
-                                                <pb-i18n key="form.add"></pb-i18n>
-                                            </button>
-                                            <!-- TODO clone current document content into a child document with a new id and
-                                                - TEI/@corresp pointing to this one's xml:id
-                                                - TEI/@type set to 'partial'
-                                            -->
-                                        </fx-trigger>
-                                    </li>
 
 <!--
                                     <li>
@@ -379,7 +369,7 @@
                                                     href="{uri-path()}#findspot">
                                                     <pb-i18n key="form.findspot"></pb-i18n>
                                                 </a>
-                                                <input type="checkbox" id="findspot-checkbox" title="expand/collapse"/>
+<!--                                                <input type="checkbox" id="findspot-checkbox" title="expand/collapse"/>-->
                                             </li>
                                             <li>
 
@@ -387,49 +377,105 @@
                                                     href="{uri-path()}#finddate">
                                                     <pb-i18n key="form.year-of-find"></pb-i18n>
                                                 </a>
-                                                <input type="checkbox" id="finddate-checkbox" title="expand/collapse"/>
+<!--                                                <input type="checkbox" id="finddate-checkbox" title="expand/collapse"/>-->
                                             </li>
                                             <li>
                                                 <a
                                                     href="{uri-path()}#location">
                                                     <pb-i18n key="form.last-recorded-location"></pb-i18n>
                                                 </a>
-                                                <input type="checkbox" id="location-checkbox" title="expand/collapse"/>
+<!--                                                <input type="checkbox" id="location-checkbox" title="expand/collapse"/>-->
                                             </li>
                                             <li>
                                                 <a
                                                     href="{uri-path()}#verification">
                                                     <pb-i18n key="form.verification"></pb-i18n>
                                                 </a>
-                                                <input type="checkbox" id="verification-checkbox" title="expand/collapse"/>
+<!--                                                <input type="checkbox" id="verification-checkbox" title="expand/collapse"/>-->
                                             </li>
                                             <li>
                                                 <a
                                                     href="{uri-path()}#objectdesc">
                                                     <pb-i18n key="form.object-description"></pb-i18n>
                                                 </a>
-                                                <input type="checkbox" id="objectdesc-checkbox" title="expand/collapse"/>
+<!--                                                <input type="checkbox" id="objectdesc-checkbox" title="expand/collapse"/>-->
                                             </li>
                                             <li>
                                                 <a
                                                     href="{uri-path()}#inscription-field">
                                                     <pb-i18n key="form.inscription-field"></pb-i18n>
                                                 </a>
-                                                <input type="checkbox" id="inscription-field-checkbox" title="expand/collapse"/>
+<!--                                                <input type="checkbox" id="inscription-field-checkbox" title="expand/collapse"/>-->
                                             </li>
                                             <li>
                                                 <a
                                                     href="{uri-path()}#text-description">
                                                     <pb-i18n key="form.text-description"></pb-i18n>
                                                 </a>
-                                                <input type="checkbox" id="text-description-checkbox" title="expand/collapse"/>
+<!--                                                <input type="checkbox" id="text-description-checkbox" title="expand/collapse"/>-->
                                             </li>
                                             <li>
                                                 <a
                                                     href="{uri-path()}#languages">
                                                     <pb-i18n key="form.language"></pb-i18n>
                                                 </a>
-                                                <input type="checkbox" id="languages-checkbox" title="expand/collapse"/>
+<!--                                                <input type="checkbox" id="languages-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="{uri-path()}#verification">
+                                                    <pb-i18n key="form.verification"></pb-i18n>
+                                                </a>
+<!--                                                <input type="checkbox" id="verification-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="{uri-path()}#prev-editions">
+                                                    <pb-i18n key="form.previous-editions"></pb-i18n>
+                                                </a>
+<!--                                                <input type="checkbox" id="prev-editions-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="{uri-path()}#bibliography">
+                                                    <pb-i18n key="form.bibliography"></pb-i18n>
+                                                </a>
+<!--                                                <input type="checkbox" id="bibliography-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="{uri-path()}#images">
+                                                    <pb-i18n key="form.images-dps"></pb-i18n>
+                                                </a>
+<!--                                                <input type="checkbox" id="images-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="{uri-path()}#pictures">
+                                                    <pb-i18n key="form.images"></pb-i18n>
+                                                </a>
+<!--                                                <input type="checkbox" id="pictures-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="{uri-path()}#dating">
+                                                    <pb-i18n key="form.dating"></pb-i18n>
+                                                </a>
+<!--                                                <input type="checkbox" id="dating-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="{uri-path()}#historic-relevance">
+                                                    <pb-i18n key="form.historic-relevance"></pb-i18n>
+                                                </a>
+<!--                                                <input type="checkbox" id="profileDesc-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="{uri-path()}#editor">
+                                                    <pb-i18n key="form.editing"></pb-i18n>
+                                                </a>
+<!--                                                <input type="checkbox" id="editor-checkbox" title="expand/collapse"/>-->
                                             </li>
 <!--
                                         </ul>
@@ -449,33 +495,32 @@
                                             href="{uri-path()}#edition">
                                             <pb-i18n key="form.edition">Textedition</pb-i18n>
                                         </a>
-                                        <input type="checkbox" id="edition-checkbox" title="expand/collapse"/>
+<!--                                        <input type="checkbox" id="edition-checkbox" title="expand/collapse"/>-->
                                     </li>
                                     <li>
                                         <a
                                             href="{uri-path()}#commentary">
                                             <pb-i18n key="form.commentary"></pb-i18n>
                                         </a>
-                                        <input type="checkbox" id="commentary-checkbox" title="expand/collapse"/>
+<!--                                        <input type="checkbox" id="commentary-checkbox" title="expand/collapse"/>-->
                                     </li>
-                                    <li>
-                                        <a
-                                            href="{uri-path()}#chronology">
-                                            <pb-i18n key="form.dating"></pb-i18n>
-                                        </a>
-                                        <input type="checkbox" id="chronology-checkbox" title="expand/collapse"/>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="{uri-path()}#historic-relevance">
-                                            <pb-i18n key="form.historic-relevance"></pb-i18n>
-                                        </a>
-                                        <input type="checkbox" id="historic-relevance-checkbox" title="expand/collapse"/>
-                                    </li>
+                                    <li class="nav-devider"></li>
                                     <li class="nav-fragments">
                                         FRAGMENTS (if available)
                                         <!-- TODO show links to children (fragment documents)-->
                                     </li>
+                                    <li>
+                                        <fx-trigger id="addChild" class="add" title="create child document">
+                                            <button>
+                                                <pb-i18n key="form.add"></pb-i18n>
+                                            </button>
+                                            <!-- TODO clone current document content into a child document with a new id and
+                                                - TEI/@corresp pointing to this one's xml:id
+                                                - TEI/@type set to 'partial'
+                                            -->
+                                        </fx-trigger>
+                                    </li>
+
                                 </ul>
                             </nav>
                             <fx-group ref="teiHeader" aria-labelledby="title-lbl" class="outer-group">
