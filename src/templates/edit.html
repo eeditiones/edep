@@ -18,11 +18,11 @@
         <link rel="stylesheet" href="resources/css/zotero-autocomplete.css" media="screen" />
         <!-- Uncomment if jinn-codemirror is running on 8000 -->
         <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
-        <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
+<!--        <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>-->
+                <script type="module" src="http://localhost:8090/index.js"></script>
 
-        <!--        <script type="module" src="http://localhost:8090/index.js"></script>-->
-        <script type="module" src="resources/scripts/fore/fore-dev.js"></script>
-<!--        <script type="module" src="resources/scripts/fore/fx-lens.js"></script>-->
+<!--        <script type="module" src="resources/scripts/fore/fore-dev.js"></script>-->
+        <script type="module" src="resources/scripts/fore/fx-lens.js"></script>
         <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>
         <script type="module" src="resources/scripts/edep-xml-editor.js"></script>
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
@@ -61,7 +61,8 @@
                     </app-header>
 
                     <main id="main" class="editor">
-                        <fx-fore show-confirmation="show-confirmation" id="epidoc-editor">
+                        <fx-fore xmlns:tei="http://www.tei-c.org/ns/1.0" create-nodes="create-nodes"
+                         show-confirmation="show-confirmation" id="epidoc-editor">
                             <fx-model data-template="pages:parse-params">
                                 <fx-action event="model-construct-done">
                                     <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
@@ -74,9 +75,8 @@
 
                                 <fx-instance
                                     id="default"
-                                    src="api/inscription"
+                                    src="templates/fore/data/inscription-tmpl.xml"
                                     xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                                    <data></data>
                                 </fx-instance>
 
                                 <fx-bind ref="instance('default')">
@@ -208,7 +208,7 @@
                                             ref="instance('vars')/military-term"
                                             value="if(exists(instance('default')//term[@ref='#military'])) then 'true' else 'false'"></fx-setvalue>
                                     </fx-action>
-                                </fx-submission>
+                                 </fx-submission>
 
                                 <fx-submission
                                     id="s-create"
@@ -522,181 +522,183 @@
 
                                 </ul>
                             </nav>
-                            <fx-group ref="teiHeader" aria-labelledby="title-lbl" class="outer-group">
-                                <h1 id="title-lbl">
-                                    <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
-                                        <label>
-                                            <pb-i18n key="form.title"></pb-i18n>
-                                        </label>
-                                    </fx-control>
-                                </h1>
-                                <!--            <span>Sprachselector hier</span>-->
+                            <fx-group ref="TEI">
+                                <fx-group ref="teiHeader" aria-labelledby="title-lbl" class="outer-group">
+                                    <h1 id="title-lbl">
+                                        <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
+                                            <label>
+                                                <pb-i18n key="form.title"></pb-i18n>
+                                            </label>
+                                        </fx-control>
+                                    </h1>
+                                    <!--            <span>Sprachselector hier</span>-->
 
-                                <!-- IDENTIFIERs -->
-                                <!--  fileDesc/sourceDesc/msDesc/msIdentifier -->
-                                <div
-                                    id="object"
-                                    data-template="lib:include"
-                                    data-template-path="templates/parts/object.html"
-                                    data-template-replace="true"></div>
-
-<!--
-                                <fx-group
-                                    ref="fileDesc/sourceDesc/msDesc"
-                                    id="inscription"
-                                    aria-labelledby="inscription-lbl">
-                                    <h2 id="inscription-lbl">Inscription</h2>
--->
-                                <fx-group
-                                    ref="fileDesc/sourceDesc/msDesc"
-                                    id="inscription"
-                                    class="neutral">
-
-                                    <!-- FINDSPOT -->
-                                    <!-- fileDesc/sourceDesc/msDesc/history -->
+                                    <!-- IDENTIFIERs -->
+                                    <!--  fileDesc/sourceDesc/msDesc/msIdentifier -->
                                     <div
-                                        id="findspot"
+                                        id="object"
                                         data-template="lib:include"
-                                        data-template-path="templates/parts/findspot.html"
+                                        data-template-path="templates/parts/object.html"
                                         data-template-replace="true"></div>
 
-                                    <!-- FIND DATE -->
-                                    <!-- fileDesc/sourceDesc/msDesc/history/provenance -->
+    <!--
+                                    <fx-group
+                                        ref="fileDesc/sourceDesc/msDesc"
+                                        id="inscription"
+                                        aria-labelledby="inscription-lbl">
+                                        <h2 id="inscription-lbl">Inscription</h2>
+    -->
+                                    <fx-group
+                                        ref="fileDesc/sourceDesc/msDesc"
+                                        id="inscription"
+                                        class="neutral">
+
+                                        <!-- FINDSPOT -->
+                                        <!-- fileDesc/sourceDesc/msDesc/history -->
+                                        <div
+                                            id="findspot"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/findspot.html"
+                                            data-template-replace="true"></div>
+
+                                        <!-- FIND DATE -->
+                                        <!-- fileDesc/sourceDesc/msDesc/history/provenance -->
+                                        <div
+                                            id="finddate"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/finddate.html"
+                                            data-template-replace="true"></div>
+
+                                        <!-- PRESENT LOCATION -->
+                                        <div
+                                            id="location"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/location.html"
+                                            data-template-replace="true"></div>
+
+                                        <!-- OBJECT DESCRIPTION -->
+                                        <!-- physDesc/objectDesc -->
+                                        <div
+                                            id="objectdesc"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/objectdesc.html"
+                                            data-template-replace="true"></div>
+
+                                        <!-- INSCRIPTION FIELD -->
+
+                                        <div
+                                            id="inscription-field"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/inscription-field.html"
+                                            data-template-replace="true"></div>
+
+                                        <!-- TEXT DESCRIPTION -->
+
+                                        <div
+                                            id="text-description"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/text-description.html"
+                                            data-template-replace="true"></div>
+                                    </fx-group>
+
+                                    <fx-group ref="profileDesc" class="outer-group" aria-labelledby="profile-lbl">
+                                        <div
+                                            id="languages"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/languages.html"
+                                            data-template-replace="true"></div>
+                                    </fx-group>
+
                                     <div
-                                        id="finddate"
+                                        id="verification"
                                         data-template="lib:include"
-                                        data-template-path="templates/parts/finddate.html"
+                                        data-template-path="templates/parts/verification.html"
                                         data-template-replace="true"></div>
-
-                                    <!-- PRESENT LOCATION -->
-                                    <div
-                                        id="location"
-                                        data-template="lib:include"
-                                        data-template-path="templates/parts/location.html"
-                                        data-template-replace="true"></div>
-
-                                    <!-- OBJECT DESCRIPTION -->
-                                    <!-- physDesc/objectDesc -->
-                                    <div
-                                        id="objectdesc"
-                                        data-template="lib:include"
-                                        data-template-path="templates/parts/objectdesc.html"
-                                        data-template-replace="true"></div>
-
-                                    <!-- INSCRIPTION FIELD -->
-
-                                    <div
-                                        id="inscription-field"
-                                        data-template="lib:include"
-                                        data-template-path="templates/parts/inscription-field.html"
-                                        data-template-replace="true"></div>
-
-                                    <!-- TEXT DESCRIPTION -->
-
-                                    <div
-                                        id="text-description"
-                                        data-template="lib:include"
-                                        data-template-path="templates/parts/text-description.html"
-                                        data-template-replace="true"></div>
-                                </fx-group>
-
-                                <fx-group ref="profileDesc" class="outer-group" aria-labelledby="profile-lbl">
-                                    <div
-                                        id="languages"
-                                        data-template="lib:include"
-                                        data-template-path="templates/parts/languages.html"
-                                        data-template-replace="true"></div>
-                                </fx-group>
-
-                                <div
-                                    id="verification"
-                                    data-template="lib:include"
-                                    data-template-path="templates/parts/verification.html"
-                                    data-template-replace="true"></div>
 
                                 <fx-group ref="fileDesc/sourceDesc/listBibl" id="references" class="neutral">
-<!--
-                                    <h2>
-                                        <pb-i18n key="form.references">Referenzen</pb-i18n>
-                                        <pb-popover>
-                                            <iron-icon icon="info-outline"></iron-icon>
-                                            <template slot="alternate">
-                                                <pb-i18n key="form.hint-references"></pb-i18n>
-                                            </template>
-                                        </pb-popover>
-                                    </h2>
--->
+    <!--
+                                        <h2>
+                                            <pb-i18n key="form.references">Referenzen</pb-i18n>
+                                            <pb-popover>
+                                                <iron-icon icon="info-outline"></iron-icon>
+                                                <template slot="alternate">
+                                                    <pb-i18n key="form.hint-references"></pb-i18n>
+                                                </template>
+                                            </pb-popover>
+                                        </h2>
+    -->
+
+                                        <div
+                                            id="transmission"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/transmission.html"
+                                            data-template-replace="true"></div>
+                                        <div
+                                            id="prev-editions"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/prev-editions.html"
+                                            data-template-replace="true"></div>
+                                        <div
+                                            id="bibliography"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/bibliography.html"
+                                            data-template-replace="true"></div>
+                                        <div
+                                            id="images"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/images.html"
+                                            data-template-replace="true"></div>
+                                        <div
+                                            id="pictures"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/pictures.html"
+                                            data-template-replace="true"></div>
+                                    </fx-group>
+                                    <!-- NEW VERSION ends here;  -->
+
+                                    <!-- 26) -->
+                                    <div
+                                        id="dating"
+                                        data-template="lib:include"
+                                        data-template-path="templates/parts/dating.html"
+                                        data-template-replace="true"></div>
 
                                     <div
-                                        id="transmission"
+                                        id="historic-relevance"
                                         data-template="lib:include"
-                                        data-template-path="templates/parts/transmission.html"
+                                        data-template-path="templates/parts/historic-relevance.html"
                                         data-template-replace="true"></div>
+
+                                    <!-- 35b) -->
+                                    <!-- 35a) -->
+                                    <!-- 35d) -->
+
+                                    <!-- 47) -->
+                                    <!-- 45) -->
                                     <div
-                                        id="prev-editions"
+                                        id="editor"
                                         data-template="lib:include"
-                                        data-template-path="templates/parts/prev-editions.html"
-                                        data-template-replace="true"></div>
-                                    <div
-                                        id="bibliography"
-                                        data-template="lib:include"
-                                        data-template-path="templates/parts/bibliography.html"
-                                        data-template-replace="true"></div>
-                                    <div
-                                        id="images"
-                                        data-template="lib:include"
-                                        data-template-path="templates/parts/images.html"
-                                        data-template-replace="true"></div>
-                                    <div
-                                        id="pictures"
-                                        data-template="lib:include"
-                                        data-template-path="templates/parts/pictures.html"
+                                        data-template-path="templates/parts/editor.html"
                                         data-template-replace="true"></div>
                                 </fx-group>
-                                <!-- NEW VERSION ends here;  -->
+                                <fx-group ref="text/body" class="outer-group">
+                                    <!-- EDITION and COMMENTARY together as they are all stored in BODY -->
+                                    <div
+                                        id="edition"
+                                        data-template="lib:include"
+                                        data-template-path="templates/parts/edition.html"
+                                        data-template-replace="true"></div>
 
-                                <!-- 26) -->
-                                <div
-                                    id="dating"
-                                    data-template="lib:include"
-                                    data-template-path="templates/parts/dating.html"
-                                    data-template-replace="true"></div>
-
-                                <div
-                                    id="historic-relevance"
-                                    data-template="lib:include"
-                                    data-template-path="templates/parts/historic-relevance.html"
-                                    data-template-replace="true"></div>
-
-                                <!-- 35b) -->
-                                <!-- 35a) -->
-                                <!-- 35d) -->
-
-                                <!-- 47) -->
-                                <!-- 45) -->
-                                <div
-                                    id="editor"
-                                    data-template="lib:include"
-                                    data-template-path="templates/parts/editor.html"
-                                    data-template-replace="true"></div>
-                            </fx-group>
-                            <fx-group ref="text/body" class="outer-group">
-                                <!-- EDITION and COMMENTARY together as they are all stored in BODY -->
-                                <div
-                                    id="edition"
-                                    data-template="lib:include"
-                                    data-template-path="templates/parts/edition.html"
-                                    data-template-replace="true"></div>
-
-                                <!--
-                                    This won't call the update-cycle for each event as the replace action in its current form does not
-                                    call it. The control will refresh the UI when the control looses focus (onblur).
-                                -->
-                                <div
-                                    id="commentary"
-                                    data-template="lib:include"
-                                    data-template-path="templates/parts/commentary.html"
-                                    data-template-replace="true"></div>
+                                    <!--
+                                        This won't call the update-cycle for each event as the replace action in its current form does not
+                                        call it. The control will refresh the UI when the control looses focus (onblur).
+                                    -->
+                                    <div
+                                        id="commentary"
+                                        data-template="lib:include"
+                                        data-template-path="templates/parts/commentary.html"
+                                        data-template-replace="true"></div>
+                                </fx-group>
                             </fx-group>
 
                             <section class="buttonBar">
@@ -749,5 +751,6 @@
 
         <script src="./resources/scripts/util.js" type="text/javascript"></script>
         <!--fx-devtools></fx-devtools-->
+<!--    <fx-lens></fx-lens>-->
     </body>
 </html>

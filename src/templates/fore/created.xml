@@ -1,0 +1,467 @@
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="E0000001">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Titulus Imperatori Antonino Pio (EEE 12)</title>
+                <editor>Kajava</editor>
+                <author/>
+                <respStmt>
+                    <resp when="1983">autopsy</resp>
+                    <persName>Kajava - Solin</persName>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <availability>
+                    <p>Heidelberger Akademie der Wissenschaften</p>
+                    <licence target="http://creativecommons.org/licenses/by-sa/4.0/">This file is
+                        licensed under the Creative Commons Attribution-ShareAlike 4.0 license.
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <repository key="">GERHARD: “in domo Toti”. MAROCCO: “in casa dei signori Toti
+                            nell' andito”. MOMMSEN: “ibidem adhuc”. KAJAVA – SOLIN: “In vestibulo
+                            aedium Toti”
+                        </repository>
+                        <idno type="inventory"/>
+                        <idno type="EDEp">E0000001</idno>
+                        <idno type="TM">249623</idno>
+                        <idno type="EDEp">E0000001</idno>
+                    </msIdentifier>
+                    <msContents class="https://www.eagle-network.eu/voc/typeins/lod/69">
+                        <summary>Tituli imperatorum domusque eorum. Titulus honorarius Imperatori
+                            Antonino Pio.
+                        </summary>
+                    </msContents>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <note type="decoration" corresp="https://www.eagle-network.eu/voc/decor/lod/2000"/>
+                                    <objectType ref="https://www.eagle-network.eu/voc/objtyp/lod/257"/>
+                                    <material ref="https://www.eagle-network.eu/voc/material/lod/48"/>
+                                    <note>Tabula marmorea parieti sic inserta, ut titulus ipse
+                                        supplementaque postea gypso recentiori adiecta regulis item
+                                        gypsaceis cingantur.
+                                    </note>
+                                    <dimensions>
+                                        <width>67</width>
+                                        <height>50</height>
+                                        <depth/>
+                                    </dimensions>
+                                    <note type="decoration" corresp="https://www.eagle-network.eu/voc/decor/lod/2000"/>
+                                </support>
+                                <condition>fragmentary</condition>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout>
+                                    <dimensions>
+                                        <!-- Inschriftfeld: Höhe -->
+                                        <height/>
+                                        <!-- Inschriftfeld: Breite -->
+                                        <width/>
+                                    </dimensions>
+                                    <note type="palaeography" corresp="">Puncta sunt virgulata (etiam in v. 3
+                                        ex., ubi MOMMSEN hederam indicavit). In v. 6 F longa in
+                                        profusa.
+                                    </note>
+                                    <note type="metric">no</note>
+                                    <ab/>
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>
+                                <dimensions type="letterHeight">
+                                    <height>V. 1: 5; V. 2-3: 3,5; V. 4-8: 3</height>
+                                </dimensions>
+                                <note type="ligature">no</note>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origDate notBefore-custom="141" notAfter-custom="144"
+                                      datingMethod="http://en.wikipedia.org/wiki/Julian_calendar" when-custom="">Dating
+                                source: ex numero tribunatus plebis.
+                            </origDate>
+                            <origPlace corresp="G003587"/>
+                        </origin>
+                        <provenance type="found" notAfter="1657" when="" when-custom="" notBefore="">
+                            <note type="context">METELLUS: “In
+                                choro S. Marie super lapide marmoreo posito in pavimento sub tabula
+                                lígnea.” LAURIUS: “Ritrovata parimente in occasione della nuova
+                                fabrica della cattedrale”
+                            </note>
+                        </provenance>
+                        <provenance type="history">LAURIUS: “Si conserva in mia casa come attesta
+                            l'abbate Ughelli.” SUARESIUS: “in aedibus antiquarii indefessi D.
+                            Octavii Lauri”. UGHELLIUS: “olim in Cathedrali effossa…apud DD. Lauros.”
+                            ANONYMUS: “nell'atrio della casa de' Sig.ri Lauri”.
+                        </provenance>
+                    </history>
+                    <msContents class="https://www.eagle-network.eu/voc/typeins/lod/69">
+                        <summary>Tituli imperatorum domusque eorum. Titulus honorarius Imperatori
+                            Antonino Pio.
+                        </summary>
+                    </msContents>
+                </msDesc>
+                <listBibl>
+                    <listBibl type="transmission">
+                        <bibl corresp="" type="public">
+                            <ptr/>
+                            <note>METELLUS, Cod. Vat. Lat. 6037 f. 46';</note>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Ughellius"/>
+                            <note>ex quo</note>
+                            <citedRange>1, 1234</citedRange>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Laurius"/>
+                            <note>(qui hic illic supplevit)</note>
+                            <citedRange>1, 9 f. 72' = 1, 10 f. 88</citedRange>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr/>
+                            <note>SUARESIUS Cod. Vat. Lat. 9140 f. 313;</note>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr/>
+                            <note>GEORGIUS, sched. Casanat. XVI, cui descripsit canonicus
+                                CORAZZOTUS;
+                            </note>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Giovardius"/>
+                            <citedRange>R 14-15</citedRange>
+                            <note/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr/>
+                            <note>ANONYMUS, Cod. Vat. Lat. 7929 f. 208, versuum divisione non
+                                observato (a MOMMSENO non laudatus)
+                            </note>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Tarolliusms"/>
+                            <note/>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Gerhard"/>
+                            <citedRange>87</citedRange>
+                            <note/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Marocco"/>
+                            <note>ex quo</note>
+                            <citedRange>9, 93</citedRange>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="19th century"/>
+                            <note/>
+                            <citedRange/>
+                        </bibl>
+                    </listBibl>
+                    <listBibl type="previousEditions">
+                        <bibl corresp="" type="public">
+                            <ptr/>
+                            <note>METELLUS, Cod. Vat. Lat. 6037 f. 46'</note>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Ughellius"/>
+                            <note>ex quo</note>
+                            <citedRange>1, 1234</citedRange>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Laurius"/>
+                            <note>(qui hic illic supplevit)</note>
+                            <citedRange>1, 9 f. 72' = 1, 10 f. 88</citedRange>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr/>
+                            <note>SUARESIUS Cod. Vat. Lat. 9140 f. 313</note>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr/>
+                            <note>GEORGIUS, sched. Casanat. XVI, cui descripsit canonicus
+                                CORAZZOTUS
+                            </note>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Giovardius"/>
+                            <citedRange>R 14-15</citedRange>
+                            <note/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr/>
+                            <note>ANONYMUS, Cod. Vat. Lat. 7929 f. 208, versuum divisione non
+                                observato (a MOMMSENO non laudatus)
+                            </note>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Tarolliusms"/>
+                            <note/>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Gerhard"/>
+                            <citedRange>87</citedRange>
+                            <note/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Marocco"/>
+                            <note>ex quo</note>
+                            <citedRange>9, 93</citedRange>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="19th century"/>
+                            <note/>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr/>
+                            <note>MOMMSEN, X 5963, qui in v. 7 litteram T vidit; eo teste etiam
+                                BRIZIO descripsit
+                            </note>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="DeRuggiero"/>
+                            <citedRange>1305</citedRange>
+                            <note/>
+                        </bibl>
+                    </listBibl>
+                    <listBibl type="bibliography">
+                        <bibl corresp="" type="public">
+                            <ptr target="EDR"/>
+                            <citedRange>093995</citedRange>
+                            <note/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr/>
+                            <note>EDCS-20600374.</note>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Ionta"/>
+                            <citedRange>96, 113</citedRange>
+                            <note/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Navarra"/>
+                            <citedRange>88-89</citedRange>
+                            <note/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="CoarelliAlcuneipotesi"/>
+                            <note>(AE 2000, 251)</note>
+                            <citedRange>145-148</citedRange>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="Africa, Northwest"/>
+                            <citedRange>276 n. Ia 12;</citedRange>
+                            <note/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="FentressMaiuro"/>
+                            <citedRange>342 cum adn. 35;</citedRange>
+                            <note/>
+                        </bibl>
+                        <bibl corresp="" type="public">
+                            <ptr target="CifarelliColaiacomoGuida"/>
+                            <citedRange>15</citedRange>
+                            <note/>
+                        </bibl>
+                        <bibl corresp="" type="internal">
+                            <ptr target="Biography"/>
+                            <note/>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="internal">
+                            <ptr target="Alexander"/>
+                            <note/>
+                            <citedRange/>
+                        </bibl>
+                        <bibl corresp="" type="internal">
+                            <ptr/>
+                            <note>SOLIN, I. Trebula, Caiatia e Cubulteria.</note>
+                            <citedRange/>
+                        </bibl>
+                    </listBibl>
+                    <listBibl type="images">
+                        <!-- Einträge wiederholbar - optional -->
+                    </listBibl>
+                </listBibl>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Encoded following EpiDoc guidelines 9.2</p>
+        </encodingDesc>
+        <profileDesc>
+            <textClass>
+                <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/religion">
+                    <term ref=""/>
+                </keywords>
+                <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/terms">
+                    <term ref=""/>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="lat">
+                    <note/>
+                </language>
+                <language ident="lat" ana=""/>
+            </langUsage>
+        </profileDesc>
+        <revisionDesc status="draft">
+            <change type="created" when="2024-03-19T16:09:22.621+01:00" who="edep"/>
+            <change type="changed" when="2025-09-04T14:23:30.347+02:00" who="edep"/>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile/>
+    <text>
+        <body>
+            <div type="edition">
+                <ab>
+                    <lb n="1"/>
+                    <supplied reason="lost">
+                        <expan>Imp
+                            <ex>eratori</ex>
+                        </expan>
+                        Caesari, divi Hadri
+                    </supplied>
+                    ani
+                    <lb n="2"/>
+                    <supplied reason="lost">
+                        <expan>f
+                            <ex>ilio</ex>
+                        </expan>
+                        , divi Traiani Parthici
+                        <expan>nep
+                            <ex>oti</ex>
+                        </expan>
+                        , di
+                    </supplied>
+                    vi
+                    <lb n="3"/>
+                    <supplied reason="lost">Nervae
+                        <expan>pron
+                            <ex>epoti</ex>
+                        </expan>
+                        ,
+                        <expan>T
+                            <ex>ito</ex>
+                        </expan>
+                        Aelio Hadrian
+                    </supplied>
+                    o
+                    <lb n="4"/>
+                    <supplied reason="lost">Antonino
+                        <expan>Aug
+                            <ex>usto</ex>
+                        </expan>
+                        Pio,
+                        <expan>p
+                            <ex>ontifici</ex>
+                        </expan>
+                        <expan>m
+                            <ex>aximo</ex>
+                        </expan>
+                        ,
+                        <expan>tr
+                            <ex>ibunicia</ex>
+                        </expan>
+                        <expan>p
+                            <ex>otestate</ex>
+                        </expan>
+                    </supplied>
+                    <unclear>V</unclear>I,
+                    <lb n="5"/>
+                    <supplied reason="lost">
+                        <expan>co<ex>n</ex>s
+                            <ex>uli</ex>
+                        </expan>
+                        III,
+                        <expan>p
+                            <ex>atri</ex>
+                        </expan>
+                        <expan>p
+                            <ex>atriae</ex>
+                        </expan>
+                        - - -
+                    </supplied>
+                    <lb n="6"/>
+                    - - - - - -
+                    <lb n="7"/>
+                    <lb n="8"/>
+                    <lb n="9"/>Divo Hadr
+                    <supplied reason="lost">iano</supplied>
+                    <lb n="10"/>maximae mem
+                    <supplied reason="lost">oriae</supplied>
+                    <lb n="11"/>principi<lb n="12"/>senatus
+                    <expan>populusq
+                        <ex>ue</ex>
+                    </expan>
+                    S<supplied reason="lost">igninus</supplied>,<lb n="13"/>quod opera rei
+                    publ
+                    <supplied reason="lost">icae utilia</supplied>
+                    <lb n="14"/>profusa lìberalita
+                    <supplied reason="lost">te antea</supplied>
+                    <lb n="15"/>data pecunia t
+                    <supplied reason="lost">
+                        <expan>est
+                            <ex>amento</ex>
+                        </expan>
+                        perfici
+                    </supplied>
+                    <lb n="16"/>iusser<supplied reason="lost">it</supplied>.
+                </ab>
+            </div>
+            <div type="apparatus">
+                <ab>1 HADRIAI SUARESIUS – HADRIANO GIOVARDIUS – ADRIANO ANONYMUS; 1-2
+                    …NT•DIVO•ADRIANO….VIMAXIMAE• MEMORIAE MAROCCO; 1-4 DIVO•ADRIANO•MAXIMAE | MEMOR•
+                    PRINCIPIA | S•P•Q•SIGNINVS METELLUS; 4 POPVLVSQVE MAROCCO; 5 REIP ANONYMUS –
+                    REIPVPLICAE GIOVARDIUS, MAROCCO; 7 LATA ANONYMUS.
+                </ab>
+            </div>
+            <div type="translation" resp="Eibeck">
+                <ab>All’Imperatore Cesare Tito Elio Adriano Antonino Augusto Pio, figlio del Divo
+                    Adriano, nipote del Divo Traiano Partico, bisnipote del Divo Nerva, pontefice
+                    massimo, nell’anno della sesta potestà tribunizia, console per la terza volta,
+                    padre della patria (…) (---) Al Divo Adriano ed alla massima memoria del
+                    principe (dedicano questa tavola) il Senato ed il popolo Signino, poiché egli
+                    aveva ordinato di consegnare per testamento il denaro dato prima per le opere
+                    utili allo Stato grazie alla sua profusa generosità.
+                </ab>
+            </div>
+            <div type="commentary">Cf. IONTA 96, 113; NAVARRA 88-89; COARELLI, Alcune ipotesi
+                145-148 (AE 2000, 251); HORSTER, 276 n. Ia 12; FENTRESS - MAIURO 342 cum adn. 35;
+                CIFARELLI - COLAIACOMO, Guida 15. Titulus integrior cum ad testamentum imperatoris
+                Hadriani referat (supplementa sunt MOMMSENI), tabulam non multo post a. 138
+                inscriptam esse putandum est. Quae a sinistra tabulae supplementis nostris additis
+                exstant cum Antoninum Pium imperatorem tum viventem cum certa probabilitate
+                memorent, ex numero tribunatus plebis in v. 4 ex., ut videtur, indicato potissimum
+                de anno 142/143 cogites (cf. KIENAST 134). Pius imperator quod opera a Hadriano
+                coepta ex testamento eius perfecit, ambos Signini honoraverunt monumento quodam,
+                cuius basi tabula haec fortasse in origine adfixa erat. Inter permulta oppida,
+                quibus Hadrianus imperator beneficia obtulit (cf. ALEXANDER 160), etiam Caiatia
+                enumeratur, cf. titulum ibi repertum X 4574 (= SOLIN, I. Trebula, Caiatia e
+                Cubulteria 86-87 n. 38) beneficia a Hadriano a. 121-122 Caiatinis data
+                memorantem.
+            </div>
+        </body>
+    </text>
+</TEI>
