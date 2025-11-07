@@ -60,12 +60,12 @@
                     ></label
                 >
                 <select
-                  ref="sortNames(instance('objtyp')/term)"
+                  ref="sortNames(instance('objtyp')//category)"
                   class="widget"
                   selection="open">
                     <template>
                         <!-- prettier-ignore -->
-                        <option value="{@ref}">{name[@xml:lang = instance('vars')/language]}</option>
+                        <option value="{@corresp}">{catDesc[@xml:lang = instance('vars')/language]}</option>
                     </template>
                 </select>
             </fx-control>
@@ -77,16 +77,13 @@
                         <pb-i18n key="form.material">Material</pb-i18n>
                     </label>
                     <fx-items
-                      ref="sortNames(instance('material')/term)"
+                      ref="sortNames(instance('material')//category)"
                       class="widget">
                         <template>
-                                                                <span class="fx-checkbox">
-                                                                    <input type="checkbox" value="{@ref}" />
-                                                                    <label
-                                                                    >{name[@xml:lang =
-                                                                        instance('vars')/language]}</label
-                                                                    >
-                                                                </span>
+                            <span class="fx-checkbox">
+                                <input type="checkbox" value="{@corresp}" />
+                                <label>{catDesc[@xml:lang = instance('vars')/language]}</label>
+                            </span>
                         </template>
                     </fx-items>
                 </fx-control>
@@ -116,12 +113,12 @@
             <label>
                 <pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n>
             </label>
-            <fx-items ref="sortNames(instance('typeins')/term)" class="widget">
+            <fx-items ref="sortNames(instance('typeins')//category)" class="widget">
                 <template>
-                                                        <span class="fx-checkbox">
-                                                            <input type="checkbox" value="{@ref}" />
-                                                            <label>{name[@xml:lang = instance('vars')/language]}</label>
-                                                        </span>
+                    <span class="fx-checkbox">
+                        <input type="checkbox" value="{@corresp}" />
+                        <label>{catDesc[@xml:lang = instance('vars')/language]}</label>
+                    </span>
                 </template>
             </fx-items>
         </fx-control>
