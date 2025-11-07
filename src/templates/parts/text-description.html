@@ -21,25 +21,23 @@
         <!-- 34) -->
         <div class="alternatives">
             <fx-control
-              ref="note[@type='palaeography']/@corresp"
+              ref="note[@type='paleography']/@corresp"
               update-event="input">
                 <label>
-                    <pb-i18n key="form.palaeography">Paläographie</pb-i18n>
+                    <pb-i18n key="form.paleography">Paläographie</pb-i18n>
                 </label>
-                <fx-items ref="instance('palaeo')/term" class="widget">
+                <fx-items ref="instance('paleography')//category" class="widget">
                     <template>
-                                                            <span class="fx-checkbox">
-                                                                <input type="checkbox" value="{@ref}" />
-                                                                <label
-                                                                >{name[@xml:lang=instance('vars')/language]}</label
-                                                                >
-                                                            </span>
+                        <span class="fx-checkbox">
+                            <input type="checkbox" value="{@corresp}"/>
+                            <label>{catDesc[@xml:lang=instance('vars')/language]}</label>
+                        </span>
                     </template>
                 </fx-items>
             </fx-control>
             <fx-control
               id="input34"
-              ref="note[@type='palaeography']"
+              ref="note[@type='paleography']"
               class="{instance('vars')/hide}"
               as="node"
               update-event="leave">
