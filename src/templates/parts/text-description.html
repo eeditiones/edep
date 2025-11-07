@@ -4,15 +4,16 @@
     </summary>
     <fx-group ref="physDesc/objectDesc/layoutDesc/layout" id="layout">
         <!-- 24) -->
-        <fx-control ref="note[@type='metric']" update-event="input">
+        <fx-control ref="note[@type='metre']" update-event="input">
             <label>
                 <pb-i18n key="form.metre">Metrik</pb-i18n>
             </label>
-            <select class="widget">
-                <option value="" data-i18n="form.unknown">unbekannt</option>
-                <option value="yes" data-i18n="decor.yes">Ja</option>
-                <option value="no" data-i18n="decor.no">Nein</option>
-                <option value="partim" data-i18n="metric.partim">Partim</option>
+            <select class="widget"
+                ref="sortNames(instance('metre')//category)">
+                <template>
+                    <!-- prettier-ignore -->
+                    <option value="{@corresp}">{catDesc[@xml:lang = instance('vars')/language]}</option>
+                </template>
             </select>
         </fx-control>
 
@@ -54,14 +55,18 @@
     </fx-group>
 
     <!-- 39) -->
+
     <fx-control ref="physDesc/handDesc/handNote/note[@type='ligature']" update-event="input">
         <label>
             <pb-i18n key="form.ligature">Ligatur</pb-i18n>
         </label>
-        <select class="widget">
-            <option value="" data-i18n="form.unknown">unbekannt</option>
-            <option value="yes" data-i18n="decor.yes">Ja</option>
-            <option value="no" data-i18n="decor.no">Nein</option>
+        <select
+            ref="sortNames(instance('ligature')//category)"
+            class="widget">
+            <template>
+                <!-- prettier-ignore -->
+                <option value="{@corresp}">{catDesc[@xml:lang = instance('vars')/language]}</option>
+            </template>
         </select>
     </fx-control>
 </details>
