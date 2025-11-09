@@ -27,9 +27,9 @@
                     </label>
                     <select 
                       class="widget"
-                      ref="instance('languages')/term">
+                      ref="instance('languages')//category">
                         <template>
-                            <option value="{@xml:id}">{name[@xml:lang=instance('vars')/language]}</option>
+                            <option value="{@xml:id}">{catDesc[@xml:lang=instance('vars')/language]}</option>
                         </template>
                     </select>             
                 </fx-control>
