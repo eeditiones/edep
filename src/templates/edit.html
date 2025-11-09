@@ -137,6 +137,10 @@
                                     <data></data>
                                 </fx-instance>
 
+                                <fx-instance id="verification" src="../edep-data/data/taxonomy/verification.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
                                 <fx-instance
                                     id="templates"
                                     src="templates/fore/templates.xml"
@@ -159,18 +163,6 @@
                                         <military-term></military-term>
                                         <language>en</language>
                                         <inited>false</inited>
-                                        <verification>
-                                            <option lang="de" value="autopsy">Autopsie</option>
-                                            <option lang="de" value="squeeze">Abklatsch</option>
-                                            <option lang="de" value="photo">Foto</option>
-                                            <option lang="de" value="drawing">Zeichnung</option>
-                                            <option lang="de" value="not-seen">nicht gesehen</option>
-                                            <option lang="en" value="autopsy">Autopsy</option>
-                                            <option lang="en" value="squeeze">Squeeze</option>
-                                            <option lang="en" value="photo">Photo</option>
-                                            <option lang="en" value="drawing">Drawing</option>
-                                            <option lang="en" value="not-seen">not seen</option>
-                                        </verification>
                                     </data>
                                 </fx-instance>
                                 <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
