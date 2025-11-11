@@ -3,20 +3,21 @@
         <pb-i18n key="form.historic-relevance"></pb-i18n>
     </summary>
     <!-- 28)  -->
-    <fx-control
+    <fx-control 
       ref="textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/religion']/term/@ref"
       update-event="input">
-        <label>
-            <pb-i18n key="form.religion">Religion</pb-i18n>
-        </label>
-        <select class="widget" multiple="multiple" static="static">
-            <option value="#pagan" data-i18n="religion.pagan">pagan</option>
-            <option value="#jewish" data-i18n="religion.jewish">jüdisch</option>
-            <option value="#christian" data-i18n="religion.christian">
-                christlich
-            </option>
-        </select>
-    </fx-control>
+      <label>
+        <pb-i18n key="form.religion">Religion</pb-i18n>
+      </label>
+      <fx-items ref="sortNames(instance('religion')//category)" class="widget">
+          <template>
+              <span class="fx-checkbox">
+                  <input type="checkbox" value="{@xml:id}" />
+                  <label>{catDesc[@xml:lang = $lang]}</label>
+              </span>
+          </template>
+      </fx-items>
+  </fx-control>
     <!-- 29) missing -->
     <!-- 30) -->
     <!-- dummy switch to insert or delete 'term' elements in main instance -->
