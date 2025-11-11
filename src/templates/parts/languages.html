@@ -25,13 +25,14 @@
                     <label>
                         <pb-i18n key="form.language">Language</pb-i18n>
                     </label>
-                    <select 
-                      class="widget"
-                      ref="instance('i-languages')/term">
-                        <template>
-                            <option value="{@xml:id}">{name[@xml:lang=instance('vars')/language]}</option>
-                        </template>
-                    </select>             
+                    <select
+                  ref="instance('language-options')//category"
+                  class="widget">
+                    <template>
+                        <!-- prettier-ignore -->
+                        <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
+                    </template>
+                </select>         
                 </fx-control>
 
                 <fx-control ref="@ana">

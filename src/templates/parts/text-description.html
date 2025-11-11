@@ -4,15 +4,16 @@
     </summary>
     <fx-group ref="physDesc/objectDesc/layoutDesc/layout" id="layout">
         <!-- 24) -->
-        <fx-control ref="note[@type='metric']" update-event="input">
+        <fx-control ref="note[@type='metre']" update-event="input">
             <label>
                 <pb-i18n key="form.metre">Metrik</pb-i18n>
             </label>
-            <select class="widget">
-                <option value="" data-i18n="form.unknown">unbekannt</option>
-                <option value="yes" data-i18n="decor.yes">Ja</option>
-                <option value="no" data-i18n="decor.no">Nein</option>
-                <option value="partim" data-i18n="metric.partim">Partim</option>
+            <select class="widget"
+                ref="sortNames(instance('metre')//category)">
+                <template>
+                    <!-- prettier-ignore -->
+                    <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
+                </template>
             </select>
         </fx-control>
 
@@ -21,25 +22,23 @@
         <!-- 34) -->
         <div class="alternatives">
             <fx-control
-              ref="note[@type='palaeography']/@corresp"
+              ref="note[@type='paleography']/@corresp"
               update-event="input">
                 <label>
-                    <pb-i18n key="form.palaeography">Paläographie</pb-i18n>
+                    <pb-i18n key="form.paleography">Paläographie</pb-i18n>
                 </label>
-                <fx-items ref="instance('palaeo')/term" class="widget">
+                <fx-items ref="instance('paleography')//category" class="widget">
                     <template>
-                                                            <span class="fx-checkbox">
-                                                                <input type="checkbox" value="{@ref}" />
-                                                                <label
-                                                                >{name[@xml:lang=instance('vars')/language]}</label
-                                                                >
-                                                            </span>
+                        <span class="fx-checkbox">
+                            <input type="checkbox" value="{@corresp}"/>
+                            <label>{catDesc[@xml:lang = $lang]}</label>
+                        </span>
                     </template>
                 </fx-items>
             </fx-control>
             <fx-control
               id="input34"
-              ref="note[@type='palaeography']"
+              ref="note[@type='paleography']"
               class="{instance('vars')/hide}"
               as="node"
               update-event="leave">
@@ -56,14 +55,18 @@
     </fx-group>
 
     <!-- 39) -->
+
     <fx-control ref="physDesc/handDesc/handNote/note[@type='ligature']" update-event="input">
         <label>
             <pb-i18n key="form.ligature">Ligatur</pb-i18n>
         </label>
-        <select class="widget">
-            <option value="" data-i18n="form.unknown">unbekannt</option>
-            <option value="yes" data-i18n="decor.yes">Ja</option>
-            <option value="no" data-i18n="decor.no">Nein</option>
+        <select
+            ref="sortNames(instance('ligature')//category)"
+            class="widget">
+            <template>
+                <!-- prettier-ignore -->
+                <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
+            </template>
         </select>
     </fx-control>
 </details>

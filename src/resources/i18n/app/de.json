@@ -59,7 +59,7 @@
         "languageOther": "Andere Sprachen",
         "languageFree": "Andere Sprachen oder Kommentare",
         "ligature": "Ligatur",
-        "palaeography": "Paläographie",
+        "paleography": "Paläographie",
         "references": "Referenzen",
         "previous-editions": "Ältere Editionen",
         "bibliography": "Bibliographie",
@@ -141,9 +141,6 @@
         "yes": "ja",
         "no": "nein",
         "uncertain": "unsicher"
-    },
-    "metric": {
-        "partim": "partim"
     },
     "religion": {
         "pagan": "pagan",

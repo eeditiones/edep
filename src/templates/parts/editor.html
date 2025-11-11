@@ -46,9 +46,9 @@
                         </label>
                         <select
                         class="widget"
-                        ref="instance('editor-roles')/term">
+                        ref="instance('editor-roles')//category">
                             <template>
-                                <option value="{@xml:id}">{name[@xml:lang=instance('vars')/language]}</option>
+                                <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
                             </template>
                         </select>
                     </fx-control>

@@ -37,18 +37,16 @@
           ref="fileDesc/titleStmt/respStmt"
           id="r-verification">
             <template>
-                <fx-group>
-                    <fx-control class="verification" ref="resp">
+                <fx-group>                   
+                    <fx-control ref="resp">
                         <label>
-                            <pb-i18n key="form.basis-of-verification"
-                            >Verifizierungsgrundlage</pb-i18n
-                            >
+                            <pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n>
                         </label>
                         <select
-                          class="widget"
-                          ref="instance('vars')/verification/option[@lang=instance('vars')/language]">
+                        class="widget"
+                        ref="sortNames(instance('verification-options')//category)">
                             <template>
-                                <option value="{@value}">{.}</option>
+                                <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
                             </template>
                         </select>
                     </fx-control>

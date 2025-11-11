@@ -69,9 +69,9 @@
                                         <width/>
                                     </dimensions>
                                     <!-- 34) Paläographie: kontrolliertes Vokabular -->
-                                    <note type="palaeography" corresp=""/>
+                                    <note type="paleography" corresp=""/>
                                     <!-- 24) Metrik -->
-                                    <note type="metric"/>
+                                    <note type="metre"/>
                                     <!-- Beschreibung -->
                                     <ab/>
                                 </layout>
