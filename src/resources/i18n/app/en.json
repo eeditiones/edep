@@ -122,31 +122,6 @@
         "visibility": "Display",
         "repository": "Repository ID"
     },
-    "status": {
-        "intern": "internal",
-        "public": "public"
-    },
-    "verification": {
-        "autopsy": "autopsy",
-        "squeeze": "squeeze",
-        "photo": "foto",
-        "drawing": "drawing",
-        "not-seen": "not seen"
-    },
-    "preservation": {
-        "fragmentary": "fragmentary",
-        "complete": "complete"
-    },
-    "decor": {
-        "yes": "yes",
-        "no": "no",
-        "uncertain": "uncertain"
-    },
-    "religion": {
-        "pagan": "pagan",
-        "jewish": "jewish",
-        "christian": "christian"
-    },
     "metadata": {
     	"dimensions": "Dimensions",
     	"additional": "General data",

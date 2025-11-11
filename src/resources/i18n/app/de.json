@@ -122,31 +122,6 @@
         "verse": "Vers",
         "visibility": "Sichtbarkeit"
     },
-    "status": {
-        "intern": "intern",
-        "public": "öffentlich"
-    },
-    "verification": {
-        "autopsy": "Autopsie",
-        "squeeze": "Abklatsch",
-        "photo": "Foto",
-        "drawing": "Zeichnung",
-        "not-seen": "nicht gesehen"
-    },
-    "preservation": {
-        "fragmentary": "fragmentarisch",
-        "complete": "vollständig"
-    },
-    "decor": {
-        "yes": "ja",
-        "no": "nein",
-        "uncertain": "unsicher"
-    },
-    "religion": {
-        "pagan": "pagan",
-        "jewish": "jüdisch",
-        "christian": "christlich"
-    },
     "metadata": {
     	"dimensions": "Maße",
     	"additional": "Allgemeine Angaben",
