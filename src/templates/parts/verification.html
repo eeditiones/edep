@@ -48,7 +48,7 @@
                             class="widget"
                             ref="sortNames(instance('verification')//category)">
                             <template>
-                                <option value="{@xml:id}">{catDesc[@xml:lang = instance('vars')/language]}</option>
+                                <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
                             </template>
                         </select>
                     </fx-control>

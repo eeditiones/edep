@@ -48,7 +48,7 @@
                         class="widget"
                         ref="instance('editor-roles')/term">
                             <template>
-                                <option value="{@xml:id}">{name[@xml:lang=instance('vars')/language]}</option>
+                                <option value="{@xml:id}">{name[@xml:lang = $lang]}</option>
                             </template>
                         </select>
                     </fx-control>

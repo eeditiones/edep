@@ -34,7 +34,7 @@
                   selection="open">
                     <template>
                         <!-- prettier-ignore -->
-                        <option value="{@corresp}">{catDesc[@xml:lang = instance('vars')/language]}</option>
+                        <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
                     </template>
                 </select>
             </fx-control>
@@ -65,7 +65,7 @@
                   selection="open">
                     <template>
                         <!-- prettier-ignore -->
-                        <option value="{@corresp}">{catDesc[@xml:lang = instance('vars')/language]}</option>
+                        <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
                     </template>
                 </select>
             </fx-control>
@@ -82,7 +82,7 @@
                         <template>
                             <span class="fx-checkbox">
                                 <input type="checkbox" value="{@corresp}" />
-                                <label>{catDesc[@xml:lang = instance('vars')/language]}</label>
+                                <label>{catDesc[@xml:lang = $lang]}</label>
                             </span>
                         </template>
                     </fx-items>
@@ -117,7 +117,7 @@
                 <template>
                     <span class="fx-checkbox">
                         <input type="checkbox" value="{@corresp}" />
-                        <label>{catDesc[@xml:lang = instance('vars')/language]}</label>
+                        <label>{catDesc[@xml:lang = $lang]}</label>
                     </span>
                 </template>
             </fx-items>
