@@ -89,14 +89,14 @@
                         <label>
                             <pb-i18n key="form.visibility"></pb-i18n>
                         </label>
-                        <select class="widget" static="static">
-                            <option value="public" data-i18n="status.public">
-                                public
-                            </option>
-                            <option value="internal" data-i18n="status.intern">
-                                internal
-                            </option>
-                        </select>
+                        <select
+                        ref="instance('publication-status')//category"
+                        class="widget">
+                            <template>
+                                <!-- prettier-ignore -->
+                                <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
+                            </template>
+                        </select>         
                     </fx-control>
                 </div>
                 <fx-trigger>
