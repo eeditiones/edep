@@ -8,10 +8,14 @@
             <label>
                 <pb-i18n key="form.status-of-editing">Stand der Bearbeitung</pb-i18n>
             </label>
-            <select class="widget">
-                <option value="draft" data-i18n="status.intern">intern</option>
-                <option value="public" data-i18n="status.public">öffentlich</option>
-            </select>
+            <select
+                  ref="instance('publication-status')//category"
+                  class="widget">
+                    <template>
+                        <!-- prettier-ignore -->
+                        <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
+                    </template>
+            </select>         
         </fx-control>
     </fieldset>
 
