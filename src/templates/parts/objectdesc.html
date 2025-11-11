@@ -95,15 +95,14 @@
             <label>
                 <pb-i18n key="form.preservation">Erhaltung</pb-i18n>
             </label>
-            <select class="widget">
-                <option value="" data-i18n="form.unknown">unbekannt</option>
-                <option value="complete" data-i18n="preservation.complete">
-                    vollständig
-                </option>
-                <option value="fragmentary" data-i18n="preservation.fragmentary">
-                    fragmentarisch
-                </option>
-            </select>
+            <select
+                ref="instance('preservation')//category"
+                class="widget">
+                <template>
+                    <!-- prettier-ignore -->
+                    <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
+                </template>
+            </select>     
         </fx-control>
     </fx-group>
 
