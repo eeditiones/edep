@@ -371,12 +371,10 @@
                                         </a>
                                         <button id="expander" onclick="expander()">&lt; &gt;</button>
                                     </li>
+                                    
 -->
-<!--                                    <li class="nav-fragments" data-ref="teiHeader">-->
-<!--
-                                    <li class="nav-fragments">
-                                        <ul>
--->
+                                    <!-- if corresp then partial document, otherwise, composite -->
+                                           
                                             <li>
                                                 <a
                                                     href="{uri-path()}#object">
@@ -529,21 +527,8 @@
                                     </li>
                                     <li class="nav-divider"></li>
                                     <li class="nav-fragments">
-                                        FRAGMENTS (if available)
                                         <!-- TODO show links to children (fragment documents)-->
                                     </li>
-                                    <li>
-                                        <fx-trigger id="addChild" class="add" title="create child document">
-                                            <button>
-                                                <pb-i18n key="form.add"></pb-i18n>
-                                            </button>
-                                            <!-- TODO clone current document content into a child document with a new id and
-                                                - TEI/@corresp pointing to this one's xml:id
-                                                - TEI/@type set to 'partial'
-                                            -->
-                                        </fx-trigger>
-                                    </li>
-
                                 </ul>
                             </nav>
                             <fx-group ref="teiHeader" aria-labelledby="title-lbl" class="outer-group">
@@ -554,30 +539,20 @@
                                         </label>
                                     </fx-control>
                                 </h1>
-                                <!--            <span>Sprachselector hier</span>-->
 
                                 <!-- IDENTIFIERs -->
-                                <!--  fileDesc/sourceDesc/msDesc/msIdentifier -->
                                 <div
                                     id="object"
                                     data-template="lib:include"
                                     data-template-path="templates/parts/object.html"
                                     data-template-replace="true"></div>
 
-<!--
-                                <fx-group
-                                    ref="fileDesc/sourceDesc/msDesc"
-                                    id="inscription"
-                                    aria-labelledby="inscription-lbl">
-                                    <h2 id="inscription-lbl">Inscription</h2>
--->
                                 <fx-group
                                     ref="fileDesc/sourceDesc/msDesc"
                                     id="inscription"
                                     class="neutral">
 
                                     <!-- FINDSPOT -->
-                                    <!-- fileDesc/sourceDesc/msDesc/history -->
                                     <div
                                         id="findspot"
                                         data-template="lib:include"
@@ -585,7 +560,6 @@
                                         data-template-replace="true"></div>
 
                                     <!-- FIND DATE -->
-                                    <!-- fileDesc/sourceDesc/msDesc/history/provenance -->
                                     <div
                                         id="finddate"
                                         data-template="lib:include"
@@ -600,7 +574,6 @@
                                         data-template-replace="true"></div>
 
                                     <!-- OBJECT DESCRIPTION -->
-                                    <!-- physDesc/objectDesc -->
                                     <div
                                         id="objectdesc"
                                         data-template="lib:include"
@@ -608,7 +581,6 @@
                                         data-template-replace="true"></div>
 
                                     <!-- INSCRIPTION FIELD -->
-
                                     <div
                                         id="inscription-field"
                                         data-template="lib:include"
@@ -616,7 +588,6 @@
                                         data-template-replace="true"></div>
 
                                     <!-- TEXT DESCRIPTION -->
-
                                     <div
                                         id="text-description"
                                         data-template="lib:include"
@@ -638,6 +609,7 @@
                                     data-template-path="templates/parts/verification.html"
                                     data-template-replace="true"></div>
 
+                                <!-- REFERENCES -->
                                 <fx-group ref="fileDesc/sourceDesc/listBibl" id="references" class="neutral">
 <!--
                                     <h2>
@@ -671,15 +643,16 @@
                                         data-template="lib:include"
                                         data-template-path="templates/parts/images.html"
                                         data-template-replace="true"></div>
+
+                                    <!-- DIGITAL IMAGES -->
                                     <div
                                         id="pictures"
                                         data-template="lib:include"
                                         data-template-path="templates/parts/pictures.html"
                                         data-template-replace="true"></div>
                                 </fx-group>
-                                <!-- NEW VERSION ends here;  -->
 
-                                <!-- 26) -->
+                                <!-- DATING -->
                                 <div
                                     id="dating"
                                     data-template="lib:include"
@@ -692,20 +665,15 @@
                                     data-template-path="templates/parts/historic-relevance.html"
                                     data-template-replace="true"></div>
 
-                                <!-- 35b) -->
-                                <!-- 35a) -->
-                                <!-- 35d) -->
-
-                                <!-- 47) -->
-                                <!-- 45) -->
                                 <div
                                     id="editor"
                                     data-template="lib:include"
                                     data-template-path="templates/parts/editor.html"
                                     data-template-replace="true"></div>
                             </fx-group>
+
+                            <!-- EDITION and COMMENTARY together as they are all stored in BODY -->
                             <fx-group ref="text/body" class="outer-group">
-                                <!-- EDITION and COMMENTARY together as they are all stored in BODY -->
                                 <div
                                     id="edition"
                                     data-template="lib:include"
@@ -763,8 +731,7 @@
                     </main>
 
                     <footer class="version">
-                        App: v<span data-template="pages:version"></span> / web components: v
-                        <pb-version></pb-version>
+                        App: v<span data-template="pages:version"></span>
                     </footer>
                 </app-header-layout>
             </app-drawer-layout>
