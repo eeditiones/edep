@@ -60,9 +60,9 @@ nav #addFragment{
     }
 }
 #expander {
-    transform: rotate(90deg);
-    height: 2rem;
-    width: 2rem;
+    /* transform: rotate(90deg); */
+    /* height: 2rem; */
+    /* width: 2rem; */
     padding: 0;
     background: transparent;
     border: thin solid var(--paper-grey-300);
@@ -129,7 +129,7 @@ nav{
             padding:0.25rem;
         }
     }
-    .nav-devider{
+    .nav-divider{
         border-bottom: thin solid var(--paper-grey-300);
         margin-bottom: 1rem;
     }

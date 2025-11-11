@@ -7,7 +7,8 @@
         "about": "About"
     },
     "form": {
-        "unknown": "unkown",
+        "expand": "Expand all sections",
+        "unknown": "unknown",
         "id": "Identifier",
         "object": "Object",
         "object-description": "Description of object",
