@@ -40,8 +40,8 @@
                         <objectDesc>
                             <supportDesc>
                                 <support>
-                                    <!-- 14) Dekor -->
-                                    <note type="decoration" corresp=""/>
+                                    
+                                    
                                     <!-- 16a) Inschriftträger -->
                                     <objectType ref=""/>
                                     <!-- 18) Material -->
@@ -78,15 +78,21 @@
                             </layoutDesc>
                         </objectDesc>
                         <handDesc>
-                            <handNote>
-                                <dimensions type="letterHeight">
-                                    <!-- 23) Buchstabenhöhe -->
-                                    <height/>
-                                </dimensions>
+                            <handNote scope="ligature">
                                 <!-- 39) Ligatur -->
-                                <note type="ligature"/>
+                            </handNote>
+                            <handNote scope="letterHeight">
+                                <locus></locus>
+                                <dimensions>
+                                    <!-- 23) Buchstabenhöhe -->
+                                    <height min="" max=""/>
+                                </dimensions>
                             </handNote>
                         </handDesc>
+                        <decoDesc>
+                            <!-- 14) Dekor -->
+                            <decoNote corresp=""/>
+                        </decoDesc>
                     </physDesc>
                     <history>
                         <origin>
