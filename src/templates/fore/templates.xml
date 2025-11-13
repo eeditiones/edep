@@ -33,6 +33,13 @@
         </bibl>
     </listBibl>
 
+    <handNote scope="letterHeight">
+        <locus></locus>
+        <dimensions>
+            <height min="" max=""/>
+        </dimensions>
+    </handNote>
+
     <graphic url=""/>
 
     <language ident="lat" ana=""/>
