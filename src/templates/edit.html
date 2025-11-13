@@ -20,9 +20,11 @@
         <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
         <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
 
-        <!--        <script type="module" src="http://localhost:8090/index.js"></script>-->
+<!--        <script type="module" src="http://localhost:8090/index.js"></script>-->
+<!--        <script type="module" src="http://localhost:8090/tools/fx-lens.js"></script>-->
         <script type="module" src="resources/scripts/fore/fore-dev.js"></script>
-<!--        <script type="module" src="resources/scripts/fore/fx-lens.js"></script>-->
+        <script type="module" src="resources/scripts/fore/fx-lens.js"></script>
+
         <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>
         <script type="module" src="resources/scripts/edep-xml-editor.js"></script>
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
@@ -628,6 +630,13 @@
                                         data-template="lib:include"
                                         data-template-path="templates/parts/transmission.html"
                                         data-template-replace="true"></div>
+
+<!--
+                                    <fx-control ref=".[@type='bibliography']" as="node" initial=".">
+                                        <label>BIBLLLL</label>
+                                        <fx-fore src="bib.html?type=transmission" class="widget"></fx-fore>
+                                    </fx-control>
+-->
                                     <div
                                         id="prev-editions"
                                         data-template="lib:include"
