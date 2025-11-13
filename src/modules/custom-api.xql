@@ -431,7 +431,7 @@ declare %private function api:postprocess($nodes as node()*, $edepId as xs:strin
                     $node/@*,
                     root($node)//tei:div[@type=('apparatus', 'translation')],
                     <div type="edition" xmlns="http://www.tei-c.org/ns/1.0">
-                    { root($node)//tei:div[@type='textpart'] }
+                    { $node/tei:div[@type='edition'] }
                     </div>,
                     $node/tei:div[@type = "commentary"]
                 }
