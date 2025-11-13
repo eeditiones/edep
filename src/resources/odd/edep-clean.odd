@@ -81,7 +81,7 @@
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="note" mode="add">
-                <model predicate="not(node())" behaviour="omit">
+                <model predicate="not(node()) and normalize-space(@corresp) eq ''" behaviour="omit">
             <desc>Delete any note element that doesn’t have textual content other than white spaces</desc>
         </model>
                 <model behaviour="copy"/>
