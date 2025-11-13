@@ -74,12 +74,6 @@
                         <handDesc>
                             <handNote scope="ligature">
                             </handNote>
-                            <handNote scope="letterHeight">
-                                <locus></locus>
-                                <dimensions>
-                                    <height min="" max=""/>
-                                </dimensions>
-                            </handNote>
                         </handDesc>
                         <decoDesc>
                             <decoNote corresp=""/>

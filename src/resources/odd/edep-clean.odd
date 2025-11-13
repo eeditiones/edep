@@ -86,6 +86,21 @@
         </model>
                 <model behaviour="copy"/>
             </elementSpec>
+            <elementSpec ident="handNote" mode="add">
+                <model predicate="@scope eq 'ligature' and normalize-space(.) eq ''" behaviour="omit">
+                    <desc>Delete ligature info when content not present</desc>
+                </model>
+                <model predicate="@scope eq 'letterHeight' and count(descendant::*/@*[. ne ''])" behaviour="copy">
+                    <desc>Preserve note when some descendant attributes non-empty</desc>
+                </model>
+                <model predicate="@scope eq 'letterHeight' and normalize-space(.) ne ''" behaviour="copy">
+                    <desc>Preserve note when any text content present</desc>
+                </model>
+                <model predicate="@scope eq 'letterHeight'" behaviour="omit">
+                    <desc>Delete letter height info in all other cases</desc>
+                </model>
+                <model behaviour="copy"/>
+            </elementSpec>
             <elementSpec ident="idno" mode="add">
                 <model predicate="(@type eq 'TM') and (string-length(.) eq 0)" behaviour="omit">
             <desc>Delete TM identifier if empty.</desc>
@@ -158,9 +173,12 @@
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="dimensions" mode="add">
-                <model predicate="(string-length(width) eq 0) and (string-length(height) eq 0) and (string-length(depth) eq 0)" behaviour="omit">
-            <desc>Delete element if all children are empty</desc>
-        </model>
+                <model predicate="parent::handNote and count(descendant::*/@*[. ne ''])" behaviour="copy">
+                    <desc>Keep if in handNote</desc>
+                </model>
+                <model predicate="normalize-space(.) eq ''" behaviour="omit">
+                    <desc>Delete element if all children are empty</desc>
+                </model>
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="layoutDesc" mode="add">
