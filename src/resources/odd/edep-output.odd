@@ -125,7 +125,7 @@
         </model>
                     <model predicate="@type='decoration'" behaviour="omit"/>
                     <model predicate="@type='paleography' and @ref" behaviour="inline">
-            <param name="content" value="let $lang := replace($parameters?language, '([^-]+)-?.*$', '$1') let $ref := @ref return doc($global:data-root || &#34;/data/paleography.xml&#34;)//*:category[@corresp=$corresp]/*:catDesc[@xml:lang=$lang]/string()"/>
+            <param name="content" value="let $lang := replace($parameters?language, '([^-]+)-?.*$', '$1') let $ref := @ref return doc($global:data-root || &#34;/data/paleography.xml&#34;)//*:category[@corresp=$ref]/*:catDesc[@xml:lang=$lang]/string()"/>
         </model>
                     <model predicate="@type='ligature' and .='yes'" behaviour="inline">
             <pb:template xmlns="" xml:space="preserve"><pb-i18n key="form.ligature"/></pb:template>
