@@ -163,41 +163,131 @@ declare %private function zotero:ingest-page($arr as array(*)) as xs:integer {
   return $n
 };
 
-(: ====== Follow pagination via Link rel="next" and ingest ====== :)
-declare %private function zotero:sync-follow($next as xs:string, $acc as xs:integer) as xs:integer {
-  if (normalize-space($next) = "") then $acc
-  else
-    let $req :=
-    <http:request method="GET">
-    { attribute href { $next } }
-    { zotero:headers(()) }
-    </http:request>
-    let $res := try { http:send-request($req) } catch * { () }
-    return
-      if (empty($res)) then $acc
-      else
-        let $r1    := $res[1]
-        let $code  := xs:integer($r1/@status)
-        return
-          if ($code != 200) then $acc
-          else
-            let $raw  := try { util:binary-to-string($res[2]) } catch * { "" }
-            let $arr  := if (normalize-space($raw) = "") then array{} else try { parse-json($raw) } catch * { array{} }
-            let $cnt  := if ($arr instance of array(*)) then zotero:ingest-page($arr) else 0
-            let $nextHref :=
-              string((
-                for $line in $r1/http:header[lower-case(@name)='link']/@value/string()
-                let $parts := tokenize($line, ",")
-                for $p in $parts
-                where contains($p, 'rel="next"') or contains($p, "rel='next'")
-                return normalize-space(substring-before(substring-after($p, "<"), ">"))
-              )[1])
-            return zotero:sync-follow($nextHref, $acc + $cnt)
+(: ====== Follow pagination via Link rel="next" and ingest (with polite backoff) ====== :)
+declare %private function zotero:sync-follow(
+  $next  as xs:string,
+  $acc   as xs:integer,
+  $since as xs:integer
+) as xs:integer {
+  let $href := zotero:_normalize-next($next, $since)
+  let $log := util:log('info','sync-follow href' || $href)
+  return
+    if (normalize-space($href) = "") then $acc
+    else
+      let $req :=
+        <http:request method="GET">
+          { attribute href { $href } }
+          { zotero:headers(()) }
+        </http:request>
+      let $res := try { http:send-request($req) } catch * { () }
+      return
+        if (empty($res)) then $acc
+        else
+          let $r1   := $res[1]
+          let $code := xs:integer($r1/@status)
+          return
+            if ($code = 429 or $code = 503) then
+              let $log := util:log('info','sync-follow 429 or 503' || $href)
+              let $delay := zotero:_backoff-ms($r1)
+              let $_s := if ($delay gt 0) then util:wait($delay) else ()
+              return zotero:sync-follow($href, $acc, $since)  (: retry same page :)
+            else if ($code != 200) then $acc
+            else
+              let $raw := try { util:binary-to-string($res[2]) } catch * { "" }
+              let $arr := if (normalize-space($raw) = "") then array{} else try { parse-json($raw) } catch * { array{} }
+              let $cnt := if ($arr instance of array(*)) then zotero:ingest-page($arr) else 0
+
+              (: find next; if none, we’re done :)
+              let $nextHref :=
+                string((
+                  for $line in $r1/http:header[lower-case(@name)='link']/@value/string()
+                  let $parts := tokenize($line, ",")
+                  for $p in $parts
+                  where contains($p, 'rel="next"') or contains($p, "rel='next'")
+                  return normalize-space(substring-before(substring-after($p, "<"), ">"))
+                )[1])
+
+              (: safety: if server advertises next but page returned 0, don’t spin :)
+              return
+                if ($nextHref = "" or $cnt = 0) then $acc + $cnt
+                else zotero:sync-follow($nextHref, $acc + $cnt, $since)
 };
 
 (: ====== SYNC endpoint ====== :)
+(: politely sleep if Zotero asks us to :)
+declare %private function zotero:_backoff-ms($r as element(http:response)) as xs:integer {
+  let $log := util:log('INFO','waiting for zotero')
+  let $val1 := normalize-space(($r/http:header[lower-case(@name)='backoff']/@value)[1])
+  let $val2 := normalize-space(($r/http:header[lower-case(@name)='retry-after']/@value)[1])
+  let $log := util:log('INFO','backoff:' || $val1 || ':' || $val2)
+  let $sec1 := if ($val1 castable as xs:integer) then xs:integer($val1) else 0
+  let $sec2 := if ($val2 castable as xs:integer) then xs:integer($val2) else 0
+  return xs:integer(max(($sec1, $sec2, 0))) * 1000
+};
+(: split a query string on '&' without using a literal ampersand :)
+declare %private function zotero:_split-amp($s as xs:string) as xs:string* {
+  let $amp := codepoints-to-string(38)   (: "&" :)
+  return
+    if ($s = "") then ()
+    else if (contains($s, $amp)) then
+      ( substring-before($s, $amp),
+        zotero:_split-amp(substring-after($s, $amp)) )
+    else
+      ($s)
+};
+
+(: ensure each "next" URL keeps limit=100, include=data,bib, format=json, and style :)
+declare %private function zotero:_normalize-next(
+  $url   as xs:string,
+  $since as xs:integer
+) as xs:string {
+  let $u := normalize-space($url)
+  return
+    if ($u = "") then ""
+    else
+      let $hasQ := contains($u, "?")
+      let $base := if ($hasQ) then substring-before($u, "?") else $u
+      let $qry  := if ($hasQ) then substring-after($u, "?") else ""
+
+      (: split query without using & literally :)
+      let $amp := codepoints-to-string(38)
+      let $pairs :=
+        for $p in
+          if ($qry = "") then ()
+          else (
+            for $s at $pos in
+              (substring-before($qry, $amp),
+               for $rest in
+                 if (contains($qry, $amp)) then tokenize(substring-after($qry, $amp), $amp) else ()
+               return $rest)
+            return $s
+          )
+        let $k := if (contains($p, "=")) then substring-before($p, "=") else $p
+        let $v := if (contains($p, "=")) then substring-after($p, "=") else ""
+        where normalize-space($k) ne ""
+        return map:entry(lower-case($k), $v)
+
+      let $m0 := if (exists($pairs)) then map:merge($pairs, map{"duplicates":"use-last"}) else map{}
+
+      (: enforce the parameters we depend on, incl. ORIGINAL since :)
+      let $m1 := map:put($m0, "since", string($since))
+      let $m2 := map:put($m1, "limit", "100")
+      let $m3 := map:put($m2, "include", "data,bib")
+      let $m4 := map:put($m3, "format", "json")
+      let $m5 := if (normalize-space($zotero:STYLE) ne "")
+                 then map:put($m4, "style", encode-for-uri($zotero:STYLE))
+                 else $m4
+
+      let $q2 := string-join(
+                   for $k in map:keys($m5)
+                   return concat($k, "=", $m5($k)),
+                 $amp)
+      return concat($base, "?", $q2)
+};
+
 declare function zotero:sync($request as map(*)) {
   response:set-header("Content-Type","application/json"),
+  let $log := util:log('info','zotero sync started')
 
   let $meta  := try { zotero:read-meta() } catch * { map{ "libraryVersion": 0 } }
   let $since := xs:integer(($meta?libraryVersion, 0)[1])
@@ -206,7 +296,8 @@ declare function zotero:sync($request as map(*)) {
   let $log := util:log('info','REQUEST USER ' || sm:id()//sm:real/sm:username/string())
 
   let $base  := concat($zotero:API_BASE, "/groups/", $zotero:GROUP_ID, "/items")
-  let $qs    := string-join((
+  let $AMP  := codepoints-to-string(38)
+  let $qs   := string-join((
                   concat("since=", encode-for-uri(string($since))),
                   "limit=100",
                   "include=data,bib",
@@ -214,8 +305,7 @@ declare function zotero:sync($request as map(*)) {
                   if (normalize-space($zotero:STYLE) ne "")
                   then concat("style=", encode-for-uri($zotero:STYLE))
                   else ()
-               ), "&amp;")
-  let $href  := concat($base, "?", $qs)
+               ), $AMP)  let $href  := concat($base, "?", $qs)
   let $log := util:log('info','HREF ' || $href)
 
   let $req :=
@@ -242,12 +332,18 @@ declare function zotero:sync($request as map(*)) {
     else
       let $resp   := $respSeq[1]
       let $status := xs:integer($resp/@status)
+      let $log := util:log('info','zotero response status ' || $status)
+
       return
 
         if ($status = 304) then (
           zotero:write-meta($since),
-          serialize(map{ "status":"ok", "updated": 0, "libraryVersion": $since },
-                    map{"method":"json","indent":true()})
+          serialize(map{
+            "status":"ok",
+            "updated": 0,
+            "libraryVersion": $since,
+            "totalResults": 0           (: nothing changed, count unknown/irrelevant :)
+          }, map{"method":"json","indent":true()})
         )
         else if ($status != 200) then
           let $err := try { util:binary-to-string($respSeq[2]) } catch * { "" }
@@ -261,6 +357,11 @@ declare function zotero:sync($request as map(*)) {
           let $raw   := try { util:binary-to-string($respSeq[2]) } catch * { "" }
           let $clean := if (starts-with($raw, codepoints-to-string(65279))) then substring($raw, 2) else $raw
           let $arr   := if (normalize-space($clean) = "") then array{} else try { parse-json($clean) } catch * { array{} }
+
+          (: NEW: read Total-Results from headers :)
+          let $totalStr := ($resp/http:header[lower-case(@name)='total-results']/@value)[1]
+          let $total    := if ($totalStr and normalize-space($totalStr) ne "") then xs:integer($totalStr) else 0
+
           let $c1    :=
             if ($arr instance of array(*)) then
               sum(
@@ -275,23 +376,33 @@ declare function zotero:sync($request as map(*)) {
                 return 1
               )
             else 0
-          let $next  := string((
-              for $line in $resp/http:header[lower-case(@name)='link']/@value/string()
-              let $parts := tokenize($line, ",")
-              for $p in $parts
-              where contains($p, 'rel="next"') or contains($p, "rel='next'")
-              return normalize-space(substring-before(substring-after($p, "<"), ">"))
-            )[1])
-          let $cN   := if ($next = '') then 0 else zotero:sync-follow($next, 0)
+        let $nextRaw := string((
+          for $line in $resp/http:header[lower-case(@name)='link']/@value/string()
+          let $parts := tokenize($line, ",")
+          for $p in $parts
+          where contains($p, 'rel="next"') or contains($p, "rel=\'next\'")
+          return normalize-space(substring-before(substring-after($p, "<"), ">"))
+        )[1])
+
+        let $next := zotero:_normalize-next($nextRaw, $since)
+
+        (: respect any backoff before paging :)
+        let $delay := zotero:_backoff-ms($resp)
+        let $_s := if ($delay gt 0) then util:wait($delay) else ()
+
+        (: pass SINCE through pagination :)
+        let $cN := if ($next = '') then 0 else zotero:sync-follow($next, 0, $since)
           let $lmvStr := ($resp/http:header[lower-case(@name)='last-modified-version']/@value)[1]
           let $lmv    := if ($lmvStr and normalize-space($lmvStr) ne "") then xs:integer($lmvStr) else $since
           let $_m := zotero:write-meta($lmv)
           return serialize(map{
             "status":"ok",
             "updated": $c1 + $cN,
-            "libraryVersion": $lmv
+            "libraryVersion": $lmv,
+            "totalResults": $total      (: <-- NEW field :)
           }, map{"method":"json","indent":true()})
 };
+
 
 (: ====== SUGGEST (lightweight for autocomplete) ====== :)
 declare function zotero:items-suggest($request as map(*)) {
