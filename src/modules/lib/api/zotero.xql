@@ -64,8 +64,11 @@ declare %private function zotero:headers($extra as element(http:header)?) as ele
   let $base :=
     (<http:header name="Accept" value="application/json"/>,
      <http:header name="User-Agent" value="eXist/zotero-sync"/>,
-     <http:header name="Accept-Encoding" value="identity"/>)
-  let $auth := if (normalize-space($zotero:API_KEY) ne "")
+     <http:header name="Accept-Encoding" value="identity"/>,
+     (: IMPORTANT :)
+     <http:header name="Zotero-API-Version" value="3"/>)
+  let $auth :=
+    if (normalize-space($zotero:API_KEY) ne "")
                then <http:header name="Zotero-API-Key" value="{ $zotero:API_KEY }"/>
                else ()
   return ($base, $auth, $extra)
@@ -161,6 +164,116 @@ declare %private function zotero:ingest-page($arr as array(*)) as xs:integer {
       return 1
     )
   return $n
+};
+(: build a page href with fixed since + required params + start :)
+(: build a page href with fixed since + required params + start :)
+(: build a page href with fixed since + required params + start :)
+declare %private function zotero:_page-href(
+  $since as xs:integer,
+  $start as xs:integer
+) as xs:string {
+  let $AMP := codepoints-to-string(38)
+  let $qs  := string-join((
+               concat("since=",  encode-for-uri(string($since))),
+               "limit=100",
+               concat("start=", string($start)),
+               "include=data,bib",
+               "format=json",
+               "sort=dateModified",         (: <-- valid :)
+               "direction=asc",             (: <-- valid :)
+               if (normalize-space($zotero:STYLE) ne "")
+               then concat("style=", encode-for-uri($zotero:STYLE))
+               else ()
+             ), $AMP)
+  return concat($zotero:API_BASE, "/groups/", $zotero:GROUP_ID, "/items?", $qs)
+};
+
+(: fetch one page at 'start', obey Backoff/Retry-After; returns items ingested :)
+(: fetch one page at 'start', obey Backoff/Retry-After; returns items ingested :)
+(: fetch one page at 'start' with small retry budget :)
+(: fetch one page at 'start' with small retry budget :)
+declare %private function zotero:_fetch-page-start(
+  $since as xs:integer,
+  $start as xs:integer
+) as xs:integer {
+  zotero:_fetch-page-start-retry($since, $start, 3)
+};
+
+(: tail-recursive retry helper :)
+declare %private function zotero:_fetch-page-start-retry(
+  $since as xs:integer,
+  $start as xs:integer,
+  $tries as xs:integer
+) as xs:integer {
+  let $href := zotero:_page-href($since, $start)
+  let $req  :=
+    <http:request method="GET">
+      { attribute href { $href } }
+      { zotero:headers(()) }
+    </http:request>
+  let $res := try { http:send-request($req) } catch * { () }
+  return
+    if (empty($res)) then 0
+    else
+      let $r1   := $res[1]
+      let $code := xs:integer($r1/@status)
+      return
+        (: treat throttling or transient server errors the same: wait & retry :)
+        if ($code = 429 or $code = 503 or $code = 500 or $code = 502 or $code = 504) then
+          let $delay := max( (zotero:_backoff-ms($r1), 1500) )
+          let $_wait := util:wait($delay)
+          return if ($tries gt 0)
+                 then zotero:_fetch-page-start-retry($since, $start, $tries - 1)
+                 else ( util:log('warn', '[zotero] start=' || $start || ' http=' || $code || ' giving up'), 0 )
+        else if ($code != 200) then (
+          util:log('warn', '[zotero] start=' || $start || ' http=' || $code),
+          0
+        )
+        else
+          let $raw   := try { util:binary-to-string($res[2]) } catch * { "" }
+          let $head  := normalize-space(substring($raw, 1, 200))
+          let $isHtml := starts-with($head, "<")
+          return
+            if ($isHtml) then
+              if ($tries gt 0)
+              then ( util:log('warn', '[zotero] start=' || $start || ' got HTML, retrying'), util:wait(1000), zotero:_fetch-page-start-retry($since, $start, $tries - 1) )
+              else ( util:log('warn', '[zotero] start=' || $start || ' got HTML, giving up'), 0 )
+            else
+              let $arr := if ($raw = "") then array{} else try { parse-json($raw) } catch * { array{} }
+              return
+                if ($arr instance of array(*)) then zotero:ingest-page($arr)
+                else if ($tries gt 0)
+                then ( util:log('warn', '[zotero] start=' || $start || ' parse-json failed, retrying; head=' || $head),
+                       util:wait(1000),
+                       zotero:_fetch-page-start-retry($since, $start, $tries - 1) )
+                else ( util:log('warn', '[zotero] start=' || $start || ' parse-json failed, giving up; head=' || $head), 0 )
+};
+
+(: walk pages 100-at-a-time until >= total :)
+(: fetch pages by explicit start offsets until start >= total :)
+(: fetch pages by explicit start offsets until start >= total :)
+declare %private function zotero:_walk-by-start(
+  $since  as xs:integer,
+  $total  as xs:integer,
+  $start0 as xs:integer
+) as xs:integer {
+  zotero:_walk-by-start-int($since, $total, $start0, 0)
+};
+
+(: tail-recursive worker: always advance by chunk; never abort on stalls :)
+declare %private function zotero:_walk-by-start-int(
+  $since as xs:integer,
+  $total as xs:integer,
+  $start as xs:integer,
+  $acc   as xs:integer
+) as xs:integer {
+  let $chunk := 100
+  return
+    if ($start ge $total) then $acc
+    else
+      let $cnt    := zotero:_fetch-page-start($since, $start)
+      let $_pause := util:wait(300)          (: tiny courtesy pause :)
+      return zotero:_walk-by-start-int($since, $total, $start + $chunk, $acc + $cnt)
 };
 
 (: ====== Follow pagination via Link rel="next" and ingest (with polite backoff) ====== :)
@@ -295,17 +408,20 @@ declare function zotero:sync($request as map(*)) {
   let $user := $request?user
   let $log := util:log('info','REQUEST USER ' || sm:id()//sm:real/sm:username/string())
 
-  let $base  := concat($zotero:API_BASE, "/groups/", $zotero:GROUP_ID, "/items")
+  let $base := concat($zotero:API_BASE, "/groups/", $zotero:GROUP_ID, "/items")
   let $AMP  := codepoints-to-string(38)
-  let $qs   := string-join((
-                  concat("since=", encode-for-uri(string($since))),
-                  "limit=100",
-                  "include=data,bib",
-                  "format=json",
-                  if (normalize-space($zotero:STYLE) ne "")
-                  then concat("style=", encode-for-uri($zotero:STYLE))
-                  else ()
-               ), $AMP)  let $href  := concat($base, "?", $qs)
+  let $qs  := string-join((
+              concat("since=", encode-for-uri(string($since))),
+              "limit=100",
+              "include=data,bib",
+              "format=json",
+              "sort=dateModified",          (: <-- valid :)
+              "direction=asc",              (: <-- valid :)
+              if (normalize-space($zotero:STYLE) ne "")
+              then concat("style=", encode-for-uri($zotero:STYLE))
+              else ()
+            ), $AMP)
+  let $href := concat($base, "?", $qs)
   let $log := util:log('info','HREF ' || $href)
 
   let $req :=
@@ -333,16 +449,14 @@ declare function zotero:sync($request as map(*)) {
       let $resp   := $respSeq[1]
       let $status := xs:integer($resp/@status)
       let $log := util:log('info','zotero response status ' || $status)
-
       return
-
         if ($status = 304) then (
           zotero:write-meta($since),
           serialize(map{
             "status":"ok",
             "updated": 0,
             "libraryVersion": $since,
-            "totalResults": 0           (: nothing changed, count unknown/irrelevant :)
+            "totalResults": 0
           }, map{"method":"json","indent":true()})
         )
         else if ($status != 200) then
@@ -358,11 +472,12 @@ declare function zotero:sync($request as map(*)) {
           let $clean := if (starts-with($raw, codepoints-to-string(65279))) then substring($raw, 2) else $raw
           let $arr   := if (normalize-space($clean) = "") then array{} else try { parse-json($clean) } catch * { array{} }
 
-          (: NEW: read Total-Results from headers :)
+          (: read Total-Results from headers :)
           let $totalStr := ($resp/http:header[lower-case(@name)='total-results']/@value)[1]
           let $total    := if ($totalStr and normalize-space($totalStr) ne "") then xs:integer($totalStr) else 0
 
-          let $c1    :=
+          (: ingest first page :)
+          let $c1 :=
             if ($arr instance of array(*)) then
               sum(
                 for $i in 1 to array:size($arr)
@@ -376,30 +491,21 @@ declare function zotero:sync($request as map(*)) {
                 return 1
               )
             else 0
-        let $nextRaw := string((
-          for $line in $resp/http:header[lower-case(@name)='link']/@value/string()
-          let $parts := tokenize($line, ",")
-          for $p in $parts
-          where contains($p, 'rel="next"') or contains($p, "rel=\'next\'")
-          return normalize-space(substring-before(substring-after($p, "<"), ">"))
-        )[1])
 
-        let $next := zotero:_normalize-next($nextRaw, $since)
+           let $cN := if ($total gt $c1)
+               then zotero:_walk-by-start($since, $total, $c1)  (: start at offset = first page size :)
+               else 0
 
-        (: respect any backoff before paging :)
-        let $delay := zotero:_backoff-ms($resp)
-        let $_s := if ($delay gt 0) then util:wait($delay) else ()
-
-        (: pass SINCE through pagination :)
-        let $cN := if ($next = '') then 0 else zotero:sync-follow($next, 0, $since)
+          (: update meta :)
           let $lmvStr := ($resp/http:header[lower-case(@name)='last-modified-version']/@value)[1]
           let $lmv    := if ($lmvStr and normalize-space($lmvStr) ne "") then xs:integer($lmvStr) else $since
           let $_m := zotero:write-meta($lmv)
+
           return serialize(map{
             "status":"ok",
             "updated": $c1 + $cN,
             "libraryVersion": $lmv,
-            "totalResults": $total      (: <-- NEW field :)
+            "totalResults": $total
           }, map{"method":"json","indent":true()})
 };
 
