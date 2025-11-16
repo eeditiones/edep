@@ -69,6 +69,8 @@ class EdepXMLEditor extends HTMLElement {
         this.unwrap = 'unwrap';
         this.namespace = 'http://www.tei-c.org/ns/1.0';
 
+        this.baseUrl = '';
+
         /**
          * @type {HTMLElement}
          */
@@ -86,6 +88,7 @@ class EdepXMLEditor extends HTMLElement {
     connectedCallback() {
         this.schemaRoot = this.getAttribute('schema-root');
         this.placeholder = this.getAttribute('placeholder');
+        this.baseUrl = this.getAttribute('base-url');
         this.snippets = this.hasAttribute('snippets')
             ? JSON.parse(this.getAttribute('snippets'))
             : [
@@ -102,6 +105,8 @@ class EdepXMLEditor extends HTMLElement {
             schema="${this.schema}"
             schema-root="${this.schemaRoot}"
             namespace="${this.namespace}"
+            base-url="${this.baseUrl}"
+            providers="zotero"
             >${makeToolbarHTML(this.snippets)}</jinn-xml-editor
         >`;
 
