@@ -27,6 +27,8 @@
         "material": "Material",
         "findspot": "Fundort",
         "context-of-provenance": "Fundkontext",
+        "found-date": "Fundkontext",
+        "custom-date": "Datierung (Quelle)",
         "year-of-find": "Fundjahr/-datum",
         "date": "Zeitpunkt",
         "date-before": "vor",
