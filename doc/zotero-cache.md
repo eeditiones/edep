@@ -115,6 +115,12 @@ A minimal post‑install does:
     - `Authorization: Bearer {apiKey}` (only if `$config:zotero-api-key` is non-empty)
     - `If-Modified-Since-Version: {libraryVersion}` (only when `libraryVersion > 0`)
 
+#### force full update
+
+To force a full update set the value of `libraryVersion` to 0 in meta.json.
+
+This will result in a complete update.
+
 ### Response (local API)
 ```json
 { "status": "ok", "updated": <int>, "libraryVersion": <int> }
@@ -122,6 +128,19 @@ A minimal post‑install does:
 - `status`: `"ok"` or `"error"`
 - `updated`: number of items locally stored across all pages
 - `libraryVersion`: Zotero’s `Last-Modified-Version` captured and saved to `meta.json`
+
+If libraryVersion has been > 0 it's being sent as last-modified-since
+header and the endpoint might return something like this:
+``` 
+{
+  "totalResults": 0,
+  "updated": 0,
+  "libraryVersion": 9548,
+  "status": "ok"
+}
+```
+This is an early-out in case the libraryVersion has not changed
+since last update. Finer-grained caching (single item) is currently not supported.
 
 ### Pagination
 - Follows the `Link` response header (`rel="next"`) until exhausted.

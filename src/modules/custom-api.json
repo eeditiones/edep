@@ -859,7 +859,7 @@
           "200": {
             "description": "Sync result.",
             "content": {
-              "text/plain": { "schema": { "type": "string" } }
+              "application/json": { "schema": { "type": "string" } }
             }
           },
           "304": {
