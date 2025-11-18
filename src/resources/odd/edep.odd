@@ -138,7 +138,7 @@
         </model>
                 </elementSpec>
                 <elementSpec ident="lb" mode="change">
-                    <model predicate="not(preceding-sibling::lb)" behaviour="omit"/>
+                    <model predicate="not(preceding::lb) or preceding-sibling::*[1][self::lg]" behaviour="omit"/>
                     <modelSequence predicate="@break=&#34;no&#34;">
             <model behaviour="inline">
                 <param name="content" value="'-'"/>
@@ -214,6 +214,20 @@
                     <model predicate="orig and reg" behaviour="alternate">
             <param name="default" value="reg[1]"/>
             <param name="alternate" value="orig[1]"/>
+        </model>
+                </elementSpec>
+            <elementSpec ident="l" mode="change">
+                    <model behaviour="inline" useSourceRendition="true">
+            <outputRendition xml:space="preserve" scope="after">
+            content: '|';
+            </outputRendition>
+        </model>
+                </elementSpec>
+                <elementSpec ident="lg" mode="change">
+                    <model behaviour="block" cssClass="lg">
+            <outputRendition xml:space="preserve">
+            margin: 0;
+            </outputRendition>
         </model>
                 </elementSpec>
             </schemaSpec>
