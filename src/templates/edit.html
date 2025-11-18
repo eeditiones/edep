@@ -486,6 +486,20 @@
                                             </li> -->
                                             <li>
                                                 <a
+                                                    href="{uri-path()}#edition">
+                                                    <pb-i18n key="form.edition">Textedition</pb-i18n>
+                                                </a>
+        <!--                                        <input type="checkbox" id="edition-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
+                                                    href="{uri-path()}#commentary">
+                                                    <pb-i18n key="form.commentary"></pb-i18n>
+                                                </a>
+        <!--                                        <input type="checkbox" id="commentary-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
                                                     href="{uri-path()}#dating">
                                                     <pb-i18n key="form.dating"></pb-i18n>
                                                 </a>
@@ -509,20 +523,7 @@
                                         </ul>
                                     </li>
 -->
-                                    <li>
-                                        <a
-                                            href="{uri-path()}#edition">
-                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
-                                        </a>
-<!--                                        <input type="checkbox" id="edition-checkbox" title="expand/collapse"/>-->
-                                    </li>
-                                    <li>
-                                        <a
-                                            href="{uri-path()}#commentary">
-                                            <pb-i18n key="form.commentary"></pb-i18n>
-                                        </a>
-<!--                                        <input type="checkbox" id="commentary-checkbox" title="expand/collapse"/>-->
-                                    </li>
+                                    
                                     <li>
                                         <button  onclick="expander()">&lt; &gt;<pb-i18n key="form.expand">Expand all sections</pb-i18n></button>
                                     </li>
@@ -667,7 +668,29 @@
                                     data-template-replace="true"></div>
                                 
                                 </fx-group>
-                                
+                            </fx-group>
+
+                            <!-- edition here, splitting the binding group -->
+                            <!-- EDITION and COMMENTARY together as they are all stored in BODY -->
+                            <fx-group ref="text/body" class="outer-group">
+                                <div
+                                    id="edition"
+                                    data-template="lib:include"
+                                    data-template-path="templates/parts/edition.html"
+                                    data-template-replace="true"></div>
+
+                                <!--
+                                    This won't call the update-cycle for each event as the replace action in its current form does not
+                                    call it. The control will refresh the UI when the control looses focus (onblur).
+                                -->
+                                <div
+                                    id="commentary"
+                                    data-template="lib:include"
+                                    data-template-path="templates/parts/commentary.html"
+                                    data-template-replace="true"></div>
+                            </fx-group>
+
+                            <fx-group ref="teiHeader" aria-labelledby="title-lbl" class="outer-group">
                                 <!-- DATING -->
                                 <div
                                     id="dating"
@@ -685,25 +708,6 @@
                                     id="editor"
                                     data-template="lib:include"
                                     data-template-path="templates/parts/editor.html"
-                                    data-template-replace="true"></div>
-                            </fx-group>
-
-                            <!-- EDITION and COMMENTARY together as they are all stored in BODY -->
-                            <fx-group ref="text/body" class="outer-group">
-                                <div
-                                    id="edition"
-                                    data-template="lib:include"
-                                    data-template-path="templates/parts/edition.html"
-                                    data-template-replace="true"></div>
-
-                                <!--
-                                    This won't call the update-cycle for each event as the replace action in its current form does not
-                                    call it. The control will refresh the UI when the control looses focus (onblur).
-                                -->
-                                <div
-                                    id="commentary"
-                                    data-template="lib:include"
-                                    data-template-path="templates/parts/commentary.html"
                                     data-template-replace="true"></div>
                             </fx-group>
 
