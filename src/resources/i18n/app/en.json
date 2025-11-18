@@ -34,6 +34,7 @@
         "date-after": "after",
         "date-invalid": "Invalid date",
         "free-form": "Free form",
+        "remarks": "Remarks",
         "last-recorded-location": "Present location",
         "other-events": "Other events",
         "transmission": "Transmission",
