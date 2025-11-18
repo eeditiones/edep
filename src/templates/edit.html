@@ -413,6 +413,13 @@
                                             </li>
                                             <li>
                                                 <a
+                                                    href="{uri-path()}#verification">
+                                                    <pb-i18n key="form.verification"></pb-i18n>
+                                                </a>
+<!--                                                <input type="checkbox" id="verification-checkbox" title="expand/collapse"/>-->
+                                            </li>
+                                            <li>
+                                                <a
                                                     href="{uri-path()}#objectdesc">
                                                     <pb-i18n key="form.object-description"></pb-i18n>
                                                 </a>
@@ -438,13 +445,6 @@
                                                     <pb-i18n key="form.language"></pb-i18n>
                                                 </a>
 <!--                                                <input type="checkbox" id="languages-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#verification">
-                                                    <pb-i18n key="form.verification"></pb-i18n>
-                                                </a>
-<!--                                                <input type="checkbox" id="verification-checkbox" title="expand/collapse"/>-->
                                             </li>
                                             <li>
                                                 <a
@@ -580,6 +580,13 @@
                                         data-template-path="templates/parts/location.html"
                                         data-template-replace="true"></div>
 
+                                    <!-- VERIFICATION -->
+                                    <div
+                                    id="verification"
+                                    data-template="lib:include"
+                                    data-template-path="templates/parts/verification.html"
+                                    data-template-replace="true"></div>
+
                                     <!-- OBJECT DESCRIPTION -->
                                     <div
                                         id="objectdesc"
@@ -610,11 +617,7 @@
                                         data-template-replace="true"></div>
                                 </fx-group>
 
-                                <div
-                                    id="verification"
-                                    data-template="lib:include"
-                                    data-template-path="templates/parts/verification.html"
-                                    data-template-replace="true"></div>
+                                
 
                                 <!-- REFERENCES -->
                                 <fx-group ref="fileDesc/sourceDesc/listBibl" id="references" class="neutral">
