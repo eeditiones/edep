@@ -48,6 +48,7 @@
         "verification-by": "Verificator",
         "preservation": "Preservation",
         "decoration": "Decoration",
+        "decoration-description": "Description of decoration",
         "type-of-inscription": "Type of inscription",
         "width": "Width",
         "depth": "Depth",
