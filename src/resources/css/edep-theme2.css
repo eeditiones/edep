@@ -663,8 +663,12 @@ fx-group > label {
 fx-group.neutral{
     padding: 0;
     border:none;
-    background:none;
 }
+
+.references-background {
+    background-color: #cee0fe;
+}
+
 /*
 fx-group fx-group {
     border:none;

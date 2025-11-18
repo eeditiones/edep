@@ -448,39 +448,42 @@
                                             </li>
                                             <li>
                                                 <a
+                                                    href="{uri-path()}#references">
+                                                    <pb-i18n key="form.references"></pb-i18n>
+                                                </a>
+                                                <!-- <input type="checkbox" id="references-checkbox" title="expand/collapse"/> -->
+                                            </li>
+
+                                            <!-- <li>
+                                                <a
                                                     href="{uri-path()}#transmission">
                                                     <pb-i18n key="form.transmission"></pb-i18n>
                                                 </a>
-<!--                                                <input type="checkbox" id="transmission-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
+                                            </li> -->
+                                            <!-- <li>
                                                 <a
                                                     href="{uri-path()}#prev-editions">
                                                     <pb-i18n key="form.previous-editions"></pb-i18n>
                                                 </a>
-<!--                                                <input type="checkbox" id="prev-editions-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
+                                            </li> -->
+                                            <!-- <li>
                                                 <a
                                                     href="{uri-path()}#bibliography">
                                                     <pb-i18n key="form.bibliography"></pb-i18n>
                                                 </a>
-<!--                                                <input type="checkbox" id="bibliography-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
+                                            </li> -->
+                                            <!-- <li>
                                                 <a
                                                     href="{uri-path()}#images">
                                                     <pb-i18n key="form.images-dps"></pb-i18n>
                                                 </a>
-<!--                                                <input type="checkbox" id="images-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
+                                            </li> -->
+                                            <!-- <li>
                                                 <a
                                                     href="{uri-path()}#pictures">
                                                     <pb-i18n key="form.images"></pb-i18n>
                                                 </a>
-<!--                                                <input type="checkbox" id="pictures-checkbox" title="expand/collapse"/>-->
-                                            </li>
+                                            </li> -->
                                             <li>
                                                 <a
                                                     href="{uri-path()}#dating">
@@ -504,15 +507,6 @@
                                             </li>
 <!--
                                         </ul>
-                                    </li>
--->
-<!--
-                                    <li>
-                                        <a
-                                            href="{uri-path()}#references">
-                                            <pb-i18n key="form.references"></pb-i18n>
-                                        </a>
-                                        <input type="checkbox" id="references-checkbox" title="expand/collapse"/>
                                     </li>
 -->
                                     <li>
@@ -620,7 +614,7 @@
                                 
 
                                 <!-- REFERENCES -->
-                                <fx-group ref="fileDesc/sourceDesc/listBibl" id="references" class="neutral">
+                                <fx-group ref="fileDesc/sourceDesc/listBibl" id="references" class="neutral references-background">
 <!--
                                     <h2>
                                         <pb-i18n key="form.references">Referenzen</pb-i18n>
@@ -662,13 +656,18 @@
                                         data-template-replace="true"></div>
 
                                 </fx-group>
+
+                                <fx-group id="dig-images" class="neutral references-background">
+
                                 <!-- DIGITAL IMAGES -->
                                 <div
                                     id="pictures"
                                     data-template="lib:include"
                                     data-template-path="templates/parts/pictures.html"
                                     data-template-replace="true"></div>
-
+                                
+                                </fx-group>
+                                
                                 <!-- DATING -->
                                 <div
                                     id="dating"
