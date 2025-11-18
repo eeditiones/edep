@@ -3,31 +3,44 @@
         <pb-i18n key="form.object-description"/>
     </summary>
 
-    <div class="alternatives">
-        <fx-control ref="msContents/@class" update-event="input">
-            <label>
-                <pb-i18n key="form.type-of-inscription"/>
-            </label>
-            <fx-items ref="sortNames(instance('typeins')//category)" class="widget">
-                <template>
-                    <span class="fx-checkbox">
-                        <input type="checkbox" value="{@corresp}" />
-                        <label>{catDesc[@xml:lang = $lang]}</label>
-                    </span>
-                </template>
-            </fx-items>
-        </fx-control>
-
-        <fx-control ref="msContents/summary">
-            <label>
-                <pb-i18n key="form.free-form"/>
-            </label>
-        </fx-control>
-    </div>
-
     <fx-group ref="physDesc">
-        <fx-group ref="objectDesc/supportDesc/support">
+        <fx-group ref="decoDesc">
+            <fx-control ref="decoNote/@corresp" update-event="input">
+                <label>
+                    <pb-i18n key="form.decoration"/>
+                </label>
+                <select
+                ref="sortNames(instance('decoration')//category)"
+                class="widget"
+                selection="open">
+                    <template>
+                        <!-- prettier-ignore -->
+                        <option value="{@corresp}">{head((catDesc[@xml:lang = $lang], catDesc))}</option>
+                    </template>
+                </select>
+            </fx-control>
 
+            <fx-control ref="decoNote">
+                <label>
+                    <pb-i18n key="form.free-form"/>
+                </label>
+            </fx-control>
+        </fx-group>
+
+        <fx-control ref="objectDesc/supportDesc/condition" update-event="input">
+            <label>
+                <pb-i18n key="form.preservation"/>
+            </label>
+            <select
+                ref="instance('preservation')//category"
+                class="widget">
+                <template>
+                    <!-- prettier-ignore -->
+                    <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
+                </template>
+            </select>     
+        </fx-control>
+        <fx-group ref="objectDesc/supportDesc/support">
             <fx-control ref="objectType/@ref" update-event="input">
                 <label>
                     <pb-i18n key="form.type-of-monument"/>
@@ -90,43 +103,28 @@
                 </label>
             </fx-control>
         </fx-group>
+    </fx-group>
 
-        <fx-control ref="objectDesc/supportDesc/condition" update-event="input">
+    <div class="alternatives">
+        <fx-control ref="msContents/@class" update-event="input">
             <label>
-                <pb-i18n key="form.preservation"/>
+                <pb-i18n key="form.type-of-inscription"/>
             </label>
-            <select
-                ref="instance('preservation')//category"
-                class="widget">
+            <fx-items ref="sortNames(instance('typeins')//category)" class="widget">
                 <template>
-                    <!-- prettier-ignore -->
-                    <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
+                    <span class="fx-checkbox">
+                        <input type="checkbox" value="{@corresp}" />
+                        <label>{catDesc[@xml:lang = $lang]}</label>
+                    </span>
                 </template>
-            </select>     
+            </fx-items>
         </fx-control>
 
-        <fx-group ref="decoDesc">
-            <fx-control ref="decoNote/@corresp" update-event="input">
-                <label>
-                    <pb-i18n key="form.decoration"/>
-                </label>
-                <select
-                ref="sortNames(instance('decoration')//category)"
-                class="widget"
-                selection="open">
-                    <template>
-                        <!-- prettier-ignore -->
-                        <option value="{@corresp}">{head((catDesc[@xml:lang = $lang], catDesc))}</option>
-                    </template>
-                </select>
-            </fx-control>
-
-            <fx-control ref="decoNote">
-                <label>
-                    <pb-i18n key="form.free-form"/>
-                </label>
-            </fx-control>
-        </fx-group>
-    </fx-group>
+        <fx-control ref="msContents/summary">
+            <label>
+                <pb-i18n key="form.free-form"/>
+            </label>
+        </fx-control>
+    </div>
 
 </details>
