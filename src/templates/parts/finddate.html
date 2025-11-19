@@ -6,7 +6,7 @@
     <fx-group ref="history/provenance[@type='found']">
         <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
         <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
-        <fx-control ref="@when">
+        <fx-control ref="@when" create="create">
             <label>
                 <pb-i18n key="form.date">Zeitpunkt</pb-i18n>
             </label>
@@ -16,7 +16,7 @@
                 <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
             </fx-alert>
         </fx-control>
-        <fx-control ref="@notBefore">
+        <fx-control ref="@notBefore" create="create">
             <label>
                 <pb-i18n key="form.date-after">nach</pb-i18n>
             </label>
@@ -26,7 +26,7 @@
                 <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
             </fx-alert>
         </fx-control>
-        <fx-control ref="@notAfter">
+        <fx-control ref="@notAfter" create="create">
             <label>
                 <pb-i18n key="form.date-before">vor</pb-i18n>
             </label>
