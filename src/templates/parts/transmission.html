@@ -15,16 +15,6 @@
             <label>
                 <pb-i18n key="form.transmission">Überlieferung</pb-i18n>
             </label>
-            <fx-trigger class="add" title="Überlieferung hinzufügen">
-                <iron-icon
-                  icon="add-circle-outline"
-                  title="Überlieferung hinzufügen"></iron-icon>
-                <fx-insert
-                  context="listBibl[@type='transmission']"
-                  ref="bibl"
-                  origin="instance('templates')//bibl"></fx-insert>
-                <fx-refresh control="r-transmission"></fx-refresh>
-            </fx-trigger>
         </legend>
         <fx-repeat
           class="nested-repeat"
@@ -101,5 +91,15 @@
                 </fx-trigger>
             </template>
         </fx-repeat>
+        <fx-trigger class="add" title="Überlieferung hinzufügen">
+            <iron-icon
+                icon="add-circle-outline"
+                title="Überlieferung hinzufügen"></iron-icon>
+            <fx-insert
+                context="listBibl[@type='transmission']"
+                ref="bibl"
+                origin="instance('templates')//bibl"></fx-insert>
+            <fx-refresh control="r-transmission"></fx-refresh>
+        </fx-trigger>
     </fieldset>
 </details>
