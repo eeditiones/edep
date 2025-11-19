@@ -667,7 +667,15 @@ fx-group.neutral{
 }
 
 .references-background {
-    background-color: #cee0fe;
+    /*background-color: #cee0fe;*/
+}
+#references, #dig-images{
+    border-left: 5px solid #cee0fe;
+    border-radius: 0;
+    /*padding-left: 0.5rem;*/
+}
+#references details{
+    border-radius: 0;
 }
 
 /*
