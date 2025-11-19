@@ -35,10 +35,15 @@
                 </select>         
                 </fx-control>
             <!-- TODO change into checkbox -->
-                <fx-control ref="@ana">
+
+<!--                <fx-control ref="@ana" value-prop="checked" update-event="input">-->
+                <fx-control ref="instance('vars')/main-lang" value-prop="checked" update-event="input">
+                    <input type="checkbox" class="widget" />
                     <label>
                         <pb-i18n key="form.languageMain">Hauptsprache</pb-i18n>
                     </label>
+                    <fx-setvalue event="value-changed" ref="context('r-language')/@ana" if=".='false'"></fx-setvalue>
+                    <fx-setvalue event="value-changed" ref="context('r-language')/@ana" if=".='true'">main</fx-setvalue>
                 </fx-control>
             </fx-group>
             <fx-trigger>
