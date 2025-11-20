@@ -4,8 +4,8 @@
     </summary>
 
     <fx-group ref="physDesc">
-        <fx-group ref="decoDesc">
-            <fx-control ref="decoNote/@corresp" update-event="input">
+        <fx-group ref="decoDesc/decoNote">
+            <fx-control ref="@corresp" update-event="input" create="create">
                 <label>
                     <pb-i18n key="form.decoration"/>
                 </label>
@@ -20,7 +20,7 @@
                 </select>
             </fx-control>
 
-            <fx-control ref="decoNote">
+            <fx-control ref=".">
                 <label>
                     <pb-i18n key="form.decoration-description"/>
                 </label>
@@ -106,25 +106,27 @@
     </fx-group>
 
     <div class="alternatives">
-        <fx-control ref="msContents/@class" update-event="input">
-            <label>
-                <pb-i18n key="form.type-of-inscription"/>
-            </label>
-            <fx-items ref="sortNames(instance('typeins')//category)" class="widget">
-                <template>
-                    <span class="fx-checkbox">
-                        <input type="checkbox" value="{@corresp}" />
-                        <label>{catDesc[@xml:lang = $lang]}</label>
-                    </span>
-                </template>
-            </fx-items>
-        </fx-control>
+        <fx-group ref="msContents">
+            <fx-control ref="@class" update-event="input" create="create">
+                <label>
+                    <pb-i18n key="form.type-of-inscription"/>
+                </label>
+                <fx-items ref="sortNames(instance('typeins')//category)" class="widget">
+                    <template>
+                        <span class="fx-checkbox">
+                            <input type="checkbox" value="{@corresp}" />
+                            <label>{catDesc[@xml:lang = $lang]}</label>
+                        </span>
+                    </template>
+                </fx-items>
+            </fx-control>
 
-        <fx-control ref="msContents/summary">
-            <label>
-                <pb-i18n key="form.remarks"/>
-            </label>
-        </fx-control>
+            <fx-control ref="summary">
+                <label>
+                    <pb-i18n key="form.remarks"/>
+                </label>
+            </fx-control>
+        </fx-group>
     </div>
 
 </details>

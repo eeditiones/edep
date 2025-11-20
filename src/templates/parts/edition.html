@@ -269,13 +269,14 @@
     <!-- TRANSLATION -->
 
     <div class="block">
-        <h4>
-            <pb-i18n key="form.translation">Übersetzung</pb-i18n>
-        </h4>
+      <h4>
+          <pb-i18n key="form.translation"/>
+      </h4>
+      <fx-group ref="div[@type='translation']">
         <!-- 42) Übersetzung: @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
         <fx-control
           class="translation editor"
-          ref="div[@type='translation']"
+          ref="."
           as="node"
           update-event="leave">
             <jinn-xml-editor
@@ -328,11 +329,11 @@
             </jinn-xml-editor>
         </fx-control>
         <!-- 43) Übersetzer/in -->
-        <fx-control class="translator" ref="div[@type='translation']/@resp" create="">
+        <fx-control class="translator" ref="@resp" create="create">
             <label>
-                <pb-i18n key="form.translated-by">Übersetzer/in</pb-i18n>
-                :
+                <pb-i18n key="form.translated-by"/>:
             </label>
         </fx-control>
+      </fx-group>
     </div>
 </details>
