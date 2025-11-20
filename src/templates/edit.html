@@ -624,9 +624,9 @@
 
                                 <!-- REFERENCES -->
                                 <fx-group ref="fileDesc/sourceDesc/listBibl" id="references" class="neutral references-background">
-<!--
+
                                     <h2>
-                                        <pb-i18n key="form.references">Referenzen</pb-i18n>
+                                        <pb-i18n key="form.references"/>
                                         <pb-popover>
                                             <iron-icon icon="info-outline"></iron-icon>
                                             <template slot="alternate">
@@ -634,7 +634,6 @@
                                             </template>
                                         </pb-popover>
                                     </h2>
--->
 
                                     <div
                                         id="transmission"
@@ -642,12 +641,6 @@
                                         data-template-path="templates/parts/transmission.html"
                                         data-template-replace="true"></div>
 
-<!--
-                                    <fx-control ref=".[@type='bibliography']" as="node" initial=".">
-                                        <label>BIBLLLL</label>
-                                        <fx-fore src="bib.html?type=transmission" class="widget"></fx-fore>
-                                    </fx-control>
--->
                                     <div
                                         id="prev-editions"
                                         data-template="lib:include"

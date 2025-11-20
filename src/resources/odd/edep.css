@@ -8,10 +8,6 @@ h2 {
     font-weight: normal;
 }
 
-h2::after {
-    content: ":";
-}
-
 .metadata th {
     text-align:right;
     padding-right: 1em;

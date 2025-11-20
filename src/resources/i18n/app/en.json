@@ -126,7 +126,7 @@
         "hint-geodata-findspot": "Town or city district, building, street name, hallway (and similar) of Site (modern)",
         "hint-geodata-findspot-modern": "Independent municipality.",
         "hint-previous-editions": "It is recommended to enter the previous editions in chronological order of appearance (beginning from the oldest).",
-        "hint-references": "All the bibliographic titles have to be entered by referring to a Zotero-Library. You may set up the link to your library here.",
+        "hint-references": "All the bibliographic titles have to be entered by referring to a Zotero-Library.",
         "verse": "Verse",
         "visibility": "Display",
         "repository": "Repository ID",
