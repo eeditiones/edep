@@ -59,23 +59,25 @@
                     </label>
                 </fx-control>
 
-                <fx-control ref="dimensions/height">
-                    <label>
-                        <pb-i18n key="form.letter-size-free"/>
-                    </label>
-                </fx-control>
+                <fx-group ref="dimensions/height">
+                    <fx-control ref=".">
+                        <label>
+                            <pb-i18n key="form.letter-size-free"/>
+                        </label>
+                    </fx-control>
 
-                <fx-control ref="dimensions/height/@min">
-                    <label>
-                        <pb-i18n key="form.letter-size-min"/>
-                    </label>
-                </fx-control>
+                    <fx-control ref="@min" create="create">
+                        <label>
+                            <pb-i18n key="form.letter-size-min"/>
+                        </label>
+                    </fx-control>
 
-                <fx-control ref="dimensions/height/@max">
-                    <label>
-                        <pb-i18n key="form.letter-size-max"/>
-                    </label>
-                </fx-control>
+                    <fx-control ref="@max" create="create">
+                        <label>
+                            <pb-i18n key="form.letter-size-max"/>
+                        </label>
+                    </fx-control>
+                </fx-group>
             </fx-group>
 
             <fx-trigger>
