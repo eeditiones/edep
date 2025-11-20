@@ -67,6 +67,8 @@
         "languageMain": "Main language",
         "languageOther": "Other languages",
         "languageFree": "Other languages or comments",
+        "hint-add-language": "Add language entry",
+        "hint-delete-language": "Delete language entry",
         "ligature": "Ligature",
         "paleography": "Paleography",
         "references": "References",
