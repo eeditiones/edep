@@ -63,6 +63,7 @@
         "line": "Line(s)",
         "metre": "Metre",
         "language": "Language",
+        "languageScope": "Language scope",
         "languageMain": "Main language",
         "languageOther": "Other languages",
         "languageFree": "Other languages or comments",
