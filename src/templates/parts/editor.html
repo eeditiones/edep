@@ -4,19 +4,21 @@
     </summary>
 
     <fieldset>
-        <fx-control ref="revisionDesc/@status" update-event="input">
-            <label>
-                <pb-i18n key="form.status-of-editing">Stand der Bearbeitung</pb-i18n>
-            </label>
-            <select
-                  ref="instance('publication-status')//category"
-                  class="widget">
-                    <template>
-                        <!-- prettier-ignore -->
-                        <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
-                    </template>
-            </select>         
-        </fx-control>
+        <fx-group ref="revisionDesc">
+            <fx-control ref="@status" update-event="input" create="create">
+                <label>
+                    <pb-i18n key="form.status-of-editing">Stand der Bearbeitung</pb-i18n>
+                </label>
+                <select
+                    ref="instance('publication-status')//category"
+                    class="widget">
+                        <template>
+                            <!-- prettier-ignore -->
+                            <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
+                        </template>
+                </select>         
+            </fx-control>
+        </fx-group>
     </fieldset>
 
     <fieldset>
@@ -44,7 +46,7 @@
         id="r-editor">
             <template>
                 <fx-group>
-                    <fx-control ref="@role">
+                    <fx-control ref="@role" create="create">
                         <label>
                             <pb-i18n key="form.author-role">Role</pb-i18n>
                         </label>

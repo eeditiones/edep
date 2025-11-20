@@ -57,7 +57,7 @@
                             </template>
                         </pb-popover>
                     </div>
-                    <fx-control ref="@corresp" update-event="value-changed">
+                    <fx-control ref="@corresp" update-event="value-changed" create="create">
                         <label>
                             <pb-i18n key="form.reference">Referenz</pb-i18n>
                         </label>
@@ -87,7 +87,7 @@
                           data-template="lib:parse-params">
                         </edep-xml-editor>
                     </fx-control>
-                    <fx-control ref="@type" update-event="input">
+                    <fx-control ref="@type" update-event="input" create="create">
                         <label>
                             <pb-i18n key="form.visibility"></pb-i18n>
                         </label>
