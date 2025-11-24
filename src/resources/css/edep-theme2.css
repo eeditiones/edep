@@ -675,6 +675,10 @@ fx-group.neutral{
     border-radius: 0;
 }
 
+#transmission, #prev-editions, #bibliography,#images,#pictures{
+    border-left: 5px solid #cee0fe;
+}
+
 /*
 fx-group fx-group {
     border:none;
@@ -935,9 +939,15 @@ input:focus, select:focus, textarea:focus{
 }
 #historic-relevance{
     fx-control{
-        grid-template-columns: 17rem 1rem 1fr;
+        display: flex;
+        gap: 1rem;
+    }
+
+    fx-items{
+        display:flex;
     }
 }
+
 #findspot-ctrl{
     display:block;
 }
