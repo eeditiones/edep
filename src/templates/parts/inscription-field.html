@@ -47,9 +47,11 @@
           origin="instance('templates')/handNote[@scope='letterHeight']"></fx-insert>
     </fx-trigger>
 
+	<fx-group ref="physDesc">
+	  <fx-group ref="handDesc">
     <fx-repeat
       class="nested-repeat"
-      ref="physDesc/handDesc/handNote[@scope='letterHeight']"
+      ref="handNote[@scope='letterHeight']"
       id="r-letterHeight">
         <template>
             <fx-group>
@@ -91,5 +93,7 @@
             </fx-trigger>
         </template>
     </fx-repeat>
+	</fx-group>
+	</fx-group>
 
 </details>
