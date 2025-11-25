@@ -1,4 +1,4 @@
-/* Version: 2.6.0 - November 13, 2025 13:41:39 */
+/* Version: 2.6.0 - November 25, 2025 11:40:47 */
 function t$2(t, s, r, i) {
   const n = {
     op: s,
@@ -18032,9 +18032,9 @@ class XPathUtil {
    * supports multiple steps
    *
    * @param xpath
-   * @param doc
+   * @param doc {XMLDocument}
    * @param fore
-   * @return {*}
+   * @return {Node|Attr}
    */
   static createNodesFromXPath(xpath, doc, fore) {
     const resolveNamespace = createNamespaceResolver(xpath, fore);
@@ -18042,7 +18042,31 @@ class XPathUtil {
       doc = document.implementation.createDocument(null, null, null); // Create a new XML document if not provided
     }
 
-    const parts = xpath.split('/');
+    const parts = [];
+    let scratch = '';
+    let isInPredicate = false;
+    for (const char of xpath.split('')) {
+      if (!isInPredicate) {
+        // We are not in a predicate, the slash will terminate our step.
+        if (char === '/') {
+          parts.push(scratch);
+          scratch = '';
+          continue;
+        }
+        scratch += char;
+        if (char === '[') {
+          isInPredicate = true;
+        }
+        continue;
+      }
+      // We are in a predicate! So the only interesting token is ']', which means we're out of one.
+      scratch += char;
+      if (char === ']') {
+        isInPredicate = false;
+      }
+    }
+    // Flush the last step
+    parts.push(scratch);
     let rootNode = null;
     let currentNode = null;
     for (const part of parts) {
@@ -18056,7 +18080,7 @@ class XPathUtil {
       if (part.startsWith('@')) {
         const attrName = part.slice(1); // Strip '@'
         if (!currentNode) {
-          throw new Error('Cannot create an attribute without a parent element.');
+          return doc.createAttribute(attrName, '');
         }
         currentNode.setAttribute(attrName, '');
       } else {
@@ -18209,7 +18233,7 @@ class XPathUtil {
           }
         } else */
     if (start.parentNode && (start.parentNode.nodeType !== Node.DOCUMENT_NODE || start.parentNode.nodeType !== Node.DOCUMENT_FRAGMENT_NODE)) {
-      return this.getClosest('[ref],fx-repeatitem', start.parentNode);
+      return this.getClosest('fx-control[ref],fx-upload[ref],fx-group[ref],fx-repeat[ref], fx-switch[ref],fx-repeatitem', start.parentNode);
     }
     return null;
   }
@@ -19889,7 +19913,16 @@ class FxModel extends HTMLElement {
     });
     this.computes = 0;
     this.fore = {};
+
+    /**
+     * @type {import('./fx-bind.js').FxBind[]}
+     */
+    this.binds = [];
   }
+
+  /**
+   * @returns {import('./fx-fore.js').FxFore}
+   */
   get formElement() {
     return this.parentElement;
   }
@@ -19915,6 +19948,45 @@ class FxModel extends HTMLElement {
   }
 
   /**
+   * Get the correct fx-bind for this element. Assumes the refs of all binds are always downwards.
+   *
+   * @param {ChildNode | Attr} elementOrAttribute - the element or attribute to resolve
+   */
+  getBindForElement(elementOrAttribute) {
+    if (typeof elementOrAttribute !== 'object' || !('nodeType' in elementOrAttribute)) {
+      // We only do binds over nodes. Not JSON.
+      return null;
+    }
+    /**
+     * @type {import('./fx-bind.js').FxBind | FxModel}
+     */
+    let bindForParent;
+    const parent = elementOrAttribute.nodeType === elementOrAttribute.ATTRIBUTE_NODE ? elementOrAttribute.ownerElement : elementOrAttribute.parentElement;
+    if (!parent?.parentElement) {
+      // The root. Search from here
+      bindForParent = this;
+    } else {
+      bindForParent = this.getBindForElement(parent);
+    }
+    if (!bindForParent) {
+      return null;
+    }
+
+    /**
+     * @type {import('./fx-bind.js').FxBind[]}
+     */
+    const childBinds = Array.from(bindForParent.children).filter(c => c.nodeName === 'FX-BIND');
+    for (const childBind of childBinds) {
+      const ref = childBind.ref;
+      const matches = evaluateXPathToNodes(ref, parent, childBind);
+      if (matches.includes(elementOrAttribute)) {
+        return childBind;
+      }
+    }
+    return null;
+  }
+
+  /**
    * @param {FxModel}           model        The model to create a model item for
    * @param {string}            ref          The XPath ref that led to this model item
    * @param {Node}              node         The node the XPath led to
@@ -19925,7 +19997,7 @@ class FxModel extends HTMLElement {
     const instanceId = XPathUtil.resolveInstance(formElement, ref);
     if (model.parentNode.createNodes && (node === null || node === undefined)) {
       // ### intializing ModelItem with default values (as there is no <fx-bind> matching for given ref)
-      const mi = new ModelItem(undefined, ref, Fore.READONLY_DEFAULT, false, Fore.REQUIRED_DEFAULT, Fore.CONSTRAINT_DEFAULT, Fore.TYPE_DEFAULT, null, this, instanceId);
+      const mi = new ModelItem(undefined, ref, Fore.READONLY_DEFAULT, false, Fore.REQUIRED_DEFAULT, Fore.CONSTRAINT_DEFAULT, Fore.TYPE_DEFAULT, null, null, instanceId);
 
       // console.log('new ModelItem is instanceof ModelItem ', mi instanceof ModelItem);
       model.registerModelItem(mi);
@@ -19952,7 +20024,7 @@ class FxModel extends HTMLElement {
     // const path = XPathUtil.getPath(node);
 
     // ### intializing ModelItem with default values (as there is no <fx-bind> matching for given ref)
-    const mi = new ModelItem(path, ref, Fore.READONLY_DEFAULT, Fore.RELEVANT_DEFAULT, Fore.REQUIRED_DEFAULT, Fore.CONSTRAINT_DEFAULT, Fore.TYPE_DEFAULT, targetNode, this, instanceId);
+    const mi = new ModelItem(path, ref, Fore.READONLY_DEFAULT, Fore.RELEVANT_DEFAULT, Fore.REQUIRED_DEFAULT, Fore.CONSTRAINT_DEFAULT, Fore.TYPE_DEFAULT, targetNode, model.getBindForElement(targetNode), instanceId);
 
     // console.log('new ModelItem is instanceof ModelItem ', mi instanceof ModelItem);
     model.registerModelItem(mi);
@@ -20052,6 +20124,11 @@ class FxModel extends HTMLElement {
     binds.forEach(bind => {
       bind.init(this);
     });
+    if (this.formElement.createNodes) {
+      // initData should be running here as well: we just got a whole new instance that may be
+      // incomplete
+      this.formElement.initData();
+    }
     console.log('mainGraph', this.mainGraph);
     console.log('rebuild mainGraph calc order', this.mainGraph.overallOrder());
 
@@ -20271,7 +20348,7 @@ class FxModel extends HTMLElement {
             // console.log('modelItem required computed: ', compute);
             modelItem.required = compute;
             this.formElement.addToRefresh(modelItem); // let fore know that modelItem needs refresh
-            if (!modelItem.node.textContent) {
+            if (modelItem.required && !modelItem.node.textContent) {
               /*
               console.log(
                 'node is required but has no value ',
@@ -20528,6 +20605,8 @@ class ForeElementMixin extends HTMLElement {
   }
 
   /**
+   * Get the model related to this form. Null if the form is detached
+   *
    * @returns {import('./fx-model.js').FxModel}
    */
   getModel() {
@@ -20538,12 +20617,13 @@ class ForeElementMixin extends HTMLElement {
     // const ownerForm = this.closest('fx-fore');
     // const ownerForm = this.getOwnerForm(this);
     const ownerForm = this.getOwnerForm();
-    return ownerForm.querySelector('fx-model');
+    return ownerForm?.querySelector('fx-model');
   }
 
   /**
    *
-   * @returns {import('./fx-fore.js').FxFore} The fx-fore element associated with this form node
+   * @returns {import('./fx-fore.js').FxFore} The fx-fore element associated with this form node. Or
+   * null if the node is detached
    */
   getOwnerForm() {
     let currentElement = this;
@@ -20559,7 +20639,7 @@ class ForeElementMixin extends HTMLElement {
         currentElement = currentElement.parentNode;
       }
     }
-    return currentElement;
+    return null;
   }
 
   /**
@@ -20593,13 +20673,13 @@ class ForeElementMixin extends HTMLElement {
     } else if (Array.isArray(inscopeContext)) {
       /*
       inscopeContext.forEach(n => {
-      if (XPathUtil.isSelfReference(this.ref)) {
-      this.nodeset = inscopeContext;
-      } else {
-      const localResult = evaluateXPathToFirstNode(this.ref, n, this);
-      // console.log('local result: ', localResult);
-      this.nodeset.push(localResult);
-      }
+        if (XPathUtil.isSelfReference(this.ref)) {
+        this.nodeset = inscopeContext;
+        } else {
+        const localResult = evaluateXPathToFirstNode(this.ref, n, this);
+        // console.log('local result: ', localResult);
+        this.nodeset.push(localResult);
+        }
       });
       */
       // this.nodeset = evaluateXPathToFirstNode(this.ref, inscopeContext[0], this);
@@ -20777,6 +20857,9 @@ class ForeElementMixin extends HTMLElement {
 class FxBind extends ForeElementMixin {
   constructor() {
     super();
+    /**
+     * @type {Node[]}
+     */
     this.nodeset = [];
     this.model = {};
     this.contextNode = {};
@@ -22566,8 +22649,12 @@ class FxFore extends HTMLElement {
    */
   constructor() {
     super();
-    this.version = 'Version: 2.6.0 - built on November 13, 2025 13:41:39';
-    this.model = {};
+    this.version = 'Version: 2.6.0 - built on November 25, 2025 11:40:47';
+
+    /**
+     * @type {import('./fx-model.js').FxModel}
+     */
+    this.model = null;
     this.inited = false;
     // this.addEventListener('model-construct-done', this._handleModelConstructDone);
     // todo: refactoring - these should rather go into connectedcallback
@@ -22761,6 +22848,7 @@ class FxFore extends HTMLElement {
         // so cancel this one.
         return;
       }
+      this.model = modelElement;
       if (!modelElement.inited) {
         console.info(`%cFore is processing fx-fore#${this.id}`, 'background:#64b5f6; color:white; padding:.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;');
         const variables = new Map();
@@ -22775,7 +22863,6 @@ class FxFore extends HTMLElement {
         await modelElement.modelConstruct();
         this._handleModelConstructDone();
       }
-      this.model = modelElement;
       this._createRepeatsFromAttributes();
       this.inited = true;
     });
@@ -23393,6 +23480,77 @@ class FxFore extends HTMLElement {
   }
 
   /**
+   * @summary
+   * Find the reference node (the future previous sibling) for a newly created element.
+   *
+   * @description This works in two passes: if there is a bind available for both the parent and the
+   * child, it determines where to insert based on those binds: after an element matching the previous bind in document order, before the next sibling of that one cause `insertBefore` is easier .
+   *
+   * For example, take this structure:
+   * ```html
+   * <fx-bind ref="root">
+   *   <fx-bind ref="a" />
+   *   <fx-bind ref="b" />
+   *   <fx-bind ref="c" />
+   * </fx-bind>
+   * ```
+   * Inserting a `<b/>`, it will be inserted before a `<c/>`, or at the end. Whatever comes after the `<a/>`.
+   *
+   * If there are no binds, the previous bound element will be used to determine the location.
+   * @private
+   *
+   * @param {Element} newElement - The newly created element
+   * @param {ParentNode} parentElement - The parent under which the element will be inserted
+   * @param {import('./ForeElementMixin.js').default} previousControl - The previous control. Will
+   * be used to determine a fallback to snert the element under if there are no binds for the parent
+   *
+   * @returns {ChildNode}
+   */
+  _findReferenceNodeForNewElement(newElement, parentElement, previousControl) {
+    const bindForElement = this.model.getModelItem(parentElement)?.bind;
+    if (!bindForElement) {
+      // Parent is unbound. No clue what to do with this. Insert based on previous control
+      let referenceNode = previousControl?.getModelItem()?.node;
+      // We know which node to insert this new element to, but it might be a descendant of a child
+      // of the actual parent. Walk up until we have a reference under our parent
+      while (referenceNode?.parentNode && referenceNode?.parentNode !== parentElement) {
+        referenceNode = referenceNode.parentNode;
+      }
+      if (referenceNode?.nodeType === Node.ATTRIBUTE_NODE) {
+        return null;
+      }
+      return referenceNode;
+    }
+
+    // Temporarily insert the new element under the parent to see which XPath will match
+    try {
+      parentElement.appendChild(newElement);
+      const bindForElement = this.model.getBindForElement(newElement);
+      if (bindForElement) {
+        /**
+         * @type {FxBind}
+         */
+        const previousBind = bindForElement.previousElementSibling;
+        if (previousBind) {
+          return previousBind.nodeset.find(node => parentElement.contains(node)) || null;
+        }
+      }
+    } finally {
+      newElement.remove();
+    }
+    // No clue. Insert based on previous control.
+    // We know which node to insert this new element to, but it might be a descendant of a child
+    // of the actual parent. Walk up until we have a reference under our parent
+    let referenceNode = previousControl?.getModelItem()?.node;
+    while (referenceNode?.parentNode && referenceNode?.parentNode !== parentElement) {
+      referenceNode = referenceNode.parentNode;
+    }
+    if (referenceNode?.nodeType === Node.ATTRIBUTE_NODE) {
+      return null;
+    }
+  }
+
+  /**
    * @param  {HTMLElement}  root The root of the data initialization. fx-repeat overrides this when it makes new repeat items
    *
    */
@@ -23401,11 +23559,14 @@ class FxFore extends HTMLElement {
     console.log('INIT');
     // const boundControls = Array.from(root.querySelectorAll('[ref]:not(fx-model *),fx-repeatitem'));
 
+    /**
+     * @type {import('./ForeElementMixin.js').default[]}
+     */
     const boundControls = Array.from(root.querySelectorAll('fx-control[ref],fx-upload[ref],fx-group[ref],fx-repeat[ref], fx-switch[ref]'));
-    if (root.matches('fx-repeatitem')) {
+    if (root.matches && root.matches('fx-repeatitem')) {
       boundControls.unshift(root);
     }
-    console.log('_initD', boundControls);
+    console.log('_initData', boundControls);
     for (let i = 0; i < boundControls.length; i++) {
       const bound = boundControls[i];
 
@@ -23416,7 +23577,7 @@ class FxFore extends HTMLElement {
         // Repeat items are dumb. They do not respond to evalInContext
         bound.evalInContext();
       }
-      if (bound.nodeset !== null) {
+      if (bound.nodeset !== null && !(Array.isArray(bound.nodeset) && bound.nodeset.length > 0)) {
         console.log('Node exists', bound.nodeset);
         continue;
       }
@@ -23431,21 +23592,38 @@ class FxFore extends HTMLElement {
         // Parent is here.
         console.log('insert into', bound, previousControl);
         console.log('insert into nodeset', bound.nodeset);
+        /**
+         * @type {ParentNode}
+         */
         const parentNodeset = previousControl.nodeset;
         // console.log('parentNodeset', parentNodeset);
 
         // const parentModelItemNode = parentModelItem.node;
         const ref = bound.ref;
         // const newElement = parentModelItemNode.ownerDocument.createElement(ref);
-        if (parentNodeset.querySelector(`[ref="${ref}"]`)) {
-          console.log(`Node with ref "${ref}" already exists.`);
+        // if (parentNodeset.querySelector(`[ref="${ref}"]`)) {
+        //   console.log(`Node with ref "${ref}" already exists.`);
+        //   continue;
+        // }
+
+        const newNode = this._createNodes(ref, parentNodeset);
+        if (!newNode) {
+          // We could not make the node for some reason. Maybe it's something like `instance('XXX')`?
           continue;
         }
-        const newElement = this._createNodes(ref, parentNodeset);
-
-        // Plonk it in at the start!
-        parentNodeset.insertBefore(newElement, parentNodeset.firstChild);
+        if (newNode.nodeType === Node.ATTRIBUTE_NODE) {
+          parentNodeset.setAttributeNode(newNode);
+        } else {
+          const referenceNode = this._findReferenceNodeForNewElement(newNode, parentNodeset, null);
+          if (referenceNode) {
+            referenceNode.after(newNode);
+          } else {
+            parentNodeset.prepend(newNode);
+          }
+        }
         bound.evalInContext();
+        bound.getModelItem().bind?.evalInContext();
+
         // console.log('CREATED child', newElement);
         // console.log('new control evaluated to ', control.nodeset);
         // Done!
@@ -23480,22 +23658,29 @@ class FxFore extends HTMLElement {
       // todo: review: should this not just be inscopeContext?
       const parentNodeset = ourParent.nodeset;
       const ref = bound.ref;
-      let referenceNodeset = siblingControl.nodeset;
-      const newElement = this._createNodes(ref, parentNodeset);
-
-      // We know which node to insert this new element to, but it might be a descendant of a child of the actual parent. Walk up until we have a reference under our parent
-      while (referenceNodeset?.parentNode && referenceNodeset?.parentNode !== parentNodeset) {
-        referenceNodeset = referenceNodeset.parentNode;
+      const newNode = this._createNodes(ref, parentNodeset);
+      if (newNode.nodeType === Node.ATTRIBUTE_NODE) {
+        parentNodeset.setAttributeNode(newNode);
+      } else {
+        let referenceNode = this._findReferenceNodeForNewElement(newNode, parentNodeset, siblingControl);
+        if (referenceNode) {
+          referenceNode.after(newNode);
+        } else {
+          parentNodeset.prepend(newNode);
+        }
       }
 
-      // Insert before the next sibling our our logical previous sibling
-      parentNodeset.insertBefore(newElement, referenceNodeset.nextElementSibling);
       /*
             console.log('control inscope', control.getInScopeContext());
             console.log('control ref', control.ref);
             console.log('control new element parent', newElement.parentNode.nodeName);
       */
+
       bound.evalInContext();
+      bound.getModelItem().bind?.evalInContext();
+      if (!bound.nodeset) {
+        throw new Error('Creating annode failed');
+      }
       // console.log('new control evaluated to ', control.nodeset);
       // console.log('CREATED sibling', newElement);
     }
@@ -23513,6 +23698,10 @@ class FxFore extends HTMLElement {
         }
     console.log(`creating new node for ref: ${ref}`);
     */
+    if (/instance\([^\)]*\)/.test(ref)) {
+      // This is an absolute path for some instance. Not supporteed for now
+      return null;
+    }
     let newElement;
     if (ref.includes('/')) {
       // multi-step ref expressions
@@ -26199,6 +26388,8 @@ class FxRepeat extends withDraggability(UIElement) {
   }
   connectedCallback() {
     super.connectedCallback();
+    this.template = this.querySelector('template');
+
     // console.log('connectedCallback',this);
     // this.display = window.getComputedStyle(this, null).getPropertyValue("display");
     this.ref = this.getAttribute('ref');
@@ -26406,6 +26597,9 @@ class FxRepeat extends withDraggability(UIElement) {
       this.getOwnerForm().registerLazyElement(item);
       if (item.nodeset !== this.nodeset[position]) {
         item.nodeset = this.nodeset[position];
+        if (this.getOwnerForm().createNodes) {
+          this.getOwnerForm().initData(item);
+        }
       }
     }
 
@@ -26457,7 +26651,6 @@ class FxRepeat extends withDraggability(UIElement) {
   }
 
   _initTemplate() {
-    this.template = this.querySelector('template');
     // console.log('### init template for repeat ', this.id, this.template);
     // todo: this.dropTarget not needed?
     this.dropTarget = this.template.getAttribute('drop-target');
@@ -27985,7 +28178,7 @@ class FxActionLog extends HTMLElement {
       }
       a[alt]:hover::after {
         content:attr(alt);
-        position:absolute; 
+        position:absolute;
         left:0;
         bottom:-0.5em;
         border:thin solid;
@@ -28011,9 +28204,9 @@ class FxActionLog extends HTMLElement {
       .value{
         display:inline-block;
         width:60%;
-        
+
       }
-      
+
       .buttons{
         position:absolute;
         top:0;
@@ -28062,9 +28255,9 @@ class FxActionLog extends HTMLElement {
         margin:0;
         border-bottom:2px solid #ddd;
       }
-      
+
       .info:hover{
-        outline:3px solid lightblue;       
+        outline:3px solid lightblue;
         transition:height 0.4s;
       }
 
@@ -28073,7 +28266,7 @@ class FxActionLog extends HTMLElement {
         padding: 0.5em 0 0 2em;
         border-left:3px solid red;
       }
-     
+
       .event-name{
         display:inline-block;
       }
@@ -28126,7 +28319,7 @@ class FxActionLog extends HTMLElement {
       .nested .event-name{
         display:none;
       }
-      
+
       .setvalue .value{
         background:lightyellow;
       }
@@ -28140,7 +28333,7 @@ class FxActionLog extends HTMLElement {
         margin-top:2rem;
         background:rgba(250, 250, 250, 0.9);
       }
-      
+
       .outer-details > header{
         position:absolute;
         top:-1px;
@@ -28176,7 +28369,7 @@ class FxActionLog extends HTMLElement {
     }
     const html = `
       <section open class="outer-details">
-        <header>Log 
+        <header>Log
             <span class="buttons">
                 <button id="del"" title="empty log - Ctrl+d">
                     <svg viewBox="0 0 24 24" style="width:24px;height:24px;" preserveAspectRatio="xMidYMid meet" focusable="true"><g><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"></path></g></svg></a>
@@ -28502,7 +28695,7 @@ class FxActionLog extends HTMLElement {
    */
   _logDetails(e) {
     const eventType = e.type;
-    const path = XPathUtil.getDocPath(e.target);
+    const path = XPathUtil.getPath(e.target, '');
     // console.log('>>>> _logDetails', path);
     const cut = path.substring(path.indexOf('/fx-fore'), path.length);
     const xpath = `/${cut}`;
@@ -28547,7 +28740,7 @@ class FxActionLog extends HTMLElement {
                 <fx-log-item event-name="${eventType}"
                              xpath="${xpath}"
                              short-name="${e.target.nodeName.toLowerCase()}">
-                             
+
                     <section class="details">
                       ${this._listEventDetails(e)}
                     </section>
@@ -28569,7 +28762,7 @@ class FxActionLog extends HTMLElement {
                 <fx-log-item event-name="${eventName}"
                              xpath="${xpath}"
                              short-name="ACTION"
-                              data-path="${e.detail.path}" 
+                              data-path="${e.detail.path}"
                               class="action">
                     <section class="details">
                       <header>Attributes</header>
@@ -28577,10 +28770,10 @@ class FxActionLog extends HTMLElement {
                       ${Array.from(actionElement.attributes).map(item => `
                         <span class="key">${item.nodeName}</span>
                         <span class="value">${item.nodeValue}</span>
-                      `).join('')}                 
+                      `).join('')}
                       </section>
                     </section>
-                </fx-log-item>  
+                </fx-log-item>
             `;
       // break;
       case 'FX-MESSAGE':
@@ -28611,8 +28804,8 @@ class FxActionLog extends HTMLElement {
                           ${Array.from(submission.attributes).map(item => `
                             <span class="key">${item.nodeName}</span>
                             <span class="value">${item.nodeValue}</span>
-                          `).join('')}                 
-                          </section>  
+                          `).join('')}
+                          </section>
                         </section>
                </fx-log-item>
                 `;
@@ -28636,10 +28829,10 @@ class FxActionLog extends HTMLElement {
       default:
         eventName = e.target.currentEvent ? e.target.currentEvent.type : e.detail.event ? e.detail.event : '';
         return `
-                    <fx-log-item event-name="${eventName}" 
+                    <fx-log-item event-name="${eventName}"
                                 short-name="${e.target.nodeName}"
                                 xpath="${xpath}"
-                                data-path="${e.detail.path}" 
+                                data-path="${e.detail.path}"
                                 class="action">
                           <section class="details">
                           </section>
@@ -31707,7 +31900,7 @@ class AbstractAction extends ForeElementMixin {
       await Fore.dispatch(this, 'error', {
         origin: this,
         message: 'Action execution failed',
-        expr: XPathUtil.getDocPath(this),
+        expr: error,
         level: 'Error'
       });
       // Return false to indicate failure. Any loops must be canceled
@@ -31884,7 +32077,7 @@ class AbstractAction extends ForeElementMixin {
     this.currentEvent = null;
     this.actionPerformed();
     if (FxFore.outermostHandler === this) {
-      console.log(`%cfinalizing outermost Action on ${this.getOwnerForm().id}`, 'background:darkblue; color:white; padding:0.3rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;', this);
+      console.log(`%cfinalizing outermost Action on ${this.getOwnerForm()?.id}`, 'background:darkblue; color:white; padding:0.3rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;', this);
       FxFore.outermostHandler = null;
       /*
                         console.info(
@@ -32247,7 +32440,10 @@ class FxDelete extends AbstractAction {
     if (node.nodeType === Node.DOCUMENT_NODE) return;
     if (node.nodeType === Node.DOCUMENT_FRAGMENT_NODE) return;
     if (node.parentNode === null) return;
-    const mi = this.getModelItem();
+
+    // We are considering multiple nodes here. For each of them, verify they are not readonly by
+    // getting their model item (or creating it just in time)
+    const mi = this.getModel().getModelItem(node) ?? FxModel.lazyCreateModelItem(this.getModel(), this.ref, node, this);
     if (mi.readonly) return;
     parent.removeChild(node);
   }

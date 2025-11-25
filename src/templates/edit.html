@@ -68,7 +68,7 @@
                     </app-header>
 
                     <main id="main" class="editor">
-                        <fx-fore show-confirmation="show-confirmation" id="epidoc-editor">
+                        <fx-fore show-confirmation="show-confirmation" id="epidoc-editor" create-nodes="create-nodes">
                             <fx-model data-template="pages:parse-params">
                                 <fx-action event="model-construct-done">
                                     <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
