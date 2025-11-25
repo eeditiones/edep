@@ -120,7 +120,8 @@
                         <data></data>
                     </fx-instance>
 
-                    <fx-instance id="province" src="../edep-data/data/taxonomy/province.json" type="json">{}</fx-instance>
+                    <fx-instance id="province" src="../edep-data/data/taxonomy/province.xml"
+                                 xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
 
                     <fx-instance id="country" src="../edep-data/data/taxonomy/country.xml" type="xml"
                         ><vocabulary></vocabulary
@@ -195,9 +196,9 @@
                         <label>
                             <pb-i18n key="form.site-ancient-province"></pb-i18n>
                         </label>
-                        <select ref="instance('province')?*" class="widget" selection="open" static="static">
+                        <select ref="instance('province')//category" class="widget" selection="open" static="static">
                             <template>
-                                <option value="{?name}">{?value}</option>
+                                <option value="{@xml:id}">{catDesc}</option>
                             </template>
                         </select>
                     </fx-control>
