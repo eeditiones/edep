@@ -380,9 +380,7 @@ declare function api:inscription-template($request as map(*)) {
                 collection($collection)//tei:idno[. = $id]/ancestor::tei:TEI,
                 doc($collection || "/" || $id || ".xml")/tei:TEI
             )[1]
-            let $merged := api:file-upload(doc($config:inscription-templ), root($input))
-            return
-                $merged
+            return root($input)
         else
             doc($config:inscription-templ)
 
