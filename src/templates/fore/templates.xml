@@ -33,4 +33,5 @@
 
     <editor role="digital"/>
     <objectType ref=""/>
+    <material ref=""/>
 </body>
