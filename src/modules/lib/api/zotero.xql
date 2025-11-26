@@ -7,6 +7,8 @@ declare namespace request  = "http://exist-db.org/xquery/request";
 declare namespace response = "http://exist-db.org/xquery/response";
 declare namespace xmldb    = "http://exist-db.org/xquery/xmldb";
 declare namespace util     = "http://exist-db.org/xquery/util";
+declare namespace tei      = "http://www.tei-c.org/ns/1.0";
+
 import module namespace config = "http://www.tei-c.org/tei-simple/config" at "../../config.xqm";
 
 (: ---------------------------------------------------------------------------
@@ -46,18 +48,6 @@ declare variable $zotero:API_BASE  as xs:string := $config:zotero-api-base;
 declare variable $zotero:GROUP_ID  as xs:string := $config:zotero-group-id;
 declare variable $zotero:STYLE     as xs:string := $config:zotero-style;
 declare variable $zotero:API_KEY   as xs:string := $config:zotero-api-key;
-
-declare %private function zotero:_xml-matches($i as element(item), $q as xs:string) as xs:boolean {
-  if ($q = "") then true()
-  else
-    let $lc := lower-case#1
-    let $hay := string-join((
-      $lc(string($i/title)),
-      for $c in $i/creators/c return string-join(($lc(string($c/@last)), $lc(string($c/@first)), $lc(string($c/@name))), " "),
-      $lc(string($i/doi))
-    ), " ")
-    return contains($hay, $q)
-};
 
 (: ====== HEADERS for Zotero HTTP requests ====== :)
 declare %private function zotero:headers($extra as element(http:header)?) as element(http:header)* {
@@ -112,36 +102,34 @@ declare %private function zotero:write-meta($lv as xs:integer) as xs:boolean {
 declare %private function zotero:xml-from-json($data as map(*), $bib as xs:string?) as element(item) {
   let $key     := string(($data?key, $data?data?key)[1])
   let $title   := string(($data?title, $data?data?title)[1])
+  let $shortTitle := string(($data?shortTitle, $data?data?shortTitle)[1])
   let $dt      := string(($data?dateModified, $data?data?dateModified)[1])
-  let $parent  := string(($data?parentItem, $data?data?parentItem)[1])
-  let $type    := string(($data?itemType, $data?data?itemType)[1])
-  let $cre     := $data?data?creators
+  let $creators     := if ($data?data?creators instance of array(*)) then $data?data?creators else array { $data?data?creators }
   let $tagsArr := $data?data?tags
-  let $doi     := string(($data?data?DOI, $data?data?doi)[1])
   return
-    <item key="{ $key }" itemType="{ $type }" dateModified="{ $dt }" parentItem="{ $parent }">
+    <bibl xmlns="http://www.tei-c.org/ns/1.0" xml:id="{ $key }">
       <title>{ $title }</title>
-      <creators>{
-        if ($cre instance of array(*)) then
-          for $i in 1 to array:size($cre)
-          let $c := array:get($cre, $i)
-          return element c {
-            if ($c?lastName)  then attribute last  { string($c?lastName) }  else (),
-            if ($c?firstName) then attribute first { string($c?firstName) } else (),
-            if ($c?name)      then attribute name  { string($c?name) }      else ()
+      <title type="short">{ $shortTitle }</title>
+      {
+        for $c in $creators?*
+        return
+          element { if ($c?creatorType = 'author') then 'author' else 'editor' } {
+            string-join(($c?firstName, $c?lastName, $c?name), ' ')
           }
-        else ()
-      }</creators>
-      { if (normalize-space($doi) ne "") then <doi>{ $doi }</doi> else () }
-      <tags>{
-        if ($tagsArr instance of array(*)) then
-          for $i in 1 to array:size($tagsArr)
-          let $t := lower-case(normalize-space(string(array:get($tagsArr, $i)?tag)))
-          where $t ne "" return <tag>{ $t }</tag>
-        else ()
-      }</tags>
-      { if (normalize-space($bib) ne "") then <bib html="true">{ $bib }</bib> else <bib html="false"/> }
-    </item>
+      }
+      <pubPlace>{ $data?data?place }</pubPlace>
+      <publisher>{ $data?data?publisher }</publisher>
+      <date>{ $data?data?date }</date>
+      <date type="modified" when="{ $dt }"/>
+      {
+        for $tag in if ($tagsArr instance of array(*)) then $tagsArr?* else $tagsArr
+        return <term>{ $tag?tag }</term>
+      }
+      {
+        if ($data?data?note) then <note>{ $data?data?note }</note> else ()
+      }
+      <note type="display">{ $bib }</note>
+    </bibl>
 };
 
 declare %private function zotero:xml-upsert(
@@ -479,20 +467,20 @@ declare function zotero:items-suggest($request as map(*)) {
   let $limit := let $l := number(request:get-parameter("limit", "8")) return if ($l ge 1) then xs:integer($l) else 8
 
   let $pool :=
-    collection($zotero:XML_DIR)/item[
-      zotero:_xml-matches(., $q)
-      and ( $tag = "" or tags/tag = $tag )
-    ]
-  let $sorted := for $i in $pool order by xs:dateTime($i/@dateModified) descending return $i
+    collection($zotero:XML_DIR)/tei:bibl[ft:query(., 'bibl-content:*' || $q || '*', map {
+      "leading-wildcard": "yes",
+      "filter-rewrite": "yes"
+    })]
+  let $sorted := for $i in $pool order by xs:dateTime($i/tei:date[@type='modified']/@when) descending return $i
   let $picked := subsequence($sorted, 1, $limit)
 
   let $arr := array {
     for $i in $picked
     return map{
-      "key":   string($i/@key),
-      "title": string($i/title),
-      "bib":   if ($i/bib/@html = "true") then string($i/bib) else "",
-      "tag": data($i//tag[1])
+      "key":   string($i/@xml:id),
+      "title": string($i/tei:title[not(@type)]),
+      "bib":   if ($i/tei:note[@type='display']) then string($i/tei:note[@type='display']) else "",
+      "tag": data($i//tei:title[@type='short'])
     }
   }
   return serialize($arr, map{ "method":"json", "indent": true() })
