@@ -8,7 +8,6 @@
             </template>
         </pb-popover>
     </summary>
-    <!-- 35d) Abbildungen -->
     <fx-group ref="instance('default')">
         <fx-group ref="facsimile" class="neutral">
             <fieldset>
@@ -20,7 +19,6 @@
                         <iron-icon icon="add-circle-outline"></iron-icon>
 
                         <fx-insert context="facsimile" ref="graphic" origin="instance('templates')/graphic"></fx-insert>
-                        <!--                                                       <fx-refresh control="r-pics"></fx-refresh>-->
                     </fx-trigger>
                 </legend>
                 <fx-repeat class="nested-repeat" ref="graphic" id="r-pics">
