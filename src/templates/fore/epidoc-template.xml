@@ -34,33 +34,25 @@
                         <objectDesc>
                             <supportDesc>
                                 <support>
-                                    
-                                    
-                                    <!-- Inschriftträger -->
                                     <objectType ref=""/>
                                     <material ref=""/>
-                                    <!-- Beschreibung Inschriftträger -->
                                     <note/>
-                                    <!-- Inschriftträger: dimensions -->
                                     <dimensions>
                                         <width/>
                                         <height/>
                                         <depth/>
                                     </dimensions>
                                 </support>
-                                <!-- 13) Erhaltung -->
                                 <condition/>
                             </supportDesc>
                             <layoutDesc>
                                 <layout>
-                                    <!-- Inschriftfeld dimensions -->
                                     <dimensions>
                                         <height/>
                                         <width/>
                                     </dimensions>
                                     <note type="paleography" corresp=""/>
                                     <note type="metre"/>
-                                    <!-- Beschreibung -->
                                     <ab/>
                                 </layout>
                             </layoutDesc>
@@ -75,30 +67,11 @@
                     </physDesc>
                     <history>
                         <origin>
-                            <!--
-                                       
-                                26) und 27) Datierung (zusammenfassen?)
-
-                                @when-custom - Korrekte Datumsangabe, entweder nur Jahr oder xs:date YYYY-MM-DD
-                                @notBefore-custom - wie @when aber gemeint als "nach"
-                                @notAfter-custom - wie @when aber gemeint als "vor"
-                                @datingMethod - fixes Attribut, hier immer Julianisch
-                                Im Content - falls exakte Datierung unmöglich; or for any editorial remarks regarding dating
-                            -->
                             <origDate when-custom="" notBefore-custom="" notAfter-custom="" datingMethod="http://en.wikipedia.org/wiki/Julian_calendar"/>
-                            <!-- in @corresp wird die GeoID angegeben, andere Ortsangaben sind redundant und werden
-                                am Ende nur hinein kopiert - siehe Kommentare -->
                             <origPlace corresp=""/>
                         </origin>
-                        <!--
-                            11) Fundjahr (Attribute auf <provenance>)
-                            @when - Korrekte Datumsangabe, entweder nur Jahr oder xs:date YYYY-MM-DD
-                            @notBefore - wie @when aber gemeint als "nach"
-                            @notAfter - wie @when aber gemeint als "vor"
-                        -->
                         <provenance type="found" when="" notBefore="" notAfter="">
                             <note type="context"/>
-                            <!-- editor's remarks on find date -->
                             <note type="found-date"/>
                         </provenance>
                         <provenance type="history"/>
@@ -111,7 +84,6 @@
                     </listBibl>
                     <listBibl type="bibliography">
                     </listBibl>
-                    <!-- Bilder: Verweis auf Literatur, in der Abbildung vorhanden -->
                     <listBibl type="images">
                     </listBibl>
                 </listBibl>
@@ -122,13 +94,10 @@
         </encodingDesc>
         <profileDesc>
             <textClass>
-                <!-- Welche URI für lokale Klassifikation? -->
                 <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/religion">
-                    <!-- Religion -->
                     <term ref=""/>
                 </keywords>
                 <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/terms">
-                    <!-- Historical relevance -->
                     <term ref=""/>
                 </keywords>
             </textClass>
@@ -137,19 +106,14 @@
                 <language ident="lat" ana="main"></language>
             </langUsage>
         </profileDesc>
-        <!-- Stand der Bearbeitung in @status -->
         <revisionDesc status="draft"/>
     </teiHeader>
     <facsimile/>
     <text>
         <body>
-            <!-- 41) Textedition: eingefügt aus jinn-codemirror. Required -->
             <div type="edition"/>
-            <!-- 36) Apparatus - eingefügt aus jinn-codemirror -->
             <div type="apparatus"/>
-            <!-- 42) Übersetzung: @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
             <div type="translation" resp=""/>
-            <!-- 37) Kommentar: freier Inhalt. Nur einmal pro Dokument - eingefügt aus jinn-codemirror -->
             <div type="commentary"/>
         </body>
     </text>

@@ -1,31 +1,13 @@
 <body xmlns="http://www.tei-c.org/ns/1.0">
-    <div type="edition">
-            <!--            <ab>abc</ab>-->
-    </div>
-    <!-- 36) Apparatus -->
-    <!-- todo: fix template: should insert meaningful template node    -->
-    <div type="apparatus">
-        <!--
-                <listApp>
-                    <app loc="1"/>
-                </listApp>
-        -->
-    </div>
-    <!-- 42) Übersetzung: @resp = Kürzel des Übersetzers -->
-    <div type="translation" resp="#Feraudi"/>
-    <!-- 37) Kommentar: freier Inhalt. Nur einmal pro Dokument -->
-    <div type="commentary"/>
-    <epidoc> </epidoc>
     <term ref="#social-economic-legal-history"/>
-    <!-- 31) Geographie: ja = vorhanden -->
     <term ref="#geography"/>
-    <!-- 32) Militär: ja = vorhanden -->
     <term ref="#military"/>
 
     <bibl type="public" corresp="">
         <note></note>
         <citedRange></citedRange>
     </bibl>
+
     <listBibl type="images">    
         <bibl corresp="">
             <note></note>
