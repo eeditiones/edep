@@ -41,20 +41,55 @@
             </select>     
         </fx-control>
         <fx-group ref="objectDesc/supportDesc/support">
-            <fx-control ref="objectType/@ref" update-event="input">
-                <label>
-                    <pb-i18n key="form.type-of-monument"/>
-                </label>
-                <select
-                  ref="sortNames(instance('objtyp')//category)"
-                  class="widget"
-                  selection="open">
+            <fieldset>
+                <legend>
+                    <label>
+                        <pb-i18n key="form.type-of-monument"/>
+                    </label>
+                </legend>
+                <fx-repeat
+                  class="nested-repeat"
+                  ref="objectType"
+                  id="r-objtyp">
                     <template>
-                        <!-- prettier-ignore -->
-                        <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
+                        <fx-group>                   
+                            <fx-control ref="@ref">
+                                <label>
+                                    <pb-i18n key="form.type-of-monument"/>
+                                </label>
+                                <select
+                                class="widget"
+                                ref="sortNames(instance('objtyp')//category)">
+                                    <template>
+                                        <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
+                                    </template>
+                                </select>
+                            </fx-control>
+                        </fx-group>
+                        <fx-trigger>
+                            <pb-popover>
+                                <iron-icon icon="remove-circle-outline"></iron-icon>
+                                <template slot="alternate">
+                                    <pb-i18n key="form.hint-delete-objtyp"></pb-i18n
+                                    ></template>
+                            </pb-popover>
+                            <fx-delete ref="."></fx-delete>
+                        </fx-trigger>
                     </template>
-                </select>
-            </fx-control>
+                </fx-repeat>
+                <fx-trigger class="add">
+                    <pb-popover>
+                        <iron-icon icon="add-circle-outline"></iron-icon>
+                        <template slot="alternate">
+                            <pb-i18n key="form.hint-add-objtyp"> </pb-i18n
+                            ></template>
+                    </pb-popover>
+                    <fx-insert
+                        context="."
+                        ref="objectType"
+                        origin="instance('templates')/objectType"></fx-insert>
+                </fx-trigger>
+            </fieldset>
 
             <fx-control ref="note[not(@type)]" as="node" update-event="leave">
                 <label>
