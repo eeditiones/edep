@@ -32,54 +32,6 @@ declare function api:lookup($name as xs:string, $arity as xs:integer) {
     }
 };
 
-declare function api:writing($request as map(*)) {
-    try {
-        <root>{doc($config:data-root || "/writing.xml")/items/item}</root>
-    } catch * {
-        ()
-    }
-};
-
-declare function api:typeins($request as map(*)) {
-    try {
-        <root>{doc($config:data-root || "/typeins.xml")}</root>
-    } catch * {
-        ()
-    }
-};
-
-declare function api:statepreserv($request as map(*)) {
-   try {
-        <root>{doc($config:data-root || "/statepreserv.xml")/items/item}</root>
-    } catch * {
-        ()
-    }
-};
-
-declare function api:objtyp($request as map(*)) {
-    try {
-        <root>{doc($config:data-root || "/objtyp.xml")/items/item}</root>
-    } catch * {
-        ()
-    }
-};
-
-declare function api:decor($request as map(*)) {
-   try {
-        <root>{doc($config:data-root || "/decor.xml")/items/item}</root>
-    } catch * {
-        ()
-    }
-};
-
-declare function api:material($request as map(*)) {
-    try {
-        <root>{doc($config:data-root || "/material.xml")//material}</root>
-    } catch * {
-        ()
-    }
-};
-
 declare function api:places-browse($request as map(*)) {
     let $search := normalize-space($request?parameters?search)
     let $letterParam := $request?parameters?category
