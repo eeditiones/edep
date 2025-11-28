@@ -8,9 +8,11 @@ EDEp implements an editor and toolbox for epigraphic data adhering to the EpiDoc
 * web components for transcribing inscriptions using Leiden markup
 * components allowing controlled XML editing for specific micro-environments within the larger form
 * ODDS based on the TEI Processing Model for output transformations: rather than using hand-written transformations we describe them in a declarative way in TEI itself
-* a component for looking up bibliographic references in Zotero
+* API for synchronizing Zotero library to the local instance
+* a component for looking up bibliographic references in locally cached Zotero
 
-The current state of the application itself should be considered an **early beta**, i.e. fully usable, but still under development.
+The current state of the application itself should be considered an **early beta**, i.e. usable, but still under development.
+Please report any hiccups via the issue tracker.
 
 ## Installation
 
@@ -19,7 +21,7 @@ You may either
 1. install the application into an existing eXist instance or
 2. use the docker image
 
-Using option 1, the application requires at least Java version 8 and eXist version 6.2.0. Details of the installation process are described in the [TEI Publisher documentation](https://tei-publisher.com/exist/apps/tei-publisher/documentation/exist-installation). You may skip the last step: *Installing TEI Publisher*, which is not needed for EDEp, but open the dashboard as described. Next, download the EDEp application and data package from the [GitHub release page](https://github.com/eeditiones/edep/releases). Install those one after the other: either click on the *Upload* button and select the downloaded `edep-*.xar` or drag and drop it onto the button.
+Using option 1, the application requires at least Java version 8 and eXist version 6.2.0. Details of the installation process are described in the [TEI Publisher documentation](https://tei-publisher.com/exist/apps/tei-publisher/documentation/exist-installation). You may skip the last step: *Installing TEI Publisher*, which is not needed for EDEp, but open the dashboard as described. Next, download the EDEp application and data package from the [GitHub release page](https://github.com/eeditiones/edep/releases). Install those one after the other: first the data package, then the application itself. Either click on the *Upload* button and select the downloaded `edep-*.xar` or drag and drop it onto the button.
 
 Option 2 is **recommended** for new users and easier if you would like a working environment without having to install Java and eXist. You need docker installed though. Windows and Mac users may download the [docker desktop](https://www.docker.com/products/docker-desktop) application. After install, open a shell and run the following pull command:
 
@@ -49,6 +51,14 @@ Log in by clicking the *login* button in the top right corner of the page. The d
 
 ![demo collection](doc/edep-demo.png)
 
+## Zotero synchronization
+
+Use the `api.html` to manually trigger Zotero synchronization. It usually takes 2-3 minutes the first time, couple of seconds afterwards.
+
+![zotero-sync](doc/zotero.png)
+
+Read more on this subject in [Zotero cache documentation](doc/zotero-cache.md)
+
 ## Customization
 
 **Important note**: just like TEI, EpiDoc is **not** a standard in the sense that there's only one way to encode things. It does not strictly standardize every little detail, but rather tries to provide a common base. Many aspects depend on the concrete research object and will necessarily differ. Therefore you cannot expect that the editor will consume every possible variation of EpiDoc out of the box. It should handle the common denominator, i.e. common parts like titles, transcriptions, translations or commentaries, but may fail to correctly interpret other details of your encoding, which require further customization.
@@ -60,34 +70,38 @@ Therefore the editor works entirely within the web browser: it only loads the Ep
 For example, the form field for the state of preservation is defined in the HTML as follows:
 
 ```html
-<fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
+<fx-control ref="objectDesc/supportDesc/condition" update-event="input">
     <label>
-        <pb-i18n key="form.preservation">Erhaltung</pb-i18n>
+        <pb-i18n key="form.preservation"/>
     </label>
-    <select class="widget">
-        <option value="" data-i18n="form.unknown">unbekannt</option>
-        <option value="complete" data-i18n="preservation.complete">vollständig</option>
-        <option value="fragmentary" data-i18n="preservation.fragmentary">fragmentarisch</option>
-    </select>
+    <select
+        ref="instance('preservation')//category"
+        class="widget">
+        <template>
+            <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
+        </template>
+    </select>     
 </fx-control>
 ```
 
 HTML elements starting with `fx-` belong to *Fore*, the forms framework. *Fore* was designed to preserve the good parts of the – now outdated – XForms standard and takes them to the next level. As with all powerful tools, it requires a bit of time to fully grasp the concepts and understand how they work together. We suggest to read the [article series](https://medium.com/@joern.turner/fore-elements-explained-part-1-89fc41ec6923), which explains the available elements.
 
-The `@ref` attribute binds the form control to the element selected by the given XPath expression, in this case: `physDesc/objectDesc/supportDesc/condition`. All labels are multi-lingual (German and English) by default, which is why we use the `<pb-i18n>` tag and `data-i18n` attributes to reference translation keys. Translations for all labels can be found in [src/resources/i18n/app](src/resources/i18n/app).
+The `@ref` attribute binds the form control to the element selected by the given XPath expression, in this case: `objectDesc/supportDesc/condition`. All labels are multi-lingual (German and English) by default, which is why we use the `<pb-i18n>` tag and to reference translation keys. Translations for all labels can be found in [src/resources/i18n/app](src/resources/i18n/app).
 
-When creating a new document, the editor starts by loading an empty [EpiDoc template](src/templates/fore/epidoc-template.xml). This contains placeholders for all the elements covered by the form. Some elements, e.g. bibliographic entries, are repeatable, which means you can add more of the same type. Sub-templates for those elements are mostly located in [templates.xml](src/templates/fore/templates.xml).
+Select options labels are also localized, but since these are read from TEI taxonomies, the lookups search for `catDesc` elements with an `xml:lang` attribute matching the current language (`$lang` in the example above).
+
+When creating a new document, the editor starts by loading an empty [EpiDoc template](src/templates/fore/epidoc-template.xml). This contains placeholders for all the elements covered by the form. Some elements, e.g. bibliographic entries, are repeatable, which means you can add more of the same type. Sub-templates for repeat elements and other fragments inserted on demand are located in [templates.xml](src/templates/fore/templates.xml).
 
 The entire pre-processing pipeline is started via `custom-api.xql/api:file-upload` which in turn call on other functions to convert the input.
 
-The form also needs some auxiliary data lists, e.g. for object types, materials and much more, which are mostly loaded from the data package.
+The form also needs some auxiliary data lists, e.g. for object types, materials and much more, which are loaded from `data/taxonomy` collection in the data package.
 
 To extend the form to include an additional element or attribute, one would proceed as follows:
 
-1. edit [epidoc-template.xml](src/templates/fore/epidoc-template.xml) and add the missing element or attribute. If the element or attribute belongs to a repeatable section, check [templates.xml](src/templates/fore/templates.xml).
-2. add a form control to [edit.html](src/templates/edit.html) and bind it to the element/attribute.
+1. edit [epidoc-template.xml](src/templates/fore/epidoc-template.xml) and add the missing element or attribute. If the element or attribute belongs to a repeatable section, adjust also [templates.xml](src/templates/fore/templates.xml).
+2. add a form control to [edit.html](src/templates/edit.html) or its dynamically imported form fragments and bind it to the element/attribute.
 
-Many fields in the form may contain inline TEI/XML. We have thus developed an XML editor component (based on the codemirror library), which can be plugged into the form to replace any plain-text input field:
+Many fields in the form may contain inline TEI/XML. We have therefore developed an XML editor component (based on the codemirror library), which can be plugged into the form to replace any plain-text input field:
 
 ```html
 <fx-control class="commentary editor" ref="div[@type='commentary']" as="node" update-event="blur">
@@ -122,7 +136,7 @@ The editor features context-sensitive suggestions for elements and attributes wh
 
 ### Treatment of empty elements/attributes
 
-As explained above, the form works directly on the EpiDoc TEI XML. However, note that missing elements or attributes will be regarded as irrelevant by the form and the corresponding controls will be hidden. This is by design and conceptually an important feature! It is thus required that you **provide an empty placeholder** in the XML templates for every element or attribute to be edited in the form. For example, the template for the `<provenance>` element specifies empty attributes for `when` and `when-custom` even though those are mutually exclusive:
+As explained above, the form works directly on the EpiDoc TEI XML. However, real TEI documents will not necessarily contain all potentially possible elements and attributes. In such cases, note that "missing" elements or attributes will be regarded as irrelevant by the form and the corresponding controls will not be shown. This is an element of the Fore design and conceptually an important feature! It is therefore required that  **a placeholder** is provided in the XML templates for every element or attribute to be edited in the form or to indicate in the form control that a given attribute should be created on demand. For example, the template for the `<provenance>` element specifies empty attributes for `when` and `when-custom` even though those are mutually exclusive:
 
 ```xml
 <provenance type="found" when="" when-custom="" notBefore="" notAfter="">
@@ -135,11 +149,3 @@ Also, because TEI does not allow empty attributes or elements in most places, a 
 To build the application package you need Java > 8, nodejs with npm, and the Java build tool, [ant](https://ant.apache.org/), to be available on your system. With everything in place, just running `ant` inside the application directory should automatically install required dependencies and provide a `.xar` package in directory `dist`, which can be uploaded to eXist via the dashboard.
 
 A better alternative for development is to use Visual Studio Code with a [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers). This provides a docker environment with all necessary tools already installed. The application is prepared for this and opening the directory in Visual Studio Code should automatically provide you the option to reopen the project in a container. This is also the way in which we developed the application.
-
-## MT: Remarks on the form
-
-- I'd move inscription type and its freeform remarks to the OBJECT section on top
-- Let's talk about dates again
-- Chronological data could be renamed to Dating and moved up
-- citedRange in commentaries replaced with `seg type="citedRange"` but this may be completely unnecessary anyway
-- Languages are extracted into their own section
