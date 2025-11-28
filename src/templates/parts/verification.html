@@ -1,32 +1,27 @@
 <details id="verification">
     <summary>
         <h2><pb-i18n key="form.verification">Verifizierung</pb-i18n></h2>
+    </summary>
+    <fx-group ref="fileDesc/titleStmt">
         <fx-trigger class="add">
             <pb-popover>
                 <iron-icon icon="add-circle-outline"></iron-icon>
                 <template slot="alternate">
-                    <pb-i18n key="form.hint-add-verification"> </pb-i18n
-                    ></template>
+                    <pb-i18n key="form.hint-add-verification"/>
+                </template>
             </pb-popover>
             <fx-insert
-              context="fileDesc/titleStmt"
+              context="."
               ref="respStmt"
               origin="instance('templates')/respStmt"></fx-insert>
         </fx-trigger>
-    </summary>
-    <fieldset>
-        <legend>
-            <label>
-                <pb-i18n key="form.verification">Verifizierung</pb-i18n>
-            </label>
-        </legend>
         <fx-repeat
           class="nested-repeat"
-          ref="fileDesc/titleStmt/respStmt"
+          ref="respStmt"
           id="r-verification">
             <template>
-                <fx-group>                   
-                    <fx-control ref="resp">
+                <fx-group ref="resp">                   
+                    <fx-control ref=".">
                         <label>
                             <pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n>
                         </label>
@@ -38,20 +33,20 @@
                             </template>
                         </select>
                     </fx-control>
-                    <fx-control ref="resp/@when" create="create">
+                    <fx-control ref="@when" create="create">
                         <label>
-                            <pb-i18n key="form.date-of-verification"
-                            >Datum der Verifizierung</pb-i18n
-                            >
+                            <pb-i18n key="form.date-of-verification"/>
                         </label>
                         <input placeholder="YYYY-MM-DD" class="widget" />
                     </fx-control>
-                    <fx-control ref="persName">
-                        <label>
-                            <pb-i18n key="form.verification-by">Verifizierer</pb-i18n>
-                        </label>
-                    </fx-control>
                 </fx-group>
+
+                <fx-control ref="persName">
+                    <label>
+                        <pb-i18n key="form.verification-by">Verifizierer</pb-i18n>
+                    </label>
+                </fx-control>
+                
                 <fx-trigger>
                     <pb-popover>
                         <iron-icon icon="remove-circle-outline"></iron-icon>
@@ -75,5 +70,5 @@
                 ref="respStmt"
                 origin="instance('templates')//respStmt"></fx-insert>
         </fx-trigger>
-    </fieldset>
+    </fx-group>
 </details>
