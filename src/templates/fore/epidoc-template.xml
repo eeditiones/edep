@@ -102,7 +102,7 @@
                 </keywords>
             </textClass>
             <langUsage>
-                <language ident=""><note></note></language>
+                <language ident="edep"></language>
                 <language ident="lat" ana="main"></language>
             </langUsage>
         </profileDesc>
