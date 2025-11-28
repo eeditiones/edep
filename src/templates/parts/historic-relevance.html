@@ -4,23 +4,29 @@
             <h2><pb-i18n key="form.historic-relevance"></pb-i18n></h2>
         </summary>
         <!-- 28)  -->
-        <fx-control
-            ref="textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/religion']/term/@ref"
-            update-event="input">
-            <label>
-                <pb-i18n key="form.religion">Religion</pb-i18n>
-            </label>
-            <fx-items class="widget" ref="sortNames(instance('religion')//category)">
-                <template>
-              <span class="fx-checkbox">
-                  <input id="{@xml:id}" type="checkbox" value="{@xml:id}" />
-                  <label for="{@xml:id}">{catDesc[@xml:lang = $lang]}</label>
-              </span>
-                </template>
-            </fx-items>
-        </fx-control>
-        <!-- 29) missing -->
-        <!-- 30) -->
+        <fx-group ref="textClass">  
+            <fx-group ref="keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/religion']"> 
+                <fx-group ref="term">      
+                    <fx-control
+                        ref="@ref"
+                        update-event="input"
+                        create="create">
+                        <label>
+                            <pb-i18n key="form.religion">Religion</pb-i18n>
+                        </label>
+                        <fx-items class="widget" ref="sortNames(instance('religion')//category)">
+                            <template>
+                        <span class="fx-checkbox">
+                            <input id="{@xml:id}" type="checkbox" value="{@xml:id}" />
+                            <label for="{@xml:id}">{catDesc[@xml:lang = $lang]}</label>
+                        </span>
+                            </template>
+                        </fx-items>
+                    </fx-control>
+                </fx-group>
+            </fx-group>
+        </fx-group>
+        
         <!-- dummy switch to insert or delete 'term' elements in main instance -->
         <fx-control
             ref="instance('vars')/history-term"
@@ -45,7 +51,6 @@
                 ref="instance('default')//term[@ref='#social-economic-legal-history']"></fx-delete>
         </fx-control>
 
-        <!-- 31) -->
         <!-- dummy switch to insert or delete 'term' elements in main instance -->
         <fx-control
             ref="instance('vars')/geography-term"
@@ -67,7 +72,6 @@
                 ref="instance('default')//term[@ref='#geography']"></fx-delete>
         </fx-control>
 
-        <!-- 32) -->
         <!-- dummy switch to insert or delete 'term' elements in main instance -->
         <fx-control
             ref="instance('vars')/military-term"
