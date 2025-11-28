@@ -226,8 +226,13 @@
                                         <military-term></military-term>
                                         <language>en</language>
                                         <inited>false</inited>
+                                        <is-fragment>false</is-fragment>
                                     </data>
                                 </fx-instance>
+                                <!-- todo: remove static readonly once new fragment functionality is completely done -->
+                                <fx-bind ref="instance('vars')/is-fragment"
+                                         relevant="not(exists(instance('default')/@type))"
+                                         readonly="true()"></fx-bind>
                                 <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
                                 <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
                                 <fx-bind
@@ -589,13 +594,20 @@
                                     </li>
                                     <li class="nav-fragments">
                                         <!-- TODO show links to children (fragment documents)-->
-                                        <fx-trigger id="addFragment">
+                                        <fx-trigger id="addFragment" ref="instance('vars')/is-fragment">
                                             <button><pb-i18n key="form.add"></pb-i18n></button>
                                             <fx-action>
                                                 <fx-send submission="s-load-template"></fx-send>
                                             </fx-action>
                                         </fx-trigger>
                                     </li>
+<!--
+                                    <li>
+                                        {instance('i-fragment')/@xml:id}
+                                        {instance('i-fragment')/@type}
+                                        {instance('i-fragment')/@corresp}
+                                    </li>
+-->
                                 </ul>
                             </nav>
                             <fx-group ref="teiHeader" aria-labelledby="title-lbl" class="outer-group">
@@ -606,6 +618,7 @@
                                         </label>
                                     </fx-control>
                                 </h1>
+
 
                                 <!-- IDENTIFIERs -->
                                 <div
