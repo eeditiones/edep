@@ -343,6 +343,18 @@ declare function api:inscription-template($request as map(*)) {
     }
 };
 
+declare function api:get-fragments($request as map(*)) {
+    let $id      := $request?parameters?id
+    let $matches := collection($config:data-root)//*[@corresp = $id]
+    return
+        map {
+            "fragments":
+                for $frag in $matches/@xml:id ! string()
+                order by $frag
+                return $frag
+        }
+};
+
 declare %private function api:clean($nodes as node()*, $edepId as xs:string?, $removeRedundant as xs:boolean?) {
     let $output := api:postprocess($nodes, $edepId) => api:clean-namespace()
     let $cleaned := if ($removeRedundant) then $pm-config:tei-transform($output, map{} , 'edep-clean.odd') else $output

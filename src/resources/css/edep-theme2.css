@@ -69,7 +69,13 @@ nav #addFragment{
     button:hover{
         background: var(--paper-grey-300);
     }
+
+    #r-fragments::before{
+        content:"Fragments"
+    }
 }
+
+
 
 .expander {
     /* transform: rotate(90deg); */

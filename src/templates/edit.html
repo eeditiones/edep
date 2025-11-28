@@ -77,6 +77,7 @@
                                         submission="s-load-inscription"
                                         if="exists(instance('params')/id)"></fx-send>
                                     <fx-setvalue ref="instance('vars')/inited">true</fx-setvalue>
+                                    <fx-send submission="s-load-fragments"></fx-send>
                                 </fx-action>
 
                                 <fx-instance
@@ -86,6 +87,41 @@
                                     <data></data>
                                 </fx-instance>
 
+                                <fx-instance id="i-fragment" xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
+                                <fx-submission id="s-load-template"
+                                               method="get"
+                                               url="templates/fore/epidoc-template.xml"
+                                               replace="instance"
+                                               instance="i-fragment"
+                                               validate="false">
+                                    <fx-action event="submit-done">
+                                        <fx-setvalue ref="instance('i-fragment')/@corresp" value="instance('default')/@xml:id"></fx-setvalue>
+                                        <fx-setvalue ref="instance('i-fragment')/@type" value="'partial'">partial</fx-setvalue>
+                                        <fx-setvalue ref="instance('i-fragment')/@xml:id" value="concat(instance('default')/@xml:id,'-')"></fx-setvalue>
+                                    </fx-action>
+                                </fx-submission>
+                                <fx-instance id="i-fragments" type="json"></fx-instance>
+                                <fx-submission id="s-load-fragments"
+                                               method="get"
+                                               url="api/fragments?id={instance('default')/@xml:id}"
+                                               replace="instance" instance="i-fragments" validate="false"></fx-submission>
+                                <fx-submission
+                                    id="s-create-fragment"
+                                    url="api/inscription?collection={instance('params')/collection}"
+                                    method="post"
+                                    ref="instance('i-fragment')"
+                                    replace="instance"
+                                    instance="i-fragment">
+                                    <fx-message event="submit-done">
+                                        <pb-i18n key="form.data-saved"></pb-i18n>
+                                    </fx-message>
+                                    <fx-action event="submit-error">
+                                        <fx-message>
+                                            <pb-i18n key="form.save-failed"></pb-i18n>
+                                        </fx-message>
+                                        <fx-action src="resources/scripts/showErrors.js"></fx-action>
+                                    </fx-action>
+                                </fx-submission>
                                 <fx-bind ref="instance('default')">
                                     <fx-bind ref="teiHeader">
                                         <fx-bind
@@ -543,10 +579,21 @@
                                     </li>
 -->
                                     <li class="nav-divider"></li>
+                                    <li>
+                                        <fx-repeat id="r-fragments" ref="instance('i-fragments')?fragments?*">
+                                            <template>
+                                                <fx-var name="curr" value="."></fx-var>
+                                                <a href="{uri-relpath()}{$curr}.xml" target="_blank">{$curr}</a>
+                                            </template>
+                                        </fx-repeat>
+                                    </li>
                                     <li class="nav-fragments">
                                         <!-- TODO show links to children (fragment documents)-->
                                         <fx-trigger id="addFragment">
                                             <button><pb-i18n key="form.add"></pb-i18n></button>
+                                            <fx-action>
+                                                <fx-send submission="s-load-template"></fx-send>
+                                            </fx-action>
                                         </fx-trigger>
                                     </li>
                                 </ul>
