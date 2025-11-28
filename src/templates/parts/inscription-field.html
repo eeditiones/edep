@@ -35,71 +35,70 @@
             </edep-xml-editor>
         </fx-control>
     </fx-group>
-
-    <label>
-        <pb-i18n key="form.letter-size">Buchstabenhöhe</pb-i18n>
-    </label>
-
-    <fx-trigger class="add">
-        <pb-popover>
-            <iron-icon icon="add-circle-outline"></iron-icon>
-            <template slot="alternate">
-                <pb-i18n key="form.hint-add-language"></pb-i18n
-                ></template>
-        </pb-popover>
-        <fx-insert
-          context="physDesc/handDesc"
-          ref="handNote"
-          origin="instance('templates')/handNote[@scope='letterHeight']"></fx-insert>
-    </fx-trigger>
-
+    
 	<fx-group ref="physDesc">
-	  <fx-group ref="handDesc">
-    <fx-repeat
-      class="nested-repeat"
-      ref="handNote[@scope='letterHeight']"
-      id="r-letterHeight">
-        <template>
-            <fx-group>
-                <fx-control ref="locus">
-                    <label>
-                        <pb-i18n key="form.line"/>
-                    </label>
-                </fx-control>
-
-                <fx-group ref="dimensions/height">
-                    <fx-control ref=".">
-                        <label>
-                            <pb-i18n key="form.letter-size-free"/>
-                        </label>
-                    </fx-control>
-
-                    <fx-control ref="@min" create="create">
-                        <label>
-                            <pb-i18n key="form.letter-size-min"/>
-                        </label>
-                    </fx-control>
-
-                    <fx-control ref="@max" create="create">
-                        <label>
-                            <pb-i18n key="form.letter-size-max"/>
-                        </label>
-                    </fx-control>
-                </fx-group>
-            </fx-group>
-
-            <fx-trigger>
+	    <fx-group ref="handDesc">
+            <label>
+                <pb-i18n key="form.letter-size">Buchstabenhöhe</pb-i18n>
+            </label>
+        
+            <fx-trigger class="add">
                 <pb-popover>
-                    <iron-icon icon="remove-circle-outline"></iron-icon>
+                    <iron-icon icon="add-circle-outline"></iron-icon>
                     <template slot="alternate">
-                        <pb-i18n key="form.hint-delete"></pb-i18n
-                        ></template>
+                        <pb-i18n key="form.hint-add-language"/>
+                    </template>
                 </pb-popover>
-                <fx-delete ref="."></fx-delete>
+                <fx-insert
+                context="."
+                ref="handNote"
+                origin="instance('templates')/handNote[@scope='letterHeight']"></fx-insert>
             </fx-trigger>
-        </template>
-    </fx-repeat>
-	</fx-group>
-	</fx-group>
+        
+            <fx-repeat
+            class="nested-repeat"
+            ref="handNote[@scope='letterHeight']"
+            id="r-letterHeight">
+                <template>
+                    <fx-group>
+                        <fx-control ref="locus">
+                            <label>
+                                <pb-i18n key="form.line"/>
+                            </label>
+                        </fx-control>
 
+                        <fx-group ref="dimensions/height">
+                            <fx-control ref=".">
+                                <label>
+                                    <pb-i18n key="form.letter-size-free"/>
+                                </label>
+                            </fx-control>
+
+                            <fx-control ref="@min" create="create">
+                                <label>
+                                    <pb-i18n key="form.letter-size-min"/>
+                                </label>
+                            </fx-control>
+
+                            <fx-control ref="@max" create="create">
+                                <label>
+                                    <pb-i18n key="form.letter-size-max"/>
+                                </label>
+                            </fx-control>
+                        </fx-group>
+                    </fx-group>
+
+                    <fx-trigger>
+                        <pb-popover>
+                            <iron-icon icon="remove-circle-outline"></iron-icon>
+                            <template slot="alternate">
+                                <pb-i18n key="form.hint-delete"/>
+                            </template>
+                        </pb-popover>
+                        <fx-delete ref="."></fx-delete>
+                    </fx-trigger>
+                </template>
+            </fx-repeat>
+        </fx-group>
+	</fx-group>
 </details>

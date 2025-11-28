@@ -147,17 +147,21 @@
 
     <!-- 39) -->
 
-    <fx-control ref="physDesc/handDesc/handNote[@scope='ligature']" update-event="input">
-        <label>
-            <pb-i18n key="form.ligature">Ligatur</pb-i18n>
-        </label>
-        <select
-            ref="sortNames(instance('ligature')//category)"
-            class="widget">
-            <template>
-                <!-- prettier-ignore -->
-                <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
-            </template>
-        </select>
-    </fx-control>
+    <fx-group ref="physDesc">
+        <fx-group ref="handDesc">
+            <fx-control ref="handNote[@scope='ligature']" update-event="input">
+                <label>
+                    <pb-i18n key="form.ligature">Ligatur</pb-i18n>
+                </label>
+                <select
+                    ref="sortNames(instance('ligature')//category)"
+                    class="widget">
+                    <template>
+                        <!-- prettier-ignore -->
+                        <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
+                    </template>
+                </select>
+            </fx-control>
+        </fx-group>
+    </fx-group>
 </details>
