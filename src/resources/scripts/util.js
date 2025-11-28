@@ -31,6 +31,18 @@ function expander() {
         });
     }
 }
+function expandAll() {
+    const details = document.querySelectorAll('details');
+    Array.from(details).forEach(d => {
+        d.setAttribute('open', 'open');
+    });
+}
+function closeAll() {
+    const details = document.querySelectorAll('details');
+    Array.from(details).forEach(d => {
+        d.removeAttribute('open');
+    });
+}
 function checkDate(string) {
     if (string.length === 0) return true; // allow empty
     const val = new Date(string);

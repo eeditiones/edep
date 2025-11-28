@@ -1,10 +1,22 @@
 <details class="group-6" id="edition">
     <summary>
-        <pb-i18n key="form.edition">Textedition</pb-i18n>
+        <h2><pb-i18n key="form.edition">Textedition</pb-i18n></h2>
     </summary>
     <div class="block" id="transcript">
         <h4>
             <pb-i18n key="form.transcription">Transkription</pb-i18n>
+            <pb-popover>
+                <iron-icon icon="info-outline"></iron-icon>
+                <template slot="alternate">
+                    <pb-i18n key="form.hint-transcription-prefix">Hint</pb-i18n>
+                    <a
+                        href="https://papyri.info/docs/leiden_plus"
+                        target="_blank"
+                    >Leiden+</a
+                    >
+                    <pb-i18n key="form.hint-transcription">Hint</pb-i18n>
+                </template>
+            </pb-popover>
         </h4>
         <fx-control
           class="transcription editor"
@@ -21,18 +33,6 @@
               mode="leiden_plus">
                 <h5 slot="leiden-header">Leiden+ Editor</h5>
                 <div slot="leiden-toolbar">
-                    <pb-popover>
-                        <iron-icon icon="info-outline"></iron-icon>
-                        <template slot="alternate">
-                            <pb-i18n key="form.hint-transcription-prefix">Hint</pb-i18n>
-                            <a
-                              href="https://papyri.info/docs/leiden_plus"
-                              target="_blank"
-                            >Leiden+</a
-                            >
-                            <pb-i18n key="form.hint-transcription">Hint</pb-i18n>
-                        </template>
-                    </pb-popover>
                     <button
                       data-command="snippet"
                       data-mode="leiden_plus"
@@ -190,6 +190,12 @@
     <div class="block">
         <h4>
             <pb-i18n key="form.apparatus">Apparatus</pb-i18n>
+            <pb-popover>
+                <iron-icon icon="info-outline"></iron-icon>
+                <template slot="alternate">
+                    <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
+                </template>
+            </pb-popover>
         </h4>
         <fx-control
           class="apparatus editor"
@@ -208,12 +214,6 @@
               providers="zotero"
               data-template="lib:parse-params">
                 <div slot="toolbar">
-                    <pb-popover>
-                        <iron-icon icon="info-outline"></iron-icon>
-                        <template slot="alternate">
-                            <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                        </template>
-                    </pb-popover>
                     <button
                       data-command="selectElement"
                       title="Select element around current cursor position">

@@ -368,7 +368,26 @@
 
                             <nav aria-labelledby="navigation">
                                 <div class="toolbar">
-                                    <button id="expander" onclick="expander()">&lt; &gt;</button>
+                                    <button class="expander" onclick="expandAll()" title="expand all">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <!-- up chevron -->
+                                                <path d="M8 9 L12 5 L16 9" />
+                                                <!-- down chevron -->
+                                                <path d="M8 15 L12 19 L16 15" />
+                                            </g>
+                                        </svg>
+                                    </button>
+                                    <button class="expander" title="collapse all" onclick="closeAll()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <!-- top chevron (now pointing down) -->
+                                                <path d="M8 5 L12 9 L16 5" />
+                                                <!-- bottom chevron (now pointing up) -->
+                                                <path d="M8 19 L12 15 L16 19" />
+                                            </g>
+                                        </svg>
+                                    </button>
                                 </div>
 
 <!--                                <div id="navigation">Navigation</div>-->
@@ -518,12 +537,17 @@
                                     </li>
 -->
                                     
+<!--
                                     <li>
                                         <button  onclick="expander()">&lt; &gt;<pb-i18n key="form.expand">Expand all sections</pb-i18n></button>
                                     </li>
+-->
                                     <li class="nav-divider"></li>
                                     <li class="nav-fragments">
                                         <!-- TODO show links to children (fragment documents)-->
+                                        <fx-trigger id="addFragment">
+                                            <button><pb-i18n key="form.add"></pb-i18n></button>
+                                        </fx-trigger>
                                     </li>
                                 </ul>
                             </nav>

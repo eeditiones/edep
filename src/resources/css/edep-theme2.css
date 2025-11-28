@@ -15,6 +15,9 @@ html{
     scroll-padding-top:5rem;
 }
 
+h2,h3{
+    display: inline-block;
+}
 body{
 }
 * {
@@ -38,6 +41,9 @@ details{
         padding-bottom:1em;
     }
 
+    h2,h3{
+        margin:0;
+    }
 }
 details > fx-group{
     padding:1rem 0;
@@ -57,12 +63,18 @@ details > fx-group{
 nav #addFragment{
     button{
         font-size: 0.8rem;
+        color: var(--paper-grey-700);
+        border: thin solid var(--paper-grey-300);
+    }
+    button:hover{
+        background: var(--paper-grey-300);
     }
 }
-#expander {
+
+.expander {
     /* transform: rotate(90deg); */
-    /* height: 2rem; */
-    /* width: 2rem; */
+     height: 24px;
+     width: 24px;
     padding: 0;
     background: transparent;
     border: thin solid var(--paper-grey-300);
@@ -71,7 +83,7 @@ nav #addFragment{
     cursor: pointer;
 
 }
-#expander:hover{
+.expander:hover{
     background: var(--paper-grey-300);
 }
 
@@ -80,12 +92,11 @@ nav #addFragment{
     height: calc(100vh - 9rem);
     background: #efefef;
     left: 0;
-    padding: 1rem;
+    padding: 1.2rem 1rem 1rem 0.5rem;
     z-index: 10;
     top: 4.2rem;
     overflow: auto;
 }
-
 
 nav{
 
@@ -190,7 +201,14 @@ nav{
 
 @media (min-width: 1024px) {
     .toolbar {
-        display: none;
+        /* display: none; */
+        position: absolute;
+        top: 0.2rem;
+        left: 0;
+        width: 100%;
+        text-align: right;
+        padding: 0 0.25rem;
+        background: transparent;
     }
     .panels {
         display: flex;
@@ -675,8 +693,13 @@ fx-group.neutral{
     border-radius: 0;
 }
 
+/*
 #transmission, #prev-editions, #bibliography,#images,#pictures{
     border-left: 5px solid #cee0fe;
+}
+*/
+#transmission{
+    margin-top: 1rem;
 }
 
 /*
