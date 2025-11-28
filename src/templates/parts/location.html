@@ -2,7 +2,7 @@
     <summary>
         <pb-i18n key="form.last-recorded-location"></pb-i18n>
     </summary>
-    <fx-group ref="msIdentifier/repository">
+    <fx-group ref="msIdentifier/repository" class="neutral">
         <fx-control ref=".">
             <label>
                 <pb-i18n key="form.last-recorded-location"/>
@@ -29,6 +29,13 @@
           update-event="leave">
             <label>
                 <pb-i18n key="form.other-events"/>
+                <pb-popover>
+                    <iron-icon icon="info-outline" />
+                    <template slot="alternate">
+                        <pb-i18n key="form.other-events"></pb-i18n>
+                    </template>
+                </pb-popover>
+
             </label>
             <edep-xml-editor
               class="widget"
@@ -38,11 +45,5 @@
               data-template="lib:parse-params">
             </edep-xml-editor>
         </fx-control>
-        <pb-popover>
-            <iron-icon icon="info-outline"></iron-icon>
-            <template slot="alternate">
-                <pb-i18n key="form.hint-other-events"></pb-i18n>
-            </template>
-        </pb-popover>
     </div>
 </details>

@@ -7,12 +7,6 @@
  */
 const makeToolbarHTML = snippets => `
         <div slot="toolbar">
-            <pb-popover>
-                <iron-icon icon="info-outline" />
-                <template slot="alternate">
-                    <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                </template>
-            </pb-popover>
             <button
                 data-command="selectElement"
                 title="Select element around current cursor position"
