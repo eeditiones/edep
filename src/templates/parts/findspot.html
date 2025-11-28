@@ -1,10 +1,9 @@
 <!-- context: fileDesc/sourceDesc/msDesc-->
 <details id="findspot">
     <summary>
-        <pb-i18n key="form.findspot">Fundort</pb-i18n>
+        <pb-i18n key="form.finding"/>
     </summary>
 
-    <!-- TODO: load place info -->
     <fx-group ref="history">
         <fx-control id="findspot-ctrl"
                     class="fore-control"
@@ -13,21 +12,61 @@
                     initial="..">
         </fx-control>
 
-        <!-- 10b) -->
-        <fx-control
-          ref="provenance[@type='found']/note[@type='context']"
-          as="node"
-          update-event="leave">
-            <label>
-                <pb-i18n key="form.context-of-provenance">Fundkontext</pb-i18n>
-            </label>
-            <edep-xml-editor
-              class="widget"
-              placeholder="[Inline text/markup or sequence of paragraphs]"
-              schema-root="provenance"
-              base-url="${app}"
-              data-template="lib:parse-params">
-            </edep-xml-editor>
-        </fx-control>
+        <fx-group ref="provenance[@type='found']" class="neutral">
+            <fx-control
+            ref="note[@type='context']"
+            as="node"
+            update-event="leave">
+                <label><pb-i18n key="form.context-of-provenance"/></label>
+                <edep-xml-editor
+                class="widget"
+                placeholder="[Inline text/markup or sequence of paragraphs]"
+                schema-root="provenance"
+                base-url="${app}"
+                data-template="lib:parse-params">
+                </edep-xml-editor>
+            </fx-control>
+    
+            <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
+            <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
+            <fx-control ref="@when" create="create">
+                <label><pb-i18n key="form.date"/></label>
+                <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget" />
+                <fx-alert>
+                    <iron-icon icon="warning"></iron-icon>
+                    <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+                </fx-alert>
+            </fx-control>
+            <fx-control ref="@notBefore" create="create">
+                <label><pb-i18n key="form.date-after"/></label>
+                <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget" />
+                <fx-alert>
+                    <iron-icon icon="warning"></iron-icon>
+                    <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+                </fx-alert>
+            </fx-control>
+            <fx-control ref="@notAfter" create="create">
+                <label><pb-i18n key="form.date-before"/></label>
+                <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget" />
+                <fx-alert>
+                    <iron-icon icon="warning"></iron-icon>
+                    <pb-i18n key="form.invalid-date">Ungültiges Datum</pb-i18n>
+                </fx-alert>
+            </fx-control>
+            <fx-control
+              ref="note[@type='found-date']"
+              as="node"
+              update-event="leave">
+                <label><pb-i18n key="form.found-date"/></label>
+                <edep-xml-editor
+                  class="widget"
+                  placeholder="[Inline text/markup or sequence of paragraphs]"
+                  schema-root="provenance"
+                  base-url="${app}"
+                  data-template="lib:parse-params">
+                </edep-xml-editor>
+            </fx-control>
+        </fx-group>
+    
     </fx-group>
 </details>

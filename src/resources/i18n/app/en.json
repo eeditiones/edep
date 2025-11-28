@@ -29,6 +29,7 @@
         "material": "Material",
         "hint-add-material": "Add material",
         "hint-delete-material": "Delete material",
+        "finding": "Finding",
         "findspot": "Find spot",
         "context-of-provenance": "Find context",
         "year-of-find": "Year/date of find",

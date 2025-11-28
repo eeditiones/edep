@@ -29,6 +29,7 @@
         "material": "Material",
         "hint-add-material": "Material hinzufügen",
         "hint-delete-material": "Material löschen",
+        "finding": "Fundumstände",
         "findspot": "Fundort",
         "context-of-provenance": "Fundkontext",
         "found-date": "Fundkontext",
