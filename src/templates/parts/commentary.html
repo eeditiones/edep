@@ -1,6 +1,13 @@
 <details class="group-10" id="commentary">
     <summary>
-        <h2><pb-i18n key="form.commentary">Kommentar</pb-i18n></h2>
+        <h2><pb-i18n key="form.commentary">Kommentar</pb-i18n>
+            <pb-popover>
+                <iron-icon icon="info-outline"></iron-icon>
+                <template slot="alternate">
+                    <pb-i18n key="form.hint-commentary">Hint</pb-i18n>
+                </template>
+            </pb-popover>
+        </h2>
     </summary>
     <fx-control
       class="commentary editor"
@@ -19,12 +26,6 @@
           providers="zotero"
           data-template="lib:parse-params">
             <div slot="toolbar">
-                <pb-popover>
-                    <iron-icon icon="info-outline"></iron-icon>
-                    <template slot="alternate">
-                        <pb-i18n key="form.hint-commentary">Hint</pb-i18n>
-                    </template>
-                </pb-popover>
                 <button
                   data-command="selectElement"
                   title="Select element around current cursor position">

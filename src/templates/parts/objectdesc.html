@@ -47,11 +47,11 @@
                     <pb-i18n key="form.type-of-monument"/>
                 </legend>
                 <fx-repeat
-                  class="nested-repeat"
+                  class="nested-repeat repeat-flex"
                   ref="objectType"
                   id="r-objtyp">
                     <template>
-                        <fx-group>                   
+                        <fx-group class="neutral">
                             <fx-control ref="@ref">
                                 <label>
                                     <pb-i18n key="form.type-of-monument"/>
@@ -116,11 +116,11 @@
                     <pb-i18n key="form.material"/>
                 </legend>
                 <fx-repeat
-                    class="nested-repeat"
+                    class="nested-repeat repeat-flex"
                     ref="material"
                     id="r-material">
                     <template>
-                        <fx-group>                   
+                        <fx-group class="neutral">
                             <fx-control ref="@ref">
                                 <label>
                                     <pb-i18n key="form.material"/>
@@ -132,6 +132,18 @@
                                         <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
                                     </template>
                                 </select>
+                                <!--
+                                                                <input list="material-list" class="widget" />
+                                                                <datalist id="material-list" data-ref="sortNames(instance('material')//category)">
+                                                                    <template>
+                                                                        <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
+                                                                    </template>
+                                                                </datalist>
+                                                                <fx-trigger>
+                                                                    <button>x</button>
+                                                                    <fx-setvalue ref="."></fx-setvalue>
+                                                                </fx-trigger>
+                                -->
                             </fx-control>
                         </fx-group>
                         <fx-trigger>

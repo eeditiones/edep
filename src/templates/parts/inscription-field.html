@@ -4,17 +4,19 @@
     </summary>
 
     <fx-group ref="physDesc/objectDesc/layoutDesc/layout" id="dimensions">
-        <fx-control class="measurement" ref="dimensions/height">
-            <label>
-                <pb-i18n key="form.height">Höhe</pb-i18n>
-            </label>
-        </fx-control>
+        <section class="form-row">
+            <fx-control class="measurement" ref="dimensions/height">
+                <label>
+                    <pb-i18n key="form.height">Höhe</pb-i18n>
+                </label>
+            </fx-control>
 
-        <fx-control class="measurement" ref="dimensions/width">
-            <label>
-                <pb-i18n key="form.width">Breite</pb-i18n>
-            </label>
-        </fx-control>
+            <fx-control class="measurement" ref="dimensions/width">
+                <label>
+                    <pb-i18n key="form.width">Breite</pb-i18n>
+                </label>
+            </fx-control>
+        </section>
 
         <fx-control ref="ab" as="node" update-event="leave">
             <label>
@@ -35,14 +37,14 @@
             </edep-xml-editor>
         </fx-control>
     </fx-group>
-    
+
     <fieldset>
         <legend>
             <pb-i18n key="form.letter-size">Buchstabenhöhe</pb-i18n>
         </legend>
         <fx-group ref="physDesc">
-            <fx-group ref="handDesc">  
-            
+            <fx-group ref="handDesc">
+
                 <fx-trigger class="add">
                     <pb-popover>
                         <iron-icon icon="add-circle-outline"></iron-icon>
@@ -55,7 +57,7 @@
                     ref="handNote"
                     origin="instance('templates')/handNote[@scope='letterHeight']"></fx-insert>
                 </fx-trigger>
-            
+
                 <fx-repeat
                 class="nested-repeat"
                 ref="handNote[@scope='letterHeight']"
@@ -68,7 +70,7 @@
                                 </label>
                             </fx-control>
 
-                            <fx-group ref="dimensions/height">
+                <fx-group ref="dimensions/height" class="form-row">
                                 <fx-control ref=".">
                                     <label>
                                         <pb-i18n key="form.letter-size-free"/>

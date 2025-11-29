@@ -34,23 +34,23 @@
                 </fx-trigger>
 
                 <fx-repeat
-                class="nested-repeat"
+                class="nested-repeat repeat-flex"
                 ref="language[@ident!='edep']"
                 id="r-language">
                     <template>
-                        <fx-group>
+                    <fx-group class="neutral">
                             <fx-control ref="@ident" create="create">
                                 <label>
                                     <pb-i18n key="form.language"/>
                                 </label>
-                                <select
-                            ref="instance('language-options')//category"
+                        <select
+                    ref="instance('language-options')//category"
                             class="widget">
                                     <template>
                                         <!-- prettier-ignore -->
                                         <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
                                     </template>
-                                </select>         
+                                </select>
                             </fx-control>
                         <!-- TODO change into radio/checkbox -->
 
@@ -65,7 +65,7 @@
                                     <!-- prettier-ignore -->
                                     <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
                                 </template>
-                            </select>         
+                            </select>
                             </fx-control>
                         </fx-group>
                         <fx-trigger>
@@ -85,13 +85,15 @@
                         <label>
                             <pb-i18n key="form.languageFree"/>
                         </label>
+                        <textarea class="widget"></textarea>
+
                     </fx-control>
                 </fx-group>
             </fx-group>
         </fieldset>
     </fx-group>
 
-    <fx-group ref="physDesc/objectDesc/layoutDesc/layout" id="layout">
+    <fx-group ref="physDesc/objectDesc/layoutDesc/layout" id="layout" class="neutral">
         <!-- 24) -->
         <fx-control ref="note[@type='metre']" update-event="input">
             <label>
