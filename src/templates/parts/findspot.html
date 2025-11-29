@@ -37,6 +37,7 @@
 
             <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
             <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
+            <section class="form-row">
             <fx-control create="create" ref="@when">
                 <label>
                     <pb-i18n key="form.date" />
@@ -67,6 +68,7 @@
                     <pb-i18n key="form.invalid-date">Ungültiges Datum</pb-i18n>
                 </fx-alert>
             </fx-control>
+            </section>
             <fx-control
                 as="node"
                 ref="note[@type='found-date']"

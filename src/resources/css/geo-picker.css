@@ -22,9 +22,13 @@ fx-fore fx-fore fx-inspector{
 }
 
 fx-fore#geopicker{
-    padding:0 1rem;
+    padding:0;
 }
-
+#geopicker .geo-place {
+    margin-left: 0;
+    padding: 0;
+    margin:1rem 0;
+}
 [icon="add-circle-outline"]{
     color:black;
 }
@@ -32,7 +36,7 @@ fx-fore#geopicker{
 #geopicker{
     .with-hint{
         grid-template-columns: initial;
-        margin-left:-1rem;
+        /*margin-left:-1rem;*/
         align-items: center;
 
         fx-control{
@@ -94,7 +98,7 @@ fx-fore#geopicker{
     background: #efefef;
 }
 #geopicker fx-output{
-    padding:0.125rem 0;
+    padding:0.5rem 0;
     margin: 0;
 }
 #geopicker input{
@@ -107,7 +111,7 @@ fx-fore#geopicker{
     border:0;
     margin-left:0.5rem;
 }
-.geo-place fx-output{
-    grid-template-columns: 14.5rem 1rem 1fr;
+.geo-place fx-output {
+    grid-template-columns: 10rem 1rem 1fr;
     grid-column-gap: 2rem;
 }
