@@ -493,15 +493,18 @@ declare %private function zotero:strip-diacritics($str as xs:string) as xs:strin
 declare function zotero:items-suggest($request as map(*)) {
   response:set-header("Content-Type", "application/json"),
   let $q     := zotero:strip-diacritics(normalize-space(request:get-parameter("q", "")))
-  let $tag   := lower-case(normalize-space(request:get-parameter("tag", "")))
+  let $tag   := normalize-space(request:get-parameter("tag", ""))
   let $limit := let $l := number(request:get-parameter("limit", "8")) return if ($l ge 1) then xs:integer($l) else 8
 
   let $pool :=
-    collection($zotero:XML_DIR)/tei:bibl[ft:query(., 'bibl-content:*' || $q || '*', map {
-      "leading-wildcard": "yes",
-      "filter-rewrite": "yes",
-      "query-analyzer-id": "nodiacritics"
-    })]
+    if ($tag and $tag != "") then
+        collection($zotero:XML_DIR)/tei:bibl[tei:title[@type='short'] = $tag]
+    else
+        collection($zotero:XML_DIR)/tei:bibl[ft:query(., 'bibl-content:*' || $q || '*', map {
+        "leading-wildcard": "yes",
+        "filter-rewrite": "yes",
+        "query-analyzer-id": "nodiacritics"
+        })]
   let $sorted := for $i in $pool order by xs:dateTime($i/tei:date[@type='modified']/@when) descending return $i
   let $picked := subsequence($sorted, 1, $limit)
 
@@ -511,7 +514,7 @@ declare function zotero:items-suggest($request as map(*)) {
       "key":   string($i/@xml:id),
       "title": string($i/tei:title[not(@type|@level)]),
       "bib":   if ($i/tei:note[@type='display']) then string($i/tei:note[@type='display']) else "",
-      "tag": data($i//tei:title[@type='short'])
+      "tag": string($i/tei:title[@type='short'][1])
     }
   }
   return serialize($arr, map{ "method":"json", "indent": true() })
