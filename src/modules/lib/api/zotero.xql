@@ -100,6 +100,7 @@ declare %private function zotero:write-meta($lv as xs:integer) as xs:boolean {
 };
 
 declare %private function zotero:xml-from-json($data as map(*), $bib as xs:string?) as element(item) {
+  let $type := $data?data?itemType
   let $key     := string(($data?key, $data?data?key)[1])
   let $title   := string(($data?title, $data?data?title)[1])
   let $shortTitle := string(($data?shortTitle, $data?data?shortTitle)[1])
@@ -110,6 +111,21 @@ declare %private function zotero:xml-from-json($data as map(*), $bib as xs:strin
     <bibl xmlns="http://www.tei-c.org/ns/1.0" xml:id="{ $key }">
       <title>{ $title }</title>
       <title type="short">{ $shortTitle }</title>
+      {
+        switch ($type)
+            case 'bookSection' return <title level="m">{ $data?data?bookTitle }</title>
+            case 'journalArticle' case 'newspaperArticle' return (
+                <title level="j">{ $data?data?publicationTitle }</title>,
+                <title level="j" type="short">{ $data?data?journalAbbreviation }</title>
+            )
+            case 'bookChapter' return <title level="m">{ $data?data?title }</title>
+            case 'encyclopediaArticle' return <title level="m">{ $data?data?encyclopediaTitle }</title>
+            case 'webpage' return <title level="u">{ $data?data?websiteTitle }</title>
+            default return ()
+      }
+      {
+        if ($data?data?series) then <title level="s">{ $data?data?series }</title> else ()
+      }
       {
         for $c in $creators?*
         return
@@ -459,17 +475,32 @@ declare function zotero:sync($request as map(*)) {
 };
 
 
+(: ====== Helper: strip diacritics ====== :)
+declare %private function zotero:strip-diacritics($str as xs:string) as xs:string {
+  (: Decompose characters (NFD) to separate base characters from combining marks :)
+  let $decomposed := normalize-unicode($str, "NFD")
+  (: Remove combining diacritical marks (U+0300 to U+036F) by filtering codepoints :)
+  let $stripped := string-join(
+    for $cp in string-to-codepoints($decomposed)
+    where $cp lt 768 or $cp gt 879
+    return codepoints-to-string($cp)
+  )
+  (: Re-compose to NFC for cleaner output :)
+  return normalize-unicode($stripped, "NFC")
+};
+
 (: ====== SUGGEST (lightweight for autocomplete) ====== :)
 declare function zotero:items-suggest($request as map(*)) {
   response:set-header("Content-Type", "application/json"),
-  let $q     := lower-case(normalize-space(request:get-parameter("q", "")))
+  let $q     := zotero:strip-diacritics(normalize-space(request:get-parameter("q", "")))
   let $tag   := lower-case(normalize-space(request:get-parameter("tag", "")))
   let $limit := let $l := number(request:get-parameter("limit", "8")) return if ($l ge 1) then xs:integer($l) else 8
 
   let $pool :=
     collection($zotero:XML_DIR)/tei:bibl[ft:query(., 'bibl-content:*' || $q || '*', map {
       "leading-wildcard": "yes",
-      "filter-rewrite": "yes"
+      "filter-rewrite": "yes",
+      "query-analyzer-id": "nodiacritics"
     })]
   let $sorted := for $i in $pool order by xs:dateTime($i/tei:date[@type='modified']/@when) descending return $i
   let $picked := subsequence($sorted, 1, $limit)
@@ -478,7 +509,7 @@ declare function zotero:items-suggest($request as map(*)) {
     for $i in $picked
     return map{
       "key":   string($i/@xml:id),
-      "title": string($i/tei:title[not(@type)]),
+      "title": string($i/tei:title[not(@type|@level)]),
       "bib":   if ($i/tei:note[@type='display']) then string($i/tei:note[@type='display']) else "",
       "tag": data($i//tei:title[@type='short'])
     }
