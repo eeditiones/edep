@@ -64,31 +64,37 @@
                 id="r-letterHeight">
                     <template>
                         <fx-group>
-                            <fx-group ref="dimensions/height" class="form-row">
+                            <fx-group class="form-row">                             
                                 <fx-control ref="locus">
                                     <label>
                                         <pb-i18n key="form.line"/>
                                     </label>
                                 </fx-control>
 
-                                <fx-control ref="@min" create="create">
-                                    <label>
-                                        <pb-i18n key="form.letter-size-min"></pb-i18n>
-                                    </label>
-                                </fx-control>
+                                <fx-group ref="dimensions">
+                                    <fx-group ref="height">
+                                        <fx-control ref="@min" create="create">
+                                            <label>
+                                                <pb-i18n key="form.letter-size-min"></pb-i18n>
+                                            </label>
+                                        </fx-control>
 
-                                <fx-control ref="@max" create="create">
+                                        <fx-control ref="@max" create="create">
+                                            <label>
+                                                <pb-i18n key="form.letter-size-max"></pb-i18n>
+                                            </label>
+                                        </fx-control>
+                                    </fx-group>
+                                </fx-group>
+                            </fx-group>
+                            <fx-group ref="dimensions">
+                                <fx-control ref="height">
                                     <label>
-                                        <pb-i18n key="form.letter-size-max"></pb-i18n>
+                                        <pb-i18n key="form.letter-size-free"></pb-i18n>
                                     </label>
+                                    <textarea class="widget"></textarea>
                                 </fx-control>
                             </fx-group>
-                            <fx-control ref=".">
-                                <label>
-                                    <pb-i18n key="form.letter-size-free"></pb-i18n>
-                                </label>
-                                <textarea class="widget"></textarea>
-                            </fx-control>
 
                         </fx-group>
 
