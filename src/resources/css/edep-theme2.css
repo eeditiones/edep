@@ -46,7 +46,8 @@ details{
     }
 }
 details > fx-group{
-    padding:1rem 0;
+    /*padding:1rem 0;*/
+    padding:0;
 }
 @media (min-width: 1200px) {
     .editor > fx-fore {
@@ -232,6 +233,13 @@ fx-case{
 fx-case.selected-case{
     display: block;
 }
+fx-control:has(textarea){
+    /*margin:0;*/
+}
+fx-control:has(textarea) label {
+    display: block;
+    width: 100%;
+}
 .panels {
     margin-bottom: 40px;
 }
@@ -334,7 +342,7 @@ fx-trigger.delete button{
 fx-trigger.add {
     display: inline-block;
     position: absolute;
-    right: -0.75rem;
+    right: 0.25rem;
     bottom: -0.75rem;
 }
 
@@ -689,12 +697,14 @@ fx-control:has(jinn-xml-editor){
     margin-left: 17.8rem;
 }
 
+/*
 fx-group{
     padding:1rem;
     border-radius: 0.3rem;
     position: relative;
     padding:0 2rem 1rem 2rem;
 }
+*/
 fx-group > label {
     font-family: var(--pb-heading-font-family);
     font-weight: 400 !important;
@@ -707,6 +717,9 @@ fx-group > label {
 fx-group.neutral{
     padding: 0;
     border:none;
+}
+fx-group.outer-group{
+    padding:1rem;
 }
 
 #references {
@@ -1050,10 +1063,16 @@ input:focus, select:focus, textarea:focus{
     background-color: #35424b;
     color: #F0F0F0;
 }
-#r-verification fx-group{
+
+#r-verification fx-repeatitem, #r-verification fx-group{
     display:flex;
 }
-d
+#r-verification fx-repeatitem{
+    width: calc(100% - 2rem) ;
+}
+
+
+
 pb-popover > iron-icon{
     display:inline-block;
     width: 1.5rem;

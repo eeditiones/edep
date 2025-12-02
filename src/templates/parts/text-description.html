@@ -109,7 +109,7 @@
         </fx-control>
 
         <div class="alternatives">
-            <fx-group ref="note[@type='paleography']">
+            <fx-group ref="note[@type='paleography']" class="neutral">
                 <fx-control
                 ref="@corresp"
                 create="create"
@@ -150,7 +150,7 @@
     <!-- 39) -->
 
     <fx-group ref="physDesc">
-        <fx-group ref="handDesc">
+        <fx-group ref="handDesc" class="neutral">
             <fx-control ref="handNote[@scope='ligature']" update-event="input">
                 <label>
                     <pb-i18n key="form.ligature">Ligatur</pb-i18n>
