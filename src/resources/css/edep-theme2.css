@@ -342,10 +342,9 @@ fx-trigger.delete button{
 fx-trigger.add {
     display: inline-block;
     position: absolute;
-    right: 0.25rem;
+    right: -0.75rem;
     bottom: -0.75rem;
 }
-
 fx-repeat fx-trigger.add {
     position: absolute;
     bottom: -0.75rem;
@@ -495,8 +494,7 @@ fx-group.padded {
     details{
         border-color:var(--paper-grey-600);
         margin:1rem;
-
-
+        position: relative;
 
         &[open] summary{
             border-bottom-color:var(--paper-grey-600);
@@ -717,11 +715,15 @@ fx-group > label {
 fx-group.neutral{
     padding: 0;
     border:none;
+    position: relative;
 }
 fx-group.outer-group{
     padding:1rem;
 }
-
+#pictures .add {
+    bottom: -2.75rem;
+    right: -1.75rem;
+}
 #references {
     border-left: 5px solid #cee0fe;
     border-radius: 0;
@@ -808,6 +810,10 @@ fx-repeat.repeat-flex{
     }
 }
 
+details > fx-repeat{
+    margin-left: -1rem;
+}
+
 fx-inspector[open]{
     width: 50%;
 }
@@ -851,6 +857,7 @@ fx-var{
 }
 
 .nested-repeat{
+    display: block;
     /*margin-top:1rem;*/
 
     fx-group{

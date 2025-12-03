@@ -10,30 +10,23 @@
     </summary>
     <fx-group ref="instance('default')">
         <fx-group ref="facsimile" class="neutral">
-            <fieldset>
-                <legend>
-                    <label>
-                        <pb-i18n key="form.images">Abbildungen (URLs)</pb-i18n>
-                    </label>
-                    <fx-trigger class="add" title="Abbildung hinzufügen">
-                        <iron-icon icon="add-circle-outline"></iron-icon>
+            <fx-repeat class="nested-repeat" ref="graphic" id="r-pics">
+                <template>
+                    <fx-control ref="@url" create="create">
+                        <label>URL</label>
+                    </fx-control>
 
-                        <fx-insert context="facsimile" ref="graphic" origin="instance('templates')/graphic"></fx-insert>
+                    <fx-trigger>
+                        <iron-icon icon="remove-circle-outline" title="delete image"></iron-icon>
+                        <fx-delete ref="."></fx-delete>
                     </fx-trigger>
-                </legend>
-                <fx-repeat class="nested-repeat" ref="graphic" id="r-pics">
-                    <template>
-                        <fx-control ref="@url" create="create">
-                            <label>URL</label>
-                        </fx-control>
+                </template>
+            </fx-repeat>
+            <fx-trigger class="add" title="Abbildung hinzufügen">
+                <iron-icon icon="add-circle-outline"></iron-icon>
 
-                        <fx-trigger>
-                            <iron-icon icon="remove-circle-outline" title="delete image"></iron-icon>
-                            <fx-delete ref="."></fx-delete>
-                        </fx-trigger>
-                    </template>
-                </fx-repeat>
-            </fieldset>
+                <fx-insert context="facsimile" ref="graphic" origin="instance('templates')/graphic"></fx-insert>
+            </fx-trigger>
         </fx-group>
     </fx-group>
 </details>
