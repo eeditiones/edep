@@ -715,30 +715,6 @@
             }
         }
     },
-    "/api/fragments": {
-      "get": {
-        "summary": "get fragments for a given inscription",
-        "operationId": "api:get-fragments",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Fragments ids for Inscription",
-            "content": {
-              "application/json": { "schema": { "type": "string" } }
-            }
-          }
-        }
-      }
-    },
     "/api/zotero/sync": {
       "get": {
         "summary": "Incrementally sync local cache.",

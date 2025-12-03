@@ -322,25 +322,55 @@ declare function api:inscription($request as map(*)) {
     }
 };
 
+declare function api:add-fragments-attr(
+    $tei       as element(tei:TEI),
+    $fragments as xs:string
+) as element(tei:TEI) {
+    element { node-name($tei) } {
+        (: keep all existing attributes except any old @fragments :)
+        $tei/@* except $tei/@fragments,
+        attribute fragments { $fragments },
+        $tei/node()
+    }
+};
+
 declare function api:inscription-template($request as map(*)) {
-    let $id := $request?parameters?id
+    let $id         := $request?parameters?id
     let $collection := $config:data-root || "/" || $request?parameters?collection
+
     let $doc :=
         if ($id and $id != '') then
-            let $input := (
-                collection($collection)//tei:idno[@type="EDEp"][. = $id]/ancestor::tei:TEI,
-                collection($collection)//tei:idno[. = $id]/ancestor::tei:TEI,
-                doc($collection || "/" || $id || ".xml")/tei:TEI
-            )[1]
-            return root($input)
+            let $input :=
+                (
+                    collection($collection)//tei:idno[@type = "EDEp"][. = $id]/ancestor::tei:TEI,
+                    collection($collection)//tei:idno[. = $id]/ancestor::tei:TEI,
+                    doc($collection || "/" || $id || ".xml")/tei:TEI
+                )[1]
+
+            let $fragments :=
+                string-join(
+                    collection($config:data-root)//*[@corresp = $id]/@xml:id,
+                    ' '
+                )
+
+            return
+                if (string-length($fragments) != 0) then
+                    (: build a new document whose root TEI has @fragments :)
+                    document {
+                        api:add-fragments-attr($input, $fragments)
+                    }
+                else
+                    (: just return the original document node :)
+                    root($input)
         else
             doc($config:inscription-templ)
 
-    return try {
-        $doc
-    } catch * {
-        ()
-    }
+    return
+        try {
+            $doc
+        } catch * {
+            ()
+        }
 };
 
 declare function api:get-fragments($request as map(*)) {

@@ -15,6 +15,7 @@
         "object-description": "Description of object",
         "text-description": "Description of text",
         "edition": "Edition of text",
+        "fragments": "Fragments",
         "historic-relevance": "Historical relevance",
         "display": "Display",
         "title": "Title",
