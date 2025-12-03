@@ -1,4 +1,4 @@
-/* Version: 2.7.0 - December 2, 2025 16:30:53 */
+/* Version: 2.7.0 - December 2, 2025 16:30:52 */
 function t$2(t, s, r, i) {
   const n = {
     op: s,
@@ -16680,7 +16680,6 @@ class DependencyNotifyingDomFacade {
   // eslint-disable-next-line class-methods-use-this
   getAttribute(node, attributeName) {
     const attr = node.getAttributeNode(attributeName);
-    console.log('[DomFacade] getAttribute touched:', attr);
     if (attr) this._onNodeTouched(attr);
     return attr?.value ?? null;
   }
@@ -17584,10 +17583,7 @@ registerCustomXPathFunction({
   } = dynamicContext.currentContext;
   const instance = resolveId(string, formElement, 'fx-instance');
   if (instance) {
-    if (instance.getAttribute('type') === 'json') {
-      console.warn('log() does not work for JSON yet');
-      // return JSON.stringify(instance.getDefaultContext());
-    } else {
+    if (instance.getAttribute('type') === 'json') ; else {
       const def = new XMLSerializer().serializeToString(instance.getDefaultContext());
       return prettifyXml(def);
     }
@@ -17617,7 +17613,6 @@ registerCustomXPathFunction({
 }, ['xs:string?'], 'element()?', (_dynamicContext, string) => {
   const parser = new DOMParser();
   const out = parser.parseFromString(string, 'application/xml');
-  console.log('parse', out);
 
   /*
               const {formElement} = dynamicContext.currentContext;
@@ -17816,7 +17811,6 @@ const jsonToXml = (_dynamicContext, json) => {
   }
   convert(json, root);
   // return root.outerHTML;
-  console.log('xml', root);
   return root;
 };
 registerCustomXPathFunction({
@@ -19197,16 +19191,10 @@ class Fore {
     return refreshed;
   }
   static copyDom(inputElement) {
-    console.time('convert');
     const target = new DOMParser().parseFromString('<fx-fore></fx-fore>', 'text/html');
-    console.log('copyDom new doc', target);
-    console.log('copyDom new body', target.body);
-    console.log('copyDom new body', target.querySelector('fx-fore'));
     const newFore = target.querySelector('fx-fore');
     this.convertFromSimple(inputElement, newFore);
     newFore.removeAttribute('convert');
-    console.log('converted', newFore);
-    console.timeEnd('convert');
     return newFore;
   }
   static convertFromSimple(startElement, targetElement) {
@@ -19216,7 +19204,6 @@ class Fore {
         const lookFor = `FX-${node.nodeName.toUpperCase()}`;
         if (Fore.MODEL_ELEMENTS.includes(lookFor) || Fore.UI_ELEMENTS.includes(lookFor) || Fore.ACTION_ELEMENTS.includes(lookFor)) {
           const conv = targetElement.ownerDocument.createElement(lookFor);
-          console.log('conv', node, conv);
           targetElement.appendChild(conv);
           Fore.copyAttributes(node, conv);
           Fore.convertFromSimple(node, conv);
@@ -19258,7 +19245,6 @@ class Fore {
     if (instance.type === 'json') {
       return 'application/json';
     }
-    console.warn('content-type unknown ', instance.type);
     return null;
   }
   static async handleResponse(response) {
@@ -19558,9 +19544,7 @@ class FxInstance extends HTMLElement {
       this.id = 'default';
     }
     this.credentials = this.hasAttribute('credentials') ? this.getAttribute('credentials') : 'same-origin';
-    if (!['same-origin', 'include', 'omit'].includes(this.credentials)) {
-      console.error(`fx-submission: the value of credentials is not valid. Expected 'same-origin', 'include' or 'omit' but got '${this.credentials}'`, this);
-    }
+    if (!['same-origin', 'include', 'omit'].includes(this.credentials)) ;
     if (this.hasAttribute('type')) {
       this.type = this.getAttribute('type');
     } else {
@@ -19696,7 +19680,6 @@ class FxInstance extends HTMLElement {
     if (this.type === 'text') {
       this.instanceData = this.innerText;
       this.originalInstance = this.innerText;
-      console.log('text data', this.instanceData);
     }
   }
   async _loadData() {
@@ -19708,12 +19691,10 @@ class FxInstance extends HTMLElement {
       // ### does it make sense to store originalData here?
 
       if (!key) {
-        console.warn('no key specified for localStore');
         return;
       }
       const serialized = localStorage.getItem(key);
       if (!serialized) {
-        console.warn(`Data for key ${key} cannot be found`);
         this._useInlineData();
         return;
       }
@@ -19766,7 +19747,6 @@ class FxInstance extends HTMLElement {
     if (this.type === 'json') {
       return 'application/json';
     }
-    console.warn('content-type unknown ', this.type);
     return null;
   }
   _useInlineData() {
@@ -19792,9 +19772,7 @@ class FxInstance extends HTMLElement {
     } else if (this.type === 'text') {
       // this.instanceData = this.textContent;
       this._setInitialData(this.textContent);
-    } else {
-      console.warn('unknow type for data ', this.type);
-    }
+    } else ;
   }
 
   // _handleResponse() {
@@ -19944,7 +19922,6 @@ class ModelItem {
     }
   }
   update() {
-    console.log('[ModelItem] update:', this);
     this.evaluateStateExpressions();
   }
   addAlert(alert) {
@@ -20030,7 +20007,6 @@ class ModelItem {
         return evaluateXPath(expr, contextNodes[0], this);
       }
     } catch (e) {
-      console.warn(`Error evaluating XPath expression [${expr}] in context:`, e);
       return type === 'boolean' ? false : null;
     }
   }
@@ -20262,7 +20238,6 @@ class FxModel extends HTMLElement {
    *
    */
   async modelConstruct() {
-    console.info(`📌 model-construct for #${this.parentNode.id}`);
 
     // this.dispatchEvent(new CustomEvent('model-construct', { detail: this }));
     Fore.dispatch(this, 'model-construct', {
@@ -20290,7 +20265,6 @@ class FxModel extends HTMLElement {
       this.updateModel();
     } else {
       // ### if there's no instance one will created
-      console.log(`### <<<<< dispatching model-construct-done for '${this.fore.id}' >>>>>`);
       this.modelConstructed = true;
       await this.dispatchEvent(new CustomEvent('model-construct-done', {
         composed: false,
@@ -20345,7 +20319,6 @@ class FxModel extends HTMLElement {
     }
   }
   rebuild() {
-    console.log(`🔷   rebuild() '${this.fore.id}'`);
     this.mainGraph = new DepGraph(false); // do: should be moved down below binds.length check but causes errors in tests.
     this.modelItems = [];
 
@@ -20364,8 +20337,6 @@ class FxModel extends HTMLElement {
       // incomplete
       this.formElement.initData();
     }
-    console.log('mainGraph', this.mainGraph);
-    console.log('rebuild mainGraph calc order', this.mainGraph.overallOrder());
 
     // this.dispatchEvent(new CustomEvent('rebuild-done', {detail: {maingraph: this.mainGraph}}));
     Fore.dispatch(this, 'rebuild-done', {
@@ -20383,7 +20354,6 @@ class FxModel extends HTMLElement {
     if (!this.mainGraph) {
       return;
     }
-    console.log(`🔷🔷 recalculate() '${this.fore.id}'`);
 
     // console.log('changed nodes ', this.changed);
     this.computes = 0;
@@ -20449,7 +20419,6 @@ class FxModel extends HTMLElement {
         computes: this.computes
       });
     }
-    console.log(`${this.parentElement.id} recalculate finished with modelItems `, this.modelItems);
   }
 
   /*
@@ -20561,7 +20530,6 @@ class FxModel extends HTMLElement {
    */
   revalidate() {
     if (this.modelItems.length === 0) return true;
-    console.log(`🔷🔷🔷 revalidate() '${this.fore.id}'`);
 
     // reset submission validation
     // this.parentNode.classList.remove('submit-validation-failed')
@@ -20585,7 +20553,6 @@ class FxModel extends HTMLElement {
             // this.formElement.addToRefresh(modelItem); // let fore know that modelItem needs refresh
             modelItem.notify(); // Notify observers directly
             if (!compute) {
-              console.log('validation failed on modelitem ', modelItem);
               valid = false;
             }
           }
@@ -20621,11 +20588,6 @@ class FxModel extends HTMLElement {
         }
       }
     });
-
-    console.log('modelItems after revalidate: ', this.modelItems);
-    console.log('changed after revalidate: ', this.changed);
-    console.log('changed after revalidate changed: ', Array.from(this.parentNode._localNamesWithChanges));
-    console.log('changed after revalidate batchedNotifications: ', Array.from(this.parentNode.batchedNotifications));
     return valid;
   }
   addChanged(modelItem) {
@@ -21095,7 +21057,6 @@ class ForeElementMixin extends HTMLElement {
         const inscopeContext = getInScopeContext(this, valAttr);
         return evaluateXPathToString(valAttr, inscopeContext, this.getOwnerForm());
       } catch (error) {
-        console.error(error);
         Fore.dispatch(this, 'error', {
           message: error
         });
@@ -21461,8 +21422,6 @@ class FxBind extends ForeElementMixin {
       if (parentBoundElement) {
         // todo: Could be fancier by combining them
         parentBoundElement.required = this.required; // overwrite parent property!
-      } else {
-        console.error('no parent bound element');
       }
       return;
     }
@@ -21645,7 +21604,6 @@ ${this._messageFormat === 'xml' ? '<fx-replace id="replace" ref="."></fx-replace
     }
     this._render();
     this.getOwnerForm().addEventListener('model-construct-done', e => {
-      console.log('Fore model ready');
       this._connect();
       this.evalInContext();
     });
@@ -21755,7 +21713,6 @@ ${this._messageFormat === 'xml' ? '<fx-replace id="replace" ref="."></fx-replace
       default:
         throw new Error(`Unsupported message format: ${this._messageFormat}`);
     }
-    console.log('dispatching channel-message', message);
     Fore.dispatch(this, 'channel-message', {
       message
     });
@@ -21977,10 +21934,7 @@ class Toastify {
   _init(options) {
     // Setting defaults
     this.options = Object.assign(this.defaults, options);
-    if (this.options.backgroundColor) {
-      // This is being deprecated in favor of using the style HTML DOM property
-      console.warn('DEPRECATION NOTICE: "backgroundColor" is being deprecated. Please use the "style.background" property.');
-    }
+    if (this.options.backgroundColor) ;
     this.toastElement = null;
     this.options.gravity = options.gravity === "bottom" ? "toastify-bottom" : "toastify-top"; // toast position - top or bottom
     this.options.stopOnFocus = options.stopOnFocus === undefined ? true : options.stopOnFocus; // stop timeout on focus
@@ -22467,9 +22421,7 @@ class DraggableComponent extends superclass {
     this.classList.remove('drag-over');
     event.stopPropagation();
     if (this.localName === 'fx-droptarget') {
-      if (this.children.length !== 0) {
-        console.log('we have to do something');
-      }
+      if (this.children.length !== 0) ;
       let {
         draggedItem
       } = this.getOwnerForm();
@@ -22594,7 +22546,6 @@ class UIElement extends ForeElementMixin {
   }
   disconnectedCallback() {
     if (this.modelItem && typeof this.modelItem.removeObserver === 'function') {
-      console.log(`[UIElement] Removing observer for ref="${this.ref}"`);
       this.modelItem.removeObserver(this);
     }
     for (const removeEventListener of this._removeEventListeners) {
@@ -22676,13 +22627,11 @@ class UIElement extends ForeElementMixin {
   // }
 
   async refresh(force) {
-    console.log(`🔄 [UIElement] refresh() called for ref="${this.ref}"`);
   }
   async refreshChildren(force) {
     await Fore.refreshChildren(this, force);
   }
   activate() {
-    console.log('UIElement.activate() called');
     this.removeAttribute('on-demand');
     this.style.display = '';
     if (this.isBound()) {
@@ -22781,7 +22730,6 @@ class RepeatBase extends withDraggability(UIElement) {
     return inited;
   }
   async refresh(force) {
-    console.log('🔄 fx-repeat.refresh on', this.id);
     if (!this.inited) this.init();
     // console.time('repeat-refresh', this);
     this._evalNodeset();
@@ -22865,7 +22813,6 @@ class RepeatBase extends withDraggability(UIElement) {
       const {
         detail
       } = event;
-      console.log('insert catched', detail);
 
       // Step 1: Refresh/re-evaluate the nodeset
       const oldNodesetLength = this.nodeset.length;
@@ -22878,7 +22825,6 @@ class RepeatBase extends withDraggability(UIElement) {
     };
     this.getOwnerForm().addEventListener('insert', this.handleInsert);
     this.handleDelete = event => {
-      console.log('delete catched', event);
       const {
         detail
       } = event;
@@ -23034,7 +22980,6 @@ class RepeatBase extends withDraggability(UIElement) {
     return Array.from(this.querySelectorAll(':scope > fx-repeatitem'));
   }
   _deleteHandler(deleted) {
-    console.log('handleDelete', deleted);
     // grab the current repeat items (tweak selector if yours differs)
     /**
      * @type {import('./fx-repeatitem.js').FxRepeatitem[]}
@@ -23774,7 +23719,6 @@ class FxFore extends HTMLElement {
         try {
           await this._whenDependenciesReady();
         } catch (e) {
-          console.warn('wait-for failed', e);
           return;
         }
       }
@@ -23799,7 +23743,6 @@ class FxFore extends HTMLElement {
         return;
       }
       if (!modelElement.inited) {
-        console.info(`%cFore running ... ${this.id ? '#' + this.id : ''}`, 'background:#64b5f6; color:white; padding:.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;');
         const variables = new Map();
         (function registerVariables(node) {
           for (const child of node.children) {
@@ -23815,7 +23758,7 @@ class FxFore extends HTMLElement {
       this._createRepeatsFromAttributes();
       this.inited = true;
     };
-    this.version = 'Version: 2.7.0 - built on December 2, 2025 16:30:53';
+    this.version = 'Version: 2.7.0 - built on December 2, 2025 16:30:52';
 
     /**
      * @type {import('./fx-model.js').FxModel}
@@ -23830,7 +23773,6 @@ class FxFore extends HTMLElement {
     this.addEventListener('warn', this._displayWarning);
     // this.addEventListener('log', this._logError);
     window.addEventListener('compute-exception', e => {
-      console.error('circular dependency: ', e);
     });
     this.ready = false;
     this.storedTemplateExpressionByNode = new Map();
@@ -24056,7 +23998,6 @@ class FxFore extends HTMLElement {
     const modelElement = Array.from(this.children).find(modelElem => modelElem.nodeName.toUpperCase() === 'FX-MODEL');
     this.model = modelElement;
     this.style.visibility = 'hidden';
-    console.time('init');
     this.strict = !!this.hasAttribute('strict');
     /*
             document.re('ready', (e) =>{
@@ -24254,11 +24195,9 @@ class FxFore extends HTMLElement {
     // if (!this.initialRun && this.toRefresh.length !== 0) {
     // if (!force && !this.initialRun && this.toRefresh.length !== 0) {
     if (force === true || this.initialRun) {
-      console.log('🔄 🔴🔴🔴 ### full refresh() on ', this);
       Fore.refreshChildren(this, force);
     } else {
       // Process all batched no tifications at the end of the refresh phase
-      console.log('🔄 🎯  ### processing batched notifications');
       await this._processBatchedNotifications();
     }
 
@@ -24275,7 +24214,6 @@ class FxFore extends HTMLElement {
     // this.dispatchEvent(new CustomEvent('refresh-done'));
     this.initialRun = false;
     this.style.visibility = 'visible';
-    console.info(`%c ✅ refresh-done on #${this.id}`, 'background:darkorange; color:black; padding:.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;', this.getModel().modelItems);
     Fore.dispatch(this, 'refresh-done', {});
     const subFores = Array.from(this.querySelectorAll('fx-fore'));
     /*
@@ -24408,7 +24346,6 @@ class FxFore extends HTMLElement {
     this._processTemplateExpressions();
   }
   _processTemplateExpressions() {
-    console.log('processing template expressions ', this.storedTemplateExpressionByNode);
     for (const node of Array.from(this.storedTemplateExpressionByNode.keys())) {
       if (node.nodeType === Node.ATTRIBUTE_NODE) {
         // Attribute nodes are not contained by the document, but their owner elements are!
@@ -24459,7 +24396,6 @@ class FxFore extends HTMLElement {
       const naked = match.substring(1, match.length - 1);
       const inscope = getInScopeContext(node, naked);
       if (!inscope) {
-        console.warn('no inscope context for expr', naked);
         node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ATTRIBUTE_NODE ? node.parentNode : node;
         return match;
       }
@@ -24474,7 +24410,6 @@ class FxFore extends HTMLElement {
         // console.log(`template expression result for ${naked}=${result}`);
         return result;
       } catch (error) {
-        console.warn('ignoring unparseable expr', error);
         return match;
       }
     });
@@ -24543,9 +24478,7 @@ class FxFore extends HTMLElement {
 
     // ##### lazy creation should NOT take place if there's a parent Fore using shared instances
     const parentFore = this.parentNode.nodeType !== Node.DOCUMENT_FRAGMENT_NODE ? this.parentNode.closest('fx-fore') : null;
-    if (this.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
-      console.log('fragment', this.parentNode);
-    }
+    if (this.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) ;
     if (parentFore) {
       const shared = parentFore.getModel().instances.filter(shared => shared.hasAttribute('shared'));
       if (shared.length !== 0) return;
@@ -24568,7 +24501,6 @@ class FxFore extends HTMLElement {
         });
       }
     } catch (e) {
-      console.warn('lazyCreateInstance created an error attempting to create a document', e.message);
     }
   }
 
@@ -24621,7 +24553,6 @@ class FxFore extends HTMLElement {
    * @private
    */
   async _initUI() {
-    console.info(`%cinitUI #${this.id}`, 'background:lightblue; color:black; padding:.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;');
     const parentFore = this.closest('fx-fore');
     if (parentFore) {
       this.initialRun = false;
@@ -24657,7 +24588,6 @@ class FxFore extends HTMLElement {
     this.ready = true;
     this.initialRun = false;
     // console.log('### >>>>> dispatching ready >>>>>', this);
-    console.info(`%c ✅ ${this.id ? '#' + this.id : 'Fore'} is ready`, 'background:lightgreen; color:black; padding:.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;');
 
     // console.log(`### <<<<< ${this.id} ready >>>>>`);
 
@@ -24785,7 +24715,6 @@ class FxFore extends HTMLElement {
    */
   initData(root = this) {
     // const created = new Promise(resolve => {
-    console.log('INIT');
     // const boundControls = Array.from(root.querySelectorAll('[ref]:not(fx-model *),fx-repeatitem'));
 
     /**
@@ -24795,7 +24724,6 @@ class FxFore extends HTMLElement {
     if (root.matches && root.matches('fx-repeatitem')) {
       boundControls.unshift(root);
     }
-    console.log('_initData', boundControls);
     for (let i = 0; i < boundControls.length; i++) {
       const bound = boundControls[i];
 
@@ -24807,10 +24735,8 @@ class FxFore extends HTMLElement {
         bound.evalInContext();
       }
       if (bound.nodeset !== null && !(Array.isArray(bound.nodeset) && bound.nodeset.length > 0)) {
-        console.log('Node exists', bound.nodeset);
         continue;
       }
-      console.log('Node does not exists', bound.ref);
 
       // We need to create that node!
       const previousControl = boundControls[i - 1];
@@ -24819,8 +24745,6 @@ class FxFore extends HTMLElement {
       // First: parent
       if (previousControl && previousControl.contains(bound)) {
         // Parent is here.
-        console.log('insert into', bound, previousControl);
-        console.log('insert into nodeset', bound.nodeset);
         /**
          * @type {ParentNode}
          */
@@ -24879,9 +24803,6 @@ class FxFore extends HTMLElement {
           siblingControl = siblingOrDescendant;
           break;
         }
-      }
-      if (!siblingControl) {
-        console.log('No sibling found for', bound);
       }
       // console.log('sibling', siblingControl);
       // todo: review: should this not just be inscopeContext?
@@ -24958,7 +24879,6 @@ class FxFore extends HTMLElement {
   _handleDragStart(event) {
     const draggedItem = event.target.closest('[draggable="true"]');
     this.originalDraggedItem = draggedItem;
-    console.log('DRAG START', this);
     if (draggedItem.getAttribute('drop-action') === 'copy') {
       event.dataTransfer.dropEffect = 'copy';
       event.dataTransfer.effectAllowed = 'copy';
@@ -24972,7 +24892,6 @@ class FxFore extends HTMLElement {
     }
   }
   _handleDrop(event) {
-    console.log('DROP ON BODY', this);
     if (!this.draggedItem) {
       return;
     }
@@ -25031,17 +24950,12 @@ class FxFore extends HTMLElement {
   _logError(e) {
     e.stopPropagation();
     e.preventDefault();
-    console.error('ERROR', e.detail.message);
-    console.error(e.detail.origin);
-    if (e.detail.expr) {
-      console.error('Failing expression', e.detail.expr);
-    }
+    if (e.detail.expr) ;
     if (this.strict) {
       this._displayError(e);
     }
   }
   _copyToClipboard(target) {
-    console.log('copyToClipboard', target.value);
     navigator.clipboard.writeText(target.value);
   }
   _showMessage(level, msg) {
@@ -25134,7 +25048,6 @@ class Relevance {
       case 'xml':
         return Relevance._relevantXmlNodes(element);
       default:
-        console.warn(`relevance selection not supported for type:${element.type}`);
         return element.nodeset;
     }
   }
@@ -25234,7 +25147,7 @@ class FxSubmission extends ForeElementMixin {
 
     // ### initialize properties with defaults
     // if (!this.hasAttribute('id')) throw new Error('id is required');
-    if (!this.hasAttribute('id')) console.warn('id is required');
+    if (!this.hasAttribute('id')) ;
     this.id = this.getAttribute('id');
 
     /** if present should be a existing instance id */
@@ -25258,9 +25171,7 @@ class FxSubmission extends ForeElementMixin {
     this.targetref = this.hasAttribute('targetref') ? this.getAttribute('targetref') : null;
     this.validate = this.getAttribute('validate') ? this.getAttribute('validate') : 'true';
     this.credentials = this.hasAttribute('credentials') ? this.getAttribute('credentials') : 'same-origin';
-    if (!['same-origin', 'include', 'omit'].includes(this.credentials)) {
-      console.error(`fx-submission: the value of credentials is not valid. Expected 'same-origin', 'include' or 'omit' but got '${this.credentials}'`, this);
-    }
+    if (!['same-origin', 'include', 'omit'].includes(this.credentials)) ;
     this.shadowRoot.innerHTML = this.renderHTML();
   }
 
@@ -25277,14 +25188,12 @@ class FxSubmission extends ForeElementMixin {
     await this._submit();
   }
   async _submit() {
-    console.info(`🚀 #${this.id}`);
     this.evalInContext();
     const model = this.getModel();
     model.recalculate();
     if (this.validate === 'true' && this.method !== 'get') {
       const valid = model.revalidate();
       if (!valid) {
-        console.log('validation failed. Submission stopped');
         this.getOwnerForm().classList.add('submit-validation-failed');
         // ### allow alerts to pop up
         // this.dispatch('submit-error', {});
@@ -25364,7 +25273,6 @@ class FxSubmission extends ForeElementMixin {
         this._handleResponse(data, resolvedUrl, 'application/xml');
       }
       // this.dispatch('submit-done', {});
-      console.log('### <<<<< submit-done >>>>>');
       Fore.dispatch(this, 'submit-done', {});
       this.parameters.clear();
       return;
@@ -25388,7 +25296,6 @@ class FxSubmission extends ForeElementMixin {
         if (this.method === 'consume') {
           localStorage.removeItem(key);
         }
-        console.log('### <<<<< submit-done >>>>>');
         Fore.dispatch(this, 'submit-done', {});
       }
       if (this.method === 'post') {
@@ -25396,7 +25303,6 @@ class FxSubmission extends ForeElementMixin {
         const key = resolvedUrl.substring(resolvedUrl.indexOf(':') + 1);
         localStorage.setItem(key, serialized);
         this._handleResponse(instance.instanceData);
-        console.log('### <<<<< submit-done >>>>>');
         Fore.dispatch(this, 'submit-done', {});
       }
       if (this.method === 'delete') {
@@ -25405,7 +25311,6 @@ class FxSubmission extends ForeElementMixin {
         const newInst = new DOMParser().parseFromString('<data></data>', 'application/xml');
         this.replace = 'instance';
         this._handleResponse(newInst);
-        console.log('### <<<<< submit-done >>>>>');
         Fore.dispatch(this, 'submit-done', {});
       }
       return;
@@ -25430,7 +25335,6 @@ class FxSubmission extends ForeElementMixin {
       });
       if (!response.ok || response.status > 400) {
         // this.dispatch('submit-error', { message: `Error while submitting ${this.id}` });
-        console.info(`%csubmit-error #${this.id}`, 'background:red; color:black; padding:.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;');
         Fore.dispatch(this, 'submit-error', {
           status: response.status,
           message: `Error during submit ${this.id}`
@@ -25566,22 +25470,17 @@ class FxSubmission extends ForeElementMixin {
       if (targetInstance) {
         if (this.targetref) {
           const [theTarget] = evaluateXPath(this.targetref, targetInstance.instanceData.firstElementChild, this);
-          console.log('theTarget', theTarget);
           if (this.responseMediatype === 'application/xml' || this.responseMediatype === 'text/html') {
             const clone = data.firstElementChild;
             const parent = theTarget.parentNode;
             parent.replaceChild(clone, theTarget);
-            console.log('finally ', parent);
           }
           if (this.responseMediatype.startsWith('text/')) {
             theTarget.textContent = data;
           }
-          if (this.responseMediatype === 'application/json') {
-            console.warn('targetref is not supported for application/json responses');
-          }
+          if (this.responseMediatype === 'application/json') ;
         } else if (this.into) {
           const [theTarget] = evaluateXPath(this.into, targetInstance.instanceData.firstElementChild, this);
-          console.log('theTarget', theTarget);
           if (data.nodeType === Node.DOCUMENT_NODE) {
             theTarget.appendChild(data.firstElementChild);
           } else {
@@ -25756,7 +25655,6 @@ class FxVariable extends ForeElementMixin {
    */
   setInScopeVariables(inScopeVariables) {
     if (inScopeVariables.has(this.name)) {
-      console.error(`The variable ${this.name} is declared more than once`);
       Fore.dispatch(this, 'xforms-binding-error', {});
       return;
     }
@@ -26291,7 +26189,6 @@ function extractPredicateDependencies(ref, contextNode, register, resolveModelIt
         const mi = resolveModelItem(node);
         if (mi) {
           register(mi);
-          console.log(`[PredicateDependency] Observing ${mi.path} from predicate: [${predicate}]`);
         }
       });
       const predContext = getContextNodeForPredicate(predicate, contextNode);
@@ -26299,7 +26196,6 @@ function extractPredicateDependencies(ref, contextNode, register, resolveModelIt
         dispatchEvent() {}
       }, domFacade);
     } catch (e) {
-      console.warn('Failed to evaluate predicate expression:', predicate, e);
     }
   }
 }
@@ -26386,9 +26282,7 @@ class FxControl extends AbstractControl {
       }
       `;
     this.credentials = this.hasAttribute('credentials') ? this.getAttribute('credentials') : 'same-origin';
-    if (!['same-origin', 'include', 'omit'].includes(this.credentials)) {
-      console.error(`fx-submission: the value of credentials is not valid. Expected 'same-origin', 'include' or 'omit' but got '${this.credentials}'`, this);
-    }
+    if (!['same-origin', 'include', 'omit'].includes(this.credentials)) ;
     this.shadowRoot.innerHTML = `
             <style>
                 ${style}
@@ -26473,7 +26367,6 @@ class FxControl extends AbstractControl {
    * activates a control that uses 'on-demand' attribute
    */
   activate() {
-    console.log('fx-control.activate() called');
     this.removeAttribute('on-demand');
     this.style.display = '';
     this.refresh(true);
@@ -26503,7 +26396,6 @@ class FxControl extends AbstractControl {
    * @param val the new value to be set
    */
   setValue(val) {
-    console.log('Control.setValue', val, 'on', this);
     const modelitem = this.getModelItem();
     if (this.getAttribute('class')) {
       this.classList.add('visited');
@@ -26511,7 +26403,6 @@ class FxControl extends AbstractControl {
       this.setAttribute('class', 'visited');
     }
     if (modelitem?.readonly) {
-      console.warn('attempt to change readonly node', modelitem);
       return; // do nothing when modelItem is readonly
     }
 
@@ -26711,7 +26602,6 @@ class FxControl extends AbstractControl {
    * @private
    */
   async _loadForeFromSrc() {
-    console.info(`%cControl ref="${this.ref}" is loading ${this.src}`, 'background:#64b5f6; color:white; padding:0.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;');
     try {
       const response = await fetch(this.src, {
         method: 'GET',
@@ -26790,7 +26680,6 @@ class FxControl extends AbstractControl {
     return this.querySelector('template');
   }
   async refresh(force = false) {
-    console.log('🔄 fx-control refresh', this);
     super.refresh(force);
     // console.log('refresh template', this.template);
     // const {widget} = this;
@@ -27193,8 +27082,6 @@ class FxGroup extends FxContainer {
                     this._initializeChildren(node);
                 }
         */
-
-    console.groupEnd();
   }
   async refresh(force) {
     super.refresh(force);
@@ -27208,7 +27095,6 @@ class FxGroup extends FxContainer {
    * activates a control that uses 'on-demand' attribute
    */
   activate() {
-    console.log('fx-group.activate() called');
     this.removeAttribute('on-demand');
     this.style.display = '';
     if (this.isBound()) {
@@ -27355,7 +27241,6 @@ class FxOutput extends AbstractControl {
       }
       return evaluateXPathToStrings(this.valueAttr, inscopeContext, this)[0];
     } catch (error) {
-      console.error(error);
       Fore.dispatch(this, 'error', {
         message: error
       });
@@ -27641,8 +27526,6 @@ class FxRepeat extends withDraggability(UIElement) {
       // todo: early out if this.ref does not match the ref of the inserted node. Avoid re-evaluating the nodeset
       // if (this.ref !== detail.ref) return;
 
-      console.log('insert catched', detail);
-
       // Step 1: Refresh/re-evaluate the nodeset
       const oldNodesetLength = this.nodeset.length;
       this._evalNodeset();
@@ -27700,7 +27583,6 @@ class FxRepeat extends withDraggability(UIElement) {
       this.getOwnerForm().addToBatchedNotifications(newRepeatItem);
     };
     this.handleDeleteHandler = event => {
-      console.log('delete catched', event);
       const {
         detail
       } = event;
@@ -27891,7 +27773,6 @@ class FxRepeat extends withDraggability(UIElement) {
     this.nodeset.splice(index, 1);
   }
   handleDelete(deleted) {
-    console.log('handleDelete', deleted);
     // grab the current repeat items (tweak selector if yours differs)
     /**
      * @type {import('./fx-repeatitem.js').FxRepeatitem[]}
@@ -27981,7 +27862,6 @@ class FxRepeat extends withDraggability(UIElement) {
     this.nodeset = rawNodeset;
   }
   async refresh(force) {
-    console.log('🔄 fx-repeat.refresh on', this.id);
     if (!this.inited) this.init();
     // console.time('repeat-refresh', this);
     this._evalNodeset();
@@ -28181,7 +28061,6 @@ class FxRepeat extends withDraggability(UIElement) {
     // Prefer the cached template set in _initTemplate; fall back to either DOM.
     const tpl = this.template || this.shadowRoot && this.shadowRoot.querySelector('template') || this.querySelector('template');
     if (!tpl) {
-      console.error(`[fx-repeat] ${this.id || ''}: no <template> found when cloning`);
       return document.createDocumentFragment();
     }
     const content = tpl.content.cloneNode(true);
@@ -28247,7 +28126,6 @@ class FxSwitch extends FxContainer {
   }
   async refresh(force) {
     super.refresh(force);
-    console.log('🔄 fx-switch refresh', force);
     if (this.cases.length === 0) {
       this.cases = Array.from(this.querySelectorAll(':scope > fx-case'));
     }
@@ -28381,7 +28259,6 @@ class FxTrigger extends AbstractControl {
       }
       const element = elements[0];
       this.addEventListener('mousedown', e => {
-        console.log('target', e.target.nodeName);
         e.target.focus();
       });
       if (this.debounceDelay) {
@@ -28548,7 +28425,6 @@ class FxCase extends FxContainer {
     });
   }
   async refresh(force) {
-    console.log(`🔄 fx-case ${this.id} refresh`, force);
     await super.refresh(force);
     if (!this.isBound()) {
       Fore.refreshChildren(this, force);
@@ -28669,7 +28545,6 @@ class FxInspector extends HTMLElement {
         }
       });
     } catch (e) {
-      console.warn('caught problem in inspector', e.message);
     }
   }
   render(style) {
@@ -28702,7 +28577,6 @@ class FxInspector extends HTMLElement {
   }
   serializeDOM(data) {
     if (!data) {
-      console.warn('no data to serialize');
       return;
     }
     // console.log('serializeDOM', data);
@@ -29159,10 +29033,7 @@ class FxLogSettings extends HTMLElement {
         </style>
         ${html}
     `;
-    const fore = window.document.querySelector('fx-fore');
-    if (!fore) {
-      console.error('fx-fore element not found in this page.');
-    }
+    window.document.querySelector('fx-fore');
     const boxes = this.shadowRoot.querySelector('.boxes');
 
     /*
@@ -29858,10 +29729,7 @@ class FxActionLog extends HTMLElement {
         </style>
         ${html}
     `;
-    const fore = window.document.querySelector('fx-fore');
-    if (!fore) {
-      console.error('fx-fore element not found in this page.');
-    }
+    window.document.querySelector('fx-fore');
     const log = this.shadowRoot.querySelector('#log');
     // fore.classList.add('action-log');
 
@@ -30522,9 +30390,7 @@ class ADI {
       this.isInstanceViewer = false;
     } else {
       this.instanceId = instance.id;
-      if (!instance || instance.localName !== 'fx-instance') {
-        console.error('No instance found!');
-      }
+      if (!instance || instance.localName !== 'fx-instance') ;
       this.document = instance.getInstanceData();
       this.isInstanceViewer = true;
       this.options.foldText = false;
@@ -32393,7 +32259,6 @@ class FxJsonInstance extends HTMLElement {
       this.treeView.innerHTML = '';
       this.treeView.appendChild(this.createTreeView(this.data, ''));
     } catch (e) {
-      console.error(e);
       alert('Invalid JSON');
     }
   }
@@ -32899,7 +32764,6 @@ class ForeComponent extends HTMLElement {
           try {
             return [...styleSheet.cssRules].map(rule => rule.cssText).join('');
           } catch (e) {
-            console.log('Access to stylesheet %s is denied. Ignoring…', styleSheet.href);
           }
         }
       }).filter(Boolean).join('\n');
@@ -33006,7 +32870,6 @@ class FxUpload extends AbstractControl {
     this.mimetypeExpr = this.getAttribute('mimetype');
   }
   async _importUploadedContent(event) {
-    console.log('_importUploadedContent', event);
     const file = event.target.files[0];
     this.evalInContext();
     // update file ref
@@ -33023,7 +32886,6 @@ class FxUpload extends AbstractControl {
     }
     let content = await this._readFile(file);
     // const setval = this.shadowRoot.getElementById('setvalue');
-    console.log('content', content);
     if (file.type.endsWith('xml')) {
       const uploadedXML = new DOMParser().parseFromString(content, 'application/xml');
       content = uploadedXML.firstElementChild;
@@ -33089,7 +32951,6 @@ class FxUpload extends AbstractControl {
       this.setAttribute('class', 'visited');
     }
     if (modelitem?.readonly) {
-      console.warn('attempt to change readonly node', modelitem);
       return; // do nothing when modelItem is readonly
     }
 
@@ -33399,13 +33260,7 @@ class AbstractAction extends ForeElementMixin {
     if (!this.getModel().modelConstructed) return;
     // console.log(this, this.event);
     if (this.event) {
-      if (this.event === 'submit-done') {
-        console.info(`📌 ${this.event} #${this?.parentNode?.id}`);
-      } else {
-        console.info(`📌 ${this.constructor.name} ${this.event}`);
-      }
-    } else {
-      console.info(`%cexecuting ${this.constructor.name}`, 'background:limegreen; color:black; margin-left:1rem; padding:.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;', this);
+      if (this.event === 'submit-done') ;
     }
     if (e && e.target.nodeType !== Node.DOCUMENT_NODE && e.target !== window) {
       /*
@@ -33435,7 +33290,6 @@ class AbstractAction extends ForeElementMixin {
 
     // Outermost handling
     if (FxFore.outermostHandler === null) {
-      console.log(`%coutermost Action on ${this.getOwnerForm().id}`, 'background:darkblue; color:white; padding:0.3rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;', this);
       FxFore.outermostHandler = this;
       this.dispatchEvent(new CustomEvent('outermost-action-start', {
         composed: true,
@@ -33453,7 +33307,6 @@ class AbstractAction extends ForeElementMixin {
     try {
       this.evalInContext();
     } catch (error) {
-      console.warn('evaluation failed', error);
     }
     if (this.targetElement && this.targetElement.nodeset) {
       this.nodeset = this.targetElement.nodeset;
@@ -33553,7 +33406,6 @@ class AbstractAction extends ForeElementMixin {
     this.currentEvent = null;
     this.actionPerformed();
     if (FxFore.outermostHandler === this) {
-      console.log(`%cfinalizing outermost Action on ${this.getOwnerForm()?.id}`, 'background:darkblue; color:white; padding:0.3rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;', this);
       FxFore.outermostHandler = null;
       /*
                         console.info(
@@ -34116,19 +33968,16 @@ class FxInsert extends AbstractAction {
           const repeat = this.getOwnerForm().querySelector(this.origin);
           originSequenceClone = repeat.createdNodeset.cloneNode(true);
           if (!originSequenceClone) {
-            console.error(`createdNodeset for repeat ${this.origin} does not exist`);
           }
         } else {
           // originTarget = evaluateXPathToFirstNode(this.origin, inscope, this);
           originTarget = evaluateXPathToFirstNode(this.origin, inscope, this);
           if (Array.isArray(originTarget) && originTarget.length === 0) {
-            console.warn('invalid origin for this insert action - ignoring...', this);
             originSequenceClone = null;
           }
           originSequenceClone = originTarget.cloneNode(true);
         }
       } catch (error) {
-        console.warn('invalid origin for this insert action - ignoring...', this);
       }
     } else if (targetSequence) {
       // ### use last item of targetSequence
@@ -34441,7 +34290,6 @@ class FxMessage extends AbstractAction {
         const inscopeContext = getInScopeContext(this, valAttr);
         return evaluateXPathToString(valAttr, inscopeContext, this);
       } catch (error) {
-        console.error(error);
         Fore.dispatch(this, 'error', {
           message: error
         });
@@ -34532,7 +34380,6 @@ class FxSetvalue extends AbstractAction {
    */
   dispatchExecute() {}
   setValue(modelItem, newVal) {
-    console.log('setValue', modelItem, newVal);
     const item = modelItem;
     if (!item) return;
     if (item.value !== newVal) {
@@ -34880,7 +34727,6 @@ class FxRefresh extends AbstractAction {
       }
     }));
     if (this.hasAttribute('self')) {
-      console.log(`### <<<<< refresh() self ${this} >>>>>`);
       const control = XPathUtil.getClosest('fx-control, fx-output, fx-upload', this);
       if (control) {
         control.refresh(true);
@@ -34888,7 +34734,6 @@ class FxRefresh extends AbstractAction {
       }
     }
     if (this.hasAttribute('force')) {
-      console.log(`### <<<<< refresh() force ${this} >>>>>`);
       this.getOwnerForm().refresh(true);
       return;
     }
@@ -34901,7 +34746,6 @@ class FxRefresh extends AbstractAction {
     }
     if (this.hasAttribute('control')) {
       const targetId = this.getAttribute('control');
-      console.log(`### <<<<< refresh() control '${targetId}' >>>>>`);
       let ctrl = resolveId(targetId, this);
       if (!ctrl) {
         ctrl = document.querySelector(`#${targetId}`);
@@ -34963,7 +34807,6 @@ class FxReplace extends AbstractAction {
   replace(toReplace, replaceWith) {
     if (!toReplace || !replaceWith) return; // bail out silently
     if (!toReplace.nodeName || !replaceWith.nodeName) {
-      console.warn('fx-replace: one argument is not a node');
       return;
     }
     if (toReplace.nodeType === Node.ATTRIBUTE_NODE) {
@@ -35162,9 +35005,6 @@ class FxShow extends FxAction {
       }
     }));
     const targetDlg = resolveId(this.dialog, this);
-    if (!targetDlg) {
-      console.error('target dialog with given id does not exist', this.dialog);
-    }
     targetDlg.showModal();
     Fore.dispatch(targetDlg, 'dialog-shown', {});
   }
@@ -35493,7 +35333,6 @@ class FxLoad extends AbstractAction {
       const naked = match.substring(1, match.length - 1);
       const inscope = getInScopeContext(this, naked);
       if (!inscope) {
-        console.warn('no inscope context for ', this);
         return match;
       }
       // Templates are special: they use the namespace configuration from the place where they are
@@ -35505,7 +35344,6 @@ class FxLoad extends AbstractAction {
       try {
         return evaluateXPathToString(naked, inscope, this, null, inst);
       } catch (error) {
-        console.warn('ignoring unparseable url', error);
         return match;
       }
     });
@@ -35715,7 +35553,6 @@ class FxConstructDone extends FxAction {
   connectedCallback() {
     // eslint-disable-next-line wc/guard-super-call
     super.connectedCallback();
-    console.log('parentNode', this.parentNode);
     if (this.parentNode.nodeName !== 'FX-MODEL') {
       Fore.dispatch(this, 'error', {
         message: 'parent is not a model'
@@ -35913,9 +35750,6 @@ class FxControlMenu extends AbstractControl {
       if (!label) {
         label = el.querySelector('label')?.textContent.trim() || `Item ${index + 1}`;
       }
-      if (!label) {
-        console.warn('no label found - cannot create menu entry for ', el, ' - please add aria-label or label element to control');
-      }
       const item = document.createElement('a');
       item.href = '#';
       item.textContent = label;
@@ -35945,9 +35779,7 @@ if (!customElements.get('fx-control-menu')) {
  * @returns {undefined}
  */
 function registerFunction(functionObject, formElement) {
-  if (functionObject.signature === null) {
-    console.error('signature is a required attribute');
-  }
+  if (functionObject.signature === null) ;
   const type = functionObject.type ?? 'text/xpath';
 
   // Parse the signature to something useful
@@ -36063,9 +35895,7 @@ class FxFunctionlib extends ForeElementMixin {
     this.style.display = 'none';
     const src = this.getAttribute('src');
     const result = await fetch(src);
-    if (!result.ok) {
-      console.error(`Loading function library at ${src} failed.`);
-    }
+    if (!result.ok) ;
     const body = await result.text();
     const document = new DOMParser().parseFromString(body, 'text/html');
 
