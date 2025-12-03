@@ -720,6 +720,11 @@ fx-group.neutral{
 fx-group.outer-group{
     padding:1rem;
 }
+
+.outer-group:has(#edition) {
+    padding:0 1rem;
+    margin-top: 0;
+}
 #pictures .add {
     bottom: -2.75rem;
     right: -1.75rem;
