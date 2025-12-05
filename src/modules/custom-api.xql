@@ -298,11 +298,11 @@ declare function api:inscription($request as map(*)) {
     let $collection := $config:data-root || "/" || $request?parameters?collection
     let $id :=
         if ($request?parameters?id and $request?parameters?id != '') then
-            let $store := xmldb:store($collection, concat($request?parameters?id, ".xml"), api:clean($request?body, (), true()))
+            let $store := xmldb:store($collection, concat($request?parameters?id, ".xml"), api:clean($request?body, $request?parameters?id, true()))
             return $request?body//tei:idno[@type="EDEp"]/text()
         else if ($request?body//tei:idno[@type="EDEp"]/node()) then
-            let $id := $request?body//tei:idno[@type="EDEp"]/text()
-            let $store := xmldb:store($collection, concat($id, ".xml"), api:clean($request?body, (), true()))
+            let $edepId := $request?body//tei:idno[@type="EDEp"]/text()
+            let $store := xmldb:store($collection, concat($edepId, ".xml"), api:clean($request?body, $edepId, true()))
             return $request?body//tei:idno[@type="EDEp"]/text()
         else
             let $ids := sort(collection($collection)//tei:idno[@type="EDEp"]/text())
@@ -349,7 +349,7 @@ declare function api:inscription-template($request as map(*)) {
 
             let $fragments :=
                 string-join(
-                    collection($config:data-root)//*[@corresp = $id]/@xml:id,
+                    collection($config:data-root)//*[@corresp = $id]//tei:idno[@type='EDEp'],
                     ' '
                 )
 
@@ -413,7 +413,8 @@ declare %private function api:postprocess($nodes as node()*, $edepId as xs:strin
                     $node
             case element(tei:TEI) return
                 element { node-name($node) } {
-                    $node/@*,
+                    $node/@* except $node/@xml:id,
+                    attribute xml:id { $edepId },
                     api:postprocess($node/tei:teiHeader, $edepId),
                     root($node)//tei:facsimile,
                     api:postprocess($node/tei:text, $edepId)
