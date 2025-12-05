@@ -349,10 +349,9 @@ declare function api:inscription-template($request as map(*)) {
 
             let $fragments :=
                 string-join(
-                    collection($config:data-root)//*[@corresp = $id]/@xml:id,
+                    collection($config:data-root)//*[@corresp = $id]//tei:idno[@type='EDEp'],
                     ' '
                 )
-
             return
                 if (string-length($fragments) != 0) then
                     (: build a new document whose root TEI has @fragments :)
