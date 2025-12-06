@@ -132,18 +132,6 @@
                                         <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
                                     </template>
                                 </select>
-                                <!--
-                                                                <input list="material-list" class="widget" />
-                                                                <datalist id="material-list" data-ref="sortNames(instance('material')//category)">
-                                                                    <template>
-                                                                        <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
-                                                                    </template>
-                                                                </datalist>
-                                                                <fx-trigger>
-                                                                    <button>x</button>
-                                                                    <fx-setvalue ref="."></fx-setvalue>
-                                                                </fx-trigger>
-                                -->
                             </fx-control>
                         </fx-group>
                         <fx-trigger>
@@ -192,26 +180,62 @@
 
     <div class="alternatives">
         <fx-group ref="msContents">
-            <fx-control ref="@class" update-event="input" create="create">
-                <label>
-                    <pb-i18n key="form.type-of-inscription"/>
-                </label>
-                <fx-items ref="sortNames(instance('typeins')//category)" class="widget">
-                    <template>
-                        <span class="fx-checkbox">
-                            <input type="checkbox" value="{@corresp}" />
-                            <label>{catDesc[@xml:lang = $lang]}</label>
-                        </span>
-                    </template>
-                </fx-items>
-            </fx-control>
-
             <fx-control ref="summary">
                 <label>
                     <pb-i18n key="form.remarks"/>
                 </label>
                 <textarea class="widget"></textarea>
             </fx-control>
+        </fx-group>
+
+        <fx-group class="neutral" ref="ancestor::teiHeader/profileDesc/textClass">
+            <fx-group ref="keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/inscription-type']">
+                <fieldset>
+                    <legend>
+                        <pb-i18n key="form.type-of-inscription"/>
+                    </legend>
+                    <fx-repeat
+                        class="nested-repeat repeat-flex"
+                        ref="term"
+                        id="r-inscription-type">
+                        <template>
+                                <fx-control ref="@ref" create="create">
+                                    <label>
+                                        <pb-i18n key="form.type-of-inscription"/>
+                                    </label>
+                                    <select
+                                    class="widget"
+                                    ref="sortNames(instance('typeins')//category)">
+                                        <template>
+                                            <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>
+                                        </template>
+                                    </select>
+                                </fx-control>
+                            <fx-trigger>
+                                <pb-popover>
+                                    <iron-icon icon="remove-circle-outline"></iron-icon>
+                                    <template slot="alternate">
+                                        <pb-i18n key="form.hint-delete"/>
+                                    </template>
+                                </pb-popover>
+                                <fx-delete ref="."></fx-delete>
+                            </fx-trigger>
+                        </template>
+                    </fx-repeat>
+                    <fx-trigger class="add">
+                        <pb-popover>
+                            <iron-icon icon="add-circle-outline"></iron-icon>
+                            <template slot="alternate">
+                                <pb-i18n key="form.hint-add"/>
+                            </template>
+                        </pb-popover>
+                        <fx-insert
+                            context="."
+                            ref="term"
+                            origin="instance('templates')/keywords/term"></fx-insert>
+                    </fx-trigger>
+                </fieldset>
+            </fx-group>
         </fx-group>
     </div>
 

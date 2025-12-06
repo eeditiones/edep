@@ -1,4 +1,7 @@
 <body xmlns="http://www.tei-c.org/ns/1.0">
+    <keywords>
+        <term ref=""/>
+    </keywords>
     <term ref="#social-economic-legal-history"/>
     <term ref="#geography"/>
     <term ref="#military"/>
