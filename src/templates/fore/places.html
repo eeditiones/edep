@@ -112,6 +112,7 @@
                     <fx-instance id="vars">
                         <data>
                             <loggedin>hidden</loggedin>
+                            <language>en</language>
                         </data>
                     </fx-instance>
                     <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
@@ -158,9 +159,22 @@
                         <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
                         <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
                     </fx-submission>
+
+                    <fx-function
+                        signature="shortlang($input as xs:string,$default as xs:string) as xs:string"
+                        type="text/javascript">
+                        if($input) { return $input.substring(0, 2); } return $default;
+                    </fx-function>
                 </fx-model>
 
-                <fx-var name="lang" value="de"></fx-var>
+                <fx-var name="lang" value="instance('vars')/language"></fx-var>
+
+                <fx-action event="pb-i18n-update" target="#document">
+                    <fx-setvalue
+                    ref="instance('vars')/language"
+                    value="shortlang(event('language'), instance('vars')/language/string())"></fx-setvalue>
+                    <fx-refresh force="force"></fx-refresh>
+                </fx-action>
 
                 <fx-output ref="instance('default')/place/@xml:id"></fx-output>
                 <fieldset class="case-content">
