@@ -4,8 +4,7 @@
   "description": "Editionstools für eine digitale Epigraphik",
   "dependencies": {
     "@jinntec/fore": "^2.7.1",
-    "@jinntec/fore": "^2.7.0",
-      "@jinntec/jinn-codemirror": "git+https://github.com/drrataplan/jinn-codemirror.git#main",
+    "@jinntec/jinn-codemirror": "git+https://github.com/drrataplan/jinn-codemirror.git#main",
     "@teipublisher/pb-components": "2.12.10"
   },
   "scripts": {
