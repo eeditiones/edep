@@ -41,21 +41,21 @@
             <param name="edep-id" value=".//msIdentifier/idno[@type='EDEp']/string()"/>
             <param name="title" value="fileDesc/titleStmt/title/node()"/>
             <param name="objectType" value=".//supportDesc/support/objectType"/>
-            <param name="typeins" value=".//msContents/msItem"/>
+            <param name="typeins" value=".//keywords[@scheme=&#34;https://edh.ub.uni-heidelberg.de/edep/inscription-type&#34;]/term"/>
             <param name="material" value=".//supportDesc/support/material"/>
             <param name="objectTypeDesc" value=".//supportDesc/support/note"/>
             <param name="support" value="(.//msPart/physDesc/objectDesc/supportDesc/condition, .//msPart/physDesc/objectDesc/supportDesc/support)"/>
             <param name="layout" value=".//msPart/physDesc/objectDesc/layoutDesc/layout"/>
             <param name="provenance" value=".//msPart/history/provenance[@type='found']"/>
-            <param name="previousEditions" value=".//msPart//listBibl[@type='previousEditions']"/>
+            <param name="previousEditions" value=".//listBibl[@type='previousEditions']"/>
             <param name="language" value="$parameters?language"/>
-            <param name="images" value=".//msPart//listBibl[@type='images']"/>
-            <param name="fo-antik" value="let $id := .//msPart/history/origin/origPlace/@corresp let $place := collection($global:places)/id($id) return   $place/placeName[@type='ancient']/string()"/>
-            <param name="fo-modern" value="let $id := .//msPart/history/origin/origPlace/@corresp let $place := collection($global:places)/id($id) return   $place/placeName[@type='modern']/string()"/>
+            <param name="images" value=".//listBibl[@type='images']"/>
+            <param name="fo-antik" value="let $id := .//history/origin/origPlace/@corresp let $place := collection($global:places)/id($id) return   $place/placeName[@type='ancient']/string()"/>
+            <param name="fo-modern" value="let $id := .//history/origin/origPlace/@corresp let $place := collection($global:places)/id($id) return   $place/placeName[@type='modern']/string()"/>
             <param name="dating" value=".//msDesc/history/origin/origDate"/>
-            <param name="place" value="let $id := .//msPart/history/origin/origPlace/@corresp return collection($global:places)/id($id)"/>
-            <param name="findcontext" value=".//msPart/history/provenance[@type='found']/note"/>
-            <param name="verification" value=".//msPart//note[@type='verification']"/>
+            <param name="place" value="let $id := .//history/origin/origPlace/@corresp return collection($global:places)/id($id)"/>
+            <param name="findcontext" value=".//history/provenance[@type='found']/note"/>
+            <param name="verification" value=".//note[@type='verification']"/>
             <pb:template xmlns="" xml:space="preserve">
                             <section lang="[[language]]">
                                 <p>[[edep-id]]</p>
@@ -84,7 +84,7 @@
             <pb:template xmlns="" xml:space="preserve"><span xml:space="preserve"><pb-i18n key="form.type-of-monument"/>  <pb-i18n key="form.unknown"/></span></pb:template>
         </model>
                     <model behaviour="inline">
-            <param name="content" value="let $lang := replace($parameters?language, '([^-]+)-?.*$', '$1') let $ref := @ref return doc($global:data-root || &#34;/objtyp.xml&#34;)//*:term[@ref=$ref]/*:name[@xml:lang=$lang]/string()"/>
+            <param name="content" value="let $lang := replace($parameters?language, '([^-]+)-?.*$', '$1') let $ref := @ref return doc(&#34;/db/apps/edep-data/data/taxonomy/objtyp.xml&#34;)//category[@corresp=$ref]/catDesc[@xml:lang=$lang]/string()"/>
         </model>
                 </elementSpec>
                 <elementSpec ident="msItem" mode="add">
@@ -138,7 +138,7 @@
                 </elementSpec>
                 <elementSpec ident="support" mode="add">
                     <model behaviour="pass-through">
-            <param name="content" value="(rs[@type='decoration'], dimensions)"/>
+            <param name="content" value="."/>
         </model>
                 </elementSpec>
                 <elementSpec ident="dimensions" mode="add">
@@ -450,6 +450,11 @@
                 </elementSpec>
             <elementSpec ident="person" mode="add"/>
                 <elementSpec ident="name" mode="add"/>
+            <elementSpec ident="term" mode="add">
+        <model predicate="@ref" behaviour="inline">
+            <param name="content" value="let $lang := replace($parameters?language, '([^-]+)-?.*$', '$1') let $vocab := switch(parent::keywords/@scheme) case &#34;https://edh.ub.uni-heidelberg.de/edep/inscription-type&#34; return doc('/db/apps/edep-data/data/taxonomy/typeins.xml')     default return () let $ref := @ref return $vocab//category[@corresp = $ref]/catDesc[@xml:lang = $lang]"/>
+        </model>
+    </elementSpec>
             </schemaSpec>
         </body>
     </text>
