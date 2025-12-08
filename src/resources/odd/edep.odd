@@ -138,7 +138,7 @@
         </model>
                 </elementSpec>
                 <elementSpec ident="lb" mode="change">
-                    <model predicate="not(preceding::lb) or preceding-sibling::*[1][self::lg]" behaviour="omit"/>
+                    <model predicate="preceding-sibling::*[1][self::lg]" behaviour="omit"/>
                     <modelSequence predicate="@break=&#34;no&#34;">
             <model behaviour="inline">
                 <param name="content" value="'-'"/>
@@ -163,7 +163,7 @@
                     <model predicate="following-sibling::node()[1][name()='supplied'][@reason=&#34;lost&#34;]" behaviour="inline"/>
                     <model predicate="@unit='line' and @extent" behaviour="inline">
                         <desc>if extent is a number, imitate the same number of empty line placemarkers; if unknown, just ------</desc>
-                        <param name="content" value="let $extent := try {     xs:integer(@extent) } catch * {     () }   let $sep := &lt;lb xmlns=&#34;http://www.tei-c.org/ns/1.0&#34;/&gt; let $foo := &lt;lb/&gt; return if ($extent) then for $i in 1 to $extent return ($sep, $foo, '[- - - - - -]') else ('- - - - - -')"/>
+                        <param name="content" value="let $extent := try {     xs:integer(@extent) } catch * {     () }    return if ($extent) then for $i in 1 to $extent return (&lt;lb/&gt;, '[- - - - - -]') else (&lt;lb/&gt;, '- - - - - -')"/>
                     </model>
                     <model predicate="@unit='line'" behaviour="inline">
                         <desc>where no extent is given, behave as if a single line is missing</desc>
