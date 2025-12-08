@@ -21,7 +21,7 @@
     <handNote scope="letterHeight">
         <locus></locus>
         <dimensions>
-            <height/>
+            <height min="" max=""/>
         </dimensions>
     </handNote>
 
