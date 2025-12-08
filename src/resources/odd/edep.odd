@@ -161,15 +161,18 @@
                 <elementSpec ident="gap" mode="change">
                     <model predicate="preceding-sibling::node()[1][name()='supplied'][@reason=&#34;lost&#34;]" behaviour="inline"/>
                     <model predicate="following-sibling::node()[1][name()='supplied'][@reason=&#34;lost&#34;]" behaviour="inline"/>
-                    <model predicate="@unit='line' and @quantity " behaviour="inline">
-            <param name="content" value="string-join(for $i in 1 to xs:integer(@quantity) return '[- - - - - -]', '/')"/>
-        </model>
+                    <model predicate="@unit='line' and @extent" behaviour="inline">
+                        <desc>if extent is a number, imitate the same number of empty line placemarkers; if unknown, just ------</desc>
+                        <param name="content" value="let $extent := try {     xs:integer(@extent) } catch * {     () }   let $sep := &lt;lb xmlns=&#34;http://www.tei-c.org/ns/1.0&#34;/&gt; let $foo := &lt;lb/&gt; return if ($extent) then for $i in 1 to $extent return ($sep, $foo, '[- - - - - -]') else ('- - - - - -')"/>
+                    </model>
                     <model predicate="@unit='line'" behaviour="inline">
-            <param name="content" value="'[- - - - - -]'"/>
-        </model>
+                        <desc>where no extent is given, behave as if a single line is missing</desc>
+                        <param name="content" value="'[- - - - - -]'"/>
+                    </model>
                     <model predicate="@extent or @quantity" behaviour="inline">
-            <param name="content" value="('[-', head((@extent, @quantity)), '-]')"/>
-        </model>
+                        <desc>in other cases where extent is present, assume it's a gap for given number of characters</desc>
+                        <param name="content" value="let $ext := head((@extent, @quantity)) let $extent := try {     xs:integer($ext) } catch * {     () }   return if ($extent) then '[-' || $extent || '-]' else '[- - -]'"/>
+                    </model>
                     <model behaviour="inline">
             <param name="content" value="'[- - -]'"/>
         </model>
