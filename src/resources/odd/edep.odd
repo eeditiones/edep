@@ -158,11 +158,9 @@
         </model>
                 </elementSpec>
                 <elementSpec ident="gap" mode="change">
-                    <model predicate="preceding-sibling::node()[1][name()='supplied'][@reason=&#34;lost&#34;]" behaviour="inline"/>
-                    <model predicate="following-sibling::node()[1][name()='supplied'][@reason=&#34;lost&#34;]" behaviour="inline"/>
                     <model predicate="@unit='line' and @quantity" behaviour="inline">
                         <desc>if quantity is a number, imitate the same number of empty line placemarkers; if unknown, just ------</desc>
-                        <param name="content" value="let $extent := try {     xs:integer(@quantity) } catch * {     () }    return if ($extent) then for $i in 1 to $extent return ('[- - - - - -]') else ('- - - - - -')"/>
+                        <param name="content" value="let $extent := try {     xs:integer(@quantity) } catch * {     () }    return if ($extent) then for $i at $pos in 1 to $extent return if ($pos=1) then '[- - - - - -]' else (&lt;lb/&gt;, '[- - - - - -]') else ('- - - - - -')"/>
                     </model>
                     <model predicate="@unit='line' and @extent" behaviour="inline">
                         <desc>where extent is used, behave as if unknown number of lines is missing</desc>
