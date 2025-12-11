@@ -305,7 +305,7 @@ declare function api:inscription($request as map(*)) {
             let $store := xmldb:store($collection, concat($edepId, ".xml"), api:clean($request?body, $edepId, true()))
             return $request?body//tei:idno[@type="EDEp"]/text()
         else
-            let $ids := sort(collection($collection)//tei:idno[@type="EDEp"]/text())
+            let $ids := sort(collection($collection)//tei:idno[@type="EDEp"][not(contains(.,'-'))]/text())
             let $id-new := if (empty($ids)) then "0000001" else format-number(xs:integer(replace($ids[last()], "E", "")) + 1, "0000000")
             let $store := xmldb:store($collection, concat("E", $id-new, ".xml"), api:clean($request?body, "E" || $id-new, true()))
             return concat("E", $id-new)
@@ -322,6 +322,35 @@ declare function api:inscription($request as map(*)) {
     }
 };
 
+declare function api:fragment($request as map(*)) {
+    let $check-collection :=
+        if(not(xmldb:collection-available($config:inscription))) then
+            xmldb:create-collection("/", $config:inscription)
+        else
+            ()
+    let $collection := $config:data-root || "/" || $request?parameters?collection
+
+    let $parentId := $request?body/*/@xml:id
+    let $log := util:log('info','***** paren id ' || $parentId)
+
+    let $fragments :=
+        string-join(
+            collection($config:data-root)//*[@corresp = $parentId]//tei:idno[@type='EDEp'],
+            ' '
+        )
+    let $fragmentCnt := fn:count(tokenize($fragments,' ')) + 1
+
+    let $newId := $parentId || "-" || $fragmentCnt
+    let $log := util:log('info','***** new fragment id ' || $newId)
+    let $rewritten := api:clean($request?body, $newId, true())
+    (: store the parent doc first to keep potential changes   :)
+    let $store := xmldb:store($collection, concat($parentId, ".xml"), api:clean($request?body, $parentId, true()))
+    (: store the new fragment doc   :)
+    let $store1 := xmldb:store($collection, concat($newId, ".xml"), api:clean($rewritten, $newId, true()))
+
+    return $rewritten
+};
+
 declare function api:add-fragments-attr(
     $tei       as element(tei:TEI),
     $fragments as xs:string
@@ -329,7 +358,7 @@ declare function api:add-fragments-attr(
     element { node-name($tei) } {
         (: keep all existing attributes except any old @fragments :)
         $tei/@* except $tei/@fragments,
-        attribute fragments { $fragments },
+        if( not(exists($tei/@type)) and not($tei/@type='partial')) then attribute fragments { $fragments } else (),
         $tei/node()
     }
 };
@@ -348,13 +377,15 @@ declare function api:inscription-template($request as map(*)) {
                 )[1]
 
             let $fragments :=
-                string-join(
-                    collection($config:data-root)//*[@corresp = $id]//tei:idno[@type='EDEp'],
-                    ' '
-                )
+                if(not(exists($input/@corresp)) or $input/@corresp = '') then
+                    string-join(
+                        collection($config:data-root)//*[@corresp = $id]/@xml:id,
+                        ' '
+                    )
+                else 'xxx'
 
             return
-                if (string-length($fragments) != 0) then
+                if (string-length($fragments) != 0 and string-length($input/@corresp) = 0) then
                     (: build a new document whose root TEI has @fragments :)
                     document {
                         api:add-fragments-attr($input, $fragments)
@@ -412,13 +443,26 @@ declare %private function api:postprocess($nodes as node()*, $edepId as xs:strin
                 else
                     $node
             case element(tei:TEI) return
-                element { node-name($node) } {
-                    $node/@* except $node/@xml:id,
-                    attribute xml:id { $edepId },
-                    api:postprocess($node/tei:teiHeader, $edepId),
-                    root($node)//tei:facsimile,
-                    api:postprocess($node/tei:text, $edepId)
-                }
+                if(contains($edepId,'-')) then (
+                    let $seed := substring-before($edepId,'-')
+                    return
+                    element { node-name($node) } {
+                        $node/@* except ($node/@xml:id, $node/@corresp, $node/@type, $node/@fragment),
+                        attribute xml:id { $edepId },
+                        attribute corresp { $seed },
+                        attribute type {'partial'},
+                        api:postprocess($node/tei:teiHeader, $edepId),
+                        root($node)//tei:facsimile,
+                        api:postprocess($node/tei:text, $edepId)
+                    }
+               )else
+                    element { node-name($node) } {
+                        $node/@* except ($node/@xml:id, $node/@fragment),
+                        attribute xml:id { $edepId },
+                        api:postprocess($node/tei:teiHeader, $edepId),
+                        root($node)//tei:facsimile,
+                        api:postprocess($node/tei:text, $edepId)
+                    }
             case element(tei:body) return
                 element { node-name($node) } {
                     $node/@*,
