@@ -104,30 +104,29 @@
         </model>
                 </elementSpec>
                 <elementSpec ident="supplied" mode="change">
-                    <model predicate="following-sibling::node()[1][name()='gap'][@reason=&#34;lost&#34;]" behaviour="inline">
-            <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;[&#34;,., &#34;? ---]&#34;) else (&#34;[&#34;,., &#34; ---]&#34;)"/>
-        </model>
-                    <model predicate="preceding-sibling::node()[1][name()='gap'][@reason=&#34;lost&#34;]" behaviour="inline">
-            <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;[--- &#34;,., &#34;?]&#34;) else (&#34;[--- &#34;,., &#34;]&#34;)"/>
-        </model>
-                    <model predicate="@reason=&#34;undefined&#34; and @evidence=&#34;previouseditor&#34;" behaviour="inline">
+                    <model predicate="@reason=('lost', 'damage', 'illegible') or not(@reason)" behaviour="inline">
+                        <desc>all lost rendered in [] brackets, except when brackets are merged with prev/next sibling of gap or supplied</desc>
+                        <param name="content" value="
+                        let $prev := head(reverse(preceding-sibling::node() except preceding-sibling::text()[normalize-space(.)='']))
+                        let $next := head(following-sibling::node() except following-sibling::text()[normalize-space(.)=''])
+
+                        let $prefix := if ($prev[local-name() = ('supplied', 'gap')]) then () else '['
+                        let $suffix := if ($next[local-name() = ('supplied', 'gap')]) then () else ']'
+                        let $cert := head((@cert, @precision))
+                        let $modifier := if ($cert = ('low', '?', 'uncertain')) then '?' else ()
+
+                        let $content := .
+                        
+                        return ($prefix, $content, $modifier, $suffix)"/>
+                    </model>
+                    <model predicate="@reason='undefined' and @evidence='previouseditor'" behaviour="inline">
             <outputRendition xml:space="preserve">
             text-decoration: underline;
             </outputRendition>
         </model>
-                    <model predicate="@reason=&#34;lost&#34;" behaviour="inline">
-            <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;[&#34;,. , &#34;?]&#34;) else (&#34;[&#34;,. , &#34;]&#34;)"/>
-        </model>
-                    <model predicate="parent::choice" behaviour="inline"/>
-                    <model predicate="@reason='damage'" behaviour="inline">
-            <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;[&#34;,. , &#34;?]&#34;) else (&#34;[&#34;,. , &#34;]&#34;)"/>
-        </model>
-                    <model predicate="@reason='illegible' or not(@reason)" behaviour="inline">
-            <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;[&#34;,. , &#34;?]&#34;) else (&#34;[&#34;,. , &#34;]&#34;)"/>
-        </model>
                     <model predicate="@reason='omitted'" behaviour="inline">
-            <param name="content" value="if (./@cert=&#34;low&#34;)  then (&#34;&lt;&#34;,. , &#34;?&gt;&#34;) else (&#34;&lt;&#34;,. , &#34;&gt;&#34;)"/>
-        </model>
+                        <param name="content" value="if (./@cert='low')  then ('&lt;',. , '?&gt;') else ('&lt;',. , '&gt;')"/>
+                    </model>
                     <model behaviour="inline">
             <outputRendition xml:space="preserve" scope="before">
             content:"{";
@@ -173,12 +172,16 @@
                         <desc>where no quantity or extent is given, behave as if a single line is missing</desc>
                         <param name="content" value="'[- - - - - -]'"/>
                     </model>
-                    <model predicate="@extent or @quantity" behaviour="inline">
-                        <desc>in other cases where extent is present, assume it's a gap for a given number of characters</desc>
-                        <param name="content" value="let $ext := head((@extent, @quantity)) let $extent := try {     xs:integer($ext) } catch * {     () }   return if ($extent) then '[-' || $extent || '-]' else '[- - -]'"/>
-                    </model>
                     <model behaviour="inline">
-                        <param name="content" value="'[- - -]'"/>
+                        <desc>in all other assume it's a gap for a given number of characters</desc>
+                        <param name="content" value="
+                        let $prev := head(reverse(preceding-sibling::node() except preceding-sibling::text()[normalize-space(.)='']))
+                        let $next := head(following-sibling::node() except following-sibling::text()[normalize-space(.)=''])
+
+                        let $prefix := if ($prev[local-name() = ('supplied', 'gap')]) then () else '['
+                        let $suffix := if ($next[local-name() = ('supplied', 'gap')]) then () else ']'
+                        
+                        let $ext := head((@extent, @quantity)) let $extent := try {     xs:integer($ext) } catch * {     () }   return if ($extent) then $prefix || '-' || $extent || '-' || $suffix else $prefix || '- - -' || $suffix"/>
                     </model>
                 </elementSpec>
                 <elementSpec ident="surplus" mode="add">
