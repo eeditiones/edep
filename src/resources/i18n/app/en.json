@@ -160,6 +160,7 @@
         "work": "Work"
     },
     "place": {
-        "geolocation": "Geolocation"
+        "geolocation": "Geolocation",
+        "place": "Place"
     }
 }

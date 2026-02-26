@@ -100,7 +100,8 @@
                 <pb-i18n key="form.metre">Metrik</pb-i18n>
             </label>
             <select class="widget"
-                ref="sortNames(instance('metre')//category)">
+                ref="sortNames(instance('metre')//category)"
+                selection="open">
                 <template>
                     <!-- prettier-ignore -->
                     <option value="{@corresp}">{catDesc[@xml:lang = $lang]}</option>

@@ -278,7 +278,7 @@ fx-control:has(textarea) label {
     right:1rem;
 }
 #places .case-content{
-    margin-top:3rem;
+    /*margin-top:3rem;*/
 }
 
 pb-split-list::part(items) {

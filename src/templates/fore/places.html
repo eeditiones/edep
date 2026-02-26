@@ -179,7 +179,7 @@
                 <fx-output ref="instance('default')/place/@xml:id"></fx-output>
                 <fieldset class="case-content">
                     <legend>
-                        <pb-i18n key="form.site-find-spot"></pb-i18n>
+                        <pb-i18n key="place.place"></pb-i18n>
                     </legend>
                     <fx-control ref="placeName[@type='findspot']" id="findspot">
                         <label>
@@ -211,9 +211,9 @@
                     </fx-control>
                     <fx-control ref="region[@type='province']" update-event="input">
                         <label>
-                            <pb-i18n key="form.site-ancient-province"></pb-i18n>
+                            <pb-i18n key="form.site-ancient-province"></pb-i18n>"{./@xml:id}"
                         </label>
-                        <select ref="instance('province')//category" class="widget" selection="open" static="static">
+                        <select ref="instance('province')//category" class="widget" selection="open">
                             <template>
                                 <option value="{@xml:id}">{catDesc}</option>
                             </template>
@@ -228,7 +228,7 @@
                         <label>
                             <pb-i18n key="form.site-modern-country"></pb-i18n>
                         </label>
-                        <select ref="instance('country')//category" class="widget">
+                        <select ref="instance('country')//category" class="widget" selection="open">
                             <template>
                                 <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
                             </template>

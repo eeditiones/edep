@@ -159,6 +159,7 @@
         "work": "Werk"
     },
     "place": {
-        "geolocation": "Geolocation"
+        "geolocation": "Geolocation",
+        "place": "Ort"
     }
 }
