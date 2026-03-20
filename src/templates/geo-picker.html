@@ -97,9 +97,28 @@
             <fx-var name="lang" value="instance('vars')/language"></fx-var>
 
             <!--  <div class="geopicker-control">-->
-            <div class="with-hint">
+            <div>
+                <pb-popover id="findspot-popover">
+                    <iron-icon icon="info-outline"></iron-icon>
+                    <template slot="alternate">
+                        <pb-i18n key="form.hint-geo">Geo ID</pb-i18n>
+                    </template>
+                </pb-popover>
+
                 <fx-control ref="instance('i-geo')/origPlace/@corresp" id="findspot-ctrl" update-event="input">
-                    <label>GeoId</label>
+                    <label>
+                        <pb-i18n key="form.geoid">Geo ID</pb-i18n>
+<!--
+                        <pb-popover>
+                            <iron-icon icon="info-outline"></iron-icon>
+                            <template slot="alternate">
+                                <pb-i18n key="form.hint-geo">Geo ID</pb-i18n>
+                            </template>
+                        </pb-popover>
+-->
+
+                    </label>
+
                     <input list="place-list" class="widget" />
 
                     <datalist id="place-list" data-ref="instance('i-geodata')//place/placeName">
@@ -127,12 +146,6 @@
                         </fx-action>
                     </iron-icon>
                 </fx-control>
-                <pb-popover>
-                    <iron-icon icon="info-outline"></iron-icon>
-                    <template slot="alternate">
-                        <pb-i18n key="form.hint-geoid">XML:ID</pb-i18n>
-                    </template>
-                </pb-popover>
             </div>
             <!--
                 <iron-icon icon="close">
@@ -189,7 +202,7 @@
                 <!-- 10a) -->
                 <fx-output ref="placeName[@type='findspot']">
                     <label slot="label">
-                        <pb-i18n key="form.site-find-spot">Fundstelle</pb-i18n>
+                        <pb-i18n key="form.context-of-provenance">Fundkontext</pb-i18n>
                     </label>
                 </fx-output>
             </fx-group>

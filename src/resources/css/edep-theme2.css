@@ -1125,6 +1125,12 @@ legend{
     grid-area:hint;
     align-self: start;
 }
+#findspot-popover{
+    position:absolute;
+    top:-22px;
+    left:72px;
+    z-index:5;
+}
 .output {
     display: grid;
     grid-template-columns: 4rem 2rem auto 1rem;
