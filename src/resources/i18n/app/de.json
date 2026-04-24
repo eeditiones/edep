@@ -8,6 +8,7 @@
         "instructions": "Anleitung"
     },
     "form": {
+        "idno": "Id Nummer",
         "expand": "Alle Abschnitte erweitern",
         "unknown": "unbekannt",
         "id": "Identifier",
@@ -152,7 +153,8 @@
         "verse": "Vers",
         "visibility": "Sichtbarkeit",
         "repository": "Sammlungs-ID",
-        "repository-number": "Inv.-Nummer"
+        "repository-number": "Inv.-Nummer",
+        "hint-person-validation": "* Ein Eintrag für Deity, Praenomen, Nomen Gentile, Cognomen oder Supernomen ist zum Speichern erforderlich."
     },
     "metadata": {
     	"dimensions": "Maße",

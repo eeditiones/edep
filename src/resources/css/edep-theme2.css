@@ -314,8 +314,14 @@ pb-split-list .place .place-id{
     flex-direction: column;
     min-width: 360px;
 }
-.actions{
-    padding:1rem;
+.actions {
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    background: white;
+    border-top: thin solid;
+    width: 100%;
+    left: 0;
 }
 
 .transcription, .apparatus, .translation, .commentary{

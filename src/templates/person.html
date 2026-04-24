@@ -15,8 +15,47 @@
         <link rel="stylesheet" href="resources/css/edep-theme2.css" />
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components" />
         <script type="module" src="resources/scripts/fore-dev.js"></script>
+        <script type="module" src="resources/scripts/fx-lens.js"></script>
 
         <!--        <script type="module" src="http://localhost:8090/index.js"/>-->
+        <style>
+            [invalid] fx-alert{
+                display: block;
+            }
+            fx-output#validator[valid]{
+                display: none;
+            }
+            input.widget, select.widget{
+                width:20rem;
+            }
+            fx-control[required]::after,
+            fx-control[required] > label::after{
+                display:none;
+            }
+            .actions{
+                display:flex;
+                align-items:center;
+                gap:1rem;
+            }
+            #new-entry a{
+                color:black;
+                cursor:pointer;
+                text-decoration:underline;
+            }
+            .reference-type{
+                width:10rem;
+            }
+            main{
+                padding: 0 2rem;
+            }
+            fieldset > fieldset {
+                margin: 2rem 1rem;
+                width: auto;
+            }
+            .hint{
+                margin-left: 1rem;
+            }
+        </style>
     </head>
 
     <body>
@@ -54,6 +93,7 @@
                         <fx-fore id="person">
                             <fx-action event="ready" if="uri-param('id') != ''">
                                 <fx-send submission="s-load"></fx-send>
+                                <fx-setfocus control="first" delay="300"></fx-setfocus>
                             </fx-action>
 
                             <fx-model>
@@ -65,6 +105,10 @@
                                 <fx-instance id="default" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
                                     <data></data>
                                 </fx-instance>
+                                <fx-bind
+                    			  ref="instance('default')/persName/name[@type = ('nomen', 'praenomen', 'god', 'cognomen', 'supernomen')]"
+                                  required="let $c := . return empty(../name[@type = ('nomen', 'praenomen', 'god', 'cognomen', 'supernomen')][$c/@type != @type][string-length(.) > 0])">
+                                </fx-bind>
 
                                 <fx-instance id="tribus">
                                     <data>
@@ -147,11 +191,14 @@
                                     <fx-message event="submit-error">couldn't be saved</fx-message>
                                 </fx-submission>
                                 <fx-submission id="s-create" url="api/people" method="post" replace="instance">
-                                    <fx-message event="submit-done">Daten wurden gespeichert</fx-message>
+                                    <fx-action event="submit-done">
+                                        <fx-message>Daten wurden gespeichert</fx-message>
+                                    </fx-action>
 
                                     <fx-action event="submit-error">
                                         <fx-message>Daten konnten nicht gespeichert werden.</fx-message>
                                     </fx-action>
+
                                 </fx-submission>
 
                                 <fx-submission
@@ -192,12 +239,13 @@
                             <fx-output ref="instance('default')/@xml:id"></fx-output>
                             <fieldset>
                                 <legend>Person</legend>
-                                <fx-control ref="persName/name[@type='god']">
+                                <p class="hint"><pb-i18n key="form.hint-person-validation"></pb-i18n></p>
+                                <fx-control id="first" ref="persName/name[@type='god']">
                                     <label data-i18n="person.deity">Gott</label>
+                                    <input type="text" autofocus="autofocus" class="widget" tabindex="1" />
                                 </fx-control>
                                 <fx-control ref="persName/name[@type='praenomen']">
                                     <label>Praenomen</label>
-                                    <input type="text" autofocus="autofocus" class="widget" tabindex="1" />
                                 </fx-control>
                                 <fx-control ref="persName/name[@type='nomen']">
                                     <label>Nomen Gentile</label>
@@ -254,7 +302,7 @@
                                     <fx-repeat ref="./idno" id="r-idno">
                                         <template>
                                             <div class="inline-form">
-                                                <fx-control ref="@type">
+                                                <fx-control class="reference-type" ref="@type">
                                                     <label>
                                                         <pb-i18n key="person.work">Work</pb-i18n>
                                                     </label>
@@ -265,6 +313,9 @@
                                                     </select>
                                                 </fx-control>
                                                 <fx-control ref=".">
+                                                    <label>
+                                                        <pb-i18n key="form.idno"></pb-i18n>
+                                                    </label>
                                                     <input />
                                                 </fx-control>
                                             </div>
@@ -281,6 +332,12 @@
                                         </button>
                                         <fx-send submission="s-create" if="uri-param('id') = ''"></fx-send>
                                         <fx-send submission="s-save" if="uri-param('id') != ''"></fx-send>
+                                    </fx-trigger>
+                                    <fx-trigger id="new-entry">
+                                        <a href="#">
+                                            <pb-i18n key="form.new">New</pb-i18n>
+                                        </a>
+                                        <fx-reload></fx-reload>
                                     </fx-trigger>
                                 </div>
                             </pb-restricted>

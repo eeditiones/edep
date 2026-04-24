@@ -8,6 +8,7 @@
         "instructions": "Instructions"
     },
     "form": {
+        "idno": "Id number",
         "hint": "HINT",
         "expand": "Expand all sections",
         "unknown": "unknown",
@@ -153,7 +154,8 @@
         "verse": "Verse",
         "visibility": "Display",
         "repository": "Repository ID",
-        "repository-number": "Inventory number"
+        "repository-number": "Inventory number",
+        "hint-person-validation": "* One entry for Deity, Praenomen, Nomen Gentile, Cognomen or Supernomen must be given to store."
     },
     "metadata": {
     	"dimensions": "Dimensions",
