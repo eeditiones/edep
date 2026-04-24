@@ -15,8 +15,7 @@
     "deploy": "gulp install",
     "copy": "gulp copyStatic",
     "lint": "eslint --ext .js,.html . && prettier \"**/*.js\" \"**/*.html\" --check --ignore-path .gitignore",
-    "format": "eslint --ext .js,.html . --fix; prettier \"**/*.js\" \"**/*.html\" --write --ignore-path .gitignore",
-    "postinstall": "cp node_modules/@jinntec/fore/dist/* src/resources/scripts/ && cp node_modules/@jinntec/fore/resources/*.css src/resources/css"
+    "format": "eslint --ext .js,.html . --fix; prettier \"**/*.js\" \"**/*.html\" --write --ignore-path .gitignore"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
