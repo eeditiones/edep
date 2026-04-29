@@ -1,0 +1,63 @@
+{
+    "breadcrumb": {
+        "collection-root": "Sammlungen",
+        "document-root": "Dokumente",
+        "demo": "Demo",
+        "jats": "JATS",
+        "docx": "DOCX",
+        "letters": "Briefe",
+        "doc": "Dokumentation"
+    },
+    "menu": {
+        "explore": "Explore",
+        "collections": "Sammlungen",
+        "quickstart": "Schnellstart",
+        "about": "Über die Edition",
+        "team": "Team",
+        "contact": "Kontakt",
+        "project": "Projekt",
+        "cite": "Zitierung",
+        "cookies": "Cookies",
+        "credits": "Credits",
+        "partners": "Partner"
+    },
+    "timeline": {
+        "range": "Zeitbereich: "
+    },
+    "browse": {
+        "category": "Kategorie",
+        "author": "Autor",
+        "title": "Title"
+    },
+    "download": {
+        "label": "Herunterladen",
+        "title": "Herunterladen"
+    },
+    "search": {
+        "title": "Titel",
+        "content": "Inhalt",
+        "results": "Suchergebnisse"
+    },
+    "register-details": {
+        "document-list": "Dokumente",
+        "people": "Personen",
+        "places": "Orte"
+    },
+    "odd": {
+        "licence": "Lizenz",
+        "sources": "Quellen",
+        "metadata": "Metadaten",
+        "previous": "Vorherige",
+        "next": "Nächste",
+        "birth": "geboren: ",
+        "death": "gestorben: "
+    },
+    "facets": {
+        "place": "Ort",
+        "author": "Autor"
+    },
+    "toolbar": {
+        "next": "Nächste",
+        "previous": "Vorherige"
+    }
+}

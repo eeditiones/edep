@@ -1,57 +1,24 @@
 {
-  "name": "edep",
-  "version": "2.0.0",
-  "description": "Editionstools für eine digitale Epigraphik",
-  "dependencies": {
-    "@jinntec/fore": "^2.7.1",
-    "@jinntec/jinn-codemirror": "1.18.2",
-    "@teipublisher/pb-components": "2.12.10"
-  },
-  "scripts": {
-    "clean": "gulp clean",
-    "build": "gulp build",
-    "xar": "gulp xar",
-    "build:all": "gulp build && gulp test:build",
-    "deploy": "gulp install",
-    "copy": "gulp copyStatic",
-    "lint": "eslint --ext .js,.html . && prettier \"**/*.js\" \"**/*.html\" --check --ignore-path .gitignore",
-    "format": "eslint --ext .js,.html . --fix; prettier \"**/*.js\" \"**/*.html\" --write --ignore-path .gitignore",
-    "postinstall": "cp node_modules/@jinntec/fore/dist/* src/resources/scripts/fore/ && cp node_modules/@jinntec/fore/resources/*.css src/resources/css"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.36.0",
-    "@existdb/gulp-exist": "^4.3.1",
-    "@existdb/gulp-replace-tmpl": "^1.0.4",
-    "@html-eslint/eslint-plugin": "^0.47.0",
-    "@semantic-release/exec": "^5.0.0",
-    "@semantic-release/git": "^9.0.0",
-    "@semantic-release/github": "^7.2.0",
-    "cypress": "^15.3.0",
-    "delete": "^1.1.0",
-    "eslint": "^9.36.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-cypress": "^5.1.1",
-    "eslint-plugin-prettier": "^5.5.4",
-    "globals": "^16.4.0",
-    "gulp": "^4.0.2",
-    "gulp-rename": "^2.0.0",
-    "gulp-zip": "^5.1.0",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.5.4",
-    "prettier": "^3.6.2",
-    "semantic-release": "^17.3.2"
-  },
-  "mocha": {
-    "timeout": 10000,
-    "slow": 1000
-  },
-  "husky": {
-    "hooks": {}
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  }
+    "name": "edep-jinks",
+    "version": "1.0.0",
+    "description": "edep-jinks",
+    "license": "GPL-3.0",
+    "dependencies": {
+        "@teipublisher/pb-components": "^3.0.5",
+        "@jinntec/fore": "^2.8.0",
+        "@picocss/pico": "^2.1.1"
+    },
+    "devDependencies": {
+        "ajv": "^8.17.1",
+        "ajv-draft-04": "^1.0.0",
+        "ajv-formats": "^3.0.1",
+        "cypress": "^15.9.0",
+        "cypress-ajv-schema-validator": "^2.0.2",
+        "fflate": "^0.8.2",
+        "glob": "^13.0.0"
+    },
+    "scripts": {
+        "test": "cypress run",
+        "test:open": "cypress open"
+    }
 }

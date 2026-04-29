@@ -1,0 +1,9 @@
+{
+  "label" : "edep-jinks",
+  "id" : "https://jinntec.de/apps/edep-jinks",
+  "extends" : [ "base10", "theme-base10" ],
+  "pkg" : {
+    "abbrev" : "edep-jinks"
+  },
+  "description" : "Editionstools für eine digitale Epigraphik"
+}

@@ -1,0 +1,71 @@
+{
+    "breadcrumb": {
+        "collection-root": "Collections",
+        "document-root": "Collections",
+        "demo": "Demo",
+        "jats": "JATS",
+        "docx": "DOCX",
+        "letters": "Letters",
+        "doc": "Documentation"
+    },
+    "menu": {
+        "explore": "Explore",
+        "collections": "Collections",
+        "quickstart": "Quickstart",
+        "about": "About",
+        "team": "Team",
+        "contact": "Contact",
+        "project": "Project",
+        "cite": "How to cite",
+        "cookies": "Cookies",
+        "credits": "Credits",
+        "partners": "Partners"
+    },
+    "timeline": {
+        "range": "Time range: "
+    },
+    "browse": {
+        "category": "Category",
+        "author": "Author",
+        "title": "Title"
+    },
+    "download": {
+        "label": "Download",
+        "title": "Download"
+    },
+    "search": {
+        "title": "Title",
+        "content": "Content",
+        "results": "Search results"
+    },
+    "register-details": {
+        "document-list": "Documents",
+        "people": "People",
+        "places": "Places"
+    },
+    "odd": {
+        "licence": "Licence",
+        "sources": "Sources",
+        "metadata": "Metadata",
+        "previous": "Previous",
+        "next": "Next",
+        "birth": "b. ",
+        "death": "d. ",
+        "nav-previous": {
+            "before": "",
+            "after": ""
+        },
+        "nav-next": {
+            "before": "",
+            "after": ""
+        }
+    },
+    "facets": {
+        "place": "Place",
+        "author": "Author"
+    },
+    "toolbar": {
+        "next": "Next",
+        "previous": "Previous"
+    }
+}
