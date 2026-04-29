@@ -1,19 +1,18 @@
 :root {
-    --jinks-colors-700: #2D2B26;
-    --jinks-colors-600: #555041;
-    --jinks-colors-500: #6f6b5d;
-    --jinks-colors-400: #CFCDC5;
-    --jinks-colors-300: #DCDAD4;
-    --jinks-colors-200: #F6F6F3;
-    --jinks-colors-100: #FCFCF8;
-    --jinks-colors-50: #FEFEF9;
+    --jinks-colors-700: #324234;
+    --jinks-colors-600: #4C5F41;
+    --jinks-colors-500: #6B7964;
+    --jinks-colors-400: #5F7551;
+    --jinks-colors-300: #C3CDB9;
+    --jinks-colors-200: #DBDBD0;
+    --jinks-colors-100: #E2E2DC;
+    --jinks-colors-50: #F2F2ED;
 
-    --jinks-colors-light: #FCFCF8;
+    --jinks-colors-light: #F2F2ED;
     --jinks-colors-grey: #5A5A5A;
     --jinks-colors-dark: #4C5F41;
     --jinks-colors-medium: #DBDBD0;
-    --jinks-colors-accent: #CFCDC5;
-    --jinks-colors-black-300: #737373;
+    --jinks-colors-accent: #E4CE6D;
 
     --jinks-colors-highlight: var(--jinks-colors-accent);
 }
@@ -41,21 +40,21 @@
     /* Image backgrounds */
 
     /* Landing page: hero section */
-    --jinks-hero-background-image: url("");
-    --jinks-hero-background-size: ;
-    --jinks-hero-background-position: ;
-    --jinks-hero-background-repeat: ;
-    --jinks-hero-background-color: ;
+    --jinks-hero-background-image: url("../images/typewriter1.jpg");
+    --jinks-hero-background-size: cover;
+    --jinks-hero-background-position: center;
+    --jinks-hero-background-repeat: no-repeat;
+    --jinks-hero-background-color: rgba(0, 0, 0, 0.6);
     --jinks-hero-height: auto;
     --jinks-hero-min-height: 60vh;
     --jinks-hero-padding: 2rem 1rem 2rem 6rem;
 
     /* Landing page: bottom section */
-    --jinks-bottom-background-image: url("");
-    --jinks-bottom-background-size: ;
-    --jinks-bottom-background-repeat: ;
+    --jinks-bottom-background-image: url("../images/typewriter3.jpg");
+    --jinks-bottom-background-size: cover;
+    --jinks-bottom-background-repeat: no-repeat;
     --jinks-bottom-background-position: ;
-    --jinks-bottom-background-color: ;
+    --jinks-bottom-background-color: rgba(0, 0, 0, 0.4);
     --jinks-bottom-height: auto;
     --jinks-bottom-min-height: 30vh;
     --jinks-bottom-padding: 2rem 1rem 2rem 6rem;

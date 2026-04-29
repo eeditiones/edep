@@ -47,7 +47,7 @@ declare variable $config:odd-internal :=
 
 declare variable $config:odd-available :=
 
-( "teipublisher.odd" )
+( "teipublisher.odd", "landing.odd" )
 ;
 
 declare variable $config:odd-media := ("web", "print", "epub");

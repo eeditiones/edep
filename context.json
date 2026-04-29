@@ -25,15 +25,15 @@
       "name" : "target"
     } ]
   } ],
-  "profiles" : [ "base10", "theme-base10" ],
-  "_lastModified" : "2026-04-29T11:19:54.043+02:00",
+  "profiles" : [ "base10", "theme-base10", "landing-page" ],
   "label" : "edep-jinks",
-  "odds" : [ "teipublisher.odd" ],
+  "odds" : [ "teipublisher.odd", "landing.odd" ],
   "version" : "1.0.0",
   "id" : "https://jinntec.de/apps/edep-jinks",
   "_update" : true,
   "styles" : [ "https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/classic.min.css", "resources/css/pico-components.css", "resources/css/jinks-theme.css" ],
   "_noDeploy" : false,
+  "i18n" : [ "landing-page" ],
   "depends" : [ "base10" ],
   "template-suffix" : "\\.tpl",
   "ignore" : [ "repo.xml", "resources/css/components.css" ],
@@ -71,6 +71,22 @@
       },
       "max-width" : "84rem"
     },
+    "landing" : {
+      "hero" : {
+        "background-position" : "center",
+        "background-color" : "rgba(0, 0, 0, 0.6)",
+        "class" : "two-column",
+        "background-size" : "cover",
+        "background-image" : "../images/typewriter1.jpg",
+        "background-repeat" : "no-repeat"
+      },
+      "bottom" : {
+        "background-color" : "rgba(0, 0, 0, 0.4)",
+        "background-size" : "cover",
+        "background-image" : "../images/typewriter3.jpg",
+        "background-repeat" : "no-repeat"
+      }
+    },
     "menubar" : {
       "background-color" : "var(--jinks-colors-500)",
       "color" : "#ffffff",
@@ -107,7 +123,7 @@
         "blue" : "palette-blue.css",
         "beige" : "palette-beige.css"
       },
-      "palette" : "neutral"
+      "palette" : "green"
     },
     "fonts" : {
       "toc" : {
@@ -208,6 +224,10 @@
       "enable" : true
     }
   },
+  "data" : {
+    "landing" : "landing/landing.xml"
+  },
+  "_lastModified" : "2026-04-29T11:48:37.859+02:00",
   "pkg" : {
     "website" : "http://tei-publisher.org",
     "abbrev" : "edep-jinks",
@@ -232,12 +252,14 @@
   },
   "description" : "Editionstools für eine digitale Epigraphik",
   "_dry" : false,
-  "source" : "/db/apps/jinks/profiles/theme-base10",
-  "type" : "theme",
+  "source" : "/db/apps/jinks/profiles/landing-page",
+  "type" : "feature",
   "skip" : [ "^doc/.*$", "setup.xql", "config.json" ],
+  "category" : "components",
   "_overwrite" : "quick",
   "defaults" : {
     "data" : "/db/apps/edep-data/data",
+    "landing" : "index.html",
     "address-by-id" : false,
     "odd-root" : "resources/odd",
     "languages" : [ "bg", "cs", "zh_CN", "zh_TW", "de", "en", "es", "el", "fr", "fi", "it", "ka", "nl", "no", "pl", "pt", "ro", "ru", "sl", "sv", "tr", "uk" ],
@@ -262,6 +284,10 @@
         "at" : "modules/templates/browse.xqm",
         "prefix" : "browse"
       },
+      "http://teipublisher.com/ns/templates/landing-page" : {
+        "at" : "modules/templates/landing-page.xqm",
+        "prefix" : "landing"
+      },
       "http://teipublisher.com/ns/templates/page" : {
         "at" : "modules/templates/page.xqm",
         "prefix" : "page"
@@ -274,6 +300,6 @@
     "extra-components" : [ ],
     "cdn" : "https://cdn.jsdelivr.net/npm/@teipublisher/pb-components"
   },
-  "order" : 1,
+  "order" : 102,
   "$schema" : "../../schema/jinks.json"
 }
