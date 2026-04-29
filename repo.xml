@@ -10,5 +10,5 @@
     <target>edep-jinks</target>
     <prepare>pre-install.xql</prepare>
     <finish>post-install.xql</finish>
-    <permissions user="tei" group="tei" password="simple" mode="rw-rw-r--"/>
+    <permissions xmlns:repo="http://exist-db.org/xquery/repo" password="simple" user="tei" group="tei" mode="rw-rw-r--"/>
 </meta>

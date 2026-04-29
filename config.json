@@ -1,6 +1,10 @@
 {
   "label" : "edep-jinks",
   "id" : "https://jinntec.de/apps/edep-jinks",
+  "defaults" : {
+    "data" : "/db/apps/edep-data/data",
+    "data-default" : "workspace"
+  },
   "extends" : [ "base10", "theme-base10" ],
   "pkg" : {
     "abbrev" : "edep-jinks"

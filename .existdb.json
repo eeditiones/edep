@@ -1,31 +1,29 @@
+
 {
-  "servers": {
-    "localhost": {
-      "server": "http://localhost:8080/exist",
-      "user": "admin",
-      "password": "",
-      "root": "/db/apps/edep"
+    "servers": {
+        "localhost": {
+            "server": "http://127.0.0.1:8080/exist",
+            "user": "admin",
+            "password": "",
+            "root": "/apps/edep-jinks"
+        }
+    },
+    "sync": {
+        "server": "localhost",
+        "polling": false,
+        "interval": 500,
+        "ignore": [
+            ".existdb.json",
+            ".devcontainer/**",
+            ".vscode/**",
+            "build.sh",
+            ".env",
+            ".git/**",
+            "components/**",
+            "node_modules/**",
+            "bower_components/**",
+            "build/**",
+            "webtest/**"
+        ]
     }
-  },
-  "sync": {
-    "server": "localhost",
-    "dir": "src",
-    "ignore": [
-      ".existdb.json",
-      ".git/**",
-      "components/**",
-      "node_modules/**",
-      "bower_components/**",
-      "build/**",
-      "webtest/**",
-      ".idea/**",
-      ".DS_Store"
-    ]
-  },
-  "package": {
-    "author": "Jinntec Team",
-    "target": "edep",
-    "description": "Editionstools für digitale Epigraphic",
-    "namespace": "https://jinntec.de/edep"
-  }
 }

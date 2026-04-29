@@ -19,12 +19,14 @@ declare variable $config:sort-default := "category";
 
 
     
-    declare variable $config:data-root := $config:app-root || "/data";
+    declare variable $config:data-root := "/db/apps/edep-data/data";
     
 
 
 
-    declare variable $config:data-default := $config:data-root;
+    
+    declare variable $config:data-default := $config:data-root || "/workspace";
+    
 
 
 
