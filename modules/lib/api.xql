@@ -19,6 +19,10 @@ import module namespace deploy="https://teipublisher.org/api/deploy" at "api/dep
 
 
 
+import module namespace rview="http://teipublisher.com/api/registers/view" at "../registers-api.xql";
+
+
+
 declare option output:indent "no";
 
 let $lookup := function($name as xs:string) {
@@ -30,6 +34,10 @@ let $lookup := function($name as xs:string) {
 }
 let $resp := roaster:route(
     (
+        
+        
+        "modules/registers-api.json",
+        
         
         "modules/lib/api.json"
     ), $lookup)

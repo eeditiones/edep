@@ -1,5 +1,10 @@
 {
   "theme" : {
+    "landing" : {
+      "hero" : {
+        "background-image" : "../images/inscription.png"
+      }
+    },
     "colors" : {
       "palette" : "green"
     }
@@ -10,7 +15,7 @@
     "data" : "/db/apps/edep-data/data",
     "data-default" : "workspace"
   },
-  "extends" : [ "base10", "theme-base10", "landing-page" ],
+  "extends" : [ "base10", "theme-base10", "registers", "landing-page" ],
   "pkg" : {
     "abbrev" : "edep-jinks"
   },

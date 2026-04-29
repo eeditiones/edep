@@ -1,0 +1,678 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "version": "1.0.0",
+        "title": "edep-jinks – Registers API",
+        "description": "Endpoints to browse and search the local authority files"
+    },
+    "servers": [
+        {
+            "description": "Endpoint for testing on localhost",
+            "url": "/exist/apps/edep-jinks"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "basicAuth": {
+                "type": "http",
+                "scheme": "basic"
+            },
+            "cookieAuth": {
+                "type": "apiKey",
+                "name": "teipublisher.com.login",
+                "in": "cookie"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "view",
+            "description": "HTML templates"
+        },
+        {
+            "name": "registers",
+            "description": "Register API endpoints"
+        },
+        {
+            "name": "static",
+            "description": "Static generator API endpoints"
+        }
+    ],
+    "paths": {
+        "/people": {
+            "get": {
+				"summary": "Landing page for people",
+				"description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
+				"tags": ["view"],
+				"operationId": "vapi:html",
+				"x-error-handler": "vapi:handle-error",
+				"parameters": [
+					{
+						"name": "file",
+						"in": "query",
+						"schema": {
+							"type": "string",
+                            "default": "people"
+						}
+					},
+					{
+                        "name": "search",
+                        "in": "query",
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "odd",
+                        "in": "query",
+                        "schema":{
+                            "type": "string"
+                        }
+                    }				
+				],
+				"responses": {
+					"200": {
+						"description": "HTML of the page",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The document was not found",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+        },
+        "/people/{id}": {
+            "get": {
+				"summary": "Landing page for people",
+				"description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
+				"tags": ["view"],
+				"operationId": "rview:detail-html",
+				"x-error-handler": "vapi:handle-error",
+				"parameters": [
+                    {
+						"name": "id",
+						"in": "path",
+						"description": "ID of the person",
+						"required": true,						
+						"schema":{
+							"type": "string",
+							"default": "all"
+						}
+					},
+					{
+						"name": "file",
+						"in": "query",
+						"schema": {
+							"type": "string",
+                            "default": "person"
+						}
+					},
+                    {
+                        "name": "odd",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+				],
+				"responses": {
+					"200": {
+						"description": "HTML of the page",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The document was not found",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+        },
+        "/api/people": {
+            "get": {
+                "summary": "List people",
+                "description": "Retrieve list of people in format required by pb-split-list",
+				"tags": ["registers"],
+                "operationId": "rview:people-categories",
+                "parameters": [
+					{
+						"name": "category",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 50
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "odd",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Whether to show descriptions",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Categories and people to display",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+		"/api/people/all": {
+            "get": {
+                "summary": "List all people",
+                "description": "Retrieve list of all people",
+				"tags": ["registers"],
+                "operationId": "rview:people-all",
+                "parameters": [
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Whether to show descriptions",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+				"responses": {
+                    "200": {
+                        "description": "List of all people as JSON array",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+				}
+			}			
+		},
+        "/bibliography": {
+            "get": {
+				"summary": "Landing page for bibliography",
+				"description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
+				"tags": ["view"],
+				"operationId": "vapi:html",
+				"x-error-handler": "vapi:handle-error",
+				"parameters": [
+					{
+						"name": "file",
+						"in": "query",
+						"schema": {
+							"type": "string",
+                            "default": "bibliography"
+						}
+					},
+					{
+                        "name": "search",
+                        "in": "query",
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "odd",
+                        "in": "query",
+                        "schema":{
+                            "type": "string"
+                        }
+                    }				
+				],
+				"responses": {
+					"200": {
+						"description": "HTML of the page",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The document was not found",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+        },
+        "/bibliography/{id}": {
+            "get": {
+				"summary": "Landing page for bibliography entry",
+				"description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
+				"tags": ["registers"],
+				"operationId": "rview:detail-html",
+				"x-error-handler": "vapi:handle-error",
+				"parameters": [
+                    {
+						"name": "id",
+						"in": "path",
+						"description": "ID of the entry",
+						"required": true,						
+						"schema":{
+							"type": "string",
+							"default": "all"
+						}
+					},
+					{
+						"name": "file",
+						"in": "query",
+						"schema": {
+							"type": "string",
+                            "default": "bibliography-entry"
+						}
+					},
+                    {
+                        "name": "odd",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+				],
+				"responses": {
+					"200": {
+						"description": "HTML of the page",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The document was not found",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+        },
+        "/api/bibliography": {
+            "get": {
+                "summary": "List bibliography",
+                "description": "Retrieve list of bibliography in format required by pb-split-list",
+				"tags": ["registers"],
+                "operationId": "rview:bibliography-categories",
+                "parameters": [
+					{
+						"name": "category",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 50
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "odd",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Categories and entries to display",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+		"/api/bibliography/all": {
+            "get": {
+                "summary": "List all bibliography",
+                "description": "Retrieve list of all bibliography",
+				"tags": ["registers"],
+                "operationId": "rview:bibliography-all",
+				"responses": {
+                    "200": {
+                        "description": "List of all bibliography entries as JSON array",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+				}
+			}			
+		},
+		"/places": {
+            "get": {
+				"summary": "Landing page for places",
+				"description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
+				"tags": ["view"],
+				"operationId": "vapi:html",
+				"x-error-handler": "vapi:handle-error",
+				"parameters": [
+					{
+						"name": "file",
+						"in": "query",
+						"schema": {
+							"type": "string",
+                            "default": "places"
+						}
+					},
+					{
+                        "name": "search",
+                        "in": "query",
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "odd",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+				],
+				"responses": {
+					"200": {
+						"description": "HTML of the page",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The document was not found",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+        },
+		"/places/{id}": {
+            "get": {
+				"summary": "HTML page for place details",
+				"description": "Retrieve an HTML page expanded through eXist templating. This is used to load the top-level HTML pages, e.g. `index.html`.",
+				"tags": ["view"],
+				"operationId": "rview:detail-html",
+				"x-error-handler": "vapi:handle-error",
+				"parameters": [
+                    {
+						"name": "id",
+						"in": "path",
+						"description": "ID of the person or place",
+						"required": true,						
+						"schema":{
+							"type": "string",
+							"default": "all"
+						}
+					},
+					{
+						"name": "file",
+						"in": "query",
+						"schema": {
+							"type": "string",
+                            "default": "place"
+						}
+					},
+                    {
+                        "name": "odd",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+				],
+				"responses": {
+					"200": {
+						"description": "HTML of the page",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "The document was not found",
+						"content": {
+							"text/html": {
+								"schema": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+        },
+		"/api/places": {
+            "get": {
+                "summary": "List places",
+                "description": "Retrieve list of places in format required by pb-split-list",
+				"tags": ["registers"],
+                "operationId": "rview:places",
+                "parameters": [
+					{
+						"name": "category",
+						"in": "query",
+						"schema": {
+							"type": "string"
+						}
+					},
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "schema": {
+                            "type": "integer",
+                            "default": 50
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "schema":{
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "odd",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Whether to show descriptions",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Categories and places to display",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+		"/api/places/all": {
+            "get": {
+                "summary": "List all places",
+                "description": "Retrieve list of all places",
+				"tags": ["registers"],
+                "operationId": "rview:places-all",
+                "parameters": [
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "Whether to show descriptions",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+				"responses": {
+                    "200": {
+                        "description": "List of all places",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+				}
+			}			
+		},
+		"/api/static/{id}/single": {
+            "get": {
+                "summary": "Retrieve index entry for the document given by id",
+                "description": "Retrieve index entry for the document given by id",
+                "tags": ["static"],
+                "operationId": "ridx:entry",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the resource",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "prefix",
+                        "in": "query",
+                        "description": "The path prefix under which documents are stored",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "A single index entry for the document",
+                        "content": {
+                            "application/json": {
+                                "schema":{
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        {
+            "cookieAuth": []
+        },
+        {
+            "basicAuth": []
+        }
+    ]
+}

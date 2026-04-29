@@ -1,0 +1,81 @@
+.places {
+    width: 100vw;
+}
+
+.person, .people .list, .places .list, .place {
+    /* determines the number of columns for the pb-split-list */
+    --pb-categorized-list-columns: var(--jinks-registers-columns);
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: var(--pb-view-max-width);
+}
+
+.place h1 small {
+    font-size: var(--jinks-font-size-smaller);
+    vertical-align: super;
+    padding-left: 0.85rem;
+}
+
+.places .list,
+.people .list {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.person .variant:not(:first-child)::before {
+    content: "; ";
+}
+
+pb-split-list::part(items) {
+    margin-top: 1rem;
+    gap: 1rem;
+    grid-auto-rows: min-content;
+}
+
+.places .split-list-item header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+pb-custom-form {
+    margin-bottom: 1rem;
+}
+
+pb-custom-form input {
+    width: 100%;
+}
+
+.register li {
+    padding: 0;
+}
+
+pb-leaflet-map {
+    height: 40vh;
+    min-height: 40vh;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+    margin-bottom: 1rem;
+}
+
+/* place detail view */
+.after pb-leaflet-map.details-map {
+    height: 100%;
+    width: 100%;
+}
+.fixed-layout > .after:has(.details-map) {
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .people .list, .places .list {
+        --pb-categorized-list-columns: 1;
+    }
+
+    .people .split-list-item p,
+    .places .split-list-item p {
+        white-space: normal;
+    }
+}

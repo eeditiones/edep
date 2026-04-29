@@ -3,13 +3,15 @@ xquery version "3.1";
 
 module namespace pm-config="http://www.tei-c.org/tei-simple/pm-config";
 
+import module namespace pm-landing-web="http://www.tei-c.org/pm/models/landing/web/module" at "../transform/landing-web-module.xql";
 import module namespace pm-teipublisher-web="http://www.tei-c.org/pm/models/teipublisher/web/module" at "../transform/teipublisher-web-module.xql";
 import module namespace pm-teipublisher-print="http://www.tei-c.org/pm/models/teipublisher/print/module" at "../transform/teipublisher-print-module.xql";
 import module namespace pm-teipublisher-epub="http://www.tei-c.org/pm/models/teipublisher/epub/module" at "../transform/teipublisher-epub-module.xql";
 
 declare variable $pm-config:web-transform := function($xml as node()*, $parameters as map(*)?, $odd as xs:string?) {
     switch ($odd)
-    case "teipublisher.odd" return pm-teipublisher-web:transform($xml, $parameters)
+    case "landing.odd" return pm-landing-web:transform($xml, $parameters)
+case "teipublisher.odd" return pm-teipublisher-web:transform($xml, $parameters)
     default return pm-teipublisher-web:transform($xml, $parameters)
             
 

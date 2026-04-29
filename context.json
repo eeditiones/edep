@@ -25,7 +25,8 @@
       "name" : "target"
     } ]
   } ],
-  "profiles" : [ "base10", "theme-base10", "landing-page" ],
+  "profiles" : [ "base10", "theme-base10", "registers", "landing-page" ],
+  "shortname" : "register",
   "label" : "edep-jinks",
   "odds" : [ "teipublisher.odd", "landing.odd" ],
   "version" : "1.0.0",
@@ -33,7 +34,6 @@
   "_update" : true,
   "styles" : [ "https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/classic.min.css", "resources/css/pico-components.css", "resources/css/jinks-theme.css" ],
   "_noDeploy" : false,
-  "i18n" : [ "landing-page" ],
   "depends" : [ "base10" ],
   "template-suffix" : "\\.tpl",
   "ignore" : [ "repo.xml", "resources/css/components.css" ],
@@ -45,6 +45,12 @@
     "items" : [ {
       "url" : "browse.html",
       "id" : "Start"
+    }, {
+      "url" : "people",
+      "id" : "people"
+    }, {
+      "url" : "places",
+      "id" : "places"
     } ],
     "login" : true,
     "download" : true,
@@ -77,7 +83,7 @@
         "background-color" : "rgba(0, 0, 0, 0.6)",
         "class" : "two-column",
         "background-size" : "cover",
-        "background-image" : "../images/typewriter1.jpg",
+        "background-image" : "../images/inscription.png",
         "background-repeat" : "no-repeat"
       },
       "bottom" : {
@@ -91,6 +97,9 @@
       "background-color" : "var(--jinks-colors-500)",
       "color" : "#ffffff",
       "background-image" : "none"
+    },
+    "registers" : {
+      "columns" : 2
     },
     "icons" : [ ],
     "splash" : {
@@ -193,6 +202,10 @@
       }
     },
     "menubar" : true,
+    "register" : {
+      "description" : "auto",
+      "enabled" : false
+    },
     "toolbar" : {
       "zoom" : true,
       "navigation" : true,
@@ -227,7 +240,7 @@
   "data" : {
     "landing" : "landing/landing.xml"
   },
-  "_lastModified" : "2026-04-29T11:48:37.859+02:00",
+  "_lastModified" : "2026-04-29T17:35:46.951+02:00",
   "pkg" : {
     "website" : "http://tei-publisher.org",
     "abbrev" : "edep-jinks",
@@ -279,6 +292,7 @@
     "register-root" : "registers"
   },
   "templating" : {
+    "use" : [ "templates/register-blocks.html" ],
     "modules" : {
       "http://teipublisher.com/ns/templates/browse" : {
         "at" : "modules/templates/browse.xqm",
@@ -301,5 +315,12 @@
     "cdn" : "https://cdn.jsdelivr.net/npm/@teipublisher/pb-components"
   },
   "order" : 102,
-  "$schema" : "../../schema/jinks.json"
+  "$schema" : "../../schema/jinks.json",
+  "i18n" : [ "registers", "landing-page" ],
+  "api" : [ {
+    "spec" : "registers-api.json",
+    "prefix" : "rview",
+    "id" : "http://teipublisher.com/api/registers/view",
+    "path" : "registers-api.xql"
+  } ]
 }
