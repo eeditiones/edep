@@ -14,12 +14,14 @@
     }
   },
   "label" : "edep-jinks",
+  "odds" : [ "edep.odd", "edep-output.odd" ],
   "id" : "https://jinntec.de/apps/edep-jinks",
   "defaults" : {
     "data" : "/db/apps/edep-data/data",
-    "data-default" : "workspace"
+    "data-default" : "workspace",
+    "odd" : "edep-output.odd"
   },
-  "extends" : [ "base10", "theme-base10", "registers", "landing-page" ],
+  "extends" : [ "base10", "registers", "landing-page", "theme-base10" ],
   "pkg" : {
     "abbrev" : "edep-jinks"
   },

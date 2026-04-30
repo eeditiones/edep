@@ -28,7 +28,7 @@
   "resources/images/tei-publisher-logo-contrast-color.svg" : "d3a41798c9691bae335e6e94e6b8b81fb3e950e76581486e03d6993a06fec1be",
   "resources/i18n/app/en.json" : "0ce3d5552a8e12f5855b9bdb5d0b8fe7ee55a98d3c3d829d3fc09e8b3b1cdb70",
   "resources/css/palette-blue.css" : "14634385b46b7677b5bb885ac23eb1803092437009d175a53d957b373291c8a0",
-  "modules/generated-config.xql" : "4ca875de618070483b0d9b6a7aebbb12a4aa0b4fab47a8b655d0969acd1db8c6",
+  "modules/generated-config.xql" : "667cf09abcd125be1c80774b8c2fc5e87fa32ae47e0ceefb0b19ab3922f0c521",
   "modules/lib/api/info.xql" : "d271f938116a23702a228b94b319959546180b3e0994d89a4537737de0afafe9",
   "post-install.xql" : "0fc1917651d50f501a5ae34722e8073dde324afdccc4a403ce4a7a013fde8f8e",
   "modules/annotations/annotation-config.xqm" : "8240061393bffb7e808177764d7e1438553a35f50fb185ddd236a912406c327a",
@@ -194,7 +194,7 @@
   "resources/images/github.svg" : "8b7b35fc77ec2afb2970695a276fb8d826cd8f3c8d61dc9073a1c49356c5ef80",
   "resources/i18n/app/pl.json" : "8c0a24f433a9d40e60cf9bf9f02d1c307579f50373de4b37f4753d1849b877d2",
   "resources/odd/ns1.tmp" : "2ce21f24b87759bf255a80f967263c925ca47b2fa8c333fde9c504de7fb5be4c",
-  "README.md" : "0c1ce3fbb68002469399632cf32ffbb0931a1bfbb6e2757a93b3e4f95e684252",
+  "README.md" : "2725d018d4d6f5d01c2fea861fbf4b35f020e151056f29617d4b71048c8bacab",
   "test/cypress/fixtures/test-register-persons.xml" : "0a4a821df39886ef10aabd0a3b76d383a96f3926032e812164a49464c55cf286",
   "static/templates/place.html" : "7aefcb80158b85df157d1dcd01cf56778ab09307a84a3c4522190769773ea064"
 }

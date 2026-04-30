@@ -25,10 +25,10 @@
       "name" : "target"
     } ]
   } ],
-  "profiles" : [ "base10", "theme-base10", "registers", "landing-page" ],
+  "profiles" : [ "base10", "registers", "landing-page", "theme-base10" ],
   "shortname" : "register",
   "label" : "edep-jinks",
-  "odds" : [ "teipublisher.odd", "landing.odd" ],
+  "odds" : [ "teipublisher.odd", "landing.odd", "edep.odd", "edep-output.odd" ],
   "version" : "1.0.0",
   "id" : "https://jinntec.de/apps/edep-jinks",
   "_update" : true,
@@ -240,7 +240,7 @@
   "data" : {
     "landing" : "landing/landing.xml"
   },
-  "_lastModified" : "2026-04-30T18:40:49.123+02:00",
+  "_lastModified" : "2026-04-30T18:42:13.331+02:00",
   "pkg" : {
     "website" : "http://tei-publisher.org",
     "abbrev" : "edep-jinks",
@@ -265,8 +265,8 @@
   },
   "description" : "Editionstools für eine digitale Epigraphik",
   "_dry" : false,
-  "source" : "/db/apps/jinks/profiles/landing-page",
-  "type" : "feature",
+  "source" : "/db/apps/jinks/profiles/theme-base10",
+  "type" : "theme",
   "skip" : [ "^doc/.*$", "setup.xql", "config.json" ],
   "category" : "components",
   "_overwrite" : "all",
@@ -283,7 +283,7 @@
     "search" : "div",
     "view" : "div",
     "data-exclude" : [ "doc($config:data-root || '/taxonomy.xml')//tei:text", "collection($config:register-root)//tei:text" ],
-    "odd" : "teipublisher.odd",
+    "odd" : "edep-output.odd",
     "pagination" : {
       "fill" : 5,
       "depth" : 10
@@ -314,7 +314,7 @@
     "extra-components" : [ ],
     "cdn" : "https://cdn.jsdelivr.net/npm/@teipublisher/pb-components"
   },
-  "order" : 102,
+  "order" : 1,
   "$schema" : "../../schema/jinks.json",
   "i18n" : [ "registers", "landing-page" ],
   "api" : [ {
