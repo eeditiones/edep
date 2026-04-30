@@ -4,12 +4,16 @@ import module namespace config="http://www.tei-c.org/tei-simple/config" at "conf
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
-declare function facets-config:get-name($id as xs:string, $type as xs:string) as xs:string {
+declare function facets-config:get-name($id as xs:string, $type as xs:string, $lang as xs:string) as xs:string {
     let $entity := collection($config:register-root)/id($id)
     return head((
             switch ($type)
                 case 'place' return head(($entity//tei:placeName[@type = "main"], $entity//tei:placeName))
                 case 'actor' return head(($entity//(tei:persName | tei:orgName)[@type = "main"], $entity//tei:placeName))
+                case 'material' return collection($config:taxonomy-root)/id($type)//tei:category[@corresp = $id]/tei:catDesc
+                case 'object-type' return collection($config:taxonomy-root)/id($type)//tei:category[@corresp = $id]/tei:catDesc
+                case 'orig-place' return string-join(collection($config:places-root)/id($id)//tei:placeName[@type=('ancient', 'modern')])
+
                 default return "ERR",
              "Unresolvable entity " || $id || " of type " || $type)
         )
@@ -21,10 +25,31 @@ declare function facets-config:get-name($id as xs:string, $type as xs:string) as
  :)
 declare variable $facets-config:facets := [
     map {
-        "dimension": "genre",
-        "heading": "facets.genre",
+        "dimension": "object-type",
+        "heading": "facets.object-type",
         "max": 5,
-        "hierarchical": true()
+        "hierarchical": false(),
+        "output": function($label, $language) {
+            facets-config:get-name($label, 'object-type', $language)
+        }
+    },
+    map {
+        "dimension": "material",
+        "heading": "facets.material",
+        "max": 5,
+        "hierarchical": false(),
+        "output": function($label, $language) {
+            facets-config:get-name($label, 'material', $language)
+        }
+    },
+    map {
+        "dimension": "orig-place",
+        "heading": "facets.orig-place",
+        "max": 5,
+        "hierarchical": false(),
+        "output": function($label, $language) {
+            facets-config:get-name($label, 'orig-place', $language)
+        }
     },
     map {
         "dimension": "language",

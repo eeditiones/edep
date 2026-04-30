@@ -297,6 +297,7 @@ declare variable $config:register-forms := $config:register-root || "/templates"
 
 declare variable $config:places-root := $gen:data-root || '/places';
 declare variable $config:people-root := $gen:data-root || '/people';
+declare variable $config:taxonomy-root := $gen:data-root || '/taxonomy';
 
 
 declare variable $config:register-map := map {
