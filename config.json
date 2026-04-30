@@ -3,10 +3,14 @@
     "landing" : {
       "hero" : {
         "background-image" : "../images/inscription.png"
+      },
+      "bottom" : {
+        "background-color" : "rgba(0, 0, 0, 0)",
+        "background-image" : "../images/open-book.jpg"
       }
     },
     "colors" : {
-      "palette" : "green"
+      "palette" : "neutral"
     }
   },
   "label" : "edep-jinks",

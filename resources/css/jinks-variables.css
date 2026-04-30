@@ -25,11 +25,11 @@
     --jinks-hero-padding: 2rem 1rem 2rem 6rem;
 
     /* Landing page: bottom section */
-    --jinks-bottom-background-image: url("../images/typewriter3.jpg");
+    --jinks-bottom-background-image: url("../images/open-book.jpg");
     --jinks-bottom-background-size: cover;
     --jinks-bottom-background-repeat: no-repeat;
     --jinks-bottom-background-position: ;
-    --jinks-bottom-background-color: rgba(0, 0, 0, 0.4);
+    --jinks-bottom-background-color: rgba(0, 0, 0, 0);
     --jinks-bottom-height: auto;
     --jinks-bottom-min-height: 30vh;
     --jinks-bottom-padding: 2rem 1rem 2rem 6rem;
