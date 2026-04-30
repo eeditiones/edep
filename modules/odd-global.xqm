@@ -40,6 +40,8 @@ declare variable $config:register-root := $config:data-root || "/registers";
 
   declare variable $config:data-default as xs:string :=   $config:data-root || "/workspace";
 
+  declare variable $config:places as xs:string :=   $config:data-root || "/places";
+  declare variable $config:people as xs:string :=   $config:data-root || "/people";
 
 (:~
  : Addressing method used in the app: by id or not
