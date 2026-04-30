@@ -295,6 +295,10 @@ declare variable $config:data-exclude := $gen:data-exclude;
 declare variable $config:register-root := $gen:register-root;
 declare variable $config:register-forms := $config:register-root || "/templates";
 
+declare variable $config:places-root := $gen:data-root || '/places';
+declare variable $config:people-root := $gen:data-root || '/people';
+
+
 declare variable $config:register-map := map {
     "person": map {
         "id": "pb-persons",

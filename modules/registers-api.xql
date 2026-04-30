@@ -23,7 +23,7 @@ declare function rview:sort($people as array(*)*, $dir as xs:string) {
 };
 
 declare function rview:people-all($request as map(*)) {
-    let $people := collection($config:register-root)/id($config:register-map?person?id)//tei:person[ft:query(., '*', map {
+    let $people := collection($config:people-root)//tei:person[ft:query(., '*', map {
         "leading-wildcard": "yes",
         "filter-rewrite": "yes"
     })]
@@ -54,9 +54,9 @@ declare function rview:people-categories($request as map(*)){
     let $odd := head(($request?parameters?odd, $config:default-odd))
     let $people :=
             if ($search and $search != '') then
-                collection($config:register-root)/id($config:register-map?person?id)//tei:person[ft:query(., 'name:(' || $search || '*)')]
+                collection($config:people-root)//tei:person[ft:query(., 'name:(' || $search || '*)')]
             else
-                collection($config:register-root)/id($config:register-map?person?id)//tei:person[ft:query(., '*', map {
+                collection($config:people-root)//tei:person[ft:query(., '*', map {
                         "leading-wildcard": "yes",
                         "filter-rewrite": "yes"
                     })]
@@ -118,7 +118,7 @@ declare function rview:output-person-all($list as array(*)*, $letter as xs:strin
 
 declare function rview:detail-html($request as map(*)) {
     let $id := xmldb:decode-uri(xs:anyURI($request?parameters?id))
-    let $entry := collection($config:register-root)/id($id) => head()
+    let $entry := collection($config:data-root)/id($id) => head()
     let $config := tpu:parse-pi(root($entry), $request?parameters?view, $request?parameters?odd)
     let $mentions := 
         if ($entry instance of element(tei:person)) then
@@ -148,9 +148,9 @@ declare function rview:places($request as map(*)){
     let $show-notes := $request?parameters?description = 'on'
     let $places :=
         if ($search and $search != '') then 
-            collection($config:register-root)/id($config:register-map?place?id)//tei:place[ft:query(., 'name:(' || $search || '*)')]
+            collection($config:places-root)//tei:place[ft:query(., 'name:(' || $search || '*)')]
         else
-            collection($config:register-root)/id($config:register-map?place?id)//tei:place
+            collection($config:places-root)//tei:place
     let $sorted := sort($places, "?lang=de-DE", function($place) { lower-case(($place/tei:placeName)[1]) })
     let $letter := 
         if (count($places) < $limit) then 
@@ -206,7 +206,7 @@ declare function rview:output-place($list, $category as xs:string, $search as xs
 };
 
 declare function rview:places-all($request as map(*)) {
-    let $places := collection($config:register-root)/id("pb-places")//tei:place
+    let $places := collection($config:places-root)//tei:place
     return 
         array { 
             for $place in $places[tei:location/tei:geo/text()]
