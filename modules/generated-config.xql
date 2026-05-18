@@ -7,11 +7,11 @@ module namespace config="https://e-editiones.org/tei-publisher/generator/config"
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
-declare variable $config:webcomponents := "3.0.5";
+declare variable $config:webcomponents := "3.3.0";
 declare variable $config:webcomponents-cdn := "https://cdn.jsdelivr.net/npm/@teipublisher/pb-components";
 declare variable $config:fore := "";
 
-declare variable $config:default-view := "div";
+declare variable $config:default-view := "single";
 declare variable $config:default-template := "basic.html";
 declare variable $config:default-media := ("web", "print", "epub");
 declare variable $config:search-default := "";
@@ -41,13 +41,13 @@ declare variable $config:data-exclude := (
 );
 
 declare variable $config:odd-root := $config:app-root || "/resources/odd";
-declare variable $config:default-odd := "edep-output.odd";
+declare variable $config:default-odd := "output.odd";
 declare variable $config:odd-internal := 
     (  );
 
 declare variable $config:odd-available :=
 
-( "teipublisher.odd", "landing.odd", "edep.odd", "edep-output.odd" )
+( "teipublisher.odd", "landing.odd", "edep.odd", "edep-output.odd", "output.odd" )
 ;
 
 declare variable $config:odd-media := ("web", "print", "epub");

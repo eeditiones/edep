@@ -3,6 +3,9 @@ xquery version "3.1";
 
 module namespace pm-config="http://www.tei-c.org/tei-simple/pm-config";
 
+import module namespace pm-output-web="http://www.tei-c.org/pm/models/output/web/module" at "../transform/output-web-module.xql";
+import module namespace pm-output-print="http://www.tei-c.org/pm/models/output/print/module" at "../transform/output-print-module.xql";
+import module namespace pm-output-epub="http://www.tei-c.org/pm/models/output/epub/module" at "../transform/output-epub-module.xql";
 import module namespace pm-landing-web="http://www.tei-c.org/pm/models/landing/web/module" at "../transform/landing-web-module.xql";
 import module namespace pm-edep-output-web="http://www.tei-c.org/pm/models/edep-output/web/module" at "../transform/edep-output-web-module.xql";
 import module namespace pm-edep-output-print="http://www.tei-c.org/pm/models/edep-output/print/module" at "../transform/edep-output-print-module.xql";
@@ -14,11 +17,12 @@ import module namespace pm-teipublisher-epub="http://www.tei-c.org/pm/models/tei
 
 declare variable $pm-config:web-transform := function($xml as node()*, $parameters as map(*)?, $odd as xs:string?) {
     switch ($odd)
-    case "landing.odd" return pm-landing-web:transform($xml, $parameters)
+    case "output.odd" return pm-output-web:transform($xml, $parameters)
+case "landing.odd" return pm-landing-web:transform($xml, $parameters)
 case "edep-output.odd" return pm-edep-output-web:transform($xml, $parameters)
 case "edep.odd" return pm-edep-web:transform($xml, $parameters)
 case "teipublisher.odd" return pm-teipublisher-web:transform($xml, $parameters)
-    default return pm-edep-output-web:transform($xml, $parameters)
+    default return pm-output-web:transform($xml, $parameters)
             
 
 };
@@ -27,10 +31,11 @@ case "teipublisher.odd" return pm-teipublisher-web:transform($xml, $parameters)
 
 declare variable $pm-config:print-transform := function($xml as node()*, $parameters as map(*)?, $odd as xs:string?) {
     switch ($odd)
-    case "edep-output.odd" return pm-edep-output-print:transform($xml, $parameters)
+    case "output.odd" return pm-output-print:transform($xml, $parameters)
+case "edep-output.odd" return pm-edep-output-print:transform($xml, $parameters)
 case "edep.odd" return pm-edep-print:transform($xml, $parameters)
 case "teipublisher.odd" return pm-teipublisher-print:transform($xml, $parameters)
-    default return pm-edep-output-print:transform($xml, $parameters)
+    default return pm-output-print:transform($xml, $parameters)
             
 
 };
@@ -39,8 +44,9 @@ case "teipublisher.odd" return pm-teipublisher-print:transform($xml, $parameters
 
 declare variable $pm-config:epub-transform := function($xml as node()*, $parameters as map(*)?, $odd as xs:string?) {
     switch ($odd)
-    case "teipublisher.odd" return pm-teipublisher-epub:transform($xml, $parameters)
-    default return error(QName("http://www.tei-c.org/tei-simple/pm-config", "error"), "No default ODD found for output mode epub")
+    case "output.odd" return pm-output-epub:transform($xml, $parameters)
+case "teipublisher.odd" return pm-teipublisher-epub:transform($xml, $parameters)
+    default return pm-output-epub:transform($xml, $parameters)
             
 
 };

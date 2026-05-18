@@ -237,8 +237,8 @@
                 <elementSpec ident="birth" mode="add">
                     <model predicate="$parameters?mode='register-details'" behaviour="pass-through">
                         <desc>Birth date in individual register page</desc>
-                        <param name="place" value="(placeName, 'lang', $parameters?language)"/>
-                        <param name="date" value="try { format-date(xs:date(date/@when), '[D1o] [MNn] [Y]', ($parameters?language, 'en')[1], (), ()) } catch * { date/@when/string() }"/>
+                        <param name="place" value="placeName"/>
+                        <param name="date" value="try { format-date(xs:date(date/@when), '[D1] [MNn] [Y]', ($parameters?language, 'en')[1], (), ()) } catch * { date/@when/string() }"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="register">
                             <pb-i18n key="odd.birth"/> [[date]], [[place]]
                             </div></pb:template>
@@ -259,7 +259,7 @@
                     <model predicate="$parameters?mode='register-details'" behaviour="pass-through">
                         <desc>Birth date in individual register page</desc>
                         <param name="place" value="placeName"/>
-                        <param name="date" value="try { format-date(xs:date(date/@when), '[D1o] [MNn] [Y]', ($parameters?language, 'en')[1], (), ()) } catch * { date/@when/string() }"/>
+                        <param name="date" value="try { format-date(xs:date(date/@when), '[D1] [MNn] [Y]', ($parameters?language, 'en')[1], (), ()) } catch * { date/@when/string() }"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="register">
                             <pb-i18n key="odd.death"/> [[date]], [[place]]
                             </div></pb:template>
@@ -440,7 +440,7 @@
                 </elementSpec>
                 <elementSpec ident="list" mode="change">
                     <model behaviour="list" useSourceRendition="true">
-            <param name="content" value="item"/>
+            <param name="content" value="child::node()"/>
         </model>
                 </elementSpec>
                 <elementSpec ident="listBibl" mode="change">
@@ -502,6 +502,7 @@
                 </elementSpec>
                 <elementSpec ident="p" mode="change">
                     <model output="print" predicate="ancestor::note" behaviour="inline"/>
+                    <model output="docx" predicate="../*[1] is ." behaviour="inline"/>
                     <model behaviour="paragraph" useSourceRendition="true"/>
                 </elementSpec>
                 <elementSpec ident="pb" mode="change">
@@ -932,7 +933,7 @@ flex-wrap: wrap;
                 <desc>List of documents (from data-default collection), where references occur;
                     (shown in register details view only); trying to match by key or ref attributes</desc>
                 <param name="uri" value="$parameters?context-path || '/browse.html?facet-person=' || @xml:id"/>
-                <param name="content" value="let $id := @xml:id return count(collection($global:data-default)//text//persName[@key = $id or @ref = $id]/ancestor::TEI)"/>
+                <param name="content" value="let $id := @xml:id return count(                 collection($global:data-default)//text//persName[@key = $id or @ref = $id]/ancestor::TEI                 | collection($global:data-default)//text//rs[@key = $id or @ref = $id]/ancestor::TEI                 )"/>
                 <param name="level" value="4"/>
                 <pb:template xmlns="" xml:space="preserve">
                     <a href="[[uri]]">
@@ -1028,6 +1029,7 @@ flex-wrap: wrap;
                 <elementSpec ident="persName" mode="add">
                     <model output="fo" behaviour="inline"/>
                     <model output="print" behaviour="inline"/>
+                    <model output="docx" behaviour="inline"/>
                     <model predicate="(@key or @ref) and $parameters?mode='register-details'" behaviour="link">
             <param name="uri" value="head((@key, @ref))"/>
             <param name="target" value="'_blank'"/>
@@ -1062,6 +1064,7 @@ flex-wrap: wrap;
                 <elementSpec ident="placeName" mode="add">
                     <model output="fo" behaviour="inline"/>
                     <model output="print" behaviour="inline"/>
+                    <model output="docx" behaviour="inline"/>
                     <model predicate="@key and $parameters?mode='register-details'" behaviour="inline">
             <param name="content" value="let $key:= head((@key, @ref)) return id($key, collection($global:register-root)/id('pb-places'))/placeName[@type='main']/string()"/>
         </model>

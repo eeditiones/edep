@@ -25,16 +25,24 @@
       "name" : "target"
     } ]
   } ],
-  "profiles" : [ "base10", "registers", "landing-page", "theme-base10" ],
-  "shortname" : "register",
+  "profiles" : [ "base10", "theme-base10", "registers", "landing-page", "metadata-panel" ],
+  "shortname" : "metadata",
   "label" : "edep-jinks",
-  "odds" : [ "teipublisher.odd", "landing.odd", "edep.odd", "edep-output.odd" ],
+  "odds" : [ "teipublisher.odd", "landing.odd", "edep.odd", "edep-output.odd", "output.odd" ],
   "version" : "1.0.0",
   "id" : "https://jinntec.de/apps/edep-jinks",
   "_update" : true,
   "styles" : [ "https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/classic.min.css", "resources/css/pico-components.css", "resources/css/jinks-theme.css" ],
   "_noDeploy" : false,
+  "profile-versions" : {
+    "metadata-panel" : "1.0.0",
+    "base10" : "1.0.0",
+    "theme-base10" : "1.0.0",
+    "landing-page" : "1.0.0",
+    "registers" : "1.0.0"
+  },
   "depends" : [ "base10" ],
+  "profile-changes" : { },
   "template-suffix" : "\\.tpl",
   "ignore" : [ "repo.xml", "resources/css/components.css" ],
   "target" : "/db/apps/edep-jinks",
@@ -68,12 +76,14 @@
       "after" : {
         "width" : "min(30vw, 356px)",
         "hidden" : false,
-        "toggle" : true
+        "toggle" : true,
+        "collapsible" : true
       },
       "before" : {
         "width" : "min(30vw, 356px)",
         "hidden" : false,
-        "toggle" : true
+        "toggle" : true,
+        "collapsible" : true
       },
       "max-width" : "84rem"
     },
@@ -130,9 +140,10 @@
         "teal" : "palette-teal.css",
         "neutral" : "palette-neutral.css",
         "blue" : "palette-blue.css",
-        "beige" : "palette-beige.css"
+        "beige" : "palette-beige.css",
+        "dark" : "palette-dark.css"
       },
-      "palette" : "neutral"
+      "palette" : null
     },
     "fonts" : {
       "toc" : {
@@ -171,6 +182,9 @@
     }
   },
   "features" : {
+    "metadata" : {
+      "enabled" : true
+    },
     "browse" : {
       "sort" : {
         "options" : [ {
@@ -240,7 +254,7 @@
   "data" : {
     "landing" : "landing/landing.xml"
   },
-  "_lastModified" : "2026-04-30T18:42:13.331+02:00",
+  "_lastModified" : "2026-05-18T13:29:52.785+02:00",
   "pkg" : {
     "website" : "http://tei-publisher.org",
     "abbrev" : "edep-jinks",
@@ -265,8 +279,8 @@
   },
   "description" : "Editionstools für eine digitale Epigraphik",
   "_dry" : false,
-  "source" : "/db/apps/jinks/profiles/theme-base10",
-  "type" : "theme",
+  "source" : "/db/apps/jinks/profiles/metadata-panel",
+  "type" : "feature",
   "skip" : [ "^doc/.*$", "setup.xql", "config.json" ],
   "category" : "components",
   "_overwrite" : "all",
@@ -281,9 +295,9 @@
     "template" : "basic.html",
     "browse" : "browse.html",
     "search" : "div",
-    "view" : "div",
+    "view" : "single",
     "data-exclude" : [ "doc($config:data-root || '/taxonomy.xml')//tei:text", "collection($config:register-root)//tei:text" ],
-    "odd" : "edep-output.odd",
+    "odd" : "output.odd",
     "pagination" : {
       "fill" : 5,
       "depth" : 10
@@ -292,7 +306,7 @@
     "register-root" : "registers"
   },
   "templating" : {
-    "use" : [ "templates/register-blocks.html" ],
+    "use" : [ "templates/register-blocks.html", "templates/metadata-blocks.html" ],
     "modules" : {
       "http://teipublisher.com/ns/templates/browse" : {
         "at" : "modules/templates/browse.xqm",
@@ -310,11 +324,11 @@
   },
   "script" : {
     "custom" : [ ],
-    "webcomponents" : "3.0.5",
+    "webcomponents" : "3.3.0",
     "extra-components" : [ ],
     "cdn" : "https://cdn.jsdelivr.net/npm/@teipublisher/pb-components"
   },
-  "order" : 1,
+  "order" : 102,
   "$schema" : "../../schema/jinks.json",
   "i18n" : [ "registers", "landing-page" ],
   "api" : [ {

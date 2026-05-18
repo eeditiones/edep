@@ -63,7 +63,7 @@
                 <pb-i18n key="dialogs.close">Close</pb-i18n>
             </button>
         </pb-dialog>
-        <pb-page endpoint="[[ $context-path ]]" app-root="[[ $context-path ]]" api-version="1.0.0" supported-languages="[[ string-join($context?defaults?languages?*, ', ') ]]" locales="resources/i18n/{{ns}}/{{lng}}.json" locale-fallback-ns="app [[ if (map:contains($context, 'i18n')) then string-join($context?i18n?*, ' ') else () ]]" unresolved="unresolved" url-template="[[ $context?urls?template ]]" url-ignore="[[ $context?urls?ignore ]]" class="[[ $context?theme?layout?class ]]" require-language="require-language" theme="resources/css/components.css">
+        <pb-page endpoint="[[ $context-path ]]" app-root="[[ $context-path ]]" api-version="1.0.0" supported-languages="[[ string-join($context?defaults?languages?*, ', ') ]]" locales="resources/i18n/{{ns}}/{{lng}}.json" locale-fallback-ns="app [[ if (map:contains($context, 'i18n')) then string-join($context?i18n?*, ' ') else () ]]" unresolved="unresolved" url-template="[[ $context?urls?template ]]" url-ignore="[[ $context?urls?ignore ]]" class="[[ string-join((tokenize($context?theme?layout?class, '\s+'), if (not($context?theme?layout?before?collapsible)) then 'before-fixed' else (), if (not($context?theme?layout?after?collapsible)) then 'after-fixed' else ()), ' ') ]]" require-language="require-language" theme="resources/css/components.css">
             <header class="page-header">
                 <div>
                     [% if $features?menubar %]
@@ -123,7 +123,7 @@
                 </ul>
                 [% endif %]
             </nav>
-            <aside class="after hidden-mobile [[ if ($context?theme?layout?after?hidden) then 'hidden' else '' ]]">
+            <aside class="after hidden-mobile [[ if ($context?theme?layout?after?hidden) then 'hidden' else '' ]] [[ if ($context?theme?layout?after?mode = 'tabs') then 'after-tabs' else '' ]]">
                 [% block after %][% endblock %]
             </aside>
             [% if $context?theme?layout?footer?mobile?enabled %]
@@ -131,11 +131,11 @@
             [% endif %]
         </pb-page>
         <div class="splash"/>
-        
+
         [% for $icons in $context?theme?icons?* %]
         [% include "resources/css/" || $icons %]
         [% endfor %]
-        
+
         <script src="[[ $context-path ]]/resources/scripts/layout.js"/>
         [% for $src in $context?script?custom?* %]
         <script src="[[ if (matches($src, '^https?://')) then $src else $context-path || '/' || $src ]]"/>

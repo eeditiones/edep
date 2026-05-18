@@ -10,18 +10,19 @@
       }
     },
     "colors" : {
-      "palette" : "neutral"
+      "palette" : null
     }
   },
   "label" : "edep-jinks",
-  "odds" : [ "edep.odd", "edep-output.odd" ],
+  "odds" : [ "edep.odd", "edep-output.odd", "output.odd" ],
   "id" : "https://jinntec.de/apps/edep-jinks",
   "defaults" : {
     "data" : "/db/apps/edep-data/data",
     "data-default" : "workspace",
-    "odd" : "edep-output.odd"
+    "view" : "single",
+    "odd" : "output.odd"
   },
-  "extends" : [ "base10", "registers", "landing-page", "theme-base10" ],
+  "extends" : [ "base10", "theme-base10", "registers", "landing-page", "metadata-panel" ],
   "pkg" : {
     "abbrev" : "edep-jinks"
   },

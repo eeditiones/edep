@@ -8,7 +8,7 @@ declare variable $exist:controller external;
 declare variable $exist:prefix external;
 declare variable $exist:root external;
 
-
+ 
 declare variable $landingPage := "index.html";
 
 declare variable $allowOrigin := local:allowOriginDynamic(request:get-header("Origin"));

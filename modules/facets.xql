@@ -29,7 +29,7 @@ declare function facets:sort($config as map(*), $lang as xs:string?, $facets as 
             for $key in map:keys($facets)
             let $value := map:get($facets, $key)
             let $sortKey := facets:translate($config, $lang, $key)
-            order by $sortKey ascending
+            order by $sortKey ascending collation "http://www.w3.org/2013/collation/UCA"
             return
                 map { $key: $value }
         else
@@ -56,16 +56,18 @@ declare function facets:print-table($config as map(*), $nodes as element()+, $va
                     map:for-each($entry, function($label, $freq) {
                         let $content := facets:translate($config, $lang, $label)
                         let $name := "facet-" || $config?dimension
+												let $id := $name || '-' || $label
                         return
                         <tr>
                             <td>
                                 <input type="checkbox"
-                                    id="{$name}"
+                                    class="facet"
+                                    id="{$id}"
                                     name="{$name}"
                                     value="{$label}">
                                 { if ($label = $params) then attribute checked { "checked" } else () }
                                 </input>
-                                <label for="{$name}">
+                                <label for="{$id}">
                                     <pb-i18n key="{$content}">{$content}</pb-i18n>
                                 </label>
                             </td>

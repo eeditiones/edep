@@ -1,5 +1,5 @@
-<?xml-model href="teipublisher_odds.xsd"?><?teipublisher output="web print"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:pb="http://teipublisher.com/1.0" xml:lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="teipublisher_odds.xsd"?><?teipublisher output="web print"?><TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:pb="http://teipublisher.com/1.0" xml:lang="en">
     <teiHeader>
         <fileDesc>
             <titleStmt>
@@ -106,18 +106,7 @@
                 <elementSpec ident="supplied" mode="change">
                     <model predicate="@reason=('lost', 'damage', 'illegible') or not(@reason)" behaviour="inline">
                         <desc>all lost rendered in [] brackets, except when brackets are merged with prev/next sibling of gap or supplied</desc>
-                        <param name="content" value="
-                        let $prev := head(reverse(preceding-sibling::node() except preceding-sibling::text()[normalize-space(.)='']))
-                        let $next := head(following-sibling::node() except following-sibling::text()[normalize-space(.)=''])
-
-                        let $prefix := if ($prev[local-name() = ('supplied', 'gap')]) then () else '['
-                        let $suffix := if ($next[local-name() = ('supplied', 'gap')]) then () else ']'
-                        let $cert := head((@cert, @precision))
-                        let $modifier := if ($cert = ('low', '?', 'uncertain')) then '?' else ()
-
-                        let $content := .
-                        
-                        return ($prefix, $content, $modifier, $suffix)"/>
+                        <param name="content" value="                         let $prev := head(reverse(preceding-sibling::node() except preceding-sibling::text()[normalize-space(.)='']))                         let $next := head(following-sibling::node() except following-sibling::text()[normalize-space(.)=''])                          let $prefix := if ($prev[local-name() = ('supplied', 'gap')]) then () else '['                         let $suffix := if ($next[local-name() = ('supplied', 'gap')]) then () else ']'                         let $cert := head((@cert, @precision))                         let $modifier := if ($cert = ('low', '?', 'uncertain')) then '?' else ()                          let $content := .                                                  return ($prefix, $content, $modifier, $suffix)"/>
                     </model>
                     <model predicate="@reason='undefined' and @evidence='previouseditor'" behaviour="inline">
             <outputRendition xml:space="preserve">
@@ -172,14 +161,7 @@
                     </model>
                     <model behaviour="inline">
                         <desc>in all other assume it's a gap for a given number of characters</desc>
-                        <param name="content" value="
-                        let $prev := head(reverse(preceding-sibling::node() except preceding-sibling::text()[normalize-space(.)='']))
-                        let $next := head(following-sibling::node() except following-sibling::text()[normalize-space(.)=''])
-
-                        let $prefix := if ($prev[local-name() = ('supplied', 'gap')]) then () else '['
-                        let $suffix := if ($next[local-name() = ('supplied', 'gap')]) then () else ']'
-                        
-                        let $ext := head((@extent, @quantity)) let $extent := try {     xs:integer($ext) } catch * {     () }   return if ($extent) then $prefix || '-' || $extent || '-' || $suffix else $prefix || '- - -' || $suffix"/>
+                        <param name="content" value="                         let $prev := head(reverse(preceding-sibling::node() except preceding-sibling::text()[normalize-space(.)='']))                         let $next := head(following-sibling::node() except following-sibling::text()[normalize-space(.)=''])                          let $prefix := if ($prev[local-name() = ('supplied', 'gap')]) then () else '['                         let $suffix := if ($next[local-name() = ('supplied', 'gap')]) then () else ']'                                                  let $ext := head((@extent, @quantity)) let $extent := try {     xs:integer($ext) } catch * {     () }   return if ($extent) then $prefix || '-' || $extent || '-' || $suffix else $prefix || '- - -' || $suffix"/>
                     </model>
                 </elementSpec>
                 <elementSpec ident="surplus" mode="add">

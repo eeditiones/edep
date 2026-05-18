@@ -1,0 +1,10 @@
+{
+  "profiles" : {
+    "metadata-panel" : "1.0.0",
+    "base10" : "1.0.0",
+    "theme-base10" : "1.0.0",
+    "landing-page" : "1.0.0",
+    "registers" : "1.0.0"
+  },
+  "jinks" : "10.0.0"
+}
