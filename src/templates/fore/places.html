@@ -113,6 +113,8 @@
                         <data>
                             <loggedin>hidden</loggedin>
                             <language>en</language>
+                            <place lang="en">Place has been stored</place>
+                            <place lang="de">Ort wurde gespeichert</place>
                         </data>
                     </fx-instance>
                     <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
@@ -131,10 +133,13 @@
                         <data></data>
                     </fx-instance>
 
-                    <fx-submission id="s-save" method="post" url="api/places/{instance('query')/id}" replace="instance">
+                    <fx-submission id="s-save"
+                                   method="post"
+                                   url="api/places/{instance('query')/id}"
+                                   replace="instance">
                         <fx-action event="submit-done">
-                            <fx-message>Ort wurde gespeichert</fx-message>
-                            <fx-send submission="s-load"></fx-send>
+                            <fx-message>{instance('vars')/place[@lang=instance('vars')/language]}</fx-message>
+                            <fx-unmodified></fx-unmodified>
                         </fx-action>
                         <fx-message event="submit-error">couldn't be saved</fx-message>
                     </fx-submission>
@@ -145,7 +150,8 @@
                         replace="instance"
                         validate="false"></fx-submission>
 
-                    <fx-submission id="s-reset" url="templates/fore/place-tmpl.xml" replace="instance"></fx-submission>
+                    <fx-submission id="s-reset" url="templates/fore/place-tmpl.xml" replace="instance">
+                    </fx-submission>
 
                     <fx-instance id="login" type="json">{}</fx-instance>
                     <fx-submission
@@ -179,7 +185,7 @@
                 <fx-output ref="instance('default')/place/@xml:id"></fx-output>
                 <fieldset class="case-content">
                     <legend>
-                        <pb-i18n key="form.site-find-spot"></pb-i18n>
+                        <pb-i18n key="place.place"></pb-i18n>
                     </legend>
                     <fx-control ref="placeName[@type='findspot']" id="findspot">
                         <label>
@@ -211,9 +217,9 @@
                     </fx-control>
                     <fx-control ref="region[@type='province']" update-event="input">
                         <label>
-                            <pb-i18n key="form.site-ancient-province"></pb-i18n>
+                            <pb-i18n key="form.site-ancient-province"></pb-i18n>"{./@xml:id}"
                         </label>
-                        <select ref="instance('province')//category" class="widget" selection="open" static="static">
+                        <select ref="instance('province')//category" class="widget" selection="open">
                             <template>
                                 <option value="{@xml:id}">{catDesc}</option>
                             </template>
@@ -228,7 +234,7 @@
                         <label>
                             <pb-i18n key="form.site-modern-country"></pb-i18n>
                         </label>
-                        <select ref="instance('country')//category" class="widget">
+                        <select ref="instance('country')//category" class="widget" selection="open">
                             <template>
                                 <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
                             </template>
@@ -256,9 +262,10 @@
                             </fx-action>
                         </fx-trigger>
                         <fx-trigger>
-                            <a href="geodata.html">
+                            <a href="#">
                                 <pb-i18n key="form.new"></pb-i18n>
                             </a>
+                            <fx-reload></fx-reload>
                         </fx-trigger>
                         <fx-trigger>
                             <a href="orte">

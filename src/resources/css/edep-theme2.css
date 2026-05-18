@@ -285,7 +285,7 @@ fx-control:has(textarea) label {
     right:1rem;
 }
 #places .case-content{
-    margin-top:3rem;
+    /*margin-top:3rem;*/
 }
 
 pb-split-list::part(items) {
@@ -321,8 +321,14 @@ pb-split-list .place .place-id{
     flex-direction: column;
     min-width: 360px;
 }
-.actions{
-    padding:1rem;
+.actions {
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    background: white;
+    border-top: thin solid;
+    width: 100%;
+    left: 0;
 }
 
 .transcription, .apparatus, .translation, .commentary{
@@ -1131,6 +1137,12 @@ legend{
 .with-hint pb-popover{
     grid-area:hint;
     align-self: start;
+}
+#findspot-popover{
+    position:absolute;
+    top:-22px;
+    left:72px;
+    z-index:5;
 }
 .output {
     display: grid;

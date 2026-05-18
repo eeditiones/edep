@@ -43,6 +43,40 @@ function closeAll() {
         d.removeAttribute('open');
     });
 }
+/*
+checkDate('')            // true
+checkDate('-25')         // true
+checkDate('- 25')        // true
+checkDate('25')          // true
+checkDate('2024')        // true
+checkDate('-44-03-08')   // true
+checkDate('-44-13-08')   // true
+checkDate('-44-03-99')   // true
+checkDate('2024-2-8')    // false
+checkDate('abc')         // false
+checkDate('--44')        // false
+*/
+function checkDate(str) {
+    if (str.length === 0) return true;
+
+    str = str.trim();
+
+    // allow "- 25" -> "-25"
+    str = str.replace(/^\-\s+/, '-');
+
+    // year only: -25, 25, 2024
+    if (/^-?\d+$/.test(str)) {
+        return true;
+    }
+
+    // yyyy-mm-dd where year may be negative
+    if (/^-?\d+-\d{2}-\d{2}$/.test(str)) {
+        return true;
+    }
+
+    return false;
+}
+/*
 function checkDate(string) {
     if (string.length === 0) return true; // allow empty
     const val = new Date(string);
@@ -51,6 +85,7 @@ function checkDate(string) {
     }
     return false;
 }
+*/
 
 window.addEventListener('DOMContentLoaded', () => {
     let language;

@@ -488,33 +488,114 @@ declare %private function zotero:strip-diacritics($str as xs:string) as xs:strin
   (: Re-compose to NFC for cleaner output :)
   return normalize-unicode($stripped, "NFC")
 };
+declare %private function zotero:_lucene-escape($s as xs:string) as xs:string {
+  let $t0 := replace($s, "\\", "\\\\")
+  (: do NOT escape '*' here; we add wildcards ourselves :)
+  let $t1 := replace($t0, "([+\-!(){}\[\]\^""~\?:/])", "\\\$1")
+  return $t1
+};
 
+declare %private function zotero:_lucene-wildcard-and($raw as xs:string) as xs:string? {
+  let $norm :=
+    lower-case(
+      zotero:strip-diacritics(
+        normalize-space($raw)
+      )
+    )
+  let $flat := replace($norm, "[,;]+", " ")
+  let $terms :=
+    for $w in tokenize($flat, "\s+")
+    let $w2 := normalize-space($w)
+    where $w2 ne ""
+    return $w2
+  return
+    if (empty($terms)) then ()
+    else
+      string-join(
+        for $t in $terms
+        let $e := zotero:_lucene-escape($t)
+        return concat("bibl-content:*", $e, "*"),
+        " AND "
+      )
+};
+
+(: turn raw user input into ANDed prefix terms for lucene :)
+declare %private function zotero:_lucene-prefix-and($raw as xs:string) as xs:string? {
+  let $norm :=
+    lower-case(
+      zotero:strip-diacritics(
+        normalize-space($raw)
+      )
+    )
+
+  (: treat commas/semicolons etc like spaces :)
+  let $flat := replace($norm, "[,;]+", " ")
+
+  (: split on whitespace; drop empties :)
+  let $terms :=
+    for $w in tokenize($flat, "\s+")
+    let $w2 := normalize-space($w)
+    where $w2 ne ""
+    return $w2
+
+  return
+    if (empty($terms)) then ()
+    else
+      "bibl-content:(" ||
+      string-join(
+        for $t in $terms
+        let $e := zotero:_lucene-escape($t)
+        return concat($e, "*"),
+        " AND "
+      )
+      || ")"
+};
 (: ====== SUGGEST (lightweight for autocomplete) ====== :)
 declare function zotero:items-suggest($request as map(*)) {
   response:set-header("Content-Type", "application/json"),
-  let $q     := zotero:strip-diacritics(normalize-space(request:get-parameter("q", "")))
+  let $qRaw  := request:get-parameter("q", "")
   let $tag   := normalize-space(request:get-parameter("tag", ""))
-  let $limit := let $l := number(request:get-parameter("limit", "8")) return if ($l ge 1) then xs:integer($l) else 8
+  let $limit := let $l := number(request:get-parameter("limit", "8"))
+                return if ($l ge 1) then xs:integer($l) else 8
+
+  let $qry := if ($tag ne "") then () else zotero:_lucene-wildcard-and($qRaw)
 
   let $pool :=
-    if ($tag and $tag != "") then
-        collection($zotero:XML_DIR)/tei:bibl[tei:title[@type='short'] = $tag]
+    if ($tag ne "") then
+      collection($zotero:XML_DIR)/tei:bibl[tei:title[@type='short'] = $tag]
+    else if (empty($qry)) then
+      ()
     else
-        collection($zotero:XML_DIR)/tei:bibl[ft:query(., 'bibl-content:*' || $q || '*', map {
-        "leading-wildcard": "yes",
-        "filter-rewrite": "yes",
-        "query-analyzer-id": "nodiacritics"
-        })]
-  let $sorted := for $i in $pool order by xs:dateTime($i/tei:date[@type='modified']/@when) descending return $i
+      collection($zotero:XML_DIR)/tei:bibl[
+        ft:query(., $qry, map{
+          "leading-wildcard": "yes",
+          "filter-rewrite": "yes",
+          "query-analyzer-id": "nodiacritics"
+        })
+      ]
+
+  (: sort by relevance when using q; otherwise by modified :)
+  let $sorted :=
+    if ($tag ne "" or empty($qry)) then
+      for $i in $pool
+      order by xs:dateTime($i/tei:date[@type='modified']/@when) descending
+      return $i
+    else
+      for $i in $pool
+      let $score := ft:score($i)
+      order by $score descending,
+               xs:dateTime($i/tei:date[@type='modified']/@when) descending
+      return $i
+
   let $picked := subsequence($sorted, 1, $limit)
 
   let $arr := array {
     for $i in $picked
     return map{
       "key":   string($i/@xml:id),
-      "title": string($i/tei:title[not(@type|@level)]),
-      "bib":   if ($i/tei:note[@type='display']) then string($i/tei:note[@type='display']) else "",
-      "tag": string($i/tei:title[@type='short'][1])
+      "title": string($i/tei:title[not(@type|@level)][1]),
+      "bib":   string(($i/tei:note[@type='display'])[1]),
+      "tag":   string(($i/tei:title[@type='short'])[1])
     }
   }
   return serialize($arr, map{ "method":"json", "indent": true() })
