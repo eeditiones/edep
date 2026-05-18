@@ -14,5 +14,10 @@
     "overrideCommand": false,
     "postCreateCommand": [
         "${containerWorkspaceFolder}/.devcontainer/init.sh"
-    ]
+    ],
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        }
+    }
 }

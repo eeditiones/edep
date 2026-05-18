@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/java:8-bullseye
+FROM mcr.microsoft.com/devcontainers/java:8-bookworm
 
 ARG GITLAB_TOKEN=""
 ARG EXIST_VERSION=6.2.0
