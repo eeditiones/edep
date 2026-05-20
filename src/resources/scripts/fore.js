@@ -1,4 +1,4 @@
-/* Version: 3.0.1 - April 24, 2026 14:08:40 */
+/* Version: 3.1.0 - May 20, 2026 13:19:56 */
 function t$2(t, s, r, i) {
   const n = {
     op: s,
@@ -20168,21 +20168,25 @@ class Fore {
         break;
       }
       if (Fore.isUiElement(element.nodeName) && typeof element.refresh === 'function') {
-        /** @type {import('./ForeElementMixin.js').default} */
+        /** @type {import('./ui/UIElement.js').UIElement} */
         const bound = element;
 
         // Keep old behavior: only refresh UI elements during full/forced refresh
-        if (!force) ; else if (force === true) {
+        // Any #refresh call does its own recursion.
+        if (force === true) {
           const maybePromise = bound.refresh(force);
           if (maybePromise && typeof maybePromise.then === 'function') {
             await maybePromise;
           }
-        } else if (typeof force === 'object') {
+          continue;
+        }
+        if (typeof force === 'object') {
           // future selective refresh logic can live here if you re-enable it
           const maybePromise = bound.refresh(force);
           if (maybePromise && typeof maybePromise.then === 'function') {
             await maybePromise;
           }
+          continue;
         }
       }
 
@@ -24418,7 +24422,7 @@ class RepeatBase extends withDraggability(UIElement) {
     // if (!fore.lazyRefresh || force) {
     if (!fore.lazyRefresh || force) {
       // Turn the possibly conditional force refresh into a forced one: we changed our children
-      Fore.refreshChildren(this, force);
+      await Fore.refreshChildren(this, force);
     }
     // this.style.display = 'block';
     // this.style.display = this.display;
@@ -25112,7 +25116,7 @@ class FxRepeatAttributes extends withDraggability(RepeatBase) {
     // Fore.refreshChildren(clone,true);
     const fore = this.getOwnerForm();
     if (!fore.lazyRefresh || force) {
-      Fore.refreshChildren(this, force);
+      await Fore.refreshChildren(this, force);
     }
     // this.style.display = 'block';
     // this.style.display = this.display;
@@ -25412,7 +25416,7 @@ class FxFore extends HTMLElement {
       this._createRepeatsFromAttributes();
       this.inited = true;
     };
-    this.version = 'Version: 3.0.1 - built on April 24, 2026 14:08:40';
+    this.version = 'Version: 3.1.0 - built on May 20, 2026 13:19:56';
 
     /**
      * @type {import('./fx-model.js').FxModel}
@@ -25496,8 +25500,6 @@ class FxFore extends HTMLElement {
               right:0;
               left:0;
               height:40px;
-             border-radius: 5px;
-
             }
             .popup .close {
                 position: absolute;
@@ -25522,6 +25524,53 @@ class FxFore extends HTMLElement {
             .warning{
                 background:orange;
             }
+            #authoringErrors {
+              z-index: 20;
+            }
+            #authoringErrors .popup {
+              width: 70%;
+              max-height: 80vh;
+              overflow:hidden;
+            }
+            #authoringErrors h2 {
+              background: #c62828;
+              color: white;
+              padding-left: 12px;
+              line-height: 40px;
+              font-size: 1rem;
+            }
+            #authoringErrors table {
+              width: 100%;
+              border-collapse: collapse;
+              font-size: 0.85rem;
+            }
+            #authoringErrors th {
+              text-align: left;
+              border-bottom: 2px solid #c62828;
+              padding: 4px 8px;
+            }
+            #authoringErrors td {
+              padding: 4px 8px;
+              border-bottom: 1px solid #ddd;
+              vertical-align: top;
+            }
+            #authoringErrors td:first-child {
+              color: #555;
+              font-family: monospace;
+              white-space: nowrap;
+            }
+            #authoringErrors .ae-actions {
+              text-align: center;
+              margin-top: 12px;
+            }
+            #authoringErrors .ae-actions button {
+              padding: 6px 20px;
+              background: #c62828;
+              color: white;
+              border: none;
+              border-radius: 3px;
+              cursor: pointer;
+            }
         `;
     const html = `
 <!--           <slot name="errors"></slot> -->
@@ -25536,6 +25585,14 @@ class FxFore extends HTMLElement {
                    <h2></h2>
                     <a class="close" href="#"  onclick="event.target.parentNode.parentNode.classList.remove('show')" autofocus>&times;</a>
                     <div id="messageContent"></div>
+                </div>
+           </div>
+           <div id="authoringErrors" class="overlay">
+                <div class="popup">
+                    <h2>Authoring Errors</h2>
+                    <a class="close" href="#" onclick="event.preventDefault();event.target.closest('.overlay').classList.remove('show')">&times;</a>
+                    <div id="authoringErrorsContent" style="margin-top:48px;"></div>
+                    <div class="ae-actions"><button onclick="this.closest('.overlay').classList.remove('show')">Dismiss</button></div>
                 </div>
            </div>
            <slot name="event"></slot>
@@ -26029,7 +26086,10 @@ class FxFore extends HTMLElement {
     this.isRefreshPhase = true;
     try {
       if (force === true || this.initialRun) {
+        performance.mark('force-refresh-start');
         await Fore.refreshChildren(this, force);
+        performance.mark('force-refresh-end');
+        performance.measure('force-refresh', 'force-refresh-start', 'force-refresh-end');
       } else {
         await this._processBatchedNotifications();
       }
@@ -26409,7 +26469,10 @@ class FxFore extends HTMLElement {
 
     // First refresh should be forced
     if (this.createNodes) {
+      performance.mark('initData-start');
       this.initData();
+      performance.mark('initData-end');
+      performance.measure('initData', 'initData-start', 'initData-end');
       const binds = this.getModel().querySelector('fx-bind');
       if (binds) {
         this.getModel().updateModel();
@@ -26428,7 +26491,6 @@ class FxFore extends HTMLElement {
 
     // console.log(`### <<<<< ${this.id} ready >>>>>`);
 
-    // console.log('### modelItems: ', this.getModel().modelItems);
     Fore.dispatch(this, 'ready', {});
     // console.log('dataChanged', FxModel.dataChanged);
     this.markAsClean();
@@ -26441,6 +26503,44 @@ class FxFore extends HTMLElement {
       e.stopPropagation();
       e.dataTransfer.dropEffect = 'move';
     });
+
+    // Run authoring checks after ready — they're diagnostic only and must not delay
+    // the ready event or drag-listener registration (both of which tests depend on).
+    try {
+      await this._runAuthoringChecks();
+    } catch (e) {
+    }
+  }
+  async _runAuthoringChecks() {
+    if (this.hasAttribute('no-check')) return;
+    if (new URLSearchParams(window.location.search).has('no-check')) return;
+    const {
+      checkAuthoring
+    } = await Promise.resolve().then(function () { return authoringCheck; });
+    const errors = checkAuthoring(this);
+    if (errors.length) {
+      this._showAuthoringErrors(errors);
+    }
+  }
+  _showAuthoringErrors(errors) {
+    const overlay = this.shadowRoot.getElementById('authoringErrors');
+    const content = this.shadowRoot.getElementById('authoringErrorsContent');
+    if (!overlay || !content) return;
+    const rows = errors.map(({
+      element,
+      message
+    }) => {
+      const path = element ? element.tagName.toLowerCase() + (element.id ? `#${element.id}` : '') : '?';
+      const safeMsg = message.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const safePath = path.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return `<tr><td>${safePath}</td><td>${safeMsg}</td></tr>`;
+    }).join('');
+    content.innerHTML = `
+      <table>
+        <thead><tr><th>Element</th><th>Problem</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+    overlay.classList.add('show');
   }
 
   /**
@@ -26713,6 +26813,11 @@ class FxFore extends HTMLElement {
         continue;
       }
       if (!isCreateNodesCandidate(bound.ref)) {
+        continue;
+      }
+
+      // Ignore bound elements in a different form. They will be taken care of in the other form.
+      if (bound.closest('fx-fore') !== this) {
         continue;
       }
 
@@ -28794,17 +28899,18 @@ class FxControl extends AbstractControl {
     }
 
     // ### when there's a src Fore is used as widget and will be loaded from external file
-    if (this.src && !this.loaded && this.modelItem.relevant) {
+    if (this.src && !this.loaded && !this.loading && this.modelItem.relevant) {
       // ### evaluate initial data if necessary
 
       if (this.initial) {
         this.initialNode = evaluateXPathToFirstNode(this.initial, this.nodeset, this);
         // console.log('initialNodes', this.initialNode);
       }
-
+      this.loading = true;
       // ### load the markup from src
       await this._loadForeFromSrc();
       this.loaded = true;
+      this.loading = false;
 
       // ### replace default instance of embedded Fore with initial nodes
       // const innerInstance = this.querySelector('fx-instance');
@@ -28919,7 +29025,7 @@ class FxControl extends AbstractControl {
     } finally {
       this._isRefreshing = false;
     }
-    Fore.refreshChildren(this, force);
+    await Fore.refreshChildren(this, force);
   }
 
   /**
@@ -29317,7 +29423,7 @@ class FxGroup extends FxContainer {
     super.refresh(force);
     // Make the maybe filtered refresh an unconditional forced refresh: This fx-group changes the
     // context item
-    Fore.refreshChildren(this, !!force);
+    return Fore.refreshChildren(this, !!force);
   }
 
   // todo: this code should go
@@ -30462,7 +30568,7 @@ class FxRepeat extends withDraggability(UIElement) {
     }
     const fore = this.getOwnerForm();
     if (!fore.lazyRefresh || force) {
-      Fore.refreshChildren(this, force);
+      await Fore.refreshChildren(this, force);
     }
     this.setIndex(this.index);
   }
@@ -30879,6 +30985,7 @@ class FxCase extends FxContainer {
         `;
     this.addEventListener('select', async () => {
       const ownerForm = this.getOwnerForm();
+      let target = this;
       if (this.src) {
         // We will replace the node. So this node will be detached after these async function
         // calls. Save all important state first.
@@ -30895,9 +31002,10 @@ class FxCase extends FxContainer {
           return;
         }
         await parentNode.replaceCase(this, replacement);
+        target = replacement;
       }
       ownerForm.getModel();
-      ownerForm.addToBatchedNotifications(this);
+      ownerForm.addToBatchedNotifications(target);
       ownerForm.refresh(false);
     });
     this.addEventListener('deselect', event => {
@@ -35302,5 +35410,206 @@ if (!customElements.get('fx-functionlib')) {
 
 // core + models classes
 var indexBuild = {};
+
+/**
+ * Authoring integrity checks for Fore forms.
+ *
+ * Runs by default at startup. Add the `no-check` attribute to `<fx-fore>` to disable
+ * (e.g. in production). The module is dynamically imported, so it is never loaded
+ * when checks are disabled.
+ *
+ * Adding a new check: add a function `_check<Name>(fore, errors)` and call it in
+ * `checkAuthoring()` below.
+ */
+
+const INSTANCE_RE = /instance\s*\(\s*['"]([^'"]+)['"]\s*\)/g;
+const INDEX_RE = /index\s*\(\s*['"]([^'"]+)['"]\s*\)/g;
+
+// Attributes that may carry XPath expressions
+const XPATH_ATTRS = ['ref', 'value', 'calculate', 'constraint', 'required', 'readonly', 'relevant', 'bind', 'context', 'if', 'while', 'origin', 'iterate', 'at'];
+function _isDynamic(val) {
+  return !val || val.includes('{');
+}
+function _byId(fore, id) {
+  return fore.ownerDocument.getElementById(id) || fore.getRootNode().getElementById?.(id) || fore.querySelector(`#${id}`);
+}
+function _checkSendSubmissions(fore, errors) {
+  fore.querySelectorAll('fx-send[submission]').forEach(el => {
+    const id = el.getAttribute('submission');
+    if (_isDynamic(id)) return;
+    const localFore = el.closest('fx-fore');
+    const {
+      model
+    } = localFore;
+    const target = model ? model.querySelector(`fx-submission#${id}`) : fore.querySelector(`fx-submission#${id}`);
+    if (!target) {
+      errors.push({
+        element: el,
+        message: `<fx-send submission="${id}">: no <fx-submission id="${id}"> found`
+      });
+    }
+  });
+}
+function _checkDispatchTargets(fore, errors) {
+  fore.querySelectorAll('fx-dispatch[targetid]').forEach(el => {
+    const id = el.getAttribute('targetid');
+    if (_isDynamic(id)) return;
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<fx-dispatch targetid="${id}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkXPathInstanceRefs(fore, errors) {
+  const allEls = Array.from(fore.querySelectorAll('*'));
+  for (const el of allEls) {
+    const localFore = el.closest('fx-fore');
+    for (const attr of XPATH_ATTRS) {
+      const val = el.getAttribute(attr);
+      if (!val) continue;
+      INSTANCE_RE.lastIndex = 0;
+      let m;
+      while ((m = INSTANCE_RE.exec(val)) !== null) {
+        const id = m[1];
+        const localInstance = localFore.querySelector(`fx-instance#${id}`);
+        const sharedInstance = !localInstance && localFore.ownerDocument.querySelector(`fx-instance[shared]#${id}`);
+        if (!localInstance && !sharedInstance) {
+          errors.push({
+            element: el,
+            message: `[${attr}="${val}"]: instance('${id}') — no <fx-instance id="${id}"> found`
+          });
+        }
+      }
+      INDEX_RE.lastIndex = 0;
+      while ((m = INDEX_RE.exec(val)) !== null) {
+        const id = m[1];
+        if (!localFore.querySelector(`fx-repeat#${id}`)) {
+          errors.push({
+            element: el,
+            message: `[${attr}="${val}"]: index('${id}') — no <fx-repeat id="${id}"> found`
+          });
+        }
+      }
+    }
+  }
+}
+function _checkCallActions(fore, errors) {
+  fore.querySelectorAll('fx-call[action]').forEach(el => {
+    const id = el.getAttribute('action');
+    if (_isDynamic(id)) return;
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<fx-call action="${id}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkShowHideDialogs(fore, errors) {
+  fore.querySelectorAll('fx-show[dialog], fx-hide[dialog]').forEach(el => {
+    const id = el.getAttribute('dialog');
+    if (_isDynamic(id)) return;
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<${el.localName} dialog="${id}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkLoadAttachTo(fore, errors) {
+  fore.querySelectorAll('fx-load[attach-to]').forEach(el => {
+    const val = el.getAttribute('attach-to');
+    if (_isDynamic(val)) return;
+    if (!val.startsWith('#')) return; // _blank, _self etc. are valid non-id targets
+    const id = val.substring(1);
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<fx-load attach-to="${val}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkRefreshControl(fore, errors) {
+  fore.querySelectorAll('fx-refresh[control]').forEach(el => {
+    const id = el.getAttribute('control');
+    if (_isDynamic(id)) return;
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<fx-refresh control="${id}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkResetInstance(fore, errors) {
+  const model = fore.querySelector(':scope > fx-model');
+  fore.querySelectorAll('fx-reset[instance]').forEach(el => {
+    const id = el.getAttribute('instance');
+    if (_isDynamic(id)) return;
+    const target = model ? model.querySelector(`fx-instance#${id}`) : fore.querySelector(`fx-instance#${id}`);
+    const sharedTarget = !target && fore.ownerDocument.querySelector(`fx-instance[shared]#${id}`);
+    if (!target && !sharedTarget) {
+      errors.push({
+        element: el,
+        message: `<fx-reset instance="${id}">: no <fx-instance id="${id}"> found`
+      });
+    }
+  });
+}
+function _checkSetfocusControl(fore, errors) {
+  fore.querySelectorAll('fx-setfocus[control]').forEach(el => {
+    const id = el.getAttribute('control');
+    if (_isDynamic(id)) return;
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<fx-setfocus control="${id}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkToggleCase(fore, errors) {
+  fore.querySelectorAll('fx-toggle[case]').forEach(el => {
+    const id = el.getAttribute('case');
+    if (_isDynamic(id)) return;
+    if (!fore.querySelector(`fx-case#${id}`)) {
+      errors.push({
+        element: el,
+        message: `<fx-toggle case="${id}">: no <fx-case id="${id}"> found`
+      });
+    }
+  });
+}
+
+/**
+ * Run all authoring checks on a given `<fx-fore>` element.
+ * Returns an array of `{ element, message }` error objects.
+ *
+ * @param {HTMLElement} fore
+ * @returns {{ element: HTMLElement, message: string }[]}
+ */
+function checkAuthoring(fore) {
+  const errors = [];
+  _checkSendSubmissions(fore, errors);
+  _checkDispatchTargets(fore, errors);
+  _checkXPathInstanceRefs(fore, errors);
+  _checkCallActions(fore, errors);
+  _checkShowHideDialogs(fore, errors);
+  _checkLoadAttachTo(fore, errors);
+  _checkRefreshControl(fore, errors);
+  _checkResetInstance(fore, errors);
+  _checkSetfocusControl(fore, errors);
+  _checkToggleCase(fore, errors);
+  return errors;
+}
+
+var authoringCheck = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	checkAuthoring: checkAuthoring
+});
 
 export { indexBuild as default };
