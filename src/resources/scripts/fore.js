@@ -1,4 +1,4 @@
-/* Version: 3.1.0 - May 20, 2026 13:19:56 */
+/* Version: 3.1.1 - May 20, 2026 17:16:47 */
 function t$2(t, s, r, i) {
   const n = {
     op: s,
@@ -25256,6 +25256,17 @@ const dirtyStates = {
   DIRTY: 'dirty'
 };
 
+/*
+ * Determine whether a string is a valid Name
+ *
+ * @param {string} name
+ * @returns {boolean} whether the name is a valid one
+ */
+function isValidName(name) {
+  const result = new DOMParser().parseFromString(`<${name}/>`, 'application/xml');
+  return result.querySelector('parsererror') === null;
+}
+
 /**
  * Main class for Fore.Outermost container element for each Fore application.
  *
@@ -25416,7 +25427,7 @@ class FxFore extends HTMLElement {
       this._createRepeatsFromAttributes();
       this.inited = true;
     };
-    this.version = 'Version: 3.1.0 - built on May 20, 2026 13:19:56';
+    this.version = 'Version: 3.1.1 - built on May 20, 2026 17:16:47';
 
     /**
      * @type {import('./fx-model.js').FxModel}
@@ -26982,7 +26993,44 @@ class FxFore extends HTMLElement {
         predicates
       };
     };
-    const steps = xpath.split('/').map(step => step.trim()).filter(step => step && step !== '.');
+    const splitSteps = xpath => {
+      /**
+       * @type {string[]}
+       */
+      const steps = [];
+      let scratch = '';
+      let isInPredicate = false;
+      for (const char of xpath.split('')) {
+        if (char === '[') {
+          isInPredicate = true;
+          scratch += char;
+          continue;
+        }
+        if (char === ']') {
+          scratch += char;
+          isInPredicate = false;
+          continue;
+        }
+        if (!isInPredicate) {
+          // Just add to the scratch. Do not check for slashes within predicates
+          if (char === '/') {
+            // Consume this path step
+            if (scratch) {
+              steps.push(scratch);
+            }
+            scratch = '';
+            continue;
+          }
+        }
+        scratch += char;
+      }
+      if (scratch) {
+        // Flush it
+        steps.push(scratch);
+      }
+      return steps;
+    };
+    const steps = splitSteps(xpath).map(step => step.trim()).filter(step => step && step !== '.');
     if (!steps.length) return null;
     let subtreeRoot = null;
     let current = null;
@@ -27002,6 +27050,10 @@ class FxFore extends HTMLElement {
         }
         current.setAttribute(parsed.localName, '');
         continue;
+      }
+      if (!isValidName(parsed.localName)) {
+        // This did not result in a valid name. Stop.
+        return;
       }
       const element = parsed.namespaceURI ? ownerDoc.createElementNS(parsed.namespaceURI, parsed.localName) : ownerDoc.createElement(parsed.localName);
       for (const predicate of predicates) {
