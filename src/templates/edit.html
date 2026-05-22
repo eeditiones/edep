@@ -95,7 +95,8 @@
                                     <data></data>
                                 </fx-instance>
                                 <fx-bind ref="instance('default')">
-                                    <fx-bind ref="@fragments" relevant="not(../@type='partial')"></fx-bind>
+								  <!-- Fragments are relevant if they are actually there and if this TEI is of type partial -->
+                                    <fx-bind ref="@fragments" relevant="string() and not(../@type='partial')"></fx-bind>
                                     <fx-bind ref="@type" relevant=". = 'partial'"></fx-bind>
                                     <fx-bind ref="teiHeader">
                                         <fx-bind
@@ -138,9 +139,9 @@
 <!--                                <fx-instance id="i-fragments" type="json"></fx-instance>-->
                                 <fx-submission
                                     id="s-create-fragment"
-                                    url="api/inscription?collection={instance('params')/collection}"
+                                    url="api/fragment?collection={instance('params')/collection}"
                                     method="post"
-                                    ref="instance('i-fragment')"
+                                    ref="instance('default')"
                                     replace="instance"
                                     instance="i-fragment">
                                     <fx-action event="submit-done">
@@ -182,7 +183,7 @@
                                 <fx-instance id="language-scope" src="../edep-data/data/taxonomy/language-scope.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
                                     <data></data>
                                 </fx-instance>
-                                
+
                                 <fx-instance id="decoration" src="../edep-data/data/taxonomy/decor.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
                                     <data></data>
                                 </fx-instance>
@@ -529,9 +530,9 @@
                                     </li>
                                     <li class="nav-divider"></li>
                                     <li class="noflex">
-                                        {uri-relpath()}}
+                                      {uri-relpath()}
 <!--                                        <fx-control ref="instance('default')/@fragments" style="display:none;" create="create"></fx-control>-->
-                                        <fx-group ref="instance('default')/@fragments[. != '']" class="neutral">
+                                        <fx-group ref="instance('default')/@fragments" class="neutral">
                                             <fieldset id="fragment-fields">
                                                 <legend>
                                                     <pb-i18n key="form.fragments"></pb-i18n>
@@ -630,7 +631,7 @@
                                         data-template-path="templates/parts/text-description.html"
                                         data-template-replace="true"></div>
                                 </fx-group>
-<!-- 
+<!--
                                 <fx-group ref="profileDesc" class="outer-group" aria-labelledby="profile-lbl">
                                     <div
                                         id="languages"
@@ -638,7 +639,7 @@
                                         data-template-path="templates/parts/languages.html"
                                         data-template-replace="true"></div>
                                 </fx-group> -->
-          
+
 
                                 <!-- REFERENCES -->
                                 <fx-group id="references" class="references-background">
@@ -682,7 +683,7 @@
                                             id="pictures"
                                             data-template="lib:include"
                                             data-template-path="templates/parts/pictures.html"
-                                            data-template-replace="true"></div>   
+                                            data-template-replace="true"></div>
                                     </fx-group>
                                 </fx-group>
                             </fx-group>
