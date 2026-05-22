@@ -138,9 +138,9 @@
 <!--                                <fx-instance id="i-fragments" type="json"></fx-instance>-->
                                 <fx-submission
                                     id="s-create-fragment"
-                                    url="api/fragment?collection={instance('params')/collection}"
+                                    url="api/inscription?collection={instance('params')/collection}"
                                     method="post"
-                                    ref="instance('default')"
+                                    ref="instance('i-fragment')"
                                     replace="instance"
                                     instance="i-fragment">
                                     <fx-action event="submit-done">
@@ -290,22 +290,6 @@
                                         <fx-setvalue
                                             ref="instance('vars')/military-term"
                                             value="if(exists(instance('default')//term[@ref='#military'])) then 'true' else 'false'"></fx-setvalue>
-                                    </fx-action>
-                                </fx-submission>
-
-                                <fx-submission
-                                    id="s-create"
-                                    url="api/inscription?collection={instance('params')/collection}"
-                                    method="post"
-                                    replace="instance">
-                                    <fx-message event="submit-done">
-                                        <pb-i18n key="form.data-saved"></pb-i18n>
-                                    </fx-message>
-                                    <fx-action event="submit-error">
-                                        <fx-message>
-                                            <pb-i18n key="form.save-failed"></pb-i18n>
-                                        </fx-message>
-                                        <fx-action src="resources/scripts/showErrors.js"></fx-action>
                                     </fx-action>
                                 </fx-submission>
 
