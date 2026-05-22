@@ -155,9 +155,11 @@ nav{
         margin-bottom: 1rem;
     }
 
+    /*
     #backlink::before{
         content:'corresp';
     }
+    */
 
 }
 
