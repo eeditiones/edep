@@ -137,17 +137,18 @@
                                             constraint="string-length(.) &gt; 0">
                                         </fx-bind>
                                         <fx-bind ref="fileDesc/sourceDesc/msDesc/history">
-                                            <fx-bind ref="provenance">
-                                                <fx-bind ref="./@when" constraint="checkDate(.)"></fx-bind>
-                                                <fx-bind ref="./@notBefore" constraint="checkDate(.)"></fx-bind>
-                                                <fx-bind ref="./@notAfter" constraint="checkDate(.)"></fx-bind>
-                                            </fx-bind>
-                                            <fx-bind ref="origin/origDate">
-                                                <fx-bind ref="./@when-custom" constraint="checkDate(.)"></fx-bind>
-                                                <fx-bind ref="./@notBefore-custom" constraint="checkDate(.)"></fx-bind>
-                                                <fx-bind ref="./@notAfter-custom" constraint="checkDate(.)"></fx-bind>
+                                                <fx-bind ref="provenance">
+                                                    <fx-bind ref="./@when" constraint="checkDate(.)"></fx-bind>
+                                                    <fx-bind ref="./@notBefore" constraint="checkDate(.)"></fx-bind>
+                                                    <fx-bind ref="./@notAfter" constraint="checkDate(.)"></fx-bind>
+                                                </fx-bind>
+                                                <fx-bind ref="origin/origDate">
+                                                    <fx-bind ref="./@when-custom" constraint="checkDate(.)"></fx-bind>
+                                                    <fx-bind ref="./@notBefore-custom" constraint="checkDate(.)"></fx-bind>
+                                                    <fx-bind ref="./@notAfter-custom" constraint="checkDate(.)"></fx-bind>
                                             </fx-bind>
                                         </fx-bind>
+
                                     </fx-bind>
                                 </fx-bind>
 
@@ -700,7 +701,7 @@
                                 <fx-group id="references" class="references-background">
                                     <fx-group ref="fileDesc/sourceDesc/listBibl" class="outer-group">
                                         <h2>
-                                            <pb-i18n key="form.references"/>
+                                            <pb-i18n key="form.references"></pb-i18n>
                                             <pb-popover>
                                                 <iron-icon icon="info-outline"></iron-icon>
                                                 <template slot="alternate">
