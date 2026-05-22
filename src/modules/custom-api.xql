@@ -358,7 +358,7 @@ declare function api:add-fragments-attr(
     element { node-name($tei) } {
         (: keep all existing attributes except any old @fragments :)
         $tei/@* except $tei/@fragments,
-        if( not(exists($tei/@type)) and not($tei/@type='partial')) then attribute fragments { $fragments } else (),
+        if( not(exists($tei/@type)) or not($tei/@type='partial')) then attribute fragments { $fragments } else (),
         $tei/node()
     }
 };
@@ -447,7 +447,7 @@ declare %private function api:postprocess($nodes as node()*, $edepId as xs:strin
                     let $seed := substring-before($edepId,'-')
                     return
                     element { node-name($node) } {
-                        $node/@* except ($node/@xml:id, $node/@corresp, $node/@type, $node/@fragment),
+                        $node/@* except ($node/@xml:id, $node/@corresp, $node/@type),
                         attribute xml:id { $edepId },
                         attribute corresp { $seed },
                         attribute type {'partial'},
@@ -457,7 +457,7 @@ declare %private function api:postprocess($nodes as node()*, $edepId as xs:strin
                     }
                )else
                     element { node-name($node) } {
-                        $node/@* except ($node/@xml:id, $node/@fragment),
+                        $node/@* except ($node/@xml:id),
                         attribute xml:id { $edepId },
                         api:postprocess($node/tei:teiHeader, $edepId),
                         root($node)//tei:facsimile,
