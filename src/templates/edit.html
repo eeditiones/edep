@@ -294,6 +294,22 @@
                                 </fx-submission>
 
                                 <fx-submission
+                                    id="s-create"
+                                    url="api/inscription?collection={instance('params')/collection}"
+                                    method="post"
+                                    replace="instance">
+                                    <fx-message event="submit-done">
+                                        <pb-i18n key="form.data-saved"></pb-i18n>
+                                    </fx-message>
+                                    <fx-action event="submit-error">
+                                        <fx-message>
+                                            <pb-i18n key="form.save-failed"></pb-i18n>
+                                        </fx-message>
+                                        <fx-action src="resources/scripts/showErrors.js"></fx-action>
+                                    </fx-action>
+                                </fx-submission>
+
+                                <fx-submission
                                     id="s-save"
                                     url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
                                     method="post"
@@ -513,6 +529,7 @@
                                     </li>
                                     <li class="nav-divider"></li>
                                     <li class="noflex">
+                                        {uri-relpath()}}
 <!--                                        <fx-control ref="instance('default')/@fragments" style="display:none;" create="create"></fx-control>-->
                                         <fx-group ref="instance('default')/@fragments[. != '']" class="neutral">
                                             <fieldset id="fragment-fields">
