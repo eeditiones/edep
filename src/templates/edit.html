@@ -32,6 +32,12 @@
             fx-lens{
                 top:4rem;
             }
+            h2{
+                font-size: 1.5rem;
+            }
+            h3{
+                font-size: 1.25rem;
+            }
             nav fx-output label{
                 display:block;
                 width: 100%;
@@ -73,8 +79,6 @@
 
                     <main id="main" class="editor">
                         <fx-fore show-confirmation="show-confirmation" id="epidoc-editor" create-nodes="create-nodes">
-                            <fx-var name="cnt" value="count(tokenize(instance('default')/@fragments)) + 1"></fx-var>
-
                             <fx-model data-template="pages:parse-params">
                                 <fx-action event="model-construct-done">
                                     <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
@@ -83,6 +87,7 @@
                                         submission="s-load-inscription"
                                         if="exists(instance('params')/id)"></fx-send>
                                     <fx-setvalue ref="instance('vars')/inited">true</fx-setvalue>
+                                    <fx-send submission="s-load-fragments"></fx-send>
                                 </fx-action>
 
                                 <fx-instance
@@ -93,7 +98,23 @@
                                 </fx-instance>
 
                                 <fx-instance id="i-fragment" xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
-
+                                <fx-submission id="s-load-template"
+                                               method="get"
+                                               url="templates/fore/epidoc-template.xml"
+                                               replace="instance"
+                                               instance="i-fragment"
+                                               validate="false">
+                                    <fx-action event="submit-done">
+                                        <fx-setvalue ref="instance('i-fragment')/@corresp" value="instance('default')/@xml:id"></fx-setvalue>
+                                        <fx-setvalue ref="instance('i-fragment')/@type" value="'partial'">partial</fx-setvalue>
+                                        <fx-setvalue ref="instance('i-fragment')/@xml:id" value="concat(instance('default')/@xml:id,'-')"></fx-setvalue>
+                                    </fx-action>
+                                </fx-submission>
+                                <fx-instance id="i-fragments" type="json"></fx-instance>
+                                <fx-submission id="s-load-fragments"
+                                               method="get"
+                                               url="api/fragments?id={instance('default')/@xml:id}"
+                                               replace="instance" instance="i-fragments" validate="false"></fx-submission>
                                 <fx-submission
                                     id="s-create-fragment"
                                     url="api/fragment?collection={instance('params')/collection}"
@@ -106,11 +127,12 @@
                                         <fx-setvalue ref="instance('default')/@fragments" value="concat(instance('default')/@fragments, ' ', instance('i-fragment')/@xml:id)"></fx-setvalue>
                                     </fx-action>
                                     <fx-action event="submit-error">
-                                        <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
+                                        <fx-message>
+                                            <pb-i18n key="form.save-failed"></pb-i18n>
+                                        </fx-message>
                                         <fx-action src="resources/scripts/showErrors.js"></fx-action>
                                     </fx-action>
                                 </fx-submission>
-
                                 <fx-bind ref="instance('default')">
                                     <fx-bind ref="@fragments" relevant="not(../@type='partial')"></fx-bind>
                                     <fx-bind ref="teiHeader">
@@ -269,6 +291,22 @@
                                         <fx-setvalue
                                             ref="instance('vars')/military-term"
                                             value="if(exists(instance('default')//term[@ref='#military'])) then 'true' else 'false'"></fx-setvalue>
+                                    </fx-action>
+                                </fx-submission>
+
+                                <fx-submission
+                                    id="s-create"
+                                    url="api/inscription?collection={instance('params')/collection}"
+                                    method="post"
+                                    replace="instance">
+                                    <fx-message event="submit-done">
+                                        <pb-i18n key="form.data-saved"></pb-i18n>
+                                    </fx-message>
+                                    <fx-action event="submit-error">
+                                        <fx-message>
+                                            <pb-i18n key="form.save-failed"></pb-i18n>
+                                        </fx-message>
+                                        <fx-action src="resources/scripts/showErrors.js"></fx-action>
                                     </fx-action>
                                 </fx-submission>
 
@@ -698,7 +736,7 @@
                                 <fx-group id="references" class="references-background">
                                     <fx-group ref="fileDesc/sourceDesc/listBibl" class="outer-group">
                                         <h2>
-                                            <pb-i18n key="form.references"/>
+                                            <pb-i18n key="form.references"></pb-i18n>
                                             <pb-popover>
                                                 <iron-icon icon="info-outline"></iron-icon>
                                                 <template slot="alternate">
@@ -790,7 +828,11 @@
                                         <button>
                                             <pb-i18n key="form.save"></pb-i18n>
                                         </button>
-                                        <fx-action>
+                                        <fx-action if="not(exists(instance('params')/id))">
+                                            <fx-send submission="s-login"></fx-send>
+                                            <fx-send submission="s-create"></fx-send>
+                                        </fx-action>
+                                        <fx-action if="exists(instance('params')/id)">
                                             <fx-send submission="s-login"></fx-send>
                                             <fx-send submission="s-save"></fx-send>
                                         </fx-action>

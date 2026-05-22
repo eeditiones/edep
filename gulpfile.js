@@ -86,11 +86,7 @@ function pbComponents() {
     return src('node_modules/@teipublisher/pb-components/i18n/common').pipe(dest('build/resources/i18n/common'));
 }
 
-function fore() {
-    return src('node_modules/@jinntec/fore/dist/*').pipe(dest('build/resources/scripts/'));
-}
-
-const copyModules = parallel(epidocEditor, editorStyles, pbStyles, pbImages, pbComponents, pbLib, fore);
+const copyModules = parallel(epidocEditor, editorStyles, pbStyles, pbImages, pbComponents, pbLib);
 exports['copy:modules'] = copyModules;
 
 /**

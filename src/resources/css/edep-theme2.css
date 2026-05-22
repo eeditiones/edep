@@ -285,7 +285,7 @@ fx-control:has(textarea) label {
     right:1rem;
 }
 #places .case-content{
-    margin-top:3rem;
+    /*margin-top:3rem;*/
 }
 
 pb-split-list::part(items) {
@@ -321,8 +321,14 @@ pb-split-list .place .place-id{
     flex-direction: column;
     min-width: 360px;
 }
-.actions{
-    padding:1rem;
+.actions {
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    background: white;
+    border-top: thin solid;
+    width: 100%;
+    left: 0;
 }
 
 .transcription, .apparatus, .translation, .commentary{
@@ -352,13 +358,23 @@ fx-trigger.add {
     right: -0.75rem;
     bottom: -0.75rem;
 }
-fx-repeat fx-trigger.add {
+fx-repeat > fx-trigger.add {
     position: absolute;
     bottom: -0.75rem;
     right: -0.75rem;
     background: white;
     padding-top: 0 0.3rem;
     z-index: 10;
+}
+#verification fx-group fx-trigger.add,
+#inscription-field fx-group fx-trigger.add{
+    right:0.25rem;
+    z-index: 10;
+}
+#text-description fx-group fx-trigger.add {
+    bottom: -2.75rem;
+    z-index: 10;
+    right: -1.5rem;
 }
 /*
 fx-trigger.add::before{
@@ -1116,6 +1132,41 @@ legend{
     transition:opacity 0.8s;
     transition-delay:1s;
 }
+#idnos{
+    position:relative;
+
+    /*
+    fx-trigger {
+        display: block;
+        position: absolute;
+        top: 1.5rem;
+        right: 1rem;
+    }
+    */
+}
+.idno-repeat{
+    display:block;
+    width:100%;
+
+    fx-repeatitem{
+        display:flex;
+        flex-wrap:wrap;
+        gap:1rem;
+        width:28rem;
+        position:relative;
+
+        fx-control{
+            display:inline-block;
+            width:12rem;
+        }
+
+        fx-trigger{
+            position:absolute;
+            right:0;
+            top:3rem;
+        }
+    }
+}
 .tm-number{
     display: grid;
     grid-template-columns: 19rem 1rem;
@@ -1131,6 +1182,12 @@ legend{
 .with-hint pb-popover{
     grid-area:hint;
     align-self: start;
+}
+#findspot-popover{
+    position:absolute;
+    top:-22px;
+    left:72px;
+    z-index:5;
 }
 .output {
     display: grid;

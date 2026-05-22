@@ -205,6 +205,6 @@ local:generate-code($target),
 local:create-data-collection(),
 local:zotero-ensure-layout(),
 xmldb:reindex('/db/apps/edep-data'),
-let $pmuConfig := pmc:generate-pm-config(($config:odd-available, $config:odd-internal), $config:default-odd, $config:odd-root)
+let $pmuConfig := pmc:generate-pm-config(($config:odd-available, $config:odd-internal), $config:default-odd, $config:odd-root, $config:odd-media)
 return
     xmldb:store($config:app-root || "/modules", "pm-config.xql", $pmuConfig, "application/xquery")

@@ -24,7 +24,9 @@ body {
 }
 
 main {
-    margin: 0 8px 0 8px;
+    margin: 0 0.5rem 0 0.5rem;
+    height: auto;
+    margin-bottom: 3rem;
 }
 
 @media (min-width: 1200px) {

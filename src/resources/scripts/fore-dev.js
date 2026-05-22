@@ -1,4 +1,4 @@
-/* Version: 2.7.1 - December 4, 2025 12:22:40 */
+/* Version: 3.1.1 - May 20, 2026 17:16:48 */
 function t$2(t, s, r, i) {
   const n = {
     op: s,
@@ -1109,7 +1109,7 @@ var prsc = /*#__PURE__*/Object.freeze({
 });
 
 const fontoxpath = function (xspattern, prsc) {
-  const VERSION = '3.33.0';
+  const VERSION = '3.34.0';
   const fontoxpathGlobal = {};
   function aa(a, b) {
     if (!("0" !== a && "-0" !== a || "0" !== b && "-0" !== b)) return 0;
@@ -1140,7 +1140,7 @@ const fontoxpath = function (xspattern, prsc) {
     a = /^[-+]?0*([1-9]\d*)?(?:\.((?:\d*[1-9])*)0*)?$/.exec(a);
     return a[2] ? a[2].length <= b : !0;
   }
-  function da() {
+  function ca() {
     return function (a, b) {
       return 1 > aa(a, b);
     };
@@ -1179,11 +1179,11 @@ const fontoxpath = function (xspattern, prsc) {
         return {};
       case 4:
         return {
-          ka: ba,
-          wa: da(),
-          nc: fa(),
-          xa: ha(),
-          oc: ia()
+          ja: ba,
+          va: ca(),
+          pc: fa(),
+          wa: ha(),
+          qc: ia()
         };
       case 18:
         return {};
@@ -1196,7 +1196,7 @@ const fontoxpath = function (xspattern, prsc) {
       case 15:
       case 14:
         return {
-          Ba: ja
+          Ca: ja
         };
       case 22:
       case 21:
@@ -1288,7 +1288,7 @@ const fontoxpath = function (xspattern, prsc) {
     C: 0,
     name: 46,
     parent: 59,
-    K: {
+    J: {
       whiteSpace: "preserve"
     }
   }, {
@@ -1303,228 +1303,228 @@ const fontoxpath = function (xspattern, prsc) {
     C: 0,
     name: 0,
     parent: 46,
-    K: {
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 4,
     parent: 46,
-    K: {
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 6,
     parent: 46,
-    K: {
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 3,
     parent: 46,
-    K: {
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 18,
     parent: 46,
-    K: {
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 9,
     parent: 46,
-    K: {
-      Ba: "optional",
+    J: {
+      Ca: "optional",
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 8,
     parent: 46,
-    K: {
-      Ba: "optional",
+    J: {
+      Ca: "optional",
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 7,
     parent: 46,
-    K: {
-      Ba: "optional",
+    J: {
+      Ca: "optional",
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 11,
     parent: 46,
-    K: {
-      Ba: "optional",
+    J: {
+      Ca: "optional",
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 12,
     parent: 46,
-    K: {
-      Ba: "optional",
+    J: {
+      Ca: "optional",
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 13,
     parent: 46,
-    K: {
-      Ba: "optional",
+    J: {
+      Ca: "optional",
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 15,
     parent: 46,
-    K: {
-      Ba: "optional",
+    J: {
+      Ca: "optional",
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 14,
     parent: 46,
-    K: {
-      Ba: "optional",
+    J: {
+      Ca: "optional",
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 22,
     parent: 46,
-    K: {
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 21,
     parent: 46,
-    K: {
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 20,
     parent: 46,
-    K: {
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 23,
     parent: 46,
-    K: {
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 0,
     name: 44,
     parent: 46,
-    K: {
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 10,
-    S: 9,
-    K: {
+    R: 9,
+    J: {
       whiteSpace: "collapse",
-      Ba: "required"
+      Ca: "required"
     }
   }, {
     C: 1,
     name: 48,
-    S: 1,
-    K: {
+    R: 1,
+    J: {
       whiteSpace: "replace"
     }
   }, {
     C: 1,
     name: 52,
-    S: 48,
-    K: {
+    R: 48,
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 51,
-    S: 52,
-    K: {
+    R: 52,
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 50,
-    S: 52,
-    K: {
+    R: 52,
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 2,
     name: 49,
     type: 50,
-    K: {
+    J: {
       minLength: 1,
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 25,
-    S: 52,
-    K: {
+    R: 52,
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 24,
-    S: 25,
-    K: {
+    R: 25,
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 42,
-    S: 24,
-    K: {
+    R: 24,
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 41,
-    S: 24,
-    K: {
+    R: 24,
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 2,
     name: 43,
     type: 41,
-    K: {
+    J: {
       minLength: 1,
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 26,
-    S: 24,
-    K: {
+    R: 24,
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 2,
     name: 40,
     type: 26,
-    K: {
+    J: {
       minLength: 1,
       whiteSpace: "collapse"
     }
@@ -1532,156 +1532,156 @@ const fontoxpath = function (xspattern, prsc) {
     C: 0,
     name: 5,
     parent: 4,
-    K: {
-      ka: 0,
+    J: {
+      ja: 0,
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 27,
-    S: 5,
-    K: {
-      ka: 0,
-      wa: "0",
+    R: 5,
+    J: {
+      ja: 0,
+      va: "0",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 28,
-    S: 27,
-    K: {
-      ka: 0,
-      wa: "-1",
+    R: 27,
+    J: {
+      ja: 0,
+      va: "-1",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 31,
-    S: 5,
-    K: {
-      ka: 0,
-      wa: "9223372036854775807",
-      xa: "-9223372036854775808",
+    R: 5,
+    J: {
+      ja: 0,
+      va: "9223372036854775807",
+      wa: "-9223372036854775808",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 32,
-    S: 31,
-    K: {
-      ka: 0,
-      wa: "2147483647",
-      xa: "-2147483648",
+    R: 31,
+    J: {
+      ja: 0,
+      va: "2147483647",
+      wa: "-2147483648",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 33,
-    S: 32,
-    K: {
-      ka: 0,
-      wa: "32767",
-      xa: "-32768",
+    R: 32,
+    J: {
+      ja: 0,
+      va: "32767",
+      wa: "-32768",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 34,
-    S: 33,
-    K: {
-      ka: 0,
-      wa: "127",
-      xa: "-128",
+    R: 33,
+    J: {
+      ja: 0,
+      va: "127",
+      wa: "-128",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 30,
-    S: 5,
-    K: {
-      ka: 0,
-      xa: "0",
+    R: 5,
+    J: {
+      ja: 0,
+      wa: "0",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 36,
-    S: 30,
-    K: {
-      ka: 0,
-      wa: "18446744073709551615",
-      xa: "0",
+    R: 30,
+    J: {
+      ja: 0,
+      va: "18446744073709551615",
+      wa: "0",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 35,
-    S: 36,
-    K: {
-      ka: 0,
-      wa: "4294967295",
-      xa: "0",
+    R: 36,
+    J: {
+      ja: 0,
+      va: "4294967295",
+      wa: "0",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 38,
-    S: 35,
-    K: {
-      ka: 0,
-      wa: "65535",
-      xa: "0",
+    R: 35,
+    J: {
+      ja: 0,
+      va: "65535",
+      wa: "0",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 37,
-    S: 38,
-    K: {
-      ka: 0,
-      wa: "255",
-      xa: "0",
+    R: 38,
+    J: {
+      ja: 0,
+      va: "255",
+      wa: "0",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 29,
-    S: 30,
-    K: {
-      ka: 0,
-      xa: "1",
+    R: 30,
+    J: {
+      ja: 0,
+      wa: "1",
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 16,
-    S: 18,
-    K: {
+    R: 18,
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 17,
-    S: 18,
-    K: {
+    R: 18,
+    J: {
       whiteSpace: "collapse"
     }
   }, {
     C: 1,
     name: 60,
-    S: 59
+    R: 59
   }, {
     C: 3,
     name: 39,
-    Ca: []
+    Da: []
   }, {
     C: 1,
     name: 61,
-    S: 60
+    R: 60
   }, {
     C: 1,
     name: 62,
-    S: 60
+    R: 60
   }, {
     C: 0,
     name: 53,
@@ -1689,38 +1689,38 @@ const fontoxpath = function (xspattern, prsc) {
   }, {
     C: 1,
     name: 54,
-    S: 53
+    R: 53
   }, {
     C: 1,
     name: 58,
-    S: 53
+    R: 53
   }, {
     C: 1,
     name: 47,
-    S: 53
+    R: 53
   }, {
     C: 1,
     name: 56,
-    S: 53
+    R: 53
   }, {
     C: 1,
     name: 57,
-    S: 53
+    R: 53
   }, {
     C: 1,
     name: 55,
-    S: 53
+    R: 53
   }, {
     C: 3,
     name: 2,
-    Ca: [4, 5, 6, 3]
+    Da: [4, 5, 6, 3]
   }, {
     C: 3,
     name: 63,
-    Ca: []
+    Da: []
   }].forEach(a => {
     const b = a.name,
-      c = a.K || {};
+      c = a.J || {};
     switch (a.C) {
       case 0:
         a = a.parent ? ua[a.parent] : null;
@@ -1728,46 +1728,46 @@ const fontoxpath = function (xspattern, prsc) {
         ua[b] = {
           C: 0,
           type: b,
-          Ka: c,
+          La: c,
           parent: a,
           gb: d,
-          Oa: ka(b),
-          Ca: []
+          Qa: ka(b),
+          Da: []
         };
         break;
       case 1:
-        a = ua[a.S];
+        a = ua[a.R];
         d = ta.get(b) || null;
         ua[b] = {
           C: 1,
           type: b,
-          Ka: c,
+          La: c,
           parent: a,
           gb: d,
-          Oa: a.Oa,
-          Ca: []
+          Qa: a.Qa,
+          Da: []
         };
         break;
       case 2:
         ua[b] = {
           C: 2,
           type: b,
-          Ka: c,
+          La: c,
           parent: ua[a.type],
           gb: null,
-          Oa: la,
-          Ca: []
+          Qa: la,
+          Da: []
         };
         break;
       case 3:
-        a = a.Ca.map(e => ua[e]), ua[b] = {
+        a = a.Da.map(e => ua[e]), ua[b] = {
           C: 3,
           type: b,
-          Ka: c,
+          La: c,
           parent: null,
           gb: null,
-          Oa: ma,
-          Ca: a
+          Qa: ma,
+          Da: a
         };
     }
   });
@@ -1792,10 +1792,10 @@ const fontoxpath = function (xspattern, prsc) {
     return new ya(!1, a);
   }
   function za(a, b) {
-    if (3 === b.C) return !!b.Ca.find(c => za(a, c));
+    if (3 === b.C) return !!b.Da.find(c => za(a, c));
     for (; a;) {
       if (a.type === b.type) return !0;
-      if (3 === a.C) return !!a.Ca.find(c => v(c.type, b.type));
+      if (3 === a.C) return !!a.Da.find(c => v(c.type, b.type));
       a = a.parent;
     }
     return !1;
@@ -1830,17 +1830,17 @@ const fontoxpath = function (xspattern, prsc) {
     first() {
       return this.h[0];
     }
-    O() {
+    N() {
       return this.h;
     }
-    fa() {
+    ea() {
       if (v(this.h[0].type, 53)) return !0;
       throw xa("Cannot determine the effective boolean value of a sequence with a length higher than one.");
     }
-    Pa() {
+    Ra() {
       return this.h.length;
     }
-    F() {
+    isEmpty() {
       return !1;
     }
     oa() {
@@ -1852,7 +1852,7 @@ const fontoxpath = function (xspattern, prsc) {
         next: () => ++b >= this.h.length ? p : q(a(this.h[b], b, this))
       }, this.h.length);
     }
-    N(a) {
+    M(a) {
       return a(this.h);
     }
     X(a) {
@@ -1874,16 +1874,16 @@ const fontoxpath = function (xspattern, prsc) {
     first() {
       return null;
     }
-    O() {
+    N() {
       return [];
     }
-    fa() {
+    ea() {
       return !1;
     }
-    Pa() {
+    Ra() {
       return 0;
     }
-    F() {
+    isEmpty() {
       return !0;
     }
     oa() {
@@ -1892,7 +1892,7 @@ const fontoxpath = function (xspattern, prsc) {
     map() {
       return this;
     }
-    N(a) {
+    M(a) {
       return a([]);
     }
     X(a) {
@@ -2113,7 +2113,7 @@ const fontoxpath = function (xspattern, prsc) {
       this.o = b;
     }
     hb() {
-      return this.D.create(this.O());
+      return this.D.create(this.N());
     }
     filter(a) {
       let b = -1;
@@ -2132,7 +2132,7 @@ const fontoxpath = function (xspattern, prsc) {
       Ma(this);
       return a.done ? null : a.value;
     }
-    O() {
+    N() {
       if (this.h > this.v.length && this.o !== this.v.length) throw Error("Implementation error: Sequence Iterator has progressed.");
       const a = this.value;
       this.l = !0;
@@ -2140,7 +2140,7 @@ const fontoxpath = function (xspattern, prsc) {
       for (; !b.done;) b = a.next(0);
       return this.v;
     }
-    fa() {
+    ea() {
       const a = this.value,
         b = this.h;
       Ma(this);
@@ -2152,15 +2152,15 @@ const fontoxpath = function (xspattern, prsc) {
       Ma(this, b);
       return La(c);
     }
-    Pa(a = !1) {
+    Ra(a = !1) {
       if (null !== this.o) return this.o;
       if (a) return -1;
       a = this.h;
-      const b = this.O().length;
+      const b = this.N().length;
       Ma(this, a);
       return b;
     }
-    F() {
+    isEmpty() {
       return 0 === this.o ? !0 : null === this.first();
     }
     oa() {
@@ -2183,7 +2183,7 @@ const fontoxpath = function (xspattern, prsc) {
         }
       }, this.o);
     }
-    N(a, b) {
+    M(a, b) {
       const c = this.value;
       let d;
       const e = [];
@@ -2200,13 +2200,13 @@ const fontoxpath = function (xspattern, prsc) {
       let b = null;
       const c = d => {
         b = d.value;
-        d = d.Pa(!0);
+        d = d.Ra(!0);
         -1 !== d && (this.o = d);
       };
       return this.D.create({
         next: d => {
           if (b) return b.next(d);
-          if (this.F()) return c(a.empty ? a.empty(this) : a.default(this)), b.next(d);
+          if (this.isEmpty()) return c(a.empty ? a.empty(this) : a.default(this)), b.next(d);
           if (this.oa()) return c(a.m ? a.m(this) : a.default(this)), b.next(d);
           c(a.multiple ? a.multiple(this) : a.default(this));
           return b.next(d);
@@ -2237,17 +2237,17 @@ const fontoxpath = function (xspattern, prsc) {
     first() {
       return this.h;
     }
-    O() {
+    N() {
       return [this.h];
     }
-    fa() {
+    ea() {
       null === this.o && (this.o = La(this.h));
       return this.o;
     }
-    Pa() {
+    Ra() {
       return 1;
     }
-    F() {
+    isEmpty() {
       return !1;
     }
     oa() {
@@ -2256,7 +2256,7 @@ const fontoxpath = function (xspattern, prsc) {
     map(a) {
       return this.v.create(a(this.h, 0, this));
     }
-    N(a) {
+    M(a) {
       return a([this.h]);
     }
     X(a) {
@@ -2280,8 +2280,8 @@ const fontoxpath = function (xspattern, prsc) {
     create: Qa,
     m: a => new Oa(a),
     empty: () => Qa(),
-    aa: () => Qa(va),
-    T: () => Qa(wa)
+    $: () => Qa(va),
+    S: () => Qa(wa)
   };
   function Ra(a) {
     const b = [],
@@ -2303,11 +2303,11 @@ const fontoxpath = function (xspattern, prsc) {
       this.prefix = a || "";
       this.localName = c;
     }
-    za() {
+    Aa() {
       return this.prefix ? this.prefix + ":" + this.localName : this.localName;
     }
   };
-  function Ua(a, b) {
+  function Ta(a, b) {
     const c = a.value,
       d = b.map(e => null === e ? null : Ra(e));
     b = b.reduce((e, f, h) => {
@@ -2317,8 +2317,8 @@ const fontoxpath = function (xspattern, prsc) {
     b = new Va({
       j: b,
       arity: b.length,
-      Ya: !0,
-      I: a.I,
+      bb: !0,
+      H: a.H,
       localName: "boundFunction",
       namespaceURI: a.l,
       i: a.s,
@@ -2334,8 +2334,8 @@ const fontoxpath = function (xspattern, prsc) {
     constructor({
       j: a,
       arity: b,
-      Ya: c = !1,
-      I: d = !1,
+      bb: c = !1,
+      H: d = !1,
       localName: e,
       namespaceURI: f,
       i: h,
@@ -2343,19 +2343,19 @@ const fontoxpath = function (xspattern, prsc) {
     }) {
       super(60, null);
       this.value = k;
-      this.I = d;
+      this.H = d;
       d = -1;
       for (k = 0; k < a.length; k++) 4 === a[k] && (d = k);
       -1 < d && (k = Array(b - (a.length - 1)).fill(a[d - 1]), a = a.slice(0, d).concat(k));
       this.o = a;
       this.v = b;
-      this.ia = c;
+      this.ha = c;
       this.D = e;
       this.l = f;
       this.s = h;
     }
-    Ya() {
-      return this.ia;
+    bb() {
+      return this.ha;
     }
   };
   function Wa(a, b) {
@@ -2453,18 +2453,18 @@ const fontoxpath = function (xspattern, prsc) {
     }
   }
   function cb(a) {
-    return void 0 !== a.Ra;
+    return void 0 !== a.Ta;
   }
   function db(a, b, c) {
     let d = null;
     b && (cb(b.node) ? d = {
-      G: b.G,
+      F: b.F,
       offset: c,
       parent: b.node
-    } : b.G && (d = b.G));
+    } : b.F && (d = b.F));
     return {
       node: a,
-      G: d
+      F: d
     };
   }
   function eb(a, b, c = null) {
@@ -2474,63 +2474,63 @@ const fontoxpath = function (xspattern, prsc) {
     b = b.node;
     return cb(b) ? (a = b.attributes.find(d => c === d.name)) ? a.value : null : (a = a.h.getAttribute(b, c)) ? a : null;
   }
-  function hb(a, b, c = null) {
+  function gb(a, b, c = null) {
     return a.getChildNodes(b.node, c).map((d, e) => db(d, b, e));
   }
-  function ib(a, b) {
+  function hb(a, b) {
     return a.getData(b.node);
   }
-  function jb(a, b, c = null) {
+  function ib(a, b, c = null) {
     const d = b.node;
     cb(d) ? a = d.childNodes[0] : ((c = a.h.getFirstChild(d, c)) && 10 === c.nodeType && (c = a.h.getNextSibling(c)), a = c);
     return a ? db(a, b, 0) : null;
   }
-  function kb(a, b, c = null) {
+  function lb(a, b, c = null) {
     var d = b.node;
     cb(d) ? (a = d.childNodes.length - 1, d = d.childNodes[a]) : ((d = a.h.getLastChild(d, c)) && 10 === d.nodeType && (d = a.h.getPreviousSibling(d)), a = a.getChildNodes(b.node, c).length - 1);
     return d ? db(d, b, a) : null;
   }
   function x(a, b, c = null) {
     const d = b.node,
-      e = b.G;
-    if (e) "number" === typeof e.offset && d === e.parent.childNodes[e.offset] || "string" === typeof e.offset && d === e.parent.attributes.find(f => e.offset === f.nodeName) ? (a = e.parent, b = e.G) : (a = a.getParentNode(d, c), b = e);else {
+      e = b.F;
+    if (e) "number" === typeof e.offset && d === e.parent.childNodes[e.offset] || "string" === typeof e.offset && d === e.parent.attributes.find(f => e.offset === f.nodeName) ? (a = e.parent, b = e.F) : (a = a.getParentNode(d, c), b = e);else {
       if (cb(d)) return null;
       a = a.getParentNode(d, c);
       b = null;
     }
     return a ? {
       node: a,
-      G: b
+      F: b
     } : null;
   }
-  function lb(a, b, c = null) {
+  function mb(a, b, c = null) {
     const d = b.node;
     let e, f, h;
-    const k = b.G;
+    const k = b.F;
     if (cb(d)) k && (h = k.offset + 1, e = k.parent.childNodes[h]);else if (k) h = k.offset + 1, f = x(a, b, null), e = a.getChildNodes(f.node, c)[h];else {
       for (e = d; e && (!(e = a.h.getNextSibling(e, c)) || 10 === e.nodeType););
       return e ? {
         node: e,
-        G: null
+        F: null
       } : null;
     }
     return e ? db(e, f || x(a, b, c), h) : null;
   }
-  function mb(a, b, c = null) {
+  function nb(a, b, c = null) {
     const d = b.node;
     let e, f;
-    const h = b.G;
+    const h = b.F;
     let k;
     if (cb(d)) h && (k = h.offset - 1, e = h.parent.childNodes[k]);else if (h) k = h.offset - 1, f = x(a, b, null), e = a.getChildNodes(f.node, c)[k];else {
       for (e = d; e && (!(e = a.h.getPreviousSibling(e, c)) || 10 === e.nodeType););
       return e ? {
         node: e,
-        G: null
+        F: null
       } : null;
     }
     return e ? db(e, f || x(a, b, c), k) : null;
   }
-  var nb = class {
+  var ob = class {
     constructor(a) {
       this.h = a;
       this.o = [];
@@ -2549,15 +2549,15 @@ const fontoxpath = function (xspattern, prsc) {
       return this.h.getParentNode(a, b);
     }
   };
-  var ob = (a, b, c, d, e) => e.N(([f]) => d.N(([h]) => {
+  var pb = (a, b, c, d, e) => e.M(([f]) => d.M(([h]) => {
     const k = f.value;
-    if (0 >= k || k > h.h.length) throw Error("FOAY0001: array position out of bounds.");
-    return h.h[k - 1]();
+    if (0 >= k || k > h.members.length) throw Error("FOAY0001: array position out of bounds.");
+    return h.members[k - 1]();
   }));
-  var pb = class extends Va {
+  var qb = class extends Va {
     constructor(a) {
       super({
-        value: (b, c, d, e) => ob(b, c, d, w.m(this), e),
+        value: (b, c, d, e) => pb(b, c, d, w.m(this), e),
         localName: "get",
         namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
         j: [{
@@ -2571,10 +2571,10 @@ const fontoxpath = function (xspattern, prsc) {
         }
       });
       this.type = 62;
-      this.h = a;
+      this.members = a;
     }
   };
-  function qb(a) {
+  function rb(a) {
     switch (a.node.nodeType) {
       case 2:
         return 47;
@@ -2593,17 +2593,17 @@ const fontoxpath = function (xspattern, prsc) {
         return 53;
     }
   }
-  function rb(a) {
+  function sb(a) {
     return {
-      type: qb(a),
+      type: rb(a),
       value: a
     };
   }
-  function A(a, b) {
+  function tb(a, b) {
     a = a.map(c => c.first());
     return b(a);
   }
-  function sb(a, b) {
+  function ub(a, b) {
     var c = v(a.type, 1) || v(a.type, 20) || v(a.type, 19),
       d = v(b.type, 1) || v(b.type, 20) || v(b.type, 19);
     if (c && d) return a.value === b.value;
@@ -2614,8 +2614,8 @@ const fontoxpath = function (xspattern, prsc) {
     d = v(b.type, 0) || v(b.type, 22) || v(b.type, 18) || v(b.type, 23) || v(b.type, 44);
     return c && d ? a.value === b.value : !1;
   }
-  var tb = (a, b, c, d, e) => A([d, e], ([f, h]) => (f = f.h.find(k => sb(k.key, h))) ? f.value() : w.empty());
-  var ub = class extends Va {
+  var vb = (a, b, c, d, e) => tb([d, e], ([f, h]) => (f = f.h.find(k => ub(k.key, h))) ? f.value() : w.empty());
+  var wb = class extends Va {
     constructor(a) {
       super({
         j: [{
@@ -2625,7 +2625,7 @@ const fontoxpath = function (xspattern, prsc) {
         arity: 1,
         localName: "get",
         namespaceURI: "http://www.w3.org/2005/xpath-functions/map",
-        value: (b, c, d, e) => tb(b, c, d, w.m(this), e),
+        value: (b, c, d, e) => vb(b, c, d, w.m(this), e),
         i: {
           type: 59,
           g: 2
@@ -2635,11 +2635,11 @@ const fontoxpath = function (xspattern, prsc) {
       this.h = a;
     }
   };
-  function vb(a, b) {
-    return a.h() === b.h() && a.o() === b.o();
-  }
-  var wb = class {
-    $a() {
+  var xb = class {
+    equals(a) {
+      return this.o() === a.o() && this.v() === a.v();
+    }
+    Za() {
       return 0;
     }
     getHours() {
@@ -2648,27 +2648,30 @@ const fontoxpath = function (xspattern, prsc) {
     getMinutes() {
       return 0;
     }
-    ab() {
-      return 0;
-    }
-    h() {
+    $a() {
       return 0;
     }
     o() {
       return 0;
     }
+    v() {
+      return 0;
+    }
     getSeconds() {
       return 0;
     }
-    bb() {
+    ab() {
       return 0;
     }
     na() {
       return !0;
     }
+    h() {
+      return this;
+    }
   };
-  function xb(a) {
-    var b = Math.abs(a.$a()),
+  function yb(a) {
+    var b = Math.abs(a.Za()),
       c = Math.abs(a.getHours());
     const d = Math.abs(a.getMinutes());
     a = Math.abs(a.getSeconds());
@@ -2676,109 +2679,112 @@ const fontoxpath = function (xspattern, prsc) {
     c = (c ? `${c}H` : "") + (d ? `${d}M` : "") + (a ? `${a}S` : "");
     return b && c ? `${b}T${c}` : b ? b : c ? `T${c}` : "T0S";
   }
-  var yb = class extends wb {
+  var zb = class extends xb {
       constructor(a) {
         super();
         if (a > Number.MAX_SAFE_INTEGER || a < Number.MIN_SAFE_INTEGER) throw Error("FODT0002: Number of seconds given to construct DayTimeDuration overflows MAX_SAFE_INTEGER or MIN_SAFE_INTEGER");
-        this.ca = a;
+        this.ba = a;
       }
-      $a() {
-        return Math.trunc(this.ca / 86400);
+      Za() {
+        return Math.trunc(this.ba / 86400);
       }
       getHours() {
-        return Math.trunc(this.ca % 86400 / 3600);
+        return Math.trunc(this.ba % 86400 / 3600);
       }
       getMinutes() {
-        return Math.trunc(this.ca % 3600 / 60);
+        return Math.trunc(this.ba % 3600 / 60);
       }
-      o() {
-        return this.ca;
+      v() {
+        return this.ba;
       }
       getSeconds() {
-        const a = this.ca % 60;
+        const a = this.ba % 60;
         return Object.is(-0, a) ? 0 : a;
       }
       na() {
-        return Object.is(-0, this.ca) ? !1 : 0 <= this.ca;
+        return Object.is(-0, this.ba) ? !1 : 0 <= this.ba;
+      }
+      h() {
+        return new this.constructor(-this.ba);
       }
       toString() {
-        return (this.na() ? "P" : "-P") + xb(this);
+        return (this.na() ? "P" : "-P") + yb(this);
       }
     },
-    zb = (a, b, c, d, e, f) => {
+    Ab = (a, b, c, d, e, f) => {
       a = 86400 * a + 3600 * b + 60 * c + d + e;
-      return new yb(f || 0 === a ? a : -a);
+      return new zb(f || 0 === a ? a : -a);
     },
-    Ab = a => (a = /^(-)?P(\d+Y)?(\d+M)?(\d+D)?(?:T(\d+H)?(\d+M)?(\d+(\.\d*)?S)?)?$/.exec(a)) ? zb(a[4] ? parseInt(a[4], 10) : 0, a[5] ? parseInt(a[5], 10) : 0, a[6] ? parseInt(a[6], 10) : 0, a[7] ? parseInt(a[7], 10) : 0, a[8] ? parseFloat(a[8]) : 0, !a[1]) : null,
-    Bb = a => {
+    Bb = a => (a = /^(-)?P(\d+Y)?(\d+M)?(\d+D)?(?:T(\d+H)?(\d+M)?(\d+(\.\d*)?S)?)?$/.exec(a)) ? Ab(a[4] ? parseInt(a[4], 10) : 0, a[5] ? parseInt(a[5], 10) : 0, a[6] ? parseInt(a[6], 10) : 0, a[7] ? parseInt(a[7], 10) : 0, a[8] ? parseFloat(a[8]) : 0, !a[1]) : null,
+    Cb = a => {
       a = /^(Z)|([+-])([01]\d):([0-5]\d)$/.exec(a);
-      return "Z" === a[1] ? zb(0, 0, 0, 0, 0, !0) : zb(0, a[3] ? parseInt(a[3], 10) : 0, a[4] ? parseInt(a[4], 10) : 0, 0, 0, "+" === a[2]);
+      return "Z" === a[1] ? Ab(0, 0, 0, 0, 0, !0) : Ab(0, a[3] ? parseInt(a[3], 10) : 0, a[4] ? parseInt(a[4], 10) : 0, 0, 0, "+" === a[2]);
     };
-  function Cb(a, b) {
+  function Db(a, b) {
     if (isNaN(b)) throw Error("FOCA0005: Cannot multiply xs:dayTimeDuration by NaN");
-    a = a.ca * b;
+    a = a.ba * b;
     if (a > Number.MAX_SAFE_INTEGER || !Number.isFinite(a)) throw Error("FODT0002: Value overflow while multiplying xs:dayTimeDuration");
-    return new yb(a < Number.MIN_SAFE_INTEGER || Object.is(-0, a) ? 0 : a);
-  }
-  function Db(a) {
-    return a ? parseInt(a, 10) : null;
+    return new zb(a < Number.MIN_SAFE_INTEGER || Object.is(-0, a) ? 0 : a);
   }
   function Eb(a) {
+    return a ? parseInt(a, 10) : null;
+  }
+  function Fb(a) {
     a += "";
     const b = a.startsWith("-");
     b && (a = a.substring(1));
     return (b ? "-" : "") + a.padStart(4, "0");
   }
-  function Fb(a) {
+  function Gb(a) {
     return (a + "").padStart(2, "0");
   }
-  function Hb(a) {
+  function Ib(a) {
     a += "";
     1 === a.split(".")[0].length && (a = a.padStart(a.length + 1, "0"));
     return a;
   }
-  function Ib(a) {
-    return 0 === a.getHours() && 0 === a.getMinutes() ? "Z" : (a.na() ? "+" : "-") + Fb(Math.abs(a.getHours())) + ":" + Fb(Math.abs(a.getMinutes()));
-  }
   function Jb(a) {
+    return 0 === a.getHours() && 0 === a.getMinutes() ? "Z" : (a.na() ? "+" : "-") + Gb(Math.abs(a.getHours())) + ":" + Gb(Math.abs(a.getMinutes()));
+  }
+  function Kb(a) {
     var b = /^(?:(-?\d{4,}))?(?:--?(\d\d))?(?:-{1,3}(\d\d))?(T)?(?:(\d\d):(\d\d):(\d\d))?(\.\d+)?(Z|(?:[+-]\d\d:\d\d))?$/.exec(a);
     a = b[1] ? parseInt(b[1], 10) : null;
-    const c = Db(b[2]),
-      d = Db(b[3]),
+    const c = Eb(b[2]),
+      d = Eb(b[3]),
       e = b[4],
-      f = Db(b[5]),
-      h = Db(b[6]),
-      k = Db(b[7]),
+      f = Eb(b[5]),
+      h = Eb(b[6]),
+      k = Eb(b[7]),
       l = b[8] ? parseFloat(b[8]) : 0;
-    b = b[9] ? Bb(b[9]) : null;
+    b = b[9] ? Cb(b[9]) : null;
     if (a && (-271821 > a || 273860 < a)) throw Error("FODT0001: Datetime year is out of bounds");
-    return e ? new Kb(a, c, d, f, h, k, l, b, 9) : null !== f && null !== h && null !== k ? new Kb(1972, 12, 31, f, h, k, l, b, 8) : null !== a && null !== c && null !== d ? new Kb(a, c, d, 0, 0, 0, 0, b, 7) : null !== a && null !== c ? new Kb(a, c, 1, 0, 0, 0, 0, b, 11) : null !== c && null !== d ? new Kb(1972, c, d, 0, 0, 0, 0, b, 13) : null !== a ? new Kb(a, 1, 1, 0, 0, 0, 0, b, 12) : null !== c ? new Kb(1972, c, 1, 0, 0, 0, 0, b, 14) : new Kb(1972, 12, d, 0, 0, 0, 0, b, 15);
-  }
-  function Lb(a, b) {
-    switch (b) {
-      case 15:
-        return new Kb(1972, 12, a.o, 0, 0, 0, 0, a.Y, 15);
-      case 14:
-        return new Kb(1972, a.h, 1, 0, 0, 0, 0, a.Y, 14);
-      case 12:
-        return new Kb(a.v, 1, 1, 0, 0, 0, 0, a.Y, 12);
-      case 13:
-        return new Kb(1972, a.h, a.o, 0, 0, 0, 0, a.Y, 13);
-      case 11:
-        return new Kb(a.v, a.h, 1, 0, 0, 0, 0, a.Y, 11);
-      case 8:
-        return new Kb(1972, 12, 31, a.l, a.s, a.D, a.qa, a.Y, 8);
-      case 7:
-        return new Kb(a.v, a.h, a.o, 0, 0, 0, 0, a.Y, 7);
-      default:
-        return new Kb(a.v, a.h, a.o, a.l, a.s, a.D, a.qa, a.Y, 9);
-    }
+    return e ? new Lb(a, c, d, f, h, k, l, b, 9) : null !== f && null !== h && null !== k ? new Lb(1972, 12, 31, f, h, k, l, b, 8) : null !== a && null !== c && null !== d ? new Lb(a, c, d, 0, 0, 0, 0, b, 7) : null !== a && null !== c ? new Lb(a, c, 1, 0, 0, 0, 0, b, 11) : null !== c && null !== d ? new Lb(1972, c, d, 0, 0, 0, 0, b, 13) : null !== a ? new Lb(a, 1, 1, 0, 0, 0, 0, b, 12) : null !== c ? new Lb(1972, c, 1, 0, 0, 0, 0, b, 14) : new Lb(1972, 12, d, 0, 0, 0, 0, b, 15);
   }
   function Mb(a, b) {
-    b = a.Y || b || Bb("Z");
-    return new Date(Date.UTC(a.v, a.h - 1, a.o, a.l - b.getHours(), a.s - b.getMinutes(), a.D, 1E3 * a.qa));
+    switch (b) {
+      case 15:
+        return new Lb(1972, 12, a.o, 0, 0, 0, 0, a.W, 15);
+      case 14:
+        return new Lb(1972, a.h, 1, 0, 0, 0, 0, a.W, 14);
+      case 12:
+        return new Lb(a.v, 1, 1, 0, 0, 0, 0, a.W, 12);
+      case 13:
+        return new Lb(1972, a.h, a.o, 0, 0, 0, 0, a.W, 13);
+      case 11:
+        return new Lb(a.v, a.h, 1, 0, 0, 0, 0, a.W, 11);
+      case 8:
+        return new Lb(1972, 12, 31, a.l, a.s, a.D, a.ma, a.W, 8);
+      case 7:
+        return new Lb(a.v, a.h, a.o, 0, 0, 0, 0, a.W, 7);
+      default:
+        return new Lb(a.v, a.h, a.o, a.l, a.s, a.D, a.ma, a.W, 9);
+    }
   }
-  var Kb = class {
+  function Nb(a, b) {
+    b = a.W || b || Cb("Z");
+    return new Date(Date.UTC(a.v, a.h - 1, a.o, a.l - b.getHours(), a.s - b.getMinutes(), a.D, 1E3 * a.ma));
+  }
+  var Lb = class {
     constructor(a, b, c, d, e, f, h, k, l = 9) {
       this.v = a;
       this.h = b;
@@ -2786,8 +2792,8 @@ const fontoxpath = function (xspattern, prsc) {
       this.l = 24 === d ? 0 : d;
       this.s = e;
       this.D = f;
-      this.qa = h;
-      this.Y = k;
+      this.ma = h;
+      this.W = k;
       this.type = l;
     }
     getDay() {
@@ -2811,44 +2817,76 @@ const fontoxpath = function (xspattern, prsc) {
     toString() {
       switch (this.type) {
         case 9:
-          return Eb(this.v) + "-" + Fb(this.h) + "-" + Fb(this.o) + "T" + Fb(this.l) + ":" + Fb(this.s) + ":" + Hb(this.D + this.qa) + (this.Y ? Ib(this.Y) : "");
+          return Fb(this.v) + "-" + Gb(this.h) + "-" + Gb(this.o) + "T" + Gb(this.l) + ":" + Gb(this.s) + ":" + Ib(this.D + this.ma) + (this.W ? Jb(this.W) : "");
         case 7:
-          return Eb(this.v) + "-" + Fb(this.h) + "-" + Fb(this.o) + (this.Y ? Ib(this.Y) : "");
+          return Fb(this.v) + "-" + Gb(this.h) + "-" + Gb(this.o) + (this.W ? Jb(this.W) : "");
         case 8:
-          return Fb(this.l) + ":" + Fb(this.s) + ":" + Hb(this.D + this.qa) + (this.Y ? Ib(this.Y) : "");
+          return Gb(this.l) + ":" + Gb(this.s) + ":" + Ib(this.D + this.ma) + (this.W ? Jb(this.W) : "");
         case 15:
-          return "---" + Fb(this.o) + (this.Y ? Ib(this.Y) : "");
+          return "---" + Gb(this.o) + (this.W ? Jb(this.W) : "");
         case 14:
-          return "--" + Fb(this.h) + (this.Y ? Ib(this.Y) : "");
+          return "--" + Gb(this.h) + (this.W ? Jb(this.W) : "");
         case 13:
-          return "--" + Fb(this.h) + "-" + Fb(this.o) + (this.Y ? Ib(this.Y) : "");
+          return "--" + Gb(this.h) + "-" + Gb(this.o) + (this.W ? Jb(this.W) : "");
         case 12:
-          return Eb(this.v) + (this.Y ? Ib(this.Y) : "");
+          return Fb(this.v) + (this.W ? Jb(this.W) : "");
         case 11:
-          return Eb(this.v) + "-" + Fb(this.h) + (this.Y ? Ib(this.Y) : "");
+          return Fb(this.v) + "-" + Gb(this.h) + (this.W ? Jb(this.W) : "");
       }
       throw Error("Unexpected subType");
     }
   };
-  function Nb(a, b, c) {
-    const d = Mb(a, c).getTime();
-    c = Mb(b, c).getTime();
-    return d === c ? a.qa === b.qa ? 0 : a.qa > b.qa ? 1 : -1 : d > c ? 1 : -1;
-  }
   function Ob(a, b, c) {
-    return 0 === Nb(a, b, c);
+    const d = Nb(a, c).getTime();
+    c = Nb(b, c).getTime();
+    return d === c ? a.ma === b.ma ? 0 : a.ma > b.ma ? 1 : -1 : d > c ? 1 : -1;
   }
   function Pb(a, b, c) {
-    a = (Mb(a, c).getTime() - Mb(b, c).getTime()) / 1E3;
-    return new yb(a);
+    return 0 === Ob(a, b, c);
   }
-  function Qb(a) {
-    throw Error(`Not implemented: adding durations to ${Da[a.type]}`);
+  function Qb(a, b, c) {
+    a = (Nb(a, c).getTime() - Nb(b, c).getTime()) / 1E3;
+    return new zb(a);
   }
-  function Rb(a) {
-    throw Error(`Not implemented: subtracting durations from ${Da[a.type]}`);
+  function Rb(a, b) {
+    function c(y, F) {
+      return 2 === F ? 0 === y % 4 && 0 !== y % 100 || 0 === y % 400 ? 29 : 28 : [4, 6, 9, 11].includes(F) ? 30 : 31;
+    }
+    const d = a.W;
+    let e = a.getYear(),
+      f = a.getMonth(),
+      h = a.getDay(),
+      k = a.getHours(),
+      l = a.getMinutes(),
+      n = a.getSeconds();
+    const t = a.ma;
+    e += b.ab();
+    for (f += b.$a(); 12 < f;) f -= 12, e += 1;
+    for (; 1 > f;) f += 12, --e;
+    var u = c(a.getYear(), a.getMonth());
+    u = a.getDay() === u;
+    const z = c(e, f);
+    u && (h = z);
+    h += b.Za();
+    k += b.getHours();
+    l += b.getMinutes();
+    n += b.getSeconds();
+    60 <= n ? (l += Math.floor(n / 60), n %= 60) : 0 > n && (l -= Math.ceil(Math.abs(n) / 60), n = (n % 60 + 60) % 60);
+    60 <= l ? (k += Math.floor(l / 60), l %= 60) : 0 > l && (k -= Math.ceil(Math.abs(l) / 60), l = (l % 60 + 60) % 60);
+    24 <= k ? (h += Math.floor(k / 24), k %= 24) : 0 > k && (h -= Math.ceil(Math.abs(k) / 24), k = (k % 24 + 24) % 24);
+    for (; h > c(e, f);) h -= c(e, f), f += 1;
+    for (; 1 > h;) --f, h += c(e, f);
+    for (; 12 < f;) f -= 12, e += 1;
+    for (; 1 > f;) f += 12, --e;
+    return new Lb(e, f, h, k, l, n, t, d, a.type);
   }
   function Sb(a, b) {
+    return Rb(a, b);
+  }
+  function Tb(a, b) {
+    return Rb(a, b.h());
+  }
+  function Ub(a, b) {
     if (null === a) return null;
     switch (typeof a) {
       case "boolean":
@@ -2858,22 +2896,22 @@ const fontoxpath = function (xspattern, prsc) {
       case "string":
         return g(a, 1);
       case "object":
-        if ("nodeType" in a) return rb({
+        if ("nodeType" in a) return sb({
           node: a,
-          G: null
+          F: null
         });
-        if (Array.isArray(a)) return new pb(a.map(c => {
+        if (Array.isArray(a)) return new qb(a.map(c => {
           if (void 0 === c) return () => w.empty();
-          c = Sb(c);
+          c = Ub(c);
           c = null === c ? w.empty() : w.m(c);
           return Ra(c);
         }));
         if (a instanceof Date) {
-          const c = Jb(a.toISOString());
+          const c = Kb(a.toISOString());
           return g(c, c.type);
         }
-        return new ub(Object.keys(a).filter(c => void 0 !== a[c]).map(c => {
-          var d = Sb(a[c]);
+        return new wb(Object.keys(a).filter(c => void 0 !== a[c]).map(c => {
+          var d = Ub(a[c]);
           d = null === d ? w.empty() : w.m(d);
           return {
             key: g(c, 1),
@@ -2883,10 +2921,10 @@ const fontoxpath = function (xspattern, prsc) {
     }
     throw Error(`Value ${String(a)} of type "${typeof a}" is not adaptable to an XPath value.`);
   }
-  function Tb(a, b) {
+  function Vb(a, b) {
     if ("number" !== typeof a && ("string" !== typeof a || !ta.get(b)(a))) throw Error(`Cannot convert JavaScript value '${a}' to the XPath type ${Da[b]} since it is not valid.`);
   }
-  function Ub(a, b, c) {
+  function Wb(a, b, c) {
     if (null === b) return null;
     switch (a) {
       case 0:
@@ -2895,13 +2933,13 @@ const fontoxpath = function (xspattern, prsc) {
         return g(b + "", 1);
       case 3:
       case 2:
-        return Tb(b, 3), g(+b, 3);
+        return Vb(b, 3), g(+b, 3);
       case 4:
-        return Tb(b, a), g(+b, 4);
+        return Vb(b, a), g(+b, 4);
       case 5:
-        return Tb(b, a), g(b | 0, 5);
+        return Vb(b, a), g(b | 0, 5);
       case 6:
-        return Tb(b, a), g(+b, 6);
+        return Vb(b, a), g(+b, 6);
       case 7:
       case 8:
       case 9:
@@ -2911,7 +2949,7 @@ const fontoxpath = function (xspattern, prsc) {
       case 14:
       case 15:
         if (!(b instanceof Date)) throw Error(`The JavaScript value ${b} with type ${typeof b} is not a valid type to be converted to an XPath ${Da[a]}.`);
-        return g(Lb(Jb(b.toISOString()), a), a);
+        return g(Mb(Kb(b.toISOString()), a), a);
       case 53:
       case 47:
       case 55:
@@ -2920,109 +2958,109 @@ const fontoxpath = function (xspattern, prsc) {
       case 57:
       case 58:
         if ("object" !== typeof b || !("nodeType" in b)) throw Error(`The JavaScript value ${b} with type ${typeof b} is not a valid type to be converted to an XPath ${Da[a]}.`);
-        return rb({
+        return sb({
           node: b,
-          G: null
+          F: null
         });
       case 59:
-        return Sb(b);
+        return Ub(b);
       case 61:
-        return Sb(b);
+        return Ub(b);
       default:
         throw Error(`Values of the type "${Da[a]}" can not be adapted from JavaScript to equivalent XPath values.`);
     }
   }
-  function Vb(a, b, c) {
-    if (0 === c.g) return b = Ub(c.type, b), null === b ? [] : [b];
+  function Xb(a, b, c) {
+    if (0 === c.g) return b = Wb(c.type, b), null === b ? [] : [b];
     if (2 === c.g || 1 === c.g) {
       if (!Array.isArray(b)) throw Error(`The JavaScript value ${b} should be an array if it is to be converted to ${Ha(c)}.`);
-      return b.map(e => Ub(c.type, e)).filter(e => null !== e);
+      return b.map(e => Wb(c.type, e)).filter(e => null !== e);
     }
-    const d = Ub(c.type, b);
+    const d = Wb(c.type, b);
     if (null === d) throw Error(`The JavaScript value ${b} should be a single entry if it is to be converted to ${Ha(c)}.`);
     return [d];
   }
-  function Wb(a, b, c = {
+  function Yb(a, b, c = {
     type: 59,
     g: 0
   }) {
-    return w.create(Vb(a, b, c));
+    return w.create(Xb(a, b, c));
   }
-  var ac = class {
+  var bc = class {
       constructor() {
-        this.h = Math.abs(Math.floor(Math.random() * $b) % $b);
+        this.h = Math.abs(Math.floor(Math.random() * ac) % ac);
       }
     },
-    $b = 2 ** 32;
-  function bc(a, b, c, d) {
-    return new cc({
-      M: c,
-      Aa: b,
-      ta: d || a.ta,
-      ra: a.ra
+    ac = 2 ** 32;
+  function cc(a, b, c, d) {
+    return new dc({
+      L: c,
+      Ba: b,
+      sa: d || a.sa,
+      qa: a.qa
     }, a.h, a.o);
   }
-  function dc(a, b) {
+  function ec(a, b) {
     let c = 0;
     const d = b.value;
     return {
       next: e => {
         e = d.next(e);
-        return e.done ? p : q(bc(a, c++, e.value, b));
+        return e.done ? p : q(cc(a, c++, e.value, b));
       }
     };
   }
-  function ec(a) {
-    a.h.ib || (a.h.ib = !0, a.h.qb = Jb(new Date().toISOString()), a.h.vb = Ab("PT0S"));
+  function fc(a) {
+    a.h.ib || (a.h.ib = !0, a.h.qb = Kb(new Date().toISOString()), a.h.vb = Bb("PT0S"));
     return a.h.qb;
   }
-  function fc(a) {
-    a.h.ib || (a.h.ib = !0, a.h.qb = Jb(new Date().toISOString()), a.h.vb = Ab("PT0S"));
+  function gc(a) {
+    a.h.ib || (a.h.ib = !0, a.h.qb = Kb(new Date().toISOString()), a.h.vb = Bb("PT0S"));
     return a.h.vb;
   }
-  function gc(a, b = null) {
-    a = 29421 * (null !== b && void 0 !== b ? b : a.o.h) % $b;
+  function hc(a, b = null) {
+    a = 29421 * (null !== b && void 0 !== b ? b : a.o.h) % ac;
     return {
       rb: Math.floor(a),
-      $b: a / $b
+      bc: a / ac
     };
   }
-  function hc(a, b) {
-    return new cc({
-      M: a.M,
-      Aa: a.Aa,
-      ta: a.ta,
-      ra: Object.assign(Object.create(null), a.ra, b)
+  function ic(a, b) {
+    return new dc({
+      L: a.L,
+      Ba: a.Ba,
+      sa: a.sa,
+      qa: Object.assign(Object.create(null), a.qa, b)
     }, a.h, a.o);
   }
-  var cc = class {
+  var dc = class {
     constructor(a, b = {
       qb: null,
       vb: null,
       ib: !1
-    }, c = new ac()) {
+    }, c = new bc()) {
       this.h = b;
-      this.Aa = a.Aa;
-      this.ta = a.ta;
-      this.M = a.M;
-      this.ra = a.ra || Object.create(null);
+      this.Ba = a.Ba;
+      this.sa = a.sa;
+      this.L = a.L;
+      this.qa = a.qa || Object.create(null);
       this.o = c;
     }
   };
-  var ic = class {
+  var jc = class {
     constructor(a, b, c, d, e, f, h, k, l) {
       this.debug = a;
       this.Ha = b;
       this.h = c;
       this.Ja = d;
-      this.Ma = e;
+      this.Oa = e;
       this.o = f;
       this.v = h;
       this.jb = k;
-      this.Ua = l;
+      this.Wa = l;
     }
   };
-  function jc(a) {
+  function kc(a) {
     let b = 0,
       c = null,
       d = !0;
@@ -3038,18 +3076,18 @@ const fontoxpath = function (xspattern, prsc) {
       }
     });
   }
-  var kc = (a, b, c) => Error(`FORG0001: Cannot cast ${a} to ${Da[b]}${c ? `, ${c}` : ""}`),
-    lc = a => Error(`XPDY0002: ${a}`),
-    mc = a => Error(`XPTY0004: ${a}`),
-    nc = a => Error(`FOTY0013: Atomization is not supported for ${Da[a]}.`),
-    oc = a => Error(`XPST0081: The prefix ${a} could not be resolved.`);
-  function pc(a, b) {
+  var lc = (a, b, c) => Error(`FORG0001: Cannot cast ${a} to ${Da[b]}${c ? `, ${c}` : ""}`),
+    mc = a => Error(`XPDY0002: ${a}`),
+    nc = a => Error(`XPTY0004: ${a}`),
+    oc = a => Error(`FOTY0013: Atomization is not supported for ${Da[a]}.`),
+    pc = a => Error(`XPST0081: The prefix ${a} could not be resolved.`);
+  function qc(a, b) {
     if (v(a.type, 46) || v(a.type, 19) || v(a.type, 0) || v(a.type, 4) || v(a.type, 3) || v(a.type, 6) || v(a.type, 5) || v(a.type, 2) || v(a.type, 23) || v(a.type, 1)) return w.create(a);
     const c = b.h;
     if (v(a.type, 53)) {
       const d = a.value;
-      if (2 === d.node.nodeType || 3 === d.node.nodeType) return w.create(g(ib(c, d), 19));
-      if (8 === d.node.nodeType || 7 === d.node.nodeType) return w.create(g(ib(c, d), 1));
+      if (2 === d.node.nodeType || 3 === d.node.nodeType) return w.create(g(hb(c, d), 19));
+      if (8 === d.node.nodeType || 7 === d.node.nodeType) return w.create(g(hb(c, d), 1));
       const e = [];
       (function k(h) {
         if (8 !== d.node.nodeType && 7 !== d.node.nodeType) {
@@ -3061,11 +3099,11 @@ const fontoxpath = function (xspattern, prsc) {
       })(d.node);
       return w.create(g(e.join(""), 19));
     }
-    if (v(a.type, 60) && !v(a.type, 62)) throw nc(a.type);
-    if (v(a.type, 62)) return jc(a.h.map(d => qc(d(), b)));
+    if (v(a.type, 60) && !v(a.type, 62)) throw oc(a.type);
+    if (v(a.type, 62)) return kc(a.members.map(d => rc(d(), b)));
     throw Error(`Atomizing ${a.type} is not implemented.`);
   }
-  function qc(a, b) {
+  function rc(a, b) {
     let c = !1;
     const d = a.value;
     let e = null;
@@ -3078,7 +3116,7 @@ const fontoxpath = function (xspattern, prsc) {
               c = !0;
               break;
             }
-            e = pc(f.value, b).value;
+            e = qc(f.value, b).value;
           }
           f = e.next(0);
           if (f.done) e = null;else return f;
@@ -3087,15 +3125,15 @@ const fontoxpath = function (xspattern, prsc) {
       }
     });
   }
-  function rc(a) {
+  function sc(a) {
     for (a = ua[a]; a && 0 !== a.C;) a = a.parent;
     return a ? a.type : null;
   }
-  function sc(a, b) {
+  function tc(a, b) {
     b = ua[b];
-    const c = b.Ka;
-    if (!c || !c.whiteSpace) return b.parent ? sc(a, b.parent.type) : a;
-    switch (b.Ka.whiteSpace) {
+    const c = b.La;
+    if (!c || !c.whiteSpace) return b.parent ? tc(a, b.parent.type) : a;
+    switch (b.La.whiteSpace) {
       case "replace":
         return a.replace(/[\u0009\u000A\u000D]/g, " ");
       case "collapse":
@@ -3103,36 +3141,36 @@ const fontoxpath = function (xspattern, prsc) {
     }
     return a;
   }
-  function tc(a, b) {
+  function uc(a, b) {
     for (b = ua[b]; b && null === b.gb;) {
       if (2 === b.C || 3 === b.C) return !0;
       b = b.parent;
     }
     return b ? b.gb(a) : !0;
   }
-  function uc(a, b) {
+  function vc(a, b) {
     for (; a;) {
-      if (a.Oa && a.Oa[b]) return a.Oa[b];
+      if (a.Qa && a.Qa[b]) return a.Qa[b];
       a = a.parent;
     }
     return () => !0;
   }
-  function vc(a, b) {
+  function wc(a, b) {
     let c = ua[b];
     for (; c;) {
-      if (c.Ka && !Object.keys(c.Ka).every(d => {
+      if (c.La && !Object.keys(c.La).every(d => {
         if ("whiteSpace" === d) return !0;
-        const e = uc(c, d);
-        return e ? e(a, c.Ka[d]) : !0;
+        const e = vc(c, d);
+        return e ? e(a, c.La[d]) : !0;
       })) return !1;
       c = c.parent;
     }
     return !0;
   }
-  function wc(a) {
+  function xc(a) {
     return a ? 2 === a.g || 0 === a.g : !0;
   }
-  function xc(a) {
+  function yc(a) {
     return a(1) || a(19) ? b => ({
       u: !0,
       value: g(b, 20)
@@ -3141,7 +3179,7 @@ const fontoxpath = function (xspattern, prsc) {
       error: Error("XPTY0004: Casting not supported from given type to xs:anyURI or any of its derived types.")
     });
   }
-  function yc(a) {
+  function zc(a) {
     return a(22) ? b => {
       let c = "";
       for (let d = 0; d < b.length; d += 2) c += String.fromCharCode(parseInt(b.substr(d, 2), 16));
@@ -3157,7 +3195,7 @@ const fontoxpath = function (xspattern, prsc) {
       u: !1
     });
   }
-  function zc(a) {
+  function Ac(a) {
     return a(2) ? b => ({
       u: !0,
       value: 0 === b || isNaN(b) ? wa : va
@@ -3186,39 +3224,39 @@ const fontoxpath = function (xspattern, prsc) {
       error: Error("XPTY0004: Casting not supported from given type to xs:boolean or any of its derived types.")
     });
   }
-  function Dc(a) {
+  function Ec(a) {
     return a(9) ? b => ({
       u: !0,
-      value: g(Lb(b, 7), 7)
+      value: g(Mb(b, 7), 7)
     }) : a(19) || a(1) ? b => ({
       u: !0,
-      value: g(Jb(b), 7)
+      value: g(Kb(b), 7)
     }) : () => ({
       u: !1,
       error: Error("XPTY0004: Casting not supported from given type to xs:date or any of its derived types.")
     });
   }
-  function Ec(a) {
+  function Fc(a) {
     return a(7) ? b => ({
       u: !0,
-      value: g(Lb(b, 9), 9)
+      value: g(Mb(b, 9), 9)
     }) : a(19) || a(1) ? b => ({
       u: !0,
-      value: g(Jb(b), 9)
+      value: g(Kb(b), 9)
     }) : () => ({
       u: !1,
       error: Error("XPTY0004: Casting not supported from given type to xs:dateTime or any of its derived types.")
     });
   }
-  function Fc(a) {
+  function Gc(a) {
     return a(18) && !a(16) ? b => ({
       u: !0,
-      value: g(b.Ga, 17)
+      value: g(b.za, 17)
     }) : a(16) ? () => ({
       u: !0,
-      value: g(Ab("PT0.0S"), 17)
+      value: g(Bb("PT0.0S"), 17)
     }) : a(19) || a(1) ? b => {
-      const c = Ab(b);
+      const c = Bb(b);
       return c ? {
         u: !0,
         value: g(c, 17)
@@ -3231,7 +3269,7 @@ const fontoxpath = function (xspattern, prsc) {
       error: Error("XPTY0004: Casting not supported from given type to xs:dayTimeDuration or any of its derived types.")
     });
   }
-  function Gc(a) {
+  function Hc(a) {
     return a(5) ? b => ({
       u: !0,
       value: g(b, 4)
@@ -3261,7 +3299,7 @@ const fontoxpath = function (xspattern, prsc) {
       error: Error("XPTY0004: Casting not supported from given type to xs:decimal or any of its derived types.")
     });
   }
-  function Hc(a, b) {
+  function Ic(a, b) {
     return a(2) ? c => ({
       u: !0,
       value: c
@@ -3301,7 +3339,7 @@ const fontoxpath = function (xspattern, prsc) {
       const d = parseFloat(c);
       return isNaN(d) ? {
         u: !1,
-        error: kc(c, b)
+        error: lc(c, b)
       } : {
         u: !0,
         value: d
@@ -3311,8 +3349,8 @@ const fontoxpath = function (xspattern, prsc) {
       error: Error(`XPTY0004: Casting not supported from given type to ${b} or any of its derived types.`)
     });
   }
-  function Ic(a) {
-    const b = Hc(a, 3);
+  function Jc(a) {
+    const b = Ic(a, 3);
     return c => {
       c = b(c);
       return c.u ? {
@@ -3321,96 +3359,102 @@ const fontoxpath = function (xspattern, prsc) {
       } : c;
     };
   }
-  function Jc(a) {
-    const b = Math.abs(a.bb());
-    a = Math.abs(a.ab());
+  function Kc(a) {
+    const b = Math.abs(a.ab());
+    a = Math.abs(a.$a());
     return `${b ? `${b}Y` : ""}` + `${a ? `${a}M` : ""}` || "0M";
   }
-  var Kc = class extends wb {
+  var Lc = class extends xb {
       constructor(a) {
         super();
         if (a > Number.MAX_SAFE_INTEGER || a < Number.MIN_SAFE_INTEGER) throw Error("FODT0002: Number of months given to construct YearMonthDuration overflows MAX_SAFE_INTEGER or MIN_SAFE_INTEGER");
-        this.ea = a;
+        this.da = a;
       }
-      ab() {
-        const a = this.ea % 12;
+      $a() {
+        const a = this.da % 12;
         return 0 === a ? 0 : a;
       }
-      h() {
-        return this.ea;
+      o() {
+        return this.da;
       }
-      bb() {
-        return Math.trunc(this.ea / 12);
+      ab() {
+        return Math.trunc(this.da / 12);
       }
       na() {
-        return Object.is(-0, this.ea) ? !1 : 0 <= this.ea;
+        return Object.is(-0, this.da) ? !1 : 0 <= this.da;
+      }
+      h() {
+        return new this.constructor(-this.da);
       }
       toString() {
-        return (this.na() ? "P" : "-P") + Jc(this);
+        return (this.na() ? "P" : "-P") + Kc(this);
       }
     },
-    Lc = a => {
+    Mc = a => {
       var b = /^(-)?P(\d+Y)?(\d+M)?(\d+D)?(?:T(\d+H)?(\d+M)?(\d+(\.\d*)?S)?)?$/.exec(a);
       if (b) {
         a = !b[1];
         b = 12 * (b[2] ? parseInt(b[2], 10) : 0) + (b[3] ? parseInt(b[3], 10) : 0);
         if (b > Number.MAX_SAFE_INTEGER || !Number.isFinite(b)) throw Error("FODT0002: Value overflow while constructing xs:yearMonthDuration");
-        a = new Kc(a || 0 === b ? b : -b);
+        a = new Lc(a || 0 === b ? b : -b);
       } else a = null;
       return a;
     };
-  function Mc(a, b) {
+  function Nc(a, b) {
     if (isNaN(b)) throw Error("FOCA0005: Cannot multiply xs:yearMonthDuration by NaN");
-    a = Math.round(a.ea * b);
+    a = Math.round(a.da * b);
     if (a > Number.MAX_SAFE_INTEGER || !Number.isFinite(a)) throw Error("FODT0002: Value overflow while constructing xs:yearMonthDuration");
-    return new Kc(a < Number.MIN_SAFE_INTEGER || 0 === a ? 0 : a);
+    return new Lc(a < Number.MIN_SAFE_INTEGER || 0 === a ? 0 : a);
   }
-  var Nc = class extends wb {
+  var Oc = class extends xb {
     constructor(a, b) {
       super();
-      this.Va = a;
-      this.Ga = b;
+      this.Na = a;
+      this.za = b;
     }
-    $a() {
-      return this.Ga.$a();
+    Za() {
+      return this.za.Za();
     }
     getHours() {
-      return this.Ga.getHours();
+      return this.za.getHours();
     }
     getMinutes() {
-      return this.Ga.getMinutes();
+      return this.za.getMinutes();
     }
-    ab() {
-      return this.Va.ab();
-    }
-    h() {
-      return this.Va.h();
+    $a() {
+      return this.Na.$a();
     }
     o() {
-      return this.Ga.o();
+      return this.Na.o();
+    }
+    v() {
+      return this.za.v();
     }
     getSeconds() {
-      return this.Ga.getSeconds();
+      return this.za.getSeconds();
     }
-    bb() {
-      return this.Va.bb();
+    ab() {
+      return this.Na.ab();
     }
     na() {
-      return this.Va.na() && this.Ga.na();
+      return this.Na.na() && this.za.na();
+    }
+    h() {
+      return new this.constructor(this.Na.h(), this.za.h());
     }
     toString() {
       const a = this.na() ? "P" : "-P",
-        b = Jc(this.Va),
-        c = xb(this.Ga);
+        b = Kc(this.Na),
+        c = yb(this.za);
       return "0M" === b ? a + c : "T0S" === c ? a + b : a + b + c;
     }
   };
-  function Oc(a) {
+  function Pc(a) {
     return a(16) ? b => ({
       u: !0,
-      value: g(new Nc(b, new yb(b.na() ? 0 : -0)), 18)
+      value: g(new Oc(b, new zb(b.na() ? 0 : -0)), 18)
     }) : a(17) ? b => {
-      b = new Nc(new Kc(b.na() ? 0 : -0), b);
+      b = new Oc(new Lc(b.na() ? 0 : -0), b);
       return {
         u: !0,
         value: g(b, 18)
@@ -3420,7 +3464,7 @@ const fontoxpath = function (xspattern, prsc) {
       value: g(b, 18)
     }) : a(19) || a(1) ? b => {
       var c;
-      return c = new Nc(Lc(b), Ab(b)), {
+      return c = new Oc(Mc(b), Bb(b)), {
         u: !0,
         value: g(c, 18)
       };
@@ -3429,8 +3473,8 @@ const fontoxpath = function (xspattern, prsc) {
       error: Error("XPTY0004: Casting not supported from given type to xs:duration or any of its derived types.")
     });
   }
-  function Pc(a) {
-    const b = Hc(a, 6);
+  function Qc(a) {
+    const b = Ic(a, 6);
     return c => {
       c = b(c);
       return c.u ? {
@@ -3439,67 +3483,67 @@ const fontoxpath = function (xspattern, prsc) {
       } : c;
     };
   }
-  function Qc(a) {
+  function Rc(a) {
     return a(7) || a(9) ? b => ({
       u: !0,
-      value: g(Lb(b, 15), 15)
+      value: g(Mb(b, 15), 15)
     }) : a(19) || a(1) ? b => ({
       u: !0,
-      value: g(Jb(b), 15)
+      value: g(Kb(b), 15)
     }) : () => ({
       u: !1,
       error: Error("XPTY0004: Casting not supported from given type to xs:gDay or any of its derived types.")
     });
   }
-  function Rc(a) {
+  function Sc(a) {
     return a(7) || a(9) ? b => ({
       u: !0,
-      value: g(Lb(b, 14), 14)
+      value: g(Mb(b, 14), 14)
     }) : a(19) || a(1) ? b => ({
       u: !0,
-      value: g(Jb(b), 14)
+      value: g(Kb(b), 14)
     }) : () => ({
       u: !1,
       error: Error("XPTY0004: Casting not supported from given type to xs:gMonth or any of its derived types.")
     });
   }
-  function Sc(a) {
+  function Tc(a) {
     return a(7) || a(9) ? b => ({
       u: !0,
-      value: g(Lb(b, 13), 13)
+      value: g(Mb(b, 13), 13)
     }) : a(19) || a(1) ? b => ({
       u: !0,
-      value: g(Jb(b), 13)
+      value: g(Kb(b), 13)
     }) : () => ({
       u: !1,
       error: Error("XPTY0004: Casting not supported from given type to xs:gMonthDay or any of its derived types.")
     });
   }
-  function Tc(a) {
+  function Uc(a) {
     return a(7) || a(9) ? b => ({
       u: !0,
-      value: g(Lb(b, 12), 12)
+      value: g(Mb(b, 12), 12)
     }) : a(19) || a(1) ? b => ({
       u: !0,
-      value: g(Jb(b), 12)
+      value: g(Kb(b), 12)
     }) : () => ({
       u: !1,
       error: Error("XPTY0004: Casting not supported from given type to xs:gYear or any of its derived types.")
     });
   }
-  function Uc(a) {
+  function Vc(a) {
     return a(7) || a(9) ? b => ({
       u: !0,
-      value: g(Lb(b, 11), 11)
+      value: g(Mb(b, 11), 11)
     }) : a(19) || a(1) ? b => ({
       u: !0,
-      value: g(Jb(b), 11)
+      value: g(Kb(b), 11)
     }) : () => ({
       u: !1,
       error: Error("XPTY0004: Casting not supported from given type to xs:gYearMonth or any of its derived types.")
     });
   }
-  function Vc(a) {
+  function Wc(a) {
     return a(21) ? b => {
       b = atob(b);
       let c = "";
@@ -3516,7 +3560,7 @@ const fontoxpath = function (xspattern, prsc) {
       error: Error("XPTY0004: Casting not supported from given type to xs:hexBinary or any of its derived types.")
     });
   }
-  function Wc(a) {
+  function Xc(a) {
     return a(0) ? b => ({
       u: !0,
       value: g(b ? 1 : 0, 5)
@@ -3536,7 +3580,7 @@ const fontoxpath = function (xspattern, prsc) {
       const c = parseInt(b, 10);
       return isNaN(c) ? {
         u: !1,
-        error: kc(b, 5)
+        error: lc(b, 5)
       } : Number.isSafeInteger(c) ? {
         u: !0,
         value: g(c, 5)
@@ -3549,11 +3593,11 @@ const fontoxpath = function (xspattern, prsc) {
       error: Error("XPTY0004: Casting not supported from given type to xs:integer or any of its derived types.")
     });
   }
-  const Xc = [3, 6, 4, 5];
-  function Yc(a) {
-    var b = Zc;
+  const Yc = [3, 6, 4, 5];
+  function Zc(a) {
+    var b = $c;
     return c => {
-      for (const d of Xc) {
+      for (const d of Yc) {
         const e = b(a, d)(c);
         if (e.u) return e;
       }
@@ -3563,7 +3607,7 @@ const fontoxpath = function (xspattern, prsc) {
       };
     };
   }
-  function $c(a) {
+  function ad(a) {
     if (a(1) || a(19)) return b => ({
       u: !0,
       value: b + ""
@@ -3619,8 +3663,8 @@ const fontoxpath = function (xspattern, prsc) {
       value: b + ""
     });
   }
-  function ad(a) {
-    const b = $c(a);
+  function bd(a) {
+    const b = ad(a);
     return c => {
       c = b(c);
       return c.u ? {
@@ -3629,20 +3673,20 @@ const fontoxpath = function (xspattern, prsc) {
       } : c;
     };
   }
-  function bd(a) {
+  function cd(a) {
     return a(9) ? b => ({
       u: !0,
-      value: g(Lb(b, 8), 8)
+      value: g(Mb(b, 8), 8)
     }) : a(19) || a(1) ? b => ({
       u: !0,
-      value: g(Jb(b), 8)
+      value: g(Kb(b), 8)
     }) : () => ({
       u: !1,
       error: Error("XPTY0004: Casting not supported from given type to xs:time or any of its derived types.")
     });
   }
-  function cd(a) {
-    const b = $c(a);
+  function dd(a) {
+    const b = ad(a);
     return c => {
       c = b(c);
       return c.u ? {
@@ -3651,29 +3695,29 @@ const fontoxpath = function (xspattern, prsc) {
       } : c;
     };
   }
-  function dd(a) {
+  function ed(a) {
     return a(18) && !a(17) ? b => ({
       u: !0,
-      value: g(b.Va, 16)
+      value: g(b.Na, 16)
     }) : a(17) ? () => ({
       u: !0,
-      value: g(Lc("P0M"), 16)
+      value: g(Mc("P0M"), 16)
     }) : a(19) || a(1) ? b => {
-      const c = Lc(b);
+      const c = Mc(b);
       return c ? {
         u: !0,
         value: g(c, 16)
       } : {
         u: !1,
-        error: kc(b, 16)
+        error: lc(b, 16)
       };
     } : () => ({
       u: !1,
       error: Error("XPTY0004: Casting not supported from given type to xs:yearMonthDuration or any of its derived types.")
     });
   }
-  const ed = [2, 5, 17, 16];
-  function Zc(a, b) {
+  const fd = [2, 5, 17, 16];
+  function $c(a, b) {
     const c = d => v(a, d);
     if (39 === b) return () => ({
       u: !1,
@@ -3681,49 +3725,49 @@ const fontoxpath = function (xspattern, prsc) {
     });
     switch (b) {
       case 19:
-        return cd(c);
-      case 1:
-        return ad(c);
-      case 6:
-        return Pc(c);
-      case 3:
-        return Ic(c);
-      case 4:
-        return Gc(c);
-      case 5:
-        return Wc(c);
-      case 2:
-        return Yc(a);
-      case 18:
-        return Oc(c);
-      case 16:
         return dd(c);
-      case 17:
-        return Fc(c);
-      case 9:
-        return Ec(c);
-      case 8:
+      case 1:
         return bd(c);
-      case 7:
-        return Dc(c);
-      case 11:
-        return Uc(c);
-      case 12:
-        return Tc(c);
-      case 13:
-        return Sc(c);
-      case 15:
+      case 6:
         return Qc(c);
-      case 14:
-        return Rc(c);
-      case 0:
-        return zc(c);
-      case 21:
-        return yc(c);
-      case 22:
+      case 3:
+        return Jc(c);
+      case 4:
+        return Hc(c);
+      case 5:
+        return Xc(c);
+      case 2:
+        return Zc(a);
+      case 18:
+        return Pc(c);
+      case 16:
+        return ed(c);
+      case 17:
+        return Gc(c);
+      case 9:
+        return Fc(c);
+      case 8:
+        return cd(c);
+      case 7:
+        return Ec(c);
+      case 11:
         return Vc(c);
+      case 12:
+        return Uc(c);
+      case 13:
+        return Tc(c);
+      case 15:
+        return Rc(c);
+      case 14:
+        return Sc(c);
+      case 0:
+        return Ac(c);
+      case 21:
+        return zc(c);
+      case 22:
+        return Wc(c);
       case 20:
-        return xc(c);
+        return yc(c);
       case 23:
         throw Error("Casting to xs:QName is not implemented.");
     }
@@ -3733,7 +3777,7 @@ const fontoxpath = function (xspattern, prsc) {
     });
   }
   const gd = Object.create(null);
-  function hd(a, b) {
+  function id(a, b) {
     if (19 === a && 1 === b) return f => ({
       u: !0,
       value: g(f, 1)
@@ -3765,40 +3809,40 @@ const fontoxpath = function (xspattern, prsc) {
         value: f
       }
     });
-    const c = ed.includes(a) ? a : rc(a),
-      d = ed.includes(b) ? b : rc(b);
+    const c = fd.includes(a) ? a : sc(a),
+      d = fd.includes(b) ? b : sc(b);
     if (null === d || null === c) return () => ({
       u: !1,
       error: Error(`XPST0081: Can not cast: type ${d ? Da[a] : Da[b]} is unknown.`)
     });
     const e = [];
     1 !== c && 19 !== c || e.push(f => {
-      const h = sc(f, b);
-      return tc(h, b) ? {
+      const h = tc(f, b);
+      return uc(h, b) ? {
         u: !0,
         value: h
       } : {
         u: !1,
-        error: kc(f, b, "pattern validation failed.")
+        error: lc(f, b, "pattern validation failed.")
       };
     });
-    c !== d && (e.push(Zc(c, d)), e.push(f => ({
+    c !== d && (e.push($c(c, d)), e.push(f => ({
       u: !0,
       value: f.value
     })));
-    19 !== d && 1 !== d || e.push(f => tc(f, b) ? {
+    19 !== d && 1 !== d || e.push(f => uc(f, b) ? {
       u: !0,
       value: f
     } : {
       u: !1,
-      error: kc(f, b, "pattern validation failed.")
+      error: lc(f, b, "pattern validation failed.")
     });
-    e.push(f => vc(f, b) ? {
+    e.push(f => wc(f, b) ? {
       u: !0,
       value: f
     } : {
       u: !1,
-      error: kc(f, b, "pattern validation failed.")
+      error: lc(f, b, "pattern validation failed.")
     });
     e.push(f => ({
       u: !0,
@@ -3816,18 +3860,18 @@ const fontoxpath = function (xspattern, prsc) {
       return f;
     };
   }
-  function id(a, b) {
+  function jd(a, b) {
     const c = a.type + 1E4 * b;
     let d = gd[c];
-    d ||= gd[c] = hd(a.type, b);
+    d ||= gd[c] = id(a.type, b);
     return d.call(void 0, a.value, b);
   }
-  function jd(a, b) {
-    a = id(a, b);
+  function kd(a, b) {
+    a = jd(a, b);
     if (!0 === a.u) return a.value;
     throw a.error;
   }
-  function kd(a) {
+  function ld(a) {
     let b = !1;
     return {
       next: () => {
@@ -3837,59 +3881,59 @@ const fontoxpath = function (xspattern, prsc) {
       }
     };
   }
-  function ld(a, b) {
-    return a === b ? !0 : a && b && a.offset === b.offset && a.parent === b.parent ? ld(a.G, b.G) : !1;
-  }
   function md(a, b) {
-    return a === b || a.node === b.node && ld(a.G, b.G) ? !0 : !1;
+    return a === b ? !0 : a && b && a.offset === b.offset && a.parent === b.parent ? md(a.F, b.F) : !1;
   }
-  function nd(a, b, c) {
+  function nd(a, b) {
+    return a === b || a.node === b.node && md(a.F, b.F) ? !0 : !1;
+  }
+  function od(a, b, c) {
     var d = x(a, b, null);
-    a = hb(a, d, null);
+    a = gb(a, d, null);
     for (let e = 0, f = a.length; e < f; ++e) {
       d = a[e];
-      if (md(d, b)) return -1;
-      if (md(d, c)) return 1;
+      if (nd(d, b)) return -1;
+      if (nd(d, c)) return 1;
     }
   }
-  function od(a, b) {
+  function pd(a, b) {
     const c = [];
     for (; b; b = x(a, b, null)) c.unshift(b);
     return c;
   }
-  function pd(a, b) {
+  function qd(a, b) {
     const c = [];
     for (; b; b = a.getParentNode(b, null)) c.unshift(b);
     return c;
   }
-  function qd(a, b, c, d) {
-    if (c.G || d.G || cb(c.node) || cb(d.node)) {
-      if (md(c, d)) return 0;
-      c = od(b, c);
-      d = od(b, d);
+  function rd(a, b, c, d) {
+    if (c.F || d.F || cb(c.node) || cb(d.node)) {
+      if (nd(c, d)) return 0;
+      c = pd(b, c);
+      d = pd(b, d);
       const f = c[0],
         h = d[0];
-      if (!md(f, h)) return b = a.findIndex(k => md(k, f)), c = a.findIndex(k => md(k, h)), -1 === b && (b = a.push(f)), -1 === c && (c = a.push(h)), b - c;
+      if (!nd(f, h)) return b = a.findIndex(k => nd(k, f)), c = a.findIndex(k => nd(k, h)), -1 === b && (b = a.push(f)), -1 === c && (c = a.push(h)), b - c;
       a = 1;
-      for (var e = Math.min(c.length, d.length); a < e && md(c[a], d[a]); ++a);
-      return c[a] ? d[a] ? nd(b, c[a], d[a]) : 1 : -1;
+      for (var e = Math.min(c.length, d.length); a < e && nd(c[a], d[a]); ++a);
+      return c[a] ? d[a] ? od(b, c[a], d[a]) : 1 : -1;
     }
     c = c.node;
     e = d.node;
     if (c === e) return 0;
-    d = pd(b, c);
-    c = pd(b, e);
+    d = qd(b, c);
+    c = qd(b, e);
     if (d[0] !== c[0]) {
       const f = {
           node: d[0],
-          G: null
+          F: null
         },
         h = {
           node: c[0],
-          G: null
+          F: null
         };
-      b = a.findIndex(k => md(k, f));
-      c = a.findIndex(k => md(k, h));
+      b = a.findIndex(k => nd(k, f));
+      c = a.findIndex(k => nd(k, h));
       -1 === b && (b = a.push(f));
       -1 === c && (c = a.push(h));
       return b - c;
@@ -3907,36 +3951,35 @@ const fontoxpath = function (xspattern, prsc) {
       if (a === e) return 1;
     }
   }
-  function rd(a, b, c, d) {
+  function sd(a, b, c, d) {
     const e = v(c.type, 47),
       f = v(d.type, 47);
     if (e && !f) {
-      if (c = x(b, c.value), d = d.value, md(c, d)) return 1;
+      if (c = x(b, c.value), d = d.value, nd(c, d)) return 1;
     } else if (f && !e) {
-      if (c = c.value, d = x(b, d.value), md(c, d)) return -1;
+      if (c = c.value, d = x(b, d.value), nd(c, d)) return -1;
     } else if (e && f) {
-      if (md(x(b, d.value), x(b, c.value))) return c.value.node.localName > d.value.node.localName ? 1 : -1;
+      if (nd(x(b, d.value), x(b, c.value))) return c.value.node.localName > d.value.node.localName ? 1 : -1;
       c = x(b, c.value);
       d = x(b, d.value);
     } else c = c.value, d = d.value;
-    return qd(a, b, c, d);
+    return rd(a, b, c, d);
   }
-  function sd(a, b, c) {
-    return rd(a.o, a, b, c);
+  function td(a, b, c) {
+    return sd(a.o, a, b, c);
   }
-  function td(a, b) {
-    return ud(b, (c, d) => rd(a.o, a, c, d)).filter((c, d, e) => 0 === d ? !0 : !md(c.value, e[d - 1].value));
+  function ud(a, b) {
+    return vd(b, (c, d) => sd(a.o, a, c, d)).filter((c, d, e) => 0 === d ? !0 : !nd(c.value, e[d - 1].value));
   }
-  const vd = (a, b) => a < b ? -1 : 0;
-  function ud(a, b = vd) {
+  const wd = (a, b) => a < b ? -1 : 0;
+  function vd(a, b = wd) {
     if (1 >= a.length) return a;
     var c = Math.floor(a.length / 2);
-    const d = ud(a.slice(0, c), b);
-    a = ud(a.slice(c), b);
+    const d = vd(a.slice(0, c), b);
+    a = vd(a.slice(c), b);
     for (c = []; d.length && a.length;) 0 > b(d[0], a[0]) ? c.push(d.shift()) : c.push(a.shift());
     return c.concat(d.concat(a));
   }
-  var wd = xspattern;
   function xd(a, b) {
     if (v(a.type, 2)) {
       if (v(a.type, 6)) return 3 === b ? g(a.value, 3) : null;
@@ -3950,10 +3993,10 @@ const fontoxpath = function (xspattern, prsc) {
   }
   function yd(a, b, c, d, e) {
     if (v(a.type, b.type)) return a;
-    v(b.type, 46) && v(a.type, 53) && (a = pc(a, c).first());
+    v(b.type, 46) && v(a.type, 53) && (a = qc(a, c).first());
     if (v(a.type, b.type) || 46 === b.type) return a;
     if (v(a.type, 19)) {
-      c = jd(a, b.type);
+      c = kd(a, b.type);
       if (!c) throw Error(`XPTY0004 Unable to convert ${e ? "return" : "argument"} of type ${Da[a.type]} to type ${Ha(b)} while calling ${d}`);
       return c;
     }
@@ -3989,85 +4032,96 @@ const fontoxpath = function (xspattern, prsc) {
       throw Error(`XPTY0004: Multiplicity of ${e ? "function return value" : "function argument"} of type ${Da[a.type]}${zd(a.g)} for ${d} is incorrect. Expected exactly one`);
     }
   });
-  function Bd(a, b) {
+  function Bd(a, b, c) {
+    return (d, e, f) => {
+      if (null === d.L) throw mc(`The function ${a} depends on dynamic context, which is absent.`);
+      const h = Ad({
+        type: b,
+        g: 3
+      }, w.m(d.L), e, a, !1);
+      return c(d, e, f, h);
+    };
+  }
+  var Cd = xspattern;
+  function Dd(a, b) {
     return v(a, 5) ? g(b, 5) : v(a, 6) ? g(b, 6) : v(a, 3) ? g(b, 3) : g(b, 4);
   }
-  const Cd = [{
-    la: "M",
-    ja: 1E3
+  const Ed = [{
+    ka: "M",
+    ia: 1E3
   }, {
-    la: "CM",
-    ja: 900
+    ka: "CM",
+    ia: 900
   }, {
-    la: "D",
-    ja: 500
+    ka: "D",
+    ia: 500
   }, {
-    la: "CD",
-    ja: 400
+    ka: "CD",
+    ia: 400
   }, {
-    la: "C",
-    ja: 100
+    ka: "C",
+    ia: 100
   }, {
-    la: "XC",
-    ja: 90
+    ka: "XC",
+    ia: 90
   }, {
-    la: "L",
-    ja: 50
+    ka: "L",
+    ia: 50
   }, {
-    la: "XL",
-    ja: 40
+    ka: "XL",
+    ia: 40
   }, {
-    la: "X",
-    ja: 10
+    ka: "X",
+    ia: 10
   }, {
-    la: "IX",
-    ja: 9
+    ka: "IX",
+    ia: 9
   }, {
-    la: "V",
-    ja: 5
+    ka: "V",
+    ia: 5
   }, {
-    la: "IV",
-    ja: 4
+    ka: "IV",
+    ia: 4
   }, {
-    la: "I",
-    ja: 1
+    ka: "I",
+    ia: 1
   }];
-  function Dd(a, b) {
+  function Fd(a, b) {
     const c = 0 > a;
     a = Math.abs(a);
     if (!a) return "-";
-    let d = Cd.reduce((e, f) => {
-      const h = Math.floor(a / f.ja);
-      a -= h * f.ja;
-      return e + f.la.repeat(h);
+    let d = Ed.reduce((e, f) => {
+      const h = Math.floor(a / f.ia);
+      a -= h * f.ia;
+      return e + f.ka.repeat(h);
     }, "");
     b && (d = d.toLowerCase());
     c && (d = `-${d}`);
     return d;
   }
-  const Ed = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  function Fd(a, b) {
+  const Gd = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+  function Hd(a, b) {
     const c = 0 > a;
     a = Math.abs(a);
     if (!a) return "-";
     let d = "",
       e;
-    for (; 0 < a;) e = (a - 1) % Ed.length, d = Ed[e] + d, a = (a - e) / Ed.length | 0;
+    for (; 0 < a;) e = (a - 1) % Gd.length, d = Gd[e] + d, a = (a - e) / Gd.length | 0;
     b && (d = d.toLowerCase());
     c && (d = `-${d}`);
     return d;
   }
-  function Gd(a, b, c = []) {
+  function Id(a, b, c = []) {
     return Array.from({
       length: b
     }, (d, e) => e + a).filter(d => !c.includes(d));
   }
-  const Hd = Gd(1488, 27, [1498, 1501, 1503, 1507, 1509]),
-    Id = Gd(1575, 36, [1577, 1595, 1596, 1597, 1598, 1599, 1600, 1609]),
-    Jd = "\u0623\u0628\u062c\u062f\u0647\u0648\u0632\u062d\u0637\u064a\u0643\u0644\u0645\u0646\u0633\u0639\u0641\u0635\u0642\u0631\u0634\u062a\u062b\u062e\u0630\u0636\u0638\u063a".split(""),
-    Kd = [[1E3, "\u063a"], [900, "\u0638"], [800, "\u0636"], [700, "\u0630"], [600, "\u062e"], [500, "\u062b"], [400, "\u062a"], [300, "\u0634"], [200, "\u0631"], [100, "\u0642"], [90, "\u0635"], [80, "\u0641"], [70, "\u0639"], [60, "\u0633"], [50, "\u0646"], [40, "\u0645"], [30, "\u0644"], [20, "\u0643"], [10, "\u064a"], [9, "\u0637"], [8, "\u062d"], [7, "\u0632"], [6, "\u0648"], [5, "\u0647"], [4, "\u062f"], [3, "\u062c"], [2, "\u0628"], [1, "\u0623"]],
-    Ld = [[400, "\u05ea"], [300, "\u05e9"], [200, "\u05e8"], [100, "\u05e7"], [90, "\u05e6"], [80, "\u05e4"], [70, "\u05e2"], [60, "\u05e1"], [50, "\u05e0"], [40, "\u05de"], [30, "\u05dc"], [20, "\u05db"], [10, "\u05d9"], [9, "\u05d8"], [8, "\u05d7"], [7, "\u05d6"], [6, "\u05d5"], [5, "\u05d4"], [4, "\u05d3"], [3, "\u05d2"], [2, "\u05d1"], [1, "\u05d0"]];
-  function Md(a, b = []) {
+  const Jd = Id(1488, 27, [1498, 1501, 1503, 1507, 1509]),
+    Kd = Id(1575, 36, [1577, 1595, 1596, 1597, 1598, 1599, 1600, 1609]),
+    Ld = "\u0623\u0628\u062c\u062f\u0647\u0648\u0632\u062d\u0637\u064a\u0643\u0644\u0645\u0646\u0633\u0639\u0641\u0635\u0642\u0631\u0634\u062a\u062b\u062e\u0630\u0636\u0638\u063a".split(""),
+    Md = [[1E3, "\u063a"], [900, "\u0638"], [800, "\u0636"], [700, "\u0630"], [600, "\u062e"], [500, "\u062b"], [400, "\u062a"], [300, "\u0634"], [200, "\u0631"], [100, "\u0642"], [90, "\u0635"], [80, "\u0641"], [70, "\u0639"], [60, "\u0633"], [50, "\u0646"], [40, "\u0645"], [30, "\u0644"], [20, "\u0643"], [10, "\u064a"], [9, "\u0637"], [8, "\u062d"], [7, "\u0632"], [6, "\u0648"], [5, "\u0647"], [4, "\u062f"], [3, "\u062c"], [2, "\u0628"], [1, "\u0623"]],
+    Nd = [[400, "\u05ea"], [300, "\u05e9"], [200, "\u05e8"], [100, "\u05e7"], [90, "\u05e6"], [80, "\u05e4"], [70, "\u05e2"], [60, "\u05e1"], [50, "\u05e0"], [40, "\u05de"], [30, "\u05dc"], [20, "\u05db"], [10, "\u05d9"], [9, "\u05d8"], [8, "\u05d7"], [7, "\u05d6"], [6, "\u05d5"], [5, "\u05d4"], [4, "\u05d3"], [3, "\u05d2"], [2, "\u05d1"], [1, "\u05d0"]];
+  function Od(a, b = []) {
     var c = 25;
     b.sort((d, e) => d - e);
     c -= b.length;
@@ -4089,33 +4143,33 @@ const fontoxpath = function (xspattern, prsc) {
       return d;
     };
   }
-  const Nd = Md(945, [962]),
-    Od = Md(913, [930]);
-  function Pd(a) {
+  const Pd = Od(945, [962]),
+    Qd = Od(913, [930]);
+  function Rd(a) {
     return new Intl.NumberFormat([], {
       numberingSystem: "arab",
       useGrouping: !1
     }).format(a);
   }
-  function Qd(a) {
+  function Sd(a) {
     return new Intl.NumberFormat([], {
       numberingSystem: "arabext",
       useGrouping: !1
     }).format(a);
   }
-  const Rd = new Map([["A", function (a) {
-    return Fd(a, !1);
+  const Td = new Map([["A", function (a) {
+    return Hd(a, !1);
   }], ["a", function (a) {
-    return Fd(a, !0);
+    return Hd(a, !0);
   }], ["I", function (a) {
-    return Dd(a, !1);
+    return Fd(a, !1);
   }], ["i", function (a) {
-    return Dd(a, !0);
-  }], ["lowerGreek", Nd], ["\u03b1", Nd], ["upperGreek", Od], ["\u0391", Od], ["arabicAbjadi", function (a) {
+    return Fd(a, !0);
+  }], ["lowerGreek", Pd], ["\u03b1", Pd], ["upperGreek", Qd], ["\u0391", Qd], ["arabicAbjadi", function (a) {
     const b = 0 > a;
     a = Math.abs(a);
     if (!a) return "-";
-    a = Array(Math.floor((a - 1) / Jd.length) + 1).fill(Jd[(a - 1) % Jd.length]).join(String.fromCodePoint(8204));
+    a = Array(Math.floor((a - 1) / Ld.length) + 1).fill(Ld[(a - 1) % Ld.length]).join(String.fromCodePoint(8204));
     b && (a = `-${a}`);
     return a;
   }], ["arabicAbjadNumeral", function (a) {
@@ -4125,15 +4179,15 @@ const fontoxpath = function (xspattern, prsc) {
     var c = [],
       d = Math.floor(a / 1E3);
     a -= 1E3 * d;
-    if (1 === d) c.push(Kd[0][1]);else if (1 < d) {
-      for (const [f, h] of Kd) {
+    if (1 === d) c.push(Md[0][1]);else if (1 < d) {
+      for (const [f, h] of Md) {
         var e = f;
         const k = h;
         for (; d >= e;) c.push(k), d -= e;
       }
-      c.push(Kd[0][1]);
+      c.push(Md[0][1]);
     }
-    for (const [f, h] of Kd) for (d = f, e = h; a >= d;) a -= d, c.push(e);
+    for (const [f, h] of Md) for (d = f, e = h; a >= d;) a -= d, c.push(e);
     c = c.join("");
     b && (c = `-${c}`);
     return c;
@@ -4141,17 +4195,17 @@ const fontoxpath = function (xspattern, prsc) {
     const b = 0 > a;
     a = Math.abs(a);
     if (!a) return "-";
-    a = Array(Math.floor((a - 1) / Id.length) + 1).fill(String.fromCodePoint(Id[(a - 1) % Id.length])).join(String.fromCodePoint(8204));
+    a = Array(Math.floor((a - 1) / Kd.length) + 1).fill(String.fromCodePoint(Kd[(a - 1) % Kd.length])).join(String.fromCodePoint(8204));
     b && (a = `-${a}`);
     return a;
   }], ["hebrewAlefBet", function (a) {
     const b = 0 > a;
     a = Math.abs(a);
     if (!a) return "-";
-    var c = Math.floor((a - 1) / Hd.length);
+    var c = Math.floor((a - 1) / Jd.length);
     const d = String.fromCodePoint(1514);
     c = Array(c).fill(d);
-    c.push(String.fromCodePoint(Hd[(a - 1) % Hd.length]));
+    c.push(String.fromCodePoint(Jd[(a - 1) % Jd.length]));
     a = c.join("");
     b && (a = `-${a}`);
     return a;
@@ -4163,15 +4217,15 @@ const fontoxpath = function (xspattern, prsc) {
       d = Math.floor(a / 400);
     a -= 400 * d;
     for (var e = 0; e < d; e++) c.push("\u05ea");
-    for (const [f, h] of Ld) for (d = f, e = h; a >= d;) a -= d, c.push(e);
+    for (const [f, h] of Nd) for (d = f, e = h; a >= d;) a -= d, c.push(e);
     a = c.slice(-2).join("");
     "\u05d9\u05d4" === a && c.splice(-2, 2, "\u05d8", "\u05d5");
     "\u05d9\u05d5" === a && c.splice(-2, 2, "\u05d8", "\u05d6");
     c = c.join("");
     b && (c = `-${c}`);
     return c;
-  }], ["arabicIndicNumeral", Pd], ["\u0661", Pd], ["\u0662", Pd], ["\u0663", Pd], ["\u0664", Pd], ["\u0665", Pd], ["\u0666", Pd], ["\u0667", Pd], ["\u0668", Pd], ["\u0669", Pd], ["persianNumeral", Qd], ["\u06f1", Qd], ["\u06f2", Qd], ["\u06f3", Qd], ["\u06f4", Qd], ["\u06f5", Qd], ["\u06f6", Qd], ["\u06f7", Qd], ["\u06f8", Qd], ["\u06f9", Qd]]);
-  function Sd(a) {
+  }], ["arabicIndicNumeral", Rd], ["\u0661", Rd], ["\u0662", Rd], ["\u0663", Rd], ["\u0664", Rd], ["\u0665", Rd], ["\u0666", Rd], ["\u0667", Rd], ["\u0668", Rd], ["\u0669", Rd], ["persianNumeral", Sd], ["\u06f1", Sd], ["\u06f2", Sd], ["\u06f3", Sd], ["\u06f4", Sd], ["\u06f5", Sd], ["\u06f6", Sd], ["\u06f7", Sd], ["\u06f8", Sd], ["\u06f9", Sd]]);
+  function Ud(a) {
     if (Math.floor(a) === a || isNaN(a)) return 0;
     a = /\d+(?:\.(\d*))?(?:[Ee](-)?(\d+))*/.exec(`${a}`);
     const b = a[1] ? a[1].length : 0;
@@ -4182,10 +4236,10 @@ const fontoxpath = function (xspattern, prsc) {
     }
     return b;
   }
-  function Td(a, b, c) {
+  function Vd(a, b, c) {
     return b && 0 === a * c % 1 % .5 ? 0 === Math.floor(a * c) % 2 ? Math.floor(a * c) / c : Math.ceil(a * c) / c : Math.round(a * c) / c;
   }
-  function Ud(a, b, c, d, e, f) {
+  function Wd(a, b, c, d, e, f) {
     let h = !1;
     return w.create({
       next: () => {
@@ -4196,10 +4250,10 @@ const fontoxpath = function (xspattern, prsc) {
         var l;
         f ? l = f.first().value : l = 0;
         h = !0;
-        if (Sd(k.value) < l) return q(k);
+        if (Ud(k.value) < l) return q(k);
         const n = [5, 4, 3, 6].find(u => v(k.type, u)),
-          t = jd(k, 4);
-        l = Td(t.value, a, Math.pow(10, l));
+          t = kd(k, 4);
+        l = Vd(t.value, a, Math.pow(10, l));
         switch (n) {
           case 4:
             return q(g(l, 4));
@@ -4213,29 +4267,29 @@ const fontoxpath = function (xspattern, prsc) {
       }
     });
   }
-  const Vd = (a, b, c, d) => qc(d, b).X({
+  const Xd = (a, b, c, d) => rc(d, b).X({
     empty: () => w.m(g(NaN, 3)),
     m: () => {
-      const e = id(d.first(), 3);
+      const e = jd(d.first(), 3);
       return e.u ? w.m(e.value) : w.m(g(NaN, 3));
     },
     multiple: () => {
       throw Error("fn:number may only be called with zero or one values");
     }
   });
-  function Wd(a) {
+  function Yd(a) {
     let b = 5381;
     for (let c = 0; c < a.length; ++c) b = 33 * b + a.charCodeAt(c), b %= Number.MAX_SAFE_INTEGER;
     return b;
   }
-  const Xd = (a, b, c, d = w.empty()) => {
+  const Zd = (a, b, c, d = w.empty()) => {
     function e(f) {
       const h = (k, l, n, t) => {
-        if (t.F() || t.oa()) return t;
-        k = t.O();
+        if (t.isEmpty() || t.oa()) return t;
+        k = t.N();
         l = f;
         for (n = k.length - 1; 1 < n; n--) {
-          l = gc(a, l).rb;
+          l = hc(a, l).rb;
           t = l % n;
           const u = k[t];
           k[t] = k[n];
@@ -4243,14 +4297,14 @@ const fontoxpath = function (xspattern, prsc) {
         }
         return w.create(k);
       };
-      return w.m(new ub([{
+      return w.m(new wb([{
         key: g("number", 1),
-        value: () => w.m(g(gc(a, f).$b, 3))
+        value: () => w.m(g(hc(a, f).bc, 3))
       }, {
         key: g("next", 1),
         value: () => w.m(new Va({
-          value: () => e(gc(a, f).rb),
-          Ya: !0,
+          value: () => e(hc(a, f).rb),
+          bb: !0,
           localName: "",
           namespaceURI: "",
           j: [],
@@ -4264,7 +4318,7 @@ const fontoxpath = function (xspattern, prsc) {
         key: g("permute", 1),
         value: () => w.m(new Va({
           value: h,
-          Ya: !0,
+          bb: !0,
           localName: "",
           namespaceURI: "",
           j: [{
@@ -4279,10 +4333,10 @@ const fontoxpath = function (xspattern, prsc) {
         }))
       }]));
     }
-    b = d.F() ? gc(a) : gc(a, Wd(jd(d.first(), 1).value));
+    b = d.isEmpty() ? hc(a) : hc(a, Yd(kd(d.first(), 1).value));
     return e(b.rb);
   };
-  var Yd = [{
+  var $d = [{
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "abs",
     j: [{
@@ -4293,7 +4347,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 2,
       g: 0
     },
-    callFunction: (a, b, c, d) => d.map(e => Bd(e.type, Math.abs(e.value)))
+    callFunction: (a, b, c, d) => d.map(e => Dd(e.type, Math.abs(e.value)))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "format-integer",
@@ -4311,8 +4365,8 @@ const fontoxpath = function (xspattern, prsc) {
     callFunction: (a, b, c, d, e) => {
       a = d.first();
       e = e.first();
-      if (d.F()) return w.m(g("", 1));
-      d = Rd.get(e.value);
+      if (d.isEmpty()) return w.m(g("", 1));
+      d = Td.get(e.value);
       e = a.value;
       return d ? (d = d(e), w.m(g(d, 1))) : w.m(g(e.toString(), 1));
     }
@@ -4327,7 +4381,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 2,
       g: 0
     },
-    callFunction: (a, b, c, d) => d.map(e => Bd(e.type, Math.ceil(e.value)))
+    callFunction: (a, b, c, d) => d.map(e => Dd(e.type, Math.ceil(e.value)))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "floor",
@@ -4339,7 +4393,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 2,
       g: 0
     },
-    callFunction: (a, b, c, d) => d.map(e => Bd(e.type, Math.floor(e.value)))
+    callFunction: (a, b, c, d) => d.map(e => Dd(e.type, Math.floor(e.value)))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "round",
@@ -4351,7 +4405,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 2,
       g: 0
     },
-    callFunction: Ud.bind(null, !1)
+    callFunction: Wd.bind(null, !1)
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "round",
@@ -4366,7 +4420,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 2,
       g: 0
     },
-    callFunction: Ud.bind(null, !1)
+    callFunction: Wd.bind(null, !1)
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "round-half-to-even",
@@ -4378,7 +4432,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 2,
       g: 0
     },
-    callFunction: Ud.bind(null, !0)
+    callFunction: Wd.bind(null, !0)
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "round-half-to-even",
@@ -4393,7 +4447,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 2,
       g: 0
     },
-    callFunction: Ud.bind(null, !0)
+    callFunction: Wd.bind(null, !0)
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "number",
@@ -4405,7 +4459,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 3,
       g: 3
     },
-    callFunction: Vd
+    callFunction: Xd
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "number",
@@ -4415,12 +4469,12 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     },
     callFunction: (a, b, c) => {
-      const d = a.M && Ad({
+      const d = a.L && Ad({
         type: 46,
         g: 0
-      }, w.m(a.M), b, "fn:number", !1);
-      if (!d) throw lc("fn:number needs an atomizable context item.");
-      return Vd(a, b, c, d);
+      }, w.m(a.L), b, "fn:number", !1);
+      if (!d) throw mc("fn:number needs an atomizable context item.");
+      return Xd(a, b, c, d);
     }
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -4430,7 +4484,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 61,
       g: 3
     },
-    callFunction: Xd
+    callFunction: Zd
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "random-number-generator",
@@ -4442,37 +4496,33 @@ const fontoxpath = function (xspattern, prsc) {
       type: 61,
       g: 3
     },
-    callFunction: Xd
+    callFunction: Zd
   }];
-  function Zd() {
+  function ae() {
     throw Error("FOCH0002: No collations are supported");
   }
-  function $d(a, b, c, d) {
-    if (null === b.M) throw lc("The function which was called depends on dynamic context, which is absent.");
-    return a(b, c, d, w.m(b.M));
-  }
-  const ae = (a, b, c, d) => d.X({
+  const be = (a, b, c, d) => d.X({
       empty: () => w.m(g("", 1)),
       default: () => d.map(e => {
         if (v(e.type, 53)) {
-          const f = pc(e, b).first();
-          return v(e.type, 47) ? jd(f, 1) : f;
+          const f = qc(e, b).first();
+          return v(e.type, 47) ? kd(f, 1) : f;
         }
-        return jd(e, 1);
+        return kd(e, 1);
       })
     }),
-    be = (a, b, c, d, e) => A([e], ([f]) => qc(d, b).N(h => {
-      h = h.map(k => jd(k, 1).value).join(f.value);
+    de = (a, b, c, d, e) => tb([e], ([f]) => rc(d, b).M(h => {
+      h = h.map(k => kd(k, 1).value).join(f.value);
       return w.m(g(h, 1));
     })),
-    ce = (a, b, c, d) => {
-      if (d.F()) return w.m(g(0, 5));
+    ee = (a, b, c, d) => {
+      if (d.isEmpty()) return w.m(g(0, 5));
       a = d.first().value;
       return w.m(g(Array.from(a).length, 5));
     },
-    ee = (a, b, c, d, e, f) => {
-      const h = Ud(!1, a, b, c, e, null),
-        k = null !== f ? Ud(!1, a, b, c, f, null) : null;
+    fe = (a, b, c, d, e, f) => {
+      const h = Wd(!1, a, b, c, e, null),
+        k = null !== f ? Wd(!1, a, b, c, f, null) : null;
       let l = !1,
         n = null,
         t = null,
@@ -4488,11 +4538,11 @@ const fontoxpath = function (xspattern, prsc) {
         }
       });
     },
-    ge = (a, b, c, d, e) => {
-      if (d.F() || 0 === d.first().value.length) return w.empty();
+    he = (a, b, c, d, e) => {
+      if (d.isEmpty() || 0 === d.first().value.length) return w.empty();
       a = d.first().value;
       e = e.first().value;
-      e = fe(e);
+      e = ge(e);
       e.lastIndex = 0;
       b = [];
       c = e.exec(a);
@@ -4500,15 +4550,15 @@ const fontoxpath = function (xspattern, prsc) {
       b.push(a.slice(d));
       return w.create(b.map(f => g(f, 1)));
     },
-    he = (a, b, c, d) => {
-      if (d.F()) return w.m(g("", 1));
+    ie = (a, b, c, d) => {
+      if (d.isEmpty()) return w.m(g("", 1));
       a = d.first().value.trim();
       return w.m(g(a.replace(/\s+/g, " "), 1));
     },
-    ie = new Map(),
-    je = new Map();
-  function fe(a) {
-    if (je.has(a)) return je.get(a);
+    je = new Map(),
+    ke = new Map();
+  function ge(a) {
+    if (ke.has(a)) return ke.get(a);
     let b;
     try {
       b = new RegExp(a, "g");
@@ -4516,10 +4566,10 @@ const fontoxpath = function (xspattern, prsc) {
       throw Error(`FORX0002: ${c}`);
     }
     if (b.test("")) throw Error(`FORX0003: the pattern ${a} matches the zero length string`);
-    je.set(a, b);
+    ke.set(a, b);
     return b;
   }
-  var ke = [{
+  var le = [{
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "compare",
     j: [{
@@ -4534,7 +4584,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 0
     },
     callFunction: (a, b, c, d, e) => {
-      if (d.F() || e.F()) return w.empty();
+      if (d.isEmpty() || e.isEmpty()) return w.empty();
       a = d.first().value;
       e = e.first().value;
       return a > e ? w.m(g(1, 5)) : a < e ? w.m(g(-1, 5)) : w.m(g(0, 5));
@@ -4556,7 +4606,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 5,
       g: 0
     },
-    callFunction: Zd
+    callFunction: ae
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "concat",
@@ -4572,8 +4622,8 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     },
     callFunction: (a, b, c, ...d) => {
-      d = d.map(e => qc(e, b).N(f => w.m(g(f.map(h => null === h ? "" : jd(h, 1).value).join(""), 1))));
-      return A(d, e => w.m(g(e.map(f => f.value).join(""), 1)));
+      d = d.map(e => rc(e, b).M(f => w.m(g(f.map(h => null === h ? "" : kd(h, 1).value).join(""), 1))));
+      return tb(d, e => w.m(g(e.map(f => f.value).join(""), 1)));
     }
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -4592,7 +4642,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 0,
       g: 3
     },
-    callFunction: Zd
+    callFunction: ae
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "contains",
@@ -4608,9 +4658,9 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     },
     callFunction: (a, b, c, d, e) => {
-      a = d.F() ? "" : d.first().value;
-      e = e.F() ? "" : e.first().value;
-      return 0 === e.length ? w.aa() : 0 === a.length ? w.T() : a.includes(e) ? w.aa() : w.T();
+      a = d.isEmpty() ? "" : d.first().value;
+      e = e.isEmpty() ? "" : e.first().value;
+      return 0 === e.length ? w.$() : 0 === a.length ? w.S() : a.includes(e) ? w.$() : w.S();
     }
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -4627,10 +4677,10 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     },
     callFunction: (a, b, c, d, e) => {
-      a = e.F() ? "" : e.first().value;
-      if (0 === a.length) return w.aa();
-      d = d.F() ? "" : d.first().value;
-      return 0 === d.length ? w.T() : d.endsWith(a) ? w.aa() : w.T();
+      a = e.isEmpty() ? "" : e.first().value;
+      if (0 === a.length) return w.$();
+      d = d.isEmpty() ? "" : d.first().value;
+      return 0 === d.length ? w.S() : d.endsWith(a) ? w.$() : w.S();
     }
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -4649,7 +4699,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 0,
       g: 3
     },
-    callFunction: Zd
+    callFunction: ae
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "normalize-space",
@@ -4661,7 +4711,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     },
-    callFunction: he
+    callFunction: ie
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "normalize-space",
@@ -4670,7 +4720,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     },
-    callFunction: $d.bind(null, (a, b, c, d) => he(a, b, c, ae(a, b, c, d)))
+    callFunction: Bd("normalize-space", 1, (a, b, c, d) => ie(a, b, c, be(a, b, c, d)))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "starts-with",
@@ -4686,10 +4736,10 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     },
     callFunction: (a, b, c, d, e) => {
-      a = e.F() ? "" : e.first().value;
-      if (0 === a.length) return w.aa();
-      d = d.F() ? "" : d.first().value;
-      return 0 === d.length ? w.T() : d.startsWith(a) ? w.aa() : w.T();
+      a = e.isEmpty() ? "" : e.first().value;
+      if (0 === a.length) return w.$();
+      d = d.isEmpty() ? "" : d.first().value;
+      return 0 === d.length ? w.S() : d.startsWith(a) ? w.$() : w.S();
     }
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -4708,7 +4758,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 0,
       g: 3
     },
-    callFunction: Zd
+    callFunction: ae
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "string",
@@ -4720,7 +4770,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     },
-    callFunction: ae
+    callFunction: be
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "string",
@@ -4729,7 +4779,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     },
-    callFunction: $d.bind(null, ae)
+    callFunction: Bd("string", 59, be)
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "substring-before",
@@ -4745,8 +4795,8 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     },
     callFunction: (a, b, c, d, e) => {
-      a = d.F() ? "" : d.first().value;
-      e = e.F() ? "" : e.first().value;
+      a = d.isEmpty() ? "" : d.first().value;
+      e = e.isEmpty() ? "" : e.first().value;
       if ("" === e) return w.m(g("", 1));
       e = a.indexOf(e);
       return -1 === e ? w.m(g("", 1)) : w.m(g(a.substring(0, e), 1));
@@ -4766,8 +4816,8 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     },
     callFunction: (a, b, c, d, e) => {
-      a = d.F() ? "" : d.first().value;
-      e = e.F() ? "" : e.first().value;
+      a = d.isEmpty() ? "" : d.first().value;
+      e = e.isEmpty() ? "" : e.first().value;
       if ("" === e) return w.m(g(a, 1));
       b = a.indexOf(e);
       return -1 === b ? w.m(g("", 1)) : w.m(g(a.substring(b + e.length), 1));
@@ -4786,7 +4836,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     },
-    callFunction: ee
+    callFunction: fe
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "substring",
@@ -4804,7 +4854,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     },
-    callFunction: ee
+    callFunction: fe
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "upper-case",
@@ -4816,7 +4866,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     },
-    callFunction: (a, b, c, d) => d.F() ? w.m(g("", 1)) : d.map(e => g(e.value.toUpperCase(), 1))
+    callFunction: (a, b, c, d) => d.isEmpty() ? w.m(g("", 1)) : d.map(e => g(e.value.toUpperCase(), 1))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "lower-case",
@@ -4828,7 +4878,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     },
-    callFunction: (a, b, c, d) => d.F() ? w.m(g("", 1)) : d.map(e => g(e.value.toLowerCase(), 1))
+    callFunction: (a, b, c, d) => d.isEmpty() ? w.m(g("", 1)) : d.map(e => g(e.value.toLowerCase(), 1))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "string-join",
@@ -4843,7 +4893,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     },
-    callFunction: be
+    callFunction: de
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "string-join",
@@ -4856,7 +4906,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     },
     callFunction(a, b, c, d) {
-      return be(a, b, c, d, w.m(g("", 1)));
+      return de(a, b, c, d, w.m(g("", 1)));
     }
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -4869,7 +4919,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 5,
       g: 3
     },
-    callFunction: ce
+    callFunction: ee
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "string-length",
@@ -4878,7 +4928,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 5,
       g: 3
     },
-    callFunction: $d.bind(null, (a, b, c, d) => ce(a, b, c, ae(a, b, c, d)))
+    callFunction: Bd("string-length", 46, (a, b, c, d) => ee(a, b, c, be(a, b, c, d)))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "tokenize",
@@ -4913,7 +4963,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 2
     },
-    callFunction: ge
+    callFunction: he
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "tokenize",
@@ -4926,7 +4976,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     },
     callFunction(a, b, c, d) {
-      return ge(a, b, c, he(a, b, c, d), w.m(g(" ", 1)));
+      return he(a, b, c, ie(a, b, c, d), w.m(g(" ", 1)));
     }
   }, {
     j: [{
@@ -4939,7 +4989,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     }],
-    callFunction: (a, b, c, d, e, f) => A([d, e, f], ([h, k, l]) => {
+    callFunction: (a, b, c, d, e, f) => tb([d, e, f], ([h, k, l]) => {
       h = Array.from(h ? h.value : "");
       const n = Array.from(k.value),
         t = Array.from(l.value);
@@ -4961,7 +5011,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 5,
       g: 2
     }],
-    callFunction: (a, b, c, d) => d.N(e => {
+    callFunction: (a, b, c, d) => d.M(e => {
       e = e.map(f => {
         f = f.value;
         if (9 === f || 10 === f || 13 === f || 32 <= f && 55295 >= f || 57344 <= f && 65533 >= f || 65536 <= f && 1114111 >= f) return String.fromCodePoint(f);
@@ -4980,7 +5030,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 0
     }],
-    callFunction: (a, b, c, d) => A([d], ([e]) => {
+    callFunction: (a, b, c, d) => tb([d], ([e]) => {
       e = e ? e.value.split("") : [];
       return 0 === e.length ? w.empty() : w.create(e.map(f => g(f.codePointAt(0), 5)));
     }),
@@ -4995,7 +5045,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 0
     }],
-    callFunction: (a, b, c, d) => A([d], ([e]) => null === e || 0 === e.value.length ? w.create(g("", 1)) : w.create(g(encodeURIComponent(e.value).replace(/[!'()*]/g, f => "%" + f.charCodeAt(0).toString(16).toUpperCase()), 1))),
+    callFunction: (a, b, c, d) => tb([d], ([e]) => null === e || 0 === e.value.length ? w.create(g("", 1)) : w.create(g(encodeURIComponent(e.value).replace(/[!'()*]/g, f => "%" + f.charCodeAt(0).toString(16).toUpperCase()), 1))),
     localName: "encode-for-uri",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -5007,7 +5057,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 0
     }],
-    callFunction: (a, b, c, d) => A([d], ([e]) => null === e || 0 === e.value.length ? w.create(g("", 1)) : w.create(g(e.value.replace(/([\u00A0-\uD7FF\uE000-\uFDCF\uFDF0-\uFFEF "<>{}|\\^`/\n\u007f\u0080-\u009f]|[\uD800-\uDBFF][\uDC00-\uDFFF])/g, f => encodeURI(f)), 1))),
+    callFunction: (a, b, c, d) => tb([d], ([e]) => null === e || 0 === e.value.length ? w.create(g("", 1)) : w.create(g(e.value.replace(/([\u00A0-\uD7FF\uE000-\uFDCF\uFDF0-\uFFEF "<>{}|\\^`/\n\u007f\u0080-\u009f]|[\uD800-\uDBFF][\uDC00-\uDFFF])/g, f => encodeURI(f)), 1))),
     localName: "iri-to-uri",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -5022,15 +5072,15 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 0
     }],
-    callFunction: (a, b, c, d, e) => A([d, e], ([f, h]) => {
+    callFunction: (a, b, c, d, e) => tb([d, e], ([f, h]) => {
       if (null === f || null === h) return w.empty();
       f = f.value;
       var k = h.value;
-      if (f.length !== k.length) return w.T();
+      if (f.length !== k.length) return w.S();
       h = f.split("");
       f = k.split("");
-      for (k = 0; k < h.length; k++) if (h[k].codePointAt(0) !== f[k].codePointAt(0)) return w.T();
-      return w.aa();
+      for (k = 0; k < h.length; k++) if (h[k].codePointAt(0) !== f[k].codePointAt(0)) return w.S();
+      return w.$();
     }),
     localName: "codepoint-equal",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -5046,21 +5096,21 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     }],
-    callFunction: (a, b, c, d, e) => A([d, e], ([f, h]) => {
+    callFunction: (a, b, c, d, e) => tb([d, e], ([f, h]) => {
       f = f ? f.value : "";
       h = h.value;
-      let k = ie.get(h);
+      let k = je.get(h);
       if (!k) {
         try {
-          k = (0, wd.compile)(h, {
+          k = (0, Cd.compile)(h, {
             language: "xpath"
           });
         } catch (l) {
           throw Error(`FORX0002: ${l}`);
         }
-        ie.set(h, k);
+        je.set(h, k);
       }
-      return k(f) ? w.aa() : w.T();
+      return k(f) ? w.$() : w.S();
     }),
     localName: "matches",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -5079,7 +5129,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     }],
-    callFunction: (a, b, c, d, e, f) => A([d, e, f], ([h, k, l]) => {
+    callFunction: (a, b, c, d, e, f) => tb([d, e, f], ([h, k, l]) => {
       h = h ? h.value : "";
       k = k.value;
       l = l.value;
@@ -5096,7 +5146,7 @@ const fontoxpath = function (xspattern, prsc) {
             return n;
         }
       }).join("");
-      k = fe(k);
+      k = ge(k);
       h = h.replace(k, l);
       return w.m(g(h, 1));
     }),
@@ -5130,13 +5180,9 @@ const fontoxpath = function (xspattern, prsc) {
       throw Error("Not implemented: Using flags in replace is not supported");
     }
   }];
-  const le = new WeakMap();
-  let me = 0;
-  function ne(a, b, c, d, e) {
-    if (null === c.M) throw lc(`The function ${a} depends on dynamic context, which is absent.`);
-    return b(c, d, e, w.m(c.M));
-  }
-  const oe = (a, b, c, d) => A([d], ([e]) => {
+  const me = new WeakMap();
+  let ne = 0;
+  const oe = (a, b, c, d) => tb([d], ([e]) => {
       if (null === e) return w.empty();
       e = e.value;
       switch (e.node.nodeType) {
@@ -5150,24 +5196,24 @@ const fontoxpath = function (xspattern, prsc) {
       }
     }),
     pe = (a, b, c, d) => d.X({
-      default: () => ae(a, b, c, oe(a, b, c, d)),
+      default: () => be(a, b, c, oe(a, b, c, d)),
       empty: () => w.m(g("", 1))
     }),
-    qe = (a, b, c, d) => qc(d, b),
+    qe = (a, b, c, d) => rc(d, b),
     re = (a, b, c, d) => {
-      if (d.F()) return w.m(g("", 1));
+      if (d.isEmpty()) return w.m(g("", 1));
       if (!v(d.first().type, 53)) throw Error("XPTY0004: The context item must be a node.");
       c = d.first().value;
       a = w;
       b = a.m;
       c = c.node;
-      le.has(c) || le.set(c, `id${++me}`);
-      c = le.get(c);
+      me.has(c) || me.set(c, `id${++ne}`);
+      c = me.get(c);
       return b.call(a, g(c, 1));
     },
-    se = (a, b, c, d) => A([d], ([e]) => {
+    se = (a, b, c, d) => tb([d], ([e]) => {
       e = e ? e.value : null;
-      return null !== e && jb(b.h, e, null) ? w.aa() : w.T();
+      return null !== e && ib(b.h, e, null) ? w.$() : w.S();
     });
   function te(a, b) {
     a = a.toLowerCase();
@@ -5176,29 +5222,29 @@ const fontoxpath = function (xspattern, prsc) {
   }
   const ue = (a, b, c, d, e) => {
       b = b.h;
-      if (d.F()) d = "";else if (v(d.first().type, 1)) d = d.first().value;else throw Error("XPTY0004: The first argument of lang must be a string.");
+      if (d.isEmpty()) d = "";else if (v(d.first().type, 1)) d = d.first().value;else throw Error("XPTY0004: The first argument of lang must be a string.");
       if (e) e = e.first().value;else {
-        if (!a || !a.M) throw lc("The function lang depends on dynamic context if a node is not passed as the second argument.");
-        if (!v(a.M.type, 53)) throw Error("XPTY0004: The context item must be a node.");
-        e = a.M.value;
+        if (!a || !a.L) throw mc("The function lang depends on dynamic context if a node is not passed as the second argument.");
+        if (!v(a.L.type, 53)) throw Error("XPTY0004: The context item must be a node.");
+        e = a.L.value;
       }
       a: {
         for (a = d; e;) if (1 !== e.node.nodeType) e = x(b, e);else if (1 === e.node.nodeType) {
           if (d = fb(b, e, "xml:lang")) {
-            b = te(d, a) ? w.aa() : w.T();
+            b = te(d, a) ? w.$() : w.S();
             break a;
           }
           e = x(b, e);
         }
-        b = w.T();
+        b = w.S();
       }
       return b;
     },
-    ve = (a, b, c, d) => A([d], ([e]) => {
+    ve = (a, b, c, d) => tb([d], ([e]) => {
       function f(n) {
         let t = 0,
           u = n;
-        for (; null !== u;) (n.node.nodeType !== u.node.nodeType ? 0 : 1 === u.node.nodeType ? u.node.localName === n.node.localName && u.node.namespaceURI === n.node.namespaceURI : 7 === u.node.nodeType ? u.node.target === n.node.target : 1) && t++, u = mb(h, u, null);
+        for (; null !== u;) (n.node.nodeType !== u.node.nodeType ? 0 : 1 === u.node.nodeType ? u.node.localName === n.node.localName && u.node.namespaceURI === n.node.namespaceURI : 7 === u.node.nodeType ? u.node.target === n.node.target : 1) && t++, u = nb(h, u, null);
         return t;
       }
       if (null === e) return w.empty();
@@ -5231,9 +5277,9 @@ const fontoxpath = function (xspattern, prsc) {
       empty: () => w.m(g("", 1))
     });
   function ye(a, b, c) {
-    if (2 === b.node.nodeType) return md(b, c);
+    if (2 === b.node.nodeType) return nd(b, c);
     for (; c;) {
-      if (md(b, c)) return !0;
+      if (nd(b, c)) return !0;
       if (9 === c.node.nodeType) break;
       c = x(a, c, null);
     }
@@ -5243,7 +5289,7 @@ const fontoxpath = function (xspattern, prsc) {
     if (!v(e.type, 53)) throw Error("XPTY0004 Argument passed to fn:root() should be of the type node()");
     let f;
     for (e = e.value; e;) f = e, e = x(b.h, f, null);
-    return rb(f);
+    return sb(f);
   });
   var Ae = [{
     j: [{
@@ -5259,7 +5305,7 @@ const fontoxpath = function (xspattern, prsc) {
     }
   }, {
     j: [],
-    callFunction: ne.bind(null, "name", pe),
+    callFunction: Bd("name", 53, pe),
     localName: "name",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -5280,7 +5326,7 @@ const fontoxpath = function (xspattern, prsc) {
     }
   }, {
     j: [],
-    callFunction: ne.bind(null, "namespace-uri", we),
+    callFunction: Bd("namespace-uri", 53, we),
     localName: "namespace-uri",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -5292,9 +5338,9 @@ const fontoxpath = function (xspattern, prsc) {
       type: 53,
       g: 2
     }],
-    callFunction: (a, b, c, d) => d.N(e => {
+    callFunction: (a, b, c, d) => d.M(e => {
       if (!e.length) return w.empty();
-      e = td(b.h, e).reduceRight((f, h, k, l) => {
+      e = ud(b.h, e).reduceRight((f, h, k, l) => {
         if (k === l.length - 1) return f.push(h), f;
         if (ye(b.h, h.value, f[0].value)) return f;
         f.unshift(h);
@@ -5313,9 +5359,9 @@ const fontoxpath = function (xspattern, prsc) {
       type: 53,
       g: 2
     }],
-    callFunction: (a, b, c, d) => d.N(e => {
+    callFunction: (a, b, c, d) => d.M(e => {
       if (!e.length) return w.empty();
-      e = td(b.h, e).reduce((f, h, k) => {
+      e = ud(b.h, e).reduce((f, h, k) => {
         if (0 === k) return f.push(h), f;
         if (ye(b.h, f[f.length - 1].value, h.value)) return f;
         f.push(h);
@@ -5343,7 +5389,7 @@ const fontoxpath = function (xspattern, prsc) {
     }
   }, {
     j: [],
-    callFunction: ne.bind(null, "has-children", se),
+    callFunction: Bd("has-children", 53, se),
     localName: "has-children",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -5364,7 +5410,7 @@ const fontoxpath = function (xspattern, prsc) {
     }
   }, {
     j: [],
-    callFunction: ne.bind(null, "path", ve),
+    callFunction: Bd("path", 53, ve),
     localName: "path",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -5385,7 +5431,7 @@ const fontoxpath = function (xspattern, prsc) {
     }
   }, {
     j: [],
-    callFunction: ne.bind(null, "node-name", oe),
+    callFunction: Bd("node-name", 53, oe),
     localName: "node-name",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -5406,7 +5452,7 @@ const fontoxpath = function (xspattern, prsc) {
     }
   }, {
     j: [],
-    callFunction: ne.bind(null, "local-name", xe),
+    callFunction: Bd("local-name", 53, xe),
     localName: "local-name",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -5427,7 +5473,7 @@ const fontoxpath = function (xspattern, prsc) {
     }
   }, {
     j: [],
-    callFunction: ne.bind(null, "root", ze),
+    callFunction: Bd("root", 53, ze),
     localName: "root",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -5436,7 +5482,7 @@ const fontoxpath = function (xspattern, prsc) {
     }
   }, {
     j: [],
-    callFunction: ne.bind(null, "data", qe),
+    callFunction: Bd("data", 59, qe),
     localName: "data",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -5484,7 +5530,7 @@ const fontoxpath = function (xspattern, prsc) {
     }
   }, {
     j: [],
-    callFunction: ne.bind(null, "generate-id", re),
+    callFunction: Bd("generate-id", 53, re),
     localName: "generate-id",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -5531,23 +5577,23 @@ const fontoxpath = function (xspattern, prsc) {
   }
   function De(a, b) {
     if ((v(a.type, 4) || v(a.type, 6)) && (v(b.type, 4) || v(b.type, 6))) {
-      var c = jd(a, 6),
-        d = jd(b, 6);
+      var c = kd(a, 6),
+        d = kd(b, 6);
       return c.value === d.value || isNaN(a.value) && isNaN(b.value);
     }
-    return (v(a.type, 4) || v(a.type, 6) || v(a.type, 3)) && (v(b.type, 4) || v(b.type, 6) || v(b.type, 3)) ? (c = jd(a, 3), d = jd(b, 3), c.value === d.value || isNaN(a.value) && isNaN(b.value)) : v(a.type, 23) && v(b.type, 23) ? a.value.namespaceURI === b.value.namespaceURI && a.value.localName === b.value.localName : (v(a.type, 9) || v(a.type, 7) || v(a.type, 8) || v(a.type, 11) || v(a.type, 12) || v(a.type, 13) || v(a.type, 14) || v(a.type, 15)) && (v(b.type, 9) || v(b.type, 7) || v(b.type, 8) || v(b.type, 11) || v(b.type, 12) || v(b.type, 13) || v(b.type, 14) || v(b.type, 15)) ? Ob(a.value, b.value) : (v(a.type, 16) || v(a.type, 17) || v(a.type, 18)) && (v(b.type, 16) || v(b.type, 17) || v(b.type, 17)) ? vb(a.value, b.value) : a.value === b.value;
+    return (v(a.type, 4) || v(a.type, 6) || v(a.type, 3)) && (v(b.type, 4) || v(b.type, 6) || v(b.type, 3)) ? (c = kd(a, 3), d = kd(b, 3), c.value === d.value || isNaN(a.value) && isNaN(b.value)) : v(a.type, 23) && v(b.type, 23) ? a.value.namespaceURI === b.value.namespaceURI && a.value.localName === b.value.localName : (v(a.type, 9) || v(a.type, 7) || v(a.type, 8) || v(a.type, 11) || v(a.type, 12) || v(a.type, 13) || v(a.type, 14) || v(a.type, 15)) && (v(b.type, 9) || v(b.type, 7) || v(b.type, 8) || v(b.type, 11) || v(b.type, 12) || v(b.type, 13) || v(b.type, 14) || v(b.type, 15)) ? Pb(a.value, b.value) : (v(a.type, 16) || v(a.type, 17) || v(a.type, 18)) && (v(b.type, 16) || v(b.type, 17) || v(b.type, 17)) ? a.value.equals(b.value) : a.value === b.value;
   }
   function Ee(a, b, c) {
     const [d, e] = [b, c].map(f => ({
       type: 1,
-      value: f.reduce((h, k) => h += pc(k, a).first().value, "")
+      value: f.reduce((h, k) => h += qc(k, a).first().value, "")
     }));
     return q(De(d, e));
   }
   function Fe(a, b, c, d) {
     for (; a.value && v(a.value.type, 56);) {
       b.push(a.value);
-      const e = lb(d, a.value.value);
+      const e = mb(d, a.value.value);
       a = c.next(0);
       if (e && 3 !== e.node.nodeType) break;
     }
@@ -5566,16 +5612,16 @@ const fontoxpath = function (xspattern, prsc) {
     return {
       next: () => {
         for (; !u;) if (l ||= h.next(0), l = Fe(l, z, h, f), n ||= k.next(0), n = Fe(n, y, k, f), z.length || y.length) {
-          var G = Ee(b, z, y);
+          var F = Ee(b, z, y);
           z.length = 0;
           y.length = 0;
-          if (!1 === G.value) return u = !0, G;
+          if (!1 === F.value) return u = !0, F;
         } else {
           if (l.done || n.done) return u = !0, q(l.done === n.done);
           t ||= He(a, b, c, l.value, n.value);
-          G = t.next(0);
+          F = t.next(0);
           t = null;
-          if (!1 === G.value) return u = !0, G;
+          if (!1 === F.value) return u = !0, F;
           n = l = null;
         }
         return p;
@@ -5583,31 +5629,31 @@ const fontoxpath = function (xspattern, prsc) {
     };
   }
   function Ie(a, b, c, d, e) {
-    return d.h.length !== e.h.length ? kd(!1) : Be(d.h, f => {
+    return d.h.length !== e.h.length ? ld(!1) : Be(d.h, f => {
       const h = e.h.find(k => De(k.key, f.key));
-      return h ? Ge(a, b, c, f.value(), h.value()) : kd(!1);
+      return h ? Ge(a, b, c, f.value(), h.value()) : ld(!1);
     });
   }
   function Je(a, b, c, d, e) {
-    return d.h.length !== e.h.length ? kd(!1) : Be(d.h, (f, h) => {
-      h = e.h[h];
+    return d.members.length !== e.members.length ? ld(!1) : Be(d.members, (f, h) => {
+      h = e.members[h];
       return Ge(a, b, c, f(), h());
     });
   }
   function Ke(a, b, c, d, e) {
-    d = hb(b.h, d.value);
-    e = hb(b.h, e.value);
+    d = gb(b.h, d.value);
+    e = gb(b.h, e.value);
     d = d.filter(f => Ce(f));
     e = e.filter(f => Ce(f));
-    d = w.create(d.map(f => rb(f)));
-    e = w.create(e.map(f => rb(f)));
+    d = w.create(d.map(f => sb(f)));
+    e = w.create(e.map(f => sb(f)));
     return Ge(a, b, c, d, e);
   }
   function Le(a, b, c, d, e) {
     const f = Ge(a, b, c, oe(a, b, c, w.m(d)), oe(a, b, c, w.m(e))),
       h = Ke(a, b, c, d, e);
-    d = eb(b.h, d.value).filter(n => "http://www.w3.org/2000/xmlns/" !== n.node.namespaceURI).sort((n, t) => n.node.nodeName > t.node.nodeName ? 1 : -1).map(n => rb(n));
-    e = eb(b.h, e.value).filter(n => "http://www.w3.org/2000/xmlns/" !== n.node.namespaceURI).sort((n, t) => n.node.nodeName > t.node.nodeName ? 1 : -1).map(n => rb(n));
+    d = eb(b.h, d.value).filter(n => "http://www.w3.org/2000/xmlns/" !== n.node.namespaceURI).sort((n, t) => n.node.nodeName > t.node.nodeName ? 1 : -1).map(n => sb(n));
+    e = eb(b.h, e.value).filter(n => "http://www.w3.org/2000/xmlns/" !== n.node.namespaceURI).sort((n, t) => n.node.nodeName > t.node.nodeName ? 1 : -1).map(n => sb(n));
     const k = Ge(a, b, c, w.create(d), w.create(e));
     let l = !1;
     return {
@@ -5630,12 +5676,12 @@ const fontoxpath = function (xspattern, prsc) {
       next: () => {
         if (h) return p;
         const k = f.next(0);
-        return k.done || !1 !== k.value ? q(De(pc(d, b).first(), pc(e, b).first())) : (h = !0, k);
+        return k.done || !1 !== k.value ? q(De(qc(d, b).first(), qc(e, b).first())) : (h = !0, k);
       }
     };
   }
   function He(a, b, c, d, e) {
-    if (v(d.type, 46) && v(e.type, 46)) return kd(De(d, e));
+    if (v(d.type, 46) && v(e.type, 46)) return ld(De(d, e));
     if (v(d.type, 61) && v(e.type, 61)) return Ie(a, b, c, d, e);
     if (v(d.type, 62) && v(e.type, 62)) return Je(a, b, c, d, e);
     if (v(d.type, 53) && v(e.type, 53)) {
@@ -5643,15 +5689,15 @@ const fontoxpath = function (xspattern, prsc) {
       if (v(d.type, 54) && v(e.type, 54)) return Le(a, b, c, d, e);
       if (v(d.type, 47) && v(e.type, 47) || v(d.type, 57) && v(e.type, 57) || v(d.type, 58) && v(e.type, 58)) return Me(a, b, c, d, e);
     }
-    return kd(!1);
+    return ld(!1);
   }
-  var Ne = class extends cc {
+  var Ne = class extends dc {
     constructor() {
       super({
-        M: null,
-        Aa: -1,
-        ta: w.empty(),
-        ra: {}
+        L: null,
+        Ba: -1,
+        sa: w.empty(),
+        qa: {}
       });
     }
   };
@@ -5666,40 +5712,40 @@ const fontoxpath = function (xspattern, prsc) {
     We = a => Error(`XUDY0023: The namespace binding ${a} is conflicting.`),
     Xe = a => Error(`XUDY0024: The namespace binding ${a} is conflicting.`),
     Ye = () => Error("XUDY0027: The target for an insert, replace, or rename expression expression should not be empty.");
-  function C(a, b, c) {
-    b && null !== b.M ? a.B ? (null === a.ob && (a.ob = Ra(a.h(new Ne(), c).hb())), a = a.ob()) : a = a.h(b, c) : a = a.h(b, c);
+  function A(a, b, c) {
+    b && null !== b.L ? a.B ? (null === a.ob && (a.ob = Ra(a.h(new Ne(), c).hb())), a = a.ob()) : a = a.h(b, c) : a = a.h(b, c);
     return a;
   }
-  var D = class {
+  var C = class {
     constructor(a, b, c = {
       B: !1,
-      W: !1,
-      R: "unsorted",
+      V: !1,
+      P: "unsorted",
       subtree: !1
     }, d = !1, e) {
       this.o = a;
-      this.ia = c.R || "unsorted";
+      this.ha = c.P || "unsorted";
       this.subtree = !!c.subtree;
-      this.W = !!c.W;
+      this.V = !!c.V;
       this.B = !!c.B;
-      this.Fa = b;
-      this.I = !1;
+      this.Ga = b;
+      this.H = !1;
       this.ob = null;
-      this.Qb = d;
+      this.Sb = d;
       this.type = e;
     }
     D() {
       return null;
     }
     v(a) {
-      this.Fa.forEach(b => b.v(a));
-      if (!this.Qb && this.Fa.some(b => b.I)) throw Oe();
+      this.Ga.forEach(b => b.v(a));
+      if (!this.Sb && this.Ga.some(b => b.H)) throw Oe();
     }
   };
   var Ze = class {
     constructor(a, b) {
-      this.J = a;
-      this.da = b;
+      this.I = a;
+      this.ca = b;
     }
   };
   var $e = class {
@@ -5741,7 +5787,7 @@ const fontoxpath = function (xspattern, prsc) {
   }
   var bf = (a, b, c, d) => {
       const e = x(c, a).node,
-        f = (a = lb(c, a)) ? a.node : null;
+        f = (a = mb(c, a)) ? a.node : null;
       b.forEach(h => {
         d.insertBefore(e, h.node, f);
       });
@@ -5753,7 +5799,7 @@ const fontoxpath = function (xspattern, prsc) {
       });
     },
     df = (a, b, c, d) => {
-      const e = (c = jb(c, a)) ? c.node : null;
+      const e = (c = ib(c, a)) ? c.node : null;
       b.forEach(f => {
         d.insertBefore(a.node, f.node, e);
       });
@@ -5768,7 +5814,7 @@ const fontoxpath = function (xspattern, prsc) {
         const f = e.node.localName,
           h = e.node.namespaceURI;
         if (af(a, f, h, c)) throw Ve(`An attribute ${h ? `Q{${h}}${f}` : f} already exists.`);
-        d.setAttributeNS(a.node, h, f, ib(c, e));
+        d.setAttributeNS(a.node, h, f, hb(c, e));
       });
     },
     hf = (a, b, c, d, e) => {
@@ -5778,10 +5824,10 @@ const fontoxpath = function (xspattern, prsc) {
         case 1:
           const h = c.getAllAttributes(a.node),
             k = c.getChildNodes(a.node),
-            l = d.createElementNS(b.namespaceURI, b.za());
+            l = d.createElementNS(b.namespaceURI, b.Aa());
           f = {
             node: l,
-            G: null
+            F: null
           };
           h.forEach(n => {
             e.setAttributeNS(l, n.namespaceURI, n.nodeName, n.value);
@@ -5791,17 +5837,17 @@ const fontoxpath = function (xspattern, prsc) {
           });
           break;
         case 2:
-          b = d.createAttributeNS(b.namespaceURI, b.za());
-          b.value = ib(c, a);
+          b = d.createAttributeNS(b.namespaceURI, b.Aa());
+          b.value = hb(c, a);
           f = {
             node: b,
-            G: null
+            F: null
           };
           break;
         case 7:
           f = {
-            node: d.createProcessingInstruction(b.za(), ib(c, a)),
-            G: null
+            node: d.createProcessingInstruction(b.Aa(), hb(c, a)),
+            F: null
           };
       }
       if (!x(c, a)) throw Error("Not supported: renaming detached nodes.");
@@ -5822,11 +5868,11 @@ const fontoxpath = function (xspattern, prsc) {
           const l = k.node.localName,
             n = k.node.namespaceURI;
           if (af(e, l, n, c)) throw Ve(`An attribute ${n ? `Q{${n}}${l}` : l} already exists.`);
-          d.setAttributeNS(h, n, l, ib(c, k));
+          d.setAttributeNS(h, n, l, hb(c, k));
         });
       }
       if (1 === f || 3 === f || 8 === f || 7 === f) {
-        const h = (f = lb(c, a)) ? f.node : null;
+        const h = (f = mb(c, a)) ? f.node : null;
         d.removeChild(e.node, a.node);
         b.forEach(k => {
           d.insertBefore(e.node, k.node, h);
@@ -5930,23 +5976,23 @@ const fontoxpath = function (xspattern, prsc) {
   };
   var mf = (a, ...b) => a.concat(...b.filter(Boolean));
   function nf(a) {
-    return a.I ? (b, c) => a.s(b, c) : (b, c) => {
+    return a.H ? (b, c) => a.s(b, c) : (b, c) => {
       const d = a.h(b, c);
       return {
         next: () => {
-          const e = d.O();
+          const e = d.N();
           return q({
-            da: [],
-            J: e
+            ca: [],
+            I: e
           });
         }
       };
     };
   }
-  var of = class extends D {
+  var of = class extends C {
     constructor(a, b, c, d) {
       super(a, b, c, !0, d);
-      this.I = !0;
+      this.H = !0;
     }
     h() {
       throw Oe();
@@ -5954,23 +6000,23 @@ const fontoxpath = function (xspattern, prsc) {
   };
   function pf(a, b) {
     a = a.next(0);
-    b(a.value.da);
-    return w.create(a.value.J);
+    b(a.value.ca);
+    return w.create(a.value.I);
   }
   function qf(a) {
-    a.Fa.some(b => b.I) && (a.I = !0);
+    a.Ga.some(b => b.H) && (a.H = !0);
   }
   var rf = class extends of {
     constructor(a, b, c, d) {
       super(a, b, c, d);
-      this.I = this.Fa.some(e => e.I);
+      this.H = this.Ga.some(e => e.H);
     }
     h(a, b) {
-      return this.A(a, b, this.Fa.map(c => d => c.h(d, b)));
+      return this.A(a, b, this.Ga.map(c => d => c.h(d, b)));
     }
     s(a, b) {
       let c = [];
-      const d = this.A(a, b, this.Fa.map(f => f.I ? h => {
+      const d = this.A(a, b, this.Ga.map(f => f.H ? h => {
         h = f.s(h, b);
         return pf(h, k => c = mf(c, k));
       } : h => f.h(h, b)));
@@ -5978,7 +6024,7 @@ const fontoxpath = function (xspattern, prsc) {
       return {
         next: () => {
           if (e) return p;
-          const f = d.O();
+          const f = d.N();
           e = !0;
           return q(new Ze(f, c));
         }
@@ -5998,7 +6044,7 @@ const fontoxpath = function (xspattern, prsc) {
     }
     return 0;
   }
-  var vf = class {
+  var D = class {
     constructor(a) {
       this.h = sf.map(b => a[b] || 0);
       if (Object.keys(a).some(b => !sf.includes(b))) throw Error("Invalid specificity kind passed");
@@ -6008,11 +6054,11 @@ const fontoxpath = function (xspattern, prsc) {
         c[d] = this.h[e] + a.h[e];
         return c;
       }, Object.create(null));
-      return new vf(b);
+      return new D(b);
     }
   };
-  const wf = () => mc("Expected base expression of a function call to evaluate to a sequence of single function item");
-  function xf(a, b, c, d) {
+  const vf = () => nc("Expected base expression of a function call to evaluate to a sequence of single function item");
+  function wf(a, b, c, d) {
     const e = [];
     for (let f = 0; f < b.length; ++f) {
       if (null === b[f]) {
@@ -6024,107 +6070,107 @@ const fontoxpath = function (xspattern, prsc) {
     }
     return e;
   }
-  function Df(a, b) {
-    if (!v(a.type, 60)) throw mc("Expected base expression to evaluate to a function item");
-    if (a.v !== b) throw wf();
+  function xf(a, b) {
+    if (!v(a.type, 60)) throw nc("Expected base expression to evaluate to a function item");
+    if (a.v !== b) throw vf();
     return a;
   }
   function Ef(a, b, c, d, e, f, h) {
     let k = 0;
     e = e.map(l => l ? null : f[k++](c));
-    e = xf(a.o, e, d, a.D);
-    if (0 <= e.indexOf(null)) return Ua(a, e);
+    e = wf(a.o, e, d, a.D);
+    if (0 <= e.indexOf(null)) return Ta(a, e);
     b = b.apply(void 0, [c, d, h, ...e]);
     return Ad(a.s, b, d, a.D, !0);
   }
   var Gf = class extends rf {
     constructor(a, b, c) {
-      super(new vf({
+      super(new D({
         external: 1
       }), [a].concat(b.filter(d => !!d)), {
-        R: "unsorted",
-        W: !1,
+        P: "unsorted",
+        V: !1,
         subtree: !1,
         B: !1
       }, c);
-      this.ma = b.length;
-      this.P = b.map(d => null === d);
-      this.L = null;
+      this.la = b.length;
+      this.O = b.map(d => null === d);
+      this.K = null;
       this.ya = a;
-      this.La = b;
+      this.Ma = b;
     }
     s(a, b) {
-      if (!this.l || !this.l.I) return super.s(a, b);
+      if (!this.l || !this.l.H) return super.s(a, b);
       let c = [];
       const d = Ef(this.l, (f, h, k, ...l) => pf(this.l.value(f, h, k, ...l), n => {
         c = mf(c, n);
-      }), a, b, this.P, this.La.map(f => () => f.I ? pf(f.s(a, b), h => {
+      }), a, b, this.O, this.Ma.map(f => () => f.H ? pf(f.s(a, b), h => {
         c = mf(c, h);
-      }) : C(f, a, b)), this.L);
+      }) : A(f, a, b)), this.K);
       let e = !1;
       return {
         next: () => {
           if (e) return p;
-          const f = d.O();
+          const f = d.N();
           e = !0;
           return q({
-            da: c,
-            J: f
+            ca: c,
+            I: f
           });
         }
       };
     }
     A(a, b, [c, ...d]) {
-      if (this.l) return Ef(this.l, (f, h, k, ...l) => this.l.value(f, h, k, ...l), a, b, this.P, d, this.L);
+      if (this.l) return Ef(this.l, (f, h, k, ...l) => this.l.value(f, h, k, ...l), a, b, this.O, d, this.K);
       const e = c(a);
       return e.X({
         default: () => {
-          throw wf();
+          throw vf();
         },
-        m: () => e.N(([f]) => {
-          f = Df(f, this.ma);
-          if (f.I) throw Error("XUDY0038: The function returned by the PrimaryExpr of a dynamic function invocation can not be an updating function");
-          return Ef(f, f.value, a, b, this.P, d, this.L);
+        m: () => e.M(([f]) => {
+          f = xf(f, this.la);
+          if (f.H) throw Error("XUDY0038: The function returned by the PrimaryExpr of a dynamic function invocation can not be an updating function");
+          return Ef(f, f.value, a, b, this.O, d, this.K);
         })
       });
     }
     v(a) {
-      this.L = Ff(a);
+      this.K = Ff(a);
       super.v(a);
       if (this.ya.B) {
-        a = C(this.ya, null, null);
-        if (!a.oa()) throw wf();
-        this.l = Df(a.first(), this.ma);
-        this.l.I && (this.I = !0);
+        a = A(this.ya, null, null);
+        if (!a.oa()) throw vf();
+        this.l = xf(a.first(), this.la);
+        this.l.H && (this.H = !0);
       }
     }
   };
-  const Hf = (a, b, c, d, e, f) => A([d, e, f], ([h, k, l]) => {
+  const Hf = (a, b, c, d, e, f) => tb([d, e, f], ([h, k, l]) => {
       k = k.value;
       l = l.value;
-      if (k > h.h.length || 0 >= k) throw Error("FOAY0001: subarray start out of bounds.");
+      if (k > h.members.length || 0 >= k) throw Error("FOAY0001: subarray start out of bounds.");
       if (0 > l) throw Error("FOAY0002: subarray length out of bounds.");
-      if (k + l > h.h.length + 1) throw Error("FOAY0001: subarray start + length out of bounds.");
-      return w.m(new pb(h.h.slice(k - 1, l + k - 1)));
+      if (k + l > h.members.length + 1) throw Error("FOAY0001: subarray start + length out of bounds.");
+      return w.m(new qb(h.members.slice(k - 1, l + k - 1)));
     }),
-    If = (a, b, c, d, e) => A([d], ([f]) => e.N(h => {
+    If = (a, b, c, d, e) => tb([d], ([f]) => e.M(h => {
       h = h.map(l => l.value).sort((l, n) => n - l).filter((l, n, t) => t[n - 1] !== l);
-      const k = f.h.concat();
+      const k = f.members.concat();
       for (let l = 0, n = h.length; l < n; ++l) {
         const t = h[l];
-        if (t > f.h.length || 0 >= t) throw Error("FOAY0001: subarray position out of bounds.");
+        if (t > f.members.length || 0 >= t) throw Error("FOAY0001: subarray position out of bounds.");
         k.splice(t - 1, 1);
       }
-      return w.m(new pb(k));
+      return w.m(new qb(k));
     })),
     Jf = a => v(a, 1) || v(a, 20) || v(a, 19),
     Kf = (a, b, c, d, e) => 0 === d.length ? 0 !== e.length : 0 !== e.length && He(a, b, c, d[0], e[0]).next(0).value ? Kf(a, b, c, d.slice(1), e.slice(1)) : d[0].value !== d[0].value ? !0 : Jf(d[0].type) && 0 !== e.length && Jf(e[0].type) ? d[0].value < e[0].value : 0 === e.length ? !1 : d[0].value < e[0].value,
     Lf = (a, b, c, d) => {
       d.sort((e, f) => Ge(a, b, c, w.create(e), w.create(f)).next(0).value ? 0 : Kf(a, b, c, e, f) ? -1 : 1);
-      return w.m(new pb(d.map(e => () => w.create(e))));
+      return w.m(new qb(d.map(e => () => w.create(e))));
     };
   function Mf(a) {
-    return v(a.type, 62) ? jc(a.h.map(b => b().N(c => jc(c.map(Mf))))) : w.m(a);
+    return v(a.type, 62) ? kc(a.members.map(b => b().M(c => kc(c.map(Mf))))) : w.m(a);
   }
   var Nf = [{
     namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
@@ -6137,7 +6183,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 5,
       g: 3
     },
-    callFunction: (a, b, c, d) => A([d], ([e]) => w.m(g(e.h.length, 5)))
+    callFunction: (a, b, c, d) => tb([d], ([e]) => w.m(g(e.members.length, 5)))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
     localName: "get",
@@ -6152,7 +6198,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 59,
       g: 2
     },
-    callFunction: ob
+    callFunction: pb
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
     localName: "put",
@@ -6170,12 +6216,12 @@ const fontoxpath = function (xspattern, prsc) {
       type: 62,
       g: 3
     },
-    callFunction: (a, b, c, d, e, f) => A([e, d], ([h, k]) => {
+    callFunction: (a, b, c, d, e, f) => tb([e, d], ([h, k]) => {
       h = h.value;
-      if (0 >= h || h > k.h.length) throw Error("FOAY0001: array position out of bounds.");
-      k = k.h.concat();
+      if (0 >= h || h > k.members.length) throw Error("FOAY0001: array position out of bounds.");
+      k = k.members.concat();
       k.splice(h - 1, 1, Ra(f));
-      return w.m(new pb(k));
+      return w.m(new qb(k));
     })
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
@@ -6191,7 +6237,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 62,
       g: 3
     },
-    callFunction: (a, b, c, d, e) => A([d], ([f]) => w.m(new pb(f.h.concat([Ra(e)]))))
+    callFunction: (a, b, c, d, e) => tb([d], ([f]) => w.m(new qb(f.members.concat([Ra(e)]))))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
     localName: "subarray",
@@ -6260,12 +6306,12 @@ const fontoxpath = function (xspattern, prsc) {
       type: 62,
       g: 3
     },
-    callFunction: (a, b, c, d, e, f) => A([d, e], ([h, k]) => {
+    callFunction: (a, b, c, d, e, f) => tb([d, e], ([h, k]) => {
       k = k.value;
-      if (k > h.h.length + 1 || 0 >= k) throw Error("FOAY0001: subarray position out of bounds.");
-      h = h.h.concat();
+      if (k > h.members.length + 1 || 0 >= k) throw Error("FOAY0001: subarray position out of bounds.");
+      h = h.members.concat();
       h.splice(k - 1, 0, Ra(f));
-      return w.m(new pb(h));
+      return w.m(new qb(h));
     })
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
@@ -6279,7 +6325,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     },
     callFunction(a, b, c, d) {
-      return ob(a, b, c, d, w.m(g(1, 5)));
+      return pb(a, b, c, d, w.m(g(1, 5)));
     }
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
@@ -6306,7 +6352,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 62,
       g: 3
     },
-    callFunction: (a, b, c, d) => A([d], ([e]) => w.m(new pb(e.h.concat().reverse())))
+    callFunction: (a, b, c, d) => tb([d], ([e]) => w.m(new qb(e.members.concat().reverse())))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
     localName: "join",
@@ -6318,9 +6364,9 @@ const fontoxpath = function (xspattern, prsc) {
       type: 62,
       g: 3
     },
-    callFunction: (a, b, c, d) => d.N(e => {
-      e = e.reduce((f, h) => f.concat(h.h), []);
-      return w.m(new pb(e));
+    callFunction: (a, b, c, d) => d.M(e => {
+      e = e.reduce((f, h) => f.concat(h.members), []);
+      return w.m(new qb(e));
     })
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
@@ -6336,10 +6382,10 @@ const fontoxpath = function (xspattern, prsc) {
       type: 62,
       g: 3
     },
-    callFunction: (a, b, c, d, e) => A([d, e], ([f, h]) => {
-      if (1 !== h.v) throw mc("The callback passed into array:for-each has a wrong arity.");
-      f = f.h.map(k => Ra(h.value.call(void 0, a, b, c, xf(h.o, [k()], b, "array:for-each")[0])));
-      return w.m(new pb(f));
+    callFunction: (a, b, c, d, e) => tb([d, e], ([f, h]) => {
+      if (1 !== h.v) throw nc("The callback passed into array:for-each has a wrong arity.");
+      f = f.members.map(k => Ra(h.value.call(void 0, a, b, c, wf(h.o, [k()], b, "array:for-each")[0])));
+      return w.m(new qb(f));
     })
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
@@ -6355,10 +6401,10 @@ const fontoxpath = function (xspattern, prsc) {
       type: 62,
       g: 3
     },
-    callFunction: (a, b, c, d, e) => A([d, e], ([f, h]) => {
-      if (1 !== h.v) throw mc("The callback passed into array:filter has a wrong arity.");
-      const k = f.h.map(t => {
-          t = xf(h.o, [t()], b, "array:filter")[0];
+    callFunction: (a, b, c, d, e) => tb([d, e], ([f, h]) => {
+      if (1 !== h.v) throw nc("The callback passed into array:filter has a wrong arity.");
+      const k = f.members.map(t => {
+          t = wf(h.o, [t()], b, "array:filter")[0];
           const u = h.value;
           return u(a, b, c, t);
         }),
@@ -6367,13 +6413,13 @@ const fontoxpath = function (xspattern, prsc) {
       return w.create({
         next: () => {
           if (n) return p;
-          for (let u = 0, z = f.h.length; u < z; ++u) {
-            var t = k[u].fa();
+          for (let u = 0, z = f.members.length; u < z; ++u) {
+            var t = k[u].ea();
             l[u] = t;
           }
-          t = f.h.filter((u, z) => l[z]);
+          t = f.members.filter((u, z) => l[z]);
           n = !0;
-          return q(new pb(t));
+          return q(new qb(t));
         }
       });
     })
@@ -6394,10 +6440,10 @@ const fontoxpath = function (xspattern, prsc) {
       type: 59,
       g: 2
     },
-    callFunction: (a, b, c, d, e, f) => A([d, f], ([h, k]) => {
-      if (2 !== k.v) throw mc("The callback passed into array:fold-left has a wrong arity.");
-      return h.h.reduce((l, n) => {
-        n = xf(k.o, [n()], b, "array:fold-left")[0];
+    callFunction: (a, b, c, d, e, f) => tb([d, f], ([h, k]) => {
+      if (2 !== k.v) throw nc("The callback passed into array:fold-left has a wrong arity.");
+      return h.members.reduce((l, n) => {
+        n = wf(k.o, [n()], b, "array:fold-left")[0];
         return k.value.call(void 0, a, b, c, l, n);
       }, e);
     })
@@ -6418,10 +6464,10 @@ const fontoxpath = function (xspattern, prsc) {
       type: 59,
       g: 2
     },
-    callFunction: (a, b, c, d, e, f) => A([d, f], ([h, k]) => {
-      if (2 !== k.v) throw mc("The callback passed into array:fold-right has a wrong arity.");
-      return h.h.reduceRight((l, n) => {
-        n = xf(k.o, [n()], b, "array:fold-right")[0];
+    callFunction: (a, b, c, d, e, f) => tb([d, f], ([h, k]) => {
+      if (2 !== k.v) throw nc("The callback passed into array:fold-right has a wrong arity.");
+      return h.members.reduceRight((l, n) => {
+        n = wf(k.o, [n()], b, "array:fold-right")[0];
         return k.value.call(void 0, a, b, c, l, n);
       }, e);
     })
@@ -6442,14 +6488,14 @@ const fontoxpath = function (xspattern, prsc) {
       type: 62,
       g: 3
     },
-    callFunction: (a, b, c, d, e, f) => A([d, e, f], ([h, k, l]) => {
-      if (2 !== l.v) throw mc("The callback passed into array:for-each-pair has a wrong arity.");
+    callFunction: (a, b, c, d, e, f) => tb([d, e, f], ([h, k, l]) => {
+      if (2 !== l.v) throw nc("The callback passed into array:for-each-pair has a wrong arity.");
       const n = [];
-      for (let t = 0, u = Math.min(h.h.length, k.h.length); t < u; ++t) {
-        const [z, y] = xf(l.o, [h.h[t](), k.h[t]()], b, "array:for-each-pair");
+      for (let t = 0, u = Math.min(h.members.length, k.members.length); t < u; ++t) {
+        const [z, y] = wf(l.o, [h.members[t](), k.members[t]()], b, "array:for-each-pair");
         n[t] = Ra(l.value.call(void 0, a, b, c, z, y));
       }
-      return w.m(new pb(n));
+      return w.m(new qb(n));
     })
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/array",
@@ -6462,8 +6508,8 @@ const fontoxpath = function (xspattern, prsc) {
       type: 62,
       g: 3
     },
-    callFunction: (a, b, c, d) => A([d], ([e]) => {
-      e = e.h.map(f => f().O());
+    callFunction: (a, b, c, d) => tb([d], ([e]) => {
+      e = e.members.map(f => f().N());
       return Lf(a, b, c, e);
     })
   }, {
@@ -6477,10 +6523,10 @@ const fontoxpath = function (xspattern, prsc) {
       type: 59,
       g: 2
     },
-    callFunction: (a, b, c, d) => d.N(e => jc(e.map(Mf)))
+    callFunction: (a, b, c, d) => d.M(e => kc(e.map(Mf)))
   }];
   function E(a, b, c, d, e) {
-    return e.F() ? e : w.m(jd(e.first(), a));
+    return e.isEmpty() ? e : w.m(kd(e.first(), a));
   }
   var Of = [{
     namespaceURI: "http://www.w3.org/2001/XMLSchema",
@@ -6722,15 +6768,15 @@ const fontoxpath = function (xspattern, prsc) {
       g: 0
     },
     callFunction: (a, b, c, d) => {
-      if (d.F()) return d;
+      if (d.isEmpty()) return d;
       a = d.first();
       if (v(a.type, 2)) throw Error("XPTY0004: The provided QName is not a string-like value.");
-      a = jd(a, 1).value;
-      a = sc(a, 23);
-      if (!tc(a, 23)) throw Error("FORG0001: The provided QName is invalid.");
-      if (!a.includes(":")) return c = c.$(""), w.m(g(new Sa("", c, a), 23));
+      a = kd(a, 1).value;
+      a = tc(a, 23);
+      if (!uc(a, 23)) throw Error("FORG0001: The provided QName is invalid.");
+      if (!a.includes(":")) return c = c.Z(""), w.m(g(new Sa("", c, a), 23));
       const [e, f] = a.split(":");
-      c = c.$(e);
+      c = c.Z(e);
       if (!c) throw Error(`FONS0004: The value ${a} can not be cast to a QName. Did you mean to use fn:QName?`);
       return w.m(g(new Sa(e, c, f), 23));
     }
@@ -7083,16 +7129,16 @@ const fontoxpath = function (xspattern, prsc) {
     },
     callFunction: E.bind(null, 10)
   }];
-  const Pf = (a, b, c, d) => d.F() ? d : w.m(g(d.first().value.getYear(), 5)),
-    Qf = (a, b, c, d) => d.F() ? d : w.m(g(d.first().value.getMonth(), 5)),
-    Rf = (a, b, c, d) => d.F() ? d : w.m(g(d.first().value.getDay(), 5)),
-    Sf = (a, b, c, d) => d.F() ? d : w.m(g(d.first().value.getHours(), 5)),
-    Tf = (a, b, c, d) => d.F() ? d : w.m(g(d.first().value.getMinutes(), 5)),
+  const Pf = (a, b, c, d) => d.isEmpty() ? d : w.m(g(d.first().value.getYear(), 5)),
+    Qf = (a, b, c, d) => d.isEmpty() ? d : w.m(g(d.first().value.getMonth(), 5)),
+    Rf = (a, b, c, d) => d.isEmpty() ? d : w.m(g(d.first().value.getDay(), 5)),
+    Sf = (a, b, c, d) => d.isEmpty() ? d : w.m(g(d.first().value.getHours(), 5)),
+    Tf = (a, b, c, d) => d.isEmpty() ? d : w.m(g(d.first().value.getMinutes(), 5)),
     Uf = (a, b, c, d) => {
-      d.F() || (a = w, b = a.m, d = d.first().value, d = b.call(a, g(d.D + d.qa, 4)));
+      d.isEmpty() || (a = w, b = a.m, d = d.first().value, d = b.call(a, g(d.D + d.ma, 4)));
       return d;
     },
-    Vf = (a, b, c, d) => d.F() ? d : (a = d.first().value.Y) ? w.m(g(a, 17)) : w.empty();
+    Vf = (a, b, c, d) => d.isEmpty() ? d : (a = d.first().value.W) ? w.m(g(a, 17)) : w.empty();
   var Wf = [{
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "dateTime",
@@ -7108,16 +7154,17 @@ const fontoxpath = function (xspattern, prsc) {
       g: 0
     },
     callFunction: (a, b, c, d, e) => {
-      if (d.F()) return d;
-      if (e.F()) return e;
+      if (d.isEmpty()) return d;
+      if (e.isEmpty()) return e;
       a = d.first().value;
       e = e.first().value;
-      b = a.Y;
-      c = e.Y;
+      b = a.W;
+      c = e.W;
       if (b || c) {
-        if (!b || c) if (!b && c) b = c;else if (!vb(b, c)) throw Error("FORG0008: fn:dateTime: got a date and time value with different timezones.");
+        if (!b || c) if (!b && c) b = c;else if (!b.equals(c)) throw Error("FORG0008: fn:dateTime: got a date and time value with different timezones.");
       } else b = null;
-      return w.m(g(new Kb(a.getYear(), a.getMonth(), a.getDay(), e.getHours(), e.getMinutes(), e.getSeconds(), e.qa, b), 9));
+      e = new Lb(a.getYear(), a.getMonth(), a.getDay(), e.getHours(), e.getMinutes(), e.getSeconds(), e.ma, b);
+      return w.m(g(e, 9));
     }
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -7303,84 +7350,84 @@ const fontoxpath = function (xspattern, prsc) {
   function Xf(a, b) {
     const c = b.h,
       d = b.Ja,
-      e = b.Ma;
+      e = b.Oa;
     switch (a.node.nodeType) {
       case 1:
         const h = d.createElementNS(a.node.namespaceURI, a.node.nodeName);
         c.getAllAttributes(a.node).forEach(k => e.setAttributeNS(h, k.namespaceURI, k.nodeName, k.value));
-        for (var f of hb(c, a)) a = Xf(f, b), e.insertBefore(h, a.node, null);
+        for (var f of gb(c, a)) a = Xf(f, b), e.insertBefore(h, a.node, null);
         return {
           node: h,
-          G: null
+          F: null
         };
       case 2:
-        return b = d.createAttributeNS(a.node.namespaceURI, a.node.nodeName), b.value = ib(c, a), {
+        return b = d.createAttributeNS(a.node.namespaceURI, a.node.nodeName), b.value = hb(c, a), {
           node: b,
-          G: null
+          F: null
         };
       case 4:
         return {
-          node: d.createCDATASection(ib(c, a)),
-          G: null
+          node: d.createCDATASection(hb(c, a)),
+          F: null
         };
       case 8:
         return {
-          node: d.createComment(ib(c, a)),
-          G: null
+          node: d.createComment(hb(c, a)),
+          F: null
         };
       case 9:
         f = d.createDocument();
-        for (const k of hb(c, a)) a = Xf(k, b), e.insertBefore(f, a.node, null);
+        for (const k of gb(c, a)) a = Xf(k, b), e.insertBefore(f, a.node, null);
         return {
           node: f,
-          G: null
+          F: null
         };
       case 7:
         return {
-          node: d.createProcessingInstruction(a.node.target, ib(c, a)),
-          G: null
+          node: d.createProcessingInstruction(a.node.target, hb(c, a)),
+          F: null
         };
       case 3:
         return {
-          node: d.createTextNode(ib(c, a)),
-          G: null
+          node: d.createTextNode(hb(c, a)),
+          F: null
         };
     }
   }
   function Yf(a, b) {
-    const c = b.Ma;
+    const c = b.Oa;
     var d = b.Ja;
     const e = b.h;
     if (cb(a.node)) switch (a.node.nodeType) {
       case 2:
-        return d = d.createAttributeNS(a.node.namespaceURI, a.node.nodeName), d.value = ib(e, a), d;
+        return d = d.createAttributeNS(a.node.namespaceURI, a.node.nodeName), d.value = hb(e, a), d;
       case 8:
-        return d.createComment(ib(e, a));
+        return d.createComment(hb(e, a));
       case 1:
         const f = a.node.prefix,
           h = a.node.localName,
           k = d.createElementNS(a.node.namespaceURI, f ? f + ":" + h : h);
-        hb(e, a).forEach(l => {
+        gb(e, a).forEach(l => {
           l = Yf(l, b);
           c.insertBefore(k, l, null);
         });
         eb(e, a).forEach(l => {
-          c.setAttributeNS(k, l.node.namespaceURI, l.node.nodeName, ib(e, l));
+          c.setAttributeNS(k, l.node.namespaceURI, l.node.nodeName, hb(e, l));
         });
         k.normalize();
         return k;
       case 7:
-        return d.createProcessingInstruction(a.node.target, ib(e, a));
+        return d.createProcessingInstruction(a.node.target, hb(e, a));
       case 3:
-        return d.createTextNode(ib(e, a));
+        return d.createTextNode(hb(e, a));
     } else return Xf(a, b).node;
   }
   function Zf(a, b, c) {
     let d = a;
     for (a = x(c, d); null !== a;) {
       if (2 === d.node.nodeType) b.push(d.node.nodeName);else {
-        const e = hb(c, a);
-        b.push(e.findIndex(f => md(f, d)));
+        const e = gb(c, a);
+        b.push(e.findIndex(f => nd(f, d)));
       }
       d = a;
       a = x(c, d);
@@ -7390,13 +7437,13 @@ const fontoxpath = function (xspattern, prsc) {
   function $f(a, b, c) {
     for (; 0 < b.length;) {
       const d = b.pop();
-      "string" === typeof d ? a = eb(c, a).find(e => e.node.nodeName === d) : a = hb(c, a)[d];
+      "string" === typeof d ? a = eb(c, a).find(e => e.node.nodeName === d) : a = gb(c, a)[d];
     }
     return a.node;
   }
   function ag(a, b, c) {
     var d = a.node;
-    if (!(cb(d) || c || a.G)) return d;
+    if (!(cb(d) || c || a.F)) return d;
     d = b.v;
     const e = [];
     if (c) return Yf(a, b);
@@ -7404,16 +7451,16 @@ const fontoxpath = function (xspattern, prsc) {
     c = d.get(a.node);
     c || (c = {
       node: Yf(a, b),
-      G: null
+      F: null
     }, d.set(a.node, c));
     return $f(c, e, b.h);
   }
-  const bg = (a, b, c, d, e) => d.N(f => {
+  const bg = (a, b, c, d, e) => d.M(f => {
     var h;
     let k = "";
     for (let l = 0; l < f.length; l++) {
       const n = f[l],
-        t = b.Ua && v(n.type, 53) ? b.Ua.serializeToString(ag(n.value, b, !1)) : null === (h = qc(w.m(n), b).map(u => jd(u, 1)).first()) || void 0 === h ? void 0 : h.value;
+        t = b.Wa && v(n.type, 53) ? b.Wa.serializeToString(ag(n.value, b, !1)) : null === (h = rc(w.m(n), b).map(u => kd(u, 1)).first()) || void 0 === h ? void 0 : h.value;
       t && (k += `{type: ${Da[n.type]}, value: ${t}}\n`);
     }
     void 0 !== e && (k += e.first().value);
@@ -7449,9 +7496,9 @@ const fontoxpath = function (xspattern, prsc) {
     }
   }];
   const dg = (a, b, c, d, e) => {
-    a = void 0 === d || d.F() ? new Sa("err", "http://www.w3.org/2005/xqt-errors", "FOER0000") : d.first().value;
+    a = void 0 === d || d.isEmpty() ? new Sa("err", "http://www.w3.org/2005/xqt-errors", "FOER0000") : d.first().value;
     b = "";
-    void 0 === e || e.F() || (b = `: ${e.first().value}`);
+    void 0 === e || e.isEmpty() || (b = `: ${e.first().value}`);
     throw Error(`${a.localName}${b}`);
   };
   var eg = [{
@@ -7519,12 +7566,12 @@ const fontoxpath = function (xspattern, prsc) {
       super(a);
       this.position = {
         end: {
-          ha: b.end.ha,
+          ga: b.end.ga,
           line: b.end.line,
           offset: b.end.offset
         },
         start: {
-          ha: b.start.ha,
+          ga: b.start.ga,
           line: b.start.line,
           offset: b.start.offset
         }
@@ -7543,8 +7590,8 @@ const fontoxpath = function (xspattern, prsc) {
       h = `${Array(d).fill(" ", 0, Math.floor(Math.log10(k)) + 1 - d).join("")}${k}: `;
       e.push(`${h}${f}`);
       if (k >= c.start.line && k <= c.end.line) {
-        const l = k < c.end.line ? f.length + h.length : c.end.ha - 1 + h.length;
-        k = k > c.start.line ? h.length : c.start.ha - 1 + h.length;
+        const l = k < c.end.line ? f.length + h.length : c.end.ga - 1 + h.length;
+        k = k > c.start.line ? h.length : c.start.ga - 1 + h.length;
         f = " ".repeat(h.length) + Array.from(f.substring(0, k - h.length), n => "\t" === n ? "\t" : " ").join("") + "^".repeat(l - k);
         e.push(f);
       }
@@ -7581,7 +7628,7 @@ const fontoxpath = function (xspattern, prsc) {
       j: d.j,
       arity: c,
       callFunction: d.callFunction,
-      I: d.I,
+      H: d.H,
       localName: b,
       namespaceURI: a,
       i: d.i
@@ -7593,7 +7640,7 @@ const fontoxpath = function (xspattern, prsc) {
       j: c,
       arity: c.length,
       callFunction: e,
-      I: !1,
+      H: !1,
       localName: b,
       namespaceURI: a,
       i: d
@@ -7611,10 +7658,10 @@ const fontoxpath = function (xspattern, prsc) {
   };
   var qg = class {
     constructor(a, b, c, d) {
-      this.Da = [Object.create(null)];
-      this.Ea = Object.create(null);
+      this.Ea = [Object.create(null)];
+      this.Fa = Object.create(null);
       this.s = a;
-      this.ia = Object.keys(b).reduce((e, f) => {
+      this.ha = Object.keys(b).reduce((e, f) => {
         if (void 0 === b[f]) return e;
         e[f] = `Q{}${f}[0]`;
         return e;
@@ -7625,35 +7672,35 @@ const fontoxpath = function (xspattern, prsc) {
       this.l = d;
       this.D = [];
     }
-    va(a, b, c) {
+    ua(a, b, c) {
       return ng(a, b, c);
     }
     eb(a, b) {
       if (a) return null;
-      a = this.ia[b];
+      a = this.ha[b];
       this.o[b] || (this.o[b] = {
         name: b
       });
       return a;
     }
-    Sa(a, b) {
+    Ua(a, b) {
       const c = this.l(a, b);
       if (c) this.D.push({
-        cc: a,
+        fc: a,
         arity: b,
-        Db: c
+        Eb: c
       });else if ("" === a.prefix) {
         if (this.v) return {
           namespaceURI: this.v,
           localName: a.localName
         };
-      } else if (b = this.$(a.prefix, !0)) return {
+      } else if (b = this.Z(a.prefix, !0)) return {
         namespaceURI: b,
         localName: a.localName
       };
       return c;
     }
-    $(a, b = !0) {
+    Z(a, b = !0) {
       if (!b) return null;
       if (pg[a]) return pg[a];
       b = this.s(a);
@@ -7665,10 +7712,10 @@ const fontoxpath = function (xspattern, prsc) {
     }
   };
   var rg = (a, b) => {
-      a = 2 === a.node.nodeType ? `${a.node.nodeName}="${ib(b, a)}"` : a.node.outerHTML;
+      a = 2 === a.node.nodeType ? `${a.node.nodeName}="${hb(b, a)}"` : a.node.outerHTML;
       return Error(`XQTY0024: The node ${a} follows a node that is not an attribute node or a namespace node.`);
     },
-    sg = a => Error(`XQDY0044: The node name "${a.za()}" is invalid for a computed attribute constructor.`),
+    sg = a => Error(`XQDY0044: The node name "${a.Aa()}" is invalid for a computed attribute constructor.`),
     tg = () => Error("XQST0045: Functions and variables may not be declared in one of the reserved namespace URIs."),
     ug = (a, b) => Error(`XQST0049: The function or variable "Q{${a}}${b}" is declared more than once.`),
     vg = () => Error("XQST0060: Functions declared in a module or as an external function must reside in a namespace."),
@@ -7684,17 +7731,17 @@ const fontoxpath = function (xspattern, prsc) {
   }
   function Ff(a) {
     const b = new Cg(a.o);
-    for (let c = 0; c < a.h + 1; ++c) b.D = [Object.assign(Object.create(null), b.D[0], a.D[c])], b.Da = [Object.assign(Object.create(null), b.Da[0], a.Da[c])], b.l = Object.assign(Object.create(null), a.l), b.Ea = a.Ea, b.v = a.v;
+    for (let c = 0; c < a.h + 1; ++c) b.D = [Object.assign(Object.create(null), b.D[0], a.D[c])], b.Ea = [Object.assign(Object.create(null), b.Ea[0], a.Ea[c])], b.l = Object.assign(Object.create(null), a.l), b.Fa = a.Fa, b.v = a.v;
     return b;
   }
   function Dg(a) {
     a.s++;
     a.h++;
     a.D[a.h] = Object.create(null);
-    a.Da[a.h] = Object.create(null);
+    a.Ea[a.h] = Object.create(null);
   }
   function Eg(a, b, c) {
-    return (a = a.Ea[Ag(b, c)]) ? a : null;
+    return (a = a.Fa[Ag(b, c)]) ? a : null;
   }
   function Fg(a, b, c, d, e) {
     d = Ag(b, c) + "~" + d;
@@ -7706,14 +7753,14 @@ const fontoxpath = function (xspattern, prsc) {
   }
   function Hg(a, b, c) {
     b = Ag(b || "", c);
-    return a.Da[a.h][b] = `${b}[${a.s}]`;
+    return a.Ea[a.h][b] = `${b}[${a.s}]`;
   }
   function Ig(a, b, c, d) {
-    a.Ea[`${Ag(b || "", c)}[${a.s}]`] = d;
+    a.Fa[`${Ag(b || "", c)}[${a.s}]`] = d;
   }
   function Jg(a) {
     a.D.length = a.h;
-    a.Da.length = a.h;
+    a.Ea.length = a.h;
     a.h--;
   }
   var Cg = class {
@@ -7723,34 +7770,34 @@ const fontoxpath = function (xspattern, prsc) {
       this.D = [Object.create(null)];
       this.l = Object.create(null);
       this.v = null;
+      this.Fa = a && a.Fa;
       this.Ea = a && a.Ea;
-      this.Da = a && a.Da;
     }
-    va(a, b, c, d = !1) {
+    ua(a, b, c, d = !1) {
       const e = this.l[Ag(a, b) + "~" + c];
-      return !e || d && e.wb ? null === this.o ? null : this.o.va(a, b, c, d) : e;
+      return !e || d && e.wb ? null === this.o ? null : this.o.ua(a, b, c, d) : e;
     }
     eb(a, b) {
-      const c = Bg(this.Da, Ag(a, b));
+      const c = Bg(this.Ea, Ag(a, b));
       return c ? c : null === this.o ? null : this.o.eb(a, b);
     }
-    Sa(a, b) {
+    Ua(a, b) {
       var c = a.prefix;
       const d = a.localName;
       return "" === c && this.v ? {
         localName: d,
         namespaceURI: this.v
-      } : c && (c = this.$(c, !1)) ? {
+      } : c && (c = this.Z(c, !1)) ? {
         localName: d,
         namespaceURI: c
-      } : null === this.o ? null : this.o.Sa(a, b);
+      } : null === this.o ? null : this.o.Ua(a, b);
     }
-    $(a, b = !0) {
+    Z(a, b = !0) {
       const c = Bg(this.D, a || "");
-      return void 0 === c ? null === this.o ? void 0 : this.o.$(a || "", b) : c;
+      return void 0 === c ? null === this.o ? void 0 : this.o.Z(a || "", b) : c;
     }
   };
-  function F(a, b) {
+  function G(a, b) {
     "*" === b || Array.isArray(b) || (b = [b]);
     for (let c = 1; c < a.length; ++c) {
       if (!Array.isArray(a[c])) continue;
@@ -7768,7 +7815,7 @@ const fontoxpath = function (xspattern, prsc) {
     return "object" !== typeof a || Array.isArray(a) ? null : b in a ? a[b] : null;
   }
   function J(a, b) {
-    return b.reduce(F, a);
+    return b.reduce(G, a);
   }
   function K(a, b) {
     const c = [];
@@ -7787,8 +7834,8 @@ const fontoxpath = function (xspattern, prsc) {
     };
   }
   function Lg(a) {
-    const b = F(a, "typeDeclaration");
-    if (!b || F(b, "voidSequenceType")) return {
+    const b = G(a, "typeDeclaration");
+    if (!b || G(b, "voidSequenceType")) return {
       type: 59,
       g: 2
     };
@@ -7823,17 +7870,17 @@ const fontoxpath = function (xspattern, prsc) {
         case "atomicType":
           return Ia([I(f, "prefix"), H(f)].join(":"));
         case "parenthesizedItemType":
-          return c(F(f, "*"));
+          return c(G(f, "*"));
         default:
-          throw Error(`Type declaration "${F(b, "*")[0]}" is not supported.`);
+          throw Error(`Type declaration "${G(b, "*")[0]}" is not supported.`);
       }
     };
     a = {
-      type: c(F(b, "*")),
+      type: c(G(b, "*")),
       g: 3
     };
     let d = null;
-    const e = F(b, "occurrenceIndicator");
+    const e = G(b, "occurrenceIndicator");
     e && (d = H(e));
     switch (d) {
       case "*":
@@ -7863,11 +7910,11 @@ const fontoxpath = function (xspattern, prsc) {
     return b;
   }
   function Ng(a, b) {
-    if (!b || !b.ga) return {
+    if (!b || !b.fa) return {
       type: 59,
       g: 2
     };
-    var c = F(a, "EQName");
+    var c = G(a, "EQName");
     if (!c) return {
       type: 59,
       g: 2
@@ -7875,8 +7922,8 @@ const fontoxpath = function (xspattern, prsc) {
     var d = Kg(c);
     c = d.localName;
     const e = d.prefix;
-    d = K(F(a, "arguments"), "*");
-    c = b.ga.Sa({
+    d = K(G(a, "arguments"), "*");
+    c = b.fa.Ua({
       localName: c,
       prefix: e
     }, d.length);
@@ -7884,7 +7931,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 59,
       g: 2
     };
-    b = b.ga.va(c.namespaceURI, c.localName, d.length + 1);
+    b = b.fa.ua(c.namespaceURI, c.localName, d.length + 1);
     if (!b) return {
       type: 59,
       g: 2
@@ -7941,63 +7988,63 @@ const fontoxpath = function (xspattern, prsc) {
       [M(2, 2, "modOp")]: (a, b) => a % b,
       [M(2, 2, "idivOp")]: (a, b) => Math.trunc(a / b),
       [M(16, 16, "addOp")]: function (a, b) {
-        return new Kc(a.ea + b.ea);
+        return new Lc(a.da + b.da);
       },
       [M(16, 16, "subtractOp")]: function (a, b) {
-        return new Kc(a.ea - b.ea);
+        return new Lc(a.da - b.da);
       },
       [M(16, 16, "divOp")]: function (a, b) {
-        return a.ea / b.ea;
+        return a.da / b.da;
       },
-      [M(16, 2, "multiplyOp")]: Mc,
+      [M(16, 2, "multiplyOp")]: Nc,
       [M(16, 2, "divOp")]: function (a, b) {
         if (isNaN(b)) throw Error("FOCA0005: Cannot divide xs:yearMonthDuration by NaN");
-        a = Math.round(a.ea / b);
+        a = Math.round(a.da / b);
         if (a > Number.MAX_SAFE_INTEGER || !Number.isFinite(a)) throw Error("FODT0002: Value overflow while dividing xs:yearMonthDuration");
-        return new Kc(a < Number.MIN_SAFE_INTEGER || 0 === a ? 0 : a);
+        return new Lc(a < Number.MIN_SAFE_INTEGER || 0 === a ? 0 : a);
       },
-      [M(2, 16, "multiplyOp")]: (a, b) => Mc(b, a),
+      [M(2, 16, "multiplyOp")]: (a, b) => Nc(b, a),
       [M(17, 17, "addOp")]: function (a, b) {
-        return new yb(a.ca + b.ca);
+        return new zb(a.ba + b.ba);
       },
       [M(17, 17, "subtractOp")]: function (a, b) {
-        return new yb(a.ca - b.ca);
+        return new zb(a.ba - b.ba);
       },
       [M(17, 17, "divOp")]: function (a, b) {
-        if (0 === b.ca) throw Error("FOAR0001: Division by 0");
-        return a.ca / b.ca;
+        if (0 === b.ba) throw Error("FOAR0001: Division by 0");
+        return a.ba / b.ba;
       },
-      [M(17, 2, "multiplyOp")]: Cb,
+      [M(17, 2, "multiplyOp")]: Db,
       [M(17, 2, "divOp")]: function (a, b) {
         if (isNaN(b)) throw Error("FOCA0005: Cannot divide xs:dayTimeDuration by NaN");
-        a = a.ca / b;
+        a = a.ba / b;
         if (a > Number.MAX_SAFE_INTEGER || !Number.isFinite(a)) throw Error("FODT0002: Value overflow while dividing xs:dayTimeDuration");
-        return new yb(a < Number.MIN_SAFE_INTEGER || Object.is(-0, a) ? 0 : a);
+        return new zb(a < Number.MIN_SAFE_INTEGER || Object.is(-0, a) ? 0 : a);
       },
-      [M(2, 17, "multiplyOp")]: (a, b) => Cb(b, a),
-      [M(9, 9, "subtractOp")]: Pb,
-      [M(7, 7, "subtractOp")]: Pb,
-      [M(8, 8, "subtractOp")]: Pb,
-      [M(9, 16, "addOp")]: Qb,
-      [M(9, 16, "subtractOp")]: Rb,
-      [M(9, 17, "addOp")]: Qb,
-      [M(9, 17, "subtractOp")]: Rb,
-      [M(7, 16, "addOp")]: Qb,
-      [M(7, 16, "subtractOp")]: Rb,
-      [M(7, 17, "addOp")]: Qb,
-      [M(7, 17, "subtractOp")]: Rb,
-      [M(8, 17, "addOp")]: Qb,
-      [M(8, 17, "subtractOp")]: Rb,
-      [M(9, 16, "addOp")]: Qb,
-      [M(9, 16, "subtractOp")]: Rb,
-      [M(9, 17, "addOp")]: Qb,
-      [M(9, 17, "subtractOp")]: Rb,
-      [M(7, 17, "addOp")]: Qb,
-      [M(7, 17, "subtractOp")]: Rb,
-      [M(7, 16, "addOp")]: Qb,
-      [M(7, 16, "subtractOp")]: Rb,
-      [M(8, 17, "addOp")]: Qb,
-      [M(8, 17, "subtractOp")]: Rb
+      [M(2, 17, "multiplyOp")]: (a, b) => Db(b, a),
+      [M(9, 9, "subtractOp")]: Qb,
+      [M(7, 7, "subtractOp")]: Qb,
+      [M(8, 8, "subtractOp")]: Qb,
+      [M(9, 16, "addOp")]: Sb,
+      [M(9, 16, "subtractOp")]: Tb,
+      [M(9, 17, "addOp")]: Sb,
+      [M(9, 17, "subtractOp")]: Tb,
+      [M(7, 16, "addOp")]: Sb,
+      [M(7, 16, "subtractOp")]: Tb,
+      [M(7, 17, "addOp")]: Sb,
+      [M(7, 17, "subtractOp")]: Tb,
+      [M(8, 17, "addOp")]: Sb,
+      [M(8, 17, "subtractOp")]: Tb,
+      [M(9, 16, "addOp")]: Sb,
+      [M(9, 16, "subtractOp")]: Tb,
+      [M(9, 17, "addOp")]: Sb,
+      [M(9, 17, "subtractOp")]: Tb,
+      [M(7, 17, "addOp")]: Sb,
+      [M(7, 17, "subtractOp")]: Tb,
+      [M(7, 16, "addOp")]: Sb,
+      [M(7, 16, "subtractOp")]: Tb,
+      [M(8, 17, "addOp")]: Sb,
+      [M(8, 17, "subtractOp")]: Tb
     };
   function Qg(a, b) {
     return v(a, 5) && v(b, 5) ? 5 : v(a, 4) && v(b, 4) ? 4 : v(a, 6) && v(b, 6) ? 6 : 3;
@@ -8006,14 +8053,14 @@ const fontoxpath = function (xspattern, prsc) {
   function Sg(a, b, c) {
     function d(l, n) {
       return {
-        U: e ? e(l) : l,
-        V: f ? f(n) : n
+        T: e ? e(l) : l,
+        U: f ? f(n) : n
       };
     }
     let e = null,
       f = null;
-    v(b, 19) && (e = l => jd(l, 3), b = 3);
-    v(c, 19) && (f = l => jd(l, 3), c = 3);
+    v(b, 19) && (e = l => kd(l, 3), b = 3);
+    v(c, 19) && (f = l => kd(l, 3), c = 3);
     const h = Rg.filter(l => v(b, l)),
       k = Rg.filter(l => v(c, l));
     if (h.includes(2) && k.includes(2)) {
@@ -8023,8 +8070,8 @@ const fontoxpath = function (xspattern, prsc) {
       "divOp" === a && 5 === n && (n = 4);
       return "idivOp" === a ? Tg(d, l)[0] : (t, u) => {
         const {
-          U: z,
-          V: y
+          T: z,
+          U: y
         } = d(t, u);
         return g(l(z.value, y.value), n);
       };
@@ -8034,26 +8081,26 @@ const fontoxpath = function (xspattern, prsc) {
         u = Og[M(l, n, a)];
       if (t && void 0 !== u) return (z, y) => {
         const {
-          U: G,
-          V: N
+          T: F,
+          U: N
         } = d(z, y);
-        return g(t(G.value, N.value), u);
+        return g(t(F.value, N.value), u);
       };
     }
   }
   function Ug(a, b, c) {
     function d(n, t) {
       return {
-        U: f ? f(n) : n,
-        V: h ? h(t) : t
+        T: f ? f(n) : n,
+        U: h ? h(t) : t
       };
     }
     var e = [2, 53, 59, 46, 47];
     if (e.includes(b) || e.includes(c)) return 2;
     let f = null,
       h = null;
-    v(b, 19) && (f = n => jd(n, 3), b = 3);
-    v(c, 19) && (h = n => jd(n, 3), c = 3);
+    v(b, 19) && (f = n => kd(n, 3), b = 3);
+    v(c, 19) && (h = n => kd(n, 3), c = 3);
     var k = Rg.filter(n => v(b, n));
     e = Rg.filter(n => v(c, n));
     if (k.includes(2) && e.includes(2)) {
@@ -8067,8 +8114,8 @@ const fontoxpath = function (xspattern, prsc) {
   function Tg(a, b) {
     return [(c, d) => {
       const {
-        U: e,
-        V: f
+        T: e,
+        U: f
       } = a(c, d);
       if (0 === f.value) throw Error("FOAR0001: Divisor of idiv operator cannot be (-)0");
       if (Number.isNaN(e.value) || Number.isNaN(f.value) || !Number.isFinite(e.value)) throw Error("FOAR0002: One of the operands of idiv is NaN or the first operand is (-)INF");
@@ -8076,18 +8123,18 @@ const fontoxpath = function (xspattern, prsc) {
     }, 5];
   }
   const Vg = Object.create(null);
-  var Wg = class extends D {
+  var Wg = class extends C {
     constructor(a, b, c, d, e) {
       super(b.o.add(c.o), [b, c], {
         B: !1
       }, !1, d);
       this.A = b;
-      this.L = c;
+      this.K = c;
       this.l = a;
       this.s = e;
     }
     h(a, b) {
-      return qc(C(this.A, a, b), b).N(c => 0 === c.length ? w.empty() : qc(C(this.L, a, b), b).N(d => {
+      return rc(A(this.A, a, b), b).M(c => 0 === c.length ? w.empty() : rc(A(this.K, a, b), b).M(d => {
         if (0 === d.length) return w.empty();
         if (1 < c.length || 1 < d.length) throw Error('XPTY0004: the operands of the "' + this.l + '" operator should be empty or singleton.');
         const e = c[0];
@@ -8178,18 +8225,18 @@ const fontoxpath = function (xspattern, prsc) {
     return a.filter((b, c, d) => d.findIndex(e => e.type === b.type && e.g === b.g) === c);
   }
   function bh(a, b) {
-    if (!b || !b.ga) return {
+    if (!b || !b.fa) return {
       type: 59,
       g: 2
     };
-    const c = F(a, "functionName");
+    const c = G(a, "functionName");
     var d = Kg(c);
     let e = d.localName;
     var f = d.prefix;
     let h = d.namespaceURI;
-    d = K(F(a, "arguments"), "*");
+    d = K(G(a, "arguments"), "*");
     if (null === h) {
-      f = b.ga.Sa({
+      f = b.fa.Ua({
         localName: e,
         prefix: f
       }, d.length);
@@ -8202,7 +8249,7 @@ const fontoxpath = function (xspattern, prsc) {
       L(c, "URI", h);
       c[2] = e;
     }
-    b = b.ga.va(h, e, d.length);
+    b = b.fa.ua(h, e, d.length);
     if (!b || 63 === b.i.type) return {
       type: 59,
       g: 2
@@ -8219,18 +8266,18 @@ const fontoxpath = function (xspattern, prsc) {
     return b;
   }
   function dh(a, b) {
-    if (!b || !b.ga) return {
+    if (!b || !b.fa) return {
       type: 59,
       g: 2
     };
-    const c = F(a, "functionName");
+    const c = G(a, "functionName");
     var d = Kg(c);
     let e = d.localName;
     var f = d.namespaceURI;
     const h = d.prefix;
     d = Number(J(a, ["integerConstantExpr", "value"])[1]);
     if (!f) {
-      f = b.ga.Sa({
+      f = b.fa.Ua({
         localName: e,
         prefix: h
       }, d);
@@ -8242,7 +8289,7 @@ const fontoxpath = function (xspattern, prsc) {
       f = f.namespaceURI;
       L(c, "URI", f);
     }
-    b = b.ga.va(f, e, d) || null;
+    b = b.fa.ua(f, e, d) || null;
     if (!b) return {
       type: 59,
       g: 2
@@ -8303,7 +8350,7 @@ const fontoxpath = function (xspattern, prsc) {
             e = Kg(l);
             if (null !== e.namespaceURI) break;
             if ("attribute" === k && !e.prefix) break;
-            e = d.$(e.prefix || "");
+            e = d.Z(e.prefix || "");
             void 0 !== e && L(l, "URI", e);
             break;
           case "lookup":
@@ -8351,7 +8398,7 @@ const fontoxpath = function (xspattern, prsc) {
     };
     var e = K(a, "typeswitchExprCaseClause");
     for (let h = 0; h < c.length; h++) {
-      var f = F(e[h], "*");
+      var f = G(e[h], "*");
       switch (f[0]) {
         case "sequenceType":
           if (f = ih(f, b, c[h])) return 59 !== f.type && L(a, "type", f), f;
@@ -8370,14 +8417,14 @@ const fontoxpath = function (xspattern, prsc) {
   }
   function ih(a, b, c) {
     const d = K(a, "*"),
-      e = F(a, "atomicType");
+      e = G(a, "atomicType");
     if (!e) return {
       type: 59,
       g: 2
     };
     if (Ia(I(e, "prefix") + ":" + e[2]) === b.type) if (1 === d.length) {
       if (3 === b.g) return c;
-    } else if (a = F(a, "occurrenceIndicator")[1], b.g === Ka(a)) return c;
+    } else if (a = G(a, "occurrenceIndicator")[1], b.g === Ka(a)) return c;
   }
   function jh(a, b) {
     O(a, b);
@@ -8388,8 +8435,8 @@ const fontoxpath = function (xspattern, prsc) {
     for (c = 1; c < a.length; c++) a[c] && O(a[c], b);
   }
   const lh = (a, b) => {
-      var c = O(F(a, "firstOperand")[1], b);
-      const d = O(F(a, "secondOperand")[1], b);
+      var c = O(G(a, "firstOperand")[1], b);
+      const d = O(G(a, "secondOperand")[1], b);
       var e = a[0];
       if (c && d) {
         if (b = Ug(e, c.type, d.type)) c = {
@@ -8403,8 +8450,8 @@ const fontoxpath = function (xspattern, prsc) {
       return a;
     },
     mh = (a, b) => {
-      O(F(a, "firstOperand")[1], b);
-      O(F(a, "secondOperand")[1], b);
+      O(G(a, "firstOperand")[1], b);
+      O(G(a, "secondOperand")[1], b);
       a: {
         switch (a[0]) {
           case "orOp":
@@ -8429,8 +8476,8 @@ const fontoxpath = function (xspattern, prsc) {
       return a;
     },
     nh = (a, b) => {
-      O(F(a, "firstOperand")[1], b);
-      O(F(a, "secondOperand")[1], b);
+      O(G(a, "firstOperand")[1], b);
+      O(G(a, "secondOperand")[1], b);
       a: {
         switch (a[0]) {
           case "unionOp":
@@ -8463,8 +8510,8 @@ const fontoxpath = function (xspattern, prsc) {
       return a;
     },
     oh = (a, b) => {
-      O(F(a, "firstOperand")[1], b);
-      O(F(a, "secondOperand")[1], b);
+      O(G(a, "firstOperand")[1], b);
+      O(G(a, "secondOperand")[1], b);
       b = {
         type: 0,
         g: 3
@@ -8473,31 +8520,31 @@ const fontoxpath = function (xspattern, prsc) {
       return b;
     },
     ph = (a, b) => {
-      O(F(a, "firstOperand")[1], b);
-      O(F(a, "secondOperand")[1], b);
+      O(G(a, "firstOperand")[1], b);
+      O(G(a, "secondOperand")[1], b);
       b = I(J(a, ["firstOperand", "*"]), "type");
       const c = I(J(a, ["secondOperand", "*"]), "type");
       b = {
         type: 0,
-        g: wc(b) || wc(c) ? 0 : 3
+        g: xc(b) || xc(c) ? 0 : 3
       };
       L(a, "type", b);
       return b;
     },
     qh = (a, b) => {
-      O(F(a, "firstOperand")[1], b);
-      O(F(a, "secondOperand")[1], b);
+      O(G(a, "firstOperand")[1], b);
+      O(G(a, "secondOperand")[1], b);
       b = I(J(a, ["firstOperand", "*"]), "type");
       const c = I(J(a, ["secondOperand", "*"]), "type");
       b = {
         type: 0,
-        g: wc(b) || wc(c) ? 0 : 3
+        g: xc(b) || xc(c) ? 0 : 3
       };
       L(a, "type", b);
       return b;
     },
     kh = new Map([["unaryMinusOp", (a, b) => {
-      b = O(F(a, "operand")[1], b);
+      b = O(G(a, "operand")[1], b);
       b ? v(b.type, 2) ? (b = {
         type: b.type,
         g: b.g
@@ -8510,7 +8557,7 @@ const fontoxpath = function (xspattern, prsc) {
       }, L(a, "type", b), a = b);
       return a;
     }], ["unaryPlusOp", (a, b) => {
-      b = O(F(a, "operand")[1], b);
+      b = O(G(a, "operand")[1], b);
       b ? v(b.type, 2) ? (b = {
         type: b.type,
         g: b.g
@@ -8527,8 +8574,8 @@ const fontoxpath = function (xspattern, prsc) {
         d = c.map(e => O(e, b));
       return gh(a, c.length, d);
     }], ["unionOp", nh], ["intersectOp", nh], ["exceptOp", nh], ["stringConcatenateOp", (a, b) => {
-      O(F(a, "firstOperand")[1], b);
-      O(F(a, "secondOperand")[1], b);
+      O(G(a, "firstOperand")[1], b);
+      O(G(a, "secondOperand")[1], b);
       b = {
         type: 1,
         g: 3
@@ -8536,8 +8583,8 @@ const fontoxpath = function (xspattern, prsc) {
       L(a, "type", b);
       return b;
     }], ["rangeSequenceExpr", (a, b) => {
-      O(F(a, "startExpr")[1], b);
-      O(F(a, "endExpr")[1], b);
+      O(G(a, "startExpr")[1], b);
+      O(G(a, "endExpr")[1], b);
       b = {
         type: 5,
         g: 1
@@ -8545,7 +8592,7 @@ const fontoxpath = function (xspattern, prsc) {
       L(a, "type", b);
       return b;
     }], ["equalOp", oh], ["notEqualOp", oh], ["lessThanOrEqualOp", oh], ["lessThanOp", oh], ["greaterThanOrEqualOp", oh], ["greaterThanOp", oh], ["eqOp", ph], ["neOp", ph], ["ltOp", ph], ["leOp", ph], ["gtOp", ph], ["geOp", ph], ["isOp", qh], ["nodeBeforeOp", qh], ["nodeAfterOp", qh], ["pathExpr", (a, b) => {
-      const c = F(a, "rootExpr");
+      const c = G(a, "rootExpr");
       c && c[1] && O(c[1], b);
       K(a, "stepExpr").map(d => O(d, b));
       return eh(a, b);
@@ -8553,12 +8600,12 @@ const fontoxpath = function (xspattern, prsc) {
       type: 59,
       g: 2
     })], ["ifThenElseExpr", (a, b) => {
-      var c = F(a, "ifClause") || F(K(a, "x:stackTrace")[0], "ifClause");
-      const d = F(a, "thenClause") || F(K(a, "x:stackTrace")[1], "thenClause"),
-        e = F(a, "elseClause") || F(K(a, "x:stackTrace")[2], "elseClause");
-      O(F(c, "*"), b);
-      c = O(F(d, "*"), b);
-      b = O(F(e, "*"), b);
+      var c = G(a, "ifClause") || G(K(a, "x:stackTrace")[0], "ifClause");
+      const d = G(a, "thenClause") || G(K(a, "x:stackTrace")[1], "thenClause"),
+        e = G(a, "elseClause") || G(K(a, "x:stackTrace")[2], "elseClause");
+      O(G(c, "*"), b);
+      c = O(G(d, "*"), b);
+      b = O(G(e, "*"), b);
       c && b ? c.type === b.type && c.g === b.g ? (59 !== c.type && L(a, "type", c), a = c) : a = {
         type: 59,
         g: 2
@@ -8568,8 +8615,8 @@ const fontoxpath = function (xspattern, prsc) {
       };
       return a;
     }], ["instanceOfExpr", (a, b) => {
-      O(F(a, "argExpr"), b);
-      O(F(a, "sequenceType"), b);
+      O(G(a, "argExpr"), b);
+      O(G(a, "sequenceType"), b);
       b = {
         type: 0,
         g: 3
@@ -8605,21 +8652,21 @@ const fontoxpath = function (xspattern, prsc) {
       L(a, "type", b);
       return b;
     }], ["functionCallExpr", (a, b) => {
-      const c = F(a, "arguments");
+      const c = G(a, "arguments");
       K(c, "*").map(d => O(d, b));
       return bh(a, b);
     }], ["arrowExpr", (a, b) => {
-      O(F(a, "argExpr")[1], b);
+      O(G(a, "argExpr")[1], b);
       return Ng(a, b);
     }], ["dynamicFunctionInvocationExpr", (a, b) => {
       O(J(a, ["functionItem", "*"]), b);
-      (a = F(a, "arguments")) && O(a, b);
+      (a = G(a, "arguments")) && O(a, b);
       return {
         type: 59,
         g: 2
       };
     }], ["namedFunctionRef", (a, b) => dh(a, b)], ["inlineFunctionExpr", (a, b) => {
-      O(F(a, "functionBody")[1], b);
+      O(G(a, "functionBody")[1], b);
       b = {
         type: 60,
         g: 3
@@ -8628,8 +8675,9 @@ const fontoxpath = function (xspattern, prsc) {
       return b;
     }], ["castExpr", a => {
       var b = J(a, ["singleType", "atomicType"]);
+      b = I(b, "prefix") + ":" + b[2];
       b = {
-        type: Ia(I(b, "prefix") + ":" + b[2]),
+        type: Ia(b),
         g: 3
       };
       59 !== b.type && L(a, "type", b);
@@ -8660,16 +8708,16 @@ const fontoxpath = function (xspattern, prsc) {
       }));
       return ch(a);
     }], ["arrayConstructor", (a, b) => {
-      K(F(a, "*"), "arrayElem").map(c => O(c, b));
+      K(G(a, "*"), "arrayElem").map(c => O(c, b));
       return Mg(a);
     }], ["unaryLookup", a => {
-      F(a, "NCName");
+      G(a, "NCName");
       return {
         type: 59,
         g: 2
       };
     }], ["typeswitchExpr", (a, b) => {
-      const c = O(F(a, "argExpr")[1], b),
+      const c = O(G(a, "argExpr")[1], b),
         d = K(a, "typeswitchExprCaseClause").map(f => O(J(f, ["resultExpr"])[1], b)),
         e = O(J(a, ["typeswitchExprDefaultClause", "resultExpr"])[1], b);
       return hh(a, c, d, e);
@@ -8680,7 +8728,7 @@ const fontoxpath = function (xspattern, prsc) {
       a = K(a, "*");
       return O(a[0], b);
     }], ["queryBody", (a, b) => O(a[1], b)], ["flworExpr", (a, b) => Xg(a, b)], ["varRef", (a, b) => {
-      const c = Kg(F(a, "name"));
+      const c = Kg(G(a, "name"));
       var d;
       a: {
         for (d = b.h; 0 <= d; d--) {
@@ -8693,7 +8741,7 @@ const fontoxpath = function (xspattern, prsc) {
         d = void 0;
       }
       d && 59 !== d.type && L(a, "type", d);
-      null === c.namespaceURI && (b = b.$(c.prefix), void 0 !== b && L(a, "URI", b));
+      null === c.namespaceURI && (b = b.Z(c.prefix), void 0 !== b && L(a, "URI", b));
       return d;
     }]]);
   function Yg(a) {
@@ -8708,21 +8756,88 @@ const fontoxpath = function (xspattern, prsc) {
   var rh = class {
     constructor(a) {
       this.h = 0;
-      this.ga = a;
+      this.fa = a;
       this.o = [{}];
       this.v = [{}];
     }
-    $(a) {
+    Z(a) {
       for (let b = this.h; 0 <= b; b--) {
         const c = this.v[b][a];
         if (void 0 !== c) return c;
       }
-      return this.ga ? this.ga.$(a) : void 0;
+      return this.fa ? this.fa.Z(a) : void 0;
     }
   };
-  var sh = class extends D {
+  var sh = class extends rf {
     constructor(a, b) {
-      super(new vf({
+      super(a.reduce((c, d) => 0 < uf(c, d.o) ? c : d.o, new D({})), a, {
+        B: a.every(c => c.B)
+      }, b);
+    }
+    A(a, b, c) {
+      for (const d of c) if (b = d(a), !b.isEmpty()) return b;
+      return w.empty();
+    }
+  };
+  const th = new Map([["type-1-or-type-2", ["name", "type-1", "type-2"]], ["type-1", ["name"]], ["type-2", ["name"]]]),
+    uh = new Map([["name", "type-1-or-type-2"], ["type-1", "type-1-or-type-2"], ["type-2", "type-1-or-type-2"]]);
+  function vh(a, b) {
+    if (null === a) return b;
+    if (null === b || a === b) return a;
+    const c = a.startsWith("name-") ? "name" : a,
+      d = b.startsWith("name-") ? "name" : b,
+      e = th.get(c);
+    if (void 0 !== e && e.includes(d)) return b;
+    b = th.get(d);
+    return void 0 !== b && b.includes(c) ? a : "empty";
+  }
+  function wh(a, b) {
+    if (null === a || null === b) return null;
+    if ("empty" === a) return b;
+    if ("empty" === b || a === b) return a;
+    a = a.startsWith("name-") ? "name" : a;
+    var c = b.startsWith("name-") ? "name" : b;
+    b = uh.get(a);
+    if (void 0 !== b && b === c) return b;
+    c = uh.get(c);
+    return void 0 !== c && c === a ? c : b === c ? b : null;
+  }
+  var xh = class extends C {
+    constructor(a) {
+      super(a, [], {
+        B: !1
+      });
+    }
+    h(a, b) {
+      return this.l(a, a.L, b) ? w.$() : w.S();
+    }
+  };
+  var yh = class extends xh {
+    constructor(a) {
+      super(a.reduce((c, d) => 0 < uf(c, d.o) ? c : d.o, new D({})));
+      let b;
+      for (let c = 0; c < a.length; ++c) {
+        const d = a[c].D();
+        void 0 === b && (b = d);
+        if (null === b) break;
+        b = wh(b, d);
+      }
+      this.A = b;
+      this.s = a;
+    }
+    l(a, b, c) {
+      return this.s.some(d => d.l(a, b, c));
+    }
+    D() {
+      return this.A;
+    }
+    v(a) {
+      this.s.forEach(b => b.v(a));
+    }
+  };
+  var zh = class extends C {
+    constructor(a, b) {
+      super(new D({
         external: 1
       }), a, {
         B: a.every(c => c.B)
@@ -8730,12 +8845,12 @@ const fontoxpath = function (xspattern, prsc) {
       this.l = a;
     }
     h(a, b) {
-      return 0 === this.l.length ? w.m(new pb([])) : C(this.l[0], a, b).N(c => w.m(new pb(c.map(d => Ra(w.m(d))))));
+      return 0 === this.l.length ? w.m(new qb([])) : A(this.l[0], a, b).M(c => w.m(new qb(c.map(d => Ra(w.m(d))))));
     }
   };
-  var th = class extends D {
+  var Ah = class extends C {
     constructor(a, b) {
-      super(new vf({
+      super(new D({
         external: 1
       }), a, {
         B: a.every(c => c.B)
@@ -8743,136 +8858,125 @@ const fontoxpath = function (xspattern, prsc) {
       this.l = a;
     }
     h(a, b) {
-      return w.m(new pb(this.l.map(c => Ra(C(c, a, b)))));
+      return w.m(new qb(this.l.map(c => Ra(A(c, a, b)))));
     }
   };
-  function uh(a) {
-    if (null === a) throw lc("context is absent, it needs to be present to use axes.");
+  function Bh(a) {
+    if (null === a) throw mc("context is absent, it needs to be present to use axes.");
     if (!v(a.type, 53)) throw Error("XPTY0020: Axes can only be applied to nodes.");
     return a.value;
   }
-  function vh(a, b, c) {
+  function Ch(a, b, c) {
     let d = b;
     return {
       next: () => {
         if (!d) return p;
         const e = d;
         d = x(a, e, c);
-        return q(rb(e));
+        return q(sb(e));
       }
     };
   }
-  var wh = class extends D {
+  var Dh = class extends C {
     constructor(a, b) {
       b = b || {
-        Qa: !1
+        Sa: !1
       };
       super(a.o, [a], {
-        R: "reverse-sorted",
-        W: !1,
+        P: "reverse-sorted",
+        V: !1,
         subtree: !1,
         B: !1
       });
       this.l = a;
-      this.s = !!b.Qa;
+      this.s = !!b.Sa;
     }
     h(a, b) {
-      b = b.h;
-      a = uh(a.M);
-      var c = this.l.D();
-      c = c && (c.startsWith("name-") || "type-1" === c) ? "type-1" : null;
-      return w.create(vh(b, this.s ? a : x(b, a, c), c)).filter(d => this.l.l(d));
+      const c = b.h,
+        d = Bh(a.L);
+      var e = this.l.D();
+      e = e && (e.startsWith("name-") || "type-1" === e) ? "type-1" : null;
+      return w.create(Ch(c, this.s ? d : x(c, d, e), e)).filter(f => this.l.l(a, f, b));
     }
   };
-  const xh = new Map([["type-1-or-type-2", ["name", "type-1", "type-2"]], ["type-1", ["name"]], ["type-2", ["name"]]]);
-  function yh(a, b) {
-    if (null === a) return b;
-    if (null === b || a === b) return a;
-    const c = a.startsWith("name-") ? "name" : a,
-      d = b.startsWith("name-") ? "name" : b,
-      e = xh.get(c);
-    if (void 0 !== e && e.includes(d)) return b;
-    b = xh.get(d);
-    return void 0 !== b && b.includes(c) ? a : "empty";
-  }
-  var zh = class extends D {
+  var Eh = class extends C {
     constructor(a, b) {
-      super(new vf({
+      super(new D({
         attribute: 1
       }), [a], {
-        R: "unsorted",
+        P: "unsorted",
         subtree: !0,
-        W: !0,
+        V: !0,
         B: !1
       });
       this.l = a;
-      this.s = yh(this.l.D(), b);
+      this.s = vh(this.l.D(), b);
     }
     h(a, b) {
-      b = b.h;
-      a = uh(a.M);
-      if (1 !== a.node.nodeType) return w.empty();
-      a = eb(b, a, this.s).filter(c => "http://www.w3.org/2000/xmlns/" !== c.node.namespaceURI).map(c => rb(c)).filter(c => this.l.l(c));
-      return w.create(a);
+      var c = b.h;
+      const d = Bh(a.L);
+      if (1 !== d.node.nodeType) return w.empty();
+      c = eb(c, d, this.s).filter(e => "http://www.w3.org/2000/xmlns/" !== e.node.namespaceURI).map(e => sb(e)).filter(e => this.l.l(a, e, b));
+      return w.create(c);
     }
     D() {
       return "type-1";
     }
   };
-  var Ah = class extends D {
+  var Fh = class extends C {
     constructor(a, b) {
       super(a.o, [a], {
-        R: "sorted",
+        P: "sorted",
         subtree: !0,
-        W: !0,
+        V: !0,
         B: !1
       });
       this.s = a;
-      this.l = yh(b, a.D());
+      this.l = vh(b, a.D());
     }
     h(a, b) {
       const c = b.h,
-        d = uh(a.M);
-      a = d.node.nodeType;
-      if (1 !== a && 9 !== a) return w.empty();
-      let e = null,
-        f = !1;
+        d = Bh(a.L),
+        e = d.node.nodeType;
+      if (1 !== e && 9 !== e) return w.empty();
+      let f = null,
+        h = !1;
       return w.create({
         next: () => {
-          for (; !f;) {
-            if (!e) {
-              e = jb(c, d, this.l);
-              if (!e) {
-                f = !0;
+          for (; !h;) {
+            if (!f) {
+              f = ib(c, d, this.l);
+              if (!f) {
+                h = !0;
                 continue;
               }
-              return q(rb(e));
+              return q(sb(f));
             }
-            if (e = lb(c, e, this.l)) return q(rb(e));
-            f = !0;
+            if (f = mb(c, f, this.l)) return q(sb(f));
+            h = !0;
           }
           return p;
         }
-      }).filter(h => this.s.l(h));
+      }).filter(k => this.s.l(a, k, b));
     }
   };
-  function Bh(a, b, c) {
+  function Gh(a, b, c) {
     const d = b.node.nodeType;
     if (1 !== d && 9 !== d) return {
       next: () => p
     };
-    let e = jb(a, b, c);
+    let e = ib(a, b, c);
     return {
       next() {
         if (!e) return p;
         const f = e;
-        e = lb(a, e, c);
+        e = mb(a, e, c);
         return q(f);
       }
     };
   }
-  function Ch(a, b, c) {
-    const d = [kd(b)];
+  function Hh(a, b, c) {
+    const d = [ld(b)];
     return {
       next: e => {
         0 < d.length && 0 !== (e & 1) && d.shift();
@@ -8882,61 +8986,61 @@ const fontoxpath = function (xspattern, prsc) {
           if (!d.length) return p;
           e = d[0].next(0);
         }
-        d.unshift(Bh(a, e.value, c));
-        return q(rb(e.value));
+        d.unshift(Gh(a, e.value, c));
+        return q(sb(e.value));
       }
     };
   }
-  var Dh = class extends D {
+  var Ih = class extends C {
     constructor(a, b) {
       b = b || {
-        Qa: !1
+        Sa: !1
       };
       super(a.o, [a], {
         B: !1,
-        W: !1,
-        R: "sorted",
+        V: !1,
+        P: "sorted",
         subtree: !0
       });
       this.l = a;
-      this.s = !!b.Qa;
+      this.s = !!b.Sa;
       this.A = (a = this.l.D()) && (a.startsWith("name-") || "type-1" === a) || "type-1-or-type-2" === a ? "type-1" : null;
     }
     h(a, b) {
-      b = b.h;
-      a = uh(a.M);
-      a = Ch(b, a, this.A);
-      this.s || a.next(0);
-      return w.create(a).filter(c => this.l.l(c));
+      var c = b.h;
+      const d = Bh(a.L);
+      c = Hh(c, d, this.A);
+      this.s || c.next(0);
+      return w.create(c).filter(e => this.l.l(a, e, b));
     }
   };
-  function Eh(a, b, c) {
+  function Jh(a, b, c) {
     var d = a.node.nodeType;
     if (1 !== d && 9 !== d) return a;
-    for (d = kb(b, a, c); null !== d;) {
+    for (d = lb(b, a, c); null !== d;) {
       if (1 !== d.node.nodeType) return d;
       a = d;
-      d = kb(b, a, c);
+      d = lb(b, a, c);
     }
     return a;
   }
-  function Fh(a, b, c = !1, d) {
+  function Kh(a, b, c = !1, d) {
     if (c) {
       let f = b,
         h = !1;
       return {
         next: () => {
           if (h) return p;
-          if (md(f, b)) return f = Eh(b, a, d), md(f, b) ? (h = !0, p) : q(rb(f));
+          if (nd(f, b)) return f = Jh(b, a, d), nd(f, b) ? (h = !0, p) : q(sb(f));
           const k = f.node.nodeType,
-            l = 9 === k || 2 === k ? null : mb(a, f, d);
-          if (null !== l) return f = Eh(l, a, d), q(rb(f));
+            l = 9 === k || 2 === k ? null : nb(a, f, d);
+          if (null !== l) return f = Jh(l, a, d), q(sb(f));
           f = 9 === k ? null : x(a, f, d);
-          return md(f, b) ? (h = !0, p) : q(rb(f));
+          return nd(f, b) ? (h = !0, p) : q(sb(f));
         }
       };
     }
-    const e = [Bh(a, b, d)];
+    const e = [Gh(a, b, d)];
     return {
       next: () => {
         if (!e.length) return p;
@@ -8946,15 +9050,15 @@ const fontoxpath = function (xspattern, prsc) {
           if (!e.length) return p;
           f = e[0].next(0);
         }
-        e.unshift(Bh(a, f.value, d));
-        return q(rb(f.value));
+        e.unshift(Gh(a, f.value, d));
+        return q(sb(f.value));
       }
     };
   }
-  function Gh(a, b, c) {
+  function Lh(a, b, c) {
     const d = [];
     for (; b && 9 !== b.node.nodeType; b = x(a, b, null)) {
-      const f = lb(a, b, c);
+      const f = mb(a, b, c);
       f && d.push(f);
     }
     let e = null;
@@ -8962,9 +9066,9 @@ const fontoxpath = function (xspattern, prsc) {
       next: () => {
         for (; e || d.length;) {
           if (!e) {
-            e = Fh(a, d[0], !1, c);
-            var f = q(rb(d[0]));
-            const h = lb(a, d[0], c);
+            e = Kh(a, d[0], !1, c);
+            var f = q(sb(d[0]));
+            const h = mb(a, d[0], c);
             h ? d[0] = h : d.shift();
             return f;
           }
@@ -8975,11 +9079,11 @@ const fontoxpath = function (xspattern, prsc) {
       }
     };
   }
-  var Hh = class extends D {
+  var Mh = class extends C {
     constructor(a) {
       super(a.o, [a], {
-        R: "sorted",
-        W: !0,
+        P: "sorted",
+        V: !0,
         subtree: !1,
         B: !1
       });
@@ -8987,69 +9091,69 @@ const fontoxpath = function (xspattern, prsc) {
       this.s = (a = this.l.D()) && (a.startsWith("name-") || "type-1" === a) ? "type-1" : null;
     }
     h(a, b) {
-      b = b.h;
-      a = uh(a.M);
-      return w.create(Gh(b, a, this.s)).filter(c => this.l.l(c));
+      const c = b.h,
+        d = Bh(a.L);
+      return w.create(Lh(c, d, this.s)).filter(e => this.l.l(a, e, b));
     }
   };
-  function Ih(a, b, c) {
+  function Nh(a, b, c) {
     return {
-      next: () => (b = b && lb(a, b, c)) ? q(rb(b)) : p
+      next: () => (b = b && mb(a, b, c)) ? q(sb(b)) : p
     };
   }
-  var Jh = class extends D {
+  var Oh = class extends C {
     constructor(a, b) {
       super(a.o, [a], {
-        R: "sorted",
-        W: !0,
+        P: "sorted",
+        V: !0,
         subtree: !1,
         B: !1
       });
       this.l = a;
-      this.s = yh(this.l.D(), b);
+      this.s = vh(this.l.D(), b);
     }
     h(a, b) {
-      b = b.h;
-      a = uh(a.M);
-      return w.create(Ih(b, a, this.s)).filter(c => this.l.l(c));
+      const c = b.h,
+        d = Bh(a.L);
+      return w.create(Nh(c, d, this.s)).filter(e => this.l.l(a, e, b));
     }
   };
-  var Kh = class extends D {
+  var Ph = class extends C {
     constructor(a, b) {
       super(a.o, [a], {
-        R: "reverse-sorted",
-        W: !0,
+        P: "reverse-sorted",
+        V: !0,
         subtree: !0,
         B: !1
       });
       this.l = a;
-      this.s = yh(b, this.l.D());
+      this.s = vh(b, this.l.D());
     }
     h(a, b) {
-      b = b.h;
-      a = uh(a.M);
-      a = x(b, a, this.s);
-      if (!a) return w.empty();
-      a = rb(a);
-      return this.l.l(a) ? w.m(a) : w.empty();
+      var c = b.h;
+      const d = Bh(a.L);
+      c = x(c, d, this.s);
+      if (!c) return w.empty();
+      c = sb(c);
+      return this.l.l(a, c, b) ? w.m(c) : w.empty();
     }
   };
-  function Lh(a, b, c) {
+  function Qh(a, b, c) {
     const d = [];
     for (; b && 9 !== b.node.nodeType; b = x(a, b, null)) {
-      const f = mb(a, b, c);
+      const f = nb(a, b, c);
       null !== f && d.push(f);
     }
     let e = null;
     return {
       next: () => {
         for (; e || d.length;) {
-          e ||= Fh(a, d[0], !0, c);
+          e ||= Kh(a, d[0], !0, c);
           var f = e.next(0);
           if (f.done) {
             e = null;
-            f = mb(a, d[0], c);
-            const h = q(rb(d[0]));
+            f = nb(a, d[0], c);
+            const h = q(sb(d[0]));
             null === f ? d.shift() : d[0] = f;
             return h;
           }
@@ -9059,70 +9163,70 @@ const fontoxpath = function (xspattern, prsc) {
       }
     };
   }
-  var Mh = class extends D {
+  var Rh = class extends C {
     constructor(a) {
       super(a.o, [a], {
         B: !1,
-        W: !0,
-        R: "reverse-sorted",
+        V: !0,
+        P: "reverse-sorted",
         subtree: !1
       });
       this.l = a;
       this.s = (a = this.l.D()) && (a.startsWith("name-") || "type-1" === a) ? "type-1" : null;
     }
     h(a, b) {
-      b = b.h;
-      a = uh(a.M);
-      return w.create(Lh(b, a, this.s)).filter(c => this.l.l(c));
+      const c = b.h,
+        d = Bh(a.L);
+      return w.create(Qh(c, d, this.s)).filter(e => this.l.l(a, e, b));
     }
   };
-  function Nh(a, b, c) {
+  function Sh(a, b, c) {
     return {
-      next: () => (b = b && mb(a, b, c)) ? q(rb(b)) : p
+      next: () => (b = b && nb(a, b, c)) ? q(sb(b)) : p
     };
   }
-  var Oh = class extends D {
+  var Th = class extends C {
     constructor(a, b) {
       super(a.o, [a], {
         B: !1,
-        W: !0,
-        R: "reverse-sorted",
+        V: !0,
+        P: "reverse-sorted",
         subtree: !1
       });
       this.l = a;
-      this.s = yh(this.l.D(), b);
+      this.s = vh(this.l.D(), b);
     }
     h(a, b) {
-      b = b.h;
-      a = uh(a.M);
-      return w.create(Nh(b, a, this.s)).filter(c => this.l.l(c));
+      const c = b.h,
+        d = Bh(a.L);
+      return w.create(Sh(c, d, this.s)).filter(e => this.l.l(a, e, b));
     }
   };
-  var Ph = class extends D {
+  var Uh = class extends C {
     constructor(a, b) {
       super(a.o, [a], {
-        R: "sorted",
+        P: "sorted",
         subtree: !0,
-        W: !0,
+        V: !0,
         B: !1
       });
       this.l = a;
-      this.s = yh(this.l.D(), b);
+      this.s = vh(this.l.D(), b);
     }
-    h(a) {
-      uh(a.M);
-      return this.l.l(a.M) ? w.m(a.M) : w.empty();
+    h(a, b) {
+      Bh(a.L);
+      return this.l.l(a, a.L, b) ? w.m(a.L) : w.empty();
     }
     D() {
       return this.s;
     }
   };
-  var Qh = class extends rf {
+  var Vh = class extends rf {
     constructor(a, b, c, d) {
       super(a.o.add(b.o).add(c.o), [a, b, c], {
         B: a.B && b.B && c.B,
-        W: b.W === c.W && b.W,
-        R: b.ia === c.ia ? b.ia : "unsorted",
+        V: b.V === c.V && b.V,
+        P: b.ha === c.ha ? b.ha : "unsorted",
         subtree: b.subtree === c.subtree && b.subtree
       }, d);
       this.l = a;
@@ -9132,14 +9236,14 @@ const fontoxpath = function (xspattern, prsc) {
       const e = c[0](a);
       return w.create({
         next: f => {
-          d || (d = (e.fa() ? c[1](a) : c[2](a)).value);
+          d || (d = (e.ea() ? c[1](a) : c[2](a)).value);
           return d.next(f);
         }
       });
     }
     v(a) {
       super.v(a);
-      if (this.l.I) throw Oe();
+      if (this.l.H) throw Oe();
     }
   };
   function ig(a) {
@@ -9148,34 +9252,34 @@ const fontoxpath = function (xspattern, prsc) {
   function jg(a) {
     let b;
     b = a.h instanceof gg ? ["Inner error:", a.h.message] : a.h instanceof Error ? [a.h.toString()] : jg(a.h);
-    b.push(`  at <${a.o}${a.Wa ? ` (${a.Wa})` : ""}>:${a.location.start.line}:${a.location.start.ha} - ${a.location.end.line}:${a.location.end.ha}`);
+    b.push(`  at <${a.o}${a.Xa ? ` (${a.Xa})` : ""}>:${a.location.start.line}:${a.location.start.ga} - ${a.location.end.line}:${a.location.end.ga}`);
     return b;
   }
-  var Rh = class {
+  var Wh = class {
     constructor(a, b, c, d) {
       this.location = a;
       this.o = b;
-      this.Wa = c;
+      this.Xa = c;
       this.h = d;
     }
   };
-  var Sh = class extends rf {
+  var Xh = class extends rf {
     constructor(a, b, c, d) {
       super(c.o, [c], {
         B: c.B,
-        W: c.W,
-        R: c.ia,
+        V: c.V,
+        P: c.ha,
         subtree: c.subtree
       });
-      this.L = b;
-      this.P = {
+      this.K = b;
+      this.O = {
         end: {
-          ha: a.end.ha,
+          ga: a.end.ga,
           line: a.end.line,
           offset: a.end.offset
         },
         start: {
-          ha: a.start.ha,
+          ga: a.start.ga,
           line: a.start.line,
           offset: a.start.offset
         }
@@ -9187,14 +9291,14 @@ const fontoxpath = function (xspattern, prsc) {
       try {
         d = c(a);
       } catch (e) {
-        throw new Rh(this.P, this.L, this.l, e);
+        throw new Wh(this.O, this.K, this.l, e);
       }
       return w.create({
         next: e => {
           try {
             return d.value.next(e);
           } catch (f) {
-            throw new Rh(this.P, this.L, this.l, f);
+            throw new Wh(this.O, this.K, this.l, f);
           }
         }
       });
@@ -9203,18 +9307,18 @@ const fontoxpath = function (xspattern, prsc) {
       try {
         super.v(a);
       } catch (b) {
-        throw new Rh(this.P, this.L, this.l, b);
+        throw new Wh(this.O, this.K, this.l, b);
       }
     }
     D() {
-      return this.Fa[0].D();
+      return this.Ga[0].D();
     }
   };
-  function Th(a, b, c, d) {
+  function Yh(a, b, c, d) {
     let e = [];
-    const f = a.L(b, c, d, k => {
-      if (a.l instanceof Uh) {
-        const n = Th(a.l, b, k, d);
+    const f = a.K(b, c, d, k => {
+      if (a.l instanceof Zh) {
+        const n = Yh(a.l, b, k, d);
         return pf(n, t => e = t);
       }
       let l = null;
@@ -9237,15 +9341,15 @@ const fontoxpath = function (xspattern, prsc) {
     return {
       next: () => {
         if (h) return p;
-        const k = f.O();
+        const k = f.N();
         h = !0;
         return q(new Ze(k, e));
       }
     };
   }
-  function Vh(a, b, c, d) {
-    return a.L(b, c, d, e => {
-      if (a.l instanceof Uh) return Vh(a.l, b, e, d);
+  function $h(a, b, c, d) {
+    return a.K(b, c, d, e => {
+      if (a.l instanceof Zh) return $h(a.l, b, e, d);
       let f = null;
       return w.create({
         next: () => {
@@ -9253,7 +9357,7 @@ const fontoxpath = function (xspattern, prsc) {
             if (!f) {
               var h = e.next(0);
               if (h.done) return p;
-              f = C(a.l, h.value, d).value;
+              f = A(a.l, h.value, d).value;
             }
             h = f.next(0);
             if (h.done) f = null;else return h;
@@ -9262,15 +9366,15 @@ const fontoxpath = function (xspattern, prsc) {
       });
     });
   }
-  var Uh = class extends D {
+  var Zh = class extends C {
     constructor(a, b, c, d) {
       super(a, b, c, !0);
       this.l = d;
-      this.I = this.l.I;
+      this.H = this.l.H;
     }
     h(a, b) {
-      return this.L(a, kd(a), b, c => {
-        if (this.l instanceof Uh) return Vh(this.l, a, c, b);
+      return this.K(a, ld(a), b, c => {
+        if (this.l instanceof Zh) return $h(this.l, a, c, b);
         let d = null;
         return w.create({
           next: e => {
@@ -9278,7 +9382,7 @@ const fontoxpath = function (xspattern, prsc) {
               if (!d) {
                 var f = c.next(0);
                 if (f.done) return p;
-                d = C(this.l, f.value, b).value;
+                d = A(this.l, f.value, b).value;
               }
               f = d.next(e);
               if (f.done) d = null;else return f;
@@ -9288,28 +9392,28 @@ const fontoxpath = function (xspattern, prsc) {
       });
     }
     s(a, b) {
-      return Th(this, a, kd(a), b);
+      return Yh(this, a, ld(a), b);
     }
     v(a) {
       super.v(a);
-      this.I = this.l.I;
-      for (const b of this.Fa) if (b !== this.l && b.I) throw Oe();
+      this.H = this.l.H;
+      for (const b of this.Ga) if (b !== this.l && b.H) throw Oe();
     }
   };
-  var Wh = class extends Uh {
+  var ai = class extends Zh {
     constructor(a, b, c, d) {
       super(b.o.add(d.o), [b, d], {
         B: !1
       }, d);
-      this.P = a.prefix;
-      this.ma = a.namespaceURI;
-      this.Pb = a.localName;
+      this.O = a.prefix;
+      this.la = a.namespaceURI;
+      this.Rb = a.localName;
       this.yb = null;
       this.A = c;
-      this.La = null;
+      this.Ma = null;
       this.ya = b;
     }
-    L(a, b, c, d) {
+    K(a, b, c, d) {
       let e = null,
         f = null,
         h = 0;
@@ -9321,120 +9425,120 @@ const fontoxpath = function (xspattern, prsc) {
               if (k.done) return p;
               f = k.value;
               h = 0;
-              e = C(this.ya, f, c).value;
+              e = A(this.ya, f, c).value;
             }
             const l = e.next(0);
             if (l.done) e = null;else return h++, k = {
               [this.yb]: () => w.m(l.value)
-            }, this.La && (k[this.La] = () => w.m(new Ca(5, h))), q(hc(f, k));
+            }, this.Ma && (k[this.Ma] = () => w.m(new Ca(5, h))), q(ic(f, k));
           }
         }
       });
     }
     v(a) {
-      if (this.P && (this.ma = a.$(this.P), !this.ma && this.P)) throw Error(`XPST0081: Could not resolve namespace for prefix ${this.P} in a for expression`);
+      if (this.O && (this.la = a.Z(this.O), !this.la && this.O)) throw Error(`XPST0081: Could not resolve namespace for prefix ${this.O} in a for expression`);
       this.ya.v(a);
       Dg(a);
-      this.yb = Hg(a, this.ma, this.Pb);
+      this.yb = Hg(a, this.la, this.Rb);
       if (this.A) {
-        if (this.A.prefix && (this.A.namespaceURI = a.$(this.A.prefix), !this.A.namespaceURI && this.A.prefix)) throw Error(`XPST0081: Could not resolve namespace for prefix ${this.P} in the positionalVariableBinding in a for expression`);
-        this.La = Hg(a, this.A.namespaceURI, this.A.localName);
+        if (this.A.prefix && (this.A.namespaceURI = a.Z(this.A.prefix), !this.A.namespaceURI && this.A.prefix)) throw Error(`XPST0081: Could not resolve namespace for prefix ${this.O} in the positionalVariableBinding in a for expression`);
+        this.Ma = Hg(a, this.A.namespaceURI, this.A.localName);
       }
       this.l.v(a);
       Jg(a);
-      if (this.ya.I) throw Oe();
-      this.l.I && (this.I = !0);
+      if (this.ya.H) throw Oe();
+      this.l.H && (this.H = !0);
     }
   };
-  var Xh = class extends D {
+  var bi = class extends C {
     constructor(a, b, c) {
-      super(new vf({
+      super(new D({
         external: 1
       }), [c], {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
-      this.P = a.map(({
+      this.O = a.map(({
         name: d
       }) => d);
       this.A = a.map(({
         type: d
       }) => d);
       this.s = null;
-      this.L = b;
+      this.K = b;
       this.l = c;
     }
     h(a, b) {
       const c = new Va({
         j: this.A,
         arity: this.A.length,
-        Ya: !0,
-        I: this.l.I,
+        bb: !0,
+        H: this.l.H,
         localName: "dynamic-function",
         namespaceURI: "",
-        i: this.L,
+        i: this.K,
         value: (d, e, f, ...h) => {
-          d = hc(bc(a, -1, null, w.empty()), this.s.reduce((k, l, n) => {
+          d = ic(cc(a, -1, null, w.empty()), this.s.reduce((k, l, n) => {
             k[l] = Ra(h[n]);
             return k;
           }, Object.create(null)));
-          return C(this.l, d, b);
+          return A(this.l, d, b);
         }
       });
       return w.m(c);
     }
     v(a) {
       Dg(a);
-      this.s = this.P.map(b => Hg(a, b.namespaceURI, b.localName));
+      this.s = this.O.map(b => Hg(a, b.namespaceURI, b.localName));
       this.l.v(a);
       Jg(a);
-      if (this.l.I) throw Error("Not implemented: inline functions can not yet be updating.");
+      if (this.l.H) throw Error("Not implemented: inline functions can not yet be updating.");
     }
   };
-  var Yh = class extends Uh {
+  var ci = class extends Zh {
     constructor(a, b, c) {
       super(b.o.add(c.o), [b, c], {
         B: !1,
-        W: c.W,
-        R: c.ia,
+        V: c.V,
+        P: c.ha,
         subtree: c.subtree
       }, c);
       if (a.prefix || a.namespaceURI) throw Error("Not implemented: let expressions with namespace usage.");
       this.A = a.prefix;
-      this.P = a.namespaceURI;
-      this.La = a.localName;
-      this.ma = b;
+      this.O = a.namespaceURI;
+      this.Ma = a.localName;
+      this.la = b;
       this.ya = null;
     }
-    L(a, b, c, d) {
+    K(a, b, c, d) {
       return d({
         next: () => {
           var e = b.next(0);
           if (e.done) return p;
           e = e.value;
-          e = hc(e, {
-            [this.ya]: Ra(C(this.ma, e, c))
+          e = ic(e, {
+            [this.ya]: Ra(A(this.la, e, c))
           });
           return q(e);
         }
       });
     }
     v(a) {
-      if (this.A && (this.P = a.$(this.A), !this.P && this.A)) throw Error(`XPST0081: Could not resolve namespace for prefix ${this.A} using in a for expression`);
-      this.ma.v(a);
+      if (this.A && (this.O = a.Z(this.A), !this.O && this.A)) throw Error(`XPST0081: Could not resolve namespace for prefix ${this.A} using in a for expression`);
+      this.la.v(a);
       Dg(a);
-      this.ya = Hg(a, this.P, this.La);
+      this.ya = Hg(a, this.O, this.Ma);
       this.l.v(a);
       Jg(a);
-      this.I = this.l.I;
-      if (this.ma.I) throw Oe();
+      this.H = this.l.H;
+      if (this.la.H) throw Oe();
     }
   };
-  var Zh = class extends D {
+  var di = class extends C {
     constructor(a, b) {
-      super(new vf({}), [], {
+      super(new D({}), [], {
         B: !0,
-        R: "sorted"
+        P: "sorted"
       }, !1, b);
       let c;
       switch (b.type) {
@@ -9457,9 +9561,9 @@ const fontoxpath = function (xspattern, prsc) {
       return this.l();
     }
   };
-  var $h = class extends D {
+  var ei = class extends C {
     constructor(a, b) {
-      super(new vf({
+      super(new D({
         external: 1
       }), a.reduce((c, {
         key: d,
@@ -9470,21 +9574,21 @@ const fontoxpath = function (xspattern, prsc) {
       this.l = a;
     }
     h(a, b) {
-      const c = this.l.map(d => qc(C(d.key, a, b), b).X({
+      const c = this.l.map(d => rc(A(d.key, a, b), b).X({
         default: () => {
           throw Error("XPTY0004: A key of a map should be a single atomizable value.");
         },
         m: e => e
       }));
-      return A(c, d => w.m(new ub(d.map((e, f) => ({
+      return tb(c, d => w.m(new wb(d.map((e, f) => ({
         key: e,
-        value: Ra(C(this.l[f].value, a, b))
+        value: Ra(A(this.l[f].value, a, b))
       })))));
     }
   };
-  var ai = class extends D {
+  var fi = class extends C {
     constructor(a, b, c) {
-      super(new vf({
+      super(new D({
         external: 1
       }), [], {
         B: !0
@@ -9496,7 +9600,7 @@ const fontoxpath = function (xspattern, prsc) {
     h() {
       const a = new Va({
         j: this.l.j,
-        I: this.l.I,
+        H: this.l.H,
         arity: this.s,
         localName: this.l.localName,
         namespaceURI: this.l.namespaceURI,
@@ -9510,7 +9614,7 @@ const fontoxpath = function (xspattern, prsc) {
         c = this.A.localName;
       const d = this.A.prefix;
       if (null === b) {
-        const e = a.Sa({
+        const e = a.Ua({
           localName: c,
           prefix: d
         }, this.s);
@@ -9518,12 +9622,12 @@ const fontoxpath = function (xspattern, prsc) {
         b = e.namespaceURI;
         c = e.localName;
       }
-      this.l = a.va(b, c, this.s) || null;
+      this.l = a.ua(b, c, this.s) || null;
       if (!this.l) throw a = this.A, Error(`XPST0017: Function ${`${a.namespaceURI ? `Q{${a.namespaceURI}}` : a.prefix ? `${a.prefix}:` : ""}${a.localName}`} with arity of ${this.s} not registered. ${mg(c)}`);
       super.v(a);
     }
   };
-  const bi = {
+  const gi = {
     [5]: 5,
     [27]: 5,
     [28]: 5,
@@ -9541,7 +9645,7 @@ const fontoxpath = function (xspattern, prsc) {
     [6]: 6,
     [3]: 3
   };
-  var ci = class extends D {
+  var hi = class extends C {
     constructor(a, b, c) {
       super(b.o, [b], {
         B: !1
@@ -9550,22 +9654,22 @@ const fontoxpath = function (xspattern, prsc) {
       this.l = a;
     }
     h(a, b) {
-      return qc(C(this.s, a, b), b).N(c => {
+      return rc(A(this.s, a, b), b).M(c => {
         if (0 === c.length) return w.empty();
         var d = c[0];
         if (this.type) return c = "+" === this.l ? +d.value : -d.value, 0 === d.type && (c = Number.NaN), w.m(g(c, this.type.type));
         if (1 < c.length) throw Error("XPTY0004: The operand to a unary operator must be a sequence with a length less than one");
-        return v(d.type, 19) ? (d = jd(d, 3).value, w.m(g("+" === this.l ? d : -d, 3))) : v(d.type, 2) ? "+" === this.l ? w.m(d) : w.m(g(-1 * d.value, bi[d.type])) : w.m(g(Number.NaN, 3));
+        return v(d.type, 19) ? (d = kd(d, 3).value, w.m(g("+" === this.l ? d : -d, 3))) : v(d.type, 2) ? "+" === this.l ? w.m(d) : w.m(g(-1 * d.value, gi[d.type])) : w.m(g(Number.NaN, 3));
       });
     }
   };
-  var di = class extends D {
+  var ii = class extends C {
     constructor(a, b) {
-      super(a.reduce((c, d) => c.add(d.o), new vf({})), a, {
+      super(a.reduce((c, d) => c.add(d.o), new D({})), a, {
         B: a.every(c => c.B)
       }, !1, b);
       this.l = a;
-      this.s = a.reduce((c, d) => yh(c, d.D()), null);
+      this.s = a.reduce((c, d) => vh(c, d.D()), null);
     }
     h(a, b) {
       let c = 0,
@@ -9573,7 +9677,7 @@ const fontoxpath = function (xspattern, prsc) {
         e = !1,
         f = null;
       if (null !== a) {
-        const h = a.M;
+        const h = a.L;
         null !== h && v(h.type, 53) && (f = Xa(h.value));
       }
       return w.create({
@@ -9583,9 +9687,9 @@ const fontoxpath = function (xspattern, prsc) {
               if (!d) {
                 const h = this.l[c];
                 if (null !== f && null !== h.D() && !f.includes(h.D())) return c++, e = !0, q(wa);
-                d = C(h, a, b);
+                d = A(h, a, b);
               }
-              if (!1 === d.fa()) return e = !0, q(wa);
+              if (!1 === d.ea()) return e = !0, q(wa);
               d = null;
               c++;
             }
@@ -9600,19 +9704,17 @@ const fontoxpath = function (xspattern, prsc) {
       return this.s;
     }
   };
-  var ei = class extends D {
+  var ji = class extends C {
     constructor(a, b) {
-      super(a.reduce((d, e) => 0 < uf(d, e.o) ? d : e.o, new vf({})), a, {
+      super(a.reduce((d, e) => 0 < uf(d, e.o) ? d : e.o, new D({})), a, {
         B: a.every(d => d.B)
       }, !1, b);
       let c;
       for (b = 0; b < a.length; ++b) {
-        void 0 === c && (c = a[b].D());
+        const d = a[b].D();
+        void 0 === c && (c = d);
         if (null === c) break;
-        if (c !== a[b].D()) {
-          c = null;
-          break;
-        }
+        c = wh(c, d);
       }
       this.s = c;
       this.l = a;
@@ -9623,7 +9725,7 @@ const fontoxpath = function (xspattern, prsc) {
         e = !1,
         f = null;
       if (null !== a) {
-        const h = a.M;
+        const h = a.L;
         null !== h && v(h.type, 53) && (f = Xa(h.value));
       }
       return w.create({
@@ -9636,9 +9738,9 @@ const fontoxpath = function (xspattern, prsc) {
                   c++;
                   continue;
                 }
-                d = C(h, a, b);
+                d = A(h, a, b);
               }
-              if (!0 === d.fa()) return e = !0, q(va);
+              if (!0 === d.ea()) return e = !0, q(va);
               d = null;
               c++;
             }
@@ -9653,7 +9755,7 @@ const fontoxpath = function (xspattern, prsc) {
       return this.s;
     }
   };
-  function fi(a, b) {
+  function ki(a, b) {
     let c;
     return w.create({
       next: d => {
@@ -9661,7 +9763,7 @@ const fontoxpath = function (xspattern, prsc) {
           if (!c) {
             var e = a.value.next(d);
             if (e.done) return p;
-            c = pc(e.value, b);
+            c = qc(e.value, b);
           }
           e = c.value.next(d);
           if (e.done) c = null;else return e;
@@ -9669,256 +9771,256 @@ const fontoxpath = function (xspattern, prsc) {
       }
     });
   }
-  function gi(a, b) {
+  function li(a, b) {
     if ("eqOp" === a) return (c, d) => {
       const {
-        U: e,
-        V: f
+        T: e,
+        U: f
       } = b(c, d);
       return e.value.namespaceURI === f.value.namespaceURI && e.value.localName === f.value.localName;
     };
     if ("neOp" === a) return (c, d) => {
       const {
-        U: e,
-        V: f
+        T: e,
+        U: f
       } = b(c, d);
       return e.value.namespaceURI !== f.value.namespaceURI || e.value.localName !== f.value.localName;
     };
     throw Error('XPTY0004: Only the "eq" and "ne" comparison is defined for xs:QName');
   }
-  function hi(a, b) {
+  function mi(a, b) {
     switch (a) {
       case "eqOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
           return e.value === f.value;
         };
       case "neOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
           return e.value !== f.value;
         };
       case "ltOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
           return e.value < f.value;
         };
       case "leOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
           return e.value <= f.value;
         };
       case "gtOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
           return e.value > f.value;
         };
       case "geOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
           return e.value >= f.value;
         };
     }
   }
-  function ii(a, b) {
+  function ni(a, b) {
     switch (a) {
       case "ltOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
-          return e.value.ea < f.value.ea;
+          return e.value.da < f.value.da;
         };
       case "leOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
-          return vb(e.value, f.value) || e.value.ea < f.value.ea;
+          return e.value.equals(f.value) || e.value.da < f.value.da;
         };
       case "gtOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
-          return e.value.ea > f.value.ea;
+          return e.value.da > f.value.da;
         };
       case "geOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
-          return vb(e.value, f.value) || e.value.ea > f.value.ea;
+          return e.value.equals(f.value) || e.value.da > f.value.da;
         };
     }
   }
-  function ji(a, b) {
+  function oi(a, b) {
     switch (a) {
       case "eqOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
-          return vb(e.value, f.value);
+          return e.value.equals(f.value);
         };
       case "ltOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
-          return e.value.ca < f.value.ca;
+          return e.value.ba < f.value.ba;
         };
       case "leOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
-          return vb(e.value, f.value) || e.value.ca < f.value.ca;
+          return e.value.equals(f.value) || e.value.ba < f.value.ba;
         };
       case "gtOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
-          return e.value.ca > f.value.ca;
+          return e.value.ba > f.value.ba;
         };
       case "geOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
-          return vb(e.value, f.value) || e.value.ca > f.value.ca;
+          return e.value.equals(f.value) || e.value.ba > f.value.ba;
         };
     }
   }
-  function ki(a, b) {
+  function pi(a, b) {
     switch (a) {
       case "eqOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
-          return vb(e.value, f.value);
+          return e.value.equals(f.value);
         };
       case "neOp":
         return (c, d) => {
           const {
-            U: e,
-            V: f
+            T: e,
+            U: f
           } = b(c, d);
-          return !vb(e.value, f.value);
+          return !e.value.equals(f.value);
         };
     }
   }
-  function li(a, b) {
+  function qi(a, b) {
     switch (a) {
       case "eqOp":
         return (c, d, e) => {
           const {
-            U: f,
-            V: h
+            T: f,
+            U: h
           } = b(c, d);
-          return Ob(f.value, h.value, fc(e));
+          return Pb(f.value, h.value, gc(e));
         };
       case "neOp":
         return (c, d, e) => {
           const {
-            U: f,
-            V: h
+            T: f,
+            U: h
           } = b(c, d);
-          return !Ob(f.value, h.value, fc(e));
+          return !Pb(f.value, h.value, gc(e));
         };
       case "ltOp":
         return (c, d, e) => {
           const {
-            U: f,
-            V: h
+            T: f,
+            U: h
           } = b(c, d);
-          c = fc(e);
-          return 0 > Nb(f.value, h.value, c);
+          c = gc(e);
+          return 0 > Ob(f.value, h.value, c);
         };
       case "leOp":
         return (c, d, e) => {
           const {
-            U: f,
-            V: h
+            T: f,
+            U: h
           } = b(c, d);
-          (c = Ob(f.value, h.value, fc(e))) || (e = fc(e), c = 0 > Nb(f.value, h.value, e));
+          (c = Pb(f.value, h.value, gc(e))) || (e = gc(e), c = 0 > Ob(f.value, h.value, e));
           return c;
         };
       case "gtOp":
         return (c, d, e) => {
           const {
-            U: f,
-            V: h
+            T: f,
+            U: h
           } = b(c, d);
-          c = fc(e);
-          return 0 < Nb(f.value, h.value, c);
+          c = gc(e);
+          return 0 < Ob(f.value, h.value, c);
         };
       case "geOp":
         return (c, d, e) => {
           const {
-            U: f,
-            V: h
+            T: f,
+            U: h
           } = b(c, d);
-          (c = Ob(f.value, h.value, fc(e))) || (e = fc(e), c = 0 < Nb(f.value, h.value, e));
+          (c = Pb(f.value, h.value, gc(e))) || (e = gc(e), c = 0 < Ob(f.value, h.value, e));
           return c;
         };
     }
   }
-  function mi(a, b) {
+  function ri(a, b) {
     switch (a) {
       case "eqOp":
         return (c, d, e) => {
           const {
-            U: f,
-            V: h
+            T: f,
+            U: h
           } = b(c, d);
-          return Ob(f.value, h.value, fc(e));
+          return Pb(f.value, h.value, gc(e));
         };
       case "neOp":
         return (c, d, e) => {
           const {
-            U: f,
-            V: h
+            T: f,
+            U: h
           } = b(c, d);
-          return !Ob(f.value, h.value, fc(e));
+          return !Pb(f.value, h.value, gc(e));
         };
     }
   }
-  function ni(a, b, c) {
+  function si(a, b, c) {
     function d(n, t) {
       return {
-        U: h ? h(n) : n,
-        V: k ? k(t) : t
+        T: h ? h(n) : n,
+        U: k ? k(t) : t
       };
     }
     function e(n) {
@@ -9929,25 +10031,25 @@ const fontoxpath = function (xspattern, prsc) {
     }
     let h = null,
       k = null;
-    v(b, 19) && v(c, 19) ? b = c = 1 : v(b, 19) ? (h = n => jd(n, c), b = c) : v(c, 19) && (k = n => jd(n, b), c = b);
-    if (v(b, 23) && v(c, 23)) return gi(a, d);
+    v(b, 19) && v(c, 19) ? b = c = 1 : v(b, 19) ? (h = n => kd(n, c), b = c) : v(c, 19) && (k = n => kd(n, b), c = b);
+    if (v(b, 23) && v(c, 23)) return li(a, d);
     if (e(0) || f([1, 47, 61]) || f([2, 47, 61]) || e(20) || e(22) || e(21) || f([1, 20])) {
-      var l = hi(a, d);
+      var l = mi(a, d);
       if (void 0 !== l) return l;
     }
-    if (e(16) && (l = ii(a, d), void 0 !== l) || e(17) && (l = ji(a, d), void 0 !== l) || e(18) && (l = ki(a, d), void 0 !== l)) return l;
-    if (e(9) || e(7) || e(8)) if (l = li(a, d), void 0 !== l) return l;
-    if (e(11) || e(12) || e(13) || e(14) || e(15)) if (l = mi(a, d), void 0 !== l) return l;
+    if (e(16) && (l = ni(a, d), void 0 !== l) || e(17) && (l = oi(a, d), void 0 !== l) || e(18) && (l = pi(a, d), void 0 !== l)) return l;
+    if (e(9) || e(7) || e(8)) if (l = qi(a, d), void 0 !== l) return l;
+    if (e(11) || e(12) || e(13) || e(14) || e(15)) if (l = ri(a, d), void 0 !== l) return l;
     throw Error(`XPTY0004: ${a} not available for ${Da[b]} and ${Da[c]}`);
   }
-  const oi = Object.create(null);
-  function pi(a, b, c) {
+  const ti = Object.create(null);
+  function ui(a, b, c) {
     const d = `${b}~${c}~${a}`;
-    let e = oi[d];
-    e ||= oi[d] = ni(a, b, c);
+    let e = ti[d];
+    e ||= ti[d] = si(a, b, c);
     return e;
   }
-  var qi = class extends D {
+  var vi = class extends C {
     constructor(a, b, c) {
       super(b.o.add(c.o), [b, c], {
         B: !1
@@ -9957,10 +10059,10 @@ const fontoxpath = function (xspattern, prsc) {
       this.s = a;
     }
     h(a, b) {
-      const c = C(this.l, a, b),
-        d = C(this.A, a, b),
-        e = fi(c, b),
-        f = fi(d, b);
+      const c = A(this.l, a, b),
+        d = A(this.A, a, b),
+        e = ki(c, b),
+        f = ki(d, b);
       return e.X({
         empty: () => w.empty(),
         m: () => f.X({
@@ -9968,7 +10070,7 @@ const fontoxpath = function (xspattern, prsc) {
           m: () => {
             const h = e.first(),
               k = f.first();
-            return pi(this.s, h.type, k.type)(h, k, a) ? w.aa() : w.T();
+            return ui(this.s, h.type, k.type)(h, k, a) ? w.$() : w.S();
           },
           multiple: () => {
             throw Error("XPTY0004: Sequences to compare are not singleton.");
@@ -9980,7 +10082,7 @@ const fontoxpath = function (xspattern, prsc) {
       });
     }
   };
-  const ri = {
+  const wi = {
     equalOp: "eqOp",
     notEqualOp: "neOp",
     lessThanOrEqualOp: "leOp",
@@ -9988,9 +10090,9 @@ const fontoxpath = function (xspattern, prsc) {
     greaterThanOrEqualOp: "geOp",
     greaterThanOp: "gtOp"
   };
-  function si(a, b, c, d) {
-    a = ri[a];
-    return c.N(e => b.filter(f => {
+  function xi(a, b, c, d) {
+    a = wi[a];
+    return c.M(e => b.filter(f => {
       for (let l = 0, n = e.length; l < n; ++l) {
         let t = e[l],
           u = void 0,
@@ -9998,19 +10100,19 @@ const fontoxpath = function (xspattern, prsc) {
         var h = f.type,
           k = t.type;
         if (v(h, 19) || v(k, 19)) v(h, 2) ? u = 3 : v(k, 2) ? z = 3 : v(h, 17) ? u = 17 : v(k, 17) ? z = 17 : v(h, 16) ? u = 16 : v(k, 16) ? z = 16 : v(h, 19) ? z = k : v(k, 19) && (u = h);
-        const [y, G] = [z, u];
+        const [y, F] = [z, u];
         h = y;
-        k = G;
-        h ? f = jd(f, h) : k && (t = jd(t, k));
-        if (pi(a, f.type, t.type)(f, t, d)) return !0;
+        k = F;
+        h ? f = kd(f, h) : k && (t = kd(t, k));
+        if (ui(a, f.type, t.type)(f, t, d)) return !0;
       }
       return !1;
     }).X({
-      default: () => w.aa(),
-      empty: () => w.T()
+      default: () => w.$(),
+      empty: () => w.S()
     }));
   }
-  var ti = class extends D {
+  var yi = class extends C {
     constructor(a, b, c) {
       super(b.o.add(c.o), [b, c], {
         B: !1
@@ -10020,38 +10122,38 @@ const fontoxpath = function (xspattern, prsc) {
       this.s = a;
     }
     h(a, b) {
-      const c = C(this.l, a, b),
-        d = C(this.A, a, b);
+      const c = A(this.l, a, b),
+        d = A(this.A, a, b);
       return c.X({
-        empty: () => w.T(),
+        empty: () => w.S(),
         default: () => d.X({
-          empty: () => w.T(),
+          empty: () => w.S(),
           default: () => {
-            const e = fi(c, b),
-              f = fi(d, b);
-            return si(this.s, e, f, a);
+            const e = ki(c, b),
+              f = ki(d, b);
+            return xi(this.s, e, f, a);
           }
         })
       });
     }
   };
-  function ui(a, b, c, d) {
+  function zi(a, b, c, d) {
     if (!v(c, 53) || !v(d, 53)) throw Error("XPTY0004: Sequences to compare are not nodes");
     switch (a) {
       case "isOp":
-        return vi(c, d);
+        return Ai(c, d);
       case "nodeBeforeOp":
-        return b ? (e, f) => 0 > sd(b, e.first(), f.first()) : void 0;
+        return b ? (e, f) => 0 > td(b, e.first(), f.first()) : void 0;
       case "nodeAfterOp":
-        return b ? (e, f) => 0 < sd(b, e.first(), f.first()) : void 0;
+        return b ? (e, f) => 0 < td(b, e.first(), f.first()) : void 0;
       default:
         throw Error("Unexpected operator");
     }
   }
-  function vi(a, b) {
-    return a !== b || 47 !== a && 53 !== a && 54 !== a && 55 !== a && 56 !== a && 57 !== a && 58 !== a ? () => !1 : (c, d) => md(c.first().value, d.first().value);
+  function Ai(a, b) {
+    return a !== b || 47 !== a && 53 !== a && 54 !== a && 55 !== a && 56 !== a && 57 !== a && 58 !== a ? () => !1 : (c, d) => nd(c.first().value, d.first().value);
   }
-  var wi = class extends D {
+  var Bi = class extends C {
     constructor(a, b, c) {
       super(b.o.add(c.o), [b, c], {
         B: !1
@@ -10061,8 +10163,8 @@ const fontoxpath = function (xspattern, prsc) {
       this.s = a;
     }
     h(a, b) {
-      const c = C(this.l, a, b),
-        d = C(this.A, a, b);
+      const c = A(this.l, a, b),
+        d = A(this.A, a, b);
       return c.X({
         empty: () => w.empty(),
         multiple: () => {
@@ -10076,19 +10178,19 @@ const fontoxpath = function (xspattern, prsc) {
           m: () => {
             const e = c.first(),
               f = d.first();
-            return ui(this.s, b.h, e.type, f.type)(c, d, a) ? w.aa() : w.T();
+            return zi(this.s, b.h, e.type, f.type)(c, d, a) ? w.$() : w.S();
           }
         })
       });
     }
   };
-  function xi(a, b, c, d) {
-    return c.N(e => {
+  function Ci(a, b, c, d) {
+    return c.M(e => {
       if (e.some(f => !v(f.type, 53))) throw Error(`XPTY0004: Sequences given to ${a} should only contain nodes.`);
-      return "sorted" === d ? w.create(e) : "reverse-sorted" === d ? w.create(e.reverse()) : w.create(td(b, e));
+      return "sorted" === d ? w.create(e) : "reverse-sorted" === d ? w.create(e.reverse()) : w.create(ud(b, e));
     });
   }
-  var yi = class extends D {
+  var Di = class extends C {
     constructor(a, b, c, d) {
       super(0 < uf(b.o, c.o) ? b.o : c.o, [b, c], {
         B: b.B && c.B
@@ -10098,8 +10200,8 @@ const fontoxpath = function (xspattern, prsc) {
       this.A = c;
     }
     h(a, b) {
-      const c = xi(this.l, b.h, C(this.s, a, b), this.s.ia);
-      a = xi(this.l, b.h, C(this.A, a, b), this.A.ia);
+      const c = Ci(this.l, b.h, A(this.s, a, b), this.s.ha);
+      a = Ci(this.l, b.h, A(this.A, a, b), this.A.ha);
       const d = c.value,
         e = a.value;
       let f = null,
@@ -10123,9 +10225,9 @@ const fontoxpath = function (xspattern, prsc) {
               }
               h = n.value;
             }
-            if (md(f.value, h.value)) {
+            if (nd(f.value, h.value)) {
               if (n = q(f), h = f = null, "intersectOp" === this.l) return n;
-            } else if (0 > sd(b.h, f, h)) {
+            } else if (0 > td(b.h, f, h)) {
               if (n = q(f), f = null, "exceptOp" === this.l) return n;
             } else h = null;
           }
@@ -10136,28 +10238,28 @@ const fontoxpath = function (xspattern, prsc) {
       });
     }
   };
-  var zi = class extends rf {
+  var Ei = class extends rf {
     constructor(a, b) {
-      super(a.reduce((c, d) => c.add(d.o), new vf({})), a, {
-        R: "unsorted",
+      super(a.reduce((c, d) => c.add(d.o), new D({})), a, {
+        P: "unsorted",
         B: a.every(c => c.B)
       }, b);
     }
     A(a, b, c) {
-      return c.length ? jc(c.map(d => d(a))) : w.empty();
+      return c.length ? kc(c.map(d => d(a))) : w.empty();
     }
   };
-  var Ai = class extends D {
+  var Fi = class extends C {
     constructor(a, b, c) {
-      super(new vf({}).add(a.o), [a, b], {
+      super(new D({}).add(a.o), [a, b], {
         B: a.B && b.B
       }, !1, c);
       this.l = a;
       this.s = b;
     }
     h(a, b) {
-      const c = C(this.l, a, b),
-        d = dc(a, c);
+      const c = A(this.l, a, b),
+        d = ec(a, c);
       let e = null,
         f = null,
         h = !1;
@@ -10165,7 +10267,7 @@ const fontoxpath = function (xspattern, prsc) {
         next: k => {
           for (; !h;) {
             if (!e && (e = d.next(k), e.done)) return h = !0, p;
-            f ||= C(this.s, e.value, b);
+            f ||= A(this.s, e.value, b);
             const l = f.value.next(k);
             if (l.done) e = f = null;else return l;
           }
@@ -10173,7 +10275,7 @@ const fontoxpath = function (xspattern, prsc) {
       });
     }
   };
-  var Bi = class extends D {
+  var Gi = class extends C {
     constructor(a, b, c) {
       super(a.o, [a], {
         B: !1
@@ -10185,15 +10287,15 @@ const fontoxpath = function (xspattern, prsc) {
       this.s = c;
     }
     h(a, b) {
-      const c = qc(C(this.A, a, b), b);
+      const c = rc(A(this.A, a, b), b);
       return c.X({
-        empty: () => this.s ? w.aa() : w.T(),
-        m: () => c.map(d => id(d, this.l).u ? va : wa),
-        multiple: () => w.T()
+        empty: () => this.s ? w.$() : w.S(),
+        m: () => c.map(d => jd(d, this.l).u ? va : wa),
+        multiple: () => w.S()
       });
     }
   };
-  var Ci = class extends D {
+  var Hi = class extends C {
     constructor(a, b, c) {
       super(a.o, [a], {
         B: !1
@@ -10205,20 +10307,20 @@ const fontoxpath = function (xspattern, prsc) {
       this.s = c;
     }
     h(a, b) {
-      const c = qc(C(this.A, a, b), b);
+      const c = rc(A(this.A, a, b), b);
       return c.X({
         empty: () => {
           if (!this.s) throw Error("XPTY0004: Sequence to cast is empty while target type is singleton.");
           return w.empty();
         },
-        m: () => c.map(d => jd(d, this.l)),
+        m: () => c.map(d => kd(d, this.l)),
         multiple: () => {
           throw Error("XPTY0004: Sequence to cast is not singleton or empty.");
         }
       });
     }
   };
-  function Di(a, b) {
+  function Ii(a, b) {
     const c = a.value;
     let d = null,
       e = !1;
@@ -10230,7 +10332,7 @@ const fontoxpath = function (xspattern, prsc) {
             if (f.done) return e = !0, q(va);
             d = b(f.value);
           }
-          f = d.fa();
+          f = d.ea();
           d = null;
           if (!1 === f) return e = !0, q(wa);
         }
@@ -10238,9 +10340,9 @@ const fontoxpath = function (xspattern, prsc) {
       }
     });
   }
-  var Ei = class extends D {
+  var Ji = class extends C {
     constructor(a, b, c, d) {
-      super(a.o, [a], {
+      super(a.o, [a, b], {
         B: !1
       }, !1, d);
       this.A = a;
@@ -10248,26 +10350,26 @@ const fontoxpath = function (xspattern, prsc) {
       this.l = c;
     }
     h(a, b) {
-      const c = C(this.A, a, b);
+      const c = A(this.A, a, b);
       return c.X({
-        empty: () => "?" === this.l || "*" === this.l ? w.aa() : w.T(),
-        multiple: () => "+" === this.l || "*" === this.l ? Di(c, d => {
+        empty: () => "?" === this.l || "*" === this.l ? w.$() : w.S(),
+        multiple: () => "+" === this.l || "*" === this.l ? Ii(c, d => {
           const e = w.m(d);
-          d = bc(a, 0, d, e);
-          return C(this.s, d, b);
-        }) : w.T(),
-        m: () => Di(c, d => {
+          d = cc(a, 0, d, e);
+          return A(this.s, d, b);
+        }) : w.S(),
+        m: () => Ii(c, d => {
           const e = w.m(d);
-          d = bc(a, 0, d, e);
-          return C(this.s, d, b);
+          d = cc(a, 0, d, e);
+          return A(this.s, d, b);
         })
       });
     }
   };
-  function Fi(a, b) {
-    return null !== a && null !== b && v(a.type, 53) && v(b.type, 53) ? md(a.value, b.value) : !1;
+  function Ki(a, b) {
+    return null !== a && null !== b && v(a.type, 53) && v(b.type, 53) ? nd(a.value, b.value) : !1;
   }
-  function Gi(a) {
+  function Li(a) {
     let b = a.next(0);
     if (b.done) return w.empty();
     let c = null,
@@ -10281,13 +10383,13 @@ const fontoxpath = function (xspattern, prsc) {
           b = a.next(0);
           if (b.done) return f;
           c = b.value.value;
-        } while (f.done || Fi(f.value, d));
+        } while (f.done || Ki(f.value, d));
         d = f.value;
         return f;
       }
     });
   }
-  function Hi(a, b) {
+  function Mi(a, b) {
     const c = [];
     (function () {
       for (var f = b.next(0); !f.done;) {
@@ -10307,7 +10409,7 @@ const fontoxpath = function (xspattern, prsc) {
         return this;
       },
       next: () => {
-        e || (e = !0, c.every(h => v(h.current.value.type, 53)) && c.sort((h, k) => sd(a, h.current.value, k.current.value)));
+        e || (e = !0, c.every(h => v(h.current.value.type, 53)) && c.sort((h, k) => td(a, h.current.value, k.current.value)));
         let f;
         do {
           if (!c.length) return p;
@@ -10321,7 +10423,7 @@ const fontoxpath = function (xspattern, prsc) {
               n = 0;
             for (; k <= l;) {
               n = Math.floor((k + l) / 2);
-              const t = sd(a, h.current.value, c[n].current.value);
+              const t = td(a, h.current.value, c[n].current.value);
               if (0 === t) {
                 k = n;
                 break;
@@ -10330,53 +10432,53 @@ const fontoxpath = function (xspattern, prsc) {
             }
             c.splice(k, 0, h);
           }
-        } while (Fi(f.value, d));
+        } while (Ki(f.value, d));
         d = f.value;
         return f;
       }
     });
   }
-  var Ii = class extends D {
+  var Ni = class extends C {
     constructor(a, b) {
-      super(a.reduce((c, d) => 0 < uf(c, d.o) ? c : d.o, new vf({})), a, {
+      super(a.reduce((c, d) => 0 < uf(c, d.o) ? c : d.o, new D({})), a, {
         B: a.every(c => c.B)
       }, !1, b);
       this.l = a;
     }
     h(a, b) {
-      if (this.l.every(c => "sorted" === c.ia)) {
+      if (this.l.every(c => "sorted" === c.ha)) {
         let c = 0;
-        return Hi(b.h, {
-          next: () => c >= this.l.length ? p : q(C(this.l[c++], a, b))
+        return Mi(b.h, {
+          next: () => c >= this.l.length ? p : q(A(this.l[c++], a, b))
         }).map(d => {
           if (!v(d.type, 53)) throw Error("XPTY0004: The sequences to union are not of type node()*");
           return d;
         });
       }
-      return jc(this.l.map(c => C(c, a, b))).N(c => {
+      return kc(this.l.map(c => A(c, a, b))).M(c => {
         if (c.some(d => !v(d.type, 53))) throw Error("XPTY0004: The sequences to union are not of type node()*");
-        c = td(b.h, c);
+        c = ud(b.h, c);
         return w.create(c);
       });
     }
   };
-  function Ji(a) {
-    return a.every(b => null === b || v(b.type, 5) || v(b.type, 4)) || null !== a.map(b => b ? rc(b.type) : null).reduce((b, c) => null === c ? b : c === b ? b : null) ? a : a.every(b => null === b || v(b.type, 1) || v(b.type, 20)) ? a.map(b => b ? jd(b, 1) : null) : a.every(b => null === b || v(b.type, 4) || v(b.type, 6)) ? a.map(b => b ? jd(b, 6) : b) : a.every(b => null === b || v(b.type, 4) || v(b.type, 6) || v(b.type, 3)) ? a.map(b => b ? jd(b, 3) : b) : null;
+  function Oi(a) {
+    return a.every(b => null === b || v(b.type, 5) || v(b.type, 4)) || null !== a.map(b => b ? sc(b.type) : null).reduce((b, c) => null === c ? b : c === b ? b : null) ? a : a.every(b => null === b || v(b.type, 1) || v(b.type, 20)) ? a.map(b => b ? kd(b, 1) : null) : a.every(b => null === b || v(b.type, 4) || v(b.type, 6)) ? a.map(b => b ? kd(b, 6) : b) : a.every(b => null === b || v(b.type, 4) || v(b.type, 6) || v(b.type, 3)) ? a.map(b => b ? kd(b, 3) : b) : null;
   }
-  function Ki(a) {
-    return (a = a.find(b => !!b)) ? rc(a.type) : null;
+  function Pi(a) {
+    return (a = a.find(b => !!b)) ? sc(a.type) : null;
   }
-  var Li = class extends Uh {
+  var Qi = class extends Zh {
     constructor(a, b) {
-      super(new vf({}), [b, ...a.map(c => c.ba)], {
+      super(new D({}), [b, ...a.map(c => c.aa)], {
         B: !1,
-        W: !1,
-        R: "unsorted",
+        V: !1,
+        P: "unsorted",
         subtree: !1
       }, b);
       this.A = a;
     }
-    L(a, b, c, d) {
+    K(a, b, c, d) {
       if (this.A[1]) throw Error("More than one order spec is not supported for the order by clause.");
       const e = [];
       let f = !1,
@@ -10388,47 +10490,47 @@ const fontoxpath = function (xspattern, prsc) {
         next: () => {
           if (!f) {
             for (var t = b.next(0); !t.done;) e.push(t.value), t = b.next(0);
-            t = e.map(z => n.ba.h(z, c)).map(z => qc(z, c));
-            if (t.find(z => !z.F() && !z.oa())) throw Error("XPTY0004: Order by only accepts empty or singleton sequences");
+            t = e.map(z => n.aa.h(z, c)).map(z => rc(z, c));
+            if (t.find(z => !z.isEmpty() && !z.oa())) throw Error("XPTY0004: Order by only accepts empty or singleton sequences");
             h = t.map(z => z.first());
-            h = h.map(z => null === z ? z : v(19, z.type) ? jd(z, 1) : z);
-            if (Ki(h) && (h = Ji(h), !h)) throw Error("XPTY0004: Could not cast values");
+            h = h.map(z => null === z ? z : v(19, z.type) ? kd(z, 1) : z);
+            if (Pi(h) && (h = Oi(h), !h)) throw Error("XPTY0004: Could not cast values");
             t = h.length;
             k = h.map((z, y) => y);
             for (let z = 0; z < t; z++) if (z + 1 !== t) for (let y = z; 0 <= y; y--) {
-              const G = y,
+              const F = y,
                 N = y + 1;
               if (N === t) continue;
-              const U = h[k[G]],
-                ca = h[k[N]];
-              if (null !== ca || null !== U) {
-                if (n.bc) {
+              const U = h[k[F]],
+                da = h[k[N]];
+              if (null !== da || null !== U) {
+                if (n.ec) {
                   if (null === U) continue;
-                  if (null === ca && null !== U) {
-                    [k[G], k[N]] = [k[N], k[G]];
+                  if (null === da && null !== U) {
+                    [k[F], k[N]] = [k[N], k[F]];
                     continue;
                   }
-                  if (isNaN(ca.value) && null !== U && !isNaN(U.value)) {
-                    [k[G], k[N]] = [k[N], k[G]];
+                  if (isNaN(da.value) && null !== U && !isNaN(U.value)) {
+                    [k[F], k[N]] = [k[N], k[F]];
                     continue;
                   }
                 } else {
-                  if (null === ca) continue;
-                  if (null === U && null !== ca) {
-                    [k[G], k[N]] = [k[N], k[G]];
+                  if (null === da) continue;
+                  if (null === U && null !== da) {
+                    [k[F], k[N]] = [k[N], k[F]];
                     continue;
                   }
-                  if (isNaN(U.value) && null !== ca && !isNaN(ca.value)) {
-                    [k[G], k[N]] = [k[N], k[G]];
+                  if (isNaN(U.value) && null !== da && !isNaN(da.value)) {
+                    [k[F], k[N]] = [k[N], k[F]];
                     continue;
                   }
                 }
-                pi("gtOp", U.type, ca.type)(U, ca, a) && ([k[G], k[N]] = [k[N], k[G]]);
+                ui("gtOp", U.type, da.type)(U, da, a) && ([k[F], k[N]] = [k[N], k[F]]);
               }
             }
-            let u = n.Bb ? 0 : h.length - 1;
+            let u = n.Cb ? 0 : h.length - 1;
             l = d({
-              next: () => n.Bb ? u >= h.length ? p : q(e[k[u++]]) : 0 > u ? p : q(e[k[u--]])
+              next: () => n.Cb ? u >= h.length ? p : q(e[k[u++]]) : 0 > u ? p : q(e[k[u--]])
             }).value;
             f = !0;
           }
@@ -10437,53 +10539,53 @@ const fontoxpath = function (xspattern, prsc) {
       });
     }
   };
-  var Mi = class extends D {
+  var Ri = class extends C {
     constructor(a) {
-      super(a ? a.o : new vf({}), a ? [a] : [], {
-        R: "sorted",
+      super(a ? a.o : new D({}), a ? [a] : [], {
+        P: "sorted",
         subtree: !1,
-        W: !1,
+        V: !1,
         B: !1
       });
       this.l = a;
     }
     h(a, b) {
-      if (null === a.M) throw lc("context is absent, it needs to be present to use paths.");
+      if (null === a.L) throw mc("context is absent, it needs to be present to use paths.");
       var c = b.h;
-      let d = a.M.value;
+      let d = a.L.value;
       for (; 9 !== d.node.nodeType;) if (d = x(c, d), null === d) throw Error("XPDY0050: the root node of the context node is not a document node.");
-      c = w.m(rb(d));
-      return this.l ? C(this.l, bc(a, 0, c.first(), c), b) : c;
+      c = w.m(sb(d));
+      return this.l ? A(this.l, cc(a, 0, c.first(), c), b) : c;
     }
   };
-  var Ni = class extends D {
+  var Si = class extends C {
     constructor(a) {
-      super(new vf({}), [], {
-        R: "sorted"
+      super(new D({}), [], {
+        P: "sorted"
       }, !1, a);
     }
     h(a) {
-      if (null === a.M) throw lc('context is absent, it needs to be present to use the "." operator');
-      return w.m(a.M);
+      if (null === a.L) throw mc('context is absent, it needs to be present to use the "." operator');
+      return w.m(a.L);
     }
   };
-  function Oi(a, b) {
+  function Ti(a, b) {
     let c = !1,
       d = !1;
     b.forEach(e => {
       v(e.type, 53) ? c = !0 : d = !0;
     });
     if (d && c) throw Error("XPTY0018: The path operator should either return nodes or non-nodes. Mixed sequences are not allowed.");
-    return c ? td(a, b) : b;
+    return c ? ud(a, b) : b;
   }
-  var Pi = class extends D {
+  var Ui = class extends C {
     constructor(a, b) {
-      const c = a.every(e => e.W),
+      const c = a.every(e => e.V),
         d = a.every(e => e.subtree);
-      super(a.reduce((e, f) => e.add(f.o), new vf({})), a, {
+      super(a.reduce((e, f) => e.add(f.o), new D({})), a, {
         B: !1,
-        W: c,
-        R: b ? "sorted" : "unsorted",
+        V: c,
+        P: b ? "sorted" : "unsorted",
         subtree: d
       });
       this.l = a;
@@ -10492,36 +10594,36 @@ const fontoxpath = function (xspattern, prsc) {
     h(a, b) {
       let c = !0;
       return this.l.reduce((d, e, f) => {
-        const h = null === d ? kd(a) : dc(a, d);
+        const h = null === d ? ld(a) : ec(a, d);
         d = {
           next: l => {
             l = h.next(l);
             if (l.done) return p;
-            if (null !== l.value.M && !v(l.value.M.type, 53) && 0 < f) throw Error("XPTY0019: The result of E1 in a path expression E1/E2 should not evaluate to a sequence of nodes.");
-            return q(C(e, l.value, b));
+            if (null !== l.value.L && !v(l.value.L.type, 53) && 0 < f) throw Error("XPTY0019: The result of E1 in a path expression E1/E2 should not evaluate to a sequence of nodes.");
+            return q(A(e, l.value, b));
           }
         };
         let k;
-        if (this.s) switch (e.ia) {
+        if (this.s) switch (e.ha) {
           case "reverse-sorted":
             const l = d;
             d = {
               next: n => {
                 n = l.next(n);
-                return n.done ? n : q(n.value.N(t => w.create(t.reverse())));
+                return n.done ? n : q(n.value.M(t => w.create(t.reverse())));
               }
             };
           case "sorted":
             if (e.subtree && c) {
-              k = Gi(d);
+              k = Li(d);
               break;
             }
-            k = Hi(b.h, d);
+            k = Mi(b.h, d);
             break;
           case "unsorted":
-            return Gi(d).N(n => w.create(Oi(b.h, n)));
-        } else k = Gi(d);
-        c = c && e.W;
+            return Li(d).M(n => w.create(Ti(b.h, n)));
+        } else k = Li(d);
+        c = c && e.V;
         return k;
       }, null);
     }
@@ -10529,22 +10631,22 @@ const fontoxpath = function (xspattern, prsc) {
       return this.l[0].D();
     }
   };
-  var Qi = class extends D {
+  var Vi = class extends C {
     constructor(a, b) {
       super(a.o.add(b.o), [a, b], {
         B: a.B && b.B,
-        W: a.W,
-        R: a.ia,
+        V: a.V,
+        P: a.ha,
         subtree: a.subtree
       });
       this.s = a;
       this.l = b;
     }
     h(a, b) {
-      const c = C(this.s, a, b);
+      const c = A(this.s, a, b);
       if (this.l.B) {
-        const k = C(this.l, a, b);
-        if (k.F()) return k;
+        const k = A(this.l, a, b);
+        if (k.isEmpty()) return k;
         const l = k.first();
         if (v(l.type, 2)) {
           let n = l.value;
@@ -10561,7 +10663,7 @@ const fontoxpath = function (xspattern, prsc) {
             }
           });
         }
-        return k.fa() ? c : w.empty();
+        return k.ea() ? c : w.empty();
       }
       const d = c.value;
       let e = null,
@@ -10573,9 +10675,9 @@ const fontoxpath = function (xspattern, prsc) {
           for (; !e || !e.done;) {
             e || (e = d.next(l ? 0 : k), l = !0);
             if (e.done) break;
-            h ||= C(this.l, bc(a, f, e.value, c), b);
+            h ||= A(this.l, cc(a, f, e.value, c), b);
             var n = h.first();
-            n = null === n ? !1 : v(n.type, 2) ? n.value === f + 1 : h.fa();
+            n = null === n ? !1 : v(n.type, 2) ? n.value === f + 1 : h.ea();
             h = null;
             const t = e.value;
             e = null;
@@ -10590,43 +10692,43 @@ const fontoxpath = function (xspattern, prsc) {
       return this.s.D();
     }
   };
-  function Ri(a, b, c) {
+  function Wi(a, b, c) {
     c = [c];
     if (v(a.type, 62)) {
-      if ("*" === b) c.push(...a.h.map(d => d()));else if (v(b.type, 5)) {
+      if ("*" === b) c.push(...a.members.map(d => d()));else if (v(b.type, 5)) {
         const d = b.value;
-        if (a.h.length < d || 0 >= d) throw Error("FOAY0001: Array index out of bounds");
-        c.push(a.h[d - 1]());
+        if (a.members.length < d || 0 >= d) throw Error("FOAY0001: Array index out of bounds");
+        c.push(a.members[d - 1]());
       } else throw Error("XPTY0004: The key specifier is not an integer.");
-    } else if (v(a.type, 61)) "*" === b ? c.push(...a.h.map(d => d.value())) : (a = a.h.find(d => sb(d.key, b))) && c.push(a.value());else throw Error("XPTY0004: The provided context item is not a map or an array.");
-    return jc(c);
+    } else if (v(a.type, 61)) "*" === b ? c.push(...a.h.map(d => d.value())) : (a = a.h.find(d => ub(d.key, b))) && c.push(a.value());else throw Error("XPTY0004: The provided context item is not a map or an array.");
+    return kc(c);
   }
-  function Si(a, b, c, d, e) {
-    if ("*" === b) return Ri(a, b, c);
-    b = C(b, d, e);
-    b = Ra(b)().N(f => f.reduce((h, k) => Ri(a, k, h), new Ba()));
-    return jc([c, b]);
+  function Xi(a, b, c, d, e) {
+    if ("*" === b) return Wi(a, b, c);
+    b = A(b, d, e);
+    b = Ra(b)().M(f => f.reduce((h, k) => Wi(a, k, h), new Ba()));
+    return kc([c, b]);
   }
-  var Ti = class extends D {
+  var Yi = class extends C {
     constructor(a, b) {
       super(a.o, [a].concat("*" === b ? [] : [b]), {
         B: a.B,
-        R: a.ia,
+        P: a.ha,
         subtree: a.subtree
       });
       this.l = a;
       this.s = b;
     }
     h(a, b) {
-      return C(this.l, a, b).N(c => c.reduce((d, e) => Si(e, this.s, d, a, b), new Ba()));
+      return A(this.l, a, b).M(c => c.reduce((d, e) => Xi(e, this.s, d, a, b), new Ba()));
     }
     D() {
       return this.l.D();
     }
   };
-  var Ui = class extends D {
+  var Zi = class extends C {
     constructor(a, b) {
-      super(new vf({
+      super(new D({
         external: 1
       }), "*" === a ? [] : [a], {
         B: !1
@@ -10634,10 +10736,10 @@ const fontoxpath = function (xspattern, prsc) {
       this.l = a;
     }
     h(a, b) {
-      return Si(a.M, this.l, new Ba(), a, b);
+      return Xi(a.L, this.l, new Ba(), a, b);
     }
   };
-  var Vi = class extends D {
+  var $i = class extends C {
     constructor(a, b, c, d) {
       const e = b.map(f => f.fb);
       b = b.map(f => f.name);
@@ -10646,20 +10748,20 @@ const fontoxpath = function (xspattern, prsc) {
       }, !1, d);
       this.s = a;
       this.A = b;
-      this.L = e;
-      this.P = c;
+      this.K = e;
+      this.O = c;
       this.l = null;
     }
     h(a, b) {
       let c = a;
       const d = this.l.map((k, l) => {
-        const n = C(this.L[l], c, b).O();
-        c = hc(a, {
+        const n = A(this.K[l], c, b).N();
+        c = ic(a, {
           [k]: () => w.create(n)
         });
         return n;
       });
-      if (d.some(k => 0 === k.length)) return "every" === this.s ? w.aa() : w.T();
+      if (d.some(k => 0 === k.length)) return "every" === this.s ? w.$() : w.S();
       const e = Array(d.length).fill(0);
       e[0] = -1;
       for (var f = !0; f;) {
@@ -10672,58 +10774,48 @@ const fontoxpath = function (xspattern, prsc) {
               const n = d[h][e[h]];
               f[this.l[h]] = () => w.m(n);
             }
-            f = hc(a, f);
-            f = C(this.P, f, b);
-            if (f.fa() && "some" === this.s) return w.aa();
-            if (!f.fa() && "every" === this.s) return w.T();
+            f = ic(a, f);
+            f = A(this.O, f, b);
+            if (f.ea() && "some" === this.s) return w.$();
+            if (!f.ea() && "every" === this.s) return w.S();
             f = !0;
             break;
           }
         }
       }
-      return "every" === this.s ? w.aa() : w.T();
+      return "every" === this.s ? w.$() : w.S();
     }
     v(a) {
       this.l = [];
       for (let c = 0, d = this.A.length; c < d; ++c) {
-        this.L[c].v(a);
+        this.K[c].v(a);
         Dg(a);
         var b = this.A[c];
-        const e = b.prefix ? a.$(b.prefix) : null;
+        const e = b.prefix ? a.Z(b.prefix) : null;
         b = Hg(a, e, b.localName);
         this.l[c] = b;
       }
-      this.P.v(a);
+      this.O.v(a);
       for (let c = 0, d = this.A.length; c < d; ++c) Jg(a);
     }
   };
-  var Wi = class extends D {
+  var aj = class extends xh {
     constructor(a) {
-      super(a, [], {
-        B: !1
-      });
-    }
-    h(a) {
-      return this.l(a.M) ? w.aa() : w.T();
-    }
-  };
-  var Xi = class extends Wi {
-    constructor(a) {
-      super(new vf({
+      super(new D({
         nodeType: 1
       }));
       this.s = a;
     }
-    l(a) {
-      if (!v(a.type, 53)) return !1;
-      a = a.value.node.nodeType;
+    l(a, b) {
+      if (!v(b.type, 53)) return !1;
+      a = b.value.node.nodeType;
       return 3 === this.s && 4 === a ? !0 : this.s === a;
     }
     D() {
       return `type-${this.s}`;
     }
   };
-  var Yi = class extends Wi {
+  var bj = class extends xh {
     constructor(a, b = {
       kind: null
     }) {
@@ -10733,85 +10825,85 @@ const fontoxpath = function (xspattern, prsc) {
       const e = {};
       "*" !== a && (e.nodeName = 1);
       e.nodeType = 1;
-      super(new vf(e));
+      super(new D(e));
       this.s = a;
-      this.L = d;
+      this.K = d;
       this.A = c;
-      this.P = b.kind;
+      this.O = b.kind;
     }
-    l(a) {
-      const b = v(a.type, 54),
-        c = v(a.type, 47);
-      if (!b && !c) return !1;
-      a = a.value;
-      return null !== this.P && (1 === this.P && !b || 2 === this.P && !c) ? !1 : null === this.A && "" !== this.L && "*" === this.s ? !0 : "*" === this.A ? "*" === this.s ? !0 : this.s === a.node.localName : "*" !== this.s && this.s !== a.node.localName ? !1 : (a.node.namespaceURI || null) === (("" === this.A ? b ? this.L : null : this.L) || null);
+    l(a, b) {
+      a = v(b.type, 54);
+      const c = v(b.type, 47);
+      if (!a && !c) return !1;
+      b = b.value;
+      return null !== this.O && (1 === this.O && !a || 2 === this.O && !c) ? !1 : null === this.A && "" !== this.K && "*" === this.s ? !0 : "*" === this.A ? "*" === this.s ? !0 : this.s === b.node.localName : "*" !== this.s && this.s !== b.node.localName ? !1 : (b.node.namespaceURI || null) === (("" === this.A ? a ? this.K : null : this.K) || null);
     }
     D() {
-      return "*" === this.s ? null === this.P ? "type-1-or-type-2" : `type-${this.P}` : `name-${this.s}`;
+      return "*" === this.s ? null === this.O ? "type-1-or-type-2" : `type-${this.O}` : `name-${this.s}`;
     }
     v(a) {
-      if (null === this.L && "*" !== this.A && (this.L = a.$(this.A || "") || null, !this.L && this.A)) throw Error(`XPST0081: The prefix ${this.A} could not be resolved.`);
+      if (null === this.K && "*" !== this.A && (this.K = a.Z(this.A || "") || null, !this.K && this.A)) throw Error(`XPST0081: The prefix ${this.A} could not be resolved.`);
     }
   };
-  var Zi = class extends Wi {
+  var cj = class extends xh {
     constructor(a) {
-      super(new vf({
+      super(new D({
         nodeName: 1
       }));
       this.s = a;
     }
-    l(a) {
-      return v(a.type, 57) && a.value.node.target === this.s;
+    l(a, b) {
+      return v(b.type, 57) && b.value.node.target === this.s;
     }
     D() {
       return "type-7";
     }
   };
-  var $i = class extends Wi {
+  var dj = class extends xh {
     constructor(a) {
-      super(new vf({}));
+      super(new D({}));
       this.s = a;
     }
-    l(a) {
-      return v(a.type, Ia(this.s.prefix ? this.s.prefix + ":" + this.s.localName : this.s.localName));
+    l(a, b) {
+      return v(b.type, Ia(this.s.prefix ? this.s.prefix + ":" + this.s.localName : this.s.localName));
     }
   };
-  var aj = class extends D {
+  var ej = class extends C {
     constructor(a, b, c) {
-      super(new vf({}), [], {
+      super(new D({}), [], {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
       this.A = c;
       this.s = b;
-      this.L = a;
+      this.K = a;
       this.l = null;
     }
     h(a, b) {
-      if (!a.ra[this.l]) {
-        if (this.P) return this.P(a, b);
+      if (!a.qa[this.l]) {
+        if (this.O) return this.O(a, b);
         throw Error("XQDY0054: The variable " + this.A + " is declared but not in scope.");
       }
-      return a.ra[this.l]();
+      return a.qa[this.l]();
     }
     v(a) {
-      null === this.s && this.L && (this.s = a.$(this.L));
+      null === this.s && this.K && (this.s = a.Z(this.K));
       this.l = a.eb(this.s || "", this.A);
       if (!this.l) throw Error("XPST0008, The variable " + this.A + " is not in scope.");
-      if (a = a.Ea[this.l]) this.P = a;
+      if (a = a.Fa[this.l]) this.O = a;
     }
   };
-  var bj = class extends Uh {
+  var fj = class extends Zh {
     constructor(a, b) {
-      super(new vf({}), [a, b], {
+      super(new D({}), [a, b], {
         B: !1,
-        W: !1,
-        R: "unsorted",
+        V: !1,
+        P: "unsorted",
         subtree: !1
       }, b);
       this.A = a;
     }
-    L(a, b, c, d) {
+    K(a, b, c, d) {
       let e = null,
         f = null;
       return d({
@@ -10821,9 +10913,9 @@ const fontoxpath = function (xspattern, prsc) {
               var h = b.next(0);
               if (h.done) return p;
               e = h.value;
-              f = C(this.A, e, c);
+              f = A(this.A, e, c);
             }
-            h = f.fa();
+            h = f.ea();
             const k = e;
             f = e = null;
             if (h) return q(k);
@@ -10832,12 +10924,12 @@ const fontoxpath = function (xspattern, prsc) {
       });
     }
   };
-  var cj = class {
+  var gj = class {
     constructor(a) {
       this.type = a;
     }
   };
-  var dj = class extends cj {
+  var hj = class extends gj {
     constructor(a) {
       super("delete");
       this.target = a;
@@ -10849,7 +10941,7 @@ const fontoxpath = function (xspattern, prsc) {
       };
     }
   };
-  var ej = class extends cj {
+  var ij = class extends gj {
     constructor(a, b, c) {
       super(c);
       this.target = a;
@@ -10863,12 +10955,12 @@ const fontoxpath = function (xspattern, prsc) {
       };
     }
   };
-  var fj = class extends ej {
+  var jj = class extends ij {
     constructor(a, b) {
       super(a, b, "insertAfter");
     }
   };
-  var gj = class extends cj {
+  var kj = class extends gj {
     constructor(a, b) {
       super("insertAttributes");
       this.target = a;
@@ -10882,31 +10974,31 @@ const fontoxpath = function (xspattern, prsc) {
       };
     }
   };
-  var hj = class extends ej {
+  var lj = class extends ij {
     constructor(a, b) {
       super(a, b, "insertBefore");
     }
   };
-  var ij = class extends ej {
+  var mj = class extends ij {
     constructor(a, b) {
       super(a, b, "insertIntoAsFirst");
     }
   };
-  var jj = class extends ej {
+  var nj = class extends ij {
     constructor(a, b) {
       super(a, b, "insertIntoAsLast");
     }
   };
-  var kj = class extends ej {
+  var oj = class extends ij {
     constructor(a, b) {
       super(a, b, "insertInto");
     }
   };
-  var lj = class extends cj {
+  var pj = class extends gj {
     constructor(a, b) {
       super("rename");
       this.target = a;
-      this.o = b.za ? b : new Sa(b.prefix, b.namespaceURI, b.localName);
+      this.o = b.Aa ? b : new Sa(b.prefix, b.namespaceURI, b.localName);
     }
     h(a) {
       return {
@@ -10920,7 +11012,7 @@ const fontoxpath = function (xspattern, prsc) {
       };
     }
   };
-  var mj = class extends cj {
+  var qj = class extends gj {
     constructor(a, b) {
       super("replaceElementContent");
       this.target = a;
@@ -10934,7 +11026,7 @@ const fontoxpath = function (xspattern, prsc) {
       };
     }
   };
-  var nj = class extends cj {
+  var rj = class extends gj {
     constructor(a, b) {
       super("replaceNode");
       this.target = a;
@@ -10948,7 +11040,7 @@ const fontoxpath = function (xspattern, prsc) {
       };
     }
   };
-  var oj = class extends cj {
+  var sj = class extends gj {
     constructor(a, b) {
       super("replaceValue");
       this.target = a;
@@ -10962,12 +11054,12 @@ const fontoxpath = function (xspattern, prsc) {
       };
     }
   };
-  var pj = (a, b) => new nj(a, b);
-  var qj = class extends of {
+  var tj = (a, b) => new rj(a, b);
+  var uj = class extends of {
     constructor(a) {
-      super(new vf({}), [a], {
+      super(new D({}), [a], {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
       this.l = a;
     }
@@ -10979,23 +11071,23 @@ const fontoxpath = function (xspattern, prsc) {
         next: () => {
           if (!e) {
             const h = c.next(0);
-            if (h.value.J.some(k => !v(k.type, 53))) throw Error("XUTY0007: The target of a delete expression must be a sequence of zero or more nodes.");
-            e = h.value.J;
-            f = h.value.da;
+            if (h.value.I.some(k => !v(k.type, 53))) throw Error("XUTY0007: The target of a delete expression must be a sequence of zero or more nodes.");
+            e = h.value.I;
+            f = h.value.ca;
           }
           e = e.filter(h => x(d, h.value));
           return q({
-            da: mf(e.map(h => new dj(h.value)), f),
-            J: []
+            ca: mf(e.map(h => new hj(h.value)), f),
+            I: []
           });
         }
       };
     }
   };
-  function rj(a, b, c, d, e, f) {
+  function vj(a, b, c, d, e, f) {
     const h = b.h;
     a.reduce(function t(l, n) {
-      if (v(n.type, 62)) return n.h.forEach(u => u().O().forEach(z => t(l, z))), l;
+      if (v(n.type, 62)) return n.members.forEach(u => u().N().forEach(z => t(l, z))), l;
       l.push(n);
       return l;
     }, []).forEach((l, n, t) => {
@@ -11003,75 +11095,75 @@ const fontoxpath = function (xspattern, prsc) {
         if (e) throw f(l.value, h);
         c.push(l.value.node);
       } else if (v(l.type, 46) || v(l.type, 53) && 3 === l.value.node.nodeType) {
-        const u = v(l.type, 46) ? jd(pc(l, b).first(), 1).value : ib(h, l.value);
+        const u = v(l.type, 46) ? kd(qc(l, b).first(), 1).value : hb(h, l.value);
         0 !== n && v(t[n - 1].type, 46) && v(l.type, 46) ? (d.push({
           data: " " + u,
-          Ra: !0,
+          Ta: !0,
           nodeType: 3
         }), e = !0) : u && (d.push({
           data: "" + u,
-          Ra: !0,
+          Ta: !0,
           nodeType: 3
         }), e = !0);
       } else if (v(l.type, 55)) {
         const u = [];
-        hb(h, l.value).forEach(z => u.push(rb(z)));
-        e = rj(u, b, c, d, e, f);
+        gb(h, l.value).forEach(z => u.push(sb(z)));
+        e = vj(u, b, c, d, e, f);
       } else if (v(l.type, 53)) d.push(l.value.node), e = !0;else {
-        if (v(l.type, 60)) throw nc(l.type);
+        if (v(l.type, 60)) throw oc(l.type);
         throw Error(`Atomizing ${l.type} is not implemented.`);
       }
     });
     return e;
   }
-  function sj(a, b, c) {
+  function wj(a, b, c) {
     const d = [],
       e = [];
     let f = !1;
     a.forEach(h => {
-      f = rj(h, b, d, e, f, c);
+      f = vj(h, b, d, e, f, c);
     });
     return {
       attributes: d,
-      Xa: e
+      Ya: e
     };
   }
-  function tj(a, b, c, d, e) {
+  function xj(a, b, c, d, e) {
     const f = [];
     switch (a) {
       case 4:
-        d.length && f.push(new gj(b, d));
-        e.length && f.push(new ij(b, e));
+        d.length && f.push(new kj(b, d));
+        e.length && f.push(new mj(b, e));
         break;
       case 5:
-        d.length && f.push(new gj(b, d));
-        e.length && f.push(new jj(b, e));
+        d.length && f.push(new kj(b, d));
+        e.length && f.push(new nj(b, e));
         break;
       case 3:
-        d.length && f.push(new gj(b, d));
-        e.length && f.push(new kj(b, e));
+        d.length && f.push(new kj(b, d));
+        e.length && f.push(new oj(b, e));
         break;
       case 2:
-        d.length && f.push(new gj(c, d));
-        e.length && f.push(new hj(b, e));
+        d.length && f.push(new kj(c, d));
+        e.length && f.push(new lj(b, e));
         break;
       case 1:
-        d.length && f.push(new gj(c, d)), e.length && f.push(new fj(b, e));
+        d.length && f.push(new kj(c, d)), e.length && f.push(new jj(b, e));
     }
     return f;
   }
-  var uj = class extends of {
+  var yj = class extends of {
     constructor(a, b, c) {
-      super(new vf({}), [a, c], {
+      super(new D({}), [a, c], {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
-      this.L = a;
+      this.K = a;
       this.l = b;
       this.A = c;
     }
     s(a, b) {
-      const c = nf(this.L)(a, b),
+      const c = nf(this.K)(a, b),
         d = nf(this.A)(a, b),
         e = b.h;
       let f, h, k, l, n, t;
@@ -11079,114 +11171,114 @@ const fontoxpath = function (xspattern, prsc) {
         next: () => {
           if (!f) {
             var u = c.next(0);
-            const z = sj([u.value.J], b, Pe);
+            const z = wj([u.value.I], b, Pe);
             f = z.attributes.map(y => ({
               node: y,
-              G: null
+              F: null
             }));
-            h = z.Xa.map(y => ({
+            h = z.Ya.map(y => ({
               node: y,
-              G: null
+              F: null
             }));
-            k = u.value.da;
+            k = u.value.ca;
           }
           if (!l) {
             u = d.next(0);
-            if (0 === u.value.J.length) throw Ye();
+            if (0 === u.value.I.length) throw Ye();
             if (3 <= this.l) {
-              if (1 !== u.value.J.length) throw Qe();
-              if (!v(u.value.J[0].type, 54) && !v(u.value.J[0].type, 55)) throw Qe();
+              if (1 !== u.value.I.length) throw Qe();
+              if (!v(u.value.I[0].type, 54) && !v(u.value.I[0].type, 55)) throw Qe();
             } else {
-              if (1 !== u.value.J.length) throw Re();
-              if (!(v(u.value.J[0].type, 54) || v(u.value.J[0].type, 56) || v(u.value.J[0].type, 58) || v(u.value.J[0].type, 57))) throw Re();
-              t = x(e, u.value.J[0].value, null);
-              if (null === t) throw Error(`XUDY0029: The target ${u.value.J[0].value.outerHTML} for inserting a node before or after must have a parent.`);
+              if (1 !== u.value.I.length) throw Re();
+              if (!(v(u.value.I[0].type, 54) || v(u.value.I[0].type, 56) || v(u.value.I[0].type, 58) || v(u.value.I[0].type, 57))) throw Re();
+              t = x(e, u.value.I[0].value, null);
+              if (null === t) throw Error(`XUDY0029: The target ${u.value.I[0].value.outerHTML} for inserting a node before or after must have a parent.`);
             }
-            l = u.value.J[0];
-            n = u.value.da;
+            l = u.value.I[0];
+            n = u.value.ca;
           }
           if (f.length) {
             if (3 <= this.l) {
               if (!v(l.type, 54)) throw Error("XUTY0022: An insert expression specifies the insertion of an attribute node into a document node.");
             } else if (1 !== t.node.nodeType) throw Error("XUDY0030: An insert expression specifies the insertion of an attribute node before or after a child of a document node.");
             f.reduce((z, y) => {
-              const G = y.node.prefix || "";
+              const F = y.node.prefix || "";
               var N = y.node.prefix || "";
               const U = y.node.namespaceURI,
-                ca = N ? l.value.node.lookupNamespaceURI(N) : null;
-              if (ca && ca !== U) throw We(U);
+                da = N ? l.value.node.lookupNamespaceURI(N) : null;
+              if (da && da !== U) throw We(U);
               if ((N = z[N]) && U !== N) throw Xe(U);
-              z[G] = y.node.namespaceURI;
+              z[F] = y.node.namespaceURI;
               return z;
             }, {});
           }
           return q({
-            J: [],
-            da: mf(tj(this.l, l.value, t ? t : null, f, h), k, n)
+            I: [],
+            ca: mf(xj(this.l, l.value, t ? t : null, f, h), k, n)
           });
         }
       };
     }
   };
-  const vj = () => mc("Casting not supported from given type to a single xs:string or xs:untypedAtomic or any of its derived types."),
-    wj = /([A-Z_a-z\xC0-\xD6\xD8-\xF6\xF8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])/,
-    xj = new RegExp(`${wj.source}${new RegExp(`(${wj.source}|[-.0-9\xB7\u0300-\u036F\u203F\u2040])`).source}*`, "g"),
-    yj = a => (a = a.match(xj)) ? 1 === a.length : !1;
-  function zj(a, b) {
-    return qc(b, a).X({
+  const zj = () => nc("Casting not supported from given type to a single xs:string or xs:untypedAtomic or any of its derived types."),
+    Aj = /([A-Z_a-z\xC0-\xD6\xD8-\xF6\xF8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]|[\uD800-\uDB7F][\uDC00-\uDFFF])/,
+    Bj = new RegExp(`${Aj.source}${new RegExp(`(${Aj.source}|[-.0-9\xB7\u0300-\u036F\u203F\u2040])`).source}*`, "g"),
+    Cj = a => (a = a.match(Bj)) ? 1 === a.length : !1;
+  function Dj(a, b) {
+    return rc(b, a).X({
       m: c => {
         c = c.first();
         if (v(c.type, 1) || v(c.type, 19)) {
-          if (!yj(c.value)) throw Error(`XQDY0041: The value "${c.value}" of a name expressions cannot be converted to a NCName.`);
+          if (!Cj(c.value)) throw Error(`XQDY0041: The value "${c.value}" of a name expressions cannot be converted to a NCName.`);
           return w.m(c);
         }
-        throw vj();
+        throw zj();
       },
       default: () => {
-        throw vj();
+        throw zj();
       }
     }).value;
   }
-  function Aj(a, b, c) {
-    return qc(c, b).X({
+  function Ej(a, b, c) {
+    return rc(c, b).X({
       m: d => {
         d = d.first();
         if (v(d.type, 23)) return w.m(d);
         if (v(d.type, 1) || v(d.type, 19)) {
           let e, f;
           d = d.value.split(":");
-          1 === d.length ? d = d[0] : (e = d[0], f = a.$(e), d = d[1]);
-          if (!yj(d) || e && !yj(e)) throw yg(e ? `${e}:${d}` : d);
+          1 === d.length ? d = d[0] : (e = d[0], f = a.Z(e), d = d[1]);
+          if (!Cj(d) || e && !Cj(e)) throw yg(e ? `${e}:${d}` : d);
           if (e && !f) throw yg(`${e}:${d}`);
           return w.m({
             type: 23,
             value: new Sa(e, f, d)
           });
         }
-        throw vj();
+        throw zj();
       },
       default: () => {
-        throw vj();
+        throw zj();
       }
     }).value;
   }
-  var Nj = class extends of {
+  var Fj = class extends of {
     constructor(a, b) {
-      super(new vf({}), [a, b], {
+      super(new D({}), [a, b], {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
       this.A = a;
-      this.L = b;
+      this.K = b;
       this.l = void 0;
     }
     s(a, b) {
       const c = nf(this.A)(a, b),
-        d = nf(this.L)(a, b);
+        d = nf(this.K)(a, b);
       return {
         next: () => {
           const e = c.next(0);
-          var f = e.value.J;
+          var f = e.value.I;
           if (0 === f.length) throw Ye();
           if (1 !== f.length) throw Te();
           if (!v(f[0].type, 54) && !v(f[0].type, 47) && !v(f[0].type, 57)) throw Te();
@@ -11194,26 +11286,26 @@ const fontoxpath = function (xspattern, prsc) {
           const h = d.next(0);
           a: {
             var k = this.l;
-            var l = w.create(h.value.J);
+            var l = w.create(h.value.I);
             switch (f.type) {
               case 54:
-                k = Aj(k, b, l).next(0).value.value;
+                k = Ej(k, b, l).next(0).value.value;
                 if ((l = f.value.node.lookupNamespaceURI(k.prefix)) && l !== k.namespaceURI) throw We(k.namespaceURI);
                 break a;
               case 47:
-                k = Aj(k, b, l).next(0).value.value;
+                k = Ej(k, b, l).next(0).value.value;
                 if (k.namespaceURI && (l = f.value.node.lookupNamespaceURI(k.prefix)) && l !== k.namespaceURI) throw We(k.namespaceURI);
                 break a;
               case 57:
-                k = zj(b, l).next(0).value.value;
+                k = Dj(b, l).next(0).value.value;
                 k = new Sa("", null, k);
                 break a;
             }
             k = void 0;
           }
           return q({
-            J: [],
-            da: mf([new lj(f.value, k)], e.value.da, h.value.da)
+            I: [],
+            ca: mf([new pj(f.value, k)], e.value.ca, h.value.ca)
           });
         }
       };
@@ -11223,35 +11315,35 @@ const fontoxpath = function (xspattern, prsc) {
       super.v(a);
     }
   };
-  function Oj(a, b, c) {
+  function Gj(a, b, c) {
     let d, e, f;
     return {
       next: () => {
         if (!d) {
           var h = c.next(0),
-            k = sj([h.value.J], a, Xe);
+            k = wj([h.value.I], a, Xe);
           d = {
             attributes: k.attributes.map(l => ({
               node: l,
-              G: null
+              F: null
             })),
-            Xa: k.Xa.map(l => ({
+            Ya: k.Ya.map(l => ({
               node: l,
-              G: null
+              F: null
             }))
           };
-          e = h.value.da;
+          e = h.value.ca;
         }
         k = b.next(0);
-        if (0 === k.value.J.length) throw Ye();
-        if (1 !== k.value.J.length) throw Se();
-        if (!(v(k.value.J[0].type, 54) || v(k.value.J[0].type, 47) || v(k.value.J[0].type, 56) || v(k.value.J[0].type, 58) || v(k.value.J[0].type, 57))) throw Se();
-        f = x(a.h, k.value.J[0].value, null);
-        if (null === f) throw Error(`XUDY0009: The target ${k.value.J[0].value.outerHTML} for replacing a node must have a parent.`);
-        h = k.value.J[0];
-        k = k.value.da;
+        if (0 === k.value.I.length) throw Ye();
+        if (1 !== k.value.I.length) throw Se();
+        if (!(v(k.value.I[0].type, 54) || v(k.value.I[0].type, 47) || v(k.value.I[0].type, 56) || v(k.value.I[0].type, 58) || v(k.value.I[0].type, 57))) throw Se();
+        f = x(a.h, k.value.I[0].value, null);
+        if (null === f) throw Error(`XUDY0009: The target ${k.value.I[0].value.outerHTML} for replacing a node must have a parent.`);
+        h = k.value.I[0];
+        k = k.value.ca;
         if (v(h.type, 47)) {
-          if (d.Xa.length) throw Error("XUTY0011: When replacing an attribute the new value must be zero or more attribute nodes.");
+          if (d.Ya.length) throw Error("XUTY0011: When replacing an attribute the new value must be zero or more attribute nodes.");
           d.attributes.reduce((l, n) => {
             const t = n.node.prefix || "";
             n = n.node.namespaceURI;
@@ -11263,13 +11355,13 @@ const fontoxpath = function (xspattern, prsc) {
           }, {});
         } else if (d.attributes.length) throw Error("XUTY0010: When replacing an an element, text, comment, or processing instruction node the new value must be a single node.");
         return q({
-          J: [],
-          da: mf([pj(h.value, [].concat(d.attributes, d.Xa))], e, k)
+          I: [],
+          ca: mf([tj(h.value, [].concat(d.attributes, d.Ya))], e, k)
         });
       }
     };
   }
-  function Pj(a, b, c) {
+  function Vj(a, b, c) {
     let d,
       e,
       f,
@@ -11280,157 +11372,157 @@ const fontoxpath = function (xspattern, prsc) {
         if (k) return p;
         if (!f) {
           var l = c.next(0);
-          const n = qc(w.create(l.value.J), a).map(t => jd(t, 1)).O().map(t => t.value).join(" ");
+          const n = rc(w.create(l.value.I), a).map(t => kd(t, 1)).N().map(t => t.value).join(" ");
           f = 0 === n.length ? null : {
             node: a.Ja.createTextNode(n),
-            G: null
+            F: null
           };
-          h = l.value.da;
+          h = l.value.ca;
         }
         if (!d) {
           l = b.next(0);
-          if (0 === l.value.J.length) throw Ye();
-          if (1 !== l.value.J.length) throw Se();
-          if (!(v(l.value.J[0].type, 54) || v(l.value.J[0].type, 47) || v(l.value.J[0].type, 56) || v(l.value.J[0].type, 58) || v(l.value.J[0].type, 57))) throw Se();
-          d = l.value.J[0];
-          e = l.value.da;
+          if (0 === l.value.I.length) throw Ye();
+          if (1 !== l.value.I.length) throw Se();
+          if (!(v(l.value.I[0].type, 54) || v(l.value.I[0].type, 47) || v(l.value.I[0].type, 56) || v(l.value.I[0].type, 58) || v(l.value.I[0].type, 57))) throw Se();
+          d = l.value.I[0];
+          e = l.value.ca;
         }
         if (v(d.type, 54)) return k = !0, q({
-          J: [],
-          da: mf([new mj(d.value, f)], h, e)
+          I: [],
+          ca: mf([new qj(d.value, f)], h, e)
         });
         if (v(d.type, 47) || v(d.type, 56) || v(d.type, 58) || v(d.type, 57)) {
-          l = f ? ib(a.h, f) : "";
+          l = f ? hb(a.h, f) : "";
           if (v(d.type, 58) && (l.includes("--") || l.endsWith("-"))) throw Error(`XQDY0072: The content "${l}" for a comment node contains two adjacent hyphens or ends with a hyphen.`);
           if (v(d.type, 57) && l.includes("?>")) throw Error(`XQDY0026: The content "${l}" for a processing instruction node contains "?>".`);
           k = !0;
           return q({
-            J: [],
-            da: mf([new oj(d.value, l)], h, e)
+            I: [],
+            ca: mf([new sj(d.value, l)], h, e)
           });
         }
       }
     };
   }
-  var Qj = class extends of {
+  var Wj = class extends of {
     constructor(a, b, c) {
-      super(new vf({}), [b, c], {
+      super(new D({}), [b, c], {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
-      this.L = a;
+      this.K = a;
       this.l = b;
       this.A = c;
     }
     s(a, b) {
       const c = nf(this.l)(a, b);
       a = nf(this.A)(a, b);
-      return this.L ? Pj(b, c, a) : Oj(b, c, a);
+      return this.K ? Vj(b, c, a) : Gj(b, c, a);
     }
   };
-  function Rj(a) {
+  function Xj(a) {
     switch (a.type) {
       case "delete":
-        return new dj({
-          node: a.target,
-          G: null
-        });
-      case "insertAfter":
-        return new fj({
-          node: a.target,
-          G: null
-        }, a.content.map(b => ({
-          node: b,
-          G: null
-        })));
-      case "insertBefore":
         return new hj({
           node: a.target,
-          G: null
-        }, a.content.map(b => ({
-          node: b,
-          G: null
-        })));
-      case "insertInto":
-        return new kj({
-          node: a.target,
-          G: null
-        }, a.content.map(b => ({
-          node: b,
-          G: null
-        })));
-      case "insertIntoAsFirst":
-        return new ij({
-          node: a.target,
-          G: null
-        }, a.content.map(b => ({
-          node: b,
-          G: null
-        })));
-      case "insertIntoAsLast":
+          F: null
+        });
+      case "insertAfter":
         return new jj({
           node: a.target,
-          G: null
+          F: null
         }, a.content.map(b => ({
           node: b,
-          G: null
+          F: null
         })));
-      case "insertAttributes":
-        return new gj({
-          node: a.target,
-          G: null
-        }, a.content.map(b => ({
-          node: b,
-          G: null
-        })));
-      case "rename":
+      case "insertBefore":
         return new lj({
           node: a.target,
-          G: null
-        }, a.newName);
-      case "replaceNode":
-        return new nj({
-          node: a.target,
-          G: null
-        }, a.replacement.map(b => ({
+          F: null
+        }, a.content.map(b => ({
           node: b,
-          G: null
+          F: null
         })));
-      case "replaceValue":
+      case "insertInto":
         return new oj({
           node: a.target,
-          G: null
-        }, a["string-value"]);
-      case "replaceElementContent":
+          F: null
+        }, a.content.map(b => ({
+          node: b,
+          F: null
+        })));
+      case "insertIntoAsFirst":
         return new mj({
           node: a.target,
-          G: null
+          F: null
+        }, a.content.map(b => ({
+          node: b,
+          F: null
+        })));
+      case "insertIntoAsLast":
+        return new nj({
+          node: a.target,
+          F: null
+        }, a.content.map(b => ({
+          node: b,
+          F: null
+        })));
+      case "insertAttributes":
+        return new kj({
+          node: a.target,
+          F: null
+        }, a.content.map(b => ({
+          node: b,
+          F: null
+        })));
+      case "rename":
+        return new pj({
+          node: a.target,
+          F: null
+        }, a.newName);
+      case "replaceNode":
+        return new rj({
+          node: a.target,
+          F: null
+        }, a.replacement.map(b => ({
+          node: b,
+          F: null
+        })));
+      case "replaceValue":
+        return new sj({
+          node: a.target,
+          F: null
+        }, a["string-value"]);
+      case "replaceElementContent":
+        return new qj({
+          node: a.target,
+          F: null
         }, a.text ? {
           node: a.text,
-          G: null
+          F: null
         } : null);
       default:
         throw Error(`Unexpected type "${a.type}" when parsing a transferable pending update.`);
     }
   }
-  function Sj(a, b, c) {
-    if (b.find(e => md(e, a))) return !0;
+  function Yj(a, b, c) {
+    if (b.find(e => nd(e, a))) return !0;
     const d = x(c, a);
-    return d ? Sj(d, b, c) : !1;
+    return d ? Yj(d, b, c) : !1;
   }
-  var Tj = class extends of {
+  var Zj = class extends of {
     constructor(a, b, c) {
-      super(new vf({}), a.reduce((d, e) => {
+      super(new D({}), a.reduce((d, e) => {
         d.push(e.fb);
         return d;
       }, [b, c]), {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
       this.l = a;
-      this.L = b;
+      this.K = b;
       this.A = c;
-      this.I = null;
+      this.H = null;
     }
     h(a, b) {
       a = this.s(a, b);
@@ -11439,7 +11531,7 @@ const fontoxpath = function (xspattern, prsc) {
     s(a, b) {
       const c = b.h,
         d = b.Ja,
-        e = b.Ma,
+        e = b.Oa,
         f = [];
       let h, k, l;
       const n = [],
@@ -11451,65 +11543,65 @@ const fontoxpath = function (xspattern, prsc) {
             var z = f[u];
             z || (f[u] = z = nf(y.fb)(a, b));
             z = z.next(0);
-            if (1 !== z.value.J.length || !v(z.value.J[0].type, 53)) throw Error("XUTY0013: The source expression of a copy modify expression must return a single node.");
-            const G = rb(Xf(z.value.J[0].value, b));
-            n.push(G.value);
-            t.push(z.value.da);
-            a = hc(a, {
-              [y.fc]: () => w.m(G)
+            if (1 !== z.value.I.length || !v(z.value.I[0].type, 53)) throw Error("XUTY0013: The source expression of a copy modify expression must return a single node.");
+            const F = sb(Xf(z.value.I[0].value, b));
+            n.push(F.value);
+            t.push(z.value.ca);
+            a = ic(a, {
+              [y.ic]: () => w.m(F)
             });
           }
-          l || (h ||= nf(this.L)(a, b), l = h.next(0).value.da);
+          l || (h ||= nf(this.K)(a, b), l = h.next(0).value.ca);
           l.forEach(y => {
-            if (y.target && !Sj(y.target, n, c)) throw Error(`XUDY0014: The target ${y.target.node.outerHTML} must be a node created by the copy clause.`);
+            if (y.target && !Yj(y.target, n, c)) throw Error(`XUDY0014: The target ${y.target.node.outerHTML} must be a node created by the copy clause.`);
             if ("put" === y.type) throw Error("XUDY0037: The modify expression of a copy modify expression can not contain a fn:put.");
           });
           u = l.map(y => {
             y = y.h(b);
-            return Rj(y);
+            return Xj(y);
           });
           lf(u, c, d, e);
           k ||= nf(this.A)(a, b);
           u = k.next(0);
           return q({
-            J: u.value.J,
-            da: mf(u.value.da, ...t)
+            I: u.value.I,
+            ca: mf(u.value.ca, ...t)
           });
         }
       };
     }
     v(a) {
       Dg(a);
-      this.l.forEach(b => b.fc = Hg(a, b.Jb.namespaceURI, b.Jb.localName));
+      this.l.forEach(b => b.ic = Hg(a, b.Lb.namespaceURI, b.Lb.localName));
       super.v(a);
       Jg(a);
-      this.I = this.l.some(b => b.fb.I) || this.A.I;
+      this.H = this.l.some(b => b.fb.H) || this.A.H;
     }
   };
-  function Uj(a, b) {
+  function ak(a, b) {
     return {
       node: {
         nodeType: 2,
-        Ra: !0,
-        nodeName: a.za(),
+        Ta: !0,
+        nodeName: a.Aa(),
         namespaceURI: a.namespaceURI,
         prefix: a.prefix,
         localName: a.localName,
-        name: a.za(),
+        name: a.Aa(),
         value: b
       },
-      G: null
+      F: null
     };
   }
-  var Vj = class extends D {
+  var bk = class extends C {
     constructor(a, b) {
       let c = b.nb || [];
-      c = c.concat(a.Na || []);
-      super(new vf({}), c, {
+      c = c.concat(a.Pa || []);
+      super(new D({}), c, {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
-      a.Na ? this.s = a.Na : this.name = new Sa(a.prefix, a.namespaceURI, a.localName);
+      a.Pa ? this.s = a.Pa : this.name = new Sa(a.prefix, a.namespaceURI, a.localName);
       this.l = b;
       this.A = void 0;
     }
@@ -11525,7 +11617,7 @@ const fontoxpath = function (xspattern, prsc) {
             if (this.s) {
               if (!c) {
                 var h = this.s.h(a, b);
-                c = Aj(this.A, b, h);
+                c = Ej(this.A, b, h);
               }
               d = c.next(0).value.value;
             } else d = this.name;
@@ -11537,64 +11629,64 @@ const fontoxpath = function (xspattern, prsc) {
               if ("" !== d.prefix && "xml" !== d.prefix && "http://www.w3.org/XML/1998/namespace" === d.namespaceURI) throw sg(d);
             }
           }
-          if (this.l.nb) return h = this.l.nb, e || (e = jc(h.map(k => qc(k.h(a, b), b).N(l => w.m(g(l.map(n => n.value).join(" "), 1))))).N(k => w.m(rb(Uj(d, k.map(l => l.value).join(""))))).value), e.next(0);
+          if (this.l.nb) return h = this.l.nb, e || (e = kc(h.map(k => rc(k.h(a, b), b).M(l => w.m(g(l.map(n => n.value).join(" "), 1))))).M(k => w.m(sb(ak(d, k.map(l => l.value).join(""))))).value), e.next(0);
           f = !0;
-          return q(rb(Uj(d, this.l.value)));
+          return q(sb(ak(d, this.l.value)));
         }
       });
     }
     v(a) {
       this.A = Ff(a);
       if (this.name && this.name.prefix && !this.name.namespaceURI) {
-        const b = a.$(this.name.prefix);
-        if (void 0 === b && this.name.prefix) throw oc(this.name.prefix);
+        const b = a.Z(this.name.prefix);
+        if (void 0 === b && this.name.prefix) throw pc(this.name.prefix);
         this.name.namespaceURI = b || null;
       }
       super.v(a);
     }
   };
-  var Wj = class extends D {
+  var ck = class extends C {
     constructor(a) {
-      super(a ? a.o : new vf({}), a ? [a] : [], {
+      super(a ? a.o : new D({}), a ? [a] : [], {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
       this.l = a;
     }
     h(a, b) {
       const c = {
           data: "",
-          Ra: !0,
+          Ta: !0,
           nodeType: 8
         },
         d = {
           node: c,
-          G: null
+          F: null
         };
-      if (!this.l) return w.m(rb(d));
-      a = C(this.l, a, b);
-      return qc(a, b).N(e => {
-        e = e.map(f => jd(f, 1).value).join(" ");
+      if (!this.l) return w.m(sb(d));
+      a = A(this.l, a, b);
+      return rc(a, b).M(e => {
+        e = e.map(f => kd(f, 1).value).join(" ");
         if (-1 !== e.indexOf("--\x3e")) throw Error('XQDY0072: The contents of the data of a comment may not include "--\x3e"');
         c.data = e;
-        return w.m(rb(d));
+        return w.m(sb(d));
       });
     }
   };
-  var Xj = class extends D {
+  var dk = class extends C {
     constructor(a, b, c, d) {
-      super(new vf({}), d.concat(b).concat(a.Na || []), {
+      super(new D({}), d.concat(b).concat(a.Pa || []), {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
-      a.Na ? this.s = a.Na : this.l = new Sa(a.prefix, a.namespaceURI, a.localName);
-      this.P = c.reduce((e, f) => {
+      a.Pa ? this.s = a.Pa : this.l = new Sa(a.prefix, a.namespaceURI, a.localName);
+      this.O = c.reduce((e, f) => {
         if (f.prefix in e) throw Error(`XQST0071: The namespace declaration with the prefix ${f.prefix} has already been declared on the constructed element.`);
         e[f.prefix || ""] = f.uri;
         return e;
       }, {});
-      this.L = b;
-      this.ma = d;
+      this.K = b;
+      this.la = d;
       this.A = void 0;
     }
     h(a, b) {
@@ -11609,162 +11701,162 @@ const fontoxpath = function (xspattern, prsc) {
       return w.create({
         next: () => {
           if (n) return p;
-          c || (d ||= jc(this.L.map(G => C(G, a, b))), e = d.O(), c = !0);
+          c || (d ||= kc(this.K.map(F => A(F, a, b))), e = d.N(), c = !0);
           if (!f) {
-            h ||= this.ma.map(G => C(G, a, b));
+            h ||= this.la.map(F => A(F, a, b));
             var t = [];
             for (var u = 0; u < h.length; u++) {
-              var z = h[u].O();
+              var z = h[u].N();
               t.push(z);
             }
             k = t;
             f = !0;
           }
-          this.s && (l || (t = this.s.h(a, b), l = Aj(this.A, b, t)), this.l = l.next(0).value.value);
-          if ("xmlns" === this.l.prefix || "http://www.w3.org/2000/xmlns/" === this.l.namespaceURI || "xml" === this.l.prefix && "http://www.w3.org/XML/1998/namespace" !== this.l.namespaceURI || this.l.prefix && "xml" !== this.l.prefix && "http://www.w3.org/XML/1998/namespace" === this.l.namespaceURI) throw Error(`XQDY0096: The node name "${this.l.za()}" is invalid for a computed element constructor.`);
+          this.s && (l || (t = this.s.h(a, b), l = Ej(this.A, b, t)), this.l = l.next(0).value.value);
+          if ("xmlns" === this.l.prefix || "http://www.w3.org/2000/xmlns/" === this.l.namespaceURI || "xml" === this.l.prefix && "http://www.w3.org/XML/1998/namespace" !== this.l.namespaceURI || this.l.prefix && "xml" !== this.l.prefix && "http://www.w3.org/XML/1998/namespace" === this.l.namespaceURI) throw Error(`XQDY0096: The node name "${this.l.Aa()}" is invalid for a computed element constructor.`);
           const y = {
             nodeType: 1,
-            Ra: !0,
+            Ta: !0,
             attributes: [],
             childNodes: [],
-            nodeName: this.l.za(),
+            nodeName: this.l.Aa(),
             namespaceURI: this.l.namespaceURI,
             prefix: this.l.prefix,
             localName: this.l.localName
           };
           t = {
             node: y,
-            G: null
+            F: null
           };
-          e.forEach(G => {
-            y.attributes.push(G.value.node);
+          e.forEach(F => {
+            y.attributes.push(F.value.node);
           });
-          u = sj(k, b, rg);
-          u.attributes.forEach(G => {
-            if (y.attributes.find(N => N.namespaceURI === G.namespaceURI && N.localName === G.localName)) throw Error(`XQDY0025: The attribute ${G.name} does not have an unique name in the constructed element.`);
-            y.attributes.push(G);
+          u = wj(k, b, rg);
+          u.attributes.forEach(F => {
+            if (y.attributes.find(N => N.namespaceURI === F.namespaceURI && N.localName === F.localName)) throw Error(`XQDY0025: The attribute ${F.name} does not have an unique name in the constructed element.`);
+            y.attributes.push(F);
           });
-          u.Xa.forEach(G => {
-            y.childNodes.push(G);
+          u.Ya.forEach(F => {
+            y.childNodes.push(F);
           });
           for (u = 0; u < y.childNodes.length; u++) {
             z = y.childNodes[u];
             if (!cb(z) || 3 !== z.nodeType) continue;
-            const G = y.childNodes[u - 1];
-            G && cb(G) && 3 === G.nodeType && (G.data += z.data, y.childNodes.splice(u, 1), u--);
+            const F = y.childNodes[u - 1];
+            F && cb(F) && 3 === F.nodeType && (F.data += z.data, y.childNodes.splice(u, 1), u--);
           }
           n = !0;
-          return q(rb(t));
+          return q(sb(t));
         }
       });
     }
     v(a) {
       Dg(a);
-      Object.keys(this.P).forEach(b => Gg(a, b, this.P[b]));
-      this.Fa.forEach(b => b.v(a));
-      this.L.reduce((b, c) => {
+      Object.keys(this.O).forEach(b => Gg(a, b, this.O[b]));
+      this.Ga.forEach(b => b.v(a));
+      this.K.reduce((b, c) => {
         if (c.name) {
-          c = `Q{${null === c.name.namespaceURI ? a.$(c.name.prefix) : c.name.namespaceURI}}${c.name.localName}`;
+          c = `Q{${null === c.name.namespaceURI ? a.Z(c.name.prefix) : c.name.namespaceURI}}${c.name.localName}`;
           if (b.includes(c)) throw Error(`XQST0040: The attribute ${c} does not have an unique name in the constructed element.`);
           b.push(c);
         }
         return b;
       }, []);
       if (this.l && null === this.l.namespaceURI) {
-        const b = a.$(this.l.prefix);
-        if (void 0 === b && this.l.prefix) throw oc(this.l.prefix);
+        const b = a.Z(this.l.prefix);
+        if (void 0 === b && this.l.prefix) throw pc(this.l.prefix);
         this.l.namespaceURI = b;
       }
       this.A = Ff(a);
       Jg(a);
     }
   };
-  function Yj(a) {
+  function ek(a) {
     if (/^xml$/i.test(a)) throw Error(`XQDY0064: The target of a created PI may not be "${a}"`);
   }
-  function Zj(a, b) {
+  function fk(a, b) {
     return {
       node: {
         data: b,
-        Ra: !0,
+        Ta: !0,
         nodeName: a,
         nodeType: 7,
         target: a
       },
-      G: null
+      F: null
     };
   }
-  var ak = class extends D {
+  var gk = class extends C {
     constructor(a, b) {
       const c = a.xb ? [a.xb].concat(b) : [b];
-      super(c.reduce((d, e) => d.add(e.o), new vf({})), c, {
+      super(c.reduce((d, e) => d.add(e.o), new D({})), c, {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
       this.l = a;
       this.s = b;
     }
     h(a, b) {
-      const c = C(this.s, a, b);
-      return qc(c, b).N(d => {
-        const e = d.map(h => jd(h, 1).value).join(" ");
+      const c = A(this.s, a, b);
+      return rc(c, b).M(d => {
+        const e = d.map(h => kd(h, 1).value).join(" ");
         if (-1 !== e.indexOf("?>")) throw Error('XQDY0026: The contents of the data of a processing instruction may not include "?>"');
-        if (null !== this.l.Fb) return d = this.l.Fb, Yj(d), w.m(rb(Zj(d, e)));
-        d = C(this.l.xb, a, b);
-        const f = zj(b, d);
+        if (null !== this.l.Gb) return d = this.l.Gb, ek(d), w.m(sb(fk(d, e)));
+        d = A(this.l.xb, a, b);
+        const f = Dj(b, d);
         return w.create({
           next: () => {
             var h = f.next(0);
             if (h.done) return h;
             h = h.value.value;
-            Yj(h);
-            return q(rb(Zj(h, e)));
+            ek(h);
+            return q(sb(fk(h, e)));
           }
         });
       });
     }
   };
-  var bk = class extends D {
+  var hk = class extends C {
     constructor(a) {
-      super(a ? a.o : new vf({}), a ? [a] : [], {
+      super(a ? a.o : new D({}), a ? [a] : [], {
         B: !1,
-        R: "unsorted"
+        P: "unsorted"
       });
       this.l = a;
     }
     h(a, b) {
       if (!this.l) return w.empty();
-      a = C(this.l, a, b);
-      return qc(a, b).N(c => {
+      a = A(this.l, a, b);
+      return rc(a, b).M(c => {
         if (0 === c.length) return w.empty();
         c = {
           node: {
-            data: c.map(d => jd(d, 1).value).join(" "),
-            Ra: !0,
+            data: c.map(d => kd(d, 1).value).join(" "),
+            Ta: !0,
             nodeType: 3
           },
-          G: null
+          F: null
         };
-        return w.m(rb(c));
+        return w.m(sb(c));
       });
     }
   };
-  var ck = class extends rf {
+  var ik = class extends rf {
     constructor(a, b, c, d) {
-      super(new vf({}), [a, ...b.map(e => e.pb), c].concat(...b.map(e => e.Ib.map(f => f.Hb))), {
+      super(new D({}), [a, ...b.map(e => e.pb), c].concat(...b.map(e => e.Kb.map(f => f.Jb))), {
         B: !1,
-        W: !1,
-        R: "unsorted",
+        V: !1,
+        P: "unsorted",
         subtree: !1
       }, d);
-      this.L = a;
+      this.K = a;
       this.l = b.length;
-      this.P = b.map(e => e.Ib);
+      this.O = b.map(e => e.Kb);
     }
     A(a, b, c) {
-      return c[0](a).N(d => {
-        for (let e = 0; e < this.l; e++) if (this.P[e].some(f => {
-          switch (f.dc) {
+      return c[0](a).M(d => {
+        for (let e = 0; e < this.l; e++) if (this.O[e].some(f => {
+          switch (f.hc) {
             case "?":
               if (1 < d.length) return !1;
               break;
@@ -11778,8 +11870,8 @@ const fontoxpath = function (xspattern, prsc) {
           }
           const h = w.create(d);
           return d.every((k, l) => {
-            k = bc(a, l, k, h);
-            return C(f.Hb, k, b).fa();
+            k = cc(a, l, k, h);
+            return A(f.Jb, k, b).ea();
           });
         })) return c[e + 1](a);
         return c[this.l + 1](a);
@@ -11787,23 +11879,23 @@ const fontoxpath = function (xspattern, prsc) {
     }
     v(a) {
       super.v(a);
-      if (this.L.I) throw Oe();
+      if (this.K.H) throw Oe();
     }
   };
-  var dk = class extends rf {
+  var jk = class extends rf {
     constructor(a, b, c, d) {
-      super(new vf({}), [a, c, ...b.map(e => e.pb)].concat(...b.map(e => e.Gb.map(f => f))), {
+      super(new D({}), [a, c, ...b.map(e => e.pb)].concat(...b.map(e => e.Hb.map(f => f))), {
         B: !1,
-        W: !1,
-        R: "unsorted",
+        V: !1,
+        P: "unsorted",
         subtree: !1
       }, d);
-      this.L = a;
+      this.K = a;
       this.l = b.length;
-      this.P = b.map(e => e.Gb);
+      this.O = b.map(e => e.Hb);
     }
     A(a, b, c) {
-      const d = fi(c[0](a), b),
+      const d = ki(c[0](a), b),
         [, e, ...f] = c;
       return d.X({
         multiple: () => {
@@ -11813,8 +11905,8 @@ const fontoxpath = function (xspattern, prsc) {
           const h = d.first(),
             k = !h;
           for (let n = 0; n < this.l; n++) {
-            var l = this.P[n].map(t => C(t, a, b));
-            for (const t of l) if (l = fi(t, b), l.F()) {
+            var l = this.O[n].map(t => A(t, a, b));
+            for (const t of l) if (l = ki(t, b), l.isEmpty()) {
               if (k) return f[n](a);
             } else {
               if (!l.oa()) throw Error("XPTY0004: The operand for a switch case should result in zero or one item");
@@ -11827,35 +11919,35 @@ const fontoxpath = function (xspattern, prsc) {
     }
     v(a) {
       super.v(a);
-      if (this.L.I) throw Oe();
+      if (this.K.H) throw Oe();
     }
   };
-  var ek = {
-      Z: !1,
-      sa: !1
+  var kk = {
+      Y: !1,
+      ra: !1
     },
-    fk = {
-      Z: !0,
-      sa: !1
+    lk = {
+      Y: !0,
+      ra: !1
     },
-    gk = {
-      Z: !0,
-      sa: !0
+    mk = {
+      Y: !0,
+      ra: !0
     };
   function P(a) {
-    return a.Z ? a.sa ? gk : fk : ek;
+    return a.Y ? a.ra ? mk : lk : kk;
   }
   function Q(a, b) {
     switch (a[0]) {
       case "andOp":
         var c = I(a, "type");
-        return new di(hk("andOp", a, P(b)), c);
+        return new ii(nk("andOp", a, P(b)), c);
       case "orOp":
-        return c = I(a, "type"), new ei(hk("orOp", a, P(b)), c);
+        return c = I(a, "type"), new ji(nk("orOp", a, P(b)), c);
       case "unaryPlusOp":
-        return c = F(F(a, "operand"), "*"), a = I(a, "type"), new ci("+", Q(c, b), a);
+        return c = G(G(a, "operand"), "*"), a = I(a, "type"), new hi("+", Q(c, b), a);
       case "unaryMinusOp":
-        return c = F(F(a, "operand"), "*"), a = I(a, "type"), new ci("-", Q(c, b), a);
+        return c = G(G(a, "operand"), "*"), a = I(a, "type"), new hi("-", Q(c, b), a);
       case "addOp":
       case "subtractOp":
       case "multiplyOp":
@@ -11871,65 +11963,67 @@ const fontoxpath = function (xspattern, prsc) {
         h && k && I(a, "type") && (c = Sg(d, h.type, k.type));
         return new Wg(d, e, b, f, c);
       case "sequenceExpr":
-        return ik(a, b);
+        return ok(a, b);
       case "unionOp":
-        return c = I(a, "type"), new Ii([Q(J(a, ["firstOperand", "*"]), P(b)), Q(J(a, ["secondOperand", "*"]), P(b))], c);
+        return c = I(a, "type"), new Ni([Q(J(a, ["firstOperand", "*"]), P(b)), Q(J(a, ["secondOperand", "*"]), P(b))], c);
+      case "otherwiseOp":
+        return c = I(a, "type"), new sh([Q(J(a, ["firstOperand", "*"]), P(b)), Q(J(a, ["secondOperand", "*"]), P(b))], c);
       case "exceptOp":
       case "intersectOp":
-        return c = I(a, "type"), new yi(a[0], Q(J(a, ["firstOperand", "*"]), P(b)), Q(J(a, ["secondOperand", "*"]), P(b)), c);
+        return c = I(a, "type"), new Di(a[0], Q(J(a, ["firstOperand", "*"]), P(b)), Q(J(a, ["secondOperand", "*"]), P(b)), c);
       case "stringConcatenateOp":
-        return jk(a, b);
+        return pk(a, b);
       case "rangeSequenceExpr":
-        return kk(a, b);
+        return qk(a, b);
       case "equalOp":
       case "notEqualOp":
       case "lessThanOrEqualOp":
       case "lessThanOp":
       case "greaterThanOrEqualOp":
       case "greaterThanOp":
-        return lk("generalCompare", a, b);
+        return rk("generalCompare", a, b);
       case "eqOp":
       case "neOp":
       case "ltOp":
       case "leOp":
       case "gtOp":
       case "geOp":
-        return lk("valueCompare", a, b);
+        return rk("valueCompare", a, b);
       case "isOp":
       case "nodeBeforeOp":
       case "nodeAfterOp":
-        return lk("nodeCompare", a, b);
+        return rk("nodeCompare", a, b);
       case "pathExpr":
-        return mk(a, b);
+        return sk(a, b);
       case "contextItemExpr":
-        return new Ni(I(a, "type"));
+        return b = I(a, "type"), new Si(b);
       case "functionCallExpr":
-        return nk(a, b);
+        return tk(a, b);
       case "inlineFunctionExpr":
-        return ok(a, b);
+        return uk(a, b);
       case "arrowExpr":
-        return pk(a, b);
+        return vk(a, b);
       case "dynamicFunctionInvocationExpr":
-        return qk(a, b);
+        return wk(a, b);
       case "namedFunctionRef":
-        return b = F(a, "functionName"), c = I(a, "type"), a = H(J(a, ["integerConstantExpr", "value"])), new ai(Kg(b), parseInt(a, 10), c);
+        return b = G(a, "functionName"), c = I(a, "type"), a = H(J(a, ["integerConstantExpr", "value"])), new fi(Kg(b), parseInt(a, 10), c);
       case "integerConstantExpr":
-        return new Zh(H(F(a, "value")), {
+        return new di(H(G(a, "value")), {
           type: 5,
           g: 3
         });
       case "stringConstantExpr":
-        return new Zh(H(F(a, "value")), {
+        return new di(H(G(a, "value")), {
           type: 1,
           g: 3
         });
       case "decimalConstantExpr":
-        return new Zh(H(F(a, "value")), {
+        return new di(H(G(a, "value")), {
           type: 4,
           g: 3
         });
       case "doubleConstantExpr":
-        return new Zh(H(F(a, "value")), {
+        return new di(H(G(a, "value")), {
           type: 3,
           g: 3
         });
@@ -11938,69 +12032,69 @@ const fontoxpath = function (xspattern, prsc) {
           prefix: l,
           namespaceURI: n,
           localName: t
-        } = Kg(F(a, "name"));
-        return new aj(l, n, t);
+        } = Kg(G(a, "name"));
+        return new ej(l, n, t);
       case "flworExpr":
-        return rk(a, b);
-      case "quantifiedExpr":
-        return sk(a, b);
-      case "ifThenElseExpr":
-        return c = I(a, "type"), d = F(a, "ifClause") || K(a, "x:stackTrace")[0], e = F(a, "thenClause") || K(a, "x:stackTrace")[1], a = F(a, "elseClause") || K(a, "x:stackTrace")[2], new Qh(Q(d, P(b)), Q(e, b), Q(a, b), c);
-      case "instanceOfExpr":
-        return c = Q(J(a, ["argExpr", "*"]), b), d = J(a, ["sequenceType", "*"]), e = J(a, ["sequenceType", "occurrenceIndicator"]), a = I(a, "type"), new Ei(c, Q(d, P(b)), e ? H(e) : "", a);
-      case "castExpr":
-        return b = Q(F(F(a, "argExpr"), "*"), P(b)), c = F(a, "singleType"), a = Kg(F(c, "atomicType")), c = null !== F(c, "optional"), new Ci(b, a, c);
-      case "castableExpr":
-        return b = Q(F(F(a, "argExpr"), "*"), P(b)), c = F(a, "singleType"), a = Kg(F(c, "atomicType")), c = null !== F(c, "optional"), new Bi(b, a, c);
-      case "simpleMapExpr":
-        return tk(a, b);
-      case "mapConstructor":
-        return uk(a, b);
-      case "arrayConstructor":
-        return vk(a, b);
-      case "unaryLookup":
-        return c = I(a, "type"), new Ui(wk(a, b), c);
-      case "typeswitchExpr":
         return xk(a, b);
-      case "switchExpr":
+      case "quantifiedExpr":
         return yk(a, b);
-      case "elementConstructor":
+      case "ifThenElseExpr":
+        return c = I(a, "type"), d = G(a, "ifClause") || K(a, "x:stackTrace")[0], e = G(a, "thenClause") || K(a, "x:stackTrace")[1], a = G(a, "elseClause") || K(a, "x:stackTrace")[2], new Vh(Q(d, P(b)), Q(e, b), Q(a, b), c);
+      case "instanceOfExpr":
+        return c = Q(J(a, ["argExpr", "*"]), b), d = J(a, ["sequenceType", "*"]), e = J(a, ["sequenceType", "occurrenceIndicator"]), a = I(a, "type"), new Ji(c, Q(d, P(b)), e ? H(e) : "", a);
+      case "castExpr":
+        return b = Q(G(G(a, "argExpr"), "*"), P(b)), c = G(a, "singleType"), a = Kg(G(c, "atomicType")), c = null !== G(c, "optional"), new Hi(b, a, c);
+      case "castableExpr":
+        return b = Q(G(G(a, "argExpr"), "*"), P(b)), c = G(a, "singleType"), a = Kg(G(c, "atomicType")), c = null !== G(c, "optional"), new Gi(b, a, c);
+      case "simpleMapExpr":
         return zk(a, b);
-      case "attributeConstructor":
+      case "mapConstructor":
         return Ak(a, b);
+      case "arrayConstructor":
+        return Bk(a, b);
+      case "unaryLookup":
+        return c = I(a, "type"), new Zi(Ck(a, b), c);
+      case "typeswitchExpr":
+        return Dk(a, b);
+      case "switchExpr":
+        return Ek(a, b);
+      case "elementConstructor":
+        return Fk(a, b);
+      case "attributeConstructor":
+        return Gk(a, b);
       case "computedAttributeConstructor":
-        return (c = F(a, "tagName")) ? c = Kg(c) : (c = F(a, "tagNameExpr"), c = {
-          Na: Q(F(c, "*"), P(b))
-        }), b = Q(F(F(a, "valueExpr"), "*"), P(b)), new Vj(c, {
+        return (c = G(a, "tagName")) ? c = Kg(c) : (c = G(a, "tagNameExpr"), c = {
+          Pa: Q(G(c, "*"), P(b))
+        }), b = Q(G(G(a, "valueExpr"), "*"), P(b)), new bk(c, {
           nb: [b]
         });
       case "computedCommentConstructor":
-        if (!b.Z) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-        b = (a = F(a, "argExpr")) ? Q(F(a, "*"), P(b)) : null;
-        return new Wj(b);
+        if (!b.Y) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
+        b = (a = G(a, "argExpr")) ? Q(G(a, "*"), P(b)) : null;
+        return new ck(b);
       case "computedTextConstructor":
-        if (!b.Z) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-        b = (a = F(a, "argExpr")) ? Q(F(a, "*"), P(b)) : null;
-        return new bk(b);
+        if (!b.Y) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
+        b = (a = G(a, "argExpr")) ? Q(G(a, "*"), P(b)) : null;
+        return new hk(b);
       case "computedElementConstructor":
-        return Bk(a, b);
+        return Hk(a, b);
       case "computedPIConstructor":
-        if (!b.Z) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-        c = F(a, "piTargetExpr");
-        d = F(a, "piTarget");
-        e = F(a, "piValueExpr");
+        if (!b.Y) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
+        c = G(a, "piTargetExpr");
+        d = G(a, "piTarget");
+        e = G(a, "piValueExpr");
         a = I(a, "type");
-        return new ak({
-          xb: c ? Q(F(c, "*"), P(b)) : null,
-          Fb: d ? H(d) : null
-        }, e ? Q(F(e, "*"), P(b)) : new zi([], a));
+        return new gk({
+          xb: c ? Q(G(c, "*"), P(b)) : null,
+          Gb: d ? H(d) : null
+        }, e ? Q(G(e, "*"), P(b)) : new Ei([], a));
       case "CDataSection":
-        return new Zh(H(a), {
+        return new di(H(a), {
           type: 1,
           g: 3
         });
       case "deleteExpr":
-        return b = Q(J(a, ["targetExpr", "*"]), b), new qj(b);
+        return b = Q(J(a, ["targetExpr", "*"]), b), new uj(b);
       case "insertExpr":
         c = Q(J(a, ["sourceExpr", "*"]), b);
         e = K(a, "*")[1];
@@ -12012,122 +12106,123 @@ const fontoxpath = function (xspattern, prsc) {
             d = 2;
             break;
           case "insertInto":
-            d = (d = F(e, "*")) ? "insertAsFirst" === d[0] ? 4 : 5 : 3;
+            d = (d = G(e, "*")) ? "insertAsFirst" === d[0] ? 4 : 5 : 3;
         }
         b = Q(J(a, ["targetExpr", "*"]), b);
-        return new uj(c, d, b);
+        return new yj(c, d, b);
       case "renameExpr":
-        return c = Q(J(a, ["targetExpr", "*"]), b), b = Q(J(a, ["newNameExpr", "*"]), b), new Nj(c, b);
+        return c = Q(J(a, ["targetExpr", "*"]), b), b = Q(J(a, ["newNameExpr", "*"]), b), new Fj(c, b);
       case "replaceExpr":
-        return c = !!F(a, "replaceValue"), d = Q(J(a, ["targetExpr", "*"]), b), b = Q(J(a, ["replacementExpr", "*"]), b), new Qj(c, d, b);
+        return c = !!G(a, "replaceValue"), d = Q(J(a, ["targetExpr", "*"]), b), b = Q(J(a, ["replacementExpr", "*"]), b), new Wj(c, d, b);
       case "transformExpr":
-        return Ck(a, b);
+        return Ik(a, b);
       case "x:stackTrace":
         c = a;
         for (a = c[2]; "x:stackTrace" === a[0];) c = a, a = a[2];
         c = c[1];
-        return new Sh(c, a[0], Q(a, b), c.Wa);
+        return new Xh(c, a[0], Q(a, b), c.Xa);
       case "ifClause":
       case "thenClause":
       case "elseClause":
-        return Q(F(a, "*"), b);
+        return Q(G(a, "*"), b);
       default:
-        return Dk(a);
+        return Jk(a, b);
     }
   }
-  function Dk(a) {
+  function Jk(a, b) {
     switch (a[0]) {
       case "nameTest":
-        return new Yi(Kg(a));
+        return new bj(Kg(a));
       case "piTest":
-        return (a = F(a, "piTarget")) ? new Zi(H(a)) : new Xi(7);
+        return (a = G(a, "piTarget")) ? new cj(H(a)) : new aj(7);
       case "commentTest":
-        return new Xi(8);
+        return new aj(8);
       case "textTest":
-        return new Xi(3);
+        return new aj(3);
       case "documentTest":
-        return new Xi(9);
+        return new aj(9);
       case "attributeTest":
-        var b = (a = F(a, "attributeName")) && F(a, "star");
-        return !a || b ? new Xi(2) : new Yi(Kg(F(a, "QName")), {
+        return b = (a = G(a, "attributeName")) && G(a, "star"), !a || b ? new aj(2) : new bj(Kg(G(a, "QName")), {
           kind: 2
         });
       case "elementTest":
-        return b = (a = F(a, "elementName")) && F(a, "star"), !a || b ? new Xi(1) : new Yi(Kg(F(a, "QName")), {
+        return b = (a = G(a, "elementName")) && G(a, "star"), !a || b ? new aj(1) : new bj(Kg(G(a, "QName")), {
           kind: 1
         });
       case "anyKindTest":
-        return new $i({
+        return new dj({
           prefix: "",
           namespaceURI: null,
           localName: "node()"
         });
       case "anyMapTest":
-        return new $i({
+        return new dj({
           prefix: "",
           namespaceURI: null,
           localName: "map(*)"
         });
       case "anyArrayTest":
-        return new $i({
+        return new dj({
           prefix: "",
           namespaceURI: null,
           localName: "array(*)"
         });
       case "Wildcard":
-        return F(a, "star") ? (b = F(a, "uri")) ? a = new Yi({
+        return G(a, "star") ? (b = G(a, "uri")) ? a = new bj({
           localName: "*",
           namespaceURI: H(b),
           prefix: ""
-        }) : (b = F(a, "NCName"), a = "star" === F(a, "*")[0] ? new Yi({
+        }) : (b = G(a, "NCName"), a = "star" === G(a, "*")[0] ? new bj({
           localName: H(b),
           namespaceURI: null,
           prefix: "*"
-        }) : new Yi({
+        }) : new bj({
           localName: "*",
           namespaceURI: null,
           prefix: H(b)
-        })) : a = new Yi({
+        })) : a = new bj({
           localName: "*",
           namespaceURI: null,
           prefix: "*"
         }), a;
       case "atomicType":
-        return new $i(Kg(a));
+        return a = Kg(a), new dj(a);
       case "anyItemType":
-        return new $i({
+        return new dj({
           prefix: "",
           namespaceURI: null,
           localName: "item()"
         });
+      case "unionNodeTest":
+        return Kk(a, b);
       default:
         throw Error("No selector counterpart for: " + a[0] + ".");
     }
   }
-  function vk(a, b) {
+  function Bk(a, b) {
     const c = I(a, "type");
-    a = F(a, "*");
-    const d = K(a, "arrayElem").map(e => Q(F(e, "*"), P(b)));
+    a = G(a, "*");
+    const d = K(a, "arrayElem").map(e => Q(G(e, "*"), P(b)));
     switch (a[0]) {
       case "curlyArray":
-        return new sh(d, c);
+        return new zh(d, c);
       case "squareArray":
-        return new th(d, c);
+        return new Ah(d, c);
       default:
         throw Error("Unrecognized arrayType: " + a[0]);
     }
   }
-  function uk(a, b) {
+  function Ak(a, b) {
     const c = I(a, "type");
-    return new $h(K(a, "mapConstructorEntry").map(d => ({
+    return new ei(K(a, "mapConstructorEntry").map(d => ({
       key: Q(J(d, ["mapKeyExpr", "*"]), P(b)),
       value: Q(J(d, ["mapValueExpr", "*"]), P(b))
     })), c);
   }
-  function hk(a, b, c) {
+  function nk(a, b, c) {
     function d(f) {
-      const h = F(F(f, "firstOperand"), "*");
-      f = F(F(f, "secondOperand"), "*");
+      const h = G(G(f, "firstOperand"), "*");
+      f = G(G(f, "secondOperand"), "*");
       h[0] === a ? d(h) : e.push(Q(h, c));
       f[0] === a ? d(f) : e.push(Q(f, c));
     }
@@ -12135,11 +12230,11 @@ const fontoxpath = function (xspattern, prsc) {
     d(b);
     return e;
   }
-  function wk(a, b) {
-    a = F(a, "*");
+  function Ck(a, b) {
+    a = G(a, "*");
     switch (a[0]) {
       case "NCName":
-        return new Zh(H(a), {
+        return new di(H(a), {
           type: 1,
           g: 3
         });
@@ -12149,40 +12244,40 @@ const fontoxpath = function (xspattern, prsc) {
         return Q(a, P(b));
     }
   }
-  function lk(a, b, c) {
+  function rk(a, b, c) {
     var d = J(b, ["firstOperand", "*"]);
     const e = J(b, ["secondOperand", "*"]);
     d = Q(d, P(c));
     c = Q(e, P(c));
     switch (a) {
       case "valueCompare":
-        return new qi(b[0], d, c);
+        return new vi(b[0], d, c);
       case "nodeCompare":
-        return new wi(b[0], d, c);
+        return new Bi(b[0], d, c);
       case "generalCompare":
-        return new ti(b[0], d, c);
+        return new yi(b[0], d, c);
     }
   }
-  function Ek(a, b, c) {
+  function Lk(a, b, c) {
     a = K(a, "*");
-    return new Li(a.filter(d => "stable" !== d[0]).map(d => {
-      var e = F(d, "orderModifier"),
-        f = e ? F(e, "orderingKind") : null;
-      e = e ? F(e, "emptyOrderingMode") : null;
+    return new Qi(a.filter(d => "stable" !== d[0]).map(d => {
+      var e = G(d, "orderModifier"),
+        f = e ? G(e, "orderingKind") : null;
+      e = e ? G(e, "emptyOrderingMode") : null;
       f = f ? "ascending" === H(f) : !0;
       e = e ? "empty least" === H(e) : !0;
       return {
-        ba: Q(J(d, ["orderByExpr", "*"]), b),
-        Bb: f,
-        bc: e
+        aa: Q(J(d, ["orderByExpr", "*"]), b),
+        Cb: f,
+        ec: e
       };
     }), c);
   }
-  function rk(a, b) {
+  function xk(a, b) {
     var c = K(a, "*");
-    a = F(c[c.length - 1], "*");
+    a = G(c[c.length - 1], "*");
     c = c.slice(0, -1);
-    if (1 < c.length && !b.Z) throw Error("XPST0003: Use of XQuery FLWOR expressions in XPath is no allowed");
+    if (1 < c.length && !b.Y) throw Error("XPST0003: Use of XQuery FLWOR expressions in XPath is no allowed");
     return c.reduceRight((d, e) => {
       switch (e[0]) {
         case "forClause":
@@ -12190,24 +12285,24 @@ const fontoxpath = function (xspattern, prsc) {
           for (var f = e.length - 1; 0 <= f; --f) {
             var h = e[f],
               k = J(h, ["forExpr", "*"]);
-            const l = F(h, "positionalVariableBinding");
-            d = new Wh(Kg(J(h, ["typedVariableBinding", "varName"])), Q(k, P(b)), l ? Kg(l) : null, d);
+            const l = G(h, "positionalVariableBinding");
+            d = new ai(Kg(J(h, ["typedVariableBinding", "varName"])), Q(k, P(b)), l ? Kg(l) : null, d);
           }
           return d;
         case "letClause":
           e = K(e, "*");
-          for (f = e.length - 1; 0 <= f; --f) h = e[f], k = J(h, ["letExpr", "*"]), d = new Yh(Kg(J(h, ["typedVariableBinding", "varName"])), Q(k, P(b)), d);
+          for (f = e.length - 1; 0 <= f; --f) h = e[f], k = J(h, ["letExpr", "*"]), d = new ci(Kg(J(h, ["typedVariableBinding", "varName"])), Q(k, P(b)), d);
           return d;
         case "whereClause":
           e = K(e, "*");
-          for (f = e.length - 1; 0 <= f; --f) d = new bj(Q(e[f], b), d);
+          for (f = e.length - 1; 0 <= f; --f) d = new fj(Q(e[f], b), d);
           return d;
         case "windowClause":
           throw Error(`Not implemented: ${e[0]} is not implemented yet.`);
         case "groupByClause":
           throw Error(`Not implemented: ${e[0]} is not implemented yet.`);
         case "orderByClause":
-          return Ek(e, b, d);
+          return Lk(e, b, d);
         case "countClause":
           throw Error(`Not implemented: ${e[0]} is not implemented yet.`);
         default:
@@ -12215,13 +12310,13 @@ const fontoxpath = function (xspattern, prsc) {
       }
     }, Q(a, b));
   }
-  function nk(a, b) {
-    const c = F(a, "functionName"),
-      d = K(F(a, "arguments"), "*");
+  function tk(a, b) {
+    const c = G(a, "functionName"),
+      d = K(G(a, "arguments"), "*");
     a = I(a, "type");
-    return new Gf(new ai(Kg(c), d.length, a), d.map(e => "argumentPlaceholder" === e[0] ? null : Q(e, b)), a);
+    return new Gf(new fi(Kg(c), d.length, a), d.map(e => "argumentPlaceholder" === e[0] ? null : Q(e, b)), a);
   }
-  function pk(a, b) {
+  function vk(a, b) {
     const c = I(a, "type");
     var d = J(a, ["argExpr", "*"]);
     a = K(a, "*").slice(1);
@@ -12231,34 +12326,38 @@ const fontoxpath = function (xspattern, prsc) {
         var e = K(a[f + 1], "*");
         d = d.concat(e.map(h => "argumentPlaceholder" === h[0] ? null : Q(h, b)));
       }
-      e = "EQName" === a[f][0] ? new ai(Kg(a[f]), d.length, c) : Q(a[f], P(b));
+      e = "EQName" === a[f][0] ? new fi(Kg(a[f]), d.length, c) : Q(a[f], P(b));
       d = [new Gf(e, d, c)];
     }
     return d[0];
   }
-  function qk(a, b) {
+  function wk(a, b) {
     const c = J(a, ["functionItem", "*"]),
       d = I(a, "type");
-    a = F(a, "arguments");
+    a = G(a, "arguments");
     let e = [];
     a && (e = K(a, "*").map(f => "argumentPlaceholder" === f[0] ? null : Q(f, b)));
     return new Gf(Q(c, b), e, d);
   }
-  function ok(a, b) {
-    const c = K(F(a, "paramList"), "*"),
+  function uk(a, b) {
+    const c = K(G(a, "paramList"), "*"),
       d = J(a, ["functionBody", "*"]),
       e = I(a, "type");
-    return new Xh(c.map(f => ({
-      name: Kg(F(f, "varName")),
+    return new bi(c.map(f => ({
+      name: Kg(G(f, "varName")),
       type: Lg(f)
-    })), Lg(a), d ? Q(d, b) : new zi([], e));
+    })), Lg(a), d ? Q(d, b) : new Ei([], e));
   }
-  function mk(a, b) {
+  function Kk(a, b) {
+    a = K(a, "*").map(c => Jk(c, b));
+    return 1 === a.length ? a[1] : new yh(a);
+  }
+  function sk(a, b) {
     const c = I(a, "type");
     var d = K(a, "stepExpr");
     let e = !1;
     var f = d.map(h => {
-      var k = F(h, "xpathAxis");
+      var k = G(h, "xpathAxis");
       let l;
       var n = K(h, "*");
       const t = [];
@@ -12266,84 +12365,84 @@ const fontoxpath = function (xspattern, prsc) {
         z = !1;
       for (const y of n) switch (y[0]) {
         case "lookup":
-          t.push(["lookup", wk(y, b)]);
+          t.push(["lookup", Ck(y, b)]);
           break;
         case "predicate":
         case "predicates":
-          for (const G of K(y, "*")) {
-            n = Q(G, P(b));
+          for (const F of K(y, "*")) {
+            n = Q(F, P(b));
             if (!z) {
               const N = n.D();
-              null === N ? z = !0 : u = yh(u, N);
+              null === N ? z = !0 : u = vh(u, N);
             }
             t.push(["predicate", n]);
           }
       }
-      if (k) switch (e = !0, h = F(h, "attributeTest anyElementTest piTest documentTest elementTest commentTest namespaceTest anyKindTest textTest anyFunctionTest typedFunctionTest schemaAttributeTest atomicType anyItemType parenthesizedItemType typedMapTest typedArrayTest nameTest Wildcard".split(" ")), h = Dk(h), H(k)) {
+      if (k) switch (e = !0, h = G(h, "attributeTest anyElementTest piTest documentTest elementTest commentTest namespaceTest anyKindTest textTest anyFunctionTest typedFunctionTest schemaAttributeTest atomicType anyItemType parenthesizedItemType typedMapTest typedArrayTest nameTest Wildcard unionNodeTest".split(" ")), h = Jk(h, P(b)), H(k)) {
         case "ancestor":
-          l = new wh(h, {
-            Qa: !1
+          l = new Dh(h, {
+            Sa: !1
           });
           break;
         case "ancestor-or-self":
-          l = new wh(h, {
-            Qa: !0
+          l = new Dh(h, {
+            Sa: !0
           });
           break;
         case "attribute":
-          l = new zh(h, u);
+          l = new Eh(h, u);
           break;
         case "child":
-          l = new Ah(h, u);
+          l = new Fh(h, u);
           break;
         case "descendant":
-          l = new Dh(h, {
-            Qa: !1
+          l = new Ih(h, {
+            Sa: !1
           });
           break;
         case "descendant-or-self":
-          l = new Dh(h, {
-            Qa: !0
+          l = new Ih(h, {
+            Sa: !0
           });
           break;
         case "parent":
-          l = new Kh(h, u);
+          l = new Ph(h, u);
           break;
         case "following-sibling":
-          l = new Jh(h, u);
-          break;
-        case "preceding-sibling":
           l = new Oh(h, u);
           break;
-        case "following":
-          l = new Hh(h);
+        case "preceding-sibling":
+          l = new Th(h, u);
           break;
-        case "preceding":
+        case "following":
           l = new Mh(h);
           break;
+        case "preceding":
+          l = new Rh(h);
+          break;
         case "self":
-          l = new Ph(h, u);
+          l = new Uh(h, u);
       } else k = J(h, ["filterExpr", "*"]), l = Q(k, P(b));
       for (const y of t) switch (y[0]) {
         case "lookup":
-          l = new Ti(l, y[1]);
+          l = new Yi(l, y[1]);
           break;
         case "predicate":
-          l = new Qi(l, y[1]);
+          l = new Vi(l, y[1]);
       }
       l.type = c;
       return l;
     });
-    a = F(a, "rootExpr");
+    a = G(a, "rootExpr");
     d = e || null !== a || 1 < d.length;
-    if (!d && 1 === f.length || !a && 1 === f.length && "sorted" === f[0].ia) return f[0];
-    if (a && 0 === f.length) return new Mi(null);
-    f = new Pi(f, d);
-    return a ? new Mi(f) : f;
+    if (!d && 1 === f.length || !a && 1 === f.length && "sorted" === f[0].ha) return f[0];
+    if (a && 0 === f.length) return new Ri(null);
+    f = new Ui(f, d);
+    return a ? new Ri(f) : f;
   }
-  function sk(a, b) {
+  function yk(a, b) {
     const c = I(a, "type"),
-      d = H(F(a, "quantifier")),
+      d = H(G(a, "quantifier")),
       e = J(a, ["predicateExpr", "*"]);
     a = K(a, "quantifiedExprInClause").map(f => {
       const h = Kg(J(f, ["typedVariableBinding", "varName"]));
@@ -12353,122 +12452,122 @@ const fontoxpath = function (xspattern, prsc) {
         fb: Q(f, P(b))
       };
     });
-    return new Vi(d, a, Q(e, P(b)), c);
+    return new $i(d, a, Q(e, P(b)), c);
   }
-  function ik(a, b) {
+  function ok(a, b) {
     var c = K(a, "*").map(d => Q(d, b));
     if (1 === c.length) return c[0];
     c = I(a, "type");
-    return new zi(K(a, "*").map(d => Q(d, b)), c);
+    return new Ei(K(a, "*").map(d => Q(d, b)), c);
   }
-  function tk(a, b) {
+  function zk(a, b) {
     const c = I(a, "type");
-    return K(a, "*").reduce((d, e) => null === d ? Q(e, P(b)) : new Ai(d, Q(e, P(b)), c), null);
+    return K(a, "*").reduce((d, e) => null === d ? Q(e, P(b)) : new Fi(d, Q(e, P(b)), c), null);
   }
-  function jk(a, b) {
+  function pk(a, b) {
     const c = I(a, "type");
     a = [J(a, ["firstOperand", "*"]), J(a, ["secondOperand", "*"])];
-    return new Gf(new ai({
+    return new Gf(new fi({
       localName: "concat",
       namespaceURI: "http://www.w3.org/2005/xpath-functions",
       prefix: ""
     }, a.length, c), a.map(d => Q(d, P(b))), c);
   }
-  function kk(a, b) {
+  function qk(a, b) {
     const c = I(a, "type");
-    a = [F(F(a, "startExpr"), "*"), F(F(a, "endExpr"), "*")];
-    const d = new ai({
+    a = [G(G(a, "startExpr"), "*"), G(G(a, "endExpr"), "*")];
+    const d = new fi({
       localName: "to",
       namespaceURI: "http://fontoxpath/operators",
       prefix: ""
     }, a.length, c);
     return new Gf(d, a.map(e => Q(e, P(b))), c);
   }
-  function zk(a, b) {
-    if (!b.Z) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-    const c = Kg(F(a, "tagName"));
-    var d = F(a, "attributeList");
+  function Fk(a, b) {
+    if (!b.Y) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
+    const c = Kg(G(a, "tagName"));
+    var d = G(a, "attributeList");
     const e = d ? K(d, "attributeConstructor").map(f => Q(f, P(b))) : [];
     d = d ? K(d, "namespaceDeclaration").map(f => {
-      const h = F(f, "prefix");
+      const h = G(f, "prefix");
       return {
         prefix: h ? H(h) : "",
-        uri: H(F(f, "uri"))
+        uri: H(G(f, "uri"))
       };
     }) : [];
-    a = (a = F(a, "elementContent")) ? K(a, "*").map(f => Q(f, P(b))) : [];
-    return new Xj(c, e, d, a);
+    a = (a = G(a, "elementContent")) ? K(a, "*").map(f => Q(f, P(b))) : [];
+    return new dk(c, e, d, a);
   }
-  function Ak(a, b) {
-    if (!b.Z) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-    const c = Kg(F(a, "attributeName"));
-    var d = F(a, "attributeValue");
+  function Gk(a, b) {
+    if (!b.Y) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
+    const c = Kg(G(a, "attributeName"));
+    var d = G(a, "attributeValue");
     d = d ? H(d) : null;
-    a = (a = F(a, "attributeValueExpr")) ? K(a, "*").map(e => Q(e, P(b))) : null;
-    return new Vj(c, {
+    a = (a = G(a, "attributeValueExpr")) ? K(a, "*").map(e => Q(e, P(b))) : null;
+    return new bk(c, {
       value: d,
       nb: a
     });
   }
-  function Bk(a, b) {
-    var c = F(a, "tagName");
-    c ? c = Kg(c) : (c = F(a, "tagNameExpr"), c = {
-      Na: Q(F(c, "*"), P(b))
+  function Hk(a, b) {
+    var c = G(a, "tagName");
+    c ? c = Kg(c) : (c = G(a, "tagNameExpr"), c = {
+      Pa: Q(G(c, "*"), P(b))
     });
-    a = (a = F(a, "contentExpr")) ? K(a, "*").map(d => Q(d, P(b))) : [];
-    return new Xj(c, [], [], a);
+    a = (a = G(a, "contentExpr")) ? K(a, "*").map(d => Q(d, P(b))) : [];
+    return new dk(c, [], [], a);
   }
-  function Ck(a, b) {
-    const c = K(F(a, "transformCopies"), "transformCopy").map(e => {
-        const f = Kg(F(F(e, "varRef"), "name"));
+  function Ik(a, b) {
+    const c = K(G(a, "transformCopies"), "transformCopy").map(e => {
+        const f = Kg(G(G(e, "varRef"), "name"));
         return {
-          fb: Q(F(F(e, "copySource"), "*"), b),
-          Jb: new Sa(f.prefix, f.namespaceURI, f.localName)
+          fb: Q(G(G(e, "copySource"), "*"), b),
+          Lb: new Sa(f.prefix, f.namespaceURI, f.localName)
         };
       }),
-      d = Q(F(F(a, "modifyExpr"), "*"), b);
-    a = Q(F(F(a, "returnExpr"), "*"), b);
-    return new Tj(c, d, a);
+      d = Q(G(G(a, "modifyExpr"), "*"), b);
+    a = Q(G(G(a, "returnExpr"), "*"), b);
+    return new Zj(c, d, a);
   }
-  function xk(a, b) {
-    if (!b.Z) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
+  function Dk(a, b) {
+    if (!b.Y) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
     const c = I(a, "type"),
-      d = Q(F(F(a, "argExpr"), "*"), b),
+      d = Q(G(G(a, "argExpr"), "*"), b),
       e = K(a, "typeswitchExprCaseClause").map(f => {
-        const h = 0 === K(f, "sequenceTypeUnion").length ? [F(f, "sequenceType")] : K(F(f, "sequenceTypeUnion"), "sequenceType");
+        const h = 0 === K(f, "sequenceTypeUnion").length ? [G(f, "sequenceType")] : K(G(f, "sequenceTypeUnion"), "sequenceType");
         return {
           pb: Q(J(f, ["resultExpr", "*"]), b),
-          Ib: h.map(k => {
-            const l = F(k, "occurrenceIndicator");
+          Kb: h.map(k => {
+            const l = G(k, "occurrenceIndicator");
             return {
-              dc: l ? H(l) : "",
-              Hb: Q(F(k, "*"), b)
+              hc: l ? H(l) : "",
+              Jb: Q(G(k, "*"), b)
             };
           })
         };
       });
     a = Q(J(a, ["typeswitchExprDefaultClause", "resultExpr", "*"]), b);
-    return new ck(d, e, a, c);
+    return new ik(d, e, a, c);
   }
-  function yk(a, b) {
-    if (!b.Z) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
+  function Ek(a, b) {
+    if (!b.Y) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
     const c = I(a, "type"),
-      d = Q(F(F(a, "argExpr"), "*"), b),
+      d = Q(G(G(a, "argExpr"), "*"), b),
       e = K(a, "switchExprCaseClause").map(f => {
         const h = K(f, "switchCaseExpr");
         return {
           pb: Q(J(f, ["resultExpr", "*"]), b),
-          Gb: h.map(k => Q(F(k, "*"), b))
+          Hb: h.map(k => Q(G(k, "*"), b))
         };
       });
     a = Q(J(a, ["switchExprDefaultClause", "resultExpr", "*"]), b);
-    return new dk(d, e, a, c);
+    return new jk(d, e, a, c);
   }
-  function Fk(a, b) {
+  function Mk(a, b) {
     return Q(a, b);
   }
-  const Gk = new Map();
-  class Hk {
+  const Nk = new Map();
+  class Ok {
     constructor(a, b, c, d, e, f) {
       this.v = a;
       this.D = b;
@@ -12478,31 +12577,31 @@ const fontoxpath = function (xspattern, prsc) {
       this.l = f;
     }
   }
-  function Ik(a, b, c, d, e, f, h, k) {
-    a = Gk.get(a);
+  function Pk(a, b, c, d, e, f, h, k) {
+    a = Nk.get(a);
     if (!a) return null;
     b = a[b + (f ? "_DEBUG" : "")];
     return b ? (b = b.find(l => l.o === h && l.v.every(n => c(n.prefix) === n.namespaceURI) && l.D.every(n => void 0 !== d[n.name]) && l.kb.every(n => e[n.prefix] === n.namespaceURI) && l.l.every(n => {
-      const t = k(n.cc, n.arity);
-      return t && t.namespaceURI === n.Db.namespaceURI && t.localName === n.Db.localName;
+      const t = k(n.fc, n.arity);
+      return t && t.namespaceURI === n.Eb.namespaceURI && t.localName === n.Eb.localName;
     }))) ? {
-      ba: b.h,
-      hc: !1
+      aa: b.h,
+      jc: !1
     } : null : null;
   }
-  function Jk(a, b, c, d, e, f, h) {
-    let k = Gk.get(a);
-    k || (k = Object.create(null), Gk.set(a, k));
+  function Qk(a, b, c, d, e, f, h) {
+    let k = Nk.get(a);
+    k || (k = Object.create(null), Nk.set(a, k));
     a = b + (f ? "_DEBUG" : "");
     (b = k[a]) || (b = k[a] = []);
-    b.push(new Hk(Object.values(c.h), Object.values(c.o), e, Object.keys(d).map(l => ({
+    b.push(new Ok(Object.values(c.h), Object.values(c.o), e, Object.keys(d).map(l => ({
       namespaceURI: d[l],
       prefix: l
     })), h, c.D));
   }
-  function Kk(a) {
+  function Rk(a) {
     var b = new Za();
-    if ("http://www.w3.org/2005/XQueryX" !== a.namespaceURI && "http://www.w3.org/2005/XQueryX" !== a.namespaceURI && "http://fontoxml.com/fontoxpath" !== a.namespaceURI && "http://www.w3.org/2007/xquery-update-10" !== a.namespaceURI) throw mc("The XML structure passed as an XQueryX program was not valid XQueryX");
+    if ("http://www.w3.org/2005/XQueryX" !== a.namespaceURI && "http://www.w3.org/2005/XQueryX" !== a.namespaceURI && "http://fontoxml.com/fontoxpath" !== a.namespaceURI && "http://www.w3.org/2007/xquery-update-10" !== a.namespaceURI) throw nc("The XML structure passed as an XQueryX program was not valid XQueryX");
     const c = ["stackTrace" === a.localName ? "x:stackTrace" : a.localName],
       d = b.getAllAttributes(a);
     d && 0 < d.length && c.push(Array.from(d).reduce((e, f) => {
@@ -12512,44 +12611,44 @@ const fontoxpath = function (xspattern, prsc) {
     b = b.getChildNodes(a);
     for (const e of b) switch (e.nodeType) {
       case 1:
-        c.push(Kk(e));
+        c.push(Rk(e));
         break;
       case 3:
         c.push(e.data);
     }
     return c;
   }
-  const Lk = Object.create(null);
-  var Mk = (a, b) => {
-      let c = Lk[a];
-      c ||= Lk[a] = {
+  const Sk = Object.create(null);
+  var Tk = (a, b) => {
+      let c = Sk[a];
+      c ||= Sk[a] = {
         Ia: [],
-        Ta: [],
+        Va: [],
         pa: null,
         source: b.source
       };
       const d = c.pa || (() => {});
       c.Ia = c.Ia.concat(b.Ia);
-      c.Ta = c.Ta.concat(b.Ta);
+      c.Va = c.Va.concat(b.Va);
       c.pa = e => {
         d(e);
         b.pa && b.pa(e);
       };
     },
-    Nk = (a, b) => {
-      const c = Lk[b];
+    Uk = (a, b) => {
+      const c = Sk[b];
       if (!c) throw Error(`XQST0051: No modules found with the namespace uri ${b}`);
       c.Ia.forEach(d => {
         d.cb && Fg(a, b, d.localName, d.arity, d);
       });
-      c.Ta.forEach(d => {
+      c.Va.forEach(d => {
         Hg(a, b, d.localName);
-        Ig(a, b, d.localName, (e, f) => C(d.ba, e, f));
+        Ig(a, b, d.localName, (e, f) => A(d.aa, e, f));
       });
     },
-    Ok = () => {
-      Object.keys(Lk).forEach(a => {
-        a = Lk[a];
+    Vk = () => {
+      Object.keys(Sk).forEach(a => {
+        a = Sk[a];
         if (a.pa) try {
           a.pa(a);
         } catch (b) {
@@ -12558,11 +12657,11 @@ const fontoxpath = function (xspattern, prsc) {
         a.pa = null;
       });
     };
-  function Pk(a) {
+  function Wk(a) {
     return a.replace(/(\x0D\x0A)|(\x0D(?!\x0A))/g, String.fromCharCode(10));
   }
   var R = prsc;
-  function Qk(a, b) {
+  function Xk(a, b) {
     return (c, d) => {
       if (b.has(d)) return b.get(d);
       c = a(c, d);
@@ -12576,315 +12675,321 @@ const fontoxpath = function (xspattern, prsc) {
   function T(a, b) {
     return a.reverse().reduce((c, d) => (0, R.preceded)(d, c), b);
   }
-  function Rk(a, b, c, d) {
+  function Yk(a, b, c, d) {
     return (0, R.then)((0, R.then)(a, b, (e, f) => [e, f]), c, ([e, f], h) => d(e, f, h));
   }
-  function Sk(a, b, c, d, e) {
+  function Zk(a, b, c, d, e) {
     return (0, R.then)((0, R.then)((0, R.then)(a, b, (f, h) => [f, h]), c, ([f, h], k) => [f, h, k]), d, ([f, h, k], l) => e(f, h, k, l));
   }
-  function Tk(a, b, c, d, e, f) {
+  function $k(a, b, c, d, e, f) {
     return (0, R.then)((0, R.then)((0, R.then)((0, R.then)(a, b, (h, k) => [h, k]), c, ([h, k], l) => [h, k, l]), d, ([h, k, l], n) => [h, k, l, n]), e, ([h, k, l, n], t) => f(h, k, l, n, t));
   }
-  function Uk(a) {
+  function al(a) {
     return (0, R.map)(a, b => [b]);
   }
-  function Vk(a, b) {
+  function bl(a, b) {
     return (0, R.map)((0, R.or)(a), () => b);
   }
-  function Wk(a) {
+  function cl(a) {
     return (b, c) => (b = a.exec(b.substring(c))) && 0 === b.index ? (0, R.okWithValue)(c + b[0].length, b[0]) : (0, R.error)(c, [a.source], !1);
   }
-  var Xk = (0, R.or)([(0, R.token)(" "), (0, R.token)("\t"), (0, R.token)("\r"), (0, R.token)("\n")]),
-    Yk = (0, R.token)("(:"),
-    Zk = (0, R.token)(":)"),
-    $k = (0, R.token)("(#"),
-    al = (0, R.token)("#)"),
-    bl = (0, R.token)("("),
-    cl = (0, R.token)(")"),
-    dl = (0, R.token)("["),
-    el = (0, R.token)("]"),
-    fl = (0, R.token)("{"),
-    gl = (0, R.token)("}"),
-    hl = (0, R.token)("{{"),
-    il = (0, R.token)("}}"),
-    jl = (0, R.token)("'"),
-    kl = (0, R.token)("''"),
-    ll = (0, R.token)('"'),
-    ml = (0, R.token)('""'),
-    nl = (0, R.token)("<![CDATA["),
-    ol = (0, R.token)("]]\x3e"),
-    pl = (0, R.token)("/>"),
-    ql = (0, R.token)("</"),
-    rl = (0, R.token)("\x3c!--"),
-    sl = (0, R.token)("--\x3e"),
-    tl = (0, R.token)("<?"),
-    ul = (0, R.token)("?>"),
-    vl = (0, R.token)("&#x"),
-    wl = (0, R.token)("&#"),
-    xl = (0, R.token)(":*"),
-    yl = (0, R.token)("*:"),
-    zl = (0, R.token)(":="),
-    Al = (0, R.token)("&"),
-    Bl = (0, R.token)(":"),
-    Cl = (0, R.token)(";"),
-    Dl = (0, R.token)("*"),
-    El = (0, R.token)("@"),
-    Fl = (0, R.token)("$"),
-    Gl = (0, R.token)("#"),
-    Hl = (0, R.token)("%"),
-    Il = (0, R.token)("?"),
-    Jl = (0, R.token)("="),
-    Kl = (0, R.followed)((0, R.token)("!"), (0, R.not)((0, R.peek)(Jl), [])),
-    Ll = (0, R.followed)((0, R.token)("|"), (0, R.not)((0, R.peek)((0, R.token)("|")), [])),
-    Ml = (0, R.token)("||"),
-    Nl = (0, R.token)("!="),
-    Ol = (0, R.token)("<"),
-    Pl = (0, R.token)("<<"),
-    Ql = (0, R.token)("<="),
-    Rl = (0, R.token)(">"),
-    Sl = (0, R.token)(">>"),
-    Tl = (0, R.token)(">="),
-    Ul = (0, R.token)(","),
-    Vl = (0, R.token)("."),
-    Wl = (0, R.token)(".."),
-    Xl = (0, R.token)("+"),
-    Yl = (0, R.token)("-"),
-    Zl = (0, R.token)("/"),
-    $l = (0, R.token)("//"),
-    am = (0, R.token)("=>"),
-    bm = (0, R.token)("e"),
-    cm = (0, R.token)("E");
+  var dl = (0, R.or)([(0, R.token)(" "), (0, R.token)("\t"), (0, R.token)("\r"), (0, R.token)("\n")]),
+    el = (0, R.token)("(:"),
+    fl = (0, R.token)(":)"),
+    gl = (0, R.token)("(#"),
+    hl = (0, R.token)("#)"),
+    il = (0, R.token)("("),
+    jl = (0, R.token)(")"),
+    kl = (0, R.token)("["),
+    ll = (0, R.token)("]"),
+    ml = (0, R.token)("{"),
+    nl = (0, R.token)("}"),
+    ol = (0, R.token)("{{"),
+    pl = (0, R.token)("}}"),
+    ql = (0, R.token)("'"),
+    rl = (0, R.token)("''"),
+    sl = (0, R.token)('"'),
+    tl = (0, R.token)('""'),
+    ul = (0, R.token)("<![CDATA["),
+    vl = (0, R.token)("]]\x3e"),
+    wl = (0, R.token)("/>"),
+    xl = (0, R.token)("</"),
+    yl = (0, R.token)("\x3c!--"),
+    zl = (0, R.token)("--\x3e"),
+    Al = (0, R.token)("<?"),
+    Bl = (0, R.token)("?>"),
+    Cl = (0, R.token)("&#x"),
+    Dl = (0, R.token)("&#"),
+    El = (0, R.token)(":*"),
+    Fl = (0, R.token)("*:"),
+    Gl = (0, R.token)(":="),
+    Hl = (0, R.token)("&"),
+    Il = (0, R.token)(":"),
+    Jl = (0, R.token)(";"),
+    Kl = (0, R.token)("*"),
+    Ll = (0, R.token)("@"),
+    Ml = (0, R.token)("$"),
+    Nl = (0, R.token)("#"),
+    Ol = (0, R.token)("%"),
+    Pl = (0, R.token)("?"),
+    Ql = (0, R.token)("="),
+    Rl = (0, R.followed)((0, R.token)("!"), (0, R.not)((0, R.peek)(Ql), [])),
+    Sl = (0, R.followed)((0, R.token)("|"), (0, R.not)((0, R.peek)((0, R.token)("|")), [])),
+    Tl = (0, R.token)("||"),
+    Ul = (0, R.token)("!="),
+    Vl = (0, R.token)("<"),
+    Wl = (0, R.token)("<<"),
+    Xl = (0, R.token)("<="),
+    Yl = (0, R.token)(">"),
+    Zl = (0, R.token)(">>"),
+    $l = (0, R.token)(">="),
+    am = (0, R.token)(","),
+    bm = (0, R.token)("."),
+    cm = (0, R.token)(".."),
+    dm = (0, R.token)("+"),
+    em = (0, R.token)("-"),
+    fm = (0, R.token)("/"),
+    gm = (0, R.token)("//"),
+    hm = (0, R.token)("=>"),
+    im = (0, R.token)("e"),
+    jm = (0, R.token)("E");
   (0, R.token)("l");
   (0, R.token)("L");
   (0, R.token)("m");
   (0, R.token)("M");
-  var dm = (0, R.token)("Q");
+  var km = (0, R.token)("Q");
   (0, R.token)("x");
   (0, R.token)("X");
-  var em = (0, R.token)("as"),
-    fm = (0, R.token)("cast"),
-    gm = (0, R.token)("castable"),
-    hm = (0, R.token)("treat"),
-    im = (0, R.token)("instance"),
-    jm = (0, R.token)("of"),
-    km = (0, R.token)("node"),
-    lm = (0, R.token)("nodes"),
-    mm = (0, R.token)("delete"),
-    nm = (0, R.token)("value"),
-    om = (0, R.token)("function"),
-    pm = (0, R.token)("map"),
-    qm = (0, R.token)("element"),
-    rm = (0, R.token)("attribute"),
-    sm = (0, R.token)("schema-element"),
-    tm = (0, R.token)("intersect"),
-    um = (0, R.token)("except"),
-    vm = (0, R.token)("union"),
-    wm = (0, R.token)("to"),
-    xm = (0, R.token)("is"),
-    ym = (0, R.token)("or"),
-    zm = (0, R.token)("and"),
-    Am = (0, R.token)("div"),
-    Bm = (0, R.token)("idiv"),
-    Cm = (0, R.token)("mod"),
-    Dm = (0, R.token)("eq"),
-    Em = (0, R.token)("ne"),
-    Fm = (0, R.token)("lt"),
-    Gm = (0, R.token)("le"),
-    Hm = (0, R.token)("gt"),
-    Im = (0, R.token)("ge"),
-    Jm = (0, R.token)("amp"),
-    Km = (0, R.token)("quot"),
-    Lm = (0, R.token)("apos"),
-    Mm = (0, R.token)("if"),
-    Nm = (0, R.token)("then"),
-    Om = (0, R.token)("else"),
-    Pm = (0, R.token)("allowing"),
-    Qm = (0, R.token)("empty"),
-    Rm = (0, R.token)("at"),
-    Sm = (0, R.token)("in"),
-    Tm = (0, R.token)("for"),
-    Um = (0, R.token)("let"),
-    Vm = (0, R.token)("where"),
-    Wm = (0, R.token)("collation"),
-    Xm = (0, R.token)("group"),
-    Ym = (0, R.token)("by"),
-    Zm = (0, R.token)("order"),
-    $m = (0, R.token)("stable"),
-    an = (0, R.token)("return"),
-    bn = (0, R.token)("array"),
-    cn = (0, R.token)("document"),
-    dn = (0, R.token)("namespace"),
-    en = (0, R.token)("text"),
-    fn = (0, R.token)("comment"),
-    gn = (0, R.token)("processing-instruction"),
-    hn = (0, R.token)("lax"),
-    jn = (0, R.token)("strict"),
-    kn = (0, R.token)("validate"),
-    ln = (0, R.token)("type"),
-    mn = (0, R.token)("declare"),
-    nn = (0, R.token)("default"),
-    on = (0, R.token)("boundary-space"),
-    pn = (0, R.token)("strip"),
-    qn = (0, R.token)("preserve"),
-    rn = (0, R.token)("no-preserve"),
-    sn = (0, R.token)("inherit"),
-    tn = (0, R.token)("no-inherit"),
-    un = (0, R.token)("greatest"),
-    vn = (0, R.token)("least"),
-    wn = (0, R.token)("copy-namespaces"),
-    xn = (0, R.token)("decimal-format"),
-    yn = (0, R.token)("case"),
-    zn = (0, R.token)("typeswitch"),
-    An = (0, R.token)("some"),
-    Bn = (0, R.token)("every"),
-    Cn = (0, R.token)("satisfies"),
-    Dn = (0, R.token)("replace"),
-    En = (0, R.token)("with"),
-    Fn = (0, R.token)("copy"),
-    Gn = (0, R.token)("modify"),
-    Hn = (0, R.token)("first"),
-    In = (0, R.token)("last"),
-    Jn = (0, R.token)("before"),
-    Kn = (0, R.token)("after"),
-    Ln = (0, R.token)("into"),
-    Mn = (0, R.token)("insert"),
-    Nn = (0, R.token)("rename"),
-    On = (0, R.token)("switch"),
-    Pn = (0, R.token)("variable"),
-    Qn = (0, R.token)("external"),
-    Rn = (0, R.token)("updating"),
-    Sn = (0, R.token)("import"),
-    Tn = (0, R.token)("schema"),
-    Un = (0, R.token)("module"),
-    Vn = (0, R.token)("base-uri"),
-    Wn = (0, R.token)("construction"),
-    Xn = (0, R.token)("ordering"),
-    Yn = (0, R.token)("ordered"),
-    Zn = (0, R.token)("unordered"),
-    $n = (0, R.token)("option"),
-    ao = (0, R.token)("context"),
-    bo = (0, R.token)("item"),
-    co = (0, R.token)("xquery"),
-    eo = (0, R.token)("version"),
-    fo = (0, R.token)("encoding"),
-    go = (0, R.token)("document-node"),
-    ho = (0, R.token)("namespace-node"),
-    io = (0, R.token)("schema-attribute"),
-    jo = (0, R.token)("ascending"),
-    ko = (0, R.token)("descending"),
-    lo = (0, R.token)("empty-sequence"),
-    mo = (0, R.token)("child::"),
-    no = (0, R.token)("descendant::"),
-    oo = (0, R.token)("attribute::"),
-    po = (0, R.token)("self::"),
-    qo = (0, R.token)("descendant-or-self::"),
-    ro = (0, R.token)("following-sibling::"),
-    so = (0, R.token)("following::"),
-    to = (0, R.token)("parent::"),
-    uo = (0, R.token)("ancestor::"),
-    vo = (0, R.token)("preceding-sibling::"),
-    wo = (0, R.token)("preceding::"),
-    xo = (0, R.token)("ancestor-or-self::"),
-    yo = (0, R.token)("decimal-separator"),
-    zo = (0, R.token)("grouping-separator"),
-    Ao = (0, R.token)("infinity"),
-    Bo = (0, R.token)("minus-sign"),
-    Co = (0, R.token)("NaN"),
-    Do = (0, R.token)("per-mille"),
-    Eo = (0, R.token)("zero-digit"),
-    Fo = (0, R.token)("digit"),
-    Go = (0, R.token)("pattern-separator"),
-    Ho = (0, R.token)("exponent-separator"),
-    Io = (0, R.token)("schema-attribute("),
-    Jo = (0, R.token)("document-node("),
-    Ko = (0, R.token)("processing-instruction("),
-    Lo = (0, R.token)("processing-instruction()"),
-    Mo = (0, R.token)("comment()"),
-    No = (0, R.token)("text()"),
-    Oo = (0, R.token)("namespace-node()"),
-    Po = (0, R.token)("node()"),
-    Qo = (0, R.token)("item()"),
-    Ro = (0, R.token)("empty-sequence()");
-  var So = new Map(),
-    To = new Map(),
-    Uo = (0, R.or)([Wk(/[\t\n\r -\uD7FF\uE000\uFFFD]/), Wk(/[\uD800-\uDBFF][\uDC00-\uDFFF]/)]),
-    Vo = (0, R.preceded)((0, R.peek)((0, R.not)((0, R.or)([Yk, Zk]), ['comment contents cannot contain "(:" or ":)"'])), Uo),
-    Wo = (0, R.map)((0, R.delimited)(Yk, (0, R.star)((0, R.or)([Vo, function (a, b) {
-      return Wo(a, b);
-    }])), Zk, !0), a => a.join("")),
-    Xo = (0, R.or)([Xk, Wo]),
-    Yo = (0, R.map)((0, R.plus)(Xk), a => a.join("")),
-    V = Qk((0, R.map)((0, R.star)(Xo), a => a.join("")), So),
-    W = Qk((0, R.map)((0, R.plus)(Xo), a => a.join("")), To);
-  const Zo = (0, R.or)([Wk(/[A-Z_a-z\xC0-\xD6\xD8-\xF6\xF8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/), (0, R.then)(Wk(/[\uD800-\uDB7F]/), Wk(/[\uDC00-\uDFFF]/), (a, b) => a + b)]),
-    $o = (0, R.or)([Zo, Wk(/[\-\.0-9\xB7\u0300-\u036F\u203F\u2040]/)]);
-  var ap = (0, R.then)(Zo, (0, R.star)($o), (a, b) => a + b.join("")),
-    bp = (0, R.map)(ap, a => ["prefix", a]);
-  const cp = (0, R.or)([Zo, Bl]),
-    dp = (0, R.or)([$o, Bl]);
-  (0, R.then)(cp, (0, R.star)(dp), (a, b) => a + b.join(""));
-  const ep = (0, R.map)(ap, a => [{
+  var lm = (0, R.token)("as"),
+    mm = (0, R.token)("cast"),
+    nm = (0, R.token)("castable"),
+    om = (0, R.token)("treat"),
+    pm = (0, R.token)("instance"),
+    qm = (0, R.token)("of"),
+    rm = (0, R.token)("node"),
+    sm = (0, R.token)("nodes"),
+    tm = (0, R.token)("delete"),
+    um = (0, R.token)("value"),
+    vm = (0, R.token)("function"),
+    wm = (0, R.token)("map"),
+    xm = (0, R.token)("element"),
+    ym = (0, R.token)("attribute"),
+    zm = (0, R.token)("schema-element"),
+    Am = (0, R.token)("intersect"),
+    Bm = (0, R.token)("except"),
+    Cm = (0, R.token)("union"),
+    Dm = (0, R.token)("otherwise"),
+    Em = (0, R.token)("to"),
+    Fm = (0, R.token)("is"),
+    Gm = (0, R.token)("or"),
+    Hm = (0, R.token)("and"),
+    Im = (0, R.token)("div"),
+    Jm = (0, R.token)("idiv"),
+    Km = (0, R.token)("mod"),
+    Lm = (0, R.token)("eq"),
+    Mm = (0, R.token)("ne"),
+    Nm = (0, R.token)("lt"),
+    Om = (0, R.token)("le"),
+    Pm = (0, R.token)("gt"),
+    Qm = (0, R.token)("ge"),
+    Rm = (0, R.token)("amp"),
+    Sm = (0, R.token)("quot"),
+    Tm = (0, R.token)("apos"),
+    Um = (0, R.token)("if"),
+    Vm = (0, R.token)("then"),
+    Wm = (0, R.token)("else"),
+    Xm = (0, R.token)("allowing"),
+    Ym = (0, R.token)("empty"),
+    Zm = (0, R.token)("at"),
+    $m = (0, R.token)("in"),
+    an = (0, R.token)("for"),
+    bn = (0, R.token)("let"),
+    cn = (0, R.token)("where"),
+    dn = (0, R.token)("collation"),
+    en = (0, R.token)("group"),
+    fn = (0, R.token)("by"),
+    gn = (0, R.token)("order"),
+    hn = (0, R.token)("stable"),
+    jn = (0, R.token)("return"),
+    kn = (0, R.token)("array"),
+    ln = (0, R.token)("document"),
+    mn = (0, R.token)("namespace"),
+    nn = (0, R.token)("text"),
+    on = (0, R.token)("comment"),
+    pn = (0, R.token)("processing-instruction"),
+    qn = (0, R.token)("lax"),
+    rn = (0, R.token)("strict"),
+    sn = (0, R.token)("validate"),
+    tn = (0, R.token)("type"),
+    un = (0, R.token)("declare"),
+    vn = (0, R.token)("default"),
+    wn = (0, R.token)("boundary-space"),
+    xn = (0, R.token)("strip"),
+    yn = (0, R.token)("preserve"),
+    zn = (0, R.token)("no-preserve"),
+    An = (0, R.token)("inherit"),
+    Bn = (0, R.token)("no-inherit"),
+    Cn = (0, R.token)("greatest"),
+    Dn = (0, R.token)("least"),
+    En = (0, R.token)("copy-namespaces"),
+    Fn = (0, R.token)("decimal-format"),
+    Gn = (0, R.token)("case"),
+    Hn = (0, R.token)("typeswitch"),
+    In = (0, R.token)("some"),
+    Jn = (0, R.token)("every"),
+    Kn = (0, R.token)("satisfies"),
+    Ln = (0, R.token)("replace"),
+    Mn = (0, R.token)("with"),
+    Nn = (0, R.token)("copy"),
+    On = (0, R.token)("modify"),
+    Pn = (0, R.token)("first"),
+    Qn = (0, R.token)("last"),
+    Rn = (0, R.token)("before"),
+    Sn = (0, R.token)("after"),
+    Tn = (0, R.token)("into"),
+    Un = (0, R.token)("insert"),
+    Vn = (0, R.token)("rename"),
+    Wn = (0, R.token)("switch"),
+    Xn = (0, R.token)("variable"),
+    Yn = (0, R.token)("external"),
+    Zn = (0, R.token)("updating"),
+    $n = (0, R.token)("import"),
+    ao = (0, R.token)("schema"),
+    bo = (0, R.token)("module"),
+    co = (0, R.token)("base-uri"),
+    eo = (0, R.token)("construction"),
+    fo = (0, R.token)("ordering"),
+    go = (0, R.token)("ordered"),
+    ho = (0, R.token)("unordered"),
+    io = (0, R.token)("option"),
+    jo = (0, R.token)("context"),
+    ko = (0, R.token)("item"),
+    lo = (0, R.token)("xquery"),
+    mo = (0, R.token)("version"),
+    no = (0, R.token)("encoding"),
+    oo = (0, R.token)("document-node"),
+    po = (0, R.token)("namespace-node"),
+    qo = (0, R.token)("schema-attribute"),
+    ro = (0, R.token)("ascending"),
+    so = (0, R.token)("descending"),
+    to = (0, R.token)("empty-sequence"),
+    uo = (0, R.token)("child::"),
+    vo = (0, R.token)("descendant::"),
+    wo = (0, R.token)("attribute::"),
+    xo = (0, R.token)("self::"),
+    yo = (0, R.token)("descendant-or-self::"),
+    zo = (0, R.token)("following-sibling::"),
+    Ao = (0, R.token)("following::"),
+    Bo = (0, R.token)("parent::"),
+    Co = (0, R.token)("ancestor::"),
+    Do = (0, R.token)("preceding-sibling::"),
+    Eo = (0, R.token)("preceding::"),
+    Fo = (0, R.token)("ancestor-or-self::"),
+    Go = (0, R.token)("decimal-separator"),
+    Ho = (0, R.token)("grouping-separator"),
+    Io = (0, R.token)("infinity"),
+    Jo = (0, R.token)("minus-sign"),
+    Ko = (0, R.token)("NaN"),
+    Lo = (0, R.token)("per-mille"),
+    Mo = (0, R.token)("zero-digit"),
+    No = (0, R.token)("digit"),
+    Oo = (0, R.token)("pattern-separator"),
+    Po = (0, R.token)("exponent-separator"),
+    Qo = (0, R.token)("schema-attribute("),
+    Ro = (0, R.token)("document-node("),
+    So = (0, R.token)("processing-instruction("),
+    To = (0, R.token)("processing-instruction()"),
+    Uo = (0, R.token)("comment()"),
+    Vo = (0, R.token)("text()"),
+    Wo = (0, R.token)("namespace-node()"),
+    Xo = (0, R.token)("node()"),
+    Yo = (0, R.token)("item()"),
+    Zo = (0, R.token)("empty-sequence()");
+  (0, R.token)("`");
+  var $o = (0, R.token)("``["),
+    ap = (0, R.token)("]``"),
+    bp = (0, R.token)("`{"),
+    cp = (0, R.token)("}`");
+  var dp = new Map(),
+    ep = new Map(),
+    fp = (0, R.or)([cl(/[\t\n\r -\uD7FF\uE000\uFFFD]/), cl(/[\uD800-\uDBFF][\uDC00-\uDFFF]/)]),
+    gp = (0, R.preceded)((0, R.peek)((0, R.not)((0, R.or)([el, fl]), ['comment contents cannot contain "(:" or ":)"'])), fp),
+    hp = (0, R.map)((0, R.delimited)(el, (0, R.star)((0, R.or)([gp, function (a, b) {
+      return hp(a, b);
+    }])), fl, !0), a => a.join("")),
+    ip = (0, R.or)([dl, hp]),
+    jp = (0, R.map)((0, R.plus)(dl), a => a.join("")),
+    V = Xk((0, R.map)((0, R.star)(ip), a => a.join("")), dp),
+    W = Xk((0, R.map)((0, R.plus)(ip), a => a.join("")), ep);
+  const kp = (0, R.or)([cl(/[A-Z_a-z\xC0-\xD6\xD8-\xF6\xF8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/), (0, R.then)(cl(/[\uD800-\uDB7F]/), cl(/[\uDC00-\uDFFF]/), (a, b) => a + b)]),
+    lp = (0, R.or)([kp, cl(/[\-\.0-9\xB7\u0300-\u036F\u203F\u2040]/)]);
+  var mp = (0, R.then)(kp, (0, R.star)(lp), (a, b) => a + b.join("")),
+    np = (0, R.map)(mp, a => ["prefix", a]);
+  const op = (0, R.or)([kp, Il]),
+    pp = (0, R.or)([lp, Il]);
+  (0, R.then)(op, (0, R.star)(pp), (a, b) => a + b.join(""));
+  const qp = (0, R.map)(mp, a => [{
       prefix: "",
       URI: null
     }, a]),
-    fp = (0, R.then)(ap, (0, R.preceded)(Bl, ap), (a, b) => [{
+    rp = (0, R.then)(mp, (0, R.preceded)(Il, mp), (a, b) => [{
       prefix: a,
       URI: null
     }, b]);
-  var gp = (0, R.or)([fp, ep]),
-    hp = (0, R.followed)(T([dm, V, fl], (0, R.map)((0, R.star)(Wk(/[^{}]/)), a => a.join("").replace(/\s+/g, " ").trim())), gl);
-  const ip = (0, R.then)(hp, ap, (a, b) => [a, b]);
-  var jp = (0, R.or)([(0, R.map)(ip, a => [{
+  var sp = (0, R.or)([rp, qp]),
+    tp = (0, R.followed)(T([km, V, ml], (0, R.map)((0, R.star)(cl(/[^{}]/)), a => a.join("").replace(/\s+/g, " ").trim())), nl);
+  const up = (0, R.then)(tp, mp, (a, b) => [a, b]);
+  var vp = (0, R.or)([(0, R.map)(up, a => [{
       prefix: null,
       URI: a[0]
-    }, a[1]]), gp]),
-    kp = (0, R.or)([(0, R.map)(jp, a => ["QName", ...a]), (0, R.map)(Dl, () => ["star"])]),
-    lp = (0, R.map)((0, R.preceded)(Fl, jp), a => ["varRef", ["name", ...a]]);
-  var mp = (0, R.peek)((0, R.or)([bl, ll, jl, Xo])),
-    np = (0, R.map)((0, R.or)([mo, no, oo, po, qo, ro, so]), a => a.substring(0, a.length - 2)),
-    op = (0, R.map)((0, R.or)([to, uo, vo, wo, xo]), a => a.substring(0, a.length - 2)),
-    pp = Rk(Al, (0, R.or)([Fm, Hm, Jm, Km, Lm]), Cl, (a, b, c) => a + b + c),
-    qp = (0, R.or)([Rk(vl, Wk(/[0-9a-fA-F]+/), Cl, (a, b, c) => a + b + c), Rk(wl, Wk(/[0-9]+/), Cl, (a, b, c) => a + b + c)]),
-    rp = Vk([ml], '"'),
-    sp = Vk([kl], "'"),
-    tp = Uk(Vk([Mo], "commentTest")),
-    up = Uk(Vk([No], "textTest")),
-    vp = Uk(Vk([Oo], "namespaceTest")),
-    wp = Uk(Vk([Po], "anyKindTest"));
-  const xp = Wk(/[0-9]+/),
-    yp = (0, R.then)((0, R.or)([(0, R.then)(Vl, xp, (a, b) => a + b), (0, R.then)(xp, (0, R.optional)((0, R.preceded)(Vl, Wk(/[0-9]*/))), (a, b) => a + (null !== b ? "." + b : ""))]), Rk((0, R.or)([bm, cm]), (0, R.optional)((0, R.or)([Xl, Yl])), xp, (a, b, c) => a + (b ? b : "") + c), (a, b) => ["doubleConstantExpr", ["value", a + b]]),
-    zp = (0, R.or)([(0, R.map)((0, R.preceded)(Vl, xp), a => ["decimalConstantExpr", ["value", "." + a]]), (0, R.then)((0, R.followed)(xp, Vl), (0, R.optional)(xp), (a, b) => ["decimalConstantExpr", ["value", a + "." + (null !== b ? b : "")]])]);
-  var Ap = (0, R.map)(xp, a => ["integerConstantExpr", ["value", a]]),
-    Bp = (0, R.followed)((0, R.or)([yp, zp, Ap]), (0, R.peek)((0, R.not)(Wk(/[a-zA-Z]/), ["no alphabetical characters after numeric literal"]))),
-    Cp = (0, R.map)((0, R.followed)(Vl, (0, R.peek)((0, R.not)(Vl, ["context item should not be followed by another ."]))), () => ["contextItemExpr"]),
-    Dp = (0, R.or)([bn, rm, fn, go, qm, lo, om, Mm, bo, pm, ho, km, gn, io, sm, On, en, zn]),
-    Ep = Uk(Vk([Il], "argumentPlaceholder")),
-    Fp = (0, R.or)([Il, Dl, Xl]),
-    Gp = (0, R.preceded)((0, R.peek)((0, R.not)(Wk(/[{}<&]/), ["elementContentChar cannot be {, }, <, or &"])), Uo),
-    Hp = (0, R.map)((0, R.delimited)(nl, (0, R.star)((0, R.preceded)((0, R.peek)((0, R.not)(ol, ['CDataSection content may not contain "]]\x3e"'])), Uo)), ol, !0), a => ["CDataSection", a.join("")]),
-    Ip = (0, R.preceded)((0, R.peek)((0, R.not)(Wk(/["{}<&]/), ['quotAttrValueContentChar cannot be ", {, }, <, or &'])), Uo),
-    Jp = (0, R.preceded)((0, R.peek)((0, R.not)(Wk(/['{}<&]/), ["aposAttrValueContentChar cannot be ', {, }, <, or &"])), Uo),
-    Kp = (0, R.map)((0, R.star)((0, R.or)([(0, R.preceded)((0, R.peek)((0, R.not)(Yl, [])), Uo), (0, R.map)(T([Yl, (0, R.peek)((0, R.not)(Yl, []))], Uo), a => "-" + a)])), a => a.join("")),
-    Lp = (0, R.map)((0, R.delimited)(rl, Kp, sl, !0), a => ["computedCommentConstructor", ["argExpr", ["stringConstantExpr", ["value", a]]]]);
-  const Mp = (0, R.filter)(ap, a => "xml" !== a.toLowerCase(), ['A processing instruction target cannot be "xml"']),
-    Np = (0, R.map)((0, R.star)((0, R.preceded)((0, R.peek)((0, R.not)(ul, [])), Uo)), a => a.join(""));
-  var Op = (0, R.then)((0, R.preceded)(tl, (0, R.cut)(Mp)), (0, R.cut)((0, R.followed)((0, R.optional)((0, R.preceded)(Yo, Np)), ul)), (a, b) => ["computedPIConstructor", ["piTarget", a], ["piValueExpr", ["stringConstantExpr", ["value", b]]]]),
-    Pp = (0, R.map)($l, () => ["stepExpr", ["xpathAxis", "descendant-or-self"], ["anyKindTest"]]),
-    Qp = (0, R.or)([hn, jn]),
-    Rp = (0, R.map)((0, R.star)((0, R.followed)(Uo, (0, R.peek)((0, R.not)(al, ["Pragma contents should not contain '#)'"])))), a => a.join("")),
-    Sp = (0, R.map)((0, R.followed)((0, R.or)([Dm, Em, Fm, Gm, Hm, Im]), mp), a => a + "Op"),
-    Tp = (0, R.or)([(0, R.followed)(Vk([xm], "isOp"), mp), Vk([Pl], "nodeBeforeOp"), Vk([Sl], "nodeAfterOp")]),
-    Up = (0, R.or)([Vk([Jl], "equalOp"), Vk([Nl], "notEqualOp"), Vk([Ql], "lessThanOrEqualOp"), Vk([Ol], "lessThanOp"), Vk([Tl], "greaterThanOrEqualOp"), Vk([Rl], "greaterThanOp")]),
-    Vp = (0, R.map)(Rn, () => ["annotation", ["annotationName", "updating"]]);
-  const Wp = (0, R.or)([qn, rn]),
-    Xp = (0, R.or)([sn, tn]);
-  var Yp = (0, R.or)([yo, zo, Ao, Bo, Co, Hl, Do, Eo, Fo, Go, Ho]),
-    Zp = (0, R.map)(T([mn, W, on, W], (0, R.or)([qn, pn])), a => ["boundarySpaceDecl", a]),
-    $p = (0, R.map)(T([mn, W, Wn, W], (0, R.or)([qn, pn])), a => ["constructionDecl", a]),
-    aq = (0, R.map)(T([mn, W, Xn, W], (0, R.or)([Yn, Zn])), a => ["orderingModeDecl", a]),
-    bq = (0, R.map)(T([mn, W, nn, W, Zm, W, Qm, W], (0, R.or)([un, vn])), a => ["emptyOrderDecl", a]),
-    cq = (0, R.then)(T([mn, W, wn, W], Wp), T([V, Ul, V], Xp), (a, b) => ["copyNamespacesDecl", ["preserveMode", a], ["inheritMode", b]]);
-  function dq(a) {
+    }, a[1]]), sp]),
+    wp = (0, R.or)([(0, R.map)(vp, a => ["QName", ...a]), (0, R.map)(Kl, () => ["star"])]),
+    xp = (0, R.map)((0, R.preceded)(Ml, vp), a => ["varRef", ["name", ...a]]);
+  var yp = (0, R.peek)((0, R.or)([il, sl, ql, ip])),
+    zp = (0, R.map)((0, R.or)([uo, vo, wo, xo, yo, zo, Ao]), a => a.substring(0, a.length - 2)),
+    Ap = (0, R.map)((0, R.or)([Bo, Co, Do, Eo, Fo]), a => a.substring(0, a.length - 2)),
+    Bp = Yk(Hl, (0, R.or)([Nm, Pm, Rm, Sm, Tm]), Jl, (a, b, c) => a + b + c),
+    Cp = (0, R.or)([Yk(Cl, cl(/[0-9a-fA-F]+/), Jl, (a, b, c) => a + b + c), Yk(Dl, cl(/[0-9]+/), Jl, (a, b, c) => a + b + c)]),
+    Dp = bl([tl], '"'),
+    Ep = bl([rl], "'"),
+    Fp = al(bl([Uo], "commentTest")),
+    Gp = al(bl([Vo], "textTest")),
+    Hp = al(bl([Wo], "namespaceTest")),
+    Ip = al(bl([Xo], "anyKindTest"));
+  const Jp = cl(/[0-9]+/),
+    Kp = (0, R.then)((0, R.or)([(0, R.then)(bm, Jp, (a, b) => a + b), (0, R.then)(Jp, (0, R.optional)((0, R.preceded)(bm, cl(/[0-9]*/))), (a, b) => a + (null !== b ? "." + b : ""))]), Yk((0, R.or)([im, jm]), (0, R.optional)((0, R.or)([dm, em])), Jp, (a, b, c) => a + (b ? b : "") + c), (a, b) => ["doubleConstantExpr", ["value", a + b]]),
+    Lp = (0, R.or)([(0, R.map)((0, R.preceded)(bm, Jp), a => ["decimalConstantExpr", ["value", "." + a]]), (0, R.then)((0, R.followed)(Jp, bm), (0, R.optional)(Jp), (a, b) => ["decimalConstantExpr", ["value", a + "." + (null !== b ? b : "")]])]);
+  var Mp = (0, R.map)(Jp, a => ["integerConstantExpr", ["value", a]]),
+    Np = (0, R.followed)((0, R.or)([Kp, Lp, Mp]), (0, R.peek)((0, R.not)(cl(/[a-zA-Z]/), ["no alphabetical characters after numeric literal"]))),
+    Op = (0, R.map)((0, R.followed)(bm, (0, R.peek)((0, R.not)(bm, ["context item should not be followed by another ."]))), () => ["contextItemExpr"]),
+    Pp = (0, R.or)([kn, ym, on, oo, xm, to, vm, Um, ko, wm, po, rm, pn, qo, zm, Wn, nn, Hn]),
+    Qp = al(bl([Pl], "argumentPlaceholder")),
+    Rp = (0, R.or)([Pl, Kl, dm]),
+    Sp = (0, R.preceded)((0, R.peek)((0, R.not)(cl(/[{}<&]/), ["elementContentChar cannot be {, }, <, or &"])), fp),
+    Tp = (0, R.map)((0, R.delimited)(ul, (0, R.star)((0, R.preceded)((0, R.peek)((0, R.not)(vl, ['CDataSection content may not contain "]]\x3e"'])), fp)), vl, !0), a => ["CDataSection", a.join("")]),
+    Up = (0, R.preceded)((0, R.peek)((0, R.not)(cl(/["{}<&]/), ['quotAttrValueContentChar cannot be ", {, }, <, or &'])), fp),
+    Vp = (0, R.preceded)((0, R.peek)((0, R.not)(cl(/['{}<&]/), ["aposAttrValueContentChar cannot be ', {, }, <, or &"])), fp),
+    Wp = (0, R.map)((0, R.star)((0, R.or)([(0, R.preceded)((0, R.peek)((0, R.not)(em, [])), fp), (0, R.map)(T([em, (0, R.peek)((0, R.not)(em, []))], fp), a => "-" + a)])), a => a.join("")),
+    Xp = (0, R.map)((0, R.delimited)(yl, Wp, zl, !0), a => ["computedCommentConstructor", ["argExpr", ["stringConstantExpr", ["value", a]]]]);
+  const Yp = (0, R.filter)(mp, a => "xml" !== a.toLowerCase(), ['A processing instruction target cannot be "xml"']),
+    Zp = (0, R.map)((0, R.star)((0, R.preceded)((0, R.peek)((0, R.not)(Bl, [])), fp)), a => a.join(""));
+  var $p = (0, R.then)((0, R.preceded)(Al, (0, R.cut)(Yp)), (0, R.cut)((0, R.followed)((0, R.optional)((0, R.preceded)(jp, Zp)), Bl)), (a, b) => ["computedPIConstructor", ["piTarget", a], ["piValueExpr", ["stringConstantExpr", ["value", b]]]]),
+    aq = (0, R.map)(gm, () => ["stepExpr", ["xpathAxis", "descendant-or-self"], ["anyKindTest"]]),
+    bq = (0, R.or)([qn, rn]),
+    cq = (0, R.map)((0, R.star)((0, R.followed)(fp, (0, R.peek)((0, R.not)(hl, ["Pragma contents should not contain '#)'"])))), a => a.join("")),
+    dq = (0, R.map)((0, R.followed)((0, R.or)([Lm, Mm, Nm, Om, Pm, Qm]), yp), a => a + "Op"),
+    eq = (0, R.or)([(0, R.followed)(bl([Fm], "isOp"), yp), bl([Wl], "nodeBeforeOp"), bl([Zl], "nodeAfterOp")]),
+    fq = (0, R.or)([bl([Ql], "equalOp"), bl([Ul], "notEqualOp"), bl([Xl], "lessThanOrEqualOp"), bl([Vl], "lessThanOp"), bl([$l], "greaterThanOrEqualOp"), bl([Yl], "greaterThanOp")]),
+    gq = (0, R.map)(Zn, () => ["annotation", ["annotationName", "updating"]]);
+  const hq = (0, R.or)([yn, zn]),
+    iq = (0, R.or)([An, Bn]);
+  var jq = (0, R.or)([Go, Ho, Io, Jo, Ko, Ol, Lo, Mo, No, Oo, Po]),
+    kq = (0, R.map)(T([un, W, wn, W], (0, R.or)([yn, xn])), a => ["boundarySpaceDecl", a]),
+    lq = (0, R.map)(T([un, W, eo, W], (0, R.or)([yn, xn])), a => ["constructionDecl", a]),
+    mq = (0, R.map)(T([un, W, fo, W], (0, R.or)([go, ho])), a => ["orderingModeDecl", a]),
+    nq = (0, R.map)(T([un, W, vn, W, gn, W, Ym, W], (0, R.or)([Cn, Dn])), a => ["emptyOrderDecl", a]),
+    oq = (0, R.then)(T([un, W, En, W], hq), T([V, am, V], iq), (a, b) => ["copyNamespacesDecl", ["preserveMode", a], ["inheritMode", b]]);
+  function pq(a) {
     switch (a[0]) {
       case "constantExpr":
       case "varRef":
@@ -12912,13 +13017,13 @@ const fontoxpath = function (xspattern, prsc) {
     }
     return ["sequenceExpr", a];
   }
-  function eq(a) {
+  function qq(a) {
     if (!(1 <= a && 55295 >= a || 57344 <= a && 65533 >= a || 65536 <= a && 1114111 >= a)) throw Error("XQST0090: The character reference " + a + " (" + a.toString(16) + ") does not reference a valid codePoint.");
   }
-  function fq(a) {
+  function rq(a) {
     return a.replace(/(&[^;]+);/g, b => {
-      if (/^&#x/.test(b)) return b = parseInt(b.slice(3, -1), 16), eq(b), String.fromCodePoint(b);
-      if (/^&#/.test(b)) return b = parseInt(b.slice(2, -1), 10), eq(b), String.fromCodePoint(b);
+      if (/^&#x/.test(b)) return b = parseInt(b.slice(3, -1), 16), qq(b), String.fromCodePoint(b);
+      if (/^&#/.test(b)) return b = parseInt(b.slice(2, -1), 10), qq(b), String.fromCodePoint(b);
       switch (b) {
         case "&lt;":
           return "<";
@@ -12934,7 +13039,7 @@ const fontoxpath = function (xspattern, prsc) {
       throw Error('XPST0003: Unknown character reference: "' + b + '"');
     });
   }
-  function gq(a, b, c) {
+  function sq(a, b, c) {
     if (!a.length) return [];
     let d = [a[0]];
     for (let e = 1; e < a.length; ++e) {
@@ -12945,21 +13050,21 @@ const fontoxpath = function (xspattern, prsc) {
     d = d.reduce((e, f, h) => {
       if ("string" !== typeof f) e.push(f);else if (c && /^\s*$/.test(f)) {
         const k = d[h + 1];
-        k && "CDataSection" === k[0] ? e.push(fq(f)) : (h = d[h - 1]) && "CDataSection" === h[0] && e.push(fq(f));
-      } else e.push(fq(f));
+        k && "CDataSection" === k[0] ? e.push(rq(f)) : (h = d[h - 1]) && "CDataSection" === h[0] && e.push(rq(f));
+      } else e.push(rq(f));
       return e;
     }, []);
     if (!d.length) return d;
     if (1 < d.length || b) for (a = 0; a < d.length; a++) "string" === typeof d[a] && (d[a] = ["stringConstantExpr", ["value", d[a]]]);
     return d;
   }
-  function hq(a) {
+  function tq(a) {
     return a[0].prefix ? a[0].prefix + ":" + a[1] : a[1];
   }
-  var iq = (0, R.then)(jp, (0, R.optional)(Il), (a, b) => null !== b ? ["singleType", ["atomicType", ...a], ["optional"]] : ["singleType", ["atomicType", ...a]]),
-    jq = (0, R.map)(jp, a => ["atomicType", ...a]);
-  const kq = new Map();
-  function lq(a) {
+  var uq = (0, R.then)(vp, (0, R.optional)(Pl), (a, b) => null !== b ? ["singleType", ["atomicType", ...a], ["optional"]] : ["singleType", ["atomicType", ...a]]),
+    vq = (0, R.map)(vp, a => ["atomicType", ...a]);
+  const wq = new Map();
+  function xq(a) {
     function b(m, r) {
       return r.reduce((B, X) => [X[0], ["firstOperand", B], ["secondOperand", X[1]]], m);
     }
@@ -12970,112 +13075,122 @@ const fontoxpath = function (xspattern, prsc) {
       return (0, R.then)(m, (0, R.optional)((0, R.then)(S(r, V), (0, R.cut)(m), (ea, Fa) => [ea, Fa])), (ea, Fa) => null === Fa ? ea : [Fa[0], [B, ea], [X, Fa[1]]]);
     }
     function e(m) {
-      return a.mb ? (r, B) => {
+      return a.Ka ? (r, B) => {
         r = m(r, B);
         if (!r.success) return r;
         const X = n.has(B) ? n.get(B) : {
             offset: B,
             line: -1,
-            ha: -1
+            ga: -1
           },
           ea = n.has(r.offset) ? n.get(r.offset) : {
             offset: r.offset,
             line: -1,
-            ha: -1
+            ga: -1
           };
         n.set(B, X);
         n.set(r.offset, ea);
-        B = r.value.Wa;
+        B = r.value.Xa;
         return (0, R.okWithValue)(r.offset, ["x:stackTrace", Object.assign({
           start: X,
           end: ea
         }, B ? {
-          Wa: B
+          Xa: B
         } : {}), r.value]);
       } : m;
     }
     function f(m, r) {
-      return Bj(m, r);
+      return Hj(m, r);
     }
     function h(m, r) {
       return yf(m, r);
     }
     function k(m, r) {
-      return e((0, R.or)([zr, Ar, Br, Cr, Dr, Er, Fr, Gr, Hr, Ir, Jr]))(m, r);
+      return e((0, R.or)([Lr, Mr, Nr, Or, Pr, Qr, Rr, Sr, Tr, Ur, Vr]))(m, r);
     }
     function l(m, r) {
-      return c(k, Ul, (B, X) => 0 === X.length ? B : ["sequenceExpr", B, ...X.map(ea => ea[1])])(m, r);
+      return c(k, am, (B, X) => 0 === X.length ? B : ["sequenceExpr", B, ...X.map(ea => ea[1])])(m, r);
     }
     const n = new Map(),
-      t = (0, R.preceded)(dl, (0, R.followed)(S(l, V), el)),
-      u = (0, R.map)(a.Za ? (0, R.or)([S((0, R.star)((0, R.or)([pp, qp, rp, Wk(/[^"&]/)])), ll), S((0, R.star)((0, R.or)([pp, qp, sp, Wk(/[^'&]/)])), jl)]) : (0, R.or)([S((0, R.star)((0, R.or)([rp, Wk(/[^"]/)])), ll), S((0, R.star)((0, R.or)([sp, Wk(/[^']/)])), jl)]), m => m.join("")),
-      z = (0, R.or)([(0, R.map)(T([qm, V], (0, R.delimited)((0, R.followed)(bl, V), (0, R.then)(kp, T([V, Ul, V], jp), (m, r) => [["elementName", m], ["typeName", ...r]]), (0, R.preceded)(V, cl))), ([m, r]) => ["elementTest", m, r]), (0, R.map)(T([qm, V], (0, R.delimited)(bl, kp, cl)), m => ["elementTest", ["elementName", m]]), (0, R.map)(T([qm, V], (0, R.delimited)(bl, V, cl)), () => ["elementTest"])]),
-      y = (0, R.or)([(0, R.map)(jp, m => ["QName", ...m]), (0, R.map)(Dl, () => ["star"])]),
-      G = (0, R.or)([(0, R.map)(T([rm, V], (0, R.delimited)((0, R.followed)(bl, V), (0, R.then)(y, T([V, Ul, V], jp), (m, r) => [["attributeName", m], ["typeName", ...r]]), (0, R.preceded)(V, cl))), ([m, r]) => ["attributeTest", m, r]), (0, R.map)(T([rm, V], (0, R.delimited)(bl, y, cl)), m => ["attributeTest", ["attributeName", m]]), (0, R.map)(T([rm, V], (0, R.delimited)(bl, V, cl)), () => ["attributeTest"])]),
-      N = (0, R.map)(T([sm, V, bl], (0, R.followed)(jp, cl)), m => ["schemaElementTest", ...m]),
-      U = (0, R.map)((0, R.delimited)(Io, S(jp, V), cl), m => ["schemaAttributeTest", ...m]),
-      ca = (0, R.map)((0, R.preceded)(Jo, (0, R.followed)(S((0, R.optional)((0, R.or)([z, N])), V), cl)), m => ["documentTest", ...(m ? [m] : [])]),
-      Ga = (0, R.or)([(0, R.map)((0, R.preceded)(Ko, (0, R.followed)(S((0, R.or)([ap, u]), V), cl)), m => ["piTest", ["piTarget", m]]), Uk(Vk([Lo], "piTest"))]),
-      Gb = (0, R.or)([ca, z, G, N, U, Ga, tp, up, vp, wp]),
-      Xb = (0, R.or)([(0, R.map)((0, R.preceded)(yl, ap), m => ["Wildcard", ["star"], ["NCName", m]]), Uk(Vk([Dl], "Wildcard")), (0, R.map)((0, R.followed)(hp, Dl), m => ["Wildcard", ["uri", m], ["star"]]), (0, R.map)((0, R.followed)(ap, xl), m => ["Wildcard", ["NCName", m], ["star"]])]),
-      fd = (0, R.or)([Xb, (0, R.map)(jp, m => ["nameTest", ...m])]),
-      Yb = (0, R.or)([Gb, fd]),
-      Kr = (0, R.then)((0, R.optional)(El), Yb, (m, r) => null !== m || "attributeTest" === r[0] || "schemaAttributeTest" === r[0] ? ["stepExpr", ["xpathAxis", "attribute"], r] : ["stepExpr", ["xpathAxis", "child"], r]),
-      Lr = (0, R.or)([(0, R.then)(np, Yb, (m, r) => ["stepExpr", ["xpathAxis", m], r]), Kr]),
-      Mr = (0, R.map)(Wl, () => ["stepExpr", ["xpathAxis", "parent"], ["anyKindTest"]]),
-      Nr = (0, R.or)([(0, R.then)(op, Yb, (m, r) => ["stepExpr", ["xpathAxis", m], r]), Mr]),
-      Or = (0, R.map)((0, R.star)((0, R.preceded)(V, t)), m => 0 < m.length ? ["predicates", ...m] : void 0),
-      Pr = (0, R.then)((0, R.or)([Nr, Lr]), Or, (m, r) => void 0 === r ? m : m.concat([r])),
-      zf = (0, R.or)([Bp, (0, R.map)(u, m => ["stringConstantExpr", ["value", a.Za ? fq(m) : m]])]),
-      Af = (0, R.or)([(0, R.delimited)(bl, S(l, V), cl), (0, R.map)((0, R.delimited)(bl, V, cl), () => ["sequenceExpr"])]),
-      Cj = (0, R.or)([k, Ep]),
-      de = (0, R.map)((0, R.delimited)(bl, S((0, R.optional)((0, R.then)(Cj, (0, R.star)((0, R.preceded)(S(Ul, V), Cj)), (m, r) => [m, ...r])), V), cl), m => null !== m ? m : []),
-      Qr = (0, R.preceded)((0, R.not)(Rk(Dp, V, bl, () => {}), ["cannot use reserved keyword for function names"]), e((0, R.then)(jp, (0, R.preceded)(V, de), (m, r) => {
+      t = (0, R.preceded)(kl, (0, R.followed)(S(l, V), ll)),
+      u = (0, R.map)(a.xa ? (0, R.or)([S((0, R.star)((0, R.or)([Bp, Cp, Dp, cl(/[^"&]/)])), sl), S((0, R.star)((0, R.or)([Bp, Cp, Ep, cl(/[^'&]/)])), ql)]) : (0, R.or)([S((0, R.star)((0, R.or)([Dp, cl(/[^"]/)])), sl), S((0, R.star)((0, R.or)([Ep, cl(/[^']/)])), ql)]), m => m.join("")),
+      z = (0, R.or)([(0, R.map)(T([xm, V], (0, R.delimited)((0, R.followed)(il, V), (0, R.then)(wp, T([V, am, V], vp), (m, r) => [["elementName", m], ["typeName", ...r]]), (0, R.preceded)(V, jl))), ([m, r]) => ["elementTest", m, r]), (0, R.map)(T([xm, V], (0, R.delimited)(il, wp, jl)), m => ["elementTest", ["elementName", m]]), (0, R.map)(T([xm, V], (0, R.delimited)(il, V, jl)), () => ["elementTest"])]),
+      y = (0, R.or)([(0, R.map)(vp, m => ["QName", ...m]), (0, R.map)(Kl, () => ["star"])]),
+      F = (0, R.or)([(0, R.map)(T([ym, V], (0, R.delimited)((0, R.followed)(il, V), (0, R.then)(y, T([V, am, V], vp), (m, r) => [["attributeName", m], ["typeName", ...r]]), (0, R.preceded)(V, jl))), ([m, r]) => ["attributeTest", m, r]), (0, R.map)(T([ym, V], (0, R.delimited)(il, y, jl)), m => ["attributeTest", ["attributeName", m]]), (0, R.map)(T([ym, V], (0, R.delimited)(il, V, jl)), () => ["attributeTest"])]),
+      N = (0, R.map)(T([zm, V, il], (0, R.followed)(vp, jl)), m => ["schemaElementTest", ...m]),
+      U = (0, R.map)((0, R.delimited)(Qo, S(vp, V), jl), m => ["schemaAttributeTest", ...m]),
+      da = (0, R.map)((0, R.preceded)(Ro, (0, R.followed)(S((0, R.optional)((0, R.or)([z, N])), V), jl)), m => ["documentTest", ...(m ? [m] : [])]),
+      Ga = (0, R.or)([(0, R.map)((0, R.preceded)(So, (0, R.followed)(S((0, R.or)([mp, u]), V), jl)), m => ["piTest", ["piTarget", m]]), al(bl([To], "piTest"))]),
+      Hb = (0, R.or)([da, z, F, N, U, Ga, Fp, Gp, Hp, Ip]),
+      Zb = (0, R.or)([(0, R.map)((0, R.preceded)(Fl, mp), m => ["Wildcard", ["star"], ["NCName", m]]), al(bl([Kl], "Wildcard")), (0, R.map)((0, R.followed)(tp, Kl), m => ["Wildcard", ["uri", m], ["star"]]), (0, R.map)((0, R.followed)(mp, El), m => ["Wildcard", ["NCName", m], ["star"]])]),
+      hd = (0, R.or)([Zb, (0, R.map)(vp, m => ["nameTest", ...m])]),
+      jb = (0, R.or)([Hb, hd]),
+      Wr = (0, R.map)((0, R.delimited)((0, R.followed)(il, V), (0, R.then)(jb, (0, R.star)((0, R.preceded)(S(Sl, V), jb)), (m, r) => [m].concat(r)), (0, R.followed)(V, jl), !0), m => ["unionNodeTest", ...m]),
+      zf = 4 === a.version ? (0, R.or)([Wr, jb]) : jb,
+      Xr = 4 === a.version ? (0, R.or)([(0, R.map)((0, R.preceded)(Ll, zf), m => ["stepExpr", ["xpathAxis", "attribute"], m]), (0, R.map)(jb, m => ["stepExpr", ["xpathAxis", "child"], m])]) : (0, R.then)((0, R.optional)(Ll), jb, (m, r) => null !== m || "attributeTest" === r[0] || "schemaAttributeTest" === r[0] ? ["stepExpr", ["xpathAxis", "attribute"], r] : ["stepExpr", ["xpathAxis", "child"], r]),
+      Yr = (0, R.or)([(0, R.then)(zp, zf, (m, r) => ["stepExpr", ["xpathAxis", m], r]), Xr]),
+      Zr = (0, R.map)(cm, () => ["stepExpr", ["xpathAxis", "parent"], ["anyKindTest"]]),
+      $r = (0, R.or)([(0, R.then)(Ap, zf, (m, r) => ["stepExpr", ["xpathAxis", m], r]), Zr]),
+      as = (0, R.map)((0, R.star)((0, R.preceded)(V, t)), m => 0 < m.length ? ["predicates", ...m] : void 0),
+      bs = (0, R.then)((0, R.or)([$r, Yr]), as, (m, r) => void 0 === r ? m : m.concat([r])),
+      Af = (0, R.or)([Np, (0, R.map)(u, m => ["stringConstantExpr", ["value", a.xa ? rq(m) : m]])]),
+      Bf = (0, R.or)([(0, R.delimited)(il, S(l, V), jl), (0, R.map)((0, R.delimited)(il, V, jl), () => ["sequenceExpr"])]),
+      Ij = (0, R.or)([k, Qp]),
+      ce = (0, R.map)((0, R.delimited)(il, S((0, R.optional)((0, R.then)(Ij, (0, R.star)((0, R.preceded)(S(am, V), Ij)), (m, r) => [m, ...r])), V), jl), m => null !== m ? m : []),
+      cs = (0, R.preceded)((0, R.not)(Yk(Pp, V, il, () => {}), ["cannot use reserved keyword for function names"]), e((0, R.then)(vp, (0, R.preceded)(V, ce), (m, r) => {
         r = ["functionCallExpr", ["functionName", ...m], null !== r ? ["arguments", ...r] : ["arguments"]];
         const B = m[0].prefix,
           X = m[0].URI;
         m = m[1];
-        r.Wa = B ? `${B}:${m}` : X ? `Q{${X}}${m}` : m;
+        r.Xa = B ? `${B}:${m}` : X ? `Q{${X}}${m}` : m;
         return r;
       }))),
-      Rr = (0, R.then)(jp, (0, R.preceded)(Gl, Ap), (m, r) => ["namedFunctionRef", ["functionName", ...m], r]),
-      Ta = (0, R.delimited)(fl, S((0, R.optional)(l), V), gl),
-      Dj = (0, R.map)(Ta, m => m ? m : ["sequenceExpr"]),
-      gb = (0, R.or)([(0, R.map)(Ro, () => [["voidSequenceType"]]), (0, R.then)(f, (0, R.optional)((0, R.preceded)(V, Fp)), (m, r) => [m, ...(null !== r ? [["occurrenceIndicator", r]] : [])])]),
-      Bf = (0, R.then)(T([Hl, V], jp), (0, R.optional)((0, R.followed)((0, R.then)(T([bl, V], zf), (0, R.star)(T([Ul, V], zf)), (m, r) => m.concat(r)), cl)), (m, r) => ["annotation", ["annotationName", ...m], ...(r ? ["arguments", r] : [])]),
-      Sr = (0, R.map)(T([om, V, bl, V, Dl, V], cl), () => ["anyFunctionTest"]),
-      Tr = (0, R.then)(T([om, V, bl, V], (0, R.optional)(c(gb, Ul, (m, r) => m.concat.apply(m, r.map(B => B[1]))))), T([V, cl, W, em, W], gb), (m, r) => ["typedFunctionTest", ["paramTypeList", ["sequenceType", ...(m ? m : [])]], ["sequenceType", ...r]]),
-      Ur = (0, R.then)((0, R.star)(Bf), (0, R.or)([Sr, Tr]), (m, r) => [r[0], ...m, ...r.slice(1)]),
-      Vr = (0, R.map)(T([pm, V, bl, V, Dl, V], cl), () => ["anyMapTest"]),
-      Wr = (0, R.then)(T([pm, V, bl, V], jq), T([V, Ul], (0, R.followed)(S(gb, V), cl)), (m, r) => ["typedMapTest", m, ["sequenceType", ...r]]),
-      Xr = (0, R.or)([Vr, Wr]),
-      Yr = (0, R.map)(T([bn, V, bl, V, Dl, V], cl), () => ["anyArrayTest"]),
-      Zr = (0, R.map)(T([bn, V, bl], (0, R.followed)(S(gb, V), cl)), m => ["typedArrayTest", ["sequenceType", ...m]]),
-      $r = (0, R.or)([Yr, Zr]),
-      as = (0, R.map)((0, R.delimited)(bl, S(f, V), cl), m => ["parenthesizedItemType", m]),
-      Bj = (0, R.or)([Gb, Uk(Vk([Qo], "anyItemType")), Ur, Xr, $r, jq, as]),
-      Ac = (0, R.map)(T([em, W], gb), m => ["typeDeclaration", ...m]),
-      bs = (0, R.then)((0, R.preceded)(Fl, jp), (0, R.optional)((0, R.preceded)(W, Ac)), (m, r) => ["param", ["varName", ...m], ...(r ? [r] : [])]),
-      Ej = c(bs, Ul, (m, r) => [m, ...r.map(B => B[1])]),
-      cs = Sk((0, R.star)(Bf), T([V, om, V, bl, V], (0, R.optional)(Ej)), T([V, cl, V], (0, R.optional)((0, R.map)(T([em, V], (0, R.followed)(gb, V)), m => ["typeDeclaration", ...m]))), Dj, (m, r, B, X) => ["inlineFunctionExpr", ...m, ["paramList", ...(r ? r : [])], ...(B ? [B] : []), ["functionBody", X]]),
-      ds = (0, R.or)([Rr, cs]),
-      es = (0, R.map)(k, m => ["mapKeyExpr", m]),
-      fs = (0, R.map)(k, m => ["mapValueExpr", m]),
-      gs = (0, R.then)(es, (0, R.preceded)(S(Bl, V), fs), (m, r) => ["mapConstructorEntry", m, r]),
-      hs = (0, R.preceded)(pm, (0, R.delimited)(S(fl, V), (0, R.map)((0, R.optional)(c(gs, S(Ul, V), (m, r) => [m, ...r.map(B => B[1])])), m => m ? ["mapConstructor", ...m] : ["mapConstructor"]), (0, R.preceded)(V, gl))),
-      is = (0, R.map)((0, R.delimited)(dl, S((0, R.optional)(c(k, Ul, (m, r) => [m, ...r.map(B => B[1])].map(B => ["arrayElem", B]))), V), el), m => ["squareArray", ...(null !== m ? m : [])]),
-      js = (0, R.map)((0, R.preceded)(bn, (0, R.preceded)(V, Ta)), m => ["curlyArray", ...(null !== m ? [["arrayElem", m]] : [])]),
-      ks = (0, R.map)((0, R.or)([is, js]), m => ["arrayConstructor", m]),
-      Fj = (0, R.or)([ap, Ap, Af, Dl]),
-      ls = (0, R.map)((0, R.preceded)(Il, (0, R.preceded)(V, Fj)), m => "*" === m ? ["unaryLookup", ["star"]] : "string" === typeof m ? ["unaryLookup", ["NCName", m]] : ["unaryLookup", m]),
-      Cf = (0, R.or)([pp, qp, Vk([hl], "{"), Vk([il], "}"), (0, R.map)(Ta, m => m || ["sequenceExpr"])]),
-      ms = (0, R.or)([Hp, function (m, r) {
-        return Gj(m, r);
-      }, Cf, Gp]),
-      ns = (0, R.or)([(0, R.map)(Ip, m => m.replace(/[\x20\x0D\x0A\x09]/g, " ")), Cf]),
-      os = (0, R.or)([(0, R.map)(Jp, m => m.replace(/[\x20\x0D\x0A\x09]/g, " ")), Cf]),
-      ps = (0, R.map)((0, R.or)([S((0, R.star)((0, R.or)([rp, ns])), ll), S((0, R.star)((0, R.or)([sp, os])), jl)]), m => gq(m, !1, !1)),
-      qs = (0, R.then)(gp, (0, R.preceded)(S(Jl, (0, R.optional)(Yo)), ps), (m, r) => {
+      ds = (0, R.then)(vp, (0, R.preceded)(Nl, Mp), (m, r) => ["namedFunctionRef", ["functionName", ...m], r]),
+      Ua = (0, R.delimited)(ml, S((0, R.optional)(l), V), nl),
+      Jj = (0, R.map)(Ua, m => m ? m : ["sequenceExpr"]),
+      kb = (0, R.or)([(0, R.map)(Zo, () => [["voidSequenceType"]]), (0, R.then)(f, (0, R.optional)((0, R.preceded)(V, Rp)), (m, r) => [m, ...(null !== r ? [["occurrenceIndicator", r]] : [])])]),
+      Cf = (0, R.then)(T([Ol, V], vp), (0, R.optional)((0, R.followed)((0, R.then)(T([il, V], Af), (0, R.star)(T([am, V], Af)), (m, r) => m.concat(r)), jl)), (m, r) => ["annotation", ["annotationName", ...m], ...(r ? ["arguments", r] : [])]),
+      es = (0, R.map)(T([vm, V, il, V, Kl, V], jl), () => ["anyFunctionTest"]),
+      fs = (0, R.then)(T([vm, V, il, V], (0, R.optional)(c(kb, am, (m, r) => m.concat.apply(m, r.map(B => B[1]))))), T([V, jl, W, lm, W], kb), (m, r) => ["typedFunctionTest", ["paramTypeList", ["sequenceType", ...(m ? m : [])]], ["sequenceType", ...r]]),
+      gs = (0, R.then)((0, R.star)(Cf), (0, R.or)([es, fs]), (m, r) => [r[0], ...m, ...r.slice(1)]),
+      hs = (0, R.map)(T([wm, V, il, V, Kl, V], jl), () => ["anyMapTest"]),
+      is = (0, R.then)(T([wm, V, il, V], vq), T([V, am], (0, R.followed)(S(kb, V), jl)), (m, r) => ["typedMapTest", m, ["sequenceType", ...r]]),
+      js = (0, R.or)([hs, is]),
+      ks = (0, R.map)(T([kn, V, il, V, Kl, V], jl), () => ["anyArrayTest"]),
+      ls = (0, R.map)(T([kn, V, il], (0, R.followed)(S(kb, V), jl)), m => ["typedArrayTest", ["sequenceType", ...m]]),
+      ms = (0, R.or)([ks, ls]),
+      ns = (0, R.map)((0, R.delimited)(il, S(f, V), jl), m => ["parenthesizedItemType", m]),
+      Hj = (0, R.or)([Hb, al(bl([Yo], "anyItemType")), gs, js, ms, vq, ns]),
+      Bc = (0, R.map)(T([lm, W], kb), m => ["typeDeclaration", ...m]),
+      os = (0, R.then)((0, R.preceded)(Ml, vp), (0, R.optional)((0, R.preceded)(W, Bc)), (m, r) => ["param", ["varName", ...m], ...(r ? [r] : [])]),
+      Kj = c(os, am, (m, r) => [m, ...r.map(B => B[1])]),
+      ps = Zk((0, R.star)(Cf), T([V, vm, V, il, V], (0, R.optional)(Kj)), T([V, jl, V], (0, R.optional)((0, R.map)(T([lm, V], (0, R.followed)(kb, V)), m => ["typeDeclaration", ...m]))), Jj, (m, r, B, X) => ["inlineFunctionExpr", ...m, ["paramList", ...(r ? r : [])], ...(B ? [B] : []), ["functionBody", X]]),
+      qs = (0, R.or)([ds, ps]),
+      rs = (0, R.map)(k, m => ["mapKeyExpr", m]),
+      ss = (0, R.map)(k, m => ["mapValueExpr", m]),
+      ts = (0, R.then)(rs, (0, R.preceded)(S(Il, V), ss), (m, r) => ["mapConstructorEntry", m, r]),
+      us = (0, R.preceded)(wm, (0, R.delimited)(S(ml, V), (0, R.map)((0, R.optional)(c(ts, S(am, V), (m, r) => [m, ...r.map(B => B[1])])), m => m ? ["mapConstructor", ...m] : ["mapConstructor"]), (0, R.preceded)(V, nl))),
+      vs = (0, R.map)((0, R.delimited)(kl, S((0, R.optional)(c(k, am, (m, r) => [m, ...r.map(B => B[1])].map(B => ["arrayElem", B]))), V), ll), m => ["squareArray", ...(null !== m ? m : [])]),
+      ws = (0, R.map)((0, R.preceded)(kn, (0, R.preceded)(V, Ua)), m => ["curlyArray", ...(null !== m ? [["arrayElem", m]] : [])]),
+      xs = (0, R.map)((0, R.or)([vs, ws]), m => ["arrayConstructor", m]),
+      Lj = (0, R.map)((0, R.star)((0, R.preceded)((0, R.peek)((0, R.not)((0, R.or)([bp, cp, ap]), ["String constructors can not contain interpolation characters"])), fp)), m => ["stringConstructorChars", m.join("")]),
+      ys = (0, R.map)((0, R.delimited)(bp, l, cp, !0), m => ["stringConstructorInterpolation", m]),
+      zs = (0, R.then)(Lj, (0, R.star)((0, R.then)(ys, Lj, (m, r) => [m, r])), (m, r) => {
+        m = [m];
+        for (const [B, X] of r) m.push(B, X);
+        return m;
+      }),
+      As = (0, R.map)((0, R.delimited)($o, zs, ap, !0), m => ["stringConstructor", ...m]),
+      Mj = (0, R.or)([mp, Mp, Bf, Kl]),
+      Bs = (0, R.map)((0, R.preceded)(Pl, (0, R.preceded)(V, Mj)), m => "*" === m ? ["unaryLookup", ["star"]] : "string" === typeof m ? ["unaryLookup", ["NCName", m]] : ["unaryLookup", m]),
+      Df = (0, R.or)([Bp, Cp, bl([ol], "{"), bl([pl], "}"), (0, R.map)(Ua, m => m || ["sequenceExpr"])]),
+      Cs = (0, R.or)([Tp, function (m, r) {
+        return Nj(m, r);
+      }, Df, Sp]),
+      Ds = (0, R.or)([(0, R.map)(Up, m => m.replace(/[\x20\x0D\x0A\x09]/g, " ")), Df]),
+      Es = (0, R.or)([(0, R.map)(Vp, m => m.replace(/[\x20\x0D\x0A\x09]/g, " ")), Df]),
+      Fs = (0, R.map)((0, R.or)([S((0, R.star)((0, R.or)([Dp, Ds])), sl), S((0, R.star)((0, R.or)([Ep, Es])), ql)]), m => sq(m, !1, !1)),
+      Gs = (0, R.then)(sp, (0, R.preceded)(S(Ql, (0, R.optional)(jp)), Fs), (m, r) => {
         if ("" === m[0].prefix && "xmlns" === m[1]) {
           if (r.length && "string" !== typeof r[0]) throw Error("XQST0022: A namespace declaration may not contain enclosed expressions");
           return ["namespaceDeclaration", r.length ? ["uri", r[0]] : ["uri"]];
@@ -13086,58 +13201,58 @@ const fontoxpath = function (xspattern, prsc) {
         }
         return ["attributeConstructor", ["attributeName"].concat(m), 0 === r.length ? ["attributeValue"] : 1 === r.length && "string" === typeof r[0] ? ["attributeValue", r[0]] : ["attributeValueExpr"].concat(r)];
       }),
-      rs = (0, R.map)((0, R.star)((0, R.preceded)(Yo, (0, R.optional)(qs))), m => m.filter(Boolean)),
-      ss = Rk((0, R.preceded)(Ol, gp), rs, (0, R.or)([(0, R.map)(pl, () => null), (0, R.then)((0, R.preceded)(Rl, (0, R.star)(ms)), T([V, ql], (0, R.followed)(gp, (0, R.then)((0, R.optional)(Yo), Rl, () => null))), (m, r) => [gq(m, !0, !0), r])]), (m, r, B) => {
+      Hs = (0, R.map)((0, R.star)((0, R.preceded)(jp, (0, R.optional)(Gs))), m => m.filter(Boolean)),
+      Is = Yk((0, R.preceded)(Vl, sp), Hs, (0, R.or)([(0, R.map)(wl, () => null), (0, R.then)((0, R.preceded)(Yl, (0, R.star)(Cs)), T([V, xl], (0, R.followed)(sp, (0, R.then)((0, R.optional)(jp), Yl, () => null))), (m, r) => [sq(m, !0, !0), r])]), (m, r, B) => {
         var X = B;
         if (B && B.length) {
-          X = hq(m);
-          const ea = hq(B[1]);
+          X = tq(m);
+          const ea = tq(B[1]);
           if (X !== ea) throw Error('XQST0118: The start and the end tag of an element constructor must be equal. "' + X + '" does not match "' + ea + '"');
           X = B[0];
         }
         return ["elementConstructor", ["tagName", ...m], ...(r.length ? [["attributeList", ...r]] : []), ...(X && X.length ? [["elementContent", ...X]] : [])];
       }),
-      Gj = (0, R.or)([ss, Lp, Op]),
-      ts = (0, R.map)(T([cn, V], Ta), m => ["computedDocumentConstructor", ...(m ? [["argExpr", m]] : [])]),
-      us = (0, R.map)(Ta, m => m ? [["contentExpr", m]] : []),
-      vs = (0, R.then)(T([qm, V], (0, R.or)([(0, R.map)(jp, m => ["tagName", ...m]), (0, R.map)((0, R.delimited)(fl, S(l, V), gl), m => ["tagNameExpr", m])])), (0, R.preceded)(V, us), (m, r) => ["computedElementConstructor", m, ...r]),
-      ws = (0, R.then)((0, R.preceded)(rm, (0, R.or)([(0, R.map)(T([mp, V], jp), m => ["tagName", ...m]), (0, R.map)((0, R.preceded)(V, (0, R.delimited)(fl, S(l, V), gl)), m => ["tagNameExpr", m])])), (0, R.preceded)(V, Ta), (m, r) => ["computedAttributeConstructor", m, ["valueExpr", r ? r : ["sequenceExpr"]]]),
-      xs = (0, R.map)(Ta, m => m ? [["prefixExpr", m]] : []),
-      ys = (0, R.map)(Ta, m => m ? [["URIExpr", m]] : []),
-      zs = (0, R.then)(T([dn, V], (0, R.or)([bp, xs])), (0, R.preceded)(V, ys), (m, r) => ["computedNamespaceConstructor", ...m, ...r]),
-      As = (0, R.map)(T([en, V], Ta), m => ["computedTextConstructor", ...(m ? [["argExpr", m]] : [])]),
-      Bs = (0, R.map)(T([fn, V], Ta), m => ["computedCommentConstructor", ...(m ? [["argExpr", m]] : [])]),
-      Cs = T([gn, V], (0, R.then)((0, R.or)([(0, R.map)(ap, m => ["piTarget", m]), (0, R.map)((0, R.delimited)(fl, S(l, V), gl), m => ["piTargetExpr", m])]), (0, R.preceded)(V, Ta), (m, r) => ["computedPIConstructor", m, ...(r ? [["piValueExpr", r]] : [])])),
-      Ds = (0, R.or)([ts, vs, ws, zs, As, Bs, Cs]),
-      Es = (0, R.or)([Gj, Ds]),
-      Hj = (0, R.or)([zf, lp, Af, Cp, Qr, Es, ds, hs, ks, ls]),
-      Ij = (0, R.map)(T([Il, V], Fj), m => "*" === m ? ["lookup", ["star"]] : "string" === typeof m ? ["lookup", ["NCName", m]] : ["lookup", m]),
-      Fs = (0, R.then)((0, R.map)(Hj, m => dq(m)), (0, R.star)((0, R.or)([(0, R.map)((0, R.preceded)(V, t), m => ["predicate", m]), (0, R.map)((0, R.preceded)(V, de), m => ["argumentList", m]), (0, R.preceded)(V, Ij)])), (m, r) => {
+      Nj = (0, R.or)([Is, Xp, $p]),
+      Js = (0, R.map)(T([ln, V], Ua), m => ["computedDocumentConstructor", ...(m ? [["argExpr", m]] : [])]),
+      Ks = (0, R.map)(Ua, m => m ? [["contentExpr", m]] : []),
+      Ls = (0, R.then)(T([xm, V], (0, R.or)([(0, R.map)(vp, m => ["tagName", ...m]), (0, R.map)((0, R.delimited)(ml, S(l, V), nl), m => ["tagNameExpr", m])])), (0, R.preceded)(V, Ks), (m, r) => ["computedElementConstructor", m, ...r]),
+      Ms = (0, R.then)((0, R.preceded)(ym, (0, R.or)([(0, R.map)(T([yp, V], vp), m => ["tagName", ...m]), (0, R.map)((0, R.preceded)(V, (0, R.delimited)(ml, S(l, V), nl)), m => ["tagNameExpr", m])])), (0, R.preceded)(V, Ua), (m, r) => ["computedAttributeConstructor", m, ["valueExpr", r ? r : ["sequenceExpr"]]]),
+      Ns = (0, R.map)(Ua, m => m ? [["prefixExpr", m]] : []),
+      Os = (0, R.map)(Ua, m => m ? [["URIExpr", m]] : []),
+      Ps = (0, R.then)(T([mn, V], (0, R.or)([np, Ns])), (0, R.preceded)(V, Os), (m, r) => ["computedNamespaceConstructor", ...m, ...r]),
+      Qs = (0, R.map)(T([nn, V], Ua), m => ["computedTextConstructor", ...(m ? [["argExpr", m]] : [])]),
+      Rs = (0, R.map)(T([on, V], Ua), m => ["computedCommentConstructor", ...(m ? [["argExpr", m]] : [])]),
+      Ss = T([pn, V], (0, R.then)((0, R.or)([(0, R.map)(mp, m => ["piTarget", m]), (0, R.map)((0, R.delimited)(ml, S(l, V), nl), m => ["piTargetExpr", m])]), (0, R.preceded)(V, Ua), (m, r) => ["computedPIConstructor", m, ...(r ? [["piValueExpr", r]] : [])])),
+      Ts = (0, R.or)([Js, Ls, Ms, Ps, Qs, Rs, Ss]),
+      Us = (0, R.or)([Nj, Ts]),
+      Oj = (0, R.or)([Af, xp, Bf, Op, cs, Us, qs, us, xs, As, Bs]),
+      Pj = (0, R.map)(T([Pl, V], Mj), m => "*" === m ? ["lookup", ["star"]] : "string" === typeof m ? ["lookup", ["NCName", m]] : ["lookup", m]),
+      Vs = (0, R.then)((0, R.map)(Oj, m => pq(m)), (0, R.star)((0, R.or)([(0, R.map)((0, R.preceded)(V, t), m => ["predicate", m]), (0, R.map)((0, R.preceded)(V, ce), m => ["argumentList", m]), (0, R.preceded)(V, Pj)])), (m, r) => {
         function B() {
-          Jj && 1 === Fa.length ? Bc.push(["predicate", Fa[0]]) : 0 !== Fa.length && Bc.push(["predicates", ...Fa]);
+          Qj && 1 === Fa.length ? Cc.push(["predicate", Fa[0]]) : 0 !== Fa.length && Cc.push(["predicates", ...Fa]);
           Fa.length = 0;
         }
-        function X(Zb) {
+        function X($b) {
           B();
-          0 !== Bc.length ? ("sequenceExpr" === ea[0][0] && 2 < ea[0].length && (ea = [["sequenceExpr", ...ea]]), ea = [["filterExpr", ...ea], ...Bc], Bc.length = 0) : Zb && (ea = [["filterExpr", ...ea]]);
+          0 !== Cc.length ? ("sequenceExpr" === ea[0][0] && 2 < ea[0].length && (ea = [["sequenceExpr", ...ea]]), ea = [["filterExpr", ...ea], ...Cc], Cc.length = 0) : $b && (ea = [["filterExpr", ...ea]]);
         }
         let ea = [m];
         const Fa = [],
-          Bc = [];
-        let Jj = !1;
-        for (const Zb of r) switch (Zb[0]) {
+          Cc = [];
+        let Qj = !1;
+        for (const $b of r) switch ($b[0]) {
           case "predicate":
-            Fa.push(Zb[1]);
+            Fa.push($b[1]);
             break;
           case "lookup":
-            Jj = !0;
+            Qj = !0;
             B();
-            Bc.push(Zb);
+            Cc.push($b);
             break;
           case "argumentList":
             X(!1);
             1 < ea.length && (ea = [["sequenceExpr", ["pathExpr", ["stepExpr", ...ea]]]]);
-            ea = [["dynamicFunctionInvocationExpr", ["functionItem", ...ea], ...(Zb[1].length ? [["arguments", ...Zb[1]]] : [])]];
+            ea = [["dynamicFunctionInvocationExpr", ["functionItem", ...ea], ...($b[1].length ? [["arguments", ...$b[1]]] : [])]];
             break;
           default:
             throw Error("unreachable");
@@ -13145,198 +13260,246 @@ const fontoxpath = function (xspattern, prsc) {
         X(!0);
         return ea;
       }),
-      Cc = (0, R.or)([(0, R.map)(Fs, m => ["stepExpr", ...m]), Pr]),
-      Gs = (0, R.followed)(Hj, (0, R.peek)((0, R.not)((0, R.preceded)(V, (0, R.or)([t, de, Ij])), ["primary expression not followed by predicate, argumentList, or lookup"]))),
-      Hs = (0, R.or)([Rk(Cc, (0, R.preceded)(V, Pp), (0, R.preceded)(V, h), (m, r, B) => ["pathExpr", m, r, ...B]), (0, R.then)(Cc, (0, R.preceded)(S(Zl, V), h), (m, r) => ["pathExpr", m, ...r]), Gs, (0, R.map)(Cc, m => ["pathExpr", m])]),
-      yf = (0, R.or)([Rk(Cc, (0, R.preceded)(V, Pp), (0, R.preceded)(V, h), (m, r, B) => [m, r, ...B]), (0, R.then)(Cc, (0, R.preceded)(S(Zl, V), h), (m, r) => [m, ...r]), (0, R.map)(Cc, m => [m])]),
-      Is = (0, R.or)([(0, R.map)(T([Zl, V], yf), m => ["pathExpr", ["rootExpr"], ...m]), (0, R.then)(Pp, (0, R.preceded)(V, yf), (m, r) => ["pathExpr", ["rootExpr"], m, ...r]), (0, R.map)((0, R.followed)(Zl, (0, R.not)((0, R.preceded)(V, a.Za ? Wk(/[*<a-zA-Z]/) : Wk(/[*a-zA-Z]/)), ["Single rootExpr cannot be by followed by something that can be interpreted as a relative path"])), () => ["pathExpr", ["rootExpr"]])]),
-      Js = Qk((0, R.or)([Hs, Is]), kq),
-      Ks = (0, R.preceded)(kn, (0, R.then)((0, R.optional)((0, R.or)([(0, R.map)((0, R.preceded)(V, Qp), m => ["validationMode", m]), (0, R.map)(T([V, ln, V], jp), m => ["type", ...m])])), (0, R.delimited)((0, R.preceded)(V, fl), S(l, V), gl), (m, r) => ["validateExpr", ...(m ? [m] : []), ["argExpr", r]])),
-      Ls = (0, R.delimited)($k, (0, R.then)((0, R.preceded)(V, jp), (0, R.optional)((0, R.preceded)(W, Rp)), (m, r) => r ? ["pragma", ["pragmaName", m], ["pragmaContents", r]] : ["pragma", ["pragmaName", m]]), (0, R.preceded)(V, al)),
-      Ms = (0, R.map)((0, R.followed)((0, R.plus)(Ls), (0, R.preceded)(V, (0, R.delimited)(fl, S((0, R.optional)(l), V), gl))), m => ["extensionExpr", ...m]),
-      Ns = e(c(Js, Kl, (m, r) => 0 === r.length ? m : ["simpleMapExpr", "pathExpr" === m[0] ? m : ["pathExpr", ["stepExpr", ["filterExpr", dq(m)]]]].concat(r.map(B => {
+      Dc = (0, R.or)([(0, R.map)(Vs, m => ["stepExpr", ...m]), bs]),
+      Ws = (0, R.followed)(Oj, (0, R.peek)((0, R.not)((0, R.preceded)(V, (0, R.or)([t, ce, Pj])), ["primary expression not followed by predicate, argumentList, or lookup"]))),
+      Xs = (0, R.or)([Yk(Dc, (0, R.preceded)(V, aq), (0, R.preceded)(V, h), (m, r, B) => ["pathExpr", m, r, ...B]), (0, R.then)(Dc, (0, R.preceded)(S(fm, V), h), (m, r) => ["pathExpr", m, ...r]), Ws, (0, R.map)(Dc, m => ["pathExpr", m])]),
+      yf = (0, R.or)([Yk(Dc, (0, R.preceded)(V, aq), (0, R.preceded)(V, h), (m, r, B) => [m, r, ...B]), (0, R.then)(Dc, (0, R.preceded)(S(fm, V), h), (m, r) => [m, ...r]), (0, R.map)(Dc, m => [m])]),
+      Ys = (0, R.or)([(0, R.map)(T([fm, V], yf), m => ["pathExpr", ["rootExpr"], ...m]), (0, R.then)(aq, (0, R.preceded)(V, yf), (m, r) => ["pathExpr", ["rootExpr"], m, ...r]), (0, R.map)((0, R.followed)(fm, (0, R.not)((0, R.preceded)(V, a.xa ? cl(/[*<a-zA-Z]/) : cl(/[*a-zA-Z]/)), ["Single rootExpr cannot be by followed by something that can be interpreted as a relative path"])), () => ["pathExpr", ["rootExpr"]])]),
+      Zs = Xk((0, R.or)([Xs, Ys]), wq),
+      $s = (0, R.preceded)(sn, (0, R.then)((0, R.optional)((0, R.or)([(0, R.map)((0, R.preceded)(V, bq), m => ["validationMode", m]), (0, R.map)(T([V, tn, V], vp), m => ["type", ...m])])), (0, R.delimited)((0, R.preceded)(V, ml), S(l, V), nl), (m, r) => ["validateExpr", ...(m ? [m] : []), ["argExpr", r]])),
+      at = (0, R.delimited)(gl, (0, R.then)((0, R.preceded)(V, vp), (0, R.optional)((0, R.preceded)(W, cq)), (m, r) => r ? ["pragma", ["pragmaName", m], ["pragmaContents", r]] : ["pragma", ["pragmaName", m]]), (0, R.preceded)(V, hl)),
+      bt = (0, R.map)((0, R.followed)((0, R.plus)(at), (0, R.preceded)(V, (0, R.delimited)(ml, S((0, R.optional)(l), V), nl))), m => ["extensionExpr", ...m]),
+      ct = e(c(Zs, Rl, (m, r) => 0 === r.length ? m : ["simpleMapExpr", "pathExpr" === m[0] ? m : ["pathExpr", ["stepExpr", ["filterExpr", pq(m)]]]].concat(r.map(B => {
         B = B[1];
-        return "pathExpr" === B[0] ? B : ["pathExpr", ["stepExpr", ["filterExpr", dq(B)]]];
+        return "pathExpr" === B[0] ? B : ["pathExpr", ["stepExpr", ["filterExpr", pq(B)]]];
       })))),
-      Os = (0, R.or)([Ks, Ms, Ns]),
-      Kj = (0, R.or)([(0, R.then)((0, R.or)([Vk([Yl], "unaryMinusOp"), Vk([Xl], "unaryPlusOp")]), (0, R.preceded)(V, function (m, r) {
-        return Kj(m, r);
-      }), (m, r) => [m, ["operand", r]]), Os]),
-      Ps = (0, R.or)([(0, R.map)(jp, m => ["EQName", ...m]), lp, Af]),
-      Qs = (0, R.then)(Kj, (0, R.star)(T([V, am, V], (0, R.then)(Ps, (0, R.preceded)(V, de), (m, r) => [m, r]))), (m, r) => r.reduce((B, X) => ["arrowExpr", ["argExpr", B], X[0], ["arguments", ...X[1]]], m)),
-      Rs = (0, R.then)(Qs, (0, R.optional)(T([V, fm, W, em, mp, V], iq)), (m, r) => null !== r ? ["castExpr", ["argExpr", m], r] : m),
-      Ss = (0, R.then)(Rs, (0, R.optional)(T([V, gm, W, em, mp, V], iq)), (m, r) => null !== r ? ["castableExpr", ["argExpr", m], r] : m),
-      Ts = (0, R.then)(Ss, (0, R.optional)(T([V, hm, W, em, mp, V], gb)), (m, r) => null !== r ? ["treatExpr", ["argExpr", m], ["sequenceType", ...r]] : m),
-      Us = (0, R.then)(Ts, (0, R.optional)(T([V, im, W, jm, mp, V], gb)), (m, r) => null !== r ? ["instanceOfExpr", ["argExpr", m], ["sequenceType", ...r]] : m),
-      Vs = c(Us, (0, R.followed)((0, R.or)([Vk([tm], "intersectOp"), Vk([um], "exceptOp")]), mp), b),
-      Ws = c(Vs, (0, R.or)([Vk([Ll], "unionOp"), (0, R.followed)(Vk([vm], "unionOp"), mp)]), b),
-      Xs = c(Ws, (0, R.or)([Vk([Dl], "multiplyOp"), (0, R.followed)(Vk([Am], "divOp"), mp), (0, R.followed)(Vk([Bm], "idivOp"), mp), (0, R.followed)(Vk([Cm], "modOp"), mp)]), b),
-      Ys = c(Xs, (0, R.or)([Vk([Yl], "subtractOp"), Vk([Xl], "addOp")]), b),
-      Zs = d(Ys, (0, R.followed)(Vk([wm], "rangeSequenceExpr"), mp), "startExpr", "endExpr"),
-      $s = c(Zs, Vk([Ml], "stringConcatenateOp"), b),
-      at = d($s, (0, R.or)([Sp, Tp, Up])),
-      bt = c(at, (0, R.followed)(Vk([zm], "andOp"), mp), b),
-      Jr = c(bt, (0, R.followed)(Vk([ym], "orOp"), mp), b),
-      ct = e((0, R.map)(l, m => ["ifClause", m])),
-      dt = e((0, R.map)(k, m => ["thenClause", m])),
-      et = e((0, R.map)(k, m => ["elseClause", m])),
-      Dr = (0, R.then)((0, R.then)(T([Mm, V, bl, V], ct), T([V, cl, V, Nm, mp, V], dt), (m, r) => [m, r]), T([V, Om, mp, V], et), (m, r) => ["ifThenElseExpr", m[0], m[1], r]),
-      ft = (0, R.delimited)(Pm, W, Qm),
-      gt = (0, R.map)(T([Rm, W, Fl], jp), m => ["positionalVariableBinding", ...m]),
-      ht = Tk((0, R.preceded)(Fl, (0, R.cut)(jp)), (0, R.cut)((0, R.preceded)(V, (0, R.optional)(Ac))), (0, R.cut)((0, R.preceded)(V, (0, R.optional)(ft))), (0, R.cut)((0, R.preceded)(V, (0, R.optional)(gt))), (0, R.cut)((0, R.preceded)(S(Sm, V), k)), (m, r, B, X, ea) => ["forClauseItem", ["typedVariableBinding", ["varName", ...m, ...(r ? [r] : [])]], ...(B ? [["allowingEmpty"]] : []), ...(X ? [X] : []), ["forExpr", ea]]),
-      it = T([Tm, W], c(ht, Ul, (m, r) => ["forClause", m, ...r.map(B => B[1])])),
-      jt = Rk((0, R.preceded)(Fl, jp), (0, R.preceded)(V, (0, R.optional)(Ac)), (0, R.preceded)(S(zl, V), k), (m, r, B) => ["letClauseItem", ["typedVariableBinding", ["varName", ...m], ...(r ? [r] : [])], ["letExpr", B]]),
-      kt = (0, R.map)(T([Um, V], c(jt, Ul, (m, r) => [m, ...r.map(B => B[1])])), m => ["letClause", ...m]),
-      Lj = (0, R.or)([it, kt]),
-      lt = (0, R.map)(T([Vm, mp, V], k), m => ["whereClause", m]),
-      mt = (0, R.map)((0, R.preceded)(Fl, jp), m => ["varName", ...m]),
-      nt = (0, R.then)((0, R.preceded)(V, (0, R.optional)(Ac)), (0, R.preceded)(S(zl, V), k), (m, r) => ["groupVarInitialize", ...(m ? [["typeDeclaration", ...m]] : []), ["varValue", r]]),
-      ot = Rk(mt, (0, R.optional)(nt), (0, R.optional)((0, R.map)((0, R.preceded)(S(Wm, V), u), m => ["collation", m])), (m, r, B) => ["groupingSpec", m, ...(r ? [r] : []), ...(B ? [B] : [])]),
-      pt = c(ot, Ul, (m, r) => [m, ...r.map(B => B[1])]),
-      qt = (0, R.map)(T([Xm, W, Ym, V], pt), m => ["groupByClause", ...m]),
-      rt = Rk((0, R.optional)((0, R.or)([jo, ko])), (0, R.optional)(T([V, Qm, V], (0, R.or)([un, vn].map(m => (0, R.map)(m, r => "empty " + r))))), (0, R.preceded)(V, (0, R.optional)(T([Wm, V], u))), (m, r, B) => m || r || B ? ["orderModifier", ...(m ? [["orderingKind", m]] : []), ...(r ? [["emptyOrderingMode", r]] : []), ...(B ? [["collation", B]] : [])] : null),
-      st = (0, R.then)(k, (0, R.preceded)(V, rt), (m, r) => ["orderBySpec", ["orderByExpr", m], ...(r ? [r] : [])]),
-      tt = c(st, Ul, (m, r) => [m, ...r.map(B => B[1])]),
-      ut = (0, R.then)((0, R.or)([(0, R.map)(T([Zm, W], Ym), () => !1), (0, R.map)(T([$m, W, Zm, W], Ym), () => !0)]), (0, R.preceded)(V, tt), (m, r) => ["orderByClause", ...(m ? [["stable"]] : []), ...r]),
-      vt = (0, R.or)([Lj, lt, qt, ut]),
-      wt = (0, R.map)(T([an, V], k), m => ["returnClause", m]),
-      zr = Rk(Lj, (0, R.cut)((0, R.star)((0, R.preceded)(V, vt))), (0, R.cut)((0, R.preceded)(V, wt)), (m, r, B) => ["flworExpr", m, ...r, B]),
-      xt = c(gb, Ll, (m, r) => 0 === r.length ? ["sequenceType", ...m] : ["sequenceTypeUnion", ["sequenceType", ...m], ...r.map(B => ["sequenceType", ...B[1]])]),
-      yt = Rk(T([yn, V], (0, R.optional)((0, R.preceded)(Fl, (0, R.followed)((0, R.followed)(jp, W), em)))), (0, R.preceded)(V, xt), T([W, an, W], k), (m, r, B) => ["typeswitchExprCaseClause"].concat(m ? [["variableBinding", ...m]] : [], [r], [["resultExpr", B]])),
-      Cr = Sk((0, R.preceded)(zn, S((0, R.delimited)(bl, S(l, V), cl), V)), (0, R.plus)((0, R.followed)(yt, V)), T([nn, W], (0, R.optional)((0, R.preceded)(Fl, (0, R.followed)(jp, W)))), T([an, W], k), (m, r, B, X) => ["typeswitchExpr", ["argExpr", m], ...r, ["typeswitchExprDefaultClause", ...(B || []), ["resultExpr", X]]]),
-      zt = Rk((0, R.preceded)(Fl, jp), (0, R.optional)((0, R.preceded)(W, Ac)), (0, R.preceded)(S(Sm, W), k), (m, r, B) => ["quantifiedExprInClause", ["typedVariableBinding", ["varName", ...m], ...(r ? [r] : [])], ["sourceExpr", B]]),
-      At = c(zt, Ul, (m, r) => [m, ...r.map(B => B[1])]),
-      Ar = Rk((0, R.or)([An, Bn]), (0, R.preceded)(W, At), (0, R.preceded)(S(Cn, V), k), (m, r, B) => ["quantifiedExpr", ["quantifier", m], ...r, ["predicateExpr", B]]),
-      Fr = (0, R.map)(T([mm, W, (0, R.or)([lm, km]), W], k), m => ["deleteExpr", ["targetExpr", m]]),
-      Hr = Rk(T([Dn, W], (0, R.optional)(T([nm, W, jm], W))), T([km, W], k), (0, R.preceded)(S(En, W), k), (m, r, B) => m ? ["replaceExpr", ["replaceValue"], ["targetExpr", r], ["replacementExpr", B]] : ["replaceExpr", ["targetExpr", r], ["replacementExpr", B]]),
-      Bt = (0, R.then)(lp, (0, R.preceded)(S(zl, V), k), (m, r) => ["transformCopy", m, ["copySource", r]]),
-      Ir = Rk(T([Fn, W], c(Bt, Ul, (m, r) => [m, ...r.map(B => B[1])])), T([V, Gn, W], k), (0, R.preceded)(S(an, W), k), (m, r, B) => ["transformExpr", ["transformCopies", ...m], ["modifyExpr", r], ["returnExpr", B]]),
-      Ct = (0, R.or)([(0, R.followed)((0, R.map)((0, R.optional)((0, R.followed)(T([em, W], (0, R.or)([(0, R.map)(Hn, () => ["insertAsFirst"]), (0, R.map)(In, () => ["insertAsLast"])])), W)), m => m ? ["insertInto", m] : ["insertInto"]), Ln), (0, R.map)(Kn, () => ["insertAfter"]), (0, R.map)(Jn, () => ["insertBefore"])]),
-      Er = Rk(T([Mn, W, (0, R.or)([lm, km]), W], k), (0, R.preceded)(W, Ct), (0, R.preceded)(W, k), (m, r, B) => ["insertExpr", ["sourceExpr", m], r, ["targetExpr", B]]),
-      Gr = (0, R.then)(T([Nn, W, km, V], k), T([W, em, W], k), (m, r) => ["renameExpr", ["targetExpr", m], ["newNameExpr", r]]),
-      Dt = (0, R.then)((0, R.plus)((0, R.then)((0, R.map)(T([yn, W], (0, R.cut)(k)), m => ["switchCaseExpr", m]), (0, R.cut)(W), m => m)), (0, R.cut)(T([an, W], (0, R.cut)(k))), (m, r) => ["switchExprCaseClause", ...m, ["resultExpr", r]]),
-      Br = Rk(T([On, V, bl], (0, R.cut)(l)), (0, R.cut)(T([V, cl, (0, R.cut)(V)], (0, R.plus)((0, R.followed)(Dt, V)))), (0, R.cut)(T([nn, W, an, W], k)), (m, r, B) => ["switchExpr", ["argExpr", m], ...r, ["switchExprDefaultClause", ["resultExpr", B]]]),
-      Et = (0, R.map)(l, m => ["queryBody", m]),
-      Ft = T([mn, W, dn, W], (0, R.cut)((0, R.then)(ap, (0, R.preceded)(S(Jl, V), u), (m, r) => ["namespaceDecl", ["prefix", m], ["uri", r]]))),
-      Gt = (0, R.then)(T([Pn, W, Fl, V], (0, R.then)(jp, (0, R.optional)((0, R.preceded)(V, Ac)), (m, r) => [m, r])), (0, R.cut)((0, R.or)([(0, R.map)(T([V, zl, V], k), m => ["varValue", m]), (0, R.map)(T([W, Qn], (0, R.optional)(T([V, zl, V], k))), m => ["external", ...(m ? [["varValue", m]] : [])])])), ([m, r], B) => ["varDecl", ["varName", ...m], ...(null !== r ? [r] : []), B]),
-      Ht = Sk(T([om, W, (0, R.cut)((0, R.peek)((0, R.not)((0, R.followed)(Dp, (0, R.not)(Bl, [""])), ["Cannot use reserved function name"])))], jp), (0, R.cut)(T([V, bl, V], (0, R.optional)(Ej))), (0, R.cut)(T([V, cl], (0, R.optional)(T([W, em, W], gb)))), (0, R.cut)((0, R.preceded)(V, (0, R.or)([(0, R.map)(Dj, m => ["functionBody", m]), (0, R.map)(Qn, () => ["externalDefinition"])]))), (m, r, B, X) => ["functionDecl", ["functionName", ...m], ["paramList", ...(r || [])], ...(B ? [["typeDeclaration", ...B]] : []), X]),
-      It = T([mn, W], (0, R.then)((0, R.star)((0, R.followed)((0, R.or)([Bf, Vp]), W)), (0, R.or)([Gt, Ht]), (m, r) => [r[0], ...m, ...r.slice(1)])),
-      Jt = (0, R.then)(T([mn, W, nn, W], (0, R.or)([qm, om])), T([W, dn, W], u), (m, r) => ["defaultNamespaceDecl", ["defaultNamespaceCategory", m], ["uri", r]]),
-      Kt = (0, R.or)([(0, R.map)((0, R.followed)(T([dn, W], ap), (0, R.preceded)(V, Jl)), m => ["namespacePrefix", m]), (0, R.map)(T([nn, W, qm, W], dn), () => ["defaultElementNamespace"])]),
-      Lt = T([Sn, W, Tn], Rk((0, R.optional)((0, R.preceded)(W, Kt)), (0, R.preceded)(V, u), (0, R.optional)((0, R.then)(T([W, Rm, W], u), (0, R.star)(T([V, Ul, V], u)), (m, r) => [m, ...r])), (m, r, B) => ["schemaImport", ...(m ? [m] : []), ["targetNamespace", r], ...(B ? [B] : [])])),
-      Mt = T([Sn, W, Un], Rk((0, R.optional)((0, R.followed)(T([W, dn, W], ap), (0, R.preceded)(V, Jl))), (0, R.preceded)(V, u), (0, R.optional)((0, R.then)(T([W, Rm, W], u), (0, R.star)(T([V, Ul, V], u)), (m, r) => [m, ...r])), (m, r) => ["moduleImport", ["namespacePrefix", m], ["targetNamespace", r]])),
-      Nt = (0, R.or)([Lt, Mt]),
-      Ot = (0, R.map)(T([mn, W, nn, W, Wm, W], u), m => ["defaultCollationDecl", m]),
-      Pt = (0, R.map)(T([mn, W, Vn, W], u), m => ["baseUriDecl", m]),
-      Qt = (0, R.then)(T([mn, W], (0, R.or)([(0, R.map)(T([xn, W], jp), m => ["decimalFormatName", ...m]), (0, R.map)(T([nn, W], xn), () => null)])), (0, R.star)((0, R.then)((0, R.preceded)(W, Yp), (0, R.preceded)(S(Jl, W), u), (m, r) => ["decimalFormatParam", ["decimalFormatParamName", m], ["decimalFormatParamValue", r]])), (m, r) => ["decimalFormatDecl", ...(m ? [m] : []), ...r]),
-      Rt = (0, R.or)([Zp, Ot, Pt, $p, aq, bq, cq, Qt]),
-      St = (0, R.then)(T([mn, W, $n, W], jp), (0, R.preceded)(W, u), (m, r) => ["optionDecl", ["optionName", m], ["optionContents", r]]),
-      Tt = (0, R.then)(T([mn, W, ao, W, bo], (0, R.optional)(T([W, em], Bj))), (0, R.or)([(0, R.map)((0, R.preceded)(S(zl, V), k), m => ["varValue", m]), (0, R.map)(T([W, Qn], (0, R.optional)((0, R.preceded)(S(zl, V), k))), () => ["external"])]), (m, r) => ["contextItemDecl", ...(m ? [["contextItemType", m]] : []), r]),
-      Mj = (0, R.then)((0, R.star)((0, R.followed)((0, R.or)([Jt, Rt, Ft, Nt]), (0, R.cut)(S(Cl, V)))), (0, R.star)((0, R.followed)((0, R.or)([Tt, It, St]), (0, R.cut)(S(Cl, V)))), (m, r) => 0 === m.length && 0 === r.length ? null : ["prolog", ...m, ...r]),
-      Ut = T([Un, W, dn, W], (0, R.then)((0, R.followed)(ap, S(Jl, V)), (0, R.followed)(u, S(Cl, V)), (m, r) => ["moduleDecl", ["prefix", m], ["uri", r]])),
-      Vt = (0, R.then)(Ut, (0, R.preceded)(V, Mj), (m, r) => ["libraryModule", m, ...(r ? [r] : [])]),
-      Wt = (0, R.then)(Mj, (0, R.preceded)(V, Et), (m, r) => ["mainModule", ...(m ? [m] : []), r]),
-      Xt = (0, R.map)(T([co, V], (0, R.followed)((0, R.or)([(0, R.then)((0, R.preceded)(fo, W), u, m => ["encoding", m]), (0, R.then)(T([eo, W], u), (0, R.optional)(T([W, fo, W], u)), (m, r) => [["version", m], ...(r ? [["encoding", r]] : [])])]), (0, R.preceded)(V, Cl))), m => ["versionDecl", ...m]),
-      Yt = (0, R.then)((0, R.optional)(S(Xt, V)), (0, R.or)([Vt, Wt]), (m, r) => ["module", ...(m ? [m] : []), r]),
-      Zt = (0, R.complete)(S(Yt, V));
+      dt = (0, R.or)([$s, bt, ct]),
+      Rj = (0, R.or)([(0, R.then)((0, R.or)([bl([em], "unaryMinusOp"), bl([dm], "unaryPlusOp")]), (0, R.preceded)(V, function (m, r) {
+        return Rj(m, r);
+      }), (m, r) => [m, ["operand", r]]), dt]),
+      et = (0, R.or)([(0, R.map)(vp, m => ["EQName", ...m]), xp, Bf]),
+      ft = (0, R.then)(Rj, (0, R.star)(T([V, hm, V], (0, R.then)(et, (0, R.preceded)(V, ce), (m, r) => [m, r]))), (m, r) => r.reduce((B, X) => ["arrowExpr", ["argExpr", B], X[0], ["arguments", ...X[1]]], m)),
+      gt = (0, R.then)(ft, (0, R.optional)(T([V, mm, W, lm, yp, V], uq)), (m, r) => null !== r ? ["castExpr", ["argExpr", m], r] : m),
+      ht = (0, R.then)(gt, (0, R.optional)(T([V, nm, W, lm, yp, V], uq)), (m, r) => null !== r ? ["castableExpr", ["argExpr", m], r] : m),
+      it = (0, R.then)(ht, (0, R.optional)(T([V, om, W, lm, yp, V], kb)), (m, r) => null !== r ? ["treatExpr", ["argExpr", m], ["sequenceType", ...r]] : m),
+      jt = (0, R.then)(it, (0, R.optional)(T([V, pm, W, qm, yp, V], kb)), (m, r) => null !== r ? ["instanceOfExpr", ["argExpr", m], ["sequenceType", ...r]] : m),
+      kt = c(jt, (0, R.followed)((0, R.or)([bl([Am], "intersectOp"), bl([Bm], "exceptOp")]), yp), b),
+      Sj = c(kt, (0, R.or)([bl([Sl], "unionOp"), (0, R.followed)(bl([Cm], "unionOp"), yp)]), b),
+      lt = c(Sj, (0, R.followed)(bl([Dm], "otherwiseOp"), (0, R.cut)(yp)), b),
+      mt = c(4 <= a.version ? lt : Sj, (0, R.or)([bl([Kl], "multiplyOp"), (0, R.followed)(bl([Im], "divOp"), yp), (0, R.followed)(bl([Jm], "idivOp"), yp), (0, R.followed)(bl([Km], "modOp"), yp)]), b),
+      nt = c(mt, (0, R.or)([bl([em], "subtractOp"), bl([dm], "addOp")]), b),
+      ot = d(nt, (0, R.followed)(bl([Em], "rangeSequenceExpr"), yp), "startExpr", "endExpr"),
+      pt = c(ot, bl([Tl], "stringConcatenateOp"), b),
+      qt = d(pt, (0, R.or)([dq, eq, fq])),
+      rt = c(qt, (0, R.followed)(bl([Hm], "andOp"), yp), b),
+      Vr = c(rt, (0, R.followed)(bl([Gm], "orOp"), yp), b),
+      st = e((0, R.map)(l, m => ["ifClause", m])),
+      tt = e((0, R.map)(k, m => ["thenClause", m])),
+      ut = e((0, R.map)(k, m => ["elseClause", m])),
+      Pr = (0, R.then)((0, R.then)(T([Um, V, il, V], st), T([V, jl, V, Vm, yp, V], tt), (m, r) => [m, r]), T([V, Wm, yp, V], ut), (m, r) => ["ifThenElseExpr", m[0], m[1], r]),
+      vt = (0, R.delimited)(Xm, W, Ym),
+      wt = (0, R.map)(T([Zm, W, Ml], vp), m => ["positionalVariableBinding", ...m]),
+      xt = $k((0, R.preceded)(Ml, (0, R.cut)(vp)), (0, R.cut)((0, R.preceded)(V, (0, R.optional)(Bc))), (0, R.cut)((0, R.preceded)(V, (0, R.optional)(vt))), (0, R.cut)((0, R.preceded)(V, (0, R.optional)(wt))), (0, R.cut)((0, R.preceded)(S($m, V), k)), (m, r, B, X, ea) => ["forClauseItem", ["typedVariableBinding", ["varName", ...m, ...(r ? [r] : [])]], ...(B ? [["allowingEmpty"]] : []), ...(X ? [X] : []), ["forExpr", ea]]),
+      yt = T([an, W], c(xt, am, (m, r) => ["forClause", m, ...r.map(B => B[1])])),
+      zt = Yk((0, R.preceded)(Ml, vp), (0, R.preceded)(V, (0, R.optional)(Bc)), (0, R.preceded)(S(Gl, V), k), (m, r, B) => ["letClauseItem", ["typedVariableBinding", ["varName", ...m], ...(r ? [r] : [])], ["letExpr", B]]),
+      At = (0, R.map)(T([bn, V], c(zt, am, (m, r) => [m, ...r.map(B => B[1])])), m => ["letClause", ...m]),
+      Tj = (0, R.or)([yt, At]),
+      Bt = (0, R.map)(T([cn, yp, V], k), m => ["whereClause", m]),
+      Ct = (0, R.map)((0, R.preceded)(Ml, vp), m => ["varName", ...m]),
+      Dt = (0, R.then)((0, R.preceded)(V, (0, R.optional)(Bc)), (0, R.preceded)(S(Gl, V), k), (m, r) => ["groupVarInitialize", ...(m ? [["typeDeclaration", ...m]] : []), ["varValue", r]]),
+      Et = Yk(Ct, (0, R.optional)(Dt), (0, R.optional)((0, R.map)((0, R.preceded)(S(dn, V), u), m => ["collation", m])), (m, r, B) => ["groupingSpec", m, ...(r ? [r] : []), ...(B ? [B] : [])]),
+      Ft = c(Et, am, (m, r) => [m, ...r.map(B => B[1])]),
+      Gt = (0, R.map)(T([en, W, fn, V], Ft), m => ["groupByClause", ...m]),
+      Ht = Yk((0, R.optional)((0, R.or)([ro, so])), (0, R.optional)(T([V, Ym, V], (0, R.or)([Cn, Dn].map(m => (0, R.map)(m, r => "empty " + r))))), (0, R.preceded)(V, (0, R.optional)(T([dn, V], u))), (m, r, B) => m || r || B ? ["orderModifier", ...(m ? [["orderingKind", m]] : []), ...(r ? [["emptyOrderingMode", r]] : []), ...(B ? [["collation", B]] : [])] : null),
+      It = (0, R.then)(k, (0, R.preceded)(V, Ht), (m, r) => ["orderBySpec", ["orderByExpr", m], ...(r ? [r] : [])]),
+      Jt = c(It, am, (m, r) => [m, ...r.map(B => B[1])]),
+      Kt = (0, R.then)((0, R.or)([(0, R.map)(T([gn, W], fn), () => !1), (0, R.map)(T([hn, W, gn, W], fn), () => !0)]), (0, R.preceded)(V, Jt), (m, r) => ["orderByClause", ...(m ? [["stable"]] : []), ...r]),
+      Lt = (0, R.or)([Tj, Bt, Gt, Kt]),
+      Mt = (0, R.map)(T([jn, V], k), m => ["returnClause", m]),
+      Lr = Yk(Tj, (0, R.cut)((0, R.star)((0, R.preceded)(V, Lt))), (0, R.cut)((0, R.preceded)(V, Mt)), (m, r, B) => ["flworExpr", m, ...r, B]),
+      Nt = c(kb, Sl, (m, r) => 0 === r.length ? ["sequenceType", ...m] : ["sequenceTypeUnion", ["sequenceType", ...m], ...r.map(B => ["sequenceType", ...B[1]])]),
+      Ot = Yk(T([Gn, V], (0, R.optional)((0, R.preceded)(Ml, (0, R.followed)((0, R.followed)(vp, W), lm)))), (0, R.preceded)(V, Nt), T([W, jn, W], k), (m, r, B) => ["typeswitchExprCaseClause"].concat(m ? [["variableBinding", ...m]] : [], [r], [["resultExpr", B]])),
+      Or = Zk((0, R.preceded)(Hn, S((0, R.delimited)(il, S(l, V), jl), V)), (0, R.plus)((0, R.followed)(Ot, V)), T([vn, W], (0, R.optional)((0, R.preceded)(Ml, (0, R.followed)(vp, W)))), T([jn, W], k), (m, r, B, X) => ["typeswitchExpr", ["argExpr", m], ...r, ["typeswitchExprDefaultClause", ...(B || []), ["resultExpr", X]]]),
+      Pt = Yk((0, R.preceded)(Ml, vp), (0, R.optional)((0, R.preceded)(W, Bc)), (0, R.preceded)(S($m, W), k), (m, r, B) => ["quantifiedExprInClause", ["typedVariableBinding", ["varName", ...m], ...(r ? [r] : [])], ["sourceExpr", B]]),
+      Qt = c(Pt, am, (m, r) => [m, ...r.map(B => B[1])]),
+      Mr = Yk((0, R.or)([In, Jn]), (0, R.preceded)(W, Qt), (0, R.preceded)(S(Kn, V), k), (m, r, B) => ["quantifiedExpr", ["quantifier", m], ...r, ["predicateExpr", B]]),
+      Rr = (0, R.map)(T([tm, W, (0, R.or)([sm, rm]), W], k), m => ["deleteExpr", ["targetExpr", m]]),
+      Tr = Yk(T([Ln, W], (0, R.optional)(T([um, W, qm], W))), T([rm, W], k), (0, R.preceded)(S(Mn, W), k), (m, r, B) => m ? ["replaceExpr", ["replaceValue"], ["targetExpr", r], ["replacementExpr", B]] : ["replaceExpr", ["targetExpr", r], ["replacementExpr", B]]),
+      Rt = (0, R.then)(xp, (0, R.preceded)(S(Gl, V), k), (m, r) => ["transformCopy", m, ["copySource", r]]),
+      Ur = Yk(T([Nn, W], c(Rt, am, (m, r) => [m, ...r.map(B => B[1])])), T([V, On, W], k), (0, R.preceded)(S(jn, W), k), (m, r, B) => ["transformExpr", ["transformCopies", ...m], ["modifyExpr", r], ["returnExpr", B]]),
+      St = (0, R.or)([(0, R.followed)((0, R.map)((0, R.optional)((0, R.followed)(T([lm, W], (0, R.or)([(0, R.map)(Pn, () => ["insertAsFirst"]), (0, R.map)(Qn, () => ["insertAsLast"])])), W)), m => m ? ["insertInto", m] : ["insertInto"]), Tn), (0, R.map)(Sn, () => ["insertAfter"]), (0, R.map)(Rn, () => ["insertBefore"])]),
+      Qr = Yk(T([Un, W, (0, R.or)([sm, rm]), W], k), (0, R.preceded)(W, St), (0, R.preceded)(W, k), (m, r, B) => ["insertExpr", ["sourceExpr", m], r, ["targetExpr", B]]),
+      Sr = (0, R.then)(T([Vn, W, rm, V], k), T([W, lm, W], k), (m, r) => ["renameExpr", ["targetExpr", m], ["newNameExpr", r]]),
+      Tt = (0, R.then)((0, R.plus)((0, R.then)((0, R.map)(T([Gn, W], (0, R.cut)(k)), m => ["switchCaseExpr", m]), (0, R.cut)(W), m => m)), (0, R.cut)(T([jn, W], (0, R.cut)(k))), (m, r) => ["switchExprCaseClause", ...m, ["resultExpr", r]]),
+      Nr = Yk(T([Wn, V, il], (0, R.cut)(l)), (0, R.cut)(T([V, jl, (0, R.cut)(V)], (0, R.plus)((0, R.followed)(Tt, V)))), (0, R.cut)(T([vn, W, jn, W], k)), (m, r, B) => ["switchExpr", ["argExpr", m], ...r, ["switchExprDefaultClause", ["resultExpr", B]]]),
+      Ut = (0, R.map)(l, m => ["queryBody", m]),
+      Vt = T([un, W, mn, W], (0, R.cut)((0, R.then)(mp, (0, R.preceded)(S(Ql, V), u), (m, r) => ["namespaceDecl", ["prefix", m], ["uri", r]]))),
+      Wt = (0, R.then)(T([Xn, W, Ml, V], (0, R.then)(vp, (0, R.optional)((0, R.preceded)(V, Bc)), (m, r) => [m, r])), (0, R.cut)((0, R.or)([(0, R.map)(T([V, Gl, V], k), m => ["varValue", m]), (0, R.map)(T([W, Yn], (0, R.optional)(T([V, Gl, V], k))), m => ["external", ...(m ? [["varValue", m]] : [])])])), ([m, r], B) => ["varDecl", ["varName", ...m], ...(null !== r ? [r] : []), B]),
+      Xt = Zk(T([vm, W, (0, R.cut)((0, R.peek)((0, R.not)((0, R.followed)(Pp, (0, R.not)(Il, [""])), ["Cannot use reserved function name"])))], vp), (0, R.cut)(T([V, il, V], (0, R.optional)(Kj))), (0, R.cut)(T([V, jl], (0, R.optional)(T([W, lm, W], kb)))), (0, R.cut)((0, R.preceded)(V, (0, R.or)([(0, R.map)(Jj, m => ["functionBody", m]), (0, R.map)(Yn, () => ["externalDefinition"])]))), (m, r, B, X) => ["functionDecl", ["functionName", ...m], ["paramList", ...(r || [])], ...(B ? [["typeDeclaration", ...B]] : []), X]),
+      Yt = T([un, W], (0, R.then)((0, R.star)((0, R.followed)((0, R.or)([Cf, gq]), W)), (0, R.or)([Wt, Xt]), (m, r) => [r[0], ...m, ...r.slice(1)])),
+      Zt = (0, R.then)(T([un, W, vn, W], (0, R.or)([xm, vm])), T([W, mn, W], u), (m, r) => ["defaultNamespaceDecl", ["defaultNamespaceCategory", m], ["uri", r]]),
+      $t = (0, R.or)([(0, R.map)((0, R.followed)(T([mn, W], mp), (0, R.preceded)(V, Ql)), m => ["namespacePrefix", m]), (0, R.map)(T([vn, W, xm, W], mn), () => ["defaultElementNamespace"])]),
+      au = T([$n, W, ao], Yk((0, R.optional)((0, R.preceded)(W, $t)), (0, R.preceded)(V, u), (0, R.optional)((0, R.then)(T([W, Zm, W], u), (0, R.star)(T([V, am, V], u)), (m, r) => [m, ...r])), (m, r, B) => ["schemaImport", ...(m ? [m] : []), ["targetNamespace", r], ...(B ? [B] : [])])),
+      bu = T([$n, W, bo], Yk((0, R.optional)((0, R.followed)(T([W, mn, W], mp), (0, R.preceded)(V, Ql))), (0, R.preceded)(V, u), (0, R.optional)((0, R.then)(T([W, Zm, W], u), (0, R.star)(T([V, am, V], u)), (m, r) => [m, ...r])), (m, r) => ["moduleImport", ["namespacePrefix", m], ["targetNamespace", r]])),
+      cu = (0, R.or)([au, bu]),
+      du = (0, R.map)(T([un, W, vn, W, dn, W], u), m => ["defaultCollationDecl", m]),
+      eu = (0, R.map)(T([un, W, co, W], u), m => ["baseUriDecl", m]),
+      fu = (0, R.then)(T([un, W], (0, R.or)([(0, R.map)(T([Fn, W], vp), m => ["decimalFormatName", ...m]), (0, R.map)(T([vn, W], Fn), () => null)])), (0, R.star)((0, R.then)((0, R.preceded)(W, jq), (0, R.preceded)(S(Ql, W), u), (m, r) => ["decimalFormatParam", ["decimalFormatParamName", m], ["decimalFormatParamValue", r]])), (m, r) => ["decimalFormatDecl", ...(m ? [m] : []), ...r]),
+      gu = (0, R.or)([kq, du, eu, lq, mq, nq, oq, fu]),
+      hu = (0, R.then)(T([un, W, io, W], vp), (0, R.preceded)(W, u), (m, r) => ["optionDecl", ["optionName", m], ["optionContents", r]]),
+      iu = (0, R.then)(T([un, W, jo, W, ko], (0, R.optional)(T([W, lm], Hj))), (0, R.or)([(0, R.map)((0, R.preceded)(S(Gl, V), k), m => ["varValue", m]), (0, R.map)(T([W, Yn], (0, R.optional)((0, R.preceded)(S(Gl, V), k))), () => ["external"])]), (m, r) => ["contextItemDecl", ...(m ? [["contextItemType", m]] : []), r]),
+      Uj = (0, R.then)((0, R.star)((0, R.followed)((0, R.or)([Zt, gu, Vt, cu]), (0, R.cut)(S(Jl, V)))), (0, R.star)((0, R.followed)((0, R.or)([iu, Yt, hu]), (0, R.cut)(S(Jl, V)))), (m, r) => 0 === m.length && 0 === r.length ? null : ["prolog", ...m, ...r]),
+      ju = T([bo, W, mn, W], (0, R.then)((0, R.followed)(mp, S(Ql, V)), (0, R.followed)(u, S(Jl, V)), (m, r) => ["moduleDecl", ["prefix", m], ["uri", r]])),
+      ku = (0, R.then)(ju, (0, R.preceded)(V, Uj), (m, r) => ["libraryModule", m, ...(r ? [r] : [])]),
+      lu = (0, R.then)(Uj, (0, R.preceded)(V, Ut), (m, r) => ["mainModule", ...(m ? [m] : []), r]),
+      mu = (0, R.map)(T([lo, V], (0, R.followed)((0, R.or)([(0, R.then)((0, R.preceded)(no, W), u, m => ["encoding", m]), (0, R.then)(T([mo, W], u), (0, R.optional)(T([W, no, W], u)), (m, r) => [["version", m], ...(r ? [["encoding", r]] : [])])]), (0, R.preceded)(V, Jl))), m => ["versionDecl", ...m]),
+      nu = (0, R.then)((0, R.optional)(S(mu, V)), (0, R.or)([ku, lu]), (m, r) => ["module", ...(m ? [m] : []), r]),
+      ou = (0, R.complete)(S(nu, V));
     return (m, r) => {
       n.clear();
-      r = Zt(m, r);
+      r = ou(m, r);
       let B = 1,
         X = 1;
       for (let ea = 0; ea < m.length + 1; ea++) {
         if (n.has(ea)) {
           const Fa = n.get(ea);
           Fa.line = X;
-          Fa.ha = B;
+          Fa.ga = B;
         }
         "\n" === m[ea] ? (X++, B = 1) : B++;
       }
       return r;
     };
   }
-  const mq = lq({
-      mb: !1,
-      Za: !1
+  const yq = xq({
+      Ka: !1,
+      xa: !1,
+      version: 3.1
     }),
-    nq = lq({
-      mb: !0,
-      Za: !1
+    zq = xq({
+      Ka: !0,
+      xa: !1,
+      version: 3.1
     }),
-    oq = lq({
-      mb: !1,
-      Za: !0
+    Aq = xq({
+      Ka: !1,
+      xa: !0,
+      version: 3.1
     }),
-    pq = lq({
-      mb: !0,
-      Za: !0
+    Bq = xq({
+      Ka: !0,
+      xa: !0,
+      version: 3.1
+    }),
+    Cq = xq({
+      Ka: !1,
+      xa: !1,
+      version: 4
+    }),
+    Dq = xq({
+      Ka: !0,
+      xa: !1,
+      version: 4
+    }),
+    Eq = xq({
+      Ka: !1,
+      xa: !0,
+      version: 4
+    }),
+    Fq = xq({
+      Ka: !0,
+      xa: !0,
+      version: 4
     });
-  function qq(a, b) {
-    var c = !!b.Z;
-    b = !!b.debug;
-    So.clear();
-    To.clear();
-    kq.clear();
-    c = c ? b ? pq(a, 0) : oq(a, 0) : b ? nq(a, 0) : mq(a, 0);
-    if (!0 === c.success) return c.value;
-    a = a.substring(0, c.offset).split("\n");
-    b = a[a.length - 1].length + 1;
-    throw new Rh({
+  var Gq = {
+      Ab: {
+        debug: Dq,
+        mb: Cq
+      },
+      Ib: {
+        debug: zq,
+        mb: yq
+      }
+    },
+    Hq = {
+      Ab: {
+        debug: Fq,
+        mb: Eq
+      },
+      Ib: {
+        debug: Bq,
+        mb: Aq
+      }
+    };
+  function Iq(a, b) {
+    var c = !!b.Y;
+    var d = !!b.debug;
+    b = b.version;
+    dp.clear();
+    ep.clear();
+    wq.clear();
+    c = c ? Hq : Gq;
+    c = 4 === b ? c.Ab : c.Ib;
+    d = (d ? c.debug : c.mb)(a, 0);
+    if (!0 === d.success) return d.value;
+    a = a.substring(0, d.offset).split("\n");
+    c = a[a.length - 1].length + 1;
+    throw new Wh({
       start: {
-        offset: c.offset,
+        offset: d.offset,
         line: a.length,
-        ha: b
+        ga: c
       },
       end: {
-        offset: c.offset + 1,
+        offset: d.offset + 1,
         line: a.length,
-        ha: b + 1
+        ga: c + 1
       }
-    }, "", "", Error(`XPST0003: Failed to parse script. Expected ${[...new Set(c.expected)]}`));
+    }, "", "", Error(`XPST0003: Failed to parse script. Expected ${[...new Set(d.expected)]}`));
   }
-  const rq = "http://www.w3.org/XML/1998/namespace http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema-instance http://www.w3.org/2005/xpath-functions http://www.w3.org/2005/xpath-functions/math http://www.w3.org/2012/xquery http://www.w3.org/2005/xpath-functions/array http://www.w3.org/2005/xpath-functions/map".split(" ");
-  function sq(a, b, c, d, e) {
-    var f = F(a, "functionName"),
+  const Jq = "http://www.w3.org/XML/1998/namespace http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema-instance http://www.w3.org/2005/xpath-functions http://www.w3.org/2005/xpath-functions/math http://www.w3.org/2012/xquery http://www.w3.org/2005/xpath-functions/array http://www.w3.org/2005/xpath-functions/map".split(" ");
+  function Kq(a, b, c, d, e) {
+    var f = G(a, "functionName"),
       h = I(f, "prefix") || "";
     let k = I(f, "URI");
     const l = H(f);
-    if (null === k && (k = "" === h ? null === b.v ? "http://www.w3.org/2005/xpath-functions" : b.v : b.$(h), !k && h)) throw zg(h);
-    if (rq.includes(k)) throw tg();
-    h = K(a, "annotation").map(y => F(y, "annotationName"));
+    if (null === k && (k = "" === h ? null === b.v ? "http://www.w3.org/2005/xpath-functions" : b.v : b.Z(h), !k && h)) throw zg(h);
+    if (Jq.includes(k)) throw tg();
+    h = K(a, "annotation").map(y => G(y, "annotationName"));
     f = h.every(y => !I(y, "URI") && "private" !== H(y));
     h = h.some(y => !I(y, "URI") && "updating" === H(y));
     if (!k) throw vg();
     const n = Lg(a),
-      t = K(F(a, "paramList"), "param"),
-      u = t.map(y => F(y, "varName")),
+      t = K(G(a, "paramList"), "param"),
+      u = t.map(y => G(y, "varName")),
       z = t.map(y => Lg(y));
-    if (a = F(a, "functionBody")) {
-      if (b.va(k, l, z.length)) throw ug(k, l);
+    if (a = G(a, "functionBody")) {
+      if (b.ua(k, l, z.length)) throw ug(k, l);
       if (!e) return;
-      const y = Fk(a[1], {
-          sa: !1,
-          Z: !0
+      const y = Mk(a[1], {
+          ra: !1,
+          Y: !0
         }),
-        G = new Cg(b),
+        F = new Cg(b),
         N = u.map(U => {
-          let ca = I(U, "URI");
+          let da = I(U, "URI");
           const Ga = I(U, "prefix");
           U = H(U);
-          Ga && null === ca && (ca = b.$(Ga || ""));
-          return Hg(G, ca, U);
+          Ga && null === da && (da = b.Z(Ga || ""));
+          return Hg(F, da, U);
         });
       e = h ? {
         j: z,
         arity: u.length,
-        callFunction: (U, ca, Ga, ...Gb) => {
-          U = hc(bc(U, -1, null, w.empty()), N.reduce((Xb, fd, Yb) => {
-            Xb[fd] = Ra(Gb[Yb]);
-            return Xb;
+        callFunction: (U, da, Ga, ...Hb) => {
+          U = ic(cc(U, -1, null, w.empty()), N.reduce((Zb, hd, jb) => {
+            Zb[hd] = Ra(Hb[jb]);
+            return Zb;
           }, Object.create(null)));
-          return y.s(U, ca);
+          return y.s(U, da);
         },
         wb: !1,
-        I: !0,
+        H: !0,
         cb: f,
         localName: l,
         namespaceURI: k,
@@ -13344,28 +13507,28 @@ const fontoxpath = function (xspattern, prsc) {
       } : {
         j: z,
         arity: u.length,
-        callFunction: (U, ca, Ga, ...Gb) => {
-          U = hc(bc(U, -1, null, w.empty()), N.reduce((Xb, fd, Yb) => {
-            Xb[fd] = Ra(Gb[Yb]);
-            return Xb;
+        callFunction: (U, da, Ga, ...Hb) => {
+          U = ic(cc(U, -1, null, w.empty()), N.reduce((Zb, hd, jb) => {
+            Zb[hd] = Ra(Hb[jb]);
+            return Zb;
           }, Object.create(null)));
-          return C(y, U, ca);
+          return A(y, U, da);
         },
         wb: !1,
-        I: !1,
+        H: !1,
         cb: f,
         localName: l,
         namespaceURI: k,
         i: n
       };
       c.push({
-        ba: y,
-        Eb: G
+        aa: y,
+        Fb: F
       });
       d.push({
         arity: u.length,
-        ba: y,
-        Ab: e,
+        aa: y,
+        Bb: e,
         localName: l,
         namespaceURI: k,
         cb: f
@@ -13375,14 +13538,14 @@ const fontoxpath = function (xspattern, prsc) {
       e = {
         j: z,
         arity: u.length,
-        callFunction: (y, G, N, ...U) => {
-          const ca = N.va(k, l, u.length, !0);
-          if (!ca) throw Error(`XPST0017: Function Q{${k}}${l} with arity of ${u.length} not registered. ${mg(l)}`);
-          if (ca.i.type !== n.type || ca.j.some((Ga, Gb) => Ga.type !== z[Gb].type)) throw Error("External function declaration types do not match actual function");
-          return ca.callFunction(y, G, N, ...U);
+        callFunction: (y, F, N, ...U) => {
+          const da = N.ua(k, l, u.length, !0);
+          if (!da) throw Error(`XPST0017: Function Q{${k}}${l} with arity of ${u.length} not registered. ${mg(l)}`);
+          if (da.i.type !== n.type || da.j.some((Ga, Hb) => Ga.type !== z[Hb].type)) throw Error("External function declaration types do not match actual function");
+          return da.callFunction(y, F, N, ...U);
         },
         wb: !0,
-        I: !1,
+        H: !1,
         localName: l,
         namespaceURI: k,
         cb: f,
@@ -13391,7 +13554,7 @@ const fontoxpath = function (xspattern, prsc) {
     }
     Fg(b, k, l, u.length, e);
   }
-  function tq(a, b, c, d) {
+  function Lq(a, b, c, d) {
     const e = [],
       f = [];
     K(a, "*").forEach(t => {
@@ -13408,15 +13571,15 @@ const fontoxpath = function (xspattern, prsc) {
     });
     const h = new Set();
     K(a, "moduleImport").forEach(t => {
-      const u = H(F(t, "namespacePrefix"));
-      t = H(F(t, "targetNamespace"));
+      const u = H(G(t, "namespacePrefix"));
+      t = H(G(t, "targetNamespace"));
       if (h.has(t)) throw Error(`XQST0047: The namespace "${t}" is imported more than once.`);
       h.add(t);
       Gg(b, u, t);
     });
     K(a, "namespaceDecl").forEach(t => {
-      const u = H(F(t, "prefix"));
-      t = H(F(t, "uri"));
+      const u = H(G(t, "prefix"));
+      t = H(G(t, "uri"));
       if ("xml" === u || "xmlns" === u) throw xg();
       if ("http://www.w3.org/XML/1998/namespace" === t || "http://www.w3.org/2000/xmlns/" === t) throw xg();
       Gg(b, u, t);
@@ -13424,8 +13587,8 @@ const fontoxpath = function (xspattern, prsc) {
     let k = null,
       l = null;
     for (const t of K(a, "defaultNamespaceDecl")) {
-      const u = H(F(t, "defaultNamespaceCategory")),
-        z = H(F(t, "uri"));
+      const u = H(G(t, "defaultNamespaceCategory")),
+        z = H(G(t, "uri"));
       if (!z) throw vg();
       if ("http://www.w3.org/XML/1998/namespace" === z || "http://www.w3.org/2000/xmlns/" === z) throw xg();
       if ("function" === u) {
@@ -13439,63 +13602,63 @@ const fontoxpath = function (xspattern, prsc) {
     k && (b.v = k);
     l && Gg(b, "", l);
     K(a, "functionDecl").forEach(t => {
-      sq(t, b, e, f, c);
+      Kq(t, b, e, f, c);
     });
     const n = [];
     K(a, "varDecl").forEach(t => {
-      const u = Kg(F(t, "varName"));
+      const u = Kg(G(t, "varName"));
       let z = u.namespaceURI;
-      if (null === z && (z = b.$(u.prefix), !z && u.prefix)) throw zg(u.prefix);
-      if (rq.includes(z)) throw tg();
-      var y = F(t, "external");
-      t = F(t, "varValue");
-      let G, N;
-      null !== y ? (y = F(y, "varValue"), null !== y && (G = F(y, "*"))) : null !== t && (G = F(t, "*"));
+      if (null === z && (z = b.Z(u.prefix), !z && u.prefix)) throw zg(u.prefix);
+      if (Jq.includes(z)) throw tg();
+      var y = G(t, "external");
+      t = G(t, "varValue");
+      let F, N;
+      null !== y ? (y = G(y, "varValue"), null !== y && (F = G(y, "*"))) : null !== t && (F = G(t, "*"));
       if (n.some(U => U.namespaceURI === z && U.localName === u.localName)) throw Error(`XQST0049: The variable ${z ? `Q{${z}}` : ""}${u.localName} has already been declared.`);
       Hg(b, z || "", u.localName);
-      if (c && (G && (N = Fk(G, {
-        sa: !1,
-        Z: !0
-      })), G && !Eg(b, z || "", u.localName))) {
+      if (c && (F && (N = Mk(F, {
+        ra: !1,
+        Y: !0
+      })), F && !Eg(b, z || "", u.localName))) {
         let U = null;
-        Ig(b, z, u.localName, (ca, Ga) => {
+        Ig(b, z, u.localName, (da, Ga) => {
           if (U) return U();
-          U = Ra(C(N, ca, Ga));
+          U = Ra(A(N, da, Ga));
           return U();
         });
         e.push({
-          ba: N,
-          Eb: new Cg(b)
+          aa: N,
+          Fb: new Cg(b)
         });
         n.push({
-          ba: N,
+          aa: N,
           localName: u.localName,
           namespaceURI: z
         });
       }
     });
     f.forEach(t => {
-      if (!t.Ab.I && t.ba.I) throw Oe(`The function Q{${t.namespaceURI}}${t.localName} is updating but the %updating annotation is missing.`);
+      if (!t.Bb.H && t.aa.H) throw Oe(`The function Q{${t.namespaceURI}}${t.localName} is updating but the %updating annotation is missing.`);
     });
     return {
-      Ia: f.map(t => t.Ab),
-      Ta: n,
+      Ia: f.map(t => t.Bb),
+      Va: n,
       source: d,
       pa: t => {
         h.forEach(u => {
-          Nk(b, u);
+          Uk(b, u);
         });
         e.forEach(({
-          ba: u,
-          Eb: z
+          aa: u,
+          Fb: z
         }) => {
           h.forEach(y => {
-            Nk(z, y);
+            Uk(z, y);
           });
           t.Ia.forEach(y => {
-            z.va(y.namespaceURI, y.localName, y.arity, !0) || y.cb && Fg(z, y.namespaceURI, y.localName, y.arity, y);
+            z.ua(y.namespaceURI, y.localName, y.arity, !0) || y.cb && Fg(z, y.namespaceURI, y.localName, y.arity, y);
           });
-          t.Ta.forEach(y => {
+          t.Va.forEach(y => {
             z.eb(y.namespaceURI, y.localName) || Hg(z, y.namespaceURI, y.localName);
           });
           u.v(z);
@@ -13503,66 +13666,66 @@ const fontoxpath = function (xspattern, prsc) {
       }
     };
   }
-  function uq(a, b, c, d, e, f, h) {
-    const k = b.Z ? "XQuery" : "XPath";
-    c = b.Ha ? null : Ik(a, k, c, d, e, b.debug, f, h);
+  function Mq(a, b, c, d, e, f, h) {
+    const k = b.Y ? "XQuery" : "XPath";
+    c = b.Ha ? null : Pk(a, k, c, d, e, b.debug, f, h);
     return null !== c ? {
-      state: c.hc ? 1 : 2,
-      ba: c.ba
+      state: c.jc ? 1 : 2,
+      aa: c.aa
     } : {
       state: 0,
-      Zb: "string" === typeof a ? qq(a, b) : Kk(a)
+      ac: "string" === typeof a ? Iq(a, b) : Rk(a)
     };
   }
-  function vq(a, b, c, d) {
-    const e = F(a, "mainModule");
+  function Nq(a, b, c, d) {
+    const e = G(a, "mainModule");
     if (!e) throw Error("Can not execute a library module.");
-    const f = F(e, "prolog");
+    const f = G(e, "prolog");
     if (f) {
-      if (!b.Z) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
-      Ok();
-      d = tq(f, c, !0, d);
+      if (!b.Y) throw Error("XPST0003: Use of XQuery functionality is not allowed in XPath context");
+      Vk();
+      d = Lq(f, c, !0, d);
       d.pa(d);
     }
     O(a, new rh(c));
     a = J(e, ["queryBody", "*"]);
     return Q(a, b);
   }
-  function wq(a, b, c, d, e, f, h) {
+  function Oq(a, b, c, d, e, f, h) {
     const k = new qg(c, d, f, h),
       l = new Cg(k);
-    0 < Object.keys(e).length && Ok();
+    0 < Object.keys(e).length && Vk();
     Object.keys(e).forEach(n => {
       const t = e[n];
-      Nk(l, t);
+      Uk(l, t);
       Gg(l, n, t);
     });
-    "string" === typeof a && (a = Pk(a));
-    c = uq(a, b, c, d, e, f, h);
+    "string" === typeof a && (a = Wk(a));
+    c = Mq(a, b, c, d, e, f, h);
     switch (c.state) {
       case 2:
         return {
-          ga: l,
-          ba: c.ba
+          fa: l,
+          aa: c.aa
         };
       case 1:
-        return c.ba.v(l), Jk(a, b.Z ? "XQuery" : "XPath", k, e, c.ba, b.debug, f), {
-          ga: l,
-          ba: c.ba
+        return c.aa.v(l), Qk(a, b.Y ? "XQuery" : "XPath", k, e, c.aa, b.debug, f), {
+          fa: l,
+          aa: c.aa
         };
       case 0:
-        return c = vq(c.Zb, b, l, a), c.v(l), b.Ha || Jk(a, b.Z ? "XQuery" : "XPath", k, e, c, b.debug, f), {
-          ga: l,
-          ba: c
+        return c = Nq(c.ac, b, l, a), c.v(l), b.Ha || Qk(a, b.Y ? "XQuery" : "XPath", k, e, c, b.debug, f), {
+          fa: l,
+          aa: c
         };
     }
   }
-  function xq(a) {
+  function Pq(a) {
     if (v(a.type, 1)) return a.value;
     if (v(a.type, 54)) return a.value.node;
-    throw mc(`Unable to convert selector argument of type ${Da[a.type]} to either an ${Da[1]} or an ${Da[54]} representing an XQueryX program while calling 'fontoxpath:evaluate'`);
+    throw nc(`Unable to convert selector argument of type ${Da[a.type]} to either an ${Da[1]} or an ${Da[54]} representing an XQueryX program while calling 'fontoxpath:evaluate'`);
   }
-  function yq(a, b, c, d) {
+  function Qq(a, b, c, d) {
     a = a.first();
     const e = b.first().h.reduce((f, h) => {
       f[h.key.value] = Ra(h.value());
@@ -13570,104 +13733,106 @@ const fontoxpath = function (xspattern, prsc) {
     }, Object.create(null));
     b = e["."] ? e["."]() : w.empty();
     delete e["."];
+    a = Pq(a);
     try {
       const {
-          ba: f,
-          ga: h
-        } = wq(xq(a), {
-          sa: !1,
-          Z: !0,
+          aa: f,
+          fa: h
+        } = Oq(a, {
+          ra: !1,
+          Y: !0,
           debug: d.debug,
-          Ha: d.Ha
-        }, n => c.$(n), Object.keys(e).reduce((n, t) => {
+          Ha: d.Ha,
+          version: 3.1
+        }, n => c.Z(n), Object.keys(e).reduce((n, t) => {
           n[t] = t;
           return n;
-        }, {}), {}, "http://www.w3.org/2005/xpath-functions", (n, t) => c.Sa(n, t)),
-        k = !b.F(),
-        l = new cc({
-          M: k ? b.first() : null,
-          Aa: k ? 0 : -1,
-          ta: b,
-          ra: Object.keys(e).reduce((n, t) => {
+        }, {}), {}, "http://www.w3.org/2005/xpath-functions", (n, t) => c.Ua(n, t)),
+        k = !b.isEmpty(),
+        l = new dc({
+          L: k ? b.first() : null,
+          Ba: k ? 0 : -1,
+          sa: b,
+          qa: Object.keys(e).reduce((n, t) => {
             n[h.eb(null, t)] = e[t];
             return n;
           }, Object.create(null))
         });
       return {
-        ic: f.h(l, d).value,
-        ec: a
+        kc: f.h(l, d).value,
+        cc: a
       };
     } catch (f) {
-      hg(a.value, f);
+      hg(a, f);
     }
   }
-  function zq(a, b, c) {
+  function Rq(a, b, c) {
     if (1 !== b.node.nodeType && 9 !== b.node.nodeType) return [];
-    const d = hb(a, b).reduce((e, f) => {
-      for (const h of zq(a, f, c)) e.push(h);
+    const d = gb(a, b).reduce((e, f) => {
+      for (const h of Rq(a, f, c)) e.push(h);
       return e;
     }, []);
     c(b) && d.unshift(b);
     return d;
   }
-  const Aq = (a, b, c, d, e) => {
+  const Sq = (a, b, c, d, e) => {
       a = e.first();
-      if (!a) throw lc("The context is absent, it needs to be present to use id function.");
-      if (!v(a.type, 53)) throw mc("The context item is not a node, it needs to be node to use id function.");
+      if (!a) throw mc("The context is absent, it needs to be present to use id function.");
+      if (!v(a.type, 53)) throw nc("The context item is not a node, it needs to be node to use id function.");
       const f = b.h,
-        h = d.O().reduce((k, l) => {
+        h = d.N().reduce((k, l) => {
           l.value.split(/\s+/).forEach(n => {
             k[n] = !0;
           });
           return k;
         }, Object.create(null));
       for (b = a.value; 9 !== b.node.nodeType;) if (b = x(f, b), null === b) throw Error("FODC0001: the root node of the target node is not a document node.");
-      b = zq(f, b, k => {
+      b = Rq(f, b, k => {
         if (1 !== k.node.nodeType) return !1;
         k = fb(f, k, "id");
         if (!k || !h[k]) return !1;
         h[k] = !1;
         return !0;
       });
-      return w.create(b.map(k => rb(k)));
+      return w.create(b.map(k => sb(k)));
     },
-    Bq = (a, b, c, d, e) => {
+    Tq = (a, b, c, d, e) => {
       a = e.first();
-      if (!a) throw lc("The context is absent, it needs to be present to use idref function.");
-      if (!v(a.type, 53)) throw mc("The context item is not a node, it needs to be node to use idref function.");
+      if (!a) throw mc("The context is absent, it needs to be present to use idref function.");
+      if (!v(a.type, 53)) throw nc("The context item is not a node, it needs to be node to use idref function.");
       const f = b.h,
-        h = d.O().reduce((k, l) => {
+        h = d.N().reduce((k, l) => {
           k[l.value] = !0;
           return k;
         }, Object.create(null));
       for (b = a.value; 9 !== b.node.nodeType;) if (b = x(f, b), null === b) throw Error("FODC0001: the root node of the context node is not a document node.");
-      b = zq(f, b, k => 1 !== k.node.nodeType ? !1 : (k = fb(f, k, "idref")) ? k.split(/\s+/).some(l => h[l]) : !1);
-      return w.create(b.map(k => rb(k)));
+      b = Rq(f, b, k => 1 !== k.node.nodeType ? !1 : (k = fb(f, k, "idref")) ? k.split(/\s+/).some(l => h[l]) : !1);
+      return w.create(b.map(k => sb(k)));
     };
-  function Cq(a) {
+  function Uq(a) {
     switch (typeof a) {
       case "object":
-        return Array.isArray(a) ? w.m(new pb(a.map(b => Ra(Cq(b))))) : null === a ? w.empty() : w.m(new ub(Object.keys(a).map(b => ({
+        return Array.isArray(a) ? w.m(new qb(a.map(b => Ra(Uq(b))))) : null === a ? w.empty() : w.m(new wb(Object.keys(a).map(b => ({
           key: g(b, 1),
-          value: Ra(Cq(a[b]))
+          value: Ra(Uq(a[b]))
         }))));
       case "number":
         return w.m(g(a, 3));
       case "string":
         return w.m(g(a, 1));
       case "boolean":
-        return a ? w.aa() : w.T();
+        return a ? w.$() : w.S();
       default:
         throw Error("Unexpected type in JSON parse");
     }
   }
-  const Dq = (a, b, c, d, e) => {
+  const Vq = (a, b, c, d, e) => {
     const f = w.m(g("duplicates", 1));
-    a = tb(a, b, c, e, f);
-    const h = a.F() ? "use-first" : a.first().value;
-    return d.N(k => w.m(new ub(k.reduce((l, n) => {
+    a = vb(a, b, c, e, f);
+    const h = a.isEmpty() ? "use-first" : a.first().value;
+    return d.M(k => w.m(new wb(k.reduce((l, n) => {
       n.h.forEach(t => {
-        const u = l.findIndex(z => sb(z.key, t.key));
+        const u = l.findIndex(z => ub(z.key, t.key));
         if (0 <= u) switch (h) {
           case "reject":
             throw Error("FOJS0003: Duplicate encountered when merging maps.");
@@ -13677,7 +13842,7 @@ const fontoxpath = function (xspattern, prsc) {
           case "combine":
             l.splice(u, 1, {
               key: t.key,
-              value: Ra(w.create(l[u].value().O().concat(t.value().O())))
+              value: Ra(w.create(l[u].value().N().concat(t.value().N())))
             });
             return;
           default:
@@ -13688,10 +13853,10 @@ const fontoxpath = function (xspattern, prsc) {
       return l;
     }, []))));
   };
-  function Eq(a, b, c) {
+  function Wq(a, b, c) {
     let d = 1;
     const e = a.value;
-    a = a.Pa(!0);
+    a = a.Ra(!0);
     let f = null;
     const h = Math.max(b - 1, 0);
     -1 !== a && (f = Math.max(0, (null === c ? a : Math.max(0, Math.min(a, c + (b - 1)))) - h));
@@ -13705,35 +13870,35 @@ const fontoxpath = function (xspattern, prsc) {
       }
     }, f);
   }
-  function Fq(a) {
-    return a.map(b => v(b.type, 19) ? jd(b, 3) : b);
+  function Xq(a) {
+    return a.map(b => v(b.type, 19) ? kd(b, 3) : b);
   }
-  function Gq(a) {
-    a = Fq(a);
+  function Yq(a) {
+    a = Xq(a);
     if (a.some(b => Number.isNaN(b.value))) return [g(NaN, 3)];
-    a = Ji(a);
+    a = Oi(a);
     if (!a) throw Error("FORG0006: Incompatible types to be converted to a common type");
     return a;
   }
-  const Hq = (a, b, c, d, e, f) => A([e, f], ([h, k]) => {
+  const Zq = (a, b, c, d, e, f) => tb([e, f], ([h, k]) => {
       if (Infinity === h.value) return w.empty();
       if (-Infinity === h.value) return k && Infinity === k.value ? w.empty() : d;
       if (k) {
         if (isNaN(k.value)) return w.empty();
         Infinity === k.value && (k = null);
       }
-      return isNaN(h.value) ? w.empty() : Eq(d, Math.round(h.value), k ? Math.round(k.value) : null);
+      return isNaN(h.value) ? w.empty() : Wq(d, Math.round(h.value), k ? Math.round(k.value) : null);
     }),
-    Iq = (a, b, c, d, e) => {
-      if (d.F()) return e;
-      a = Fq(d.O());
-      a = Ji(a);
+    $q = (a, b, c, d, e) => {
+      if (d.isEmpty()) return e;
+      a = Xq(d.N());
+      a = Oi(a);
       if (!a) throw Error("FORG0006: Incompatible types to be converted to a common type");
       if (!a.every(f => v(f.type, 2))) throw Error("FORG0006: items passed to fn:sum are not all numeric.");
       b = a.reduce((f, h) => f + h.value, 0);
       return a.every(f => v(f.type, 5)) ? w.m(g(b, 5)) : a.every(f => v(f.type, 3)) ? w.m(g(b, 3)) : a.every(f => v(f.type, 4)) ? w.m(g(b, 4)) : w.m(g(b, 6));
     };
-  var Jq = [].concat(Nf, [{
+  var ar = [].concat(Nf, [{
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "boolean",
     j: [{
@@ -13744,7 +13909,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 0,
       g: 3
     },
-    callFunction: (a, b, c, d) => d.fa() ? w.aa() : w.T()
+    callFunction: (a, b, c, d) => d.ea() ? w.$() : w.S()
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "true",
@@ -13753,7 +13918,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 0,
       g: 3
     },
-    callFunction: () => w.aa()
+    callFunction: () => w.$()
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "not",
@@ -13765,7 +13930,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 0,
       g: 3
     },
-    callFunction: (a, b, c, d) => !1 === d.fa() ? w.aa() : w.T()
+    callFunction: (a, b, c, d) => !1 === d.ea() ? w.$() : w.S()
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "false",
@@ -13774,7 +13939,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 0,
       g: 3
     },
-    callFunction: () => w.T()
+    callFunction: () => w.S()
   }], [{
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "last",
@@ -13784,12 +13949,12 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     },
     callFunction: a => {
-      if (null === a.M) throw lc("The fn:last() function depends on dynamic context, which is absent.");
+      if (null === a.L) throw mc("The fn:last() function depends on dynamic context, which is absent.");
       let b = !1;
       return w.create({
         next: () => {
           if (b) return p;
-          const c = a.ta.Pa();
+          const c = a.sa.Ra();
           b = !0;
           return q(g(c, 5));
         }
@@ -13804,8 +13969,8 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     },
     callFunction: a => {
-      if (null === a.M) throw lc("The fn:position() function depends on dynamic context, which is absent.");
-      return w.m(g(a.Aa + 1, 5));
+      if (null === a.L) throw mc("The fn:position() function depends on dynamic context, which is absent.");
+      return w.m(g(a.Ba + 1, 5));
     }
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -13815,7 +13980,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 10,
       g: 3
     },
-    callFunction: a => w.m(g(ec(a), 10))
+    callFunction: a => w.m(g(fc(a), 10))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "current-date",
@@ -13824,7 +13989,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 7,
       g: 3
     },
-    callFunction: a => w.m(g(Lb(ec(a), 7), 7))
+    callFunction: a => w.m(g(Mb(fc(a), 7), 7))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "current-time",
@@ -13833,7 +13998,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 8,
       g: 3
     },
-    callFunction: a => w.m(g(Lb(ec(a), 8), 8))
+    callFunction: a => w.m(g(Mb(fc(a), 8), 8))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "implicit-timezone",
@@ -13842,7 +14007,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 17,
       g: 3
     },
-    callFunction: a => w.m(g(fc(a), 17))
+    callFunction: a => w.m(g(gc(a), 17))
   }], Of, Wf, cg, [{
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "years-from-duration",
@@ -13854,7 +14019,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 5,
       g: 0
     },
-    callFunction: (a, b, c, d) => d.F() ? d : w.m(g(d.first().value.bb(), 5))
+    callFunction: (a, b, c, d) => d.isEmpty() ? d : w.m(g(d.first().value.ab(), 5))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "months-from-duration",
@@ -13866,7 +14031,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 5,
       g: 0
     },
-    callFunction: (a, b, c, d) => d.F() ? d : w.m(g(d.first().value.ab(), 5))
+    callFunction: (a, b, c, d) => d.isEmpty() ? d : w.m(g(d.first().value.$a(), 5))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "days-from-duration",
@@ -13878,7 +14043,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 5,
       g: 0
     },
-    callFunction: (a, b, c, d) => d.F() ? d : w.m(g(d.first().value.$a(), 5))
+    callFunction: (a, b, c, d) => d.isEmpty() ? d : w.m(g(d.first().value.Za(), 5))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "hours-from-duration",
@@ -13890,7 +14055,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 5,
       g: 0
     },
-    callFunction: (a, b, c, d) => d.F() ? d : w.m(g(d.first().value.getHours(), 5))
+    callFunction: (a, b, c, d) => d.isEmpty() ? d : w.m(g(d.first().value.getHours(), 5))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "minutes-from-duration",
@@ -13902,7 +14067,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 5,
       g: 0
     },
-    callFunction: (a, b, c, d) => d.F() ? d : w.m(g(d.first().value.getMinutes(), 5))
+    callFunction: (a, b, c, d) => d.isEmpty() ? d : w.m(g(d.first().value.getMinutes(), 5))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "seconds-from-duration",
@@ -13914,7 +14079,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 4,
       g: 0
     },
-    callFunction: (a, b, c, d) => d.F() ? d : w.m(g(d.first().value.getSeconds(), 4))
+    callFunction: (a, b, c, d) => d.isEmpty() ? d : w.m(g(d.first().value.getSeconds(), 4))
   }], eg, [{
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "id",
@@ -13929,7 +14094,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 54,
       g: 2
     },
-    callFunction: Aq
+    callFunction: Sq
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "id",
@@ -13942,7 +14107,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     },
     callFunction(a, b, c, d) {
-      return Aq(a, b, c, d, w.m(a.M));
+      return Sq(a, b, c, d, w.m(a.L));
     }
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -13958,7 +14123,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 53,
       g: 2
     },
-    callFunction: Bq
+    callFunction: Tq
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     localName: "idref",
@@ -13971,7 +14136,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     },
     callFunction(a, b, c, d) {
-      return Bq(a, b, c, d, w.m(a.M));
+      return Tq(a, b, c, d, w.m(a.L));
     }
   }], [{
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -13991,7 +14156,7 @@ const fontoxpath = function (xspattern, prsc) {
       } catch (f) {
         throw Error("FOJS0001: parsed JSON string contains illegal JSON.");
       }
-      return Cq(e);
+      return Uq(e);
     }
   }], [{
     namespaceURI: "http://www.w3.org/2005/xpath-functions/map",
@@ -14007,7 +14172,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 0,
       g: 3
     },
-    callFunction: (a, b, c, d, e) => A([d, e], ([f, h]) => f.h.some(k => sb(k.key, h)) ? w.aa() : w.T())
+    callFunction: (a, b, c, d, e) => tb([d, e], ([f, h]) => f.h.some(k => ub(k.key, h)) ? w.$() : w.S())
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/map",
     localName: "entry",
@@ -14022,7 +14187,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 61,
       g: 3
     },
-    callFunction: (a, b, c, d, e) => d.map(f => new ub([{
+    callFunction: (a, b, c, d, e) => d.map(f => new wb([{
       key: f,
       value: Ra(e)
     }]))
@@ -14040,7 +14205,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 59,
       g: 2
     },
-    callFunction: (a, b, c, d, e) => A([d, e], ([f, h]) => jc(f.h.map(k => h.value.call(void 0, a, b, c, w.m(k.key), k.value()))))
+    callFunction: (a, b, c, d, e) => tb([d, e], ([f, h]) => kc(f.h.map(k => h.value.call(void 0, a, b, c, w.m(k.key), k.value()))))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/map",
     localName: "get",
@@ -14055,7 +14220,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 59,
       g: 2
     },
-    callFunction: tb
+    callFunction: vb
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/map",
     localName: "keys",
@@ -14067,7 +14232,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 46,
       g: 2
     },
-    callFunction: (a, b, c, d) => A([d], ([e]) => w.create(e.h.map(f => f.key)))
+    callFunction: (a, b, c, d) => tb([d], ([e]) => w.create(e.h.map(f => f.key)))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/map",
     localName: "merge",
@@ -14082,7 +14247,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 61,
       g: 3
     },
-    callFunction: Dq
+    callFunction: Vq
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/map",
     localName: "merge",
@@ -14095,7 +14260,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     },
     callFunction(a, b, c, d) {
-      return Dq(a, b, c, d, w.m(new ub([{
+      return Vq(a, b, c, d, w.m(new wb([{
         key: g("duplicates", 1),
         value: () => w.m(g("use-first", 1))
       }])));
@@ -14117,9 +14282,9 @@ const fontoxpath = function (xspattern, prsc) {
       type: 61,
       g: 3
     },
-    callFunction: (a, b, c, d, e, f) => A([d, e], ([h, k]) => {
+    callFunction: (a, b, c, d, e, f) => tb([d, e], ([h, k]) => {
       h = h.h.concat();
-      const l = h.findIndex(n => sb(n.key, k));
+      const l = h.findIndex(n => ub(n.key, k));
       0 <= l ? h.splice(l, 1, {
         key: k,
         value: Ra(f)
@@ -14127,7 +14292,7 @@ const fontoxpath = function (xspattern, prsc) {
         key: k,
         value: Ra(f)
       });
-      return w.m(new ub(h));
+      return w.m(new wb(h));
     })
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/map",
@@ -14143,14 +14308,14 @@ const fontoxpath = function (xspattern, prsc) {
       type: 61,
       g: 3
     },
-    callFunction: (a, b, c, d, e) => A([d], ([f]) => {
+    callFunction: (a, b, c, d, e) => tb([d], ([f]) => {
       const h = f.h.concat();
-      return e.N(k => {
+      return e.M(k => {
         k.forEach(l => {
-          const n = h.findIndex(t => sb(t.key, l));
+          const n = h.findIndex(t => ub(t.key, l));
           0 <= n && h.splice(n, 1);
         });
-        return w.m(new ub(h));
+        return w.m(new wb(h));
       });
     })
   }, {
@@ -14236,7 +14401,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 3,
       g: 0
     },
-    callFunction: (a, b, c, d, e) => e.N(([f]) => d.map(h => 1 !== Math.abs(h.value) || Number.isFinite(f.value) ? g(Math.pow(h.value, f.value), 3) : g(1, 3)))
+    callFunction: (a, b, c, d, e) => e.M(([f]) => d.map(h => 1 !== Math.abs(h.value) || Number.isFinite(f.value) ? g(Math.pow(h.value, f.value), 3) : g(1, 3)))
   }, {
     namespaceURI: "http://www.w3.org/2005/xpath-functions/math",
     localName: "sqrt",
@@ -14335,8 +14500,8 @@ const fontoxpath = function (xspattern, prsc) {
       type: 3,
       g: 0
     },
-    callFunction: (a, b, c, d, e) => e.N(([f]) => d.map(h => g(Math.atan2(h.value, f.value), 3)))
-  }], Ae, Yd, [{
+    callFunction: (a, b, c, d, e) => e.M(([f]) => d.map(h => g(Math.atan2(h.value, f.value), 3)))
+  }], Ae, $d, [{
     namespaceURI: "http://fontoxpath/operators",
     localName: "to",
     j: [{
@@ -14374,12 +14539,12 @@ const fontoxpath = function (xspattern, prsc) {
       type: 23,
       g: 3
     },
-    callFunction: (a, b, c, d, e) => A([d, e], ([f, h]) => {
+    callFunction: (a, b, c, d, e) => tb([d, e], ([f, h]) => {
       h = h.value;
-      if (!tc(h, 23)) throw Error("FOCA0002: The provided QName is invalid.");
+      if (!uc(h, 23)) throw Error("FOCA0002: The provided QName is invalid.");
       f = f ? f.value || null : null;
       if (null === f && h.includes(":")) throw Error("FOCA0002: The URI of a QName may not be empty if a prefix is provided.");
-      if (d.F()) return w.m(g(new Sa("", null, h), 23));
+      if (d.isEmpty()) return w.m(g(new Sa("", null, h), 23));
       if (!h.includes(":")) return w.m(g(new Sa("", f, h), 23));
       const [k, l] = h.split(":");
       return w.m(g(new Sa(k, f, l), 23));
@@ -14395,7 +14560,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 24,
       g: 0
     },
-    callFunction: (a, b, c, d) => A([d], ([e]) => {
+    callFunction: (a, b, c, d) => tb([d], ([e]) => {
       if (null === e) return w.empty();
       e = e.value;
       return e.prefix ? w.m(g(e.prefix, 24)) : w.empty();
@@ -14430,9 +14595,9 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     }],
     callFunction: (a, b, c, d) => d.X({
-      empty: () => w.aa(),
-      multiple: () => w.T(),
-      m: () => w.T()
+      empty: () => w.$(),
+      multiple: () => w.S(),
+      m: () => w.S()
     }),
     localName: "empty",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -14446,9 +14611,9 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     }],
     callFunction: (a, b, c, d) => d.X({
-      empty: () => w.T(),
-      multiple: () => w.aa(),
-      m: () => w.aa()
+      empty: () => w.S(),
+      multiple: () => w.$(),
+      m: () => w.$()
     }),
     localName: "exists",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -14461,7 +14626,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 59,
       g: 2
     }],
-    callFunction: (a, b, c, d) => Eq(d, 1, 1),
+    callFunction: (a, b, c, d) => Wq(d, 1, 1),
     localName: "head",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -14473,7 +14638,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 59,
       g: 2
     }],
-    callFunction: (a, b, c, d) => Eq(d, 2, null),
+    callFunction: (a, b, c, d) => Wq(d, 2, null),
     localName: "tail",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -14492,13 +14657,13 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     }],
     callFunction: (a, b, c, d, e, f) => {
-      if (d.F()) return f;
-      if (f.F()) return d;
-      a = d.O();
+      if (d.isEmpty()) return f;
+      if (f.isEmpty()) return d;
+      a = d.N();
       e = e.first().value - 1;
       0 > e ? e = 0 : e > a.length && (e = a.length);
       b = a.slice(e);
-      return w.create(a.slice(0, e).concat(f.O(), b));
+      return w.create(a.slice(0, e).concat(f.N(), b));
     },
     localName: "insert-before",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -14516,7 +14681,7 @@ const fontoxpath = function (xspattern, prsc) {
     }],
     callFunction: (a, b, c, d, e) => {
       a = e.first().value;
-      d = d.O();
+      d = d.N();
       if (!d.length || 1 > a || a > d.length) return w.create(d);
       d.splice(a - 1, 1);
       return w.create(d);
@@ -14532,7 +14697,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 59,
       g: 2
     }],
-    callFunction: (a, b, c, d) => d.N(e => w.create(e.reverse())),
+    callFunction: (a, b, c, d) => d.M(e => w.create(e.reverse())),
     localName: "reverse",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -14547,7 +14712,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 3,
       g: 3
     }],
-    callFunction: (a, b, c, d, e) => Hq(a, b, c, d, e, w.empty()),
+    callFunction: (a, b, c, d, e) => Zq(a, b, c, d, e, w.empty()),
     localName: "subsequence",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -14565,7 +14730,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 3,
       g: 3
     }],
-    callFunction: Hq,
+    callFunction: Zq,
     localName: "subsequence",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -14590,7 +14755,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     }],
     callFunction: (a, b, c, d) => {
-      const e = qc(d, b).O();
+      const e = rc(d, b).N();
       return w.create(e).filter((f, h) => e.slice(0, h).every(k => !De(f, k)));
     },
     localName: "distinct-values",
@@ -14624,7 +14789,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 46,
       g: 3
     }],
-    callFunction: (a, b, c, d, e) => e.N(([f]) => qc(d, b).map((h, k) => pi("eqOp", h.type, f.type)(h, f, a) ? g(k + 1, 5) : g(-1, 5)).filter(h => -1 !== h.value)),
+    callFunction: (a, b, c, d, e) => e.M(([f]) => rc(d, b).map((h, k) => ui("eqOp", h.type, f.type)(h, f, a) ? g(k + 1, 5) : g(-1, 5)).filter(h => -1 !== h.value)),
     localName: "index-of",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -14708,7 +14873,7 @@ const fontoxpath = function (xspattern, prsc) {
       return w.create({
         next: () => {
           if (e) return p;
-          const f = d.Pa();
+          const f = d.Ra();
           e = !0;
           return q(g(f, 5));
         }
@@ -14726,9 +14891,9 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     }],
     callFunction: (a, b, c, d) => {
-      if (d.F()) return d;
-      a = Fq(d.O());
-      a = Ji(a);
+      if (d.isEmpty()) return d;
+      a = Xq(d.N());
+      a = Oi(a);
       if (!a) throw Error("FORG0006: Incompatible types to be converted to a common type");
       if (!a.every(e => v(e.type, 2))) throw Error("FORG0006: items passed to fn:avg are not all numeric.");
       b = a.reduce((e, f) => e + f.value, 0) / a.length;
@@ -14746,8 +14911,8 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     }],
     callFunction: (a, b, c, d) => {
-      if (d.F()) return d;
-      a = Gq(d.O());
+      if (d.isEmpty()) return d;
+      a = Yq(d.N());
       return w.m(a.reduce((e, f) => e.value < f.value ? f : e));
     },
     localName: "max",
@@ -14779,8 +14944,8 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     }],
     callFunction: (a, b, c, d) => {
-      if (d.F()) return d;
-      a = Gq(d.O());
+      if (d.isEmpty()) return d;
+      a = Yq(d.N());
       return w.m(a.reduce((e, f) => e.value > f.value ? f : e));
     },
     localName: "min",
@@ -14811,7 +14976,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 46,
       g: 2
     }],
-    callFunction: (a, b, c, d) => Iq(a, b, c, d, w.m(g(0, 5))),
+    callFunction: (a, b, c, d) => $q(a, b, c, d, w.m(g(0, 5))),
     localName: "sum",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -14826,7 +14991,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 46,
       g: 0
     }],
-    callFunction: Iq,
+    callFunction: $q,
     localName: "sum",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -14839,7 +15004,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     }],
     callFunction: (a, b, c, d) => {
-      if (!d.F() && !d.oa()) throw Error("FORG0003: The argument passed to fn:zero-or-one contained more than one item.");
+      if (!d.isEmpty() && !d.oa()) throw Error("FORG0003: The argument passed to fn:zero-or-one contained more than one item.");
       return d;
     },
     localName: "zero-or-one",
@@ -14854,7 +15019,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     }],
     callFunction: (a, b, c, d) => {
-      if (d.F()) throw Error("FORG0004: The argument passed to fn:one-or-more was empty.");
+      if (d.isEmpty()) throw Error("FORG0004: The argument passed to fn:one-or-more was empty.");
       return d;
     },
     localName: "one-or-more",
@@ -14887,7 +15052,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     }],
     callFunction: (a, b, c, d, e) => {
-      if (d.F()) return d;
+      if (d.isEmpty()) return d;
       const f = e.first(),
         h = f.o;
       if (1 !== h.length) throw Error("XPTY0004: signature of function passed to fn:filter is incompatible.");
@@ -14913,7 +15078,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     }],
     callFunction: (a, b, c, d, e) => {
-      if (d.F()) return d;
+      if (d.isEmpty()) return d;
       const f = e.first(),
         h = f.o;
       if (1 !== h.length) throw Error("XPTY0004: signature of function passed to fn:for-each is incompatible.");
@@ -14953,11 +15118,11 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     }],
     callFunction: (a, b, c, d, e, f) => {
-      if (d.F()) return d;
+      if (d.isEmpty()) return d;
       const h = f.first(),
         k = h.o;
       if (2 !== k.length) throw Error("XPTY0004: signature of function passed to fn:fold-left is incompatible.");
-      return d.N(l => l.reduce((n, t) => {
+      return d.M(l => l.reduce((n, t) => {
         n = Ad(k[0], n, b, "fn:fold-left", !1);
         t = Ad(k[1], w.m(t), b, "fn:fold-left", !1);
         return h.value.call(void 0, a, b, c, n, t);
@@ -14981,11 +15146,11 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     }],
     callFunction: (a, b, c, d, e, f) => {
-      if (d.F()) return d;
+      if (d.isEmpty()) return d;
       const h = f.first(),
         k = h.o;
       if (2 !== k.length) throw Error("XPTY0004: signature of function passed to fn:fold-right is incompatible.");
-      return d.N(l => l.reduceRight((n, t) => {
+      return d.M(l => l.reduceRight((n, t) => {
         n = Ad(k[0], n, b, "fn:fold-right", !1);
         t = Ad(k[1], w.m(t), b, "fn:fold-right", !1);
         return h.value.call(void 0, a, b, c, t, n);
@@ -15003,10 +15168,10 @@ const fontoxpath = function (xspattern, prsc) {
       g: 2
     }],
     callFunction: (a, b, c, d) => {
-      if (!b.Ua) throw Error("serialize() called but no xmlSerializer set in execution parameters.");
-      a = d.O();
+      if (!b.Wa) throw Error("serialize() called but no xmlSerializer set in execution parameters.");
+      a = d.N();
       if (!a.every(e => v(e.type, 53))) throw Error("Expected argument to fn:serialize to resolve to a sequence of Nodes.");
-      return w.m(g(a.map(e => b.Ua.serializeToString(ag(e.value, b, !1))).join(""), 1));
+      return w.m(g(a.map(e => b.Wa.serializeToString(ag(e.value, b, !1))).join(""), 1));
     },
     localName: "serialize",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
@@ -15014,7 +15179,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 1,
       g: 3
     }
-  }], ke, [{
+  }], le, [{
     j: [{
       type: 59,
       g: 3
@@ -15027,13 +15192,13 @@ const fontoxpath = function (xspattern, prsc) {
       return w.create({
         next: () => {
           f || ({
-            ic: f,
-            ec: h
-          } = yq(d, e, c, b));
+            kc: f,
+            cc: h
+          } = Qq(d, e, c, b));
           try {
             return f.next(0);
           } catch (k) {
-            hg(h.value, k);
+            hg(h, k);
           }
         }
       });
@@ -15061,8 +15226,8 @@ const fontoxpath = function (xspattern, prsc) {
       type: 5,
       g: 3
     }],
-    callFunction: (a, b, c, d, e) => A([d, e], ([f, h]) => {
-      const k = c.va(f.value.namespaceURI, f.value.localName, h.value);
+    callFunction: (a, b, c, d, e) => tb([d, e], ([f, h]) => {
+      const k = c.ua(f.value.namespaceURI, f.value.localName, h.value);
       if (null === k) return w.empty();
       f = new Va({
         j: k.j,
@@ -15085,7 +15250,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 60,
       g: 3
     }],
-    callFunction: (a, b, c, d) => A([d], ([e]) => e.Ya() ? w.empty() : w.m(g(new Sa("", e.l, e.D), 23))),
+    callFunction: (a, b, c, d) => tb([d], ([e]) => e.bb() ? w.empty() : w.m(g(new Sa("", e.l, e.D), 23))),
     localName: "function-name",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -15097,7 +15262,7 @@ const fontoxpath = function (xspattern, prsc) {
       type: 60,
       g: 3
     }],
-    callFunction: (a, b, c, d) => A([d], ([e]) => w.m(g(e.v, 5))),
+    callFunction: (a, b, c, d) => tb([d], ([e]) => w.m(g(e.v, 5))),
     localName: "function-arity",
     namespaceURI: "http://www.w3.org/2005/xpath-functions",
     i: {
@@ -15105,7 +15270,7 @@ const fontoxpath = function (xspattern, prsc) {
       g: 3
     }
   }]);
-  class Kq {
+  class br {
     constructor(a) {
       this.h = a;
     }
@@ -15131,23 +15296,23 @@ const fontoxpath = function (xspattern, prsc) {
       return this.h.createTextNode(a);
     }
   }
-  var Lq = Symbol("IS_XPATH_VALUE_SYMBOL");
-  function Mq(a) {
+  var cr = Symbol("IS_XPATH_VALUE_SYMBOL");
+  function dr(a) {
     return (b, c) => {
-      b = Vb(new nb(null === c ? new Za() : c), b, Ja(a));
+      b = Xb(new ob(null === c ? new Za() : c), b, Ja(a));
       return {
-        [Lq]: !0,
+        [cr]: !0,
         zb: b
       };
     };
   }
-  Jq.forEach(a => {
+  ar.forEach(a => {
     og(a.namespaceURI, a.localName, a.j, a.i, a.callFunction);
   });
-  function Nq(a) {
+  function er(a) {
     return a && "object" === typeof a && "lookupNamespaceURI" in a ? b => a.lookupNamespaceURI(b || null) : () => null;
   }
-  function Oq(a) {
+  function fr(a) {
     return ({
       prefix: b,
       localName: c
@@ -15156,57 +15321,57 @@ const fontoxpath = function (xspattern, prsc) {
       localName: c
     };
   }
-  function Pq(a, b, c, d, e, f) {
+  function gr(a, b, c, d, e, f) {
     if (null === d || void 0 === d) d = d || {};
     const h = e ? {
         jb: e.logger || {
           trace: console.log.bind(console)
         },
-        Ma: e.documentWriter,
+        Oa: e.documentWriter,
         kb: e.moduleImports,
-        Cb: e.namespaceResolver,
-        ac: e.functionNameResolver,
+        Db: e.namespaceResolver,
+        dc: e.functionNameResolver,
         Ja: e.nodesFactory,
-        Ua: e.xmlSerializer
+        Wa: e.xmlSerializer
       } : {
         jb: {
           trace: console.log.bind(console)
         },
         kb: {},
-        Cb: null,
+        Db: null,
         Ja: null,
-        Ma: null,
-        Ua: null
+        Oa: null,
+        Wa: null
       },
-      k = new nb(null === c ? new Za() : c);
+      k = new ob(null === c ? new Za() : c);
     c = h.kb || Object.create(null);
     var l = void 0 === e.defaultFunctionNamespaceURI ? "http://www.w3.org/2005/xpath-functions" : e.defaultFunctionNamespaceURI;
-    const n = wq(a, f, h.Cb || Nq(b), d, c, l, h.ac || Oq(l));
-    a = b ? Wb(k, b) : w.empty();
-    b = !h.Ja && f.Z ? new $e(b) : new Kq(h.Ja);
-    c = h.Ma ? new bb(h.Ma) : ab;
-    l = h.Ua;
-    const t = Object.keys(d).reduce((y, G) => {
-      const N = d[G];
-      y[`Q{}${G}[0]`] = N && "object" === typeof N && Lq in N ? () => w.create(N.zb) : () => Wb(k, d[G]);
+    const n = Oq(a, f, h.Db || er(b), d, c, l, h.dc || fr(l));
+    a = b ? Yb(k, b) : w.empty();
+    b = !h.Ja && f.Y ? new $e(b) : new br(h.Ja);
+    c = h.Oa ? new bb(h.Oa) : ab;
+    l = h.Wa;
+    const t = Object.keys(d).reduce((y, F) => {
+      const N = d[F];
+      y[`Q{}${F}[0]`] = N && "object" === typeof N && cr in N ? () => w.create(N.zb) : () => Yb(k, d[F]);
       return y;
     }, Object.create(null));
     let u;
-    for (const y of Object.keys(n.ga.Ea)) t[y] || (t[y] = () => (0, n.ga.Ea[y])(u, z));
-    u = new cc({
-      M: a.first(),
-      Aa: 0,
-      ta: a,
-      ra: t
+    for (const y of Object.keys(n.fa.Fa)) t[y] || (t[y] = () => (0, n.fa.Fa[y])(u, z));
+    u = new dc({
+      L: a.first(),
+      Ba: 0,
+      sa: a,
+      qa: t
     });
-    const z = new ic(f.debug, f.Ha, k, b, c, e.currentContext, new Map(), h.jb, l);
+    const z = new jc(f.debug, f.Ha, k, b, c, e.currentContext, new Map(), h.jb, l);
     return {
       tb: u,
       ub: z,
-      ba: n.ba
+      aa: n.aa
     };
   }
-  function Qq(a, b) {
+  function hr(a, b) {
     const c = {};
     let d = 0,
       e = !1,
@@ -15229,7 +15394,7 @@ const fontoxpath = function (xspattern, prsc) {
               d++;
               continue;
             }
-            f = Rq(h, b);
+            f = ir(h, b);
           }
           h = f.next(0);
           f = null;
@@ -15241,7 +15406,7 @@ const fontoxpath = function (xspattern, prsc) {
       }
     };
   }
-  function Sq(a, b) {
+  function jr(a, b) {
     const c = [];
     let d = 0,
       e = !1,
@@ -15249,9 +15414,9 @@ const fontoxpath = function (xspattern, prsc) {
     return {
       next: () => {
         if (e) return p;
-        for (; d < a.h.length;) {
+        for (; d < a.members.length;) {
           if (!f) {
-            var h = a.h[d]().X({
+            var h = a.members[d]().X({
               default: k => k,
               multiple: () => {
                 throw Error("Serialization error: The value of an entry in an array is expected to be a single item or an empty sequence. Use nested arrays when putting multiple values in an array.");
@@ -15261,7 +15426,7 @@ const fontoxpath = function (xspattern, prsc) {
               c[d++] = null;
               continue;
             }
-            f = Rq(h, b);
+            f = ir(h, b);
           }
           h = f.next(0);
           f = null;
@@ -15272,9 +15437,9 @@ const fontoxpath = function (xspattern, prsc) {
       }
     };
   }
-  function Rq(a, b) {
-    if (v(a.type, 61)) return Qq(a, b);
-    if (v(a.type, 62)) return Sq(a, b);
+  function ir(a, b) {
+    if (v(a.type, 61)) return hr(a, b);
+    if (v(a.type, 62)) return jr(a, b);
     if (v(a.type, 23)) {
       const c = a.value;
       return {
@@ -15292,7 +15457,7 @@ const fontoxpath = function (xspattern, prsc) {
       case 15:
         const c = a.value;
         return {
-          next: () => q(Mb(c))
+          next: () => q(Nb(c))
         };
       case 47:
       case 53:
@@ -15311,7 +15476,7 @@ const fontoxpath = function (xspattern, prsc) {
         };
     }
   }
-  var Tq = {
+  var kr = {
     ANY: 0,
     NUMBER: 1,
     STRING: 2,
@@ -15325,26 +15490,26 @@ const fontoxpath = function (xspattern, prsc) {
     ALL_RESULTS: 14,
     ASYNC_ITERATOR: 99
   };
-  Tq[Tq.ANY] = "ANY";
-  Tq[Tq.NUMBER] = "NUMBER";
-  Tq[Tq.STRING] = "STRING";
-  Tq[Tq.BOOLEAN] = "BOOLEAN";
-  Tq[Tq.NODES] = "NODES";
-  Tq[Tq.FIRST_NODE] = "FIRST_NODE";
-  Tq[Tq.STRINGS] = "STRINGS";
-  Tq[Tq.MAP] = "MAP";
-  Tq[Tq.ARRAY] = "ARRAY";
-  Tq[Tq.NUMBERS] = "NUMBERS";
-  Tq[Tq.ALL_RESULTS] = "ALL_RESULTS";
-  Tq[Tq.ASYNC_ITERATOR] = "ASYNC_ITERATOR";
-  function Uq(a, b, c, d) {
+  kr[kr.ANY] = "ANY";
+  kr[kr.NUMBER] = "NUMBER";
+  kr[kr.STRING] = "STRING";
+  kr[kr.BOOLEAN] = "BOOLEAN";
+  kr[kr.NODES] = "NODES";
+  kr[kr.FIRST_NODE] = "FIRST_NODE";
+  kr[kr.STRINGS] = "STRINGS";
+  kr[kr.MAP] = "MAP";
+  kr[kr.ARRAY] = "ARRAY";
+  kr[kr.NUMBERS] = "NUMBERS";
+  kr[kr.ALL_RESULTS] = "ALL_RESULTS";
+  kr[kr.ASYNC_ITERATOR] = "ASYNC_ITERATOR";
+  function lr(a, b, c, d) {
     switch (c) {
       case 3:
-        return b.fa();
+        return b.ea();
       case 2:
-        return b = qc(b, d).O(), b.length ? b.map(l => jd(l, 1).value).join(" ") : "";
+        return b = rc(b, d).N(), b.length ? b.map(l => kd(l, 1).value).join(" ") : "";
       case 10:
-        return b = qc(b, d).O(), b.length ? b.map(l => l.value + "") : [];
+        return b = rc(b, d).N(), b.length ? b.map(l => l.value + "") : [];
       case 1:
         return b = b.first(), null !== b && v(b.type, 2) ? b.value : NaN;
       case 9:
@@ -15353,23 +15518,23 @@ const fontoxpath = function (xspattern, prsc) {
         if (!v(b.type, 53)) throw Error("Expected XPath " + fg(a) + " to resolve to Node. Got " + Da[b.type]);
         return ag(b.value, d, !1);
       case 7:
-        b = b.O();
+        b = b.N();
         if (!b.every(l => v(l.type, 53))) throw Error("Expected XPath " + fg(a) + " to resolve to a sequence of Nodes.");
         return b.map(l => ag(l.value, d, !1));
       case 11:
-        b = b.O();
+        b = b.N();
         if (1 !== b.length) throw Error("Expected XPath " + fg(a) + " to resolve to a single map.");
         b = b[0];
         if (!v(b.type, 61)) throw Error("Expected XPath " + fg(a) + " to resolve to a map");
-        return Qq(b, d).next(0).value;
+        return hr(b, d).next(0).value;
       case 12:
-        b = b.O();
+        b = b.N();
         if (1 !== b.length) throw Error("Expected XPath " + fg(a) + " to resolve to a single array.");
         b = b[0];
         if (!v(b.type, 62)) throw Error("Expected XPath " + fg(a) + " to resolve to an array");
-        return Sq(b, d).next(0).value;
+        return jr(b, d).next(0).value;
       case 13:
-        return b.O().map(l => {
+        return b.N().map(l => {
           if (!v(l.type, 2)) throw Error("Expected XPath " + fg(a) + " to resolve to numbers");
           return l.value;
         });
@@ -15385,7 +15550,7 @@ const fontoxpath = function (xspattern, prsc) {
                 h = !0;
                 break;
               }
-              f = Rq(l.value, d);
+              f = ir(l.value, d);
             }
             l = f.next(0);
             f = null;
@@ -15407,16 +15572,16 @@ const fontoxpath = function (xspattern, prsc) {
           next: () => new Promise(l => l(k()))
         };
       case 14:
-        return b.O().map(l => Rq(l, d).next(0).value);
+        return b.N().map(l => ir(l, d).next(0).value);
       default:
-        return b = b.O(), b.every(l => v(l.type, 53) && !v(l.type, 47)) ? (b = b.map(l => ag(l.value, d, !1)), 1 === b.length ? b[0] : b) : 1 === b.length ? (b = b[0], v(b.type, 62) ? Sq(b, d).next(0).value : v(b.type, 61) ? Qq(b, d).next(0).value : pc(b, d).first().value) : qc(w.create(b), d).O().map(l => l.value);
+        return b = b.N(), b.every(l => v(l.type, 53) && !v(l.type, 47)) ? (b = b.map(l => ag(l.value, d, !1)), 1 === b.length ? b[0] : b) : 1 === b.length ? (b = b[0], v(b.type, 62) ? jr(b, d).next(0).value : v(b.type, 61) ? hr(b, d).next(0).value : qc(b, d).first().value) : rc(w.create(b), d).N().map(l => l.value);
     }
   }
-  let Vq = !1,
-    Wq = null;
-  var Xq = {
+  let mr = !1,
+    nr = null;
+  var or = {
     getPerformanceSummary() {
-      const a = Wq.getEntriesByType("measure").filter(b => b.name.startsWith("XPath: "));
+      const a = nr.getEntriesByType("measure").filter(b => b.name.startsWith("XPath: "));
       return Array.from(a.reduce((b, c) => {
         var d = c.name.substring(7);
         b.has(d) ? (d = b.get(d), d.times += 1, d.totalDuration += c.duration) : b.set(d, {
@@ -15432,74 +15597,78 @@ const fontoxpath = function (xspattern, prsc) {
       }).sort((b, c) => c.totalDuration - b.totalDuration);
     },
     setPerformanceImplementation(a) {
-      Wq = a;
+      nr = a;
     },
     startProfiling() {
-      if (null === Wq) throw Error("Performance API object must be set using `profiler.setPerformanceImplementation` before starting to profile");
-      Wq.clearMarks();
-      Wq.clearMeasures();
-      Vq = !0;
+      if (null === nr) throw Error("Performance API object must be set using `profiler.setPerformanceImplementation` before starting to profile");
+      nr.clearMarks();
+      nr.clearMeasures();
+      mr = !0;
     },
     stopProfiling() {
-      Vq = !1;
+      mr = !1;
     }
   };
-  let Yq = 0;
-  var Zq = {
+  let pr = 0;
+  var qr = {
     XPATH_3_1_LANGUAGE: "XPath3.1",
     XQUERY_3_1_LANGUAGE: "XQuery3.1",
-    XQUERY_UPDATE_3_1_LANGUAGE: "XQueryUpdate3.1"
+    XQUERY_UPDATE_3_1_LANGUAGE: "XQueryUpdate3.1",
+    XPATH_4_0_LANGUAGE: "XPath4.0",
+    XQUERY_4_0_LANGUAGE: "XQuery4.0",
+    XQUERY_UPDATE_4_0_LANGUAGE: "XQueryUpdate4.0"
   };
-  const $q = (a, b, c, d, e, f) => {
+  const rr = (a, b, c, d, e, f) => {
     e = e || 0;
     if (!a || "string" !== typeof a && !("nodeType" in a)) throw new TypeError("Failed to execute 'evaluateXPath': xpathExpression must be a string or an element depicting an XQueryX DOM tree.");
     f = f || {};
     let h, k;
     try {
-      const n = Pq(a, b, c || null, d || {}, f, {
-        sa: "XQueryUpdate3.1" === f.language,
-        Z: "XQuery3.1" === f.language || "XQueryUpdate3.1" === f.language,
+      const n = gr(a, b, c || null, d || {}, f, {
+        ra: "XQueryUpdate3.1" === f.language,
+        Y: "XQuery3.1" === f.language || "XQueryUpdate3.1" === f.language,
         debug: !!f.debug,
-        Ha: !!f.disableCache
+        Ha: !!f.disableCache,
+        version: "XPath4.0" === f.language || "XQuery4.0" === f.language || "XQueryUpdate4.0" === f.language ? 4 : 3.1
       });
       var l = n.tb;
       h = n.ub;
-      k = n.ba;
+      k = n.aa;
     } catch (n) {
       hg(a, n);
     }
-    if (k.I) throw Error("XUST0001: Updating expressions should be evaluated as updating expressions");
+    if (k.H) throw Error("XUST0001: Updating expressions should be evaluated as updating expressions");
     if (3 === e && b && "object" === typeof b && "nodeType" in b && (c = k.D(), b = Ya(b), null !== c && !b.includes(c))) return !1;
     try {
       b = a;
-      Vq && ("string" !== typeof b && (b = fg(b)), Wq.mark(`${b}${0 === Yq ? "" : "@" + Yq}`), Yq++);
-      const n = C(k, l, h),
-        t = Uq(a, n, e, h);
+      mr && ("string" !== typeof b && (b = fg(b)), nr.mark(`${b}${0 === pr ? "" : "@" + pr}`), pr++);
+      const n = A(k, l, h),
+        t = lr(a, n, e, h);
       e = a;
-      Vq && ("string" !== typeof e && (e = fg(e)), Yq--, l = `${e}${0 === Yq ? "" : "@" + Yq}`, Wq.measure(`XPath: ${e}`, l), Wq.clearMarks(l));
+      mr && ("string" !== typeof e && (e = fg(e)), pr--, l = `${e}${0 === pr ? "" : "@" + pr}`, nr.measure(`XPath: ${e}`, l), nr.clearMarks(l));
       return t;
     } catch (n) {
       hg(a, n);
     }
   };
-  Object.assign($q, {
-    jc: 14,
+  Object.assign(rr, {
+    lc: 14,
     ANY_TYPE: 0,
-    Lb: 12,
-    Mb: 99,
+    Nb: 12,
+    Ob: 99,
     BOOLEAN_TYPE: 3,
-    Ob: 9,
-    Rb: 11,
-    Tb: 7,
-    Ub: 13,
+    Qb: 9,
+    Tb: 11,
+    Vb: 7,
+    Wb: 13,
     NUMBER_TYPE: 1,
-    Vb: 10,
+    Xb: 10,
     STRING_TYPE: 2,
-    kc: "XPath3.1",
-    lc: "XQuery3.1",
-    Yb: "XQueryUpdate3.1"
+    mc: "XPath3.1",
+    nc: "XQuery3.1",
+    $b: "XQueryUpdate3.1"
   });
-  Object.assign($q, {
+  Object.assign(rr, {
     ALL_RESULTS_TYPE: 14,
     ANY_TYPE: 0,
     ARRAY_TYPE: 12,
@@ -15514,37 +15683,40 @@ const fontoxpath = function (xspattern, prsc) {
     STRING_TYPE: 2,
     XPATH_3_1_LANGUAGE: "XPath3.1",
     XQUERY_3_1_LANGUAGE: "XQuery3.1",
-    XQUERY_UPDATE_3_1_LANGUAGE: "XQueryUpdate3.1"
+    XQUERY_UPDATE_3_1_LANGUAGE: "XQueryUpdate3.1",
+    XPATH_4_0_LANGUAGE: "XPath4.0",
+    XQUERY_4_0_LANGUAGE: "XQuery4.0"
   });
-  function ar(a, b, c, d, e) {
-    return $q(a, b, c, d, $q.Mb, e);
+  function sr(a, b, c, d, e) {
+    return rr(a, b, c, d, rr.Ob, e);
   }
-  function br(a, b, c, d) {
+  function tr(a, b, c, d) {
     return {
-      pendingUpdateList: a.da.map(e => e.h(d)),
-      xdmValue: Uq(b, w.create(a.J), c, d)
+      pendingUpdateList: a.ca.map(e => e.h(d)),
+      xdmValue: lr(b, w.create(a.I), c, d)
     };
   }
-  async function cr(a, b, c, d, e) {
+  async function ur(a, b, c, d, e) {
     e = e || {};
-    Ok();
+    Vk();
     let f, h;
     try {
-      const n = Pq(a, b, c || null, d || {}, e || {}, {
-        sa: !0,
-        Z: !0,
+      const n = gr(a, b, c || null, d || {}, e || {}, {
+        ra: !0,
+        Y: !0,
         debug: !!e.debug,
-        Ha: !!e.disableCache
+        Ha: !!e.disableCache,
+        version: "XQueryUpdate4.0" === e.language ? 4 : 3.1
       });
       var k = n.tb;
       f = n.ub;
-      h = n.ba;
+      h = n.aa;
     } catch (n) {
       hg(a, n);
     }
-    if (!h.I) {
+    if (!h.H) {
       k = [];
-      a = ar(a, b, c, d, Object.assign(Object.assign({}, e), {
+      a = sr(a, b, c, d, Object.assign(Object.assign({}, e), {
         language: "XQueryUpdate3.1"
       }));
       for (b = await a.next(); !b.done; b = await a.next()) k.push(b.value);
@@ -15559,29 +15731,30 @@ const fontoxpath = function (xspattern, prsc) {
     } catch (n) {
       hg(a, n);
     }
-    return br(l.value, a, e.returnType, f);
+    return tr(l.value, a, e.returnType, f);
   }
-  function dr(a, b, c, d, e) {
+  function vr(a, b, c, d, e) {
     e = e || {};
-    Ok();
+    Vk();
     let f, h, k;
     try {
-      const n = Pq(a, b, c || null, d || {}, e || {}, {
-        sa: !0,
-        Z: !0,
+      const n = gr(a, b, c || null, d || {}, e || {}, {
+        ra: !0,
+        Y: !0,
         debug: !!e.debug,
-        Ha: !!e.disableCache
+        Ha: !!e.disableCache,
+        version: "XQueryUpdate4.0" === e.language ? 4 : 3.1
       });
       f = n.tb;
       h = n.ub;
-      k = n.ba;
+      k = n.aa;
     } catch (n) {
       hg(a, n);
     }
-    if (!k.I) return {
+    if (!k.H) return {
       pendingUpdateList: [],
-      xdmValue: $q(a, b, c, d, e.i, Object.assign(Object.assign({}, e), {
-        language: $q.Yb
+      xdmValue: rr(a, b, c, d, e.i, Object.assign(Object.assign({}, e), {
+        language: rr.$b
       }))
     };
     let l;
@@ -15590,51 +15763,51 @@ const fontoxpath = function (xspattern, prsc) {
     } catch (n) {
       hg(a, n);
     }
-    return br(l.value, a, e.returnType, h);
+    return tr(l.value, a, e.returnType, h);
   }
-  function er(a, b, c, d, e) {
-    return $q(a, b, c, d, $q.Lb, e);
+  function wr(a, b, c, d, e) {
+    return rr(a, b, c, d, rr.Nb, e);
   }
-  function fr(a, b, c, d, e) {
-    return $q(a, b, c, d, $q.BOOLEAN_TYPE, e);
+  function xr(a, b, c, d, e) {
+    return rr(a, b, c, d, rr.BOOLEAN_TYPE, e);
   }
-  function gr(a, b, c, d, e) {
-    return $q(a, b, c, d, $q.Ob, e);
+  function yr(a, b, c, d, e) {
+    return rr(a, b, c, d, rr.Qb, e);
   }
-  function hr(a, b, c, d, e) {
-    return $q(a, b, c, d, $q.Rb, e);
+  function zr(a, b, c, d, e) {
+    return rr(a, b, c, d, rr.Tb, e);
   }
-  function ir(a, b, c, d, e) {
-    return $q(a, b, c, d, $q.Tb, e);
+  function Ar(a, b, c, d, e) {
+    return rr(a, b, c, d, rr.Vb, e);
   }
-  function jr(a, b, c, d, e) {
-    return $q(a, b, c, d, $q.NUMBER_TYPE, e);
+  function Br(a, b, c, d, e) {
+    return rr(a, b, c, d, rr.NUMBER_TYPE, e);
   }
-  function kr(a, b, c, d, e) {
-    return $q(a, b, c, d, $q.Ub, e);
+  function Cr(a, b, c, d, e) {
+    return rr(a, b, c, d, rr.Wb, e);
   }
-  function lr(a, b, c, d, e) {
-    return $q(a, b, c, d, $q.STRING_TYPE, e);
+  function Dr(a, b, c, d, e) {
+    return rr(a, b, c, d, rr.STRING_TYPE, e);
   }
-  function mr(a, b, c, d, e) {
-    return $q(a, b, c, d, $q.Vb, e);
+  function Er(a, b, c, d, e) {
+    return rr(a, b, c, d, rr.Xb, e);
   }
-  function nr(a, b, c, d) {
-    b = new nb(b ? b : new Za());
+  function Fr(a, b, c, d) {
+    b = new ob(b ? b : new Za());
     d = d ? new bb(d) : ab;
-    c = c ? c = new Kq(c) : null;
-    a = a.map(Rj);
+    c = c ? c = new br(c) : null;
+    a = a.map(Xj);
     lf(a, b, c, d);
   }
   function Y(a, b, c) {
     return {
       code: a,
-      ua: b,
-      H: c,
+      ta: b,
+      G: c,
       isAstAccepted: !0
     };
   }
-  function or(a) {
+  function Gr(a) {
     return {
       isAstAccepted: !1,
       reason: a
@@ -15643,82 +15816,82 @@ const fontoxpath = function (xspattern, prsc) {
   function Z(a, b) {
     return a.isAstAccepted ? b(a) : a;
   }
-  function pr(a, b) {
+  function Hr(a, b) {
     return a.isAstAccepted ? b(a) : [a, null];
   }
-  function qr(a, b, c) {
+  function Ir(a, b, c) {
     return Z(a, d => {
-      switch (d.ua.type) {
+      switch (d.ta.type) {
         case 0:
           return d;
         case 1:
-          return Z(rr(c, d, "nodes"), e => Z(rr(c, b, "contextItem"), f => Y(`(function () {
+          return Z(Jr(c, d, "nodes"), e => Z(Jr(c, b, "contextItem"), f => Y(`(function () {
 							const { done, value } = ${e.code}(${f.code}).next();
 							return done ? null : value;
 						})()`, {
             type: 0
-          }, [...e.H, ...f.H])));
+          }, [...e.G, ...f.G])));
         default:
-          throw Error(`invalid generated code type to convert to value: ${d.ua.type}`);
+          throw Error(`invalid generated code type to convert to value: ${d.ta.type}`);
       }
     });
   }
-  function sr(a, b, c, d) {
-    a = qr(a, c, d);
+  function Kr(a, b, c, d) {
+    a = Ir(a, c, d);
     return b && 0 === b.type && 3 === b.g ? a : Z(a, e => Y(`!!${e.code}`, {
       type: 0
-    }, e.H));
+    }, e.G));
   }
-  function tr(a, b, c) {
-    return b ? a.isAstAccepted && 0 !== a.ua.type ? or("Atomization only implemented for single value") : v(b.type, 1) ? a : v(b.type, 47) ? Z(rr(c, a, "attr"), d => Y(`(${d.code} ? domFacade.getData(${d.code}) : null)`, {
+  function pu(a, b, c) {
+    return b ? a.isAstAccepted && 0 !== a.ta.type ? Gr("Atomization only implemented for single value") : v(b.type, 1) ? a : v(b.type, 47) ? Z(Jr(c, a, "attr"), d => Y(`(${d.code} ? domFacade.getData(${d.code}) : null)`, {
       type: 0
-    }, d.H)) : or("Atomization only implemented for string and attribute") : or("Can not atomize value if type was not annotated");
+    }, d.G)) : Gr("Atomization only implemented for string and attribute") : Gr("Can not atomize value if type was not annotated");
   }
-  function ur(a, b, c, d) {
-    a = qr(a, c, d);
-    d = tr(a, b, d);
-    return wc(b) ? Z(d, e => Y(`${e.code} ?? ''`, {
+  function qu(a, b, c, d) {
+    a = Ir(a, c, d);
+    d = pu(a, b, d);
+    return xc(b) ? Z(d, e => Y(`${e.code} ?? ''`, {
       type: 0
-    }, e.H)) : d;
+    }, e.G)) : d;
   }
-  function vr(a, b, c) {
-    return Z(rr(c, a, "node"), d => 1 === d.ua.type ? d : b && !v(b.type, 53) ? or("Can not evaluate to node if expression does not result in nodes") : Y(`(function () {
+  function ru(a, b, c) {
+    return Z(Jr(c, a, "node"), d => 1 === d.ta.type ? d : b && !v(b.type, 53) ? Gr("Can not evaluate to node if expression does not result in nodes") : Y(`(function () {
 				if (${d.code} !== null && !${d.code}.nodeType) {
 					throw new Error('XPDY0050: The result of the expression was not a node');
 				}
 				return ${d.code};
 			})()`, {
       type: 0
-    }, d.H));
+    }, d.G));
   }
-  function wr(a, b, c, d) {
+  function su(a, b, c, d) {
     return Z(a, e => {
-      switch (e.ua.type) {
+      switch (e.ta.type) {
         case 1:
-          return Z(rr(d, e, "nodes"), f => Z(rr(d, c, "contextItem"), h => Y(`Array.from(${f.code}(${h.code}))`, {
+          return Z(Jr(d, e, "nodes"), f => Z(Jr(d, c, "contextItem"), h => Y(`Array.from(${f.code}(${h.code}))`, {
             type: 0
-          }, [...f.H, ...h.H])));
+          }, [...f.G, ...h.G])));
         case 0:
-          return Z(rr(d, vr(e, b, d), "node"), f => Y(`(${f.code} === null ? [] : [${f.code}])`, {
+          return Z(Jr(d, ru(e, b, d), "node"), f => Y(`(${f.code} === null ? [] : [${f.code}])`, {
             type: 0
-          }, f.H));
+          }, f.G));
         default:
-          return or("Unsupported code type to evaluate to nodes");
+          return Gr("Unsupported code type to evaluate to nodes");
       }
     });
   }
-  function xr(a, b) {
+  function tu(a, b) {
     return Z(a, c => Z(b, d => {
-      if (0 !== c.ua.type || 0 !== d.ua.type) throw Error("can only use emitAnd with value expressions");
+      if (0 !== c.ta.type || 0 !== d.ta.type) throw Error("can only use emitAnd with value expressions");
       return Y(`${c.code} && ${d.code}`, {
         type: 0
-      }, [...c.H, ...d.H]);
+      }, [...c.G, ...d.G]);
     }));
   }
-  function yr(a, b, c, d) {
-    return (a = J(a, [b, "*"])) ? d.h(a, c, d) : [or(`${b} expression not found`), null];
+  function uu(a, b, c, d) {
+    return (a = J(a, [b, "*"])) ? d.h(a, c, d) : [Gr(`${b} expression not found`), null];
   }
-  const $t = {
+  const vu = {
       equalOp: "eqOp",
       notEqualOp: "neOp",
       lessThanOrEqualOp: "leOp",
@@ -15726,7 +15899,7 @@ const fontoxpath = function (xspattern, prsc) {
       greaterThanOrEqualOp: "geOp",
       greaterThanOp: "gtOp"
     },
-    au = {
+    wu = {
       eqOp: "eqOp",
       neOp: "neOp",
       leOp: "geOp",
@@ -15734,53 +15907,53 @@ const fontoxpath = function (xspattern, prsc) {
       geOp: "leOp",
       gtOp: "ltOp"
     };
-  function bu(a, b, c, d) {
+  function xu(a, b, c, d) {
     const e = I(J(a, ["firstOperand", "*"]), "type"),
       f = I(J(a, ["secondOperand", "*"]), "type");
-    if (!e || !f) return or("Can not generate code for value compare without both types");
+    if (!e || !f) return Gr("Can not generate code for value compare without both types");
     var h = [47, 1];
-    if (!h.includes(e.type) || !h.includes(f.type)) return or(`Unsupported types in compare: [${Da[e.type]}, ${Da[f.type]}]`);
+    if (!h.includes(e.type) || !h.includes(f.type)) return Gr(`Unsupported types in compare: [${Da[e.type]}, ${Da[f.type]}]`);
     h = new Map([["eqOp", "==="], ["neOp", "!=="]]);
-    if (!h.has(b)) return or(b + " not yet implemented");
+    if (!h.has(b)) return Gr(b + " not yet implemented");
     const k = h.get(b);
-    [b] = yr(a, "firstOperand", c, d);
-    b = qr(b, c, d);
-    b = tr(b, e, d);
-    return Z(rr(d, b, "first"), l => {
-      var [n] = yr(a, "secondOperand", c, d);
-      n = qr(n, c, d);
-      n = tr(n, f, d);
-      return Z(rr(d, n, "second"), t => {
+    [b] = uu(a, "firstOperand", c, d);
+    b = Ir(b, c, d);
+    b = pu(b, e, d);
+    return Z(Jr(d, b, "first"), l => {
+      var [n] = uu(a, "secondOperand", c, d);
+      n = Ir(n, c, d);
+      n = pu(n, f, d);
+      return Z(Jr(d, n, "second"), t => {
         const u = [];
-        wc(e) && u.push(`${l.code} === null`);
-        wc(f) && u.push(`${t.code} === null`);
+        xc(e) && u.push(`${l.code} === null`);
+        xc(f) && u.push(`${t.code} === null`);
         return Y(`(${u.length ? `${u.join(" || ")} ? null : ` : ""}${l.code} ${k} ${t.code})`, {
           type: 0
-        }, [...l.H, ...t.H]);
+        }, [...l.G, ...t.G]);
       });
     });
   }
-  function cu(a, b, c, d, e, f) {
+  function yu(a, b, c, d, e, f) {
     var h = I(J(a, [b, "*"]), "type");
     const k = I(J(a, [c, "*"]), "type");
-    if (!h || !k) return or("Can not generate code for general compare without both types");
+    if (!h || !k) return Gr("Can not generate code for general compare without both types");
     var l = [47, 1];
-    if (!l.includes(h.type) || !l.includes(k.type)) return or(`Unsupported types in compare: [${Da[h.type]}, ${Da[k.type]}]`);
+    if (!l.includes(h.type) || !l.includes(k.type)) return Gr(`Unsupported types in compare: [${Da[h.type]}, ${Da[k.type]}]`);
     l = new Map([["eqOp", "==="], ["neOp", "!=="]]);
-    if (!l.has(d)) return or(d + " not yet implemented");
+    if (!l.has(d)) return Gr(d + " not yet implemented");
     const n = l.get(d);
-    [b] = yr(a, b, e, f);
-    b = qr(b, e, f);
-    h = tr(b, h, f);
-    return Z(rr(f, h, "single"), t => {
-      const [u] = yr(a, c, e, f);
-      return Z(rr(f, u, "multiple"), z => {
-        if (1 !== z.ua.type) return or("can only generate general compare for a single value and a generator");
-        const y = du(f, eu(f, "n")),
-          G = tr(y, k, f);
-        return Z(e, N => Z(G, U => Y(`(function () {
+    [b] = uu(a, b, e, f);
+    b = Ir(b, e, f);
+    h = pu(b, h, f);
+    return Z(Jr(f, h, "single"), t => {
+      const [u] = uu(a, c, e, f);
+      return Z(Jr(f, u, "multiple"), z => {
+        if (1 !== z.ta.type) return Gr("can only generate general compare for a single value and a generator");
+        const y = zu(f, Au(f, "n")),
+          F = pu(y, k, f);
+        return Z(e, N => Z(F, U => Y(`(function () {
 									for (const ${y.code} of ${z.code}(${N.code})) {
-										${U.H.join("\n")}
+										${U.G.join("\n")}
 										if (${U.code} ${n} ${t.code}) {
 											return true;
 										}
@@ -15788,232 +15961,232 @@ const fontoxpath = function (xspattern, prsc) {
 									return false;
 								})()`, {
           type: 0
-        }, [...t.H, ...y.H, ...N.H, ...z.H])));
+        }, [...t.G, ...y.G, ...N.G, ...z.G])));
       });
     });
   }
-  function fu(a) {
+  function Bu(a) {
     return JSON.stringify(a).replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029");
   }
-  const lu = {
-      "false#0": gu,
-      "local-name#0": hu,
-      "local-name#1": hu,
-      "name#0": iu,
-      "name#1": iu,
-      "not#1": ju,
-      "true#0": ku
+  const Hu = {
+      "false#0": Cu,
+      "local-name#0": Du,
+      "local-name#1": Du,
+      "name#0": Eu,
+      "name#1": Eu,
+      "not#1": Fu,
+      "true#0": Gu
     },
-    mu = {
+    Iu = {
       ["http://fontoxml.com/fontoxpath"]: ["version#0"],
       [""]: ["root#1", "path#1"]
     };
-  function nu(a, b, c, d) {
+  function Ju(a, b, c, d) {
     const [e] = d.h(a, c, d);
     a = I(a, "type");
-    if (b ? 2 === b.g || 1 === b.g : 1) return or("Not supported: sequence arguments with multiple items");
-    if (v(b.type, 53)) return b = qr(e, c, d), vr(b, a, d);
+    if (b ? 2 === b.g || 1 === b.g : 1) return Gr("Not supported: sequence arguments with multiple items");
+    if (v(b.type, 53)) return b = Ir(e, c, d), ru(b, a, d);
     switch (b.type) {
       case 59:
-        return qr(e, c, d);
+        return Ir(e, c, d);
       case 0:
-        return sr(e, a, c, d);
+        return Kr(e, a, c, d);
       case 1:
-        return ur(e, a, c, d);
+        return qu(e, a, c, d);
     }
-    return or(`Argument types not supported: ${a ? Da[a.type] : "unknown"} -> ${Da[b.type]}`);
+    return Gr(`Argument types not supported: ${a ? Da[a.type] : "unknown"} -> ${Da[b.type]}`);
   }
-  function ou(a, b, c, d) {
-    if (a.length !== b.length || b.some(l => 4 === l)) return or("Not supported: variadic function or mismatch in argument count");
+  function Ku(a, b, c, d) {
+    if (a.length !== b.length || b.some(l => 4 === l)) return Gr("Not supported: variadic function or mismatch in argument count");
     if (0 === a.length) return Y("", {
       type: 0
     }, []);
     const [e, ...f] = a,
       [h, ...k] = b;
-    a = rr(d, nu(e, h, c, d), "arg");
+    a = Jr(d, Ju(e, h, c, d), "arg");
     return 0 === f.length ? a : Z(a, l => {
-      const n = ou(f, k, c, d);
+      const n = Ku(f, k, c, d);
       return Z(n, t => Y(`${l.code}, ${t.code}`, {
         type: 0
-      }, [...l.H, ...t.H]));
+      }, [...l.G, ...t.G]));
     });
   }
-  function pu(a, b) {
-    return Z(a, c => (b ? 2 === b.g || 1 === b.g : 1) || ![0, 1].includes(b.type) && !v(b.type, 53) ? or(`Function return type ${Da[b.type]} not supported`) : c);
+  function Lu(a, b) {
+    return Z(a, c => (b ? 2 === b.g || 1 === b.g : 1) || ![0, 1].includes(b.type) && !v(b.type, 53) ? Gr(`Function return type ${Da[b.type]} not supported`) : c);
   }
-  function qu(a, b, c) {
+  function Mu(a, b, c) {
     const {
         localName: d,
         namespaceURI: e
-      } = Kg(F(a, "functionName")),
-      f = K(F(a, "arguments"), "*");
+      } = Kg(G(a, "functionName")),
+      f = K(G(a, "arguments"), "*");
     var h = f.length;
     const k = `${d}#${h}`,
       l = e === c.D;
     if (l) {
-      const n = lu[k];
+      const n = Hu[k];
       if (void 0 !== n) return n(a, b, c);
     }
-    if ((a = mu[l ? "" : e]) && !a.includes(k)) return or(`Not supported: built-in function not on allow list: ${k}`);
+    if ((a = Iu[l ? "" : e]) && !a.includes(k)) return Gr(`Not supported: built-in function not on allow list: ${k}`);
     h = ng(e, d, h);
-    if (!h) return or(`Unknown function / arity: ${k}`);
-    if (h.I) return or("Not supported: updating functions");
-    b = ou(f, h.j, b, c);
-    b = Z(b, n => Y(`runtimeLib.callFunction(domFacade, ${fu(e)}, ${fu(d)}, [${n.code}], options)`, {
+    if (!h) return Gr(`Unknown function / arity: ${k}`);
+    if (h.H) return Gr("Not supported: updating functions");
+    b = Ku(f, h.j, b, c);
+    b = Z(b, n => Y(`runtimeLib.callFunction(domFacade, ${Bu(e)}, ${Bu(d)}, [${n.code}], options)`, {
       type: 0
-    }, n.H));
-    return pu(b, h.i);
+    }, n.G));
+    return Lu(b, h.i);
   }
-  function ru(a, b) {
-    return Z(rr(b, a, "contextItem"), c => Y(c.code, {
+  function Nu(a, b) {
+    return Z(Jr(b, a, "contextItem"), c => Y(c.code, {
       type: 0
-    }, [...c.H, `if (${c.code} === undefined || ${c.code} === null) {
+    }, [...c.G, `if (${c.code} === undefined || ${c.code} === null) {
 					throw errXPDY0002('The function which was called depends on dynamic context, which is absent.');
 				}`]));
   }
-  function su(a, b, c, d) {
+  function Ou(a, b, c, d) {
     if ((a = J(a, ["arguments", "*"])) && "contextItemExpr" !== a[0]) {
       const e = I(a, "type");
-      if (!e || !v(e.type, 53)) return or("name function only implemented if arg is a node");
+      if (!e || !v(e.type, 53)) return Gr("name function only implemented if arg is a node");
       [a] = c.h(a, b, c);
-    } else a = ru(b, c);
-    b = qr(a, b, c);
-    return Z(rr(c, b, "arg"), e => Y(`(${e.code} ? ${d(e.code)} : '')`, {
+    } else a = Nu(b, c);
+    b = Ir(a, b, c);
+    return Z(Jr(c, b, "arg"), e => Y(`(${e.code} ? ${d(e.code)} : '')`, {
       type: 0
-    }, e.H));
+    }, e.G));
   }
-  function iu(a, b, c) {
-    return su(a, b, c, d => `(((${d}.prefix || '').length !== 0 ? ${d}.prefix + ':' : '')
+  function Eu(a, b, c) {
+    return Ou(a, b, c, d => `(((${d}.prefix || '').length !== 0 ? ${d}.prefix + ':' : '')
 		+ (${d}.localName || ${d}.target || ''))`);
   }
-  function hu(a, b, c) {
-    return su(a, b, c, d => `(${d}.localName || ${d}.target || '')`);
+  function Du(a, b, c) {
+    return Ou(a, b, c, d => `(${d}.localName || ${d}.target || '')`);
   }
-  function ju(a, b, c) {
+  function Fu(a, b, c) {
     var d = J(a, ["arguments", "*"]);
     a = I(d, "type");
     [d] = c.h(d, b, c);
-    b = sr(d, a, b, c);
+    b = Kr(d, a, b, c);
     return Z(b, e => Y(`!${e.code}`, {
       type: 0
-    }, e.H));
+    }, e.G));
   }
-  function gu() {
+  function Cu() {
     return Y("false", {
       type: 0
     }, []);
   }
-  function ku() {
+  function Gu() {
     return Y("true", {
       type: 0
     }, []);
   }
-  function tu(a, b, c, d) {
-    const [e, f] = yr(a, "firstOperand", c, d);
+  function Pu(a, b, c, d) {
+    const [e, f] = uu(a, "firstOperand", c, d);
     var h = I(J(a, ["firstOperand", "*"]), "type");
-    h = sr(e, h, c, d);
-    const [k, l] = yr(a, "secondOperand", c, d);
+    h = Kr(e, h, c, d);
+    const [k, l] = uu(a, "secondOperand", c, d);
     h = Z(h, t => {
       var u = I(J(a, ["secondOperand", "*"]), "type");
-      u = sr(k, u, c, d);
+      u = Kr(k, u, c, d);
       return Z(u, z => Y(`(${t.code} ${b} ${z.code})`, {
         type: 0
-      }, [...t.H, ...z.H]));
+      }, [...t.G, ...z.G]));
     });
-    const n = "&&" === b ? yh(f, l) : f === l ? f : null;
+    const n = "&&" === b ? vh(f, l) : f === l ? f : null;
     return [h, n];
   }
-  function uu(a, b, c) {
+  function Qu(a, b, c) {
     return Z(a, d => Z(b, e => Z(c, f => Y(`for (${d.code}) {
-						${e.H.join("\n")}
+						${e.G.join("\n")}
 						if (!(${e.code})) {
 							continue;
 						}
-						${f.H.join("\n")}
+						${f.G.join("\n")}
 						${f.code}
 					}`, {
       type: 2
-    }, d.H))));
+    }, d.G))));
   }
-  function vu(a, b, c, d, e) {
+  function Ru(a, b, c, d, e) {
     const f = b ? `, "${b}"` : "";
     b = Z(d, h => Z(e, k => Y(`let ${h.code} = domFacade.getFirstChild(${k.code}${f});
 							${h.code};
 							${h.code} = domFacade.getNextSibling(${h.code}${f})`, {
       type: 2
-    }, [...h.H, ...k.H])));
-    return uu(b, a, c);
+    }, [...h.G, ...k.G])));
+    return Qu(b, a, c);
   }
-  function wu(a, b, c, d, e) {
-    const f = yh(b, "type-2"),
+  function Su(a, b, c, d, e) {
+    const f = vh(b, "type-2"),
       h = Z(e, k => Y(`(${k.code} && ${k.code}.nodeType === /*ELEMENT_NODE*/ ${1} ? domFacade.getAllAttributes(${k.code}${f ? `, "${f}"` : ""}) : [])`, {
         type: 0
-      }, k.H));
+      }, k.G));
     b = Z(d, k => Z(h, l => Y(`const ${k.code} of ${l.code}`, {
       type: 2
-    }, [...k.H, ...l.H])));
-    return uu(b, a, c);
+    }, [...k.G, ...l.G])));
+    return Qu(b, a, c);
   }
-  function xu(a, b, c, d, e) {
+  function Tu(a, b, c, d, e) {
     const f = b ? `, "${b}"` : "";
     b = Z(e, h => Y(`domFacade.getParentNode(${h.code}${f})`, {
       type: 0
-    }, h.H));
-    return yu(d, b, a, c);
+    }, h.G));
+    return Uu(d, b, a, c);
   }
-  function yu(a, b, c, d) {
-    const e = xr(a, c);
+  function Uu(a, b, c, d) {
+    const e = tu(a, c);
     return Z(a, f => Z(b, h => Z(e, k => Z(d, l => Y(`const ${f.code} = ${h.code};
-						${k.H.join("\n")}
+						${k.G.join("\n")}
 						if (${k.code}) {
-							${l.H.join("\n")}
+							${l.G.join("\n")}
 							${l.code}
 						}`, {
       type: 2
-    }, [...f.H, ...h.H])))));
+    }, [...f.G, ...h.G])))));
   }
-  function zu(a, b, c, d, e, f) {
+  function Vu(a, b, c, d, e, f) {
     a = H(a);
     switch (a) {
       case "attribute":
-        return [wu(b, c, d, e, f), "type-1"];
+        return [Su(b, c, d, e, f), "type-1"];
       case "child":
-        return [vu(b, c, d, e, f), null];
+        return [Ru(b, c, d, e, f), null];
       case "parent":
-        return [xu(b, c, d, e, f), null];
+        return [Tu(b, c, d, e, f), null];
       case "self":
-        return [yu(e, f, b, d), c];
+        return [Uu(e, f, b, d), c];
       default:
-        return [or(`Unsupported: the ${a} axis`), null];
+        return [Gr(`Unsupported: the ${a} axis`), null];
     }
   }
-  const Au = {
-    Wb: "textTest",
-    Nb: "elementTest",
-    Sb: "nameTest",
-    Xb: "Wildcard",
-    Kb: "anyKindTest"
+  const Wu = {
+    Yb: "textTest",
+    Pb: "elementTest",
+    Ub: "nameTest",
+    Zb: "Wildcard",
+    Mb: "anyKindTest"
   };
-  var Bu = Object.values(Au);
-  function Cu(a) {
+  var Xu = Object.values(Wu);
+  function Yu(a) {
     return [Z(a, b => Y(`(${b.code}.nodeType === /*TEXT_NODE*/ ${3} ||
 				${b.code}.nodeType === /* CDATA_SECTION_NODE */ ${4})`, {
       type: 0
     }, [])), "type-3"];
   }
-  function Du(a, b) {
+  function Zu(a, b) {
     if (null === a.namespaceURI && "*" !== a.prefix) {
-      b = b.$(a.prefix || "") || null;
+      b = b.Z(a.prefix || "") || null;
       if (!b && a.prefix) throw Error(`XPST0081: The prefix ${a.prefix} could not be resolved.`);
       a.namespaceURI = b;
     }
   }
-  function Eu(a, b, c, d) {
-    Du(a, d);
+  function $u(a, b, c, d) {
+    Zu(a, d);
     const e = a.prefix,
       f = a.namespaceURI,
       h = a.localName;
-    return pr(c, k => {
+    return Hr(c, k => {
       var l = b ? Y(`${k.code}.nodeType
 						&& (${k.code}.nodeType === /*ELEMENT_NODE*/ ${1}
 						|| ${k.code}.nodeType === /*ATTRIBUTE_NODE*/ ${2})`, {
@@ -16022,157 +16195,158 @@ const fontoxpath = function (xspattern, prsc) {
 						&& ${k.code}.nodeType === /*ELEMENT_NODE*/ ${1}`, {
         type: 0
       }, []);
-      if ("*" === e) return "*" === h ? [l, b ? "type-1-or-type-2" : "type-1"] : [xr(l, Y(`${k.code}.localName === ${fu(h)}`, {
+      if ("*" === e) return "*" === h ? [l, b ? "type-1-or-type-2" : "type-1"] : [tu(l, Y(`${k.code}.localName === ${Bu(h)}`, {
         type: 0
       }, [])), `name-${h}`];
-      l = "*" === h ? l : xr(l, Y(`${k.code}.localName === ${fu(h)}`, {
+      l = "*" === h ? l : tu(l, Y(`${k.code}.localName === ${Bu(h)}`, {
         type: 0
       }, []));
-      var n = Y(fu(f), {
+      var n = Y(Bu(f), {
         type: 0
       }, []);
       n = "" === e && b ? Z(n, t => Y(`${k.code}.nodeType === /*ELEMENT_NODE*/ ${1} ? ${t.code} : null`, {
         type: 0
-      }, t.H)) : n;
+      }, t.G)) : n;
       n = Z(n, t => Y(`(${k.code}.namespaceURI || null) === ((${t.code}) || null)`, {
         type: 0
-      }, t.H));
-      return [xr(l, n), `name-${h}`];
+      }, t.G));
+      return [tu(l, n), `name-${h}`];
     });
   }
-  function Fu(a, b, c) {
-    const d = (a = F(a, "elementName")) && F(a, "star");
+  function av(a, b, c) {
+    const d = (a = G(a, "elementName")) && G(a, "star");
     if (null === a || d) return [Z(b, e => Y(`${e.code}.nodeType === /*ELEMENT_NODE*/ ${1}`, {
       type: 0
     }, [])), "type-1"];
-    a = Kg(F(a, "QName"));
-    return Eu(a, !1, b, c);
+    a = Kg(G(a, "QName"));
+    return $u(a, !1, b, c);
   }
-  function Gu(a) {
+  function bv(a) {
     return [Z(a, b => Y(`!!${b.code}.nodeType`, {
       type: 0
     }, [])), null];
   }
-  function Hu(a, b, c, d) {
+  function cv(a, b, c, d) {
     var e = a[0];
     switch (e) {
-      case Au.Nb:
-        return Fu(a, c, d);
-      case Au.Wb:
-        return Cu(c);
-      case Au.Sb:
-        return Eu(Kg(a), b, c, d);
-      case Au.Xb:
-        return F(a, "star") ? (e = F(a, "uri"), null !== e ? a = Eu({
+      case Wu.Pb:
+        return av(a, c, d);
+      case Wu.Yb:
+        return Yu(c);
+      case Wu.Ub:
+        return $u(Kg(a), b, c, d);
+      case Wu.Zb:
+        return G(a, "star") ? (e = G(a, "uri"), null !== e ? a = $u({
           localName: "*",
           namespaceURI: H(e),
           prefix: ""
-        }, b, c, d) : (e = F(a, "NCName"), a = "star" === F(a, "*")[0] ? Eu({
+        }, b, c, d) : (e = G(a, "NCName"), a = "star" === G(a, "*")[0] ? $u({
           localName: H(e),
           namespaceURI: null,
           prefix: "*"
-        }, b, c, d) : Eu({
+        }, b, c, d) : $u({
           localName: "*",
           namespaceURI: null,
           prefix: H(e)
-        }, b, c, d))) : a = Eu({
+        }, b, c, d))) : a = $u({
           localName: "*",
           namespaceURI: null,
           prefix: "*"
         }, b, c, d), a;
-      case Au.Kb:
-        return Gu(c);
+      case Wu.Mb:
+        return bv(c);
       default:
-        return [or(`Test not implemented: '${e}`), null];
+        return [Gr(`Test not implemented: '${e}`), null];
     }
   }
-  function Iu(a, b, c) {
+  function dv(a, b, c) {
     const [d, e] = c.h(a, b, c);
-    return [sr(d, I(a, "type"), b, c), e];
+    a = I(a, "type");
+    return [Kr(d, a, b, c), e];
   }
-  function Ju(a, b, c) {
+  function ev(a, b, c) {
     a = a ? K(a, "*") : [];
     const [d, e] = a.reduce(([f, h], k) => {
-      if (!f) return Iu(k, b, c);
+      if (!f) return dv(k, b, c);
       let l = h;
-      return pr(f, n => {
-        const [t, u] = Iu(k, b, c);
-        l = yh(h, u);
+      return Hr(f, n => {
+        const [t, u] = dv(k, b, c);
+        l = vh(h, u);
         return [Z(t, z => Y(`${n.code} && ${z.code}`, {
           type: 0
-        }, [...n.H, ...z.H])), l];
+        }, [...n.G, ...z.G])), l];
       });
     }, [null, null]);
     return [d ? Z(d, f => Y(`(function () {
-							${f.H.join("\n")}
+							${f.G.join("\n")}
 							return ${f.code};
 						})()`, {
       type: 0
     }, [])) : null, e];
   }
-  function Ku(a, b, c, d) {
+  function fv(a, b, c, d) {
     if (0 === a.length) return [Z(c, y => Y(`yield ${y.code};`, {
       type: 2
-    }, y.H)), null];
+    }, y.G)), null];
     const [e, ...f] = a;
-    if (0 < K(e, "lookup").length) return [or("Unsupported: lookups"), null];
-    const h = du(d, eu(d, "contextItem"));
-    a = F(e, "predicates");
-    const [k, l] = Ju(a, h, d);
-    if (a = F(e, "xpathAxis")) {
-      var n = F(e, Bu);
-      if (!n) return [or("Unsupported test in step"), null];
+    if (0 < K(e, "lookup").length) return [Gr("Unsupported: lookups"), null];
+    const h = zu(d, Au(d, "contextItem"));
+    a = G(e, "predicates");
+    const [k, l] = ev(a, h, d);
+    if (a = G(e, "xpathAxis")) {
+      var n = G(e, Xu);
+      if (!n) return [Gr("Unsupported test in step"), null];
       var t = H(a);
       b = "attribute" === t || "self" === t && b;
-      const [y, G] = Hu(n, b, h, d);
-      n = null === k ? y : xr(y, k);
-      t = yh(G, l);
-      [b] = Ku(f, b, h, d);
-      return zu(a, n, t, b, h, c);
+      const [y, F] = cv(n, b, h, d);
+      n = null === k ? y : tu(y, k);
+      t = vh(F, l);
+      [b] = fv(f, b, h, d);
+      return Vu(a, n, t, b, h, c);
     }
     a = J(e, ["filterExpr", "*"]);
-    if (!a) return [or("Unsupported: unknown step type"), null];
+    if (!a) return [Gr("Unsupported: unknown step type"), null];
     const [u, z] = d.h(a, c, d);
     return [Z(u, y => {
-      const G = 0 === f.length ? Y("", {
+      const F = 0 === f.length ? Y("", {
           type: 2
         }, []) : Y(`if (${h.code} !== null && !${h.code}.nodeType) {
 									throw new Error('XPTY0019: The result of E1 in a path expression E1/E2 should evaluate to a sequence of nodes.');
 								}`, {
           type: 2
         }, []),
-        [N] = Ku(f, !0, h, d),
-        U = null === k ? N : Z(k, ca => Z(N, Ga => Y(`if (${ca.code}) {
-									${Ga.H.join("\n")}
+        [N] = fv(f, !0, h, d),
+        U = null === k ? N : Z(k, da => Z(N, Ga => Y(`if (${da.code}) {
+									${Ga.G.join("\n")}
 									${Ga.code}
 								}`, {
           type: 2
-        }, ca.H)));
-      return Z(U, ca => {
-        switch (y.ua.type) {
+        }, da.G)));
+      return Z(U, da => {
+        switch (y.ta.type) {
           case 1:
             return Z(c, Ga => Y(`for (const ${h.code} of ${y.code}(${Ga.code})) {
-									${ca.H.join("\n")}
-									${ca.code}
+									${da.G.join("\n")}
+									${da.code}
 								}`, {
               type: 2
-            }, [...h.H, ...y.H, ...G.H]));
+            }, [...h.G, ...y.G, ...F.G]));
           case 0:
             return Y(`const ${h.code} = ${y.code};
-							${G.code}
+							${F.code}
 							if (${h.code} !== null) {
-								${ca.H.join("\n")}
-								${ca.code}
+								${da.G.join("\n")}
+								${da.code}
 							}`, {
               type: 2
-            }, [...h.H, ...y.H, ...G.H]);
+            }, [...h.G, ...y.G, ...F.G]);
           default:
-            return or("Unsupported generated code type for filterExpr");
+            return Gr("Unsupported generated code type for filterExpr");
         }
       });
     }), z];
   }
-  function Lu(a) {
+  function gv(a) {
     return Z(a, b => Y(`(function () {
 				let n = ${b.code};
 				while (n.nodeType !== /*DOCUMENT_NODE*/${9}) {
@@ -16184,52 +16358,52 @@ const fontoxpath = function (xspattern, prsc) {
 				return n;
 			})()`, {
       type: 0
-    }, b.H));
+    }, b.G));
   }
-  function Mu(a, b, c) {
-    return pr(b, d => {
-      if (0 < K(a, "lookup").length) return [or("Unsupported: lookups"), null];
-      var e = F(a, "predicates");
-      const [f, h] = Ju(e, d, c);
-      e = F(a, Bu);
-      if (!e) return [or("Unsupported test in step"), null];
-      const [k, l] = Hu(e, !0, d, c);
-      e = null === f ? k : xr(k, f);
-      const n = yh(l, h);
+  function hv(a, b, c) {
+    return Hr(b, d => {
+      if (0 < K(a, "lookup").length) return [Gr("Unsupported: lookups"), null];
+      var e = G(a, "predicates");
+      const [f, h] = ev(e, d, c);
+      e = G(a, Xu);
+      if (!e) return [Gr("Unsupported test in step"), null];
+      const [k, l] = cv(e, !0, d, c);
+      e = null === f ? k : tu(k, f);
+      const n = vh(l, h);
       return [Z(e, t => Y(`((${t.code}) ? ${d.code} : null)`, {
         type: 0
-      }, [...d.H, ...t.H])), n];
+      }, [...d.G, ...t.G])), n];
     });
   }
-  function Nu(a, b, c) {
+  function iv(a, b, c) {
     const d = K(a, "stepExpr");
     if (1 === d.length) {
-      const k = F(d[0], "xpathAxis");
-      if (k && "self" === H(k)) return Mu(d[0], b, c);
+      const k = G(d[0], "xpathAxis");
+      if (k && "self" === H(k)) return hv(d[0], b, c);
     }
-    const e = du(c, eu(c, "contextItem"));
-    b = (a = F(a, "rootExpr")) ? rr(c, Lu(e), "root") : e;
-    const [f, h] = Ku(d, !a, b, c);
+    const e = zu(c, Au(c, "contextItem"));
+    b = (a = G(a, "rootExpr")) ? Jr(c, gv(e), "root") : e;
+    const [f, h] = fv(d, !a, b, c);
     return [Z(f, k => Y(`(function* (${e.code}) {
-			${k.H.join("\n")}
+			${k.G.join("\n")}
 			${k.code}
 		})`, {
       type: 1
     }, [])), h];
   }
-  function Ou(a, b, c) {
+  function jv(a, b, c) {
     const d = a[0];
     switch (d) {
       case "contextItemExpr":
         return [b, null];
       case "pathExpr":
-        return Nu(a, b, c);
+        return iv(a, b, c);
       case "andOp":
-        return tu(a, "&&", b, c);
+        return Pu(a, "&&", b, c);
       case "orOp":
-        return tu(a, "||", b, c);
+        return Pu(a, "||", b, c);
       case "stringConstantExpr":
-        return a = F(a, "value")[1] || "", a = fu(a), [Y(a, {
+        return a = G(a, "value")[1] || "", a = Bu(a), [Y(a, {
           type: 0
         }, []), null];
       case "equalOp":
@@ -16255,7 +16429,7 @@ const fontoxpath = function (xspattern, prsc) {
           case "gtOp":
           case "geOp":
           case "isOp":
-            a = bu(a, d, b, c);
+            a = xu(a, d, b, c);
             break a;
           case "equalOp":
           case "notEqualOp":
@@ -16265,120 +16439,122 @@ const fontoxpath = function (xspattern, prsc) {
           case "greaterThanOp":
             const e = I(J(a, ["firstOperand", "*"]), "type"),
               f = I(J(a, ["secondOperand", "*"]), "type");
-            a = e && f ? 3 === e.g && 3 === f.g ? bu(a, $t[d], b, c) : 3 === e.g ? cu(a, "firstOperand", "secondOperand", $t[d], b, c) : 3 === f.g ? cu(a, "secondOperand", "firstOperand", au[$t[d]], b, c) : or("General comparison for sequences is not implemented") : or("types of compare are not known");
+            a = e && f ? 3 === e.g && 3 === f.g ? xu(a, vu[d], b, c) : 3 === e.g ? yu(a, "firstOperand", "secondOperand", vu[d], b, c) : 3 === f.g ? yu(a, "secondOperand", "firstOperand", wu[vu[d]], b, c) : Gr("General comparison for sequences is not implemented") : Gr("types of compare are not known");
             break a;
           default:
-            a = or(`Unsupported compare type: ${d}`);
+            a = Gr(`Unsupported compare type: ${d}`);
         }
         return [a, null];
       case "functionCallExpr":
-        return [qu(a, b, c), null];
+        return [Mu(a, b, c), null];
       default:
-        return [or(`Unsupported: the base expression '${d}'.`), null];
+        return [Gr(`Unsupported: the base expression '${d}'.`), null];
     }
   }
-  function rr(a, b, c) {
+  function Jr(a, b, c) {
     return Z(b, d => {
       var e = a.o.get(d);
-      e || (e = eu(a, c), e = Y(e, d.ua, [...d.H, `const ${e} = ${d.code};`]), a.o.set(d, e), a.o.set(e, e));
+      e || (e = Au(a, c), e = Y(e, d.ta, [...d.G, `const ${e} = ${d.code};`]), a.o.set(d, e), a.o.set(e, e));
       return e;
     });
   }
-  function eu(a, b = "v") {
+  function Au(a, b = "v") {
     const c = a.v.get(b) || 0;
     a.v.set(b, c + 1);
     return `${b}${c}`;
   }
-  function du(a, b) {
+  function zu(a, b) {
     b = Y(b, {
       type: 0
     }, []);
     a.o.set(b, b);
     return b;
   }
-  var Pu = class {
+  var kv = class {
     constructor(a, b) {
       this.o = new Map();
       this.v = new Map();
-      this.$ = a;
+      this.Z = a;
       this.D = b;
-      this.h = Ou;
+      this.h = jv;
     }
   };
-  function Qu(a) {
+  function lv(a) {
     const b = K(a, "*");
     if ("pathExpr" === a[0]) return !0;
-    for (const c of b) if (Qu(c)) return !0;
+    for (const c of b) if (lv(c)) return !0;
     return !1;
   }
-  function Ru(a, b, c) {
+  function mv(a, b, c) {
     c = c || {};
     b = b || 0;
     if ("string" === typeof a) {
-      a = Pk(a);
+      a = Wk(a);
       var d = {
-        Z: "XQuery3.1" === c.language || "XQueryUpdate3.1" === c.language,
-        debug: !1
+        Y: "XQuery3.1" === c.language || "XQueryUpdate3.1" === c.language,
+        debug: !1,
+        version: "XPath4.0" === c.language || "XQuery4.0" === c.language || "XQueryUpdate4.0" === c.language ? 4 : 3.1
       };
       try {
-        var e = qq(a, d);
+        var e = Iq(a, d);
       } catch (h) {
         hg(a, h);
       }
-    } else e = Kk(a);
-    a = F(e, "mainModule");
-    if (!a) return or("Unsupported: XQuery Library modules are not supported.");
-    if (F(a, "prolog")) return or("Unsupported: XQuery Prologs are not supported.");
+    } else e = Rk(a);
+    a = G(e, "mainModule");
+    if (!a) return Gr("Unsupported: XQuery Library modules are not supported.");
+    if (G(a, "prolog")) return Gr("Unsupported: XQuery Prologs are not supported.");
     d = void 0 === c.defaultFunctionNamespaceURI ? "http://www.w3.org/2005/xpath-functions" : c.defaultFunctionNamespaceURI;
-    a = new Pu(c.namespaceResolver || Nq(null), d);
-    c = new rh(new Cg(new qg(a.$, {}, d, c.functionNameResolver || Oq("http://www.w3.org/2005/xpath-functions"))));
+    a = new kv(c.namespaceResolver || er(null), d);
+    c = new rh(new Cg(new qg(a.Z, {}, d, c.functionNameResolver || fr("http://www.w3.org/2005/xpath-functions"))));
     O(e, c);
-    if (c = F(e, "mainModule")) {
-      if (F(c, "prolog")) a = or("Unsupported: XQuery.");else {
+    if (c = G(e, "mainModule")) {
+      if (G(c, "prolog")) a = Gr("Unsupported: XQuery.");else {
         var f = J(c, ["queryBody", "*"]);
-        c = du(a, "contextItem");
+        c = zu(a, "contextItem");
         [d] = a.h(f, c, a);
-        b: switch (f = I(f, "type"), b) {
+        f = I(f, "type");
+        b: switch (b) {
           case 9:
-            b = qr(d, c, a);
-            a = vr(b, f, a);
+            b = Ir(d, c, a);
+            a = ru(b, f, a);
             break b;
           case 7:
-            a = wr(d, f, c, a);
+            a = su(d, f, c, a);
             break b;
           case 3:
-            a = sr(d, f, c, a);
+            a = Kr(d, f, c, a);
             break b;
           case 2:
-            a = ur(d, f, c, a);
+            a = qu(d, f, c, a);
             break b;
           default:
-            a = or(`Unsupported: the return type '${b}'.`);
+            a = Gr(`Unsupported: the return type '${b}'.`);
         }
         a.isAstAccepted && (a = `
-		${a.H.join("\n")}
-		return ${a.code};`, b = "\n\treturn (contextItem, domFacade, runtimeLib, options) => {\n\t\tconst {\n\t\t\terrXPDY0002,\n\t\t} = runtimeLib;", Qu(e) && (b += '\n\t\tif (!contextItem) {\n\t\t\tthrow errXPDY0002("Context is needed to evaluate the given path expression.");\n\t\t}\n\n\t\tif (!contextItem.nodeType) {\n\t\t\tthrow new Error("Context item must be subtype of node().");\n\t\t}\n\t\t'), a = {
+		${a.G.join("\n")}
+		return ${a.code};`, b = "\n\treturn (contextItem, domFacade, runtimeLib, options) => {\n\t\tconst {\n\t\t\terrXPDY0002,\n\t\t} = runtimeLib;", lv(e) && (b += '\n\t\tif (!contextItem) {\n\t\t\tthrow errXPDY0002("Context is needed to evaluate the given path expression.");\n\t\t}\n\n\t\tif (!contextItem.nodeType) {\n\t\t\tthrow new Error("Context item must be subtype of node().");\n\t\t}\n\t\t'), a = {
           code: b + (a + "}\n//# sourceURL=generated.js"),
           isAstAccepted: !0
         });
       }
-    } else a = or("Unsupported: Can not execute a library module.");
+    } else a = Gr("Unsupported: Can not execute a library module.");
     return a;
   }
-  class Su extends Error {
+  class nv extends Error {
     constructor(a, b, c) {
       var d = a.stack;
       d && (d.includes(a.message) && (d = d.substr(d.indexOf(a.message) + a.message.length).trim()), d = d.split("\n"), d.splice(10), d = d.map(e => e.startsWith("    ") || e.startsWith("\t") ? e : `    ${e}`), d = d.join("\n"));
       super(`Custom XPath function Q{${c}}${b} raised:\n${a.message}\n${d}`);
     }
   }
-  function Tu(a, b, c) {
-    return 0 === b.g ? a.F() ? null : Rq(a.first(), c).next(0).value : 2 === b.g || 1 === b.g ? a.O().map(d => {
+  function ov(a, b, c) {
+    return 0 === b.g ? a.isEmpty() ? null : ir(a.first(), c).next(0).value : 2 === b.g || 1 === b.g ? a.N().map(d => {
       if (v(d.type, 47)) throw Error("Cannot pass attribute nodes to custom functions");
-      return Rq(d, c).next(0).value;
-    }) : Rq(a.first(), c).next(0).value;
+      return ir(d, c).next(0).value;
+    }) : ir(a.first(), c).next(0).value;
   }
-  function Uu(a) {
+  function pv(a) {
     if ("object" === typeof a) return a;
     a = a.split(":");
     if (2 !== a.length) throw Error("Do not register custom functions in the default function namespace");
@@ -16394,18 +16570,18 @@ const fontoxpath = function (xspattern, prsc) {
       namespaceURI: a
     };
   }
-  function Vu(a, b, c, d) {
+  function qv(a, b, c, d) {
     const {
       namespaceURI: e,
       localName: f
-    } = Uu(a);
+    } = pv(a);
     if (!e) throw vg();
     const h = b.map(l => Ja(l)),
       k = Ja(c);
     og(e, f, h, k, function (l, n, t) {
       var u = Array.from(arguments);
       u.splice(0, 3);
-      u = u.map((G, N) => Tu(G, h[N], n));
+      u = u.map((F, N) => ov(F, h[N], n));
       const z = {
         currentContext: n.o,
         domFacade: n.h.h
@@ -16413,42 +16589,42 @@ const fontoxpath = function (xspattern, prsc) {
       let y;
       try {
         y = d.apply(void 0, [z, ...u]);
-      } catch (G) {
-        throw new Su(G, f, e);
+      } catch (F) {
+        throw new nv(F, f, e);
       }
-      return y && "object" === typeof y && Object.getOwnPropertySymbols(y).includes(Lq) ? w.create(y.zb) : Wb(n.h, y, k);
+      return y && "object" === typeof y && Object.getOwnPropertySymbols(y).includes(cr) ? w.create(y.zb) : Yb(n.h, y, k);
     });
   }
-  var Wu = {
+  var rv = {
     callFunction(a, b, c, d, e) {
       const f = ng(b, c, d.length);
       if (!f) throw Error("function not found for codegen function call");
-      b = new cc({
-        M: null,
-        Aa: 0,
-        ta: w.empty(),
-        ra: {}
+      b = new dc({
+        L: null,
+        Ba: 0,
+        sa: w.empty(),
+        qa: {}
       });
-      const h = new nb(a);
-      a = new ic(!1, !1, h, null, null, e ? e.currentContext : null, null);
-      d = f.callFunction(b, a, null, ...d.map((k, l) => Wb(h, k, f.j[l])));
-      return Tu(d, {
+      const h = new ob(a);
+      a = new jc(!1, !1, h, null, null, e ? e.currentContext : null, null);
+      d = f.callFunction(b, a, null, ...d.map((k, l) => Yb(h, k, f.j[l])));
+      return ov(d, {
         type: 59,
         g: 0
       }, a);
     },
-    errXPDY0002: lc
+    errXPDY0002: mc
   };
-  var Xu = (a, b, c, d) => {
+  var sv = (a, b, c, d) => {
     c = c ? c : new Za();
-    return a()(null !== b && void 0 !== b ? b : null, c, Wu, d);
+    return a()(null !== b && void 0 !== b ? b : null, c, rv, d);
   };
-  const Yu = {
+  const tv = {
     ["http://www.w3.org/2005/XQueryX"]: "xqx",
     ["http://www.w3.org/2007/xquery-update-10"]: "xquf",
     ["http://fontoxml.com/fontoxpath"]: "x"
   };
-  function Zu(a, b) {
+  function uv(a, b) {
     switch (a) {
       case "copySource":
       case "insertAfter":
@@ -16490,28 +16666,29 @@ const fontoxpath = function (xspattern, prsc) {
         };
     }
   }
-  function $u(a, b, c, d, e) {
+  function vv(a, b, c, d, e) {
     if ("string" === typeof c) return 0 === c.length ? null : b.createTextNode(c);
     if (!Array.isArray(c)) throw new TypeError("JsonML element should be an array or string");
-    var f = Zu(c[0], d);
+    var f = uv(c[0], d);
     d = f.localName;
     f = f.lb;
-    const h = b.createElementNS(f, Yu[f] + ":" + d),
+    const h = b.createElementNS(f, tv[f] + ":" + d),
       k = c[1];
     var l = 1;
     if ("object" === typeof k && !Array.isArray(k)) {
-      if (null !== k) for (var n of Object.keys(k)) l = k[n], null !== l && ("type" === n ? void 0 !== l && a.setAttributeNS(h, f, "fontoxpath:" + n, Ha(l)) : ("start" !== n && "end" !== n && "comment" !== n || "stackTrace" !== d || (l = JSON.stringify(l)), e && "prefix" === n && "" === l || a.setAttributeNS(h, f, Yu[f] + ":" + n, l)));
+      if (null !== k) for (var n of Object.keys(k)) l = k[n], null !== l && ("type" === n ? void 0 !== l && a.setAttributeNS(h, f, "fontoxpath:" + n, Ha(l)) : ("start" !== n && "end" !== n && "comment" !== n || "stackTrace" !== d || (l = JSON.stringify(l)), e && "prefix" === n && "" === l || a.setAttributeNS(h, f, tv[f] + ":" + n, l)));
       l = 2;
     }
-    for (let t = l, u = c.length; t < u; ++t) n = $u(a, b, c[t], f, e), null !== n && a.insertBefore(h, n, null);
+    for (let t = l, u = c.length; t < u; ++t) n = vv(a, b, c[t], f, e), null !== n && a.insertBefore(h, n, null);
     return h;
   }
-  function av(a, b, c, d = ab) {
-    a = Pk(a);
+  function wv(a, b, c, d = ab) {
+    a = Wk(a);
     let e;
     try {
-      e = qq(a, {
-        Z: "XQuery3.1" === b.language || "XQueryUpdate3.1" === b.language,
+      e = Iq(a, {
+        Y: "XQuery3.1" === b.language || "XQueryUpdate3.1" === b.language || "XQuery4.0" === b.language || "XQueryUpdate4.0" === b.language,
+        version: "XPath4.0" === b.language || "XQuery4.0" === b.language || "XQueryUpdate4.0" === b.language ? 4 : 3.1,
         debug: b.debug
       });
     } catch (l) {
@@ -16519,49 +16696,51 @@ const fontoxpath = function (xspattern, prsc) {
     }
     var f = new qg(b.namespaceResolver || (() => null), {}, void 0 === b.defaultFunctionNamespaceURI ? "http://www.w3.org/2005/xpath-functions" : b.defaultFunctionNamespaceURI, b.functionNameResolver || (() => null));
     f = new Cg(f);
-    var h = F(e, ["mainModule", "libraryModule"]),
-      k = F(h, "moduleDecl");
+    var h = G(e, ["mainModule", "libraryModule"]),
+      k = G(h, "moduleDecl");
     if (k) {
-      const l = H(F(k, "prefix"));
-      k = H(F(k, "uri"));
+      const l = H(G(k, "prefix"));
+      k = H(G(k, "uri"));
       Gg(f, l, k);
     }
-    (h = F(h, "prolog")) && tq(h, f, !1, a);
+    (h = G(h, "prolog")) && Lq(h, f, !1, a);
     !1 !== b.annotateAst && jh(e, new rh(f));
     f = new Za();
-    b = $u(d, c, e, null, !1 === b.mc);
+    b = vv(d, c, e, null, !1 === b.oc);
     d.insertBefore(b, c.createComment(a), f.getFirstChild(b));
     return b;
   }
-  function bv(a) {
+  function xv(a) {
     return Promise.resolve(a);
   }
-  function cv(a, b = {
-    debug: !1
+  function yv(a, b = {
+    debug: !1,
+    language: "XQuery3.1"
   }) {
     try {
-      var c = qq(a, {
-        Z: !0,
-        debug: b.debug
+      var c = Iq(a, {
+        Y: !0,
+        debug: b.debug,
+        version: "XQuery4.0" === b.language || "XQueryUpdate4.0" === b.language ? 4 : 3.1
       });
     } catch (f) {
       hg(a, f);
     }
     jh(c, new rh());
-    b = F(c, "libraryModule");
+    b = G(c, "libraryModule");
     if (!b) throw Error("XQuery module must be declared in a library module.");
-    c = F(b, "moduleDecl");
-    var d = F(c, "uri");
+    c = G(b, "moduleDecl");
+    var d = G(c, "uri");
     const e = H(d);
-    c = F(c, "prefix");
+    c = G(c, "prefix");
     d = H(c);
-    c = new Cg(new qg(() => null, Object.create(null), "http://www.w3.org/2005/xpath-functions", Oq("http://www.w3.org/2005/xpath-functions")));
+    c = new Cg(new qg(() => null, Object.create(null), "http://www.w3.org/2005/xpath-functions", fr("http://www.w3.org/2005/xpath-functions")));
     Gg(c, d, e);
-    b = F(b, "prolog");
+    b = G(b, "prolog");
     if (null !== b) {
       let f;
       try {
-        f = tq(b, c, !0, a);
+        f = Lq(b, c, !0, a);
       } catch (h) {
         hg(a, h);
       }
@@ -16570,47 +16749,48 @@ const fontoxpath = function (xspattern, prsc) {
       }) => {
         if (e !== h) throw Error("XQST0048: Functions and variables declared in a module must reside in the module target namespace.");
       });
-      Mk(e, f);
-    } else Mk(e, {
+      Tk(e, f);
+    } else Tk(e, {
       Ia: [],
-      Ta: [],
+      Va: [],
       pa: null,
       source: a
     });
     return e;
   }
-  const dv = new Map();
-  function ev(a) {
+  const zv = new Map();
+  function Av(a) {
     var b;
     a: {
-      if (b = Gk.get(a)) for (const c of Object.keys(b)) if (b[c] && b[c].length) {
+      if (b = Nk.get(a)) for (const c of Object.keys(b)) if (b[c] && b[c].length) {
         b = b[c][0].h;
         break a;
       }
       b = null;
     }
     if (b) return b;
-    if (dv.has(a)) return dv.get(a);
-    b = "string" === typeof a ? qq(a, {
-      Z: !1
-    }) : Kk(a);
+    if (zv.has(a)) return zv.get(a);
+    b = "string" === typeof a ? Iq(a, {
+      Y: !1,
+      version: 4
+    }) : Rk(a);
     b = J(b, ["mainModule", "queryBody", "*"]);
     if (null === b) throw Error("Library modules do not have a specificity");
-    b = Fk(b, {
-      sa: !1,
-      Z: !1
+    b = Mk(b, {
+      ra: !1,
+      Y: !1
     });
-    dv.set(a, b);
+    zv.set(a, b);
     return b;
   }
-  function fv(a) {
-    return ev(a).D();
+  function Bv(a) {
+    return Av(a).D();
   }
-  function gv(a, b) {
-    return uf(ev(a).o, ev(b).o);
+  function Cv(a, b) {
+    return uf(Av(a).o, Av(b).o);
   }
-  var hv = new Za();
-  "undefined" !== typeof fontoxpathGlobal && (fontoxpathGlobal.compareSpecificity = gv, fontoxpathGlobal.compileXPathToJavaScript = Ru, fontoxpathGlobal.domFacade = hv, fontoxpathGlobal.evaluateXPath = $q, fontoxpathGlobal.evaluateXPathToArray = er, fontoxpathGlobal.evaluateXPathToAsyncIterator = ar, fontoxpathGlobal.evaluateXPathToBoolean = fr, fontoxpathGlobal.evaluateXPathToFirstNode = gr, fontoxpathGlobal.evaluateXPathToMap = hr, fontoxpathGlobal.evaluateXPathToNodes = ir, fontoxpathGlobal.evaluateXPathToNumber = jr, fontoxpathGlobal.evaluateXPathToNumbers = kr, fontoxpathGlobal.evaluateXPathToString = lr, fontoxpathGlobal.evaluateXPathToStrings = mr, fontoxpathGlobal.evaluateUpdatingExpression = cr, fontoxpathGlobal.evaluateUpdatingExpressionSync = dr, fontoxpathGlobal.executeJavaScriptCompiledXPath = Xu, fontoxpathGlobal.executePendingUpdateList = nr, fontoxpathGlobal.getBucketForSelector = fv, fontoxpathGlobal.getBucketsForNode = Ya, fontoxpathGlobal.precompileXPath = bv, fontoxpathGlobal.registerXQueryModule = cv, fontoxpathGlobal.registerCustomXPathFunction = Vu, fontoxpathGlobal.parseScript = av, fontoxpathGlobal.profiler = Xq, fontoxpathGlobal.createTypedValueFactory = Mq, fontoxpathGlobal.finalizeModuleRegistration = Ok, fontoxpathGlobal.Language = Zq, fontoxpathGlobal.ReturnType = Tq);
+  var Dv = new Za();
+  "undefined" !== typeof fontoxpathGlobal && (fontoxpathGlobal.compareSpecificity = Cv, fontoxpathGlobal.compileXPathToJavaScript = mv, fontoxpathGlobal.domFacade = Dv, fontoxpathGlobal.evaluateXPath = rr, fontoxpathGlobal.evaluateXPathToArray = wr, fontoxpathGlobal.evaluateXPathToAsyncIterator = sr, fontoxpathGlobal.evaluateXPathToBoolean = xr, fontoxpathGlobal.evaluateXPathToFirstNode = yr, fontoxpathGlobal.evaluateXPathToMap = zr, fontoxpathGlobal.evaluateXPathToNodes = Ar, fontoxpathGlobal.evaluateXPathToNumber = Br, fontoxpathGlobal.evaluateXPathToNumbers = Cr, fontoxpathGlobal.evaluateXPathToString = Dr, fontoxpathGlobal.evaluateXPathToStrings = Er, fontoxpathGlobal.evaluateUpdatingExpression = ur, fontoxpathGlobal.evaluateUpdatingExpressionSync = vr, fontoxpathGlobal.executeJavaScriptCompiledXPath = sv, fontoxpathGlobal.executePendingUpdateList = Fr, fontoxpathGlobal.getBucketForSelector = Bv, fontoxpathGlobal.getBucketsForNode = Ya, fontoxpathGlobal.precompileXPath = xv, fontoxpathGlobal.registerXQueryModule = yv, fontoxpathGlobal.registerCustomXPathFunction = qv, fontoxpathGlobal.parseScript = wv, fontoxpathGlobal.profiler = or, fontoxpathGlobal.createTypedValueFactory = dr, fontoxpathGlobal.finalizeModuleRegistration = Vk, fontoxpathGlobal.Language = qr, fontoxpathGlobal.ReturnType = kr);
   return fontoxpathGlobal;
 }.call(typeof window === 'undefined' ? undefined : window, xspattern, prsc);
 fontoxpath.compareSpecificity;
@@ -16635,7 +16815,7 @@ fontoxpath.executePendingUpdateList;
 fontoxpath.finalizeModuleRegistration;
 fontoxpath.getBucketForSelector;
 const getBucketsForNode = fontoxpath.getBucketsForNode;
-fontoxpath.Language;
+const Language = fontoxpath.Language;
 const parseScript = fontoxpath.parseScript;
 fontoxpath.precompileXPath;
 fontoxpath.profiler;
@@ -16806,1225 +16986,6 @@ class DependencyNotifyingDomFacade {
   }
 }
 
-function prettifyXml(source) {
-  const xmlDoc = new DOMParser().parseFromString(source, 'application/xml');
-  const xsltDoc = new DOMParser().parseFromString([
-  // describes how we want to modify the XML - indent everything
-  '<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">', '  <xsl:output method="xml" indent="yes" omit-xml-declaration="yes"/>', '  <xsl:strip-space elements="*"/>', '  <xsl:template match="text()">',
-  // change to just text() to strip space in text nodes
-  '    <xsl:value-of select="normalize-space(.)"/>', '  </xsl:template>', '  <xsl:template match="node()|@*">', '    <xsl:copy>', '        <xsl:apply-templates select="node()|@*"/>', '    </xsl:copy>', '  </xsl:template>', '</xsl:stylesheet>'].join('\n'), 'application/xml');
-  const xsltProcessor = new XSLTProcessor();
-  xsltProcessor.importStylesheet(xsltDoc);
-  const resultDoc = xsltProcessor.transformToDocument(xmlDoc);
-  const resultXml = new XMLSerializer().serializeToString(resultDoc);
-  return resultXml;
-}
-
-const XFORMS_NAMESPACE_URI = 'http://www.w3.org/2002/xforms';
-const createdNamespaceResolversByXPathQueryAndNode = new Map();
-
-// A global registry of function names that are declared in Fore by a developer using the
-// `fx-function` element. These should be available without providing a prefix as well
-const globallyDeclaredFunctionLocalNames = [];
-function getCachedNamespaceResolver(xpath, node) {
-  if (!createdNamespaceResolversByXPathQueryAndNode.has(xpath)) {
-    return null;
-  }
-  return createdNamespaceResolversByXPathQueryAndNode.get(xpath).get(node) || null;
-}
-function setCachedNamespaceResolver(xpath, node, resolver) {
-  if (!createdNamespaceResolversByXPathQueryAndNode.has(xpath)) {
-    return createdNamespaceResolversByXPathQueryAndNode.set(xpath, new Map());
-  }
-  return createdNamespaceResolversByXPathQueryAndNode.get(xpath).set(node, resolver);
-}
-const xhtmlNamespaceResolver = prefix => {
-  if (!prefix) {
-    return 'http://www.w3.org/1999/xhtml';
-  }
-  return undefined;
-};
-
-/**
- * Resolve an id in scope. Behaves like the algorithm defined on https://www.w3.org/community/xformsusers/wiki/XForms_2.0#idref-resolve
- *
- * @param {string} id
- * @param {Node} sourceObject
- * @param {string} nodeName
- *
- * @returns {HTMLElement} The element with that ID, resolved with respect to repeats
- */
-function resolveId(id, sourceObject, nodeName = null) {
-  const query = 'outermost(ancestor-or-self::fx-fore[1]/(descendant::fx-fore|descendant::*[@id = $id]))[not(self::fx-fore)]';
-  /*
-        if (nodeName === 'fx-instance') {
-            // Instance elements can only be in the `model` element
-            // query = 'ancestor-or-self::fx-fore[1]/fx-model/fx-instance[@id = $id]';
-             const fore = Fore.getFore(sourceObject);
-            const instances = fore.getModel().instances;
-            const targetInstance = instances.find(i => i.id === id);
-            return targetInstance;
-        return document.getElementById(id);
-  }
-    */
-  if (sourceObject.nodeType === Node.TEXT_NODE) {
-    sourceObject = sourceObject.parentNode;
-  }
-  if (sourceObject.nodeType === Node.ATTRIBUTE_NODE) {
-    sourceObject = sourceObject.ownerElement;
-  }
-  if (sourceObject.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
-    sourceObject = sourceObject.parentNode.host;
-  }
-  const ownerForm = sourceObject.localName === 'fx-fore' ? sourceObject : sourceObject.closest('fx-fore');
-  const elementsWithId = ownerForm.querySelectorAll(`[id='${id}']`);
-  if (elementsWithId.length === 1) {
-    // A single one is found. Assume no ID reuse.
-    const targetObject = elementsWithId[0];
-    if (nodeName && targetObject.localName !== nodeName) {
-      return null;
-    }
-    return targetObject;
-  }
-  const allMatchingTargetObjects = evaluateXPathToNodes$1(query, sourceObject, null, {
-    id
-  }, {
-    namespaceResolver: xhtmlNamespaceResolver
-  });
-  if (allMatchingTargetObjects.length === 0) {
-    return null;
-  }
-  if (allMatchingTargetObjects.length === 1 && evaluateXPathToBoolean$1('(ancestor::fx-fore | ancestor::fx-repeat)[last()]/self::fx-fore', allMatchingTargetObjects[0], null, null, {
-    namespaceResolver: xhtmlNamespaceResolver
-  })) {
-    // If the target element is not repeated, then the search for the target object is trivial since
-    // there is only one associated with the target element that bears the matching ID. This is true
-    // regardless of whether or not the source object is repeated. However, if the target element is
-    // repeated, then additional information must be used to help select a target object from among
-    // those associated with the identified target element.
-    const targetObject = allMatchingTargetObjects[0];
-    if (nodeName && targetObject.localName !== nodeName) {
-      return null;
-    }
-    return targetObject;
-  }
-
-  // SPEC:
-
-  // 12.2.1 References to Elements within a repeat Element
-
-  // When the target element that is identified by the IDREF of a source object has one or more
-  // repeat elements as ancestors, then the set of ancestor repeats are partitioned into two
-  // subsets, those in common with the source element and those that are not in common. Any ancestor
-  // repeat elements of the target element not in common with the source element are descendants of
-  // the repeat elements that the source and target element have in common, if any.
-
-  // For the repeat elements that are in common, the desired target object exists in the same set of
-  // run-time objects that contains the source object. Then, for each ancestor repeat of the target
-  // element that is not in common with the source element, the current index of the repeat
-  // determines the set of run-time objects that contains the desired target object.
-  for (const ancestorRepeatItem of evaluateXPathToNodes$1('ancestor::fx-repeatitem => reverse()', sourceObject, null, null, {
-    namespaceResolver: xhtmlNamespaceResolver
-  })) {
-    const foundTargetObjects = allMatchingTargetObjects.filter(to => XPathUtil.contains(ancestorRepeatItem, to));
-    switch (foundTargetObjects.length) {
-      case 0:
-        // Nothing found: ignore
-        break;
-      case 1:
-        {
-          // A single one is found: the target object is directly in a common repeat
-          const targetObject = foundTargetObjects[0];
-          if (nodeName && targetObject.localName !== nodeName) {
-            return null;
-          }
-          return targetObject;
-        }
-      default:
-        {
-          // Multiple target objects are found: they are in a repeat that is not common with the
-          // source object We found a target object in a common repeat! We now need to find the one
-          // that is in the repeatitem identified at the current index
-          const targetObject = foundTargetObjects.find(to => evaluateXPathToNodes$1('every $ancestor of ancestor::fx-repeatitem satisfies $ancestor is $ancestor/../child::fx-repeatitem[../@repeat-index]', to, null, {}));
-          if (!targetObject) {
-            // Nothing valid found for whatever reason. This might be something dynamic?
-            return null;
-          }
-          if (nodeName && targetObject.localName !== nodeName) {
-            return null;
-          }
-          return targetObject;
-        }
-    }
-  }
-  // We found no target objects in common repeats. The id is unresolvable
-  return null;
-}
-
-// Make namespace resolving use the `instance` element that is related to here
-const xmlDocument = new DOMParser().parseFromString('<xml />', 'text/xml');
-const instanceReferencesByQuery = new Map();
-function findInstanceReferences(xpathQuery) {
-  if (!xpathQuery.includes('instance')) {
-    // No call to the instance function anyway: short-circuit and prevent AST processing
-    return [];
-  }
-  if (instanceReferencesByQuery.has(xpathQuery)) {
-    return instanceReferencesByQuery.get(xpathQuery);
-  }
-  const xpathAST = parseScript(xpathQuery, {}, xmlDocument);
-  const instanceReferences = evaluateXPathToStrings$1(`descendant::xqx:functionCallExpr
-				[xqx:functionName = "instance"]
-				/xqx:arguments
-				/xqx:stringConstantExpr
-				/xqx:value`, xpathAST, null, {}, {
-    namespaceResolver: prefix => prefix === 'xqx' ? 'http://www.w3.org/2005/XQueryX' : undefined
-  });
-  instanceReferencesByQuery.set(xpathQuery, instanceReferences);
-  return instanceReferences;
-}
-/**
- * @typedef {function(string):string} NamespaceResolver
- */
-
-/**
- * @function
- * Resolve a namespace. Needs a namespace prefix and the element that is most closely related to the
- * XPath in which the namespace is being resolved. The prefix will be resolved by using the
- * ancestry of said element.
- *
- * It has two ways of doing so:
- *
- * - If the prefix is defined in an `xmlns:XXX="YYY"` namespace declaration, it will return 'YYY'.
- * - If the prefix is the empty prefix and there is an `xpath-default-namespace="YYY"` attribute in
- * - the * ancestry, that attribute will be used and 'YYY' will be returned
- *
- * @param  {string} xpathQuery
- * @param  {HTMLElement} formElement
- * @returns {NamespaceResolver} The namespace resolver for this context
- */
-function createNamespaceResolver(xpathQuery, formElement) {
-  const cachedResolver = getCachedNamespaceResolver(xpathQuery, formElement);
-  if (cachedResolver) {
-    return cachedResolver;
-  }
-  let instanceReferences = findInstanceReferences(xpathQuery);
-  if (instanceReferences.length === 0) {
-    // No instance functions. Look up further in the hierarchy to see if we can deduce the intended context from there
-    const ancestorComponent = formElement.parentNode && formElement.parentNode.nodeType === formElement.ELEMENT_NODE && formElement.parentNode.closest('[ref]');
-    if (ancestorComponent) {
-      const resolver = createNamespaceResolver(ancestorComponent.getAttribute('ref'), ancestorComponent);
-      setCachedNamespaceResolver(xpathQuery, formElement, resolver);
-      return resolver;
-    }
-    // Nothing found: let's just assume we're supposed to use the `default` instance
-    instanceReferences = ['default'];
-  }
-  if (instanceReferences.length === 1) {
-    // console.log(`resolving ${xpathQuery} with ${instanceReferences[0]}`);
-    let instance;
-    if (instanceReferences[0] === 'default') {
-      /**
-       * @type {HTMLElement}
-       */
-      const actualForeElement = evaluateXPathToFirstNode$1('ancestor-or-self::fx-fore[1]', formElement, null, null, {
-        namespaceResolver: xhtmlNamespaceResolver
-      });
-      instance = actualForeElement && actualForeElement.querySelector('fx-instance');
-    } else {
-      instance = resolveId(instanceReferences[0], formElement, 'fx-instance');
-    }
-    if (instance && instance.hasAttribute('xpath-default-namespace')) {
-      const xpathDefaultNamespace = instance.getAttribute('xpath-default-namespace');
-      /*
-            console.log(
-              `Resolving the xpath ${xpathQuery} with the default namespace set to ${xpathDefaultNamespace}`,
-            );
-      */
-      /**
-       * @type {NamespaceResolver}
-       */
-      const resolveNamespacePrefix = prefix => {
-        if (!prefix) {
-          return xpathDefaultNamespace;
-        }
-        return undefined;
-      };
-      setCachedNamespaceResolver(xpathQuery, formElement, resolveNamespacePrefix);
-      return resolveNamespacePrefix;
-    }
-  }
-  /*
-  if (instanceReferences.length > 1) {
-    console.warn(
-      `More than one instance is used in the query "${xpathQuery}". The default namespace resolving will be used`,
-    );
-  }
-  */
-
-  const xpathDefaultNamespace = evaluateXPathToString$1('ancestor-or-self::*/@xpath-default-namespace[last()]', formElement) || '';
-
-  /**
-   * @type {NamespaceResolver}
-   */
-  const resolveNamespacePrefix = function resolveNamespacePrefix(prefix) {
-    if (prefix === '') {
-      return xpathDefaultNamespace;
-    }
-
-    // Note: ideally we should use Node#lookupNamespaceURI. However, the nodes we are passed are
-    // XML. The best we can do is emulate the `xmlns:xxx` namespace declarations by regarding them as
-    // attributes. Which they technically ARE NOT!
-
-    return evaluateXPathToString$1('ancestor-or-self::*/@*[name() = "xmlns:" || $prefix][last()]', formElement, null, {
-      prefix
-    });
-  };
-  setCachedNamespaceResolver(xpathQuery, formElement, resolveNamespacePrefix);
-  return resolveNamespacePrefix;
-}
-function createNamespaceResolverForNode(query, contextNode, formElement) {
-  if ((contextNode && contextNode.ownerDocument || contextNode) === window.document) {
-    // Running a query on the HTML DOM. Don't bother resolving namespaces in any other way
-    return xhtmlNamespaceResolver;
-  }
-  return createNamespaceResolver(query, formElement);
-}
-
-/**
- * Implementation of the functionNameResolver passed to FontoXPath to
- * redirect function resolving for unprefixed functions to either the fn or the xf namespace
- */
-// eslint-disable-next-line no-unused-vars
-function functionNameResolver({
-  prefix,
-  localName
-}, _arity) {
-  switch (localName) {
-    // TODO: put the full XForms library functions set here
-    case 'context':
-    case 'base64encode':
-    case 'boolean-from-string':
-    case 'current':
-    case 'depends':
-    case 'event':
-    case 'fore-attr':
-    case 'index':
-    case 'instance':
-    case 'json2xml':
-    case 'xml2Json':
-    case 'log':
-    case 'parse':
-    case 'local-date':
-    case 'local-dateTime':
-    case 'logtree':
-    case 'uri':
-    case 'uri-fragment':
-    case 'uri-host':
-    case 'uri-param':
-    case 'uri-path':
-    case 'uri-relpath':
-    case 'uri-port':
-    case 'uri-query':
-    case 'uri-scheme':
-    case 'uri-scheme-specific-part':
-      return {
-        namespaceURI: XFORMS_NAMESPACE_URI,
-        localName
-      };
-    default:
-      if (prefix === '' && globallyDeclaredFunctionLocalNames.includes(localName)) {
-        // The function has been declared without a prefix and is called here without a prefix.
-        // Just make this work. It is the developer-friendly way
-        return {
-          namespaceURI: 'http://www.w3.org/2005/xquery-local-functions',
-          localName
-        };
-      }
-      if (prefix === 'fn' || prefix === '') {
-        return {
-          namespaceURI: 'http://www.w3.org/2005/xpath-functions',
-          localName
-        };
-      }
-      if (prefix === 'local') {
-        return {
-          namespaceURI: 'http://www.w3.org/2005/xquery-local-functions',
-          localName
-        };
-      }
-      return null;
-  }
-}
-
-/**
- * Get the variables in scope of the form element. These are the values of the variables that
- * logically precede the formElement that declares the XPath
- *
- * @param  {Node}  formElement  The element that declares the XPath
- *
- * @returns  {Object}  A key-value mapping of the variables
- */
-function getVariablesInScope(formElement) {
-  let closestActualFormElement = formElement;
-  while (closestActualFormElement && !('inScopeVariables' in closestActualFormElement)) {
-    closestActualFormElement = closestActualFormElement.nodeType === Node.ATTRIBUTE_NODE ? closestActualFormElement.ownerElement : closestActualFormElement.parentNode;
-  }
-  if (!closestActualFormElement) {
-    return {};
-  }
-  const variables = {};
-  if (closestActualFormElement.inScopeVariables) {
-    for (const key of closestActualFormElement.inScopeVariables.keys()) {
-      const varElementOrValue = closestActualFormElement.inScopeVariables.get(key);
-      if (!varElementOrValue) {
-        continue;
-      }
-      if (varElementOrValue.nodeType) {
-        // We are a var element, set the value to the value computed there
-        variables[key] = varElementOrValue.value;
-        // variables[key] = varElementOrValue.inScopeVariables.get(key);
-      } else {
-        // We are a direct value. This is used to leak in event variables
-        variables[key] = varElementOrValue;
-      }
-    }
-  }
-  return variables;
-}
-
-/**
- * Evaluate an XPath to _any_ type. When possible, prefer to use any other function to ensure the
- * type of the output is more predictable.
- *
- * @param  {string} xpath  The XPath to run
- * @param  {Node} contextNode The start of the XPath
- * @param  {import('./ForeElementMixin.js').default} formElement  The form element associated to the XPath
- * @param  {Object} variables  Any variables to pass to the XPath
- * @param  {Object} options  Any options to pass to the XPath
- *
- * @returns {any[]}
- */
-/*
-export function evaluateXPath(xpath, contextNode, formElement, variables = {}, options={}, domFacade = null) {
-    const namespaceResolver = createNamespaceResolverForNode(xpath, contextNode, formElement);
-    const variablesInScope = getVariablesInScope(formElement);
-
-    return fxEvaluateXPath(
-        xpath,
-        contextNode,
-        domFacade,
-        {...variablesInScope, ...variables},
-        fxEvaluateXPath.ALL_RESULTS_TYPE,
-        {
-			debug: true,
-            currentContext: {formElement, variables},
-            moduleImports: {
-                xf: XFORMS_NAMESPACE_URI,
-            },
-            functionNameResolver,
-            namespaceResolver,
-			language: options.language || evaluateXPath.XPATH_3_1
-        },
-    );
-}
-*/
-function evaluateXPath(xpath, contextNode, formElement, variables = {}, options = {}) {
-  try {
-    const namespaceResolver = createNamespaceResolverForNode(xpath, contextNode, formElement);
-    const variablesInScope = getVariablesInScope(formElement);
-    const result = evaluateXPath$1(xpath, contextNode, null, {
-      ...variablesInScope,
-      ...variables
-    }, evaluateXPath$1.ALL_RESULTS_TYPE, {
-      debug: true,
-      currentContext: {
-        formElement,
-        variables
-      },
-      moduleImports: {
-        xf: XFORMS_NAMESPACE_URI
-      },
-      functionNameResolver,
-      namespaceResolver,
-      language: options.language || evaluateXPath$1.XPATH_3_1_LANGUAGE
-    });
-    // console.log('evaluateXPath',xpath, result);
-    return result;
-  } catch (e) {
-    formElement.dispatchEvent(new CustomEvent('error', {
-      composed: false,
-      bubbles: true,
-      detail: {
-        origin: formElement,
-        message: `Expression '${xpath}' failed: ${e}`,
-        expr: xpath,
-        level: 'Error'
-      }
-    }));
-
-    /*
-        formElement.dispatchEvent(
-            new CustomEvent('error', {
-                composed: false,
-                bubbles: true,
-                cancelable:true,
-                detail: {
-                    origin: formElement,
-                    message: `Expression '${xpath}' failed`,
-                    expr:xpath,
-                    level:'Error'},
-            }),
-        );
-    */
-    // Return 'nothing' in hope the rest of the page can forgive this
-    return [];
-  }
-}
-/**
- * Evaluate an XPath to the first Node
- *
- * @param  {string} xpath  The XPath to run
- * @param  {Node} contextNode The start of the XPath
- * @param  {import('./ForeElementMixin.js').default} formElement  The form element associated to the XPath
- * @returns {Node} The first node found in the XPath
- */
-function evaluateXPathToFirstNode(xpath, contextNode, formElement) {
-  try {
-    const namespaceResolver = createNamespaceResolverForNode(xpath, contextNode, formElement);
-    const variablesInScope = getVariablesInScope(formElement);
-    const result = evaluateXPathToFirstNode$1(xpath, contextNode, null, variablesInScope, {
-      defaultFunctionNamespaceURI: XFORMS_NAMESPACE_URI,
-      moduleImports: {
-        xf: XFORMS_NAMESPACE_URI
-      },
-      currentContext: {
-        formElement
-      },
-      functionNameResolver,
-      namespaceResolver
-    });
-    // console.log('evaluateXPathToFirstNode',xpath, result);
-    return result;
-  } catch (e) {
-    formElement.dispatchEvent(new CustomEvent('error', {
-      composed: false,
-      bubbles: true,
-      detail: {
-        origin: formElement,
-        message: `Expression '${xpath}' failed: ${e}`,
-        expr: xpath,
-        level: 'Error'
-      }
-    }));
-  }
-}
-
-/**
- * Evaluate an XPath to all nodes
- *
- * @param  {string} xpath  The XPath to run
- * @param  {Node} contextNode The start of the XPath
- * @param  {import('./ForeElementMixin.js').default} formElement  The form element associated to the XPath
- * @return {Node[]}  All nodes
- */
-function evaluateXPathToNodes(xpath, contextNode, formElement) {
-  try {
-    const namespaceResolver = createNamespaceResolverForNode(xpath, contextNode, formElement);
-    const variablesInScope = getVariablesInScope(formElement);
-    const result = evaluateXPathToNodes$1(xpath, contextNode, null, variablesInScope, {
-      currentContext: {
-        formElement
-      },
-      functionNameResolver,
-      moduleImports: {
-        xf: XFORMS_NAMESPACE_URI
-      },
-      namespaceResolver
-    });
-    // console.log('evaluateXPathToNodes',xpath, result);
-    return result;
-  } catch (e) {
-    formElement.dispatchEvent(new CustomEvent('error', {
-      composed: false,
-      bubbles: true,
-      detail: {
-        origin: formElement,
-        message: `Expression '${xpath}' failed: ${e}`,
-        expr: xpath,
-        level: 'Error'
-      }
-    }));
-  }
-}
-
-/**
- * Evaluate an XPath to a boolean
- *
- * @param  {string} xpath  The XPath to run
- * @param  {Node} contextNode The start of the XPath
- * @param  {import('./ForeElementMixin.js').default} formElement  The form element associated to the XPath
- * @return {boolean}
- */
-function evaluateXPathToBoolean(xpath, contextNode, formElement) {
-  try {
-    const namespaceResolver = createNamespaceResolverForNode(xpath, contextNode, formElement);
-    const variablesInScope = getVariablesInScope(formElement);
-    return evaluateXPathToBoolean$1(xpath, contextNode, null, variablesInScope, {
-      currentContext: {
-        formElement
-      },
-      functionNameResolver,
-      moduleImports: {
-        xf: XFORMS_NAMESPACE_URI
-      },
-      namespaceResolver
-    });
-  } catch (e) {
-    formElement.dispatchEvent(new CustomEvent('error', {
-      composed: false,
-      bubbles: true,
-      detail: {
-        origin: formElement,
-        message: `Expression '${xpath}' failed: ${e}`,
-        expr: xpath,
-        level: 'Error'
-      }
-    }));
-  }
-}
-
-/**
- * Evaluate an XPath to a string
- *
- * @param  {string}     xpath             The XPath to run
- * @param  {Node}       contextNode       The start of the XPath
- * @param  {Node}       formElement       The form element associated to the XPath
- * @param  {Node}       formElement       The element where the XPath is defined: used for namespace resolving
- * @param  {import('fontoxpath').IDomFacade}  [domFacade=null]  A DomFacade is used in bindings to intercept DOM
- * access. This is used to determine dependencies between bind elements.
- * @return {string}
- */
-function evaluateXPathToString(xpath, contextNode, formElement, domFacade = null) {
-  try {
-    const namespaceResolver = createNamespaceResolverForNode(xpath, contextNode, formElement);
-    const variablesInScope = getVariablesInScope(formElement);
-    return evaluateXPathToString$1(xpath, contextNode, domFacade, variablesInScope, {
-      currentContext: {
-        formElement
-      },
-      functionNameResolver,
-      moduleImports: {
-        xf: XFORMS_NAMESPACE_URI
-      },
-      namespaceResolver
-    });
-  } catch (e) {
-    formElement.dispatchEvent(new CustomEvent('error', {
-      composed: false,
-      bubbles: true,
-      detail: {
-        origin: formElement,
-        message: `Expression '${xpath}' failed: ${e}`,
-        expr: xpath,
-        level: 'Error'
-      }
-    }));
-  }
-}
-
-/**
- * Evaluate an XPath to a set of strings
- *
- * @param  {string}     xpath             The XPath to run
- * @param  {Node}       contextNode       The start of the XPath
- * @param  {Node}       formElement       The form element associated to the XPath
- * @param  {Node}       formElement       The element where the XPath is defined: used for namespace resolving
- * @param  {import('fontoxpath').IDomFacade}  [domFacade=null]  A DomFacade is used in bindings to intercept DOM
- * access. This is used to determine dependencies between bind elements.
- * @return {string[]}
- */
-function evaluateXPathToStrings(xpath, contextNode, formElement, domFacade = null) {
-  try {
-    const namespaceResolver = createNamespaceResolverForNode(xpath, contextNode, formElement);
-    return evaluateXPathToStrings$1(xpath, contextNode, domFacade, {}, {
-      currentContext: {
-        formElement
-      },
-      functionNameResolver,
-      moduleImports: {
-        xf: XFORMS_NAMESPACE_URI
-      },
-      namespaceResolver
-    });
-  } catch (e) {
-    formElement.dispatchEvent(new CustomEvent('error', {
-      composed: false,
-      bubbles: true,
-      detail: {
-        origin: formElement,
-        message: `Expression '${xpath}' failed: ${e}`,
-        expr: xpath,
-        level: 'Error'
-      }
-    }));
-  }
-}
-
-/**
- * Evaluate an XPath to a number
- *
- * @param  {string}     xpath             The XPath to run
- * @param  {Node}       contextNode       The start of the XPath
- * @param  {Node}       formElement       The form element associated to the XPath
- * @param  {Node}       formElement       The element where the XPath is defined: used for namespace resolving
- * @param  {import('fontoxpath').IDomFacade}  [domFacade=null]  A DomFacade is used in bindings to intercept DOM
- * access. This is used to determine dependencies between bind elements.
- * @return {number}
- */
-function evaluateXPathToNumber(xpath, contextNode, formElement, domFacade = null) {
-  try {
-    const namespaceResolver = createNamespaceResolverForNode(xpath, contextNode, formElement);
-    const variablesInScope = getVariablesInScope(formElement);
-    return evaluateXPathToNumber$1(xpath, contextNode, domFacade, variablesInScope, {
-      currentContext: {
-        formElement
-      },
-      functionNameResolver,
-      moduleImports: {
-        xf: XFORMS_NAMESPACE_URI
-      },
-      namespaceResolver
-    });
-  } catch (e) {
-    formElement.dispatchEvent(new CustomEvent('error', {
-      composed: false,
-      bubbles: true,
-      detail: {
-        origin: formElement,
-        message: `Expression '${xpath}' failed: ${e}`,
-        expr: xpath,
-        level: 'Error'
-      }
-    }));
-  }
-}
-const contextFunction = (dynamicContext, string) => {
-  const caller = dynamicContext.currentContext.formElement;
-  let instance = null;
-  if (string) {
-    instance = resolveId(string, caller);
-  } else {
-    instance = XPathUtil.getParentBindingElement(caller);
-  }
-  if (instance) {
-    if (instance.nodeName === 'FX-REPEAT') {
-      const {
-        nodeset
-      } = instance;
-      for (let parent = caller; parent; parent = parent.parentNode) {
-        if (parent.parentNode === instance) {
-          const offset = Array.from(parent.parentNode.children).indexOf(parent);
-          return nodeset[offset];
-        }
-      }
-    }
-    return instance.nodeset;
-  }
-  return caller.getInScopeContext();
-};
-
-// todo: implement
-const currentFunction = (dynamicContext, string) => {
-  dynamicContext.currentContext.formElement;
-  return null;
-};
-const elementFunction = (dynamicContext, string) => {
-  dynamicContext.currentContext.formElement;
-  const newElement = document.createElement(string);
-  return newElement;
-};
-
-/**
- * @param id as string
- * @return instance data for given id serialized to string.
- */
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'context'
-}, [], 'item()?', contextFunction);
-
-/**
- * @param id as string
- * @return instance data for given id serialized to string.
- */
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'context'
-}, ['xs:string'], 'item()?', contextFunction);
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'current'
-}, ['xs:string'], 'item()?', currentFunction);
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'element'
-}, ['xs:string'], 'item()?', elementFunction);
-
-/**
- * @param id as string
- * @return instance data for given id serialized to string.
- */
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'log'
-}, ['xs:string?'], 'xs:string?', (dynamicContext, string) => {
-  const {
-    formElement
-  } = dynamicContext.currentContext;
-  const instance = resolveId(string, formElement, 'fx-instance');
-  if (instance) {
-    if (instance.getAttribute('type') === 'json') {
-      console.warn('log() does not work for JSON yet');
-      // return JSON.stringify(instance.getDefaultContext());
-    } else {
-      const def = new XMLSerializer().serializeToString(instance.getDefaultContext());
-      return prettifyXml(def);
-    }
-  }
-  return null;
-});
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'fore-attr'
-}, ['xs:string?'], 'xs:string?', (dynamicContext, string) => {
-  const {
-    formElement
-  } = dynamicContext.currentContext;
-  let parent = formElement;
-  if (formElement.nodeType === Node.TEXT_NODE) {
-    parent = formElement.parentNode;
-  }
-  const foreElement = parent.closest('fx-fore');
-  if (foreElement.hasAttribute(string)) {
-    return foreElement.getAttribute(string);
-  }
-  return null;
-});
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'parse'
-}, ['xs:string?'], 'element()?', (_dynamicContext, string) => {
-  const parser = new DOMParser();
-  const out = parser.parseFromString(string, 'application/xml');
-  console.log('parse', out);
-
-  /*
-              const {formElement} = dynamicContext.currentContext;
-              const instance = resolveId(string, formElement, 'fx-instance');
-              if (instance) {
-                  if (instance.getAttribute('type') === 'json') {
-                      console.warn('log() does not work for JSON yet');
-                      // return JSON.stringify(instance.getDefaultContext());
-                  } else {
-                      const def = new XMLSerializer().serializeToString(instance.getDefaultContext());
-                      return Fore.prettifyXml(def);
-                  }
-              }
-      */
-  return out.firstElementChild;
-});
-function buildTree(tree, data) {
-  if (!data) return;
-  if (data.nodeType === Node.ELEMENT_NODE) {
-    if (data.children) {
-      const details = document.createElement('details');
-      details.setAttribute('data-path', data.nodeName);
-      const summary = document.createElement('summary');
-      let display = ` <${data.nodeName}`;
-      Array.from(data.attributes).forEach(attr => {
-        display += ` ${attr.nodeName}="${attr.nodeValue}"`;
-      });
-      let contents;
-      if (data.firstChild && data.firstChild.nodeType === Node.TEXT_NODE && data.firstChild.data.trim() !== '') {
-        // console.log('whoooooooooopp');
-        contents = data.firstChild.nodeValue;
-        display += `>${contents}</${data.nodeName}>`;
-      } else {
-        display += '>';
-      }
-      summary.textContent = display;
-      details.appendChild(summary);
-      if (data.childElementCount !== 0) {
-        details.setAttribute('open', 'open');
-      } else {
-        summary.setAttribute('style', 'list-style:none;');
-      }
-      tree.appendChild(details);
-      Array.from(data.children).forEach(child => {
-        // if(child.nodeType === Node.ELEMENT_NODE){
-        // child.parentNode.appendChild(buildTree(child));
-        buildTree(details, child);
-        // }
-      });
-    }
-  } /* else if(data.nodeType === Node.ATTRIBUTE_NODE){
-        //create span for now
-        // const span = document.createElement('span');
-        // span.style.background = 'grey';
-        // span.textContent = data.value;
-        // tree.appendChild(span);
-        tree.setAttribute(data.nodeName,data.value);
-    }else {
-        tree.textContent = data;
-    } */
-
-  // return tree;
-}
-
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'logtree'
-}, ['xs:string?'], 'element()?', (dynamicContext, string) => {
-  const {
-    formElement
-  } = dynamicContext.currentContext;
-  const instance = resolveId(string, formElement, 'fx-instance');
-  if (instance) {
-    // const def = new XMLSerializer().serializeToString(instance.getDefaultContext());
-    // const def = JSON.stringify(instance.getDefaultContext());
-
-    const treeDiv = document.createElement('div');
-    treeDiv.setAttribute('class', 'logtree');
-    // const datatree = buildTree(tree,instance.getDefaultContext());
-    // return tree.appendChild(datatree);
-    // return  buildTree(root,instance.getDefaultContext());;
-    const form = dynamicContext.currentContext.formElement;
-    const logtree = form.querySelector('.logtree');
-    if (logtree) {
-      logtree.parentNode.removeChild(logtree);
-    }
-    const tree = buildTree(treeDiv, instance.getDefaultContext());
-    if (tree) {
-      form.appendChild(tree);
-    }
-  }
-  return null;
-});
-const instance = (dynamicContext, string) => {
-  // Spec: https://www.w3.org/TR/xforms-xpath/#The_XForms_Function_Library#The_instance.28.29_Function
-  // TODO: handle no string passed (null will be passed instead)
-
-  /**
-   * @type {import('./fx-fore.js').FxFore}
-   */
-  const formElement = evaluateXPathToFirstNode$1('ancestor-or-self::fx-fore[1]', dynamicContext.currentContext.formElement, null, null, {
-    namespaceResolver: xhtmlNamespaceResolver
-  });
-  let lookup = null;
-  if (string === null || string === 'default') {
-    lookup = formElement.getModel().getDefaultInstance();
-  } else {
-    lookup = formElement.getModel().getInstance(string);
-    if (!lookup) {
-      document.querySelector('fx-fore').dispatchEvent(new CustomEvent('error', {
-        composed: true,
-        bubbles: true,
-        detail: {
-          origin: 'functions',
-          message: `Instance not found '${string}'`,
-          level: 'Error'
-        }
-      }));
-    }
-  }
-  const context = lookup.getDefaultContext();
-  if (!context) {
-    return null;
-  }
-  return context;
-};
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'index'
-}, ['xs:string?'], 'xs:integer?', (dynamicContext, string) => {
-  const {
-    formElement
-  } = dynamicContext.currentContext;
-  if (string === null) {
-    return 1;
-  }
-  const repeat = resolveId(string, formElement, 'fx-repeat');
-
-  // const def = instance.getInstanceData();
-  if (repeat) {
-    return repeat.getAttribute('index');
-  }
-  return Number(1);
-});
-
-// Note that this is not to spec. The spec enforces elements to be returned from the
-// instance. However, we allow instances to actually be JSON!
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'instance'
-}, [], 'item()?', domFacade => instance(domFacade, null));
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'instance'
-}, ['xs:string?'], 'item()?', instance);
-const jsonToXml = (_dynamicContext, json) => {
-  const escapeXml = str => str.replace(/[^\u0009\u000A\u000D\u0020-\uD7FF\uE000-\uFFFD]/g, char => `\\u${char.charCodeAt(0).toString(16).padStart(4, '0')}`);
-  const convert = (obj, parent) => {
-    const type = typeof obj;
-    if (type === 'number') {
-      parent.setAttribute('type', 'number');
-      parent.textContent = obj.toString();
-    } else if (type === 'boolean') {
-      parent.setAttribute('type', 'boolean');
-      parent.textContent = obj.toString();
-    } else if (obj === null) {
-      const node = document.createElement('_');
-      node.setAttribute('type', 'null');
-      parent.appendChild(node);
-    } else if (type === 'string') {
-      parent.textContent = escapeXml(obj);
-    } else if (Array.isArray(obj)) {
-      parent.setAttribute('type', 'array');
-      obj.forEach(item => {
-        const node = document.createElement('_');
-        convert(item, node);
-        node.textContent = item;
-        parent.appendChild(node);
-      });
-    } else if (type === 'object') {
-      parent.setAttribute('type', 'object');
-      Object.entries(obj).forEach(([key, value]) => {
-        if (value) {
-          const childNode = document.createElement(key.replace(/[^a-zA-Z0-9_]/g, '_'));
-          convert(value, childNode);
-          parent.appendChild(childNode);
-        }
-      });
-    }
-  };
-  const root = document.createElement('json');
-  if (Array.isArray(json)) {
-    root.setAttribute('type', 'array');
-  } else {
-    root.setAttribute('type', 'object');
-  }
-  convert(json, root);
-  // return root.outerHTML;
-  console.log('xml', root);
-  return root;
-};
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'json2xml'
-}, ['item()?'], 'item()?', jsonToXml);
-const xmlToJson = (_dynamicContext, xml) => {
-  const isElementNode = node => node.nodeType === Node.ELEMENT_NODE;
-  const isTextNode = node => node.nodeType === Node.TEXT_NODE;
-  const parseNode = node => {
-    if (isElementNode(node)) {
-      const obj = {};
-      if (node.hasAttributes()) {
-        obj.type = node.getAttribute('type');
-      }
-      if (node.childNodes.length === 1 && isTextNode(node.firstChild)) {
-        return node.textContent;
-      }
-      for (const child of node.childNodes) {
-        const childName = child.nodeName;
-        const childValue = parseNode(child);
-        if (obj[childName]) {
-          if (!Array.isArray(obj[childName])) {
-            obj[childName] = [obj[childName]];
-          }
-          obj[childName].push(childValue);
-        } else {
-          obj[childName] = childValue;
-        }
-      }
-      return obj;
-    }
-    if (isTextNode(node)) {
-      return node.textContent;
-    }
-    return undefined;
-  };
-  const parser = new DOMParser();
-  const xmlDoc = parser.parseFromString(xml, 'application/xml');
-  const root = xmlDoc.documentElement;
-  return parseNode(root);
-};
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'xmltoJson'
-}, ['item()?'], 'item()?', xmlToJson);
-
-/*
-// Example usage:
-const xml = '<json type="object"><given>Mark</given><family>Smith</family></json>';
-console.log(xmlToJson(xml));
-*/
-
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'depends'
-}, ['node()*'], 'item()?', (_dynamicContext, nodes) =>
-// console.log('depends on : ', nodes[0]);
-nodes[0]);
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'event'
-}, ['xs:string?'], 'item()?', (dynamicContext, arg) => {
-  if (!arg) return null;
-  for (let ancestor = dynamicContext.currentContext.formElement; ancestor; ancestor = ancestor.parentNode) {
-    if (!ancestor.currentEvent) {
-      continue;
-    }
-
-    // We have a current event. read the property either from detail, or from the event
-    // itself.
-    // Check detail for custom events! This is how that is passed along
-    if (ancestor.currentEvent.detail && typeof ancestor.currentEvent.detail === 'object' && arg in ancestor.currentEvent.detail) {
-      return ancestor.currentEvent.detail[arg];
-    }
-
-    // arg might be `code`, so currentEvent.code should work
-    if (arg.includes('.')) {
-      return _propertyLookup(ancestor.currentEvent, arg);
-    }
-    return ancestor.currentEvent[arg] || null;
-  }
-  return null;
-});
-function _propertyLookup(obj, path) {
-  const parts = path.split('.');
-  if (parts.length == 1) {
-    return obj[parts[0]];
-  }
-  return _propertyLookup(obj[parts[0]], parts.slice(1).join('.'));
-}
-
-// Implement the XForms standard functions here.
-registerXQueryModule(`
-    module namespace xf="${XFORMS_NAMESPACE_URI}";
-
-    declare %public function xf:boolean-from-string($str as xs:string) as xs:boolean {
-        lower-case($str) = "true" or $str = "1"
-    };
-`);
-
-// How to run XQUERY:
-/**
- registerXQueryModule(`
- module namespace my-custom-namespace = "my-custom-uri";
- (:~
- Insert attribute somewhere
- ~:)
- declare %public %updating function my-custom-namespace:do-something ($ele as element()) as xs:boolean {
-	if ($ele/@done) then false() else
-	(insert node
-	attribute done {"true"}
-	into $ele, true())
-};
- `)
- // At some point:
- const contextNode = null;
- const pendingUpdatesAndXdmValue = evaluateUpdatingExpressionSync('ns:do-something(.)', contextNode, null, null, {moduleImports: {'ns': 'my-custom-uri'}})
-
- console.log(pendingUpdatesAndXdmValue.xdmValue); // this is true or false, see function
-
- executePendingUpdateList(pendingUpdatesAndXdmValue.pendingUpdateList, null, null, null);
- */
-
-/**
- * @param input as string
- * @return {string}
- */
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'base64encode'
-}, ['xs:string?'], 'xs:string?', (_dynamicContext, string) => btoa(string));
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'local-date'
-}, [], 'xs:string?', (_dynamicContext, _string) => new Date().toLocaleDateString());
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'local-dateTime'
-}, [], 'xs:string?', (_dynamicContext, _string) => new Date().toLocaleString());
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'uri'
-}, [], 'xs:string?', (_dynamicContext, _string) => window.location.href);
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'uri-fragment'
-}, [], 'xs:string?', (_dynamicContext, _arg) => window.location.hash);
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'uri-host'
-}, [], 'xs:string?', (_dynamicContext, _arg) => window.location.host);
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'uri-query'
-}, [], 'xs:string?', (_dynamicContext, _arg) => window.location.search);
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'uri-relpath'
-}, [], 'xs:string?', (_dynamicContext, _arg) => {
-  const path = new URL(window.location.href).pathname;
-  return path.substring(0, path.lastIndexOf('/') + 1);
-});
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'uri-path'
-}, [], 'xs:string?', (_dynamicContext, _arg) => new URL(window.location.href).pathname);
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'uri-port'
-}, [], 'xs:string?', (_dynamicContext, _arg) => window.location.port);
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'uri-param'
-}, ['xs:string?'], 'xs:string?', (_dynamicContext, arg) => {
-  if (!arg) return null;
-  const {
-    search
-  } = window.location;
-  const urlparams = new URLSearchParams(search);
-  const param = urlparams.get(arg);
-  return param || '';
-});
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'uri-scheme'
-}, [], 'xs:string?', (_dynamicContext, _arg) => new URL(window.location.href).protocol);
-registerCustomXPathFunction({
-  namespaceURI: XFORMS_NAMESPACE_URI,
-  localName: 'uri-scheme-specific-part'
-}, [], 'xs:string?', (_dynamicContext, _arg) => {
-  const uri = window.location.href;
-  return uri.substring(uri.indexOf(':') + 1, uri.length);
-});
-
-/**
- * @param {Node} node
- * @returns string
- */
-/*
-export static getDocPath(node) {
-  const path = fx.evaluateXPathToString('path()', node);
-  // Path is like `$default/x[1]/y[1]`
-  const shortened = XPathUtil.shortenPath(path);
-  return shortened.startsWith('/') ? `${shortened}` : `/${shortened}`;
-}
-*/
-
 class XPathUtil {
   /**
    * Recursively check AST for any dynamic expression components.
@@ -18044,9 +17005,7 @@ class XPathUtil {
           for (const item of astNode[key]) {
             if (XPathUtil.containsDynamicContent(item)) return true;
           }
-        } else {
-          if (XPathUtil.containsDynamicContent(astNode[key])) return true;
-        }
+        } else if (XPathUtil.containsDynamicContent(astNode[key])) return true;
       }
     }
     return false;
@@ -18063,14 +17022,14 @@ class XPathUtil {
    * @param xpath
    * @param doc {XMLDocument}
    * @param fore
+   * @param namespaceResolver {function} optional namespace resolver function
    * @return {Node|Attr}
    */
-  static createNodesFromXPath(xpath, doc, fore) {
-    const resolveNamespace = createNamespaceResolver(xpath, fore);
+  static createNodesFromXPath(xpath, doc, fore, namespaceResolver = null) {
+    const resolveNamespace = namespaceResolver || (() => undefined);
     if (!doc) {
       doc = document.implementation.createDocument(null, null, null); // Create a new XML document if not provided
     }
-
     const parts = [];
     let scratch = '';
     let isInPredicate = false;
@@ -18255,14 +17214,23 @@ class XPathUtil {
    * @returns {*|null}
    */
   static getParentBindingElement(start) {
-    /*    if (start.parentNode.host) {
-          const { host } = start.parentNode;
-          if (host.hasAttribute('ref')) {
-            return host;
-          }
-        } else */
-    if (start.parentNode && (start.parentNode.nodeType !== Node.DOCUMENT_NODE || start.parentNode.nodeType !== Node.DOCUMENT_FRAGMENT_NODE)) {
-      return this.getClosest('fx-control[ref],fx-upload[ref],fx-group[ref],fx-repeat[ref], fx-switch[ref],fx-repeatitem', start.parentNode);
+    // JSON lens case
+    if (start && start.__jsonlens__ === true) {
+      let current = start.parent;
+      while (current) {
+        if (current.bindingElement) return current.bindingElement;
+        current = current.parent;
+      }
+      return null;
+    }
+
+    // DOM case
+    let node = start?.parentNode;
+    while (node && node.nodeType !== Node.DOCUMENT_NODE && node.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) {
+      if (node.matches?.('[ref],fx-repeatitem')) {
+        return node;
+      }
+      node = node.parentNode;
     }
     return null;
   }
@@ -18275,7 +17243,7 @@ class XPathUtil {
    * path, otherwise <code>false</code>.
    */
   static isAbsolutePath(path) {
-    return path != null && (path.startsWith('/') || path.startsWith('instance(') || path.startsWith('$'));
+    return path != null && (path.startsWith('/') || path.startsWith('instance(') || path.startsWith('$') || path.startsWith('?'));
   }
 
   /**
@@ -18296,30 +17264,74 @@ class XPathUtil {
    * @returns {string}
    */
   static getInstanceId(ref, boundElement) {
-    if (!ref) {
+    const refStr = typeof ref === 'string' ? ref.trim() : '';
+
+    // Variant A: instance-vars ($default, $foo) must count as instance references
+    // for dependency tracking, otherwise repeats won't refresh when they change.
+    try {
+      const host = boundElement?.nodeType === Node.ATTRIBUTE_NODE ? boundElement.ownerElement : boundElement;
+      const fore = host?.closest?.('fx-fore');
+      const bindings = fore?._instanceVarBindings;
+      if (bindings) {
+        // $default => default instance
+        if (/\$default(?![\w.-])/.test(refStr)) return 'default';
+
+        // $<id> => instance <id> (only if it's a known binding key)
+        for (const k of Object.keys(bindings)) {
+          if (k === 'default') continue;
+          const re = new RegExp(`\\$${k.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}(?![\\w.-])`);
+          if (re.test(refStr)) return k;
+        }
+      }
+    } catch (_e) {
+      // ignore
+    }
+
+    // Explicit "default instance" selector
+    if (refStr.startsWith('instance()')) {
       return 'default';
     }
-    if (ref.startsWith('instance()')) {
-      return 'default';
+
+    // Explicit instance('id') selector at the START of the expression only
+    // (Do NOT use refStr.includes('instance(') because predicates may reference other instances.)
+    {
+      const m = refStr.match(/^instance\(\s*(['"])(?<id>.*?)\1\s*\)/);
+      if (m?.groups?.id != null) {
+        return m.groups.id;
+      }
     }
-    if (ref.startsWith('instance(')) {
-      const result = ref.substring(ref.indexOf('(') + 1);
-      return result.substring(1, result.indexOf(')') - 1);
-    }
-    if (ref.startsWith('$')) {
-      // this variable might actually point to an instance
-      const variableName = ref.match(/\$(?<variableName>[a-zA-Z0-9\-\_]+).*/)?.groups?.variableName;
+
+    // Variable indirection (may ultimately point to instance(...))
+    if (refStr.startsWith('$')) {
+      const variableName = refStr.match(/^\$(?<variableName>[a-zA-Z0-9\-_]+)/)?.groups?.variableName;
       let closestActualFormElement = boundElement;
       while (closestActualFormElement && !('inScopeVariables' in closestActualFormElement)) {
         closestActualFormElement = closestActualFormElement.nodeType === Node.ATTRIBUTE_NODE ? closestActualFormElement.ownerElement : closestActualFormElement.parentNode;
       }
       const correspondingVariable = closestActualFormElement?.inScopeVariables?.get(variableName);
-      if (!correspondingVariable) {
-        return null;
-      }
+      if (!correspondingVariable) return null;
       return this.getInstanceId(correspondingVariable.valueQuery, correspondingVariable);
     }
-    return null;
+
+    // If we can't decide from the ref itself (relative paths, '/', '.', missing ref, fx-repeatitem),
+    // inherit from the nearest ancestor that *does* have a ref or explicit instance().
+    const parentBinding = XPathUtil.getParentBindingElement(boundElement);
+    if (parentBinding) {
+      // If this is a repeatitem boundary with no ref, keep climbing
+      if (parentBinding.matches?.('fx-repeatitem') && !parentBinding.getAttribute?.('ref')) {
+        return this.getInstanceId(null, parentBinding);
+      }
+      const parentRef = parentBinding.getAttribute?.('ref');
+      if (parentRef) {
+        return this.getInstanceId(parentRef, parentBinding);
+      }
+
+      // Parent binding exists but has no ref (rare, but safe): keep climbing
+      return this.getInstanceId(null, parentBinding);
+    }
+
+    // No parent binding => top of scope. If ref wasn't explicit, default.
+    return 'default';
   }
 
   /**
@@ -18354,18 +17366,6 @@ class XPathUtil {
     return shortened.startsWith('/') ? `${shortened}` : `/${shortened}`;
   }
   */
-
-  /**
-   * @param {Node} node
-   * @param {string} instanceId
-   * @returns string
-   */
-  static getPath(node, instanceId) {
-    const path = evaluateXPathToString$1('path()', node);
-    // Path is like `$default/x[1]/y[1]`
-    const shortened = XPathUtil.shortenPath(path);
-    return shortened.startsWith('/') ? `$${instanceId}${shortened}` : `$${instanceId}/${shortened}`;
-  }
 
   /**
    * @param {string} path
@@ -18536,7 +17536,6 @@ function DepGraph(opts) {
   this.incomingEdges = {}; // Node -> [Dependant Node]
   this.circular = opts && !!opts.circular; // Allows circular deps
 }
-
 DepGraph.prototype = {
   /**
    * The number of nodes in the graph.
@@ -18741,7 +17740,6 @@ DepGraph.prototype = {
     if (keys.length === 0) {
       return result; // Empty graph
     }
-
     if (!this.circular) {
       // Look for cycles - we run the DFS starting at all the nodes in case there
       // are several disconnected subgraphs inside this dependency graph.
@@ -18770,6 +17768,2052 @@ DepGraph.prototype = {
 // Create some aliases
 DepGraph.prototype.directDependentsOf = DepGraph.prototype.directDependantsOf;
 DepGraph.prototype.dependentsOf = DepGraph.prototype.dependantsOf;
+
+function prettifyXml(source) {
+  const xmlDoc = new DOMParser().parseFromString(source, 'application/xml');
+  const xsltDoc = new DOMParser().parseFromString([
+  // describes how we want to modify the XML - indent everything
+  '<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">', '  <xsl:output method="xml" indent="yes" omit-xml-declaration="yes"/>', '  <xsl:strip-space elements="*"/>', '  <xsl:template match="text()">',
+  // change to just text() to strip space in text nodes
+  '    <xsl:value-of select="normalize-space(.)"/>', '  </xsl:template>', '  <xsl:template match="node()|@*">', '    <xsl:copy>', '        <xsl:apply-templates select="node()|@*"/>', '    </xsl:copy>', '  </xsl:template>', '</xsl:stylesheet>'].join('\n'), 'application/xml');
+  const xsltProcessor = new XSLTProcessor();
+  xsltProcessor.importStylesheet(xsltDoc);
+  const resultDoc = xsltProcessor.transformToDocument(xmlDoc);
+  const resultXml = new XMLSerializer().serializeToString(resultDoc);
+  return resultXml;
+}
+
+// src/json/JSONDomFacade.js
+class JSONDomFacade {
+  // Treat JSONNodes as "element-like" nodes for XPath purposes.
+  // FontoXPath uses DOM nodeType numbers internally; 1 corresponds to ELEMENT_NODE.
+  getNodeType(/* node */
+  ) {
+    return 1;
+  }
+  getParentNode(node) {
+    return node.getParent();
+  }
+  getChildNodes(node) {
+    return node.getChildren();
+  }
+  getChildren(node) {
+    return node.getChildren();
+  }
+  getChildNodeCount(node) {
+    return node.getChildren().length;
+  }
+  getFirstChild(node) {
+    const children = node.getChildren();
+    return children.length ? children[0] : null;
+  }
+  getLastChild(node) {
+    const children = node.getChildren();
+    return children.length ? children[children.length - 1] : null;
+  }
+  getNextSibling(node) {
+    const parent = node.getParent();
+    if (!parent) return null;
+    const siblings = parent.getChildren();
+    const idx = siblings.indexOf(node);
+    return siblings[idx + 1] || null;
+  }
+  getPreviousSibling(node) {
+    const parent = node.getParent();
+    if (!parent) return null;
+    const siblings = parent.getChildren();
+    const idx = siblings.indexOf(node);
+    return idx > 0 ? siblings[idx - 1] : null;
+  }
+  getNodeName(node) {
+    return String(node.getKey());
+  }
+  getNodeValue(node) {
+    return node.getValue();
+  }
+
+  /**
+   * CRITICAL for fontoxpath: atomization / string-value.
+   * If this returns '' for JSON nodes, contains(), string(), lower-case(), etc. will behave as if empty.
+   */
+  getData(node) {
+    const v = node.getValue();
+    if (v === null || v === undefined) return '';
+    if (typeof v === 'string') return v;
+    if (typeof v === 'number' || typeof v === 'boolean') return String(v);
+
+    // object/array: pragmatic string-value
+    try {
+      return JSON.stringify(v);
+    } catch (_e) {
+      return String(v);
+    }
+  }
+  getAllAttributes() {
+    return [];
+  }
+  getAttribute() {
+    return null;
+  }
+}
+
+// src/xpath-evaluation.js
+const XFORMS_NAMESPACE_URI = 'http://www.w3.org/2002/xforms';
+const createdNamespaceResolversByXPathQueryAndNode = new Map();
+const __jsonDomFacade = new JSONDomFacade();
+
+// ------------------------------------------------------------
+// Helpers: Fore/model/instance
+// ------------------------------------------------------------
+
+function _getOwningFore(node) {
+  let n = node;
+  if (!n) return null;
+
+  // Prefer ForeElementMixin API when available (handles shadow/slot traversal correctly)
+  if (typeof n.getOwnerForm === 'function') {
+    try {
+      const fore = n.getOwnerForm();
+      if (fore) return fore;
+    } catch (_e) {
+      // ignore
+    }
+  }
+  if (n.nodeType === Node.ATTRIBUTE_NODE) n = n.ownerElement;
+  if (n.nodeType === Node.TEXT_NODE) n = n.parentNode;
+
+  // cross shadow
+  if (n?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) n = n.parentNode.host;
+
+  // Element.closest works across light DOM; for shadow, we normalized to host above
+  return n?.closest ? n.closest('fx-fore') : null;
+}
+function _getModelFromFormElement(formElement) {
+  if (!formElement) return null;
+  if (typeof formElement.getModel === 'function') {
+    try {
+      return formElement.getModel();
+    } catch (_e) {}
+  }
+  const fore = _getOwningFore(formElement);
+  if (fore && typeof fore.getModel === 'function') {
+    try {
+      return fore.getModel();
+    } catch (_e) {
+      return null;
+    }
+  }
+  return null;
+}
+function _getInstanceFromFormElement(formElement, instanceId) {
+  const model = _getModelFromFormElement(formElement);
+  if (!model || typeof model.getInstance !== 'function') return null;
+  try {
+    return model.getInstance(instanceId);
+  } catch (_e) {
+    return null;
+  }
+}
+
+// IMPORTANT: source of truth is instance.type / @type
+function _isJsonInstance(instance) {
+  if (!instance) return false;
+  const t = typeof instance.getAttribute === 'function' && instance.getAttribute('type') || instance.type || '';
+  return t === 'json';
+}
+function _isJsonNode(n) {
+  return !!n && typeof n === 'object' && n.__jsonlens__ === true;
+}
+function _getJsonRootNode(instance) {
+  return instance?.nodeset && _isJsonNode(instance.nodeset) ? instance.nodeset : null;
+}
+
+/**
+ * Avoid calling any instance getters here.
+ * Some FxInstance implementations rebuild lenses / trigger evaluation in getters,
+ * which can recurse into XPath evaluation and overflow the stack.
+ */
+function _getRawJsonRootValue(instance) {
+  if (!instance) return null;
+
+  // Canonical backing field in FxInstance
+  if (instance._instanceData !== undefined) return instance._instanceData;
+
+  // Alternate field name
+  if (instance.jsonData !== undefined) return instance.jsonData;
+
+  // Last fallback: unwrap a JSONNode root
+  if (instance.nodeset && instance.nodeset.__jsonlens__ === true) return instance.nodeset.value;
+  return null;
+}
+
+// ------------------------------------------------------------
+// Index('repeat') without XPath evaluation (prevents recursion)
+// ------------------------------------------------------------
+
+function _matchIndexExpr(expr) {
+  const s = String(expr ?? '').trim();
+  const m = s.match(/^index\s*\(\s*(['"])(.*?)\1\s*\)\s*$/);
+  return m ? m[2] : null;
+}
+function resolveId(id, sourceObject, nodeName = null) {
+  const query = 'outermost(ancestor-or-self::fx-fore[1]/(descendant::fx-fore|descendant::*[@id = $id]))[not(self::fx-fore)]';
+  if (sourceObject.nodeType === Node.TEXT_NODE) {
+    sourceObject = sourceObject.parentNode;
+  }
+  if (sourceObject.nodeType === Node.ATTRIBUTE_NODE) {
+    sourceObject = sourceObject.ownerElement;
+  }
+  if (sourceObject.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+    sourceObject = sourceObject.parentNode.host;
+  }
+  const ownerForm = sourceObject.localName === 'fx-fore' ? sourceObject : sourceObject.closest('fx-fore');
+  const elementsWithId = ownerForm.querySelectorAll(`[id='${id}']`);
+  if (elementsWithId.length === 1) {
+    const targetObject = elementsWithId[0];
+    if (nodeName && targetObject.localName !== nodeName) return null;
+    return targetObject;
+  }
+  const allMatchingTargetObjects = evaluateXPathToNodes$1(query, sourceObject, null, {
+    id
+  }, {
+    namespaceResolver: xhtmlNamespaceResolver
+  });
+  if (allMatchingTargetObjects.length === 0) return null;
+  if (allMatchingTargetObjects.length === 1 && evaluateXPathToBoolean$1('(ancestor::fx-fore | ancestor::fx-repeat)[last()]/self::fx-fore', allMatchingTargetObjects[0], null, null, {
+    namespaceResolver: xhtmlNamespaceResolver
+  })) {
+    const targetObject = allMatchingTargetObjects[0];
+    if (nodeName && targetObject.localName !== nodeName) return null;
+    return targetObject;
+  }
+  for (const ancestorRepeatItem of evaluateXPathToNodes$1('ancestor::fx-repeatitem => reverse()', sourceObject, null, null, {
+    namespaceResolver: xhtmlNamespaceResolver
+  })) {
+    const foundTargetObjects = allMatchingTargetObjects.filter(to => XPathUtil.contains(ancestorRepeatItem, to));
+    switch (foundTargetObjects.length) {
+      case 0:
+        break;
+      case 1:
+        {
+          const targetObject = foundTargetObjects[0];
+          if (nodeName && targetObject.localName !== nodeName) return null;
+          return targetObject;
+        }
+      default:
+        {
+          const targetObject = foundTargetObjects.find(to => evaluateXPathToNodes$1('every $ancestor of ancestor::fx-repeatitem satisfies $ancestor is $ancestor/../child::fx-repeatitem[../@repeat-index]', to, null, {}));
+          if (!targetObject) return null;
+          if (nodeName && targetObject.localName !== nodeName) return null;
+          return targetObject;
+        }
+    }
+  }
+  return null;
+}
+
+/**
+ * Resolve index('repeatId') without evaluating XPath (prevents recursion).
+ * Returns:
+ *  - null   => not an index() expr
+ *  - number => resolved index (defaults to 1)
+ */
+function tryResolveIndexExpr(expr, formElementOrNode) {
+  try {
+    const repeatId = _matchIndexExpr(expr);
+    if (!repeatId) return null;
+    const source = formElementOrNode?.nodeType ? formElementOrNode : _getOwningFore(formElementOrNode);
+    const repeat = source && resolveId(repeatId, source, 'fx-repeat') || _getOwningFore(source)?.querySelector?.(`#${CSS.escape(repeatId)}`);
+    if (!repeat) return 1;
+    const attr = repeat.getAttribute('index') ?? repeat.getAttribute('repeat-index');
+    let idx = Number(attr);
+    if (!Number.isFinite(idx) || idx < 1) {
+      if (typeof repeat.getIndex === 'function') idx = Number(repeat.getIndex());else idx = Number(repeat.index);
+    }
+    return Number.isFinite(idx) && idx >= 1 ? idx : 1;
+  } catch (_e) {
+    return null;
+  }
+}
+
+// ------------------------------------------------------------
+// JSON lookup handling
+// ------------------------------------------------------------
+
+function _toXQueryMapItem(value) {
+  if (value == null) return value;
+  if (Array.isArray(value)) {
+    return value.map(v => _toXQueryMapItem(v));
+  }
+  if (value instanceof Map) {
+    const m = new Map();
+    for (const [k, v] of value.entries()) m.set(k, _toXQueryMapItem(v));
+    return m;
+  }
+
+  // plain object -> Map
+  if (typeof value === 'object' && !value.nodeType && value.__jsonlens__ !== true) {
+    const m = new Map();
+    for (const [k, v] of Object.entries(value)) m.set(k, _toXQueryMapItem(v));
+    return m;
+  }
+  return value;
+}
+function _resolveLookupOnMapItem(base, rest) {
+  // Resolve XQuery 3.1 lookup steps like "?ui?query" against Map/Array/plain objects.
+  // Returns the resolved JS value (primitive/Map/Array/object) or null.
+  if (base == null) return null;
+  let s = String(rest ?? '').trim();
+  if (!s) return base;
+
+  // Allow prefixes like '.?ui?query'
+  if (s.startsWith('.')) s = s.slice(1);
+  if (!s.startsWith('?')) return base;
+  const steps = s.split('?').filter(Boolean).map(p => String(p).trim()).filter(Boolean);
+  let cur = base;
+  const getProp = (obj, key) => {
+    if (obj == null) return null;
+    if (obj instanceof Map) return obj.get(key);
+    if (Array.isArray(obj)) {
+      // numeric key for arrays
+      const n = Number(key);
+      if (Number.isFinite(n)) return obj[n - 1];
+      return null;
+    }
+    if (typeof obj === 'object') return obj[key];
+    return null;
+  };
+  for (const raw of steps) {
+    if (cur == null) return null;
+    if (raw === '*') {
+      // Star lookup returns the current collection as-is
+      continue;
+    }
+
+    // Support bracket index: prop[3]
+    const bm = raw.match(/^(.*?)\[(.+)\]$/);
+    if (bm) {
+      const prop = bm[1].trim();
+      const idxExpr = bm[2].trim();
+      const container = prop ? getProp(cur, prop) : cur;
+      if (container == null) return null;
+      const idx1 = _resolveBracketIndex1(idxExpr, null) ?? Number(idxExpr);
+      if (!Number.isFinite(idx1) || idx1 < 1) return null;
+      if (Array.isArray(container)) {
+        cur = container[idx1 - 1];
+        continue;
+      }
+      if (container instanceof Map) {
+        // Map with numeric keys is rare; treat as array-like if values are array
+        const v = container.get(idx1);
+        cur = v !== undefined ? v : null;
+        continue;
+      }
+      return null;
+    }
+    cur = getProp(cur, raw);
+  }
+  return cur;
+}
+function _looksLikeLookupExpr(expr) {
+  const s = String(expr ?? '').trim();
+  return s.includes('?');
+}
+
+/**
+ * Split "…?*[(predicate)]" => { base: "…?*", predicate: "(predicate)" }
+ * Works for:
+ *   instance('data')?movies?*[true()]
+ *   ?movies?*[instance('data')?ui?query = 'Ma']
+ */
+function _splitStarPredicate(expr) {
+  const s = String(expr ?? '').trim();
+  const m = s.match(/^(.*\?\*)\s*\[\s*([\s\S]+?)\s*\]\s*$/);
+  if (!m) return null;
+  return {
+    base: m[1].trim(),
+    predicate: m[2].trim()
+  };
+}
+
+/**
+ * Determine whether expression is a "simple navigation" lens path that can be resolved
+ * by JSONNode.get chain:
+ * - no "*[predicate]" (handled separately)
+ * - no operators
+ * - no function calls beyond instance()/index()
+ * - predicates allowed ONLY in form "prop[NUMBER]" or "prop[index('repeat')]"
+ */
+function _isSimpleLookupExpr(expr) {
+  const s = String(expr ?? '').trim();
+
+  // star predicate is not simple (handled by _splitStarPredicate path)
+  if (/\?\*\s*\[/.test(s)) return false;
+
+  // operators => not simple
+  if (/[=<>!]=|[=<>]/.test(s)) return false;
+
+  // function calls other than instance()/index() => not simple
+  const parens = s.match(/[a-zA-Z_][\w.-]*\s*\(/g) || [];
+  const otherCalls = parens.filter(m => !/^instance\s*\(/.test(m) && !/^index\s*\(/.test(m));
+  if (otherCalls.length) return false;
+
+  // bracket predicates allowed only as array access
+  if (/\[[\s\S]*\]/.test(s)) {
+    const steps = s.split('?').filter(Boolean);
+    for (const step of steps) {
+      const bm = step.match(/^(.*?)\[(.+)\]$/);
+      if (!bm) continue;
+      const inside = bm[2].trim();
+      if (/^\d+$/.test(inside)) continue;
+      if (_matchIndexExpr(inside)) continue;
+      // allow index("x") too
+      if (/^index\s*\(\s*(['"])(.*?)\1\s*\)\s*$/.test(inside)) continue;
+      return false;
+    }
+  }
+  return true;
+}
+function _parseSimpleLookupPath(expr) {
+  const s = String(expr ?? '').trim();
+  let instanceId = null;
+  let rest = s;
+  const instExplicit = s.match(/^instance\s*\(\s*(['"])(.*?)\1\s*\)\s*(\?.*)$/);
+  if (instExplicit) {
+    instanceId = instExplicit[2];
+    rest = instExplicit[3];
+  } else {
+    const instDefault = s.match(/^instance\s*\(\s*\)\s*(\?.*)$/);
+    if (instDefault) {
+      instanceId = 'default';
+      rest = instDefault[1];
+    } else if (s.startsWith('.?')) rest = s.slice(1);else if (!s.startsWith('?')) return null;
+  }
+  const steps = rest.split('?').filter(Boolean).map(part => part.trim()).filter(Boolean);
+  return {
+    instanceId,
+    steps,
+    hasExplicitInstance: !!instExplicit
+  };
+}
+function _getInstanceIdForLookupExpr(expr0, formElement) {
+  const parsed = _parseSimpleLookupPath(expr0);
+  if (parsed && parsed.instanceId) return parsed.instanceId;
+  return XPathUtil.getInstanceId(expr0, formElement);
+}
+function _isRelativeJsonLookup(expr0, contextNode) {
+  const s = String(expr0 ?? '').trim();
+  // relative lookup: starts with ? or .?
+  if (!(s.startsWith('?') || s.startsWith('.?'))) return false;
+  return _isJsonNode(contextNode);
+}
+function _resolveBracketIndex1(idxExpr, formElement) {
+  const t = String(idxExpr ?? '').trim();
+  if (/^\d+$/.test(t)) return Number(t);
+
+  // index('movies')
+  const rid = _matchIndexExpr(t);
+  if (rid) return tryResolveIndexExpr(`index('${rid}')`, formElement) ?? 1;
+
+  // index("movies")
+  const m = t.match(/^index\s*\(\s*(['"])(.*?)\1\s*\)\s*$/);
+  if (m) return tryResolveIndexExpr(`index('${m[2]}')`, formElement) ?? 1;
+  const n = Number(t);
+  return Number.isFinite(n) ? n : null;
+}
+function _resolveSimpleLookupToJsonNode(expr, contextNode, formElement) {
+  const parsed = _parseSimpleLookupPath(expr);
+  if (!parsed) return null;
+  const trimmed = String(expr ?? '').trim();
+  const isExplicitInstance = trimmed.startsWith('instance(');
+
+  // IMPORTANT: always return a NEW array for children (copy),
+  // otherwise fx-repeat may keep a cached reference and miss inserts/deletes.
+  const getChildren = n => {
+    if (!n) return [];
+    const kids = typeof n.getChildren === 'function' ? n.getChildren() || [] : Array.isArray(n.children) ? n.children : [];
+    return Array.from(kids);
+  };
+  let node = null;
+  if (parsed.instanceId) {
+    const instance = _getInstanceFromFormElement(formElement, parsed.instanceId);
+    if (!_isJsonInstance(instance)) return null;
+    node = _getJsonRootNode(instance);
+    if (!node) return null;
+  } else if (!isExplicitInstance && _isJsonNode(contextNode)) {
+    node = contextNode;
+  } else {
+    const fallbackId = XPathUtil.getInstanceId(expr, formElement) || 'default';
+    const instance = _getInstanceFromFormElement(formElement, fallbackId);
+    if (!_isJsonInstance(instance)) return null;
+    node = _getJsonRootNode(instance);
+    if (!node) return null;
+  }
+  for (const rawStep of parsed.steps) {
+    if (!node) return null;
+    const step = String(rawStep);
+    if (step === '*') {
+      return getChildren(node);
+    }
+    if (/^\d+$/.test(step)) {
+      const idx0 = Number(step) - 1;
+      node = node.get?.(idx0) || null;
+      continue;
+    }
+    const bm = step.match(/^(.*?)\[(.+)\]$/);
+    if (bm) {
+      const prop = bm[1].trim();
+      const idxExpr = bm[2].trim();
+      const container = prop ? typeof node.get === 'function' ? node.get(prop) : null : node;
+      if (!container) return null;
+      const arrVal = container.value;
+      if (!Array.isArray(arrVal)) return null;
+      const idx1 = _resolveBracketIndex1(idxExpr, formElement);
+      if (!Number.isFinite(idx1) || idx1 < 1) return null;
+      const idx0 = idx1 - 1;
+      node = container.get?.(idx0) || null;
+      continue;
+    }
+    node = node.get?.(step) || null;
+  }
+  if (!node) return null;
+  if (Array.isArray(node.value)) return getChildren(node);
+  return node;
+}
+// ------------------------------------------------------------
+// RAW JSON evaluation helpers (FontoXPath over JS values)
+// ------------------------------------------------------------
+
+function getVariablesInScope(formElement) {
+  let closestActualFormElement = formElement;
+  while (closestActualFormElement && !('inScopeVariables' in closestActualFormElement)) {
+    closestActualFormElement = closestActualFormElement.nodeType === Node.ATTRIBUTE_NODE ? closestActualFormElement.ownerElement : closestActualFormElement.parentNode;
+  }
+  const scopeNode = closestActualFormElement || formElement;
+  const fore = scopeNode && typeof scopeNode.getOwnerForm === 'function' && scopeNode.getOwnerForm() || _getOwningFore(scopeNode);
+  const variables = {};
+
+  // Helper: get :scope > fx-instance list from a fore's model without triggering instance getters
+  const getLocalInstances = aFore => {
+    if (!aFore) return [];
+    const model = typeof aFore.getModel === 'function' && aFore.getModel() || aFore.shadowRoot?.querySelector?.('fx-model') || aFore.querySelector?.('fx-model') || null;
+    if (!model) return [];
+    return Array.from(model.querySelectorAll(':scope > fx-instance'));
+  };
+  const buildBindingsFromInstances = instEls => {
+    if (!instEls || !instEls.length) return null;
+    const b = Object.create(null);
+
+    // default = first instance in doc order
+    const first = instEls[0];
+    const firstIsJson = _isJsonInstance(first);
+    b.default = firstIsJson ? _getRawJsonRootValue(first) : _getInstanceDefaultContextNoSideEffects(first);
+
+    // $<id> for explicitly id'ed instances
+    for (const inst of instEls) {
+      const id = inst.getAttribute && inst.getAttribute('id') || '';
+      if (!id) continue;
+      if (id === 'default') continue;
+      b[id] = _isJsonInstance(inst) ? _getRawJsonRootValue(inst) : _getInstanceDefaultContextNoSideEffects(inst);
+    }
+    return b;
+  };
+
+  // 1) Implicit instance vars: $default and $<id>
+  let instanceBindings = fore && fore._instanceVarBindings;
+
+  // Ensure we have at least a `default` binding; if not, build it.
+  if (fore && (!instanceBindings || !('default' in instanceBindings))) {
+    try {
+      const localInst = getLocalInstances(fore);
+      const built = buildBindingsFromInstances(localInst);
+      if (built && built.default !== undefined && built.default !== null) {
+        fore._instanceVarBindings = built;
+        instanceBindings = built;
+      } else {
+        // NEW: fallback to nearest ancestor fore that has a SHARED instance as default
+        let p = fore.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? fore.parentNode.host : fore.parentNode;
+        while (p) {
+          const parentFore = p.closest ? p.closest('fx-fore') : null;
+          if (!parentFore) break;
+          const parentInst = getLocalInstances(parentFore).filter(i => i.hasAttribute && i.hasAttribute('shared'));
+          const parentBuilt = buildBindingsFromInstances(parentInst);
+          if (parentBuilt && parentBuilt.default !== undefined && parentBuilt.default !== null) {
+            // Do NOT cache this onto the child fore; it’s a fallback view, not ownership.
+            instanceBindings = parentBuilt;
+            break;
+          }
+          p = parentFore.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? parentFore.parentNode.host : parentFore.parentNode;
+        }
+      }
+    } catch (_e) {
+      // ignore
+    }
+  }
+  if (instanceBindings) {
+    for (const [k, v] of Object.entries(instanceBindings)) {
+      variables[k] = _toXQueryMapItem(v);
+    }
+  }
+
+  // 2) Explicit in-scope variables (fx-var or other injectors) override implicit ones
+  if (closestActualFormElement && closestActualFormElement.inScopeVariables) {
+    for (const key of closestActualFormElement.inScopeVariables.keys()) {
+      const varElementOrValue = closestActualFormElement.inScopeVariables.get(key);
+      if (!varElementOrValue) continue;
+      if (varElementOrValue.nodeType) {
+        const el = varElementOrValue;
+
+        // Preserve implicit binding for $default when fx-var simply re-declares default instance
+        if (el.nodeName === 'FX-VAR' && fore && fore._instanceVarBindings && key in fore._instanceVarBindings) {
+          const vexpr = String(el.getAttribute('value') || '').trim();
+          const isDefaultInstanceExpr = /^instance\s*\(\s*\)\s*$/.test(vexpr) || /^instance\s*\(\s*(['"])default\1\s*\)\s*$/.test(vexpr);
+          if (isDefaultInstanceExpr) continue;
+        }
+        if (el.nodeName === 'FX-VAR') {
+          if (el._isRefreshing) continue;
+          if ('_value' in el) {
+            variables[key] = el._value;
+            continue;
+          }
+          if ('_computedValue' in el) {
+            variables[key] = el._computedValue;
+            continue;
+          }
+        }
+        variables[key] = el.value;
+      } else {
+        variables[key] = varElementOrValue;
+      }
+    }
+  }
+
+  // Prevent self-recursive fx-var evaluation
+  if (formElement && formElement.nodeName === 'FX-VAR') {
+    const selfName = (formElement.getAttribute('name') || '').trim();
+    if (selfName) delete variables[selfName];
+  }
+  return variables;
+}
+// ------------------------------------------------------------
+// Namespace resolver infra (XML only)
+// ------------------------------------------------------------
+
+const xhtmlNamespaceResolver = prefix => {
+  if (!prefix) return 'http://www.w3.org/1999/xhtml';
+  return undefined;
+};
+const xmlDocument = new DOMParser().parseFromString('<xml />', 'text/xml');
+const instanceReferencesByQuery = new Map();
+function findInstanceReferences(xpathQuery) {
+  if (!xpathQuery.includes('instance')) return [];
+  if (instanceReferencesByQuery.has(xpathQuery)) return instanceReferencesByQuery.get(xpathQuery);
+  const xpathAST = parseScript(xpathQuery, {}, xmlDocument);
+  const instanceReferences = evaluateXPathToStrings$1(`descendant::xqx:functionCallExpr
+				[xqx:functionName = "instance"]
+				/xqx:arguments
+				/xqx:stringConstantExpr
+				/xqx:value`, xpathAST, null, {}, {
+    namespaceResolver: prefix => prefix === 'xqx' ? 'http://www.w3.org/2005/XQueryX' : undefined
+  });
+  instanceReferencesByQuery.set(xpathQuery, instanceReferences);
+  return instanceReferences;
+}
+function getCachedNamespaceResolver(xpath, node) {
+  if (!createdNamespaceResolversByXPathQueryAndNode.has(xpath)) return null;
+  return createdNamespaceResolversByXPathQueryAndNode.get(xpath).get(node) || null;
+}
+function setCachedNamespaceResolver(xpath, node, resolver) {
+  if (!createdNamespaceResolversByXPathQueryAndNode.has(xpath)) {
+    createdNamespaceResolversByXPathQueryAndNode.set(xpath, new Map());
+  }
+  createdNamespaceResolversByXPathQueryAndNode.get(xpath).set(node, resolver);
+}
+function createNamespaceResolver(xpathQuery, formElement) {
+  const cachedResolver = getCachedNamespaceResolver(xpathQuery, formElement);
+  if (cachedResolver) return cachedResolver;
+  const provisionalResolver = prefix => prefix ? undefined : '';
+  setCachedNamespaceResolver(xpathQuery, formElement, provisionalResolver);
+  let instanceReferences = findInstanceReferences(xpathQuery);
+  const closestRefExcludingSelf = el => {
+    if (!el) return null;
+    let n = el;
+    if (n.nodeType === Node.ATTRIBUTE_NODE) n = n.ownerElement;
+    if (n?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) n = n.parentNode.host;
+    let start = n?.parentNode;
+    if (start?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) start = start.host;
+    return start?.closest ? start.closest('[ref]') : null;
+  };
+  if (instanceReferences.length === 0) {
+    const ancestorComponent = closestRefExcludingSelf(formElement);
+    if (ancestorComponent && ancestorComponent !== formElement) {
+      const ancestorRef = ancestorComponent.getAttribute('ref');
+      if (ancestorRef && ancestorRef !== xpathQuery) {
+        const resolver = createNamespaceResolver(ancestorRef, ancestorComponent);
+        setCachedNamespaceResolver(xpathQuery, formElement, resolver);
+        return resolver;
+      }
+    }
+    instanceReferences = ['default'];
+  }
+  if (instanceReferences.length === 1) {
+    let instance;
+    if (instanceReferences[0] === 'default') {
+      const actualForeElement = evaluateXPathToFirstNode$1('ancestor-or-self::fx-fore[1]', formElement, null, null, {
+        namespaceResolver: xhtmlNamespaceResolver
+      });
+      instance = actualForeElement && actualForeElement.querySelector('fx-instance');
+    } else {
+      instance = resolveId(instanceReferences[0], formElement, 'fx-instance');
+    }
+    if (instance && instance.hasAttribute('xpath-default-namespace')) {
+      const xpathDefaultNamespace = instance.getAttribute('xpath-default-namespace');
+      const resolveNamespacePrefix = prefix => !prefix ? xpathDefaultNamespace : undefined;
+      setCachedNamespaceResolver(xpathQuery, formElement, resolveNamespacePrefix);
+      return resolveNamespacePrefix;
+    }
+  }
+  const xpathDefaultNamespace = evaluateXPathToString$1('ancestor-or-self::*/@xpath-default-namespace[last()]', formElement) || '';
+  const resolveNamespacePrefix = function resolveNamespacePrefix(prefix) {
+    if (prefix === '') return xpathDefaultNamespace;
+    return evaluateXPathToString$1('ancestor-or-self::*/@*[name() = "xmlns:" || $prefix][last()]', formElement, null, {
+      prefix
+    });
+  };
+  setCachedNamespaceResolver(xpathQuery, formElement, resolveNamespacePrefix);
+  return resolveNamespacePrefix;
+}
+function createNamespaceResolverForNode(query, contextNode, formElement) {
+  if ((contextNode && contextNode.ownerDocument || contextNode) === window.document) {
+    return xhtmlNamespaceResolver;
+  }
+  return createNamespaceResolver(query, formElement);
+}
+
+// ------------------------------------------------------------
+// Function resolver
+// ------------------------------------------------------------
+
+const globallyDeclaredFunctionLocalNames = [];
+function functionNameResolver({
+  prefix,
+  localName
+}, _arity) {
+  switch (localName) {
+    case 'context':
+    case 'base64encode':
+    case 'boolean-from-string':
+    case 'current':
+    case 'depends':
+    case 'event':
+    case 'fore-attr':
+    case 'index':
+    case 'instance':
+    case 'json2xml':
+    case 'xml2Json':
+    case 'log':
+    case 'parse':
+    case 'local-date':
+    case 'local-dateTime':
+    case 'logtree':
+    case 'uri':
+    case 'uri-fragment':
+    case 'uri-host':
+    case 'uri-param':
+    case 'uri-path':
+    case 'uri-relpath':
+    case 'uri-port':
+    case 'uri-query':
+    case 'uri-scheme':
+    case 'uri-scheme-specific-part':
+      return {
+        namespaceURI: XFORMS_NAMESPACE_URI,
+        localName
+      };
+    default:
+      if (prefix === '' && globallyDeclaredFunctionLocalNames.includes(localName)) {
+        return {
+          namespaceURI: 'http://www.w3.org/2005/xquery-local-functions',
+          localName
+        };
+      }
+      if (prefix === 'fn' || prefix === '') {
+        return {
+          namespaceURI: 'http://www.w3.org/2005/xpath-functions',
+          localName
+        };
+      }
+      if (prefix === 'local') {
+        return {
+          namespaceURI: 'http://www.w3.org/2005/xquery-local-functions',
+          localName
+        };
+      }
+      return null;
+  }
+}
+
+// ------------------------------------------------------------
+// JSON star-predicate filtering using FontoXPath per item
+// ------------------------------------------------------------
+
+function _jsonAtomicFromResolved(resolved) {
+  if (resolved === null || resolved === undefined) return '';
+
+  // Arrays: join atomic values with spaces (XPath-ish).
+  if (Array.isArray(resolved)) {
+    return resolved.map(r => _jsonAtomicFromResolved(r)).filter(s => s !== null && s !== undefined && s !== '').join(' ');
+  }
+
+  // JSONNode: prefer getValue() if present.
+  if (_isJsonNode(resolved)) {
+    const v = typeof resolved.getValue === 'function' ? resolved.getValue() : resolved.value;
+    if (v === null || v === undefined) return '';
+    const t = typeof v;
+    if (t === 'string') return v;
+    if (t === 'number' || t === 'boolean' || t === 'bigint') return String(v);
+    try {
+      return JSON.stringify(v);
+    } catch (_e) {
+      return '';
+    }
+  }
+
+  // Primitives
+  const t = typeof resolved;
+  if (t === 'string') return resolved;
+  if (t === 'number' || t === 'boolean' || t === 'bigint') return String(resolved);
+
+  // Other objects
+  try {
+    return JSON.stringify(resolved);
+  } catch (_e) {
+    return String(resolved);
+  }
+}
+// Paste this over the existing function in src/xpath-evaluation.js
+function _materializeInstanceLookupsInPredicate(predicateExpr, currentJsonNode, formElement) {
+  const src = String(predicateExpr ?? '');
+  let out = '';
+  const extraVars = {};
+  let varCount = 0;
+  const inScope = getVariablesInScope(formElement);
+  let inSingle = false;
+  let inDouble = false;
+  const isBoundary = ch => ch === undefined || ch === null || /\s/.test(ch) || ch === ',' || ch === ')' || ch === ']' || ch === '+' || ch === '-' || ch === '*' || ch === '=' || ch === '>' || ch === '<' || ch === '!' || ch === '|' || ch === '&';
+  function readLookupTail(start) {
+    let k = start;
+    if (src[k] === '.') {
+      if (src[k + 1] !== '?') return null;
+      k += 1;
+    }
+    if (src[k] !== '?') return null;
+    let bracketDepth = 0;
+    let inS = false;
+    let inD = false;
+    while (k < src.length) {
+      const ch = src[k];
+      if (ch === "'" && !inD) {
+        inS = !inS;
+        k += 1;
+        continue;
+      }
+      if (ch === '"' && !inS) {
+        inD = !inD;
+        k += 1;
+        continue;
+      }
+      if (inS || inD) {
+        k += 1;
+        continue;
+      }
+      if (ch === '[') bracketDepth += 1;else if (ch === ']') {
+        if (bracketDepth > 0) bracketDepth -= 1;else break;
+      }
+      if (bracketDepth === 0 && k !== start && isBoundary(ch)) break;
+      k += 1;
+    }
+    return {
+      raw: src.slice(start, k),
+      end: k
+    };
+  }
+  function readInstanceLensAt(start) {
+    if (!src.slice(start).match(/^instance\s*\(/)) return null;
+    let j = start;
+    let inS = false;
+    let inD = false;
+    let depth = 0;
+    while (j < src.length) {
+      const ch = src[j];
+      if (ch === "'" && !inD) {
+        inS = !inS;
+        j += 1;
+        continue;
+      }
+      if (ch === '"' && !inS) {
+        inD = !inD;
+        j += 1;
+        continue;
+      }
+      if (inS || inD) {
+        j += 1;
+        continue;
+      }
+      if (ch === '(') depth += 1;else if (ch === ')') {
+        depth -= 1;
+        if (depth === 0) break;
+      }
+      j += 1;
+    }
+    if (j >= src.length) return null;
+    let k = j + 1;
+    while (k < src.length && /\s/.test(src[k])) k += 1;
+    const tail = readLookupTail(k);
+    if (!tail) return null;
+    return {
+      raw: src.slice(start, tail.end),
+      end: tail.end
+    };
+  }
+  function readVariableLensAt(start) {
+    if (src[start] !== '$') return null;
+    let j = start + 1;
+    if (!/[A-Za-z_]/.test(src[j] || '')) return null;
+    j += 1;
+    while (j < src.length && /[\w.-]/.test(src[j])) j += 1;
+    let k = j;
+    while (k < src.length && /\s/.test(src[k])) k += 1;
+    const tail = readLookupTail(k);
+    if (!tail) {
+      return {
+        raw: src.slice(start, j),
+        end: j,
+        name: src.slice(start + 1, j),
+        tail: ''
+      };
+    }
+    return {
+      raw: src.slice(start, tail.end),
+      end: tail.end,
+      name: src.slice(start + 1, j),
+      tail: src.slice(k, tail.end)
+    };
+  }
+  function resolveVariableLens(rawVarExpr) {
+    const m = String(rawVarExpr).match(/^\$([A-Za-z_][\w.-]*)([\s\S]*)$/);
+    if (!m) return null;
+    const varName = m[1];
+    const rest = (m[2] || '').trim();
+    const base = Object.prototype.hasOwnProperty.call(inScope, varName) ? inScope[varName] : null;
+    if (rest && (rest.startsWith('?') || rest.startsWith('.?'))) {
+      if (base && _isJsonNode(base)) {
+        const resolved = _resolveSimpleLookupToJsonNode(rest, base, formElement);
+        return _jsonAtomicFromResolved(resolved);
+      }
+      const resolved = _resolveLookupOnMapItem(base, rest);
+      return _jsonAtomicFromResolved(resolved);
+    }
+    return _jsonAtomicFromResolved(base);
+  }
+  function resolveRelativeLookup(rawLookupExpr) {
+    const resolved = _resolveSimpleLookupToJsonNode(rawLookupExpr, currentJsonNode, formElement);
+    return _jsonAtomicFromResolved(resolved);
+  }
+  for (let i = 0; i < src.length; i += 1) {
+    const ch = src[i];
+    if (ch === "'" && !inDouble) {
+      inSingle = !inSingle;
+      out += ch;
+      continue;
+    }
+    if (ch === '"' && !inSingle) {
+      inDouble = !inDouble;
+      out += ch;
+      continue;
+    }
+    if (!inSingle && !inDouble) {
+      // 1) instance('x')?foo?bar
+      const instLens = readInstanceLensAt(i);
+      if (instLens && _looksLikeLookupExpr(instLens.raw) && _isSimpleLookupExpr(instLens.raw)) {
+        const vname = `__fxp${varCount++}`;
+        const resolved = _resolveSimpleLookupToJsonNode(instLens.raw, currentJsonNode, formElement);
+        extraVars[vname] = _jsonAtomicFromResolved(resolved);
+        out += `$${vname}`;
+        i = instLens.end - 1;
+        continue;
+      }
+
+      // 2) $default?ui?query (or plain $var)
+      const varLens = readVariableLensAt(i);
+      if (varLens) {
+        const vname = `__fxp${varCount++}`;
+        extraVars[vname] = resolveVariableLens(varLens.raw);
+        out += `$${vname}`;
+        i = varLens.end - 1;
+        continue;
+      }
+
+      // 3) relative lookup like ?title / .?title
+      const relLens = readLookupTail(i);
+      if (relLens && _looksLikeLookupExpr(relLens.raw) && _isSimpleLookupExpr(relLens.raw)) {
+        const vname = `__fxp${varCount++}`;
+        extraVars[vname] = resolveRelativeLookup(relLens.raw);
+        out += `$${vname}`;
+        i = relLens.end - 1;
+        continue;
+      }
+    }
+    out += ch;
+  }
+  return {
+    expr: out.trim(),
+    extraVars
+  };
+}
+function _filterJsonNodesByPredicate(nodes, predicateExpr, formElement, variables = {}) {
+  const pred = String(predicateExpr ?? '').trim();
+  if (pred === 'true()' || pred === 'true') return (nodes || []).filter(_isJsonNode);
+  if (pred === 'false()' || pred === 'false') return [];
+
+  // Keep the existing special fast-paths (they’re fine as an optimization)
+  const containsDot = pred.match(/^contains\s*\(\s*\.\s*,\s*([\s\S]+)\s*\)\s*$/);
+  if (containsDot) {
+    const rhs = containsDot[1].trim();
+    const inScope = getVariablesInScope(formElement);
+    const toPlain = v => {
+      if (v == null) return v;
+      if (_isJsonNode(v)) return toPlain(v.value);
+      if (Array.isArray(v)) return v.map(toPlain);
+      if (v instanceof Map) {
+        const o = Object.create(null);
+        for (const [k, vv] of v.entries()) o[String(k)] = toPlain(vv);
+        return o;
+      }
+      if (typeof v === 'object' && !v.nodeType) {
+        const o = Object.create(null);
+        for (const [k, vv] of Object.entries(v)) o[k] = toPlain(vv);
+        return o;
+      }
+      return v;
+    };
+    const toStringSafe = v => {
+      const vv = toPlain(v);
+      if (vv === null || vv === undefined) return '';
+      if (typeof vv === 'string' || typeof vv === 'number' || typeof vv === 'boolean') return String(vv);
+      try {
+        return JSON.stringify(vv);
+      } catch (_e) {
+        return String(vv);
+      }
+    };
+    const resolveExprToString = (rawExpr, itemNode) => {
+      const expr = String(rawExpr ?? '').trim();
+      const quoted = expr.match(/^(['"])([\s\S]*)\1$/);
+      if (quoted) return String(quoted[2] ?? '');
+      const varLens = expr.match(/^\$([A-Za-z_][\w.-]*)([\s\S]*)$/);
+      if (varLens) {
+        const varName = varLens[1];
+        const rest = (varLens[2] || '').trim();
+        const base = (variables && varName in variables ? variables[varName] : null) ?? (inScope && varName in inScope ? inScope[varName] : null);
+        if (rest && (rest.startsWith('?') || rest.startsWith('.?'))) {
+          if (base && _isJsonNode(base)) {
+            const resolved = _resolveSimpleLookupToJsonNode(rest, base, formElement);
+            return toStringSafe(_jsonAtomicFromResolved(resolved));
+          }
+          const resolved = _resolveLookupOnMapItem(base, rest);
+          return toStringSafe(_jsonAtomicFromResolved(resolved));
+        }
+        return toStringSafe(_jsonAtomicFromResolved(base));
+      }
+      if (expr === '.') {
+        const v = typeof itemNode.getValue === 'function' ? itemNode.getValue() : itemNode.value;
+        return toStringSafe(v);
+      }
+      if (_looksLikeLookupExpr(expr)) {
+        const resolved = _resolveSimpleLookupToJsonNode(expr, itemNode, formElement);
+        return toStringSafe(_jsonAtomicFromResolved(resolved));
+      }
+      if (expr.startsWith('$')) {
+        const key = expr.slice(1);
+        const v = (variables && key in variables ? variables[key] : null) ?? (inScope && key in inScope ? inScope[key] : null);
+        return toStringSafe(_jsonAtomicFromResolved(v));
+      }
+      return expr;
+    };
+    return (nodes || []).filter(n => {
+      if (!_isJsonNode(n)) return false;
+      const needle = resolveExprToString(rhs, n);
+      if (needle === '') return true;
+      const raw = typeof n.getValue === 'function' ? n.getValue() : n.value;
+      const haystack = toStringSafe(raw);
+      return String(haystack || '').includes(String(needle));
+    });
+  }
+
+  // --- GENERAL CASE (the important fix) ---
+  const inScope = getVariablesInScope(formElement);
+  const out = [];
+  for (const n of nodes || []) {
+    if (!_isJsonNode(n)) continue;
+    try {
+      const {
+        expr: predExpr,
+        extraVars
+      } = _materializeInstanceLookupsInPredicate(pred, n, formElement);
+      const mergedVars = {
+        ...inScope,
+        ...variables,
+        ...extraVars
+      };
+
+      // Evaluate predicate in RAW context (no JSONDomFacade).
+      // This avoids JSONDomFacade quirks and matches the behavior of the working instance() variant.
+      const rawContext = typeof n.getValue === 'function' ? n.getValue() : n.value;
+      const ok = evaluateXPathToBoolean$1(predExpr, rawContext, null, mergedVars, {
+        currentContext: {
+          formElement,
+          jsonMode: 'raw'
+        },
+        moduleImports: {
+          xf: XFORMS_NAMESPACE_URI
+        },
+        functionNameResolver,
+        namespaceResolver: null,
+        language: Language.XPATH_3_1_LANGUAGE,
+        xmlSerializer: new XMLSerializer()
+      });
+      if (ok) out.push(n);
+    } catch (e) {
+      // IMPORTANT: don't swallow silently — but keep it non-fatal.
+      // This will immediately show you if variable resolution or predicate rewriting is still wrong.
+      console.warn('[Fore] JSON predicate failed:', pred, '=>', e);
+    }
+  }
+  return out;
+}
+// ------------------------------------------------------------
+
+// Exported evaluation helpers
+// ------------------------------------------------------------
+
+function evaluateXPath(xpath, contextNode, formElement, variables = {}, options = {}, domFacade = null) {
+  const expr0 = String(xpath ?? '').trim();
+  try {
+    const idx = tryResolveIndexExpr(expr0, formElement);
+    if (idx !== null) return [idx];
+    if (_isJsonNode(contextNode) && expr0 === '.') {
+      return [contextNode];
+    }
+    if (_isJsonNode(contextNode) && !_looksLikeLookupExpr(expr0)) {
+      const variablesInScope = getVariablesInScope(formElement);
+      return evaluateXPath$1(expr0, contextNode, __jsonDomFacade, {
+        ...variablesInScope,
+        ...variables
+      }, evaluateXPath$1.ALL_RESULTS_TYPE, {
+        debug: true,
+        currentContext: {
+          formElement,
+          variables
+        },
+        moduleImports: {
+          xf: XFORMS_NAMESPACE_URI
+        },
+        functionNameResolver,
+        namespaceResolver: null,
+        language: Language.XPATH_3_1_LANGUAGE,
+        xmlSerializer: new XMLSerializer(),
+        ...options
+      });
+    }
+    if (_looksLikeLookupExpr(expr0)) {
+      // --- NEW: support variable lookups like $default?ui?query ---
+      const varLens = expr0.match(/^\$([A-Za-z_][\w.-]*)(.*)$/);
+      if (varLens) {
+        const varName = varLens[1];
+        const rest = varLens[2] || '';
+        const inScope = getVariablesInScope(formElement);
+        const base = (variables && Object.prototype.hasOwnProperty.call(variables, varName) ? variables[varName] : null) ?? (inScope && Object.prototype.hasOwnProperty.call(inScope, varName) ? inScope[varName] : null);
+        if (!rest) return base == null ? [] : [base];
+        if (rest.startsWith('?') || rest.startsWith('.?')) {
+          if (base && _isJsonNode(base)) {
+            const resolved = _resolveSimpleLookupToJsonNode(rest, base, formElement);
+            if (resolved === null) return [];
+            if (Array.isArray(resolved)) return resolved;
+            return [resolved];
+          }
+          if (typeof _resolveLookupOnMapItem === 'function') {
+            const resolved = _resolveLookupOnMapItem(base, rest);
+            if (resolved == null) return [];
+            return Array.isArray(resolved) ? resolved : [resolved];
+          }
+        }
+        return base == null ? [] : [base];
+      }
+      // --- END NEW ---
+
+      const relativeJson = _isRelativeJsonLookup(expr0, contextNode);
+      const instanceId = relativeJson ? null : _getInstanceIdForLookupExpr(expr0, formElement);
+      const instance = relativeJson ? null : _getInstanceFromFormElement(formElement, instanceId);
+      if (!relativeJson && !instance) {
+        formElement?.dispatchEvent?.(new CustomEvent('error', {
+          composed: false,
+          bubbles: true,
+          detail: {
+            origin: formElement,
+            message: `Instance with id '${instanceId}' not found for expression '${expr0}'`,
+            expr: expr0,
+            level: 'Error'
+          }
+        }));
+      }
+      if (relativeJson || _isJsonInstance(instance)) {
+        const sp = _splitStarPredicate(expr0);
+        if (sp) {
+          const baseResolved = _resolveSimpleLookupToJsonNode(sp.base, contextNode, formElement);
+          const baseNodes = Array.isArray(baseResolved) ? baseResolved : baseResolved ? [baseResolved] : [];
+          return _filterJsonNodesByPredicate(baseNodes, sp.predicate, formElement, variables);
+        }
+        if (_isSimpleLookupExpr(expr0)) {
+          const resolved = _resolveSimpleLookupToJsonNode(expr0, contextNode, formElement);
+          if (resolved === null) return [];
+          if (Array.isArray(resolved)) return resolved;
+          return [resolved];
+        }
+        return [];
+      }
+    }
+    const namespaceResolver = createNamespaceResolverForNode(expr0, contextNode, formElement);
+    const variablesInScope = getVariablesInScope(formElement);
+    return evaluateXPath$1(expr0, contextNode, domFacade, {
+      ...variablesInScope,
+      ...variables
+    }, evaluateXPath$1.ALL_RESULTS_TYPE, {
+      debug: true,
+      currentContext: {
+        formElement,
+        variables
+      },
+      moduleImports: {
+        xf: XFORMS_NAMESPACE_URI
+      },
+      functionNameResolver,
+      namespaceResolver,
+      language: Language.XPATH_3_1_LANGUAGE,
+      xmlSerializer: new XMLSerializer(),
+      ...options
+    });
+  } catch (e) {
+    formElement?.dispatchEvent?.(new CustomEvent('error', {
+      composed: false,
+      bubbles: true,
+      detail: {
+        origin: formElement,
+        message: `Expression '${xpath}' failed: ${e}`,
+        expr: xpath,
+        level: 'Error'
+      }
+    }));
+    return [];
+  }
+}
+function evaluateXPathToFirstNode(xpath, contextNode, formElement) {
+  const expr0 = String(xpath ?? '').trim();
+  try {
+    if (_isJsonNode(contextNode) && expr0 === '.') {
+      return contextNode;
+    }
+    if (_isJsonNode(contextNode) && !_looksLikeLookupExpr(expr0)) {
+      const variablesInScope = getVariablesInScope(formElement);
+      return evaluateXPathToFirstNode$1(expr0, contextNode, __jsonDomFacade, variablesInScope, {
+        currentContext: {
+          formElement
+        },
+        functionNameResolver,
+        moduleImports: {
+          xf: XFORMS_NAMESPACE_URI
+        },
+        namespaceResolver: null,
+        language: Language.XPATH_3_1_LANGUAGE,
+        xmlSerializer: new XMLSerializer()
+      });
+    }
+    if (_looksLikeLookupExpr(expr0)) {
+      const relativeJson = _isRelativeJsonLookup(expr0, contextNode);
+      const instanceId = relativeJson ? null : _getInstanceIdForLookupExpr(expr0, formElement);
+      const instance = relativeJson ? null : _getInstanceFromFormElement(formElement, instanceId);
+      if (relativeJson || _isJsonInstance(instance)) {
+        const sp = _splitStarPredicate(expr0);
+        if (sp) {
+          const baseResolved = _resolveSimpleLookupToJsonNode(sp.base, contextNode, formElement);
+          const baseNodes = Array.isArray(baseResolved) ? baseResolved : baseResolved ? [baseResolved] : [];
+          const filtered = _filterJsonNodesByPredicate(baseNodes, sp.predicate, formElement);
+          return filtered[0] || null;
+        }
+        if (_isSimpleLookupExpr(expr0)) {
+          const resolved = _resolveSimpleLookupToJsonNode(expr0, contextNode, formElement);
+          if (!resolved) return null;
+          if (Array.isArray(resolved)) return resolved[0] || null;
+          return resolved;
+        }
+        return null;
+      }
+    }
+    const namespaceResolver = createNamespaceResolverForNode(expr0, contextNode, formElement);
+    const variablesInScope = getVariablesInScope(formElement);
+    return evaluateXPathToFirstNode$1(expr0, contextNode, null, variablesInScope, {
+      currentContext: {
+        formElement
+      },
+      functionNameResolver,
+      moduleImports: {
+        xf: XFORMS_NAMESPACE_URI
+      },
+      namespaceResolver,
+      language: Language.XPATH_3_1_LANGUAGE,
+      xmlSerializer: new XMLSerializer()
+    });
+  } catch (e) {
+    formElement?.dispatchEvent?.(new CustomEvent('error', {
+      composed: false,
+      bubbles: true,
+      detail: {
+        origin: formElement,
+        message: `Expression '${xpath}' failed: ${e}`,
+        expr: xpath,
+        level: 'Error'
+      }
+    }));
+    return null;
+  }
+}
+function evaluateXPathToNodes(xpath, contextNode, formElement) {
+  const expr0 = String(xpath ?? '').trim();
+  try {
+    if (_isJsonNode(contextNode) && expr0 === '.') {
+      return [contextNode];
+    }
+    if (_isJsonNode(contextNode) && !_looksLikeLookupExpr(expr0)) {
+      const variablesInScope = getVariablesInScope(formElement);
+      return evaluateXPathToNodes$1(expr0, contextNode, __jsonDomFacade, variablesInScope, {
+        currentContext: {
+          formElement
+        },
+        functionNameResolver,
+        moduleImports: {
+          xf: XFORMS_NAMESPACE_URI
+        },
+        namespaceResolver: null,
+        language: Language.XPATH_3_1_LANGUAGE,
+        xmlSerializer: new XMLSerializer()
+      });
+    }
+    if (_looksLikeLookupExpr(expr0)) {
+      const relativeJson = _isRelativeJsonLookup(expr0, contextNode);
+      const instanceId = relativeJson ? null : _getInstanceIdForLookupExpr(expr0, formElement);
+      const instance = relativeJson ? null : _getInstanceFromFormElement(formElement, instanceId);
+      if (relativeJson || _isJsonInstance(instance)) {
+        const sp = _splitStarPredicate(expr0);
+        if (sp) {
+          const baseResolved = _resolveSimpleLookupToJsonNode(sp.base, contextNode, formElement);
+          const baseNodes = Array.isArray(baseResolved) ? baseResolved : baseResolved ? [baseResolved] : [];
+          return _filterJsonNodesByPredicate(baseNodes, sp.predicate, formElement);
+        }
+        if (_isSimpleLookupExpr(expr0)) {
+          const resolved = _resolveSimpleLookupToJsonNode(expr0, contextNode, formElement);
+          if (!resolved) return [];
+          if (Array.isArray(resolved)) return resolved;
+          return [resolved];
+        }
+        return [];
+      }
+    }
+    const namespaceResolver = createNamespaceResolverForNode(expr0, contextNode, formElement);
+    const variablesInScope = getVariablesInScope(formElement);
+    return evaluateXPathToNodes$1(expr0, contextNode, null, variablesInScope, {
+      currentContext: {
+        formElement
+      },
+      functionNameResolver,
+      moduleImports: {
+        xf: XFORMS_NAMESPACE_URI
+      },
+      namespaceResolver,
+      language: Language.XPATH_3_1_LANGUAGE,
+      xmlSerializer: new XMLSerializer()
+    });
+  } catch (e) {
+    formElement?.dispatchEvent?.(new CustomEvent('error', {
+      composed: false,
+      bubbles: true,
+      detail: {
+        origin: formElement,
+        message: `Expression '${xpath}' failed: ${e}`,
+        expr: xpath,
+        level: 'Error'
+      }
+    }));
+    return [];
+  }
+}
+function evaluateXPathToBoolean(xpath, contextNode, formElement) {
+  const expr0 = String(xpath ?? '').trim();
+  try {
+    const idx = tryResolveIndexExpr(expr0, formElement);
+    if (idx !== null) return Boolean(idx);
+    if (_isJsonNode(contextNode) && expr0 === '.') {
+      return true;
+    }
+
+    // ------------------------------------------------------------
+    // JSON CONTEXT
+    // ------------------------------------------------------------
+    if (_isJsonNode(contextNode)) {
+      // 1) Star predicate (repeat filtering style): ?movies?*[ ... ]
+      if (_looksLikeLookupExpr(expr0)) {
+        const sp = _splitStarPredicate(expr0);
+        if (sp) {
+          const baseResolved = _resolveSimpleLookupToJsonNode(sp.base, contextNode, formElement);
+          const baseNodes = Array.isArray(baseResolved) ? baseResolved : baseResolved ? [baseResolved] : [];
+          return _filterJsonNodesByPredicate(baseNodes, sp.predicate, formElement).length > 0;
+        }
+
+        // 2) Simple navigation lookup: ?title, instance('data')?ui?query, etc.
+        if (_isSimpleLookupExpr(expr0)) {
+          const resolved = _resolveSimpleLookupToJsonNode(expr0, contextNode, formElement);
+          if (!resolved) return false;
+          const node = Array.isArray(resolved) ? resolved[0] : resolved;
+          return Boolean(_isJsonNode(node) ? node.value : node);
+        }
+
+        // 3) ✅ Complex expressions containing lookup operator, e.g.
+        //    contains(?title, instance('data')?ui?query)
+        //
+        // Important: XPath 3.1 lookup operator works on map(*) / array(*) items.
+        // A JSON lens node is not a map(*) to the XPath engine.
+        // So evaluate against the RAW JS value of the current JSON node.
+        // Also enable jsonMode:'raw' so instance('data') returns raw JS root without recursion.
+        const rawContext = typeof contextNode.getValue === 'function' ? contextNode.getValue() : contextNode.value;
+        const variablesInScope = getVariablesInScope(formElement);
+        return evaluateXPathToBoolean$1(expr0, rawContext, null, variablesInScope, {
+          currentContext: {
+            formElement,
+            jsonMode: 'raw'
+          },
+          functionNameResolver,
+          moduleImports: {
+            xf: XFORMS_NAMESPACE_URI
+          },
+          namespaceResolver: null,
+          language: Language.XPATH_3_1_LANGUAGE,
+          xmlSerializer: new XMLSerializer()
+        });
+      }
+
+      // 4) Non-lookup XPath in JSON context: evaluate via JSONDomFacade
+      const variablesInScope = getVariablesInScope(formElement);
+      return evaluateXPathToBoolean$1(expr0, contextNode, __jsonDomFacade, variablesInScope, {
+        currentContext: {
+          formElement
+        },
+        functionNameResolver,
+        moduleImports: {
+          xf: XFORMS_NAMESPACE_URI
+        },
+        namespaceResolver: null,
+        language: Language.XPATH_3_1_LANGUAGE,
+        xmlSerializer: new XMLSerializer()
+      });
+    }
+
+    // ------------------------------------------------------------
+    // XML / normal evaluation
+    // ------------------------------------------------------------
+    const namespaceResolver = createNamespaceResolverForNode(expr0, contextNode, formElement);
+    const variablesInScope = getVariablesInScope(formElement);
+    return evaluateXPathToBoolean$1(expr0, contextNode, null, variablesInScope, {
+      currentContext: {
+        formElement
+      },
+      functionNameResolver,
+      moduleImports: {
+        xf: XFORMS_NAMESPACE_URI
+      },
+      namespaceResolver,
+      language: Language.XPATH_3_1_LANGUAGE,
+      xmlSerializer: new XMLSerializer()
+    });
+  } catch (e) {
+    formElement?.dispatchEvent?.(new CustomEvent('error', {
+      composed: false,
+      bubbles: true,
+      detail: {
+        origin: formElement,
+        message: `Expression '${xpath}' failed: ${e}`,
+        expr: xpath,
+        level: 'Error'
+      }
+    }));
+    return false;
+  }
+}
+function evaluateXPathToString(xpath, contextNode, formElement, domFacade = null) {
+  const expr0 = String(xpath ?? '').trim();
+  const stringify = v => {
+    if (v === null || v === undefined) return '';
+    if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean') return String(v);
+    if (v?.nodeType) {
+      if (v.nodeType === Node.ATTRIBUTE_NODE) return String(v.nodeValue ?? '');
+      return String(v.textContent ?? '');
+    }
+    if (_isJsonNode(v)) {
+      const vv = v.value;
+      if (vv === null || vv === undefined) return '';
+      if (typeof vv === 'string' || typeof vv === 'number' || typeof vv === 'boolean') return String(vv);
+      try {
+        return JSON.stringify(vv);
+      } catch (_e) {
+        return '';
+      }
+    }
+    try {
+      return JSON.stringify(v);
+    } catch (_e) {
+      return '';
+    }
+  };
+  try {
+    const idx = tryResolveIndexExpr(expr0, formElement);
+    if (idx !== null) return String(idx);
+    if (_isJsonNode(contextNode) && expr0 === '.') {
+      return stringify(contextNode);
+    }
+
+    // JSON context, non-lookup => evaluate via JSON facade
+    if (_isJsonNode(contextNode) && !_looksLikeLookupExpr(expr0)) {
+      const variablesInScope = getVariablesInScope(formElement);
+      const res = evaluateXPathToString$1(expr0, contextNode, __jsonDomFacade, variablesInScope, {
+        currentContext: {
+          formElement
+        },
+        functionNameResolver,
+        moduleImports: {
+          xf: XFORMS_NAMESPACE_URI
+        },
+        namespaceResolver: null,
+        language: Language.XPATH_3_1_LANGUAGE,
+        xmlSerializer: new XMLSerializer()
+      });
+      return stringify(res);
+    }
+
+    // ✅ Lookup expressions (JSON lens / XQuery map lookups)
+    if (_looksLikeLookupExpr(expr0)) {
+      // --- NEW: support variable lookups like $default?ui?query ---
+      const varLens = expr0.match(/^\$([A-Za-z_][\w.-]*)(.*)$/);
+      if (varLens) {
+        const varName = varLens[1];
+        const rest = varLens[2] || '';
+        const inScope = getVariablesInScope(formElement);
+        const base = inScope && Object.prototype.hasOwnProperty.call(inScope, varName) ? inScope[varName] : null;
+        if (!rest) return stringify(base);
+        if (rest.startsWith('?') || rest.startsWith('.?')) {
+          if (base && _isJsonNode(base)) {
+            const resolved = _resolveSimpleLookupToJsonNode(rest, base, formElement);
+            return stringify(resolved);
+          }
+          // Map/array/plain object lookup
+          if (typeof _resolveLookupOnMapItem === 'function') {
+            const resolved = _resolveLookupOnMapItem(base, rest);
+            return stringify(resolved);
+          }
+        }
+        return stringify(base);
+      }
+      // --- END NEW ---
+
+      const relativeJson = _isRelativeJsonLookup(expr0, contextNode);
+      const instanceId = relativeJson ? null : _getInstanceIdForLookupExpr(expr0, formElement);
+      const instance = relativeJson ? null : _getInstanceFromFormElement(formElement, instanceId);
+      if (relativeJson || _isJsonInstance(instance)) {
+        if (_isSimpleLookupExpr(expr0)) {
+          const resolved = _resolveSimpleLookupToJsonNode(expr0, contextNode, formElement);
+          if (!resolved) return '';
+          const node = Array.isArray(resolved) ? resolved[0] : resolved;
+          return stringify(node);
+        }
+        // for now, keep string conversions conservative
+        return '';
+      }
+    }
+
+    // Normal XPath path
+    const namespaceResolver = createNamespaceResolverForNode(expr0, contextNode, formElement);
+    const variablesInScope = getVariablesInScope(formElement);
+    const res = evaluateXPathToString$1(expr0, contextNode, domFacade, variablesInScope, {
+      currentContext: {
+        formElement
+      },
+      functionNameResolver,
+      moduleImports: {
+        xf: XFORMS_NAMESPACE_URI
+      },
+      namespaceResolver,
+      language: Language.XPATH_3_1_LANGUAGE,
+      xmlSerializer: new XMLSerializer()
+    });
+    return stringify(res);
+  } catch (e) {
+    formElement?.dispatchEvent?.(new CustomEvent('error', {
+      composed: false,
+      bubbles: true,
+      detail: {
+        origin: formElement,
+        message: `Expression '${xpath}' failed: ${e}`,
+        expr: xpath,
+        level: 'Error'
+      }
+    }));
+    return '';
+  }
+}
+function evaluateXPathToStrings(xpath, contextNode, formElement, domFacade = null) {
+  const expr0 = String(xpath ?? '').trim();
+  const stringify = v => {
+    if (v === null || v === undefined) return '';
+    if (typeof v === 'string' || typeof v === 'number' || typeof v === 'boolean' || typeof v === 'bigint') return String(v);
+    if (v?.nodeType) {
+      if (v.nodeType === Node.ATTRIBUTE_NODE) return String(v.nodeValue ?? '');
+      return String(v.textContent ?? '');
+    }
+    if (_isJsonNode(v)) return stringify(v.value);
+    try {
+      return JSON.stringify(v);
+    } catch (_e) {
+      return '';
+    }
+  };
+  try {
+    const idx = tryResolveIndexExpr(expr0, formElement);
+    if (idx !== null) return [String(idx)];
+    if (_isJsonNode(contextNode) && expr0 === '.') {
+      return [stringify(contextNode)];
+    }
+    if (_isJsonNode(contextNode) && !_looksLikeLookupExpr(expr0)) {
+      const res = evaluateXPathToStrings$1(expr0, contextNode, __jsonDomFacade, getVariablesInScope(formElement), {
+        currentContext: {
+          formElement
+        },
+        functionNameResolver,
+        moduleImports: {
+          xf: XFORMS_NAMESPACE_URI
+        },
+        namespaceResolver: null,
+        language: Language.XPATH_3_1_LANGUAGE,
+        xmlSerializer: new XMLSerializer()
+      });
+      return Array.isArray(res) ? res.map(stringify) : [stringify(res)];
+    }
+    if (_looksLikeLookupExpr(expr0)) {
+      const relativeJson = _isRelativeJsonLookup(expr0, contextNode);
+      const instanceId = relativeJson ? null : _getInstanceIdForLookupExpr(expr0, formElement);
+      const instance = relativeJson ? null : _getInstanceFromFormElement(formElement, instanceId);
+      if (relativeJson || _isJsonInstance(instance)) {
+        if (_isSimpleLookupExpr(expr0)) {
+          const resolved = _resolveSimpleLookupToJsonNode(expr0, contextNode, formElement);
+          if (!resolved) return [];
+          const arr = Array.isArray(resolved) ? resolved : [resolved];
+          return arr.map(stringify);
+        }
+        return [];
+      }
+    }
+    const namespaceResolver = createNamespaceResolverForNode(expr0, contextNode, formElement);
+    const res = evaluateXPathToStrings$1(expr0, contextNode, domFacade, getVariablesInScope(formElement), {
+      currentContext: {
+        formElement
+      },
+      functionNameResolver,
+      moduleImports: {
+        xf: XFORMS_NAMESPACE_URI
+      },
+      namespaceResolver,
+      language: Language.XPATH_3_1_LANGUAGE,
+      xmlSerializer: new XMLSerializer()
+    });
+    return Array.isArray(res) ? res.map(stringify) : [stringify(res)];
+  } catch (e) {
+    formElement?.dispatchEvent?.(new CustomEvent('error', {
+      composed: false,
+      bubbles: true,
+      detail: {
+        origin: formElement,
+        message: `Expression '${xpath}' failed: ${e}`,
+        expr: xpath,
+        level: 'Error'
+      }
+    }));
+    return [];
+  }
+}
+function evaluateXPathToNumber(xpath, contextNode, formElement, domFacade = null) {
+  const expr0 = String(xpath ?? '').trim();
+  try {
+    const idx = tryResolveIndexExpr(expr0, formElement);
+    if (idx !== null) return idx;
+    if (_isJsonNode(contextNode) && expr0 === '.') {
+      const s = String(contextNode?.value ?? '');
+      const n = Number(s);
+      return Number.isFinite(n) ? n : NaN;
+    }
+    if (_isJsonNode(contextNode) && !_looksLikeLookupExpr(expr0)) {
+      const variablesInScope = getVariablesInScope(formElement);
+      return evaluateXPathToNumber$1(expr0, contextNode, __jsonDomFacade, variablesInScope, {
+        currentContext: {
+          formElement
+        },
+        functionNameResolver,
+        moduleImports: {
+          xf: XFORMS_NAMESPACE_URI
+        },
+        namespaceResolver: null,
+        language: Language.XPATH_3_1_LANGUAGE,
+        xmlSerializer: new XMLSerializer()
+      });
+    }
+    if (_looksLikeLookupExpr(expr0)) {
+      const relativeJson = _isRelativeJsonLookup(expr0, contextNode);
+      const instanceId = relativeJson ? null : _getInstanceIdForLookupExpr(expr0, formElement);
+      const instance = relativeJson ? null : _getInstanceFromFormElement(formElement, instanceId);
+      if (relativeJson || _isJsonInstance(instance)) {
+        // numbers for JSON are not a priority for now; keep conservative
+        return NaN;
+      }
+    }
+    const namespaceResolver = createNamespaceResolverForNode(expr0, contextNode, formElement);
+    const variablesInScope = getVariablesInScope(formElement);
+    return evaluateXPathToNumber$1(expr0, contextNode, domFacade, variablesInScope, {
+      currentContext: {
+        formElement
+      },
+      functionNameResolver,
+      moduleImports: {
+        xf: XFORMS_NAMESPACE_URI
+      },
+      namespaceResolver,
+      language: Language.XPATH_3_1_LANGUAGE,
+      xmlSerializer: new XMLSerializer()
+    });
+  } catch (e) {
+    formElement?.dispatchEvent?.(new CustomEvent('error', {
+      composed: false,
+      bubbles: true,
+      detail: {
+        origin: formElement,
+        message: `Expression '${xpath}' failed: ${e}`,
+        expr: xpath,
+        level: 'Error'
+      }
+    }));
+    return NaN;
+  }
+}
+
+// ------------------------------------------------------------
+// Custom functions (XForms/Fore)
+// ------------------------------------------------------------
+
+// context()
+const contextFunction = (dynamicContext, string) => {
+  const caller = dynamicContext.currentContext.formElement;
+  let instanceEl = null;
+  if (string) instanceEl = resolveId(string, caller);else instanceEl = XPathUtil.getParentBindingElement(caller);
+  if (instanceEl) {
+    if (instanceEl.nodeName === 'FX-REPEAT') {
+      const {
+        nodeset
+      } = instanceEl;
+      for (let parent = caller; parent; parent = parent.parentNode) {
+        if (parent.parentNode === instanceEl) {
+          const offset = Array.from(parent.parentNode.children).indexOf(parent);
+          return nodeset[offset];
+        }
+      }
+    }
+    return instanceEl.nodeset;
+  }
+  return caller.getInScopeContext();
+};
+
+// current() - todo
+const currentFunction = (_dynamicContext, _string) => null;
+const elementFunction = (_dynamicContext, string) => document.createElement(string);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'context'
+}, [], 'item()?', contextFunction);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'context'
+}, ['xs:string'], 'item()?', contextFunction);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'current'
+}, ['xs:string'], 'item()?', currentFunction);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'element'
+}, ['xs:string'], 'item()?', elementFunction);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'log'
+}, ['xs:string?'], 'xs:string?', (dynamicContext, string) => {
+  const {
+    formElement
+  } = dynamicContext.currentContext;
+  const instanceEl = resolveId(string, formElement, 'fx-instance');
+  if (instanceEl) {
+    if (instanceEl.getAttribute('type') === 'json') {
+      console.warn('log() does not work for JSON yet');
+      return JSON.stringify(instanceEl.getDefaultContext());
+    }
+    const def = new XMLSerializer().serializeToString(instanceEl.getDefaultContext());
+    return prettifyXml(def);
+  }
+  return null;
+});
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'fore-attr'
+}, ['xs:string?'], 'xs:string?', (dynamicContext, string) => {
+  const {
+    formElement
+  } = dynamicContext.currentContext;
+  let parent = formElement;
+  if (formElement.nodeType === Node.TEXT_NODE) parent = formElement.parentNode;
+  const foreElement = parent.closest('fx-fore');
+  if (foreElement.hasAttribute(string)) return foreElement.getAttribute(string);
+  return null;
+});
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'parse'
+}, ['xs:string?'], 'element()?', (_dynamicContext, string) => {
+  const parser = new DOMParser();
+  const out = parser.parseFromString(string, 'application/xml');
+  return out.firstElementChild;
+});
+function buildTree(tree, data) {
+  if (!data) return;
+  if (data.nodeType !== Node.ELEMENT_NODE) return;
+  const details = document.createElement('details');
+  details.setAttribute('data-path', data.nodeName);
+  const summary = document.createElement('summary');
+  let display = ` <${data.nodeName}`;
+  Array.from(data.attributes).forEach(attr => {
+    display += ` ${attr.nodeName}="${attr.nodeValue}"`;
+  });
+  if (data.firstChild && data.firstChild.nodeType === Node.TEXT_NODE && data.firstChild.data.trim() !== '') {
+    const contents = data.firstChild.nodeValue;
+    display += `>${contents}</${data.nodeName}>`;
+  } else {
+    display += '>';
+  }
+  summary.textContent = display;
+  details.appendChild(summary);
+  if (data.childElementCount !== 0) {
+    details.setAttribute('open', 'open');
+    Array.from(data.children).forEach(child => buildTree(details, child));
+  } else {
+    summary.setAttribute('style', 'list-style:none;');
+  }
+  tree.appendChild(details);
+}
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'logtree'
+}, ['xs:string?'], 'element()?', (dynamicContext, string) => {
+  const {
+    formElement
+  } = dynamicContext.currentContext;
+  const instanceEl = resolveId(string, formElement, 'fx-instance');
+  if (!instanceEl) return null;
+  const treeDiv = document.createElement('div');
+  treeDiv.setAttribute('class', 'logtree');
+  const form = dynamicContext.currentContext.formElement;
+  const logtree = form.querySelector('.logtree');
+  if (logtree) logtree.parentNode.removeChild(logtree);
+  buildTree(treeDiv, instanceEl.getDefaultContext());
+  form.appendChild(treeDiv);
+  return null;
+});
+function _getInstanceDefaultContextNoSideEffects(instEl) {
+  if (!instEl) return null;
+  const type = typeof instEl.getAttribute === 'function' && instEl.getAttribute('type') || instEl.type || '';
+  const isJson = type === 'json';
+  if (isJson) {
+    // Prefer already-built lens root
+    if (instEl.nodeset && instEl.nodeset.__jsonlens__ === true) return instEl.nodeset;
+    // As a fallback, try to wrap raw if present (should be rare here)
+    return instEl.nodeset || null;
+  }
+
+  // XML/HTML: prefer backing document without calling getters
+  const doc = instEl._instanceData || instEl.nodeset || null;
+  if (doc && doc.nodeType === Node.DOCUMENT_NODE) return doc.firstElementChild;
+  if (doc && doc.nodeType === Node.ELEMENT_NODE) return doc;
+  return null;
+}
+
+// instance() — supports RAW JSON mode for predicates/filters
+const instance = (dynamicContext, string) => {
+  let caller = dynamicContext?.currentContext?.formElement || null;
+  if (caller && caller.nodeType === Node.TEXT_NODE) caller = caller.parentNode;
+  const fore = caller && typeof caller.getOwnerForm === 'function' && caller.getOwnerForm() || _getOwningFore(caller) || null;
+  if (!fore) return null;
+  const modelEl = typeof fore.getModel === 'function' && fore.getModel() || fore.shadowRoot?.querySelector?.('fx-model') || fore.querySelector?.('fx-model') || null;
+  if (!modelEl) return null;
+  const id = string === null || string === undefined || String(string).trim() === '' ? 'default' : String(string);
+  let instEl = typeof modelEl.getInstance === 'function' ? modelEl.getInstance(id) : null;
+  if (!instEl) {
+    if (id === 'default') {
+      instEl = modelEl.querySelector?.('fx-instance:not([id])') || modelEl.querySelector?.("fx-instance[id='default']") || modelEl.querySelector?.('fx-instance') || null;
+    } else {
+      instEl = resolveId(id, caller, 'fx-instance') || modelEl.querySelector?.(`#${CSS.escape(id)}`) || modelEl.querySelector?.(`fx-instance[id="${id}"]`) || null;
+    }
+  }
+  if (!instEl) return null;
+  const type = typeof instEl.getAttribute === 'function' && instEl.getAttribute('type') || instEl.type || '';
+  const isJson = type === 'json';
+
+  // RAW JSON mode: return raw JS root (maps/arrays)
+  if (dynamicContext?.currentContext?.jsonMode === 'raw' && isJson) {
+    return _getRawJsonRootValue(instEl);
+  }
+
+  // Normal mode (side-effect free): do NOT call instEl.getDefaultContext() here.
+  // FxInstance getters may rebuild lenses / dispatch events that re-enter evaluation.
+  const ctx = _getInstanceDefaultContextNoSideEffects(instEl);
+  return ctx;
+};
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'index'
+}, ['xs:string?'], 'xs:integer?', (dynamicContext, string) => {
+  const {
+    formElement
+  } = dynamicContext.currentContext;
+  if (string === null) return 1;
+  const repeat = resolveId(string, formElement, 'fx-repeat');
+  if (!repeat) return 1;
+  const attr = repeat.getAttribute('index');
+  const attrNum = Number(attr);
+  if (Number.isFinite(attrNum) && attrNum > 0) return attrNum;
+  const propNum = Number(repeat.index);
+  if (Number.isFinite(propNum) && propNum > 0) return propNum;
+  return 1;
+});
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'instance'
+}, [], 'item()?', dynamicContext => instance(dynamicContext, null));
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'instance'
+}, ['xs:string?'], 'item()?', instance);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'depends'
+}, ['node()*'], 'item()?', (_dynamicContext, nodes) => nodes[0]);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'event'
+}, ['xs:string?'], 'item()?', (dynamicContext, arg) => {
+  if (!arg) return null;
+  for (let ancestor = dynamicContext.currentContext.formElement; ancestor; ancestor = ancestor.parentNode) {
+    if (!ancestor.currentEvent) continue;
+    if (ancestor.currentEvent.detail && typeof ancestor.currentEvent.detail === 'object' && arg in ancestor.currentEvent.detail) {
+      return ancestor.currentEvent.detail[arg];
+    }
+    if (arg.includes('.')) return _propertyLookup(ancestor.currentEvent, arg);
+    return ancestor.currentEvent[arg] || null;
+  }
+  return null;
+});
+function _propertyLookup(obj, path) {
+  const parts = path.split('.');
+  if (parts.length === 1) return obj[parts[0]];
+  return _propertyLookup(obj[parts[0]], parts.slice(1).join('.'));
+}
+registerXQueryModule(`
+  module namespace xf="${XFORMS_NAMESPACE_URI}";
+
+  declare %public function xf:boolean-from-string($str as xs:string) as xs:boolean {
+      lower-case($str) = "true" or $str = "1"
+  };
+`);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'base64encode'
+}, ['xs:string?'], 'xs:string?', (_dynamicContext, string) => btoa(string));
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'local-date'
+}, [], 'xs:string?', () => new Date().toLocaleDateString());
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'local-dateTime'
+}, [], 'xs:string?', () => new Date().toLocaleString());
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'uri'
+}, [], 'xs:string?', () => window.location.href);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'uri-fragment'
+}, [], 'xs:string?', () => window.location.hash);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'uri-host'
+}, [], 'xs:string?', () => window.location.host);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'uri-query'
+}, [], 'xs:string?', () => window.location.search);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'uri-relpath'
+}, [], 'xs:string?', () => {
+  const path = new URL(window.location.href).pathname;
+  return path.substring(0, path.lastIndexOf('/') + 1);
+});
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'uri-path'
+}, [], 'xs:string?', () => new URL(window.location.href).pathname);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'uri-port'
+}, [], 'xs:string?', () => window.location.port);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'uri-param'
+}, ['xs:string?'], 'xs:string?', (_dynamicContext, arg) => {
+  if (!arg) return null;
+  const urlparams = new URLSearchParams(window.location.search);
+  return urlparams.get(arg) || '';
+});
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'uri-scheme'
+}, [], 'xs:string?', () => new URL(window.location.href).protocol);
+registerCustomXPathFunction({
+  namespaceURI: XFORMS_NAMESPACE_URI,
+  localName: 'uri-scheme-specific-part'
+}, [], 'xs:string?', () => {
+  const uri = window.location.href;
+  return uri.substring(uri.indexOf(':') + 1);
+});
 
 /**
  * @param {Node} node
@@ -18992,7 +20036,6 @@ class Fore {
       // }
       // }
     });
-
     return attrPredicate;
   }
 
@@ -19121,80 +20164,40 @@ class Fore {
    * @returns {Promise<void>}
    */
   static async refreshChildren(startElement, force) {
-    const refreshed = new Promise(resolve => {
-      /*
-      if there's an 'refresh-on-view' attribute the element wants to be handled by
-      handleIntersect function that calls the refresh of the respective element and
-      not the global one.
-       */
-      // if(!force && startElement.hasAttribute('refresh-on-view')) return;
+    const children = startElement?.children ? Array.from(startElement.children) : [];
+    for (const element of children) {
+      // Do not cross into nested fore roots
+      if (element.nodeName.toUpperCase() === 'FX-FORE') {
+        break;
+      }
+      if (Fore.isUiElement(element.nodeName) && typeof element.refresh === 'function') {
+        /** @type {import('./ui/UIElement.js').UIElement} */
+        const bound = element;
 
-      /*  ### attempt with querySelectorAll is even slower than iterating recursively
-       const children = startElement.querySelectorAll('[ref]');
-      Array.from(children).forEach(uiElement => {
-        if (Fore.isUiElement(uiElement.nodeName) && typeof uiElement.refresh === 'function') {
-          uiElement.refresh();
+        // Keep old behavior: only refresh UI elements during full/forced refresh
+        // Any #refresh call does its own recursion.
+        if (force === true) {
+          const maybePromise = bound.refresh(force);
+          if (maybePromise && typeof maybePromise.then === 'function') {
+            await maybePromise;
+          }
+          continue;
         }
-      });
-      */
-      const {
-        children
-      } = startElement;
-      if (children) {
-        for (const element of Array.from(children)) {
-          if (element.nodeName.toUpperCase() === 'FX-FORE') {
-            break;
+        if (typeof force === 'object') {
+          // future selective refresh logic can live here if you re-enable it
+          const maybePromise = bound.refresh(force);
+          if (maybePromise && typeof maybePromise.then === 'function') {
+            await maybePromise;
           }
-          if (Fore.isUiElement(element.nodeName) && typeof element.refresh === 'function') {
-            /**
-             * @type {import('./ForeElementMixin.js').default}
-             */
-            const bound = element;
-            if (!force) {
-              continue;
-            }
-            /*
-                        if(element.nodeName === 'FX-CASE') {
-                          console.log('hey - got a case', element);
-                        }
-            */
-            if (force === true) {
-              // console.log('🔄 refreshing ', element);
-              // Unconditional force refresh
-              bound.refresh(force);
-              continue;
-            }
-            if (typeof force !== 'object') {
-              continue;
-            }
-            /*
-            if (
-              force.reason === 'index-function' &&
-              bound.dependencies.isInvalidatedByIndexFunction()
-            ) {
-              console.log('🔄 refreshing ', element);
-               bound.refresh(force);
-              continue;
-            }
-             if (
-              bound.dependencies.isInvalidatedByChildlistChanges(force.elementLocalnamesWithChanges)
-            ) {
-              console.log('🔄 refreshing ', element);
-               bound.refresh(force);
-              continue;
-            }
-            */
-          }
-
-          if (!(element.inert === true)) {
-            // testing for inert catches model and action elements and should just leave updateable html elements
-            Fore.refreshChildren(element, force);
-          }
+          continue;
         }
       }
-      resolve('done');
-    });
-    return refreshed;
+
+      // Traverse DOM unless inert
+      if (!(element.inert === true)) {
+        await Fore.refreshChildren(element, force);
+      }
+    }
   }
   static copyDom(inputElement) {
     console.time('convert');
@@ -19365,7 +20368,6 @@ class Fore {
     }
     // console.log('!!! DISPATCH_DONE', eventName);
   }
-
   static formatXml(xml) {
     const reg = /(>)(<)(\/*)/g;
     const wsexp = / *(.*) +\n/g;
@@ -19494,37 +20496,252 @@ Fore.RELEVANT_DEFAULT = true;
 Fore.CONSTRAINT_DEFAULT = true;
 Fore.TYPE_DEFAULT = 'xs:string';
 
+// json-node.js
+
+class JSONNode {
+  constructor(value, parent = null, keyOrIndex = null, instanceId = 'default') {
+    this.value = value;
+    this.parent = parent;
+    this.keyOrIndex = keyOrIndex;
+    this.instanceId = instanceId;
+    this.__jsonlens__ = true;
+    if (Array.isArray(value)) {
+      this.children = value.map((child, index) => new JSONNode(child, this, index, instanceId));
+    } else if (typeof value === 'object' && value !== null) {
+      this.children = Object.entries(value).map(([key, val]) => new JSONNode(val, this, key, instanceId));
+    } else {
+      this.children = [];
+    }
+  }
+
+  // Methods for JSONDomFacade compatibility
+  getParent() {
+    return this.parent;
+  }
+  getChildren() {
+    return this.children;
+  }
+  getKey() {
+    return this.keyOrIndex;
+  }
+  getValue() {
+    return this.value;
+  }
+
+  /**
+   * Get the value of this node or a child node by key.
+   * @param {string|number} [key] - Optional key or index to get a child node
+   * @returns {*|JSONNode|undefined} The raw value of this node or a child node
+   */
+  get(key) {
+    // If no key is provided, return the raw value of this node
+    if (arguments.length === 0) {
+      return this.value;
+    }
+
+    // Otherwise, get child node by key or index
+    if (Array.isArray(this.value) && typeof key === 'number') {
+      return this.children[key];
+    }
+    if (typeof this.value === 'object' && this.value !== null) {
+      return this.children.find(c => c.keyOrIndex === key);
+    }
+    return undefined;
+  }
+
+  /**
+   * Get the XPath-style path to this node including instance prefix.
+   * @returns {string|null}
+   */
+  getPath() {
+    // Detached: no parent and no key
+    const isDetached = this.parent === null && this.keyOrIndex === null;
+
+    // Special case: this is NOT the original root (value-only root has no children)
+    if (isDetached && this.children?.length === 0) {
+      return null;
+    }
+    const segments = [];
+    let node = this;
+    while (node.parent !== null) {
+      const key = node.keyOrIndex;
+      if (key === null || key === undefined) return null;
+      if (typeof key === 'number') {
+        segments.unshift(`[${key + 1}]`);
+      } else if (/^[a-zA-Z_][\w\-]*$/.test(key)) {
+        segments.unshift(`/${key}`);
+      } else {
+        const escaped = String(key).replace(/'/g, `''`);
+        segments.unshift(`/'${escaped}'`);
+      }
+      node = node.parent;
+    }
+    return `$${this.instanceId}${segments.join('')}`;
+  }
+
+  /**
+   * Set the raw value of this node.
+   * @param {*} value
+   */
+  set(value) {
+    this.value = value;
+
+    // Update the parent's data structure if this is a child node
+    if (this.parent && this.keyOrIndex !== null && this.keyOrIndex !== undefined) {
+      this.parent.value[this.keyOrIndex] = value;
+    }
+    this.children = [];
+    if (Array.isArray(value)) {
+      this.children = value.map((child, index) => new JSONNode(child, this, index, this.instanceId));
+    } else if (typeof value === 'object' && value !== null) {
+      this.children = Object.entries(value).map(([key, val]) => new JSONNode(val, this, key, this.instanceId));
+    }
+  }
+
+  /**
+   * Insert into array or object node.
+   * @param {*} value
+   * @param {string|number|null} keyOrIndex
+   */
+  insert(value, keyOrIndex = null) {
+    if (Array.isArray(this.value)) {
+      const index = keyOrIndex === null ? this.value.length : keyOrIndex;
+      this.value.splice(index, 0, value);
+      this.children.splice(index, 0, new JSONNode(value, this, index, this.instanceId));
+      // update keyOrIndex of all children after insertion
+      for (let i = index + 1; i < this.children.length; i++) {
+        this.children[i].keyOrIndex = i;
+      }
+    } else if (typeof this.value === 'object') {
+      if (typeof keyOrIndex !== 'string') {
+        throw new Error('Insert into object requires a string key.');
+      }
+      this.value[keyOrIndex] = value;
+      this.children.push(new JSONNode(value, this, keyOrIndex, this.instanceId));
+    } else {
+      throw new Error('Cannot insert into primitive value.');
+    }
+  }
+  delete() {
+    if (!this.parent || this.keyOrIndex == null) return;
+    const parentVal = this.parent.value;
+    if (Array.isArray(parentVal)) {
+      parentVal.splice(this.keyOrIndex, 1);
+      this.parent.set(parentVal);
+    } else if (typeof parentVal === 'object' && parentVal !== null) {
+      delete parentVal[this.keyOrIndex];
+      this.parent.set(parentVal);
+    } else {
+      // Parent is not deletable (primitive etc.)
+      throw new Error('Parent is not an object or array — cannot delete child');
+    }
+  }
+}
+
+/**
+ * Wrap a raw JSON value as a lensable node tree.
+ * @param {*} value
+ * @param {*} parent
+ * @param {*} keyOrIndex
+ * @param {string} instanceId
+ * @returns {JSONNode}
+ */
+function wrapJson(value, parent = null, keyOrIndex = null, instanceId = 'default') {
+  const jsonNode = new JSONNode(value, parent, keyOrIndex, instanceId);
+  console.log('wrapJson', jsonNode);
+  return jsonNode;
+  // return new JSONNode(value, parent, keyOrIndex, instanceId);
+}
+
+/**
+ * Returns the correct lens for a JSON node based on its parent and key/index.
+ * Assumes the node is already in a wrapped structure, or retrievable via parent.
+ *
+ * @param {any} node - The JSON node (primitive value or structure)
+ * @param {JSONNode} parent - The parent JSONNode
+ * @param {string|number} keyOrIndex - The key (for objects) or index (for arrays)
+ * @returns {JSONNode} A JSONNode wrapping the value with lens and context
+ */
+
+/**
+ * Returns the correct lens for a JSON node based on its parent and key/index.
+ * Assumes the node is already in a wrapped structure, or retrievable via parent.
+ *
+ * @param {any} node - The JSON node (primitive value or structure)
+ * @param {JSONNode} parent - The parent JSONNode
+ * @param {string|number} keyOrIndex - The key (for objects) or index (for arrays)
+ * @returns {JSONNode} A JSONNode wrapping the value with lens and context
+ */
+/*
+export function getLensForNode(node, parent, keyOrIndex) {
+  if (!parent || !parent.__jsonlens__) {
+    console.warn('getLensForNode called without proper parent lens');
+    return node;
+  }
+
+  const lens = parent.__jsonlens__.lens;
+  const wrapped = lens.get(parent.value, keyOrIndex);
+  return wrapped;
+}
+*/
+
+/**
+ * Attempts to wrap a raw value into a JSONNode, using fallback logic if needed.
+ * @param {any} value - The raw value to wrap.
+ * @param {JSONNode|null} parent - The parent JSONNode (if known).
+ * @param {string|number|null} key - The key/index in the parent (if known).
+ * @param {string} instanceId - The ID of the instance.
+ * @param {Object} instanceRoot - The full wrapped instance root, to help recover parent/key.
+ * @returns {JSONNode|any}
+ */
+function getLensForNode(value, parent = null, key = null, instanceId, instanceRoot = null) {
+  if (value?.__jsonlens__) return value;
+
+  // Attempt fallback recovery if key or parent missing
+  if ((!parent || typeof key === 'undefined') && instanceRoot) {
+    const queue = [instanceRoot];
+    while (queue.length) {
+      const current = queue.shift();
+      if (!current?.children) continue;
+      for (const child of current.children) {
+        if (child.value === value) {
+          parent = current;
+          key = child.keyOrIndex;
+          break;
+        } else {
+          queue.push(child);
+        }
+      }
+      if (parent) break;
+    }
+    if (!parent || typeof key === 'undefined') {
+      console.warn('[getLensForNode] Unable to determine parent/key for value:', value);
+      return value; // Bail out, return raw value
+    }
+  }
+  return new JSONNode(value, parent, key, instanceId);
+}
+
 async function handleResponse(fxInstance, response) {
   const {
     status
   } = response;
   if (status >= 400) {
-    // console.log('response status', status);
     alert(`response status:  ${status} - failed to load data for '${fxInstance.src}' - stopping.`);
     throw new Error(`failed to load data - status: ${status}`);
   }
   let responseContentType = response.headers.get('content-type').split(';')[0].trim().toLowerCase();
-  // console.log('********** responseContentType *********', responseContentType);
   if (responseContentType.startsWith('text/html')) {
-    // const htmlResponse = response.text();
-    // return new DOMParser().parseFromString(htmlResponse, 'text/html');
-    // return response.text();
-    return response.text().then(result =>
-    // console.log('xml ********', result);
-    new DOMParser().parseFromString(result, 'text/html'));
+    return response.text().then(result => new DOMParser().parseFromString(result, 'text/html'));
   }
   if (responseContentType.endsWith('/json') || responseContentType.endsWith('+json')) {
-    // console.log("********** inside res json *********");
     return response.json();
   }
   if (responseContentType.endsWith('/xml') || responseContentType.endsWith('+xml')) {
-    // See https://www.rfc-editor.org/rfc/rfc7303
     const text = await response.text();
-    // console.log('xml ********', result);
     return new DOMParser().parseFromString(text, 'application/xml');
   }
   if (responseContentType.startsWith('text/')) {
-    // console.log("********** inside  res plain *********");
     return response.text();
   }
   throw new Error(`unable to handle response content type: ${responseContentType}`);
@@ -19532,9 +20749,6 @@ async function handleResponse(fxInstance, response) {
 
 /**
  * Container for data instances.
- *
- * Offers several ways of loading data from either inline content or via 'src' attribute which will use the fetch
- * API to resolve data.
  */
 class FxInstance extends HTMLElement {
   constructor() {
@@ -19546,16 +20760,47 @@ class FxInstance extends HTMLElement {
     this.originalInstance = null;
     this.partialInstance = null;
     this.credentials = '';
+
+    // IMPORTANT: keep backing store private so setter can intercept updates
+    this._instanceData = null;
+
+    // Lens nodeset for JSON, DOM Document for XML
+    this.nodeset = null;
+
+    // JSON facade (only relevant for JSON instances)
+    this.domFacade = null;
   }
   connectedCallback() {
-    // console.log('connectedCallback ', this);
     if (this.hasAttribute('src')) {
       this.src = this.getAttribute('src');
     }
-    if (this.hasAttribute('id')) {
-      this.id = this.getAttribute('id');
+
+    // Default instance selection is positional:
+    // The first <fx-instance> child (doc order) of the owning <fx-model> is the default instance.
+    // If the author did not provide an id on that first instance, we set id="default".
+    // If the author provided an id on that first instance, we use that id instead.
+    const parentModel = this.parentNode && this.parentNode.nodeName && this.parentNode.nodeName.toUpperCase() === 'FX-MODEL' ? this.parentNode : null;
+    const explicitId = (this.getAttribute('id') || '').trim();
+    let isFirstInModel = false;
+    if (parentModel) {
+      const instances = Array.from(parentModel.children).filter(el => el && el.nodeType === Node.ELEMENT_NODE && el.localName === 'fx-instance');
+      isFirstInModel = instances.length > 0 && instances[0] === this;
     } else {
-      this.id = 'default';
+      // Standalone <fx-instance> in tests/fixtures: treat as default.
+      isFirstInModel = true;
+    }
+    if (isFirstInModel) {
+      // First instance defines the default instance
+      const effectiveId = explicitId || 'default';
+      this.instanceId = effectiveId;
+      // For backwards compatibility/tests, reflect as DOM id.
+      this.id = effectiveId;
+    } else {
+      // Non-first instances are only addressable by id if explicitly provided.
+      this.instanceId = explicitId || '';
+      if (explicitId) {
+        this.id = explicitId;
+      }
     }
     this.credentials = this.hasAttribute('credentials') ? this.getAttribute('credentials') : 'same-origin';
     if (!['same-origin', 'include', 'omit'].includes(this.credentials)) {
@@ -19568,35 +20813,50 @@ class FxInstance extends HTMLElement {
       this.setAttribute('type', this.type);
     }
     const style = `
-            :host {
-                display: none;
-            }
-            :host * {
-                display:none;
-            }
-            ::slotted(*){
-                display:none;
-            }
-        `;
-    const html = `
-        `;
-    this.shadowRoot.innerHTML = `
-            <style>
-                ${style}
-            </style>
-            ${html}
-        `;
+      :host { display: none; }
+      :host * { display:none; }
+      ::slotted(*){ display:none; }
+    `;
+    this.shadowRoot.innerHTML = `<style>${style}</style>`;
     this.partialInstance = {};
   }
 
   /**
+   * Logical Fore instance identifier (NOT the HTML id).
+   * Prefer `instanceId` internally.
+   */
+  get foreId() {
+    return this.instanceId || (this.hasAttribute('id') ? this.getAttribute('id') : 'default');
+  }
+
+  /**
+   * IMPORTANT: canonical accessor for instance data.
+   * Any code that assigns `instance.instanceData = ...` will now rebuild nodeset correctly.
+   */
+  get instanceData() {
+    return this._instanceData;
+  }
+  set instanceData(data) {
+    if (!data) {
+      this.createInstanceData();
+      return;
+    }
+
+    // Route ALL updates through _setInitialData so nodeset + originalInstance stay consistent
+    this._setInitialData(data);
+
+    // Signal structure mutation (used by fx-fore for refresh decisions)
+    this.dispatchEvent(new CustomEvent('path-mutated', {
+      bubbles: true,
+      composed: true
+    }));
+  }
+
+  /**
    * Is called by fx-model during initialization phase (model-construct)
-   * @returns {Promise<void>}
    */
   async init() {
-    // console.log('fx-instance init');
     await this._initInstance();
-    // console.log(`### <<<<< instance ${this.id} loaded >>>>> `);
     this.dispatchEvent(new CustomEvent('instance-loaded', {
       composed: true,
       bubbles: true,
@@ -19607,8 +20867,15 @@ class FxInstance extends HTMLElement {
     return this;
   }
   reset() {
-    // this._useInlineData();
-    this.instanceData = this.originalInstance.cloneNode(true);
+    // use the setter so nodeset is rebuilt for JSON too
+    if (this.originalInstance && this.type === 'xml') {
+      this.instanceData = this.originalInstance.cloneNode(true);
+    } else if (this.originalInstance && this.type === 'json') {
+      this.instanceData = structuredClone(this.originalInstance);
+    } else {
+      // fallback
+      this.instanceData = this.originalInstance;
+    }
   }
   evalXPath(xpath) {
     const formElement = this.parentElement.parentElement;
@@ -19618,8 +20885,6 @@ class FxInstance extends HTMLElement {
 
   /**
    * returns the current instance data
-   *
-   * @returns {Document | T | any}
    */
   getInstanceData() {
     if (!this.instanceData) {
@@ -19627,44 +20892,27 @@ class FxInstance extends HTMLElement {
     }
     return this.instanceData;
   }
+
+  /**
+   * legacy setter API: keep it, but forward to instanceData setter
+   */
   setInstanceData(data) {
-    if (!data) {
-      this.createInstanceData();
-      return;
-    }
-    this._setInitialData(data);
-    // this.instanceData = data;
+    this.instanceData = data;
   }
 
   /**
-   * return the default context (root node of respective instance) for XPath evalution.
-   *
-   * @returns {Document|T|any|Element}
+   * return the default context (root node of respective instance) for XPath evaluation.
    */
   getDefaultContext() {
-    // Note: use the getter here: it might provide us with stubbed data if anything async is racing,
-    // such as an @src attribute
     const instanceData = this.getInstanceData();
-    if (this.type === 'xml') {
-      return instanceData.firstElementChild;
+    if (this.type === 'xml' || this.type === 'html') {
+      return instanceData?.firstElementChild;
     }
-    return instanceData;
+    // JSON: use wrapped tree as context item
+    return this.nodeset;
   }
-
-  /**
-   * does the actual loading of data. Handles inline data, data loaded via fetch() or data constructed from
-   * querystring.
-   *
-   * @returns {Promise<void>}
-   * @private
-   */
   async _initInstance() {
     if (this.src === '#querystring') {
-      /*
-       * generate XML data from URL querystring
-       * todo: there's no variant to generate JSON yet
-       */
-      // eslint-disable-next-line no-restricted-globals
       const query = new URLSearchParams(location.search);
       const doc = new DOMParser().parseFromString('<data></data>', 'application/xml');
       const root = doc.firstElementChild;
@@ -19682,21 +20930,25 @@ class FxInstance extends HTMLElement {
   }
   createInstanceData() {
     if (this.type === 'xml') {
-      // const doc = new DOMParser().parseFromString('<data data-id="default"></data>', 'application/xml');
       const doc = new DOMParser().parseFromString('<data></data>', 'application/xml');
-      this.instanceData = doc;
-      this.originalInstance = this.instanceData.cloneNode(true);
+      this._instanceData = doc;
+      this.originalInstance = doc.cloneNode(true);
+      this.nodeset = doc;
+      return;
     }
     if (this.type === 'json') {
-      this.instanceData = {};
+      this._instanceData = {};
       this.originalInstance = {
-        ...this.instanceData
+        ...this._instanceData
       };
+      this.nodeset = wrapJson(this._instanceData, null, null, this.foreId);
+      this.domFacade = new JSONDomFacade();
+      return;
     }
     if (this.type === 'text') {
-      this.instanceData = this.innerText;
+      this._instanceData = this.innerText;
       this.originalInstance = this.innerText;
-      console.log('text data', this.instanceData);
+      this.nodeset = null;
     }
   }
   async _loadData() {
@@ -19704,9 +20956,7 @@ class FxInstance extends HTMLElement {
     if (url.startsWith('localStore')) {
       const key = url.substring(url.indexOf(':') + 1);
       const doc = new DOMParser().parseFromString('<data></data>', 'application/xml');
-      this.instanceData = doc;
-      // ### does it make sense to store originalData here?
-
+      this._instanceData = doc;
       if (!key) {
         console.warn('no key specified for localStore');
         return;
@@ -19718,8 +20968,9 @@ class FxInstance extends HTMLElement {
         return;
       }
       const data = new DOMParser().parseFromString(serialized, 'application/xml');
-      // let data = this._parse(serialized, instance);
       doc.firstElementChild.replaceWith(data.firstElementChild);
+      // IMPORTANT: keep nodeset consistent
+      this._setInitialData(doc);
       return;
     }
     const contentType = Fore.getContentType(this, 'get');
@@ -19734,85 +20985,50 @@ class FxInstance extends HTMLElement {
       });
       const data = await handleResponse(this, response);
       this._setInitialData(data);
-      /*
-      if (data.nodeType) {
-        this._setInitialData(data);
-        this.instanceData = data;
-        this.originalInstance = this.instanceData.cloneNode(true);
-        console.log('instanceData loaded: ', this.id, this.instanceData);
-        return;
-      }
-      this.instanceData = data;
-      this.originalInstance = [...data];
-      */
     } catch (error) {
       throw new Error(`failed loading data ${error}`);
     }
   }
   _setInitialData(data) {
-    this.instanceData = data;
-    if (data.nodeType) {
-      this.originalInstance = this.instanceData.cloneNode(true);
-    } else {
-      this.originalInstance = {
-        ...this.instanceData
-      };
-    }
-  }
-  _getContentType() {
-    if (this.type === 'xml') {
-      return 'application/xml';
+    // IMPORTANT: always store in backing field so getter/setter stays consistent
+    this._instanceData = data;
+    if (data?.nodeType) {
+      // XML/HTML instance
+      this.originalInstance = this._instanceData.cloneNode(true);
+      this.nodeset = this._instanceData;
+      // domFacade irrelevant
+      return;
     }
     if (this.type === 'json') {
-      return 'application/json';
+      // JSON instance
+      this.originalInstance = structuredClone(this._instanceData);
+      this.nodeset = wrapJson(this._instanceData, null, null, this.foreId);
+      if (!this.domFacade) this.domFacade = new JSONDomFacade();
+      return;
     }
-    console.warn('content-type unknown ', this.type);
-    return null;
+
+    // text (or unknown)
+    this.nodeset = null;
   }
   _useInlineData() {
     if (this.type === 'xml') {
-      // console.log('innerHTML ', this.innerHTML);
       const instanceData = new DOMParser().parseFromString(this.innerHTML, 'application/xml');
-
-      // console.log('fx-instance init id:', this.id);
-      // this.instanceData = instanceData;
       this._setInitialData(instanceData);
-      // console.log('instanceData ', this.instanceData);
-      // console.log('instanceData ', this.instanceData.firstElementChild);
-
-      // console.log('fx-instance data: ', this.instanceData);
-      // this.instanceData.firstElementChild.setAttribute('id', this.id);
-      // todo: move innerHTML out to shadowDOM (for later reset)
     } else if (this.type === 'json') {
-      // this.instanceData = JSON.parse(this.textContent);
-      this._setInitialData(JSON.parse(this.textContent));
+      // Use innerHTML (not textContent) so HTML tags the browser parser consumed as
+      // child elements (e.g. <blockquote> in a string value) are serialized back to text.
+      // Then escape literal control characters that JSON.parse rejects inside strings.
+      const sanitized = this.innerHTML.replace(/("(?:[^"\\]|\\.)*")/gs, match => match.replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t'));
+      this._setInitialData(JSON.parse(sanitized));
     } else if (this.type === 'html') {
-      // this.instanceData = this.firstElementChild.children;
       this._setInitialData(this.firstElementChild.children);
     } else if (this.type === 'text') {
-      // this.instanceData = this.textContent;
       this._setInitialData(this.textContent);
     } else {
-      console.warn('unknow type for data ', this.type);
+      console.warn('unknown type for data ', this.type);
     }
   }
-
-  // _handleResponse() {
-  //   console.log('_handleResponse ');
-  //   const ajax = this.shadowRoot.getElementById('loader');
-  //   const instanceData = new DOMParser().parseFromString(ajax.lastResponse, 'application/xml');
-  //   this.instanceData = instanceData;
-  //   console.log('data: ', this.instanceData);
-  // }
-
-  /*
-  _handleError() {
-    const loader = this.shadowRoot.getElementById('loader');
-    console.log('_handleResponse ', loader.lastError);
-  }
-  */
 }
-
 if (!customElements.get('fx-instance')) {
   customElements.define('fx-instance', FxInstance);
 }
@@ -19834,7 +21050,7 @@ class ModelItem {
    * @param {string} instance - The fx-instance id having created this ModelItem
    * @param {import('./fx-fore').FxFore} fore - The fx-fore element this ModelItem belongs to
    */
-  constructor(path, ref, node, bind, instance, fore) {
+  constructor(path, ref, nodeOrLens, bind, instance, fore) {
     this.path = path;
     this.ref = ref;
     this.readonly = ModelItem.READONLY_DEFAULT;
@@ -19842,7 +21058,13 @@ class ModelItem {
     this.required = ModelItem.REQUIRED_DEFAULT;
     this.constraint = ModelItem.CONSTRAINT_DEFAULT;
     this.type = ModelItem.TYPE_DEFAULT;
-    this.node = node;
+    this.node = null;
+    this.lens = null;
+    if (nodeOrLens?.get && nodeOrLens?.set) {
+      this.lens = nodeOrLens;
+    } else {
+      this.node = nodeOrLens;
+    }
     this.bind = bind;
     this.instanceId = instance;
     this.fore = fore;
@@ -19866,8 +21088,8 @@ class ModelItem {
     this.stateExpressions = {}; // e.g. { required: { expr: '../x', type: 'boolean' } }
     this.state = {}; // evaluated expression results
   }
-
   get value() {
+    if (this.lens) return this.lens.get();
     if (!this.node) return null;
     if (!this.node.nodeType) return this.node;
     if (this.node.nodeType === Node.ATTRIBUTE_NODE) {
@@ -19876,15 +21098,21 @@ class ModelItem {
     return this.node.textContent;
   }
   set value(newVal) {
+    if (this.lens) {
+      const oldVal = this.lens.get();
+      this.lens.set(newVal);
+      if (oldVal !== newVal) this.notify();
+      return;
+    }
     if (!this.node) return;
     const oldVal = this.value;
-    if (newVal?.nodeType === Node.DOCUMENT_NODE) {
+    if (newVal?.nodeType && newVal.nodeType === Node.DOCUMENT_NODE) {
       this.node.replaceWith(newVal.firstElementChild);
-      this.node = newVal.firstElementChild;
-    } else if (newVal?.nodeType === Node.ELEMENT_NODE) {
+      // this.node.appendChild(newVal.firstElementChild);
+    } else if (newVal?.nodeType && newVal.nodeType === Node.ELEMENT_NODE) {
       this.node.replaceWith(newVal);
-      this.node = newVal;
-    } else if (this.node.nodeType === Node.ATTRIBUTE_NODE) {
+      // this.node.appendChild(newVal);
+    } else if (newVal?.nodeType && this.node.nodeType === Node.ATTRIBUTE_NODE) {
       this.node.nodeValue = newVal;
     } else {
       this.node.textContent = newVal;
@@ -20094,11 +21322,135 @@ function getDocPath(node) {
  * @param {string} instanceId
  * @returns string
  */
-function getPath(node, instanceId) {
+/**
+ * @param {Node} node
+ * @param {string} instanceId
+ * @returns string
+ */
+/**
+ * Compute a stable Fore path for a node.
+ *
+ * NOTE:
+ * During bind graph build we often deal with XML nodes that live in a separate XML Document
+ * (instance document). Those nodes are not in the HTML DOM and therefore cannot "see" <fx-instance>
+ * via ancestor traversal, shadow root, or document.querySelector.
+ *
+ * For that reason, getPath MUST be able to compute $default/... without requiring that an
+ * <fx-instance id="default"> element exists in the HTML DOM.
+ *
+ * @param {Node|any} node
+ * @param {string} instanceId
+ * @returns {string}
+ */
+function getPath(node, instanceId = 'default') {
+  const wantedId = (instanceId ?? 'default').trim() || 'default';
+
+  // JSON lens nodes carry their own path – no need to resolve <fx-instance>
+  if (node && node.__jsonlens__ === true) {
+    return getJsonPath(node);
+  }
+
+  // Try to find the corresponding fx-instance in the current HTML document.
+  // This is useful for sanity checks / detecting JSON instances, but MUST NOT be required
+  // for computing an XML path (especially for the default instance).
+  let instanceEl = null;
+  try {
+    instanceEl = document.querySelector(`fx-instance[id='${wantedId}']`);
+
+    // Many Fore documents use an id-less first instance as the default instance.
+    if (!instanceEl && (wantedId === 'default' || wantedId === '')) {
+      instanceEl = document.querySelector('fx-instance:not([id])') || document.querySelector("fx-instance[id='default']");
+    }
+  } catch (_e) {
+    // ignore
+  }
+
+  // If we *did* find an instance element and it is JSON, then the caller is using the wrong node type.
+  // (JSON instances are addressed via JSON lens nodes.)
+  if (instanceEl) {
+    const isJson = instanceEl.getAttribute('type') === 'json' || instanceEl.type === 'json';
+    if (isJson) {
+      throw new Error(`getPath: Instance '${wantedId}' is JSON but node is not a JSON lens node.`);
+    }
+  } else {
+    // IMPORTANT BEHAVIOR CHANGE:
+    // - If default instance element can't be found (common for detached XML documents),
+    //   we still compute an XML path. Do NOT throw.
+    // - For non-default ids, keep the old strict behavior.
+    if (wantedId !== 'default') {
+      throw new Error(`Instance with id '${wantedId}' not found.`);
+    }
+  }
+
+  // XML nodes: compute path purely from the XML tree
+  if (node && node.nodeType !== undefined) {
+    return getXmlPath(node, wantedId);
+  }
+  throw new Error('Unsupported node type for getPath');
+}
+function getXmlPath(node, instanceId) {
   const path = evaluateXPathToString$1('path()', node);
   // Path is like `$default/x[1]/y[1]`
   const shortened = shortenPath(path);
   return shortened.startsWith('/') ? `$${instanceId}${shortened}` : `$${instanceId}/${shortened}`;
+}
+function getJsonPath(node) {
+  if (!node || !node.__jsonlens__) {
+    throw new Error('getJsonPath called on non-JSONLens node');
+  }
+  const pathSegments = [];
+  let current = node;
+  const instanceId = node.instanceId || 'default';
+  while (current && current.parent) {
+    const {
+      keyOrIndex,
+      parent
+    } = current;
+    if (typeof keyOrIndex === 'number') {
+      pathSegments.unshift(`[${keyOrIndex + 1}]`); // XPath is 1-based
+    } else {
+      pathSegments.unshift(`/${keyOrIndex}`);
+    }
+    current = parent;
+  }
+  return pathSegments.length > 0 ? `$${instanceId}${pathSegments.join('')}` : `$${instanceId}/`;
+}
+
+/**
+ * Parses a JSON-style binding expression like `?automobiles?1?maker`
+ * into a list of steps: ['automobiles', 0, 'maker']
+ *
+ * @param {string} ref
+ * @returns {Array<string|number>}
+ */
+// returns null if it's not a JSON-lens style ref
+// otherwise returns { instanceId: string, steps: Array<string|number> }
+function parseJsonRef(ref, defaultInstanceId = 'default') {
+  if (!ref) return null;
+  const s = String(ref).trim();
+
+  // Optional leading instance('id') / instance("id")
+  const instMatch = s.match(/^instance\s*\(\s*(['"])(.*?)\1\s*\)\s*(\?.*)?$/);
+  let instanceId;
+  let lensPart;
+  if (instMatch) {
+    instanceId = instMatch[2];
+    lensPart = instMatch[3] || '';
+  } else {
+    // No instance(...): must be a lens ref starting with '?'
+    if (!s.startsWith('?')) return null;
+    instanceId = defaultInstanceId;
+    lensPart = s;
+  }
+  const steps = lensPart.split('?').filter(Boolean).map(part => {
+    if (part === '*') return '*';
+    if (/^\d+$/.test(part)) return Number(part) - 1; // 1-based -> 0-based
+    return part;
+  });
+  return {
+    instanceId,
+    steps
+  };
 }
 
 /**
@@ -20219,6 +21571,7 @@ class FxModel extends HTMLElement {
    */
   static lazyCreateModelItem(model, ref, node, formElement) {
     const instanceId = XPathUtil.resolveInstance(formElement, ref);
+    const instance = model.getInstance(instanceId);
     const fore = model.formElement;
     if (fore?.createNodes && (node === null || node === undefined)) {
       const mi = new ModelItem(undefined, ref, null, null, instanceId, fore);
@@ -20227,31 +21580,48 @@ class FxModel extends HTMLElement {
       return mi;
     }
     if (node === null || node === undefined) return null;
-    let targetNode = node.nodeType === Node.TEXT_NODE ? node.parentNode : node;
-    let path = null;
-    if (targetNode?.nodeType) {
-      path = getPath(targetNode, instanceId);
+    let targetNode = Array.isArray(node) ? node[0] : node;
+
+    // Wrap JSON primitives / raw values into a lens node when needed
+    if (instance.type === 'json') {
+      const parentLens = instance.nodeset;
+      const parsedRef = parseJsonRef(ref);
+      if (parsedRef && parsedRef.steps && parsedRef.steps.length > 0) {
+        const key = parsedRef.steps[parsedRef.steps.length - 1];
+        targetNode = getLensForNode(targetNode, parentLens, key, instanceId);
+      }
     }
 
-    // Check if a ModelItem with the same path already exists
+    // Compute canonical path
+    let path = null;
+    if (targetNode?.nodeType || targetNode?.__jsonlens__) {
+      path = getPath(targetNode, instanceId);
+    }
+    const isLensObject = !!targetNode && typeof targetNode === 'object' && typeof targetNode.get === 'function' && typeof targetNode.set === 'function';
+
+    // If ModelItem for same path exists, RETARGET it (node OR lens)
     if (path) {
       const existingModelItem = model.modelItems.find(mi => mi.path === path);
       if (existingModelItem) {
-        // Update the node reference if needed
-        if (existingModelItem.node !== targetNode) {
-          existingModelItem.node = targetNode;
+        if (isLensObject) {
+          if (existingModelItem.lens !== targetNode) {
+            existingModelItem.lens = targetNode;
+            existingModelItem.node = null;
+          }
+        } else {
+          if (existingModelItem.node !== targetNode) {
+            existingModelItem.node = targetNode;
+            existingModelItem.lens = null;
+          }
         }
         return existingModelItem;
       }
     }
     const mi = new ModelItem(path, ref, targetNode, model.getBindForElement(targetNode), instanceId, fore);
     mi.isSynthetic = true;
-
-    // console.log('new ModelItem is instanceof ModelItem ', mi instanceof ModelItem);
     model.registerModelItem(mi);
     return mi;
   }
-
   /**
    * modelConstruct starts actual processing of the model by
    *
@@ -20280,6 +21650,33 @@ class FxModel extends HTMLElement {
       // Wait until all the instances are built
       await Promise.all(promises);
       this.instances = Array.from(instances);
+      // Build in-memory variable bindings for instances (Variant A: no <fx-var> DOM nodes).
+      // These bindings are merged into XPath variable resolution by xpath-evaluation.js.
+      if (this.formElement) {
+        const bindings = Object.create(null);
+
+        // $default always points to the model's default instance (first instance)
+        // IMPORTANT: For JSON instances, bind RAW JS root so `?` lookup works.
+        try {
+          const defInst = this.getDefaultInstance();
+          if (defInst) {
+            const t = defInst.getAttribute && defInst.getAttribute('type') || defInst.type;
+            bindings.default = t === 'json' ? defInst.getInstanceData() : defInst.getDefaultContext();
+          }
+        } catch (_e) {
+          // ignore
+        }
+        // Also expose $<id> for explicitly id'ed instances
+        this.instances.forEach(inst => {
+          const explicitId = inst.getAttribute('id');
+          if (!explicitId) return;
+          // Do not overwrite $default binding; $default remains the first instance
+          if (explicitId === 'default') return;
+          const t = inst.getAttribute && inst.getAttribute('type') || inst.type;
+          bindings[explicitId] = t === 'json' ? inst.getInstanceData() : inst.getDefaultContext();
+        });
+        this.formElement._instanceVarBindings = bindings;
+      }
       // console.log('_modelConstruct this.instances ', this.instances);
       // Await until the model-construct-done event is handled off
       this.modelConstructed = true;
@@ -20306,10 +21703,80 @@ class FxModel extends HTMLElement {
     this.inited = true;
   }
   registerModelItem(modelItem) {
-    // console.log('ModelItem registered ', modelItem);
-    this.modelItems.push(modelItem);
-  }
+    if (!modelItem) return null;
+    const path = modelItem.path;
+    const resetComputedState = mi => {
+      // Tabula rasa for computed facets; keep identity (boundControls/observers)
+      mi.readonly = ModelItem.READONLY_DEFAULT;
+      mi.relevant = ModelItem.RELEVANT_DEFAULT;
+      mi.required = ModelItem.REQUIRED_DEFAULT;
+      mi.constraint = ModelItem.CONSTRAINT_DEFAULT;
+      mi.type = ModelItem.TYPE_DEFAULT;
 
+      // common extras in Fore's ModelItem
+      if ('valid' in mi) mi.valid = true;
+      if ('enabled' in mi) mi.enabled = true;
+      mi.changed = false;
+
+      // observer/dependency bookkeeping (safe to reset; will be rebuilt)
+      if (mi.dependencies && typeof mi.dependencies.clear === 'function') mi.dependencies.clear();
+      if (mi.stateExpressions) mi.stateExpressions = {};
+      if (mi.state) mi.state = {};
+    };
+    const retarget = (target, source) => {
+      // point to current backing node/lens
+      if (source.lens) {
+        target.lens = source.lens;
+        target.node = null;
+      } else if (source.node) {
+        target.node = source.node;
+        target.lens = null;
+      }
+
+      // keep metadata current
+      if (source.ref) target.ref = source.ref;
+      if (source.bind) target.bind = source.bind;
+      if (source.instanceId) target.instanceId = source.instanceId;
+      if (source.fore) target.fore = source.fore;
+
+      // ✅ IMPORTANT: do NOT copy value!
+      // For XML nodes, assigning `value` sets `node.textContent` and can delete child elements.
+
+      resetComputedState(target);
+      if (!target.boundControls) target.boundControls = [];
+    };
+
+    // ---- rebuild reuse-by-path (approach A) ----
+    if (path && this._prevModelItemsByPath) {
+      const prev = this._prevModelItemsByPath.get(path);
+      if (prev) {
+        retarget(prev, modelItem);
+        if (!this.modelItems.includes(prev)) {
+          this.modelItems.push(prev);
+        }
+        this._prevModelItemsByPath.delete(path);
+        return prev;
+      }
+    }
+
+    // ---- normal path ----
+    if (!path) {
+      // No path => can't reuse; keep as-is
+      this.modelItems.push(modelItem);
+      return modelItem;
+    }
+    const existing = this.modelItems.find(mi => mi.path === path);
+    if (!existing) {
+      // New canonical item
+      resetComputedState(modelItem);
+      this.modelItems.push(modelItem);
+      return modelItem;
+    }
+
+    // Re-target canonical item
+    retarget(existing, modelItem);
+    return existing;
+  }
   /**
    * update action triggering the update cycle
    */
@@ -20334,46 +21801,72 @@ class FxModel extends HTMLElement {
    * @param {Node} node - The node for which to remove the model item
    */
   removeModelItem(node) {
-    const index = this.modelItems.findIndex(mi => mi.node === node);
-    // The model item is not always there. Might be the case if a node is 'skipped' during rendering. All paths jump over it.
-    // It may still have descendants that can have model items
+    if (!node) return;
+
+    // Support both XML nodes (mi.node) and JSON lens nodes (mi.lens)
+    const index = this.modelItems.findIndex(mi => mi.node === node || mi.lens === node);
+
+    // The model item is not always there. Might be the case if a node is 'skipped' during rendering.
+    // It may still have descendants that can have model items.
     if (index !== -1) {
+      const mi = this.modelItems[index];
+
+      // IMPORTANT:
+      // Before removing the ModelItem, enqueue all observers (bound UI controls) for refresh.
+      // Otherwise, deleting a bound node can orphan controls (eg. fx-group) because their ModelItem
+      // disappears before the refresh scheduler can reach them.
+      try {
+        const fore = this.formElement || this.parentNode || mi.fore;
+        if (fore && typeof fore.addToBatchedNotifications === 'function' && mi && mi.observers) {
+          mi.observers.forEach(observer => {
+            if (observer && typeof observer.refresh === 'function') {
+              fore.addToBatchedNotifications(observer);
+            }
+          });
+        }
+      } catch (_e) {
+        // ignore
+      }
       this.modelItems.splice(index, 1);
     }
-    for (const child of Array.from(node.childNodes)) {
-      this.removeModelItem(child);
+
+    // Recurse for XML descendants only
+    if (node.childNodes) {
+      for (const child of Array.from(node.childNodes)) {
+        this.removeModelItem(child);
+      }
     }
   }
   rebuild() {
     console.log(`🔷   rebuild() '${this.fore.id}'`);
-    this.mainGraph = new DepGraph(false); // do: should be moved down below binds.length check but causes errors in tests.
-    this.modelItems = [];
 
-    // trigger recursive initialization of the fx-bind elements
+    // Build a lookup for existing ModelItems so we can reuse them by path (approach A)
+    const prevItems = Array.isArray(this.modelItems) ? this.modelItems : [];
+    this._prevModelItemsByPath = new Map();
+    prevItems.forEach(mi => {
+      if (mi && mi.path) this._prevModelItemsByPath.set(mi.path, mi);
+    });
+    this.mainGraph = new DepGraph(false);
+    this.modelItems = [];
     const binds = this.querySelectorAll('fx-model > fx-bind');
     if (binds.length === 0) {
-      // console.log('skipped model update');
       this.skipUpdate = true;
+      this._prevModelItemsByPath = null;
       return;
     }
-    binds.forEach(bind => {
-      bind.init(this);
-    });
+    binds.forEach(bind => bind.init(this));
     if (this.formElement.createNodes) {
-      // initData should be running here as well: we just got a whole new instance that may be
-      // incomplete
       this.formElement.initData();
     }
+
+    // Drop unused previous ModelItems (not re-registered this rebuild)
+    this._prevModelItemsByPath = null;
     console.log('mainGraph', this.mainGraph);
     console.log('rebuild mainGraph calc order', this.mainGraph.overallOrder());
-
-    // this.dispatchEvent(new CustomEvent('rebuild-done', {detail: {maingraph: this.mainGraph}}));
     Fore.dispatch(this, 'rebuild-done', {
       maingraph: this.mainGraph
     });
-    // console.log('mainGraph', this.mainGraph);
   }
-
   /**
    * recalculation of all modelItems. Uses dependency graph to determine order of computation.
    *
@@ -20490,59 +21983,60 @@ class FxModel extends HTMLElement {
    * @param {string} path - the canonical XPath of the node
    */
   compute(node, path) {
-    const modelItem = this.getModelItem(node);
-    if (modelItem && path.includes(':')) {
-      const property = path.split(':')[1];
-      if (property) {
-        /*
-                        if (property === 'readonly') {
-                            // make sure that calculated items are always readonly
-                            if(modelItem.bind['calculate']){
-                                modelItem.readonly =  true;
-                            }else {
-                                const expr = modelItem.bind[property];
-                                const compute = evaluateXPathToBoolean(expr, modelItem.node, this);
-                                modelItem.readonly = compute;
-                            }
-                        }
-        */
-        const expr = modelItem.bind[property];
-        if (property === 'calculate') {
-          const compute = evaluateXPath(expr, modelItem.node, this);
-          modelItem.value = compute;
-          modelItem.readonly = true; // calculated nodes are always readonly
-          modelItem.notify(); // Notify observers directly
-        } else if (property !== 'constraint' && property !== 'type') {
-          /*
-          console.log(
-            'recalculating path ',
-            path,
-            ' Expr:',
-            expr,
-            'modelitem value',
-            modelItem.node.textContent,
-          );
-          */
-          // ### re-compute the Boolean value of all facets expect 'constraint' and 'type' which are handled in revalidate()
-          if (expr) {
-            const compute = evaluateXPathToBoolean(expr, modelItem.node, this);
-            modelItem[property] = compute;
-            // modelItem.notify(); // Notify observers directly
-            this.fore.addToBatchedNotifications(modelItem);
-            /*
-                                    console.log(
-                                      `recalculating path ${path} - Expr:'${expr}' computed`,
-                                      modelItem[property],
-                                    );
-                        */
-          }
+    // Nodes in dep graphs can be transient during JSON insert/rebuild windows.
+    // Preserve depGraph semantics, but avoid crashing when a ModelItem is momentarily missing.
+
+    // Resolve facet property (eg. "$data/movies[3]/title:relevant")
+    const isFacetPath = typeof path === 'string' && path.includes(':');
+    if (!isFacetPath) return;
+    const property = path.split(':')[1];
+    if (!property) return;
+
+    // Try to resolve the model item primarily by node, but fall back to canonical path.
+    // The depGraph stores node data that may not be the same object identity after lens rebuild.
+    let modelItem = this.getModelItem(node);
+    if (!modelItem && node && (node.__jsonlens__ === true || typeof node.getPath === 'function')) {
+      try {
+        const instanceId = node.instanceId || XPathUtil.resolveInstance(this, path);
+        const canonical = getPath(node, instanceId);
+        modelItem = this.getModelItem(canonical);
+      } catch (_e) {
+        // ignore
+      }
+    }
+
+    // If still missing, fall back to the prefix path of the facet node.
+    // eg. "$data/movies[3]/title:relevant" => "$data/movies[3]/title"
+    if (!modelItem) {
+      const basePath = path.substring(0, path.indexOf(':'));
+      modelItem = this.getModelItem(basePath);
+    }
+
+    // ✅ Minimal fix: don't crash the update cycle if the ModelItem doesn't exist.
+    // This can happen during insert/delete when rebuild retargeting is in progress.
+    if (!modelItem) {
+      return;
+    }
+    if (modelItem && typeof path === 'string') {
+      const expr = modelItem.bind ? modelItem.bind[property] : null;
+      const context = modelItem.node || modelItem.lens;
+      if (property === 'calculate') {
+        const compute = evaluateXPath(expr, context, this);
+        modelItem.value = compute;
+        modelItem.readonly = true; // calculated nodes are always readonly
+        modelItem.notify(); // Notify observers directly
+      } else if (property !== 'constraint' && property !== 'type') {
+        // ### re-compute the Boolean value of all facets expect 'constraint' and 'type' which are handled in revalidate()
+        if (expr) {
+          const compute = evaluateXPathToBoolean(expr, context, this);
+          modelItem[property] = compute;
+          // modelItem.notify(); // Notify observers directly
+          this.fore.addToBatchedNotifications(modelItem);
         }
       }
-
       this.computes += 1;
     }
   }
-
   /**
    * Iterates all modelItems to calculate the validation status.
    *
@@ -20621,7 +22115,6 @@ class FxModel extends HTMLElement {
         }
       }
     });
-
     console.log('modelItems after revalidate: ', this.modelItems);
     console.log('changed after revalidate: ', this.changed);
     console.log('changed after revalidate changed: ', Array.from(this.parentNode._localNamesWithChanges));
@@ -20640,7 +22133,16 @@ class FxModel extends HTMLElement {
    * @returns {ModelItem|null}
    */
   getModelItem(nodeOrPath) {
-    return this.modelItems.find(mi => mi.node === nodeOrPath || mi.path === nodeOrPath) || null;
+    if (nodeOrPath == null) return null;
+
+    // Path lookup
+    if (typeof nodeOrPath === 'string') {
+      const key = nodeOrPath.includes(':') ? nodeOrPath.substring(0, nodeOrPath.indexOf(':')) : nodeOrPath;
+      return this.modelItems.find(mi => mi.path === key) || null;
+    }
+
+    // Node/lens lookup
+    return this.modelItems.find(mi => mi.node === nodeOrPath || mi.lens === nodeOrPath) || null;
   }
 
   /**
@@ -20673,43 +22175,57 @@ class FxModel extends HTMLElement {
    * @returns {import('./fx-instance.js').FxInstance}
    */
   getInstance(id) {
-    // console.log('getInstance ', id);
-    // console.log('instances ', this.instances);
-    // console.log('instances array ',Array.from(this.instances));
+    let found = null;
 
-    let found;
+    // default instance is first instance in this model
     if (id === 'default') {
       found = this.instances[0];
     }
+
     // ### lookup in local instances first
     if (!found) {
       const instArray = Array.from(this.instances);
       found = instArray.find(inst => inst.id === id);
     }
-    // ### lookup in parent Fore if present
+
+    // ### lookup in parent Fore if present (shared instances)
     if (!found) {
-      // const parentFore = this.fore.parentNode.closest('fx-fore');
       const parentFore = this.fore.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? this.fore.parentNode.host.closest('fx-fore') : this.fore.parentNode.closest('fx-fore');
       if (parentFore) {
-        // console.log('shared instances from parent', this.parentNode.id);
         const parentInstances = parentFore.getModel().instances;
-        const shared = parentInstances.filter(shared => shared.hasAttribute('shared'));
-        found = shared.find(found => found.id === id);
+        const shared = parentInstances.filter(inst => inst.hasAttribute('shared'));
+        found = shared.find(inst => inst.id === id);
       }
     }
-    // search for shared instances in the whole document
+
+    // ### search for shared instances in the light DOM (legacy)
     if (!found) {
       found = document.querySelector(`fx-instance[id="${id}"][shared]`);
     }
-    if (found) {
-      return found;
-    }
-    if (id === 'default') {
-      return this.getDefaultInstance(); // if id is not found always defaults to first in doc order
-    }
 
+    // ### NEW: search for shared instances inside other fx-fore shadowRoots
+    // This is required when a fore keeps its model/instances in its own shadow DOM
+    // and sibling fores want to consume that instance via instance('id').
+    if (!found) {
+      const allFores = Array.from(document.querySelectorAll('fx-fore'));
+      for (const fore of allFores) {
+        // light DOM inside fore (in case someone authoring without shadow)
+        const light = fore.querySelector?.(`fx-instance[id="${id}"][shared]`);
+        if (light) {
+          found = light;
+          break;
+        }
+
+        // shadow DOM inside fore (common in your demos)
+        const shadow = fore.shadowRoot?.querySelector?.(`fx-instance[id="${id}"][shared]`);
+        if (shadow) {
+          found = shadow;
+          break;
+        }
+      }
+    }
+    if (found) return found;
     if (!found && this.fore.strict) {
-      // return this.getDefaultInstance(); // if id is not found always defaults to first in doc order
       Fore.dispatch(this, 'error', {
         origin: this,
         message: `Instance '${id}' does not exist`,
@@ -20752,7 +22268,7 @@ class DependentXPathQueries {
       }
     }
 
-    // We can also depend on the index function if it was used in our ancestry
+    // We can also depend on the index functioxn if it was used in our ancestry
     return !!this._parentDependencies?.isInvalidatedByIndexFunction();
   }
 
@@ -20784,8 +22300,40 @@ class DependentXPathQueries {
    *
    * @param {string} xpath the XPath to add
    */
+  /**
+   * Add an XPath to the dependencies
+   *
+   * @param {string} xpath the XPath to add
+   */
   addXPath(xpath) {
-    this._xpaths.add(xpath);
+    const expr = String(xpath ?? '');
+    if (!expr) return;
+
+    // Always keep the original expression
+    this._xpaths.add(expr);
+
+    // --- NEW: extract implicit JSON lookup deps hidden behind variables ---
+    //
+    // Examples:
+    //   contains(., $default?ui?query)  -> adds ?ui?query
+    //   $foo.?ui?query                 -> adds ?ui?query
+    //
+    // We only add lookup tails that start with ? or .? and then a key.
+    // This is intentionally conservative and string-based.
+    const varLookupRe = /\$[A-Za-z_][\w.-]*\s*(\.\?)?(\?[\w$.-]+(?:\[[^\]]+\])?)(\?[\w$.-]+(?:\[[^\]]+\])?)*(\?\*)?/g;
+
+    // We want the full tail beginning at the first '?' (ignore optional '.')
+    // so: ".?ui?query" => "?ui?query"
+    let m;
+    while ((m = varLookupRe.exec(expr)) !== null) {
+      const fullMatch = m[0] || '';
+      const qpos = fullMatch.indexOf('?');
+      if (qpos === -1) continue;
+      const tail = fullMatch.slice(qpos); // e.g. "?ui?query"
+      // Only record meaningful deps (ignore just "?*")
+      if (tail === '?*') continue;
+      this._xpaths.add(tail);
+    }
   }
 
   /**
@@ -20931,7 +22479,6 @@ class ForeElementMixin extends HTMLElement {
       // console.warn('using default context ', this);
       // return;
     }
-
     if (this.ref === '') {
       this.nodeset = inscopeContext;
     } else if (Array.isArray(inscopeContext)) {
@@ -20951,13 +22498,11 @@ class ForeElementMixin extends HTMLElement {
     } else {
       // this.nodeset = fx.evaluateXPathToFirstNode(this.ref, inscopeContext, null, {namespaceResolver: this.namespaceResolver});
       if (!inscopeContext) return;
-      const {
-        nodeType
-      } = inscopeContext;
-      if (nodeType && !XPathUtil.isAbsolutePath(this.ref)) {
-        this.nodeset = evaluateXPathToFirstNode(this.ref, inscopeContext, this);
+      if (this.nodeName === 'FX-REPEAT') {
+        // Repeats are special: they have multiple nodes in their nodeset
+        this.nodeset = evaluateXPath(this.ref, inscopeContext, this);
       } else {
-        [this.nodeset] = evaluateXPath(this.ref, inscopeContext, this);
+        this.nodeset = evaluateXPath(this.ref, inscopeContext, this)[0] || null;
       }
     }
     // console.log('UiElement evaluated to nodeset: ', this.nodeset);
@@ -20977,7 +22522,7 @@ class ForeElementMixin extends HTMLElement {
         // console.log('match ', match);
         const naked = match.substring(1, match.length - 1);
         const inscope = getInScopeContext(node, naked);
-        const result = evaluateXPathToString(naked, inscope, this);
+        const result = evaluateXPathToString(naked, inscope, this.getOwnerForm());
         const replaced = expr.replaceAll(match, result);
         // console.log('replacing ', expr, ' with ', replaced);
         expr = replaced;
@@ -21000,7 +22545,6 @@ class ForeElementMixin extends HTMLElement {
     if (!parent) {
       return 'instance()'; // the default instance
     }
-
     return parent.getAttribute('ref');
   }
 
@@ -21034,52 +22578,78 @@ class ForeElementMixin extends HTMLElement {
   /**
    * @returns {import('./modelitem.js').ModelItem}
    */
+  /**
+   * @returns {import('./modelitem.js').ModelItem}
+   */
   getModelItem() {
-    if (!this.getModel()) return;
+    if (!this.getModel()) return null;
+    const model = this.getModel();
 
-    // First try to find by node reference
-    const mi = this.getModel().getModelItem(this.nodeset);
-    if (mi) {
-      this.modelItem = mi;
-    }
+    // Resolve the effective bound node for repeated contexts
     const repeated = XPathUtil.getClosest('fx-repeatitem', this);
-    let existed;
+    let effectiveNode = this.nodeset;
     if (repeated) {
       const {
         index
       } = repeated;
-      if (Array.isArray(this.nodeset)) {
-        existed = this.getModel().getModelItem(this.nodeset[index - 1]);
-      } else {
-        existed = this.getModel().getModelItem(this.nodeset);
+      if (Array.isArray(effectiveNode)) {
+        effectiveNode = effectiveNode[index - 1];
       }
-    } else {
-      existed = this.nodeset ? this.getModel().getModelItem(this.nodeset) : null;
     }
 
-    // If we couldn't find by node reference, try to find by path
-    if (!existed && this.nodeset) {
-      // Get the path for the current nodeset
-      const instanceId = XPathUtil.resolveInstance(this, this.ref);
-      let targetNode = this.nodeset.nodeType === Node.TEXT_NODE ? this.nodeset.parentNode : this.nodeset;
-      if (targetNode?.nodeType) {
-        const path = getPath(targetNode, instanceId);
+    // 1) Try exact lookup by node OR lens object (model.getModelItem was updated earlier)
+    let existed = effectiveNode ? model.getModelItem(effectiveNode) : null;
+    if (existed) {
+      this.modelItem = existed;
+      return existed;
+    }
 
-        // Try to find a ModelItem with this path
-        existed = this.getModel().modelItems.find(item => item.path === path);
-        if (existed) {
-          // Update the node reference in the existing ModelItem
+    // 2) Try lookup by canonical path (XML + JSON)
+    const instanceId = XPathUtil.resolveInstance(this, this.ref);
+
+    // Normalize XML text node -> parent
+    let targetNode = effectiveNode;
+    if (targetNode?.nodeType === Node.TEXT_NODE) targetNode = targetNode.parentNode;
+    let path = null;
+
+    // XML node path
+    if (targetNode?.nodeType) {
+      path = getPath(targetNode, instanceId);
+    }
+    // JSON lens node path (preferred)
+    else if (targetNode?.__jsonlens__ && typeof targetNode.getPath === 'function') {
+      // JSONNode.getPath() already returns the canonical path you want
+      path = targetNode.getPath();
+    }
+    // As a last resort: try getPath() util for JSON lens nodes if it supports them
+    else if (targetNode?.__jsonlens__) {
+      try {
+        path = getPath(targetNode, instanceId);
+      } catch (_e) {
+        // ignore
+      }
+    }
+    if (path) {
+      existed = model.modelItems.find(item => item.path === path) || null;
+      if (existed) {
+        // CRITICAL: retarget existing ModelItem to the current backing object
+        const isLensObject = targetNode && typeof targetNode === 'object' && typeof targetNode.get === 'function' && typeof targetNode.set === 'function';
+        if (isLensObject) {
+          existed.lens = targetNode;
+          existed.node = null;
+        } else {
           existed.node = targetNode;
+          existed.lens = null;
         }
-      }
-      if (!existed) {
-        const lazyCreatedModelItem = FxModel.lazyCreateModelItem(this.getModel(), this.ref, this.nodeset, this);
-        this.modelItem = lazyCreatedModelItem;
-        return lazyCreatedModelItem;
+        this.modelItem = existed;
+        return existed;
       }
     }
-    this.modelItem = existed;
-    return existed;
+
+    // 3) Not found: lazily create (lazyCreateModelItem now dedupes/retargets by path)
+    const lazyCreatedModelItem = FxModel.lazyCreateModelItem(model, this.ref, effectiveNode, this);
+    this.modelItem = lazyCreatedModelItem;
+    return lazyCreatedModelItem;
   }
   /**
    * Returns the effective value for the element.
@@ -21188,7 +22758,7 @@ class FxBind extends ForeElementMixin {
     }
 
     // ✅ only the repeat item gets the _<opNum> suffix; children do not.
-    const basePath = XPathUtil.getPath(node, instanceId);
+    const basePath = getPath(node, instanceId);
     const path = opNum ? `${basePath}_${opNum}` : basePath;
 
     // const path = XPathUtil.getPath(node, instanceId);
@@ -21223,7 +22793,6 @@ class FxBind extends ForeElementMixin {
       }
       // boundElement.getModel().registerModelItem(modelItem);
     }
-
     return modelItem;
   }
 
@@ -21236,78 +22805,66 @@ class FxBind extends ForeElementMixin {
    */
   init(model) {
     this.model = model;
-    // console.log('init binding ', this);
     this._getInstanceId();
     this.bindType = this.getModel().getInstance(this.instanceId).type;
-    // console.log('binding type ', this.bindType);
 
+    // ✅ Always evaluate nodeset first (XML + JSON)
+    this._evalInContext();
+
+    // ✅ Build dependency graph for both types
+    this._buildBindGraph();
+
+    // ✅ Create modelitems for both types
     if (this.bindType === 'xml') {
-      this._evalInContext();
-      this._buildBindGraph();
       this._createModelItems();
+    } else if (this.bindType === 'json') {
+      this._createModelItemsForJSON();
     }
-    // todo: support json
-
-    // ### process child bindings
     this._processChildren(model);
   }
   _buildBindGraph() {
-    if (this.bindType === 'xml') {
-      this.nodeset.forEach(node => {
-        const instance = XPathUtil.resolveInstance(this, this.ref);
-        const path = getPath(node, instance);
-        this.model.mainGraph.addNode(path, node);
-
-        /* ### catching references in the 'ref' itself...
-        todo: investigate cases where 'ref' attributes use predicates pointing to other nodes. These would not be handled
-        in current implementation.
-         General question: are there valid use-cases for using a 'filter' expression to narrow the nodeset
-          where to apply constraints? Guess yes and if it's 'just' for reducing the amount of necessary modelItem objects.
-         */
-        // const foreignRefs = this.getReferences(this.ref);
-
-        if (this.calculate) {
-          this.model.mainGraph.addNode(`${path}:calculate`, node);
-          // Calculated values are a dependency of the model item.
-          this.model.mainGraph.addDependency(path, `${path}:calculate`);
+    // ✅ Works for XML and JSON (JSON nodes have getPath()/getPath() handles __jsonlens__)
+    this.nodeset.forEach(node => {
+      const instanceId = XPathUtil.resolveInstance(this, this.ref);
+      const path = getPath(node, instanceId);
+      this.model.mainGraph.addNode(path, node);
+      if (this.calculate) {
+        this.model.mainGraph.addNode(`${path}:calculate`, node);
+        this.model.mainGraph.addDependency(path, `${path}:calculate`);
+      }
+      const calculateRefs = this._getReferencesForProperty(this.calculate, node);
+      if (calculateRefs.length !== 0) {
+        this._addDependencies(calculateRefs, node, path, 'calculate', instanceId);
+      }
+      if (!this.calculate) {
+        const readonlyRefs = this._getReferencesForProperty(this.readonly, node);
+        if (readonlyRefs.length !== 0) {
+          this._addDependencies(readonlyRefs, node, path, 'readonly', instanceId);
+        } else if (this.readonly) {
+          this.model.mainGraph.addNode(`${path}:readonly`, node);
         }
-        const calculateRefs = this._getReferencesForProperty(this.calculate, node);
-        if (calculateRefs.length !== 0) {
-          this._addDependencies(calculateRefs, node, path, 'calculate');
-        }
-        if (!this.calculate) {
-          const readonlyRefs = this._getReferencesForProperty(this.readonly, node);
-          if (readonlyRefs.length !== 0) {
-            this._addDependencies(readonlyRefs, node, path, 'readonly');
-          } else if (this.readonly) {
-            this.model.mainGraph.addNode(`${path}:readonly`, node);
-          }
-        }
-
-        // const requiredRefs = this.requiredReferences;
-        const requiredRefs = this._getReferencesForProperty(this.required, node);
-        if (requiredRefs.length !== 0) {
-          this._addDependencies(requiredRefs, node, path, 'required');
-        } else if (this.required) {
-          this.model.mainGraph.addNode(`${path}:required`, node);
-        }
-        const relevantRefs = this._getReferencesForProperty(this.relevant, node);
-        if (relevantRefs.length !== 0) {
-          this._addDependencies(relevantRefs, node, path, 'relevant');
-        } else if (this.relevant) {
-          this.model.mainGraph.addNode(`${path}:relevant`, node);
-        }
-        const constraintRefs = this._getReferencesForProperty(this.constraint, node);
-        if (constraintRefs.length !== 0) {
-          this._addDependencies(constraintRefs, node, path, 'constraint');
-        } else if (this.constraint) {
-          this.model.mainGraph.addNode(`${path}:constraint`, node);
-          this.model.mainGraph.addDependency(path, `${path}:constraint`);
-        }
-      });
-    }
+      }
+      const requiredRefs = this._getReferencesForProperty(this.required, node);
+      if (requiredRefs.length !== 0) {
+        this._addDependencies(requiredRefs, node, path, 'required', instanceId);
+      } else if (this.required) {
+        this.model.mainGraph.addNode(`${path}:required`, node);
+      }
+      const relevantRefs = this._getReferencesForProperty(this.relevant, node);
+      if (relevantRefs.length !== 0) {
+        this._addDependencies(relevantRefs, node, path, 'relevant', instanceId);
+      } else if (this.relevant) {
+        this.model.mainGraph.addNode(`${path}:relevant`, node);
+      }
+      const constraintRefs = this._getReferencesForProperty(this.constraint, node);
+      if (constraintRefs.length !== 0) {
+        this._addDependencies(constraintRefs, node, path, 'constraint', instanceId);
+      } else if (this.constraint) {
+        this.model.mainGraph.addNode(`${path}:constraint`, node);
+        this.model.mainGraph.addDependency(path, `${path}:constraint`);
+      }
+    });
   }
-
   /**
    * Resolves a referenced ModelItem using the model's graph and node registry.
    * @param {string} refName
@@ -21334,25 +22891,21 @@ class FxBind extends ForeElementMixin {
    * @param  {string}  path The path to the start of the reference
    * @param  {string}  property The property with this dependency
    */
-  _addDependencies(refs, node, path, property) {
-    // console.log('_addDependencies',path);
+  _addDependencies(refs, node, path, property, instanceId) {
     const nodeHash = `${path}:${property}`;
     if (refs.length !== 0) {
       if (!this.model.mainGraph.hasNode(nodeHash)) {
         this.model.mainGraph.addNode(nodeHash, node);
       }
       refs.forEach(ref => {
-        const instance = XPathUtil.resolveInstance(this, path);
-        const otherPath = getPath(ref, instance);
-        // console.log('otherPath', otherPath)
+        const otherPath = getPath(ref, instanceId);
 
-        // todo: nasty hack to prevent duplicate pathes like 'a[1]' and 'a[1]/text()[1]' to end up as separate nodes in the graph
-        if (!otherPath.endsWith('text()[1]')) {
-          if (!this.model.mainGraph.hasNode(otherPath)) {
-            this.model.mainGraph.addNode(otherPath, ref);
-          }
-          this.model.mainGraph.addDependency(nodeHash, otherPath);
+        // keep old XML-only hack
+        if (this.bindType === 'xml' && otherPath.endsWith('text()[1]')) return;
+        if (!this.model.mainGraph.hasNode(otherPath)) {
+          this.model.mainGraph.addNode(otherPath, ref);
         }
+        this.model.mainGraph.addDependency(nodeHash, otherPath);
       });
     } else {
       this.model.mainGraph.addNode(nodeHash, node);
@@ -21374,6 +22927,19 @@ class FxBind extends ForeElementMixin {
       return alertChild.innerHTML;
     }
     return null;
+  }
+  _createModelItemsForJSON() {
+    const fore = this.closest('fx-fore');
+    const instanceId = this.instanceId;
+    this.nodeset.forEach(jsonNode => {
+      const path = getPath(jsonNode, instanceId);
+
+      // ✅ ModelItem node should be the JSONNode itself (lens), NOT JSONLens
+      const newItem = new ModelItem(path, this.getBindingExpr(), jsonNode, this, instanceId, fore);
+      const alert = this.getAlert();
+      if (alert) newItem.addAlert(alert);
+      this.getModel().registerModelItem(newItem);
+    });
   }
 
   /**
@@ -21410,8 +22976,11 @@ class FxBind extends ForeElementMixin {
       const inst = this.getModel().getInstance(this.instanceId);
       if (inst.type === 'xml') {
         this.nodeset = evaluateXPathToNodes(this.ref, inscopeContext, this);
+      } else if (inst.type === 'json') {
+        // ✅ JSON must also resolve the nodeset via XPath evaluation
+        this.nodeset = evaluateXPathToNodes(this.ref, inscopeContext, this);
       } else {
-        this.nodeset = this.ref;
+        this.nodeset = [];
       }
     }
   }
@@ -21516,12 +23085,57 @@ class FxBind extends ForeElementMixin {
     return [];
   }
   getReferences(propertyExpr) {
+    // For XML, DependencyNotifyingDomFacade reliably reports the nodes touched during evaluation.
+    // For JSON lens nodes, the domFacade hook does not fire (evaluation goes through our lens resolver),
+    // so we must extract lookup tokens and resolve them explicitly.
+
+    if (!propertyExpr) return [];
+
+    // JSON path: resolve dependencies by parsing lens lookups in the expression.
+    if (this.bindType === 'json') {
+      const touchedNodes = new Set();
+      const tokens = this._extractJsonLookupTokens(propertyExpr);
+
+      // Evaluate each token in the *current* context node (each item in nodeset)
+      this.nodeset.forEach(node => {
+        tokens.forEach(token => {
+          try {
+            const refs = evaluateXPathToNodes(token, node, this);
+            refs.forEach(r => touchedNodes.add(r));
+          } catch (_e) {
+            // ignore: dependency extraction must never break bind initialization
+          }
+        });
+      });
+      return Array.from(touchedNodes.values());
+    }
+
+    // XML path: use dom facade for accurate dependency tracking
     const touchedNodes = new Set();
     const domFacade = new DependencyNotifyingDomFacade(otherNode => touchedNodes.add(otherNode));
     this.nodeset.forEach(node => {
       evaluateXPathToString(propertyExpr, node, this, domFacade);
     });
     return Array.from(touchedNodes.values());
+  }
+  _extractJsonLookupTokens(expr) {
+    if (!expr) return [];
+    const src = String(expr);
+    const tokens = new Set();
+
+    // instance('id')?a?b?c  or instance('id')?*
+    const instRe = /instance\s*\([^)]*\)\s*(?:\?\s*\*|\?\s*[a-zA-Z_][\w-]*)+/g;
+    let m;
+    while ((m = instRe.exec(src)) !== null) {
+      if (m[0]) tokens.add(m[0].replace(/\s+/g, ''));
+    }
+
+    // relative lookups like ?title, ?year, ?ui, ?query (ignore ?*)
+    const relRe = /\?[a-zA-Z_][\w-]*/g;
+    while ((m = relRe.exec(src)) !== null) {
+      if (m[0] && m[0] !== '?*') tokens.add(m[0]);
+    }
+    return Array.from(tokens);
   }
 
   /*
@@ -22436,7 +24050,6 @@ class DraggableComponent extends superclass {
     this.classList.remove('drag-over');
     //		event.stopPropagation();
   }
-
   _getDataNode() {
     const dataNode = this.getOwnerForm().draggedItem?.getModelItem()?.node;
     if (!dataNode) {
@@ -22554,7 +24167,6 @@ class DraggableComponent extends superclass {
     }
 
     // Note: full refresh needed since multiple model items may be affected.
-    // TODO: Leverage the changedPaths trick
     this.getOwnerForm().getModel().updateModel();
     this.getOwnerForm().refresh(true);
   }
@@ -22663,14 +24275,29 @@ class UIElement extends ForeElementMixin {
    * Called by ModelItem when it changes
    * @param {import('../modelitem.js').ModelItem} modelItem - The ModelItem that changed
    */
-  update(modelItem) {
-    if (this.isBound()) {
-      // console.log('[UIElement] update()', modelItem);
-      // this.getOwnerForm().addToBatchedNotifications(modelItem);
+
+  /*
+    update(modelItem) {
+      if (this.isBound()) {
+        // console.log('[UIElement] update()', modelItem);
+        // this.getOwnerForm().addToBatchedNotifications(modelItem);
+        this.refresh();
+      }
+    }
+  */
+
+  update(_modelItem) {
+    if (!this.isBound()) return;
+    const fore = this.getOwnerForm();
+    if (!fore) return;
+
+    // Preserve legacy eager updates unless we're already in a refresh phase.
+    if (fore.isRefreshPhase) {
+      fore.addToBatchedNotifications(this);
+    } else {
       this.refresh();
     }
   }
-
   // init() {
   //   throw new Error('You have to implement the method init!');
   // }
@@ -22810,7 +24437,6 @@ class RepeatBase extends withDraggability(UIElement) {
         // Fore.fadeOutElement(itemToRemove)
       }
     }
-
     if (contextSize > repeatItemCount) {
       for (let position = repeatItemCount + 1; position <= contextSize; position += 1) {
         // add new repeatitem
@@ -22844,7 +24470,7 @@ class RepeatBase extends withDraggability(UIElement) {
     // if (!fore.lazyRefresh || force) {
     if (!fore.lazyRefresh || force) {
       // Turn the possibly conditional force refresh into a forced one: we changed our children
-      Fore.refreshChildren(this, force);
+      await Fore.refreshChildren(this, force);
     }
     // this.style.display = 'block';
     // this.style.display = this.display;
@@ -22856,7 +24482,6 @@ class RepeatBase extends withDraggability(UIElement) {
     // this.repeatCount = contextSize;
     // console.log('repeatCount', this.repeatCount);
   }
-
   connectedCallback() {
     super.connectedCallback();
 
@@ -22891,7 +24516,6 @@ class RepeatBase extends withDraggability(UIElement) {
         this._deleteHandler(node);
         //        this.removeRepeatItemForNode(node);
       });
-
       this.getOwnerForm().addToBatchedNotifications(this);
     };
     this.getOwnerForm().addEventListener('deleted', this.handleDelete);
@@ -22917,10 +24541,14 @@ class RepeatBase extends withDraggability(UIElement) {
 
     // Generate the parent `modelItem` for the new repeat item
     this.opNum++;
-    const parentModelItem = FxBind.createModelItem(this.ref, node, this, this.opNum);
+    let parentModelItem = FxBind.createModelItem(this.ref, node, this, this.opNum);
+    // IMPORTANT: registerModelItem may return an existing canonical ModelItem for the same path.
+    // Always keep using the returned instance to avoid "ghost" ModelItems that still notify.
+    parentModelItem = this.getModel().registerModelItem(parentModelItem);
     newRepeatItem.modelItem = parentModelItem;
     this.setIndex(insertionIndex);
-    this.getModel().registerModelItem(parentModelItem);
+
+    // parentModelItem already registered above
 
     // Step 5: Create modelItems recursively for child elements
     this._createModelItemsRecursively(newRepeatItem, parentModelItem);
@@ -22929,7 +24557,6 @@ class RepeatBase extends withDraggability(UIElement) {
     this.getOwnerForm().scanForNewTemplateExpressionsNextRefresh();
     this.getOwnerForm().addToBatchedNotifications(newRepeatItem);
   }
-
   /**
    * @abstract
    *
@@ -23018,7 +24645,6 @@ class RepeatBase extends withDraggability(UIElement) {
         this.createdNodeset = repeatItemClone;
         // console.log('createdNodeset', this.createdNodeset)
       }
-
       if (repeatItem.index === 1) {
         this.applyIndex(repeatItem);
       }
@@ -23164,7 +24790,9 @@ class RepeatBase extends withDraggability(UIElement) {
               // Create a ModelItem only for the final node; children never get their own opNum
               modelItem = FxBind.createModelItem(ref, node, child, null);
               modelItem.parentModelItem = parentModelItem;
-              this.getModel().registerModelItem(modelItem);
+              // IMPORTANT: keep using the canonical instance returned by registerModelItem.
+              // Otherwise a throwaway ModelItem can leak into observer graphs and be notified.
+              modelItem = this.getModel().registerModelItem(modelItem);
             }
 
             // Always apply Dewey rewrite (handles both $inst and instance('inst') forms)
@@ -23338,7 +24966,6 @@ class FxRepeatAttributes extends withDraggability(RepeatBase) {
     } else {
       this._removeIndexMarker(); // nothing selected
     }
-
     this.setAttribute('index', String(this.index));
   }
 
@@ -23438,7 +25065,6 @@ class FxRepeatAttributes extends withDraggability(RepeatBase) {
 
     // this.init();
   }
-
   async init() {
     // ### there must be a single 'template' child
 
@@ -23541,7 +25167,7 @@ class FxRepeatAttributes extends withDraggability(RepeatBase) {
     // Fore.refreshChildren(clone,true);
     const fore = this.getOwnerForm();
     if (!fore.lazyRefresh || force) {
-      Fore.refreshChildren(this, force);
+      await Fore.refreshChildren(this, force);
     }
     // this.style.display = 'block';
     // this.style.display = this.display;
@@ -23587,7 +25213,6 @@ class FxRepeatAttributes extends withDraggability(RepeatBase) {
       // }, 40);
     })();
   }
-
   async _initTemplate() {
     // const defaultSlot = this.shadowRoot.querySelector('slot');
     // todo: this is still weak - should handle that better maybe by an explicit slot?
@@ -23682,6 +25307,17 @@ const dirtyStates = {
   DIRTY: 'dirty'
 };
 
+/*
+ * Determine whether a string is a valid Name
+ *
+ * @param {string} name
+ * @returns {boolean} whether the name is a valid one
+ */
+function isValidName(name) {
+  const result = new DOMParser().parseFromString(`<${name}/>`, 'application/xml');
+  return result.querySelector('parsererror') === null;
+}
+
 /**
  * Main class for Fore.Outermost container element for each Fore application.
  *
@@ -23700,6 +25336,21 @@ const dirtyStates = {
  * @ts-check
  */
 class FxFore extends HTMLElement {
+  static _hasSeenInitEvent(target, eventName) {
+    const set = FxFore._initEventState.get(target);
+    return !!(set && set.has(eventName));
+  }
+  static _markInitEventSeen(target, eventName) {
+    let set = FxFore._initEventState.get(target);
+    if (!set) {
+      set = new Set();
+      FxFore._initEventState.set(target, set);
+    }
+    set.add(eventName);
+  }
+  static get observedAttributes() {
+    return ['src', 'selector'];
+  }
   static get properties() {
     return {
       /**
@@ -23769,14 +25420,12 @@ class FxFore extends HTMLElement {
       // avoid double init
       if (this.inited) return;
 
-      // 2) Wait for dependencies if needed
-      if (this.hasAttribute('wait-for')) {
-        try {
-          await this._whenDependenciesReady();
-        } catch (e) {
-          console.warn('wait-for failed', e);
-          return;
-        }
+      // 2) Wait for init gates (init-on / init-on-target / wait-for)
+      try {
+        await this._waitForInitGates();
+      } catch (e) {
+        console.warn('init gating failed', e);
+        return;
       }
 
       // 3) Bail if we got disconnected/replaced while waiting
@@ -23785,10 +25434,21 @@ class FxFore extends HTMLElement {
         this.ignoredNodes = Array.from(this.querySelectorAll(this.ignoreExpressions));
       }
 
+      // 4) Safely read assigned content
+      const getAssignedElements = () => {
+        if (typeof slotEl.assignedElements === 'function') {
+          return slotEl.assignedElements({
+            flatten: true
+          });
+        }
+        // Fallback for odd engines/polyfills
+        return (slotEl.assignedNodes({
+          flatten: true
+        }) || []).filter(n => n.nodeType === Node.ELEMENT_NODE);
+      };
+
       // SAFE: slotEl is the actual event source, not a fresh query
-      const children = slotEl.assignedElements({
-        flatten: true
-      });
+      const children = getAssignedElements();
       let modelElement = children.find(modelElem => modelElem.nodeName.toUpperCase() === 'FX-MODEL');
       if (!modelElement) {
         const generatedModel = document.createElement('fx-model');
@@ -23809,19 +25469,28 @@ class FxFore extends HTMLElement {
             registerVariables(child);
           }
         })(this);
+
+        // Ensure all function libraries are loaded/registered before model construction,
+        // so binds/calculate/XPath evaluations can safely call them.
+        const libs = Array.from(this.querySelectorAll('fx-functionlib'));
+        await Promise.all(libs.map(l => l.readyPromise || Promise.resolve()));
         await modelElement.modelConstruct();
+        console.log('varbindings ', this._instanceVarBindings);
         this._handleModelConstructDone();
       }
       this._createRepeatsFromAttributes();
       this.inited = true;
     };
-    this.version = 'Version: 2.7.1 - built on December 4, 2025 12:22:40';
+    this.version = 'Version: 3.1.1 - built on May 20, 2026 17:16:48';
 
     /**
      * @type {import('./fx-model.js').FxModel}
      */
     this.model = null;
     this.inited = false;
+    this._initGatesPromise = null;
+    this._warnedWaitForDeprecation = false;
+    this._srcLoadPromise = null;
     // this.addEventListener('model-construct-done', this._handleModelConstructDone);
     // todo: refactoring - these should rather go into connectedcallback
     this.addEventListener('message', this._displayMessage);
@@ -23897,8 +25566,6 @@ class FxFore extends HTMLElement {
               right:0;
               left:0;
               height:40px;
-             border-radius: 5px;
-
             }
             .popup .close {
                 position: absolute;
@@ -23923,6 +25590,53 @@ class FxFore extends HTMLElement {
             .warning{
                 background:orange;
             }
+            #authoringErrors {
+              z-index: 20;
+            }
+            #authoringErrors .popup {
+              width: 70%;
+              max-height: 80vh;
+              overflow:hidden;
+            }
+            #authoringErrors h2 {
+              background: #c62828;
+              color: white;
+              padding-left: 12px;
+              line-height: 40px;
+              font-size: 1rem;
+            }
+            #authoringErrors table {
+              width: 100%;
+              border-collapse: collapse;
+              font-size: 0.85rem;
+            }
+            #authoringErrors th {
+              text-align: left;
+              border-bottom: 2px solid #c62828;
+              padding: 4px 8px;
+            }
+            #authoringErrors td {
+              padding: 4px 8px;
+              border-bottom: 1px solid #ddd;
+              vertical-align: top;
+            }
+            #authoringErrors td:first-child {
+              color: #555;
+              font-family: monospace;
+              white-space: nowrap;
+            }
+            #authoringErrors .ae-actions {
+              text-align: center;
+              margin-top: 12px;
+            }
+            #authoringErrors .ae-actions button {
+              padding: 6px 20px;
+              background: #c62828;
+              color: white;
+              border: none;
+              border-radius: 3px;
+              cursor: pointer;
+            }
         `;
     const html = `
 <!--           <slot name="errors"></slot> -->
@@ -23937,6 +25651,14 @@ class FxFore extends HTMLElement {
                    <h2></h2>
                     <a class="close" href="#"  onclick="event.target.parentNode.parentNode.classList.remove('show')" autofocus>&times;</a>
                     <div id="messageContent"></div>
+                </div>
+           </div>
+           <div id="authoringErrors" class="overlay">
+                <div class="popup">
+                    <h2>Authoring Errors</h2>
+                    <a class="close" href="#" onclick="event.preventDefault();event.target.closest('.overlay').classList.remove('show')">&times;</a>
+                    <div id="authoringErrorsContent" style="margin-top:48px;"></div>
+                    <div class="ae-actions"><button onclick="this.closest('.overlay').classList.remove('show')">Dismiss</button></div>
                 </div>
            </div>
            <slot name="event"></slot>
@@ -23960,103 +25682,227 @@ class FxFore extends HTMLElement {
     this.createNodes = this.hasAttribute('create-nodes') ? true : false;
     this._localNamesWithChanges = new Set();
     this.setAttribute('role', 'form'); // set aria role
+    this._pendingRefresh = false;
   }
 
   /**
-   * Resolve elements from the `wait-for` attribute.
-   * Supports comma-separated CSS selectors and the special value "closest".
+   * Parse a list of target specs.
+   *
+   * We accept both comma- and whitespace-separated lists (for backward compatibility with `wait-for`).
+   * Each token can be:
+   * - "self" (default)
+   * - "closest" (closest fx-fore)
+   * - "document"
+   * - "window"
+   * - a CSS selector (no whitespace)
    */
-  _resolveDependencies() {
-    const raw = this.getAttribute('wait-for');
+  _parseTargetList(raw) {
     if (!raw) return [];
-    const sels = raw.split(',').map(s => s.trim()).filter(Boolean);
+    return raw.split(/[\s,]+/).map(s => s.trim()).filter(Boolean);
+  }
+  _findBySelector(sel) {
     const roots = [this.getRootNode?.() ?? document, document];
-    const out = [];
-    for (const sel of sels) {
-      let el = null;
-      if (sel === 'closest') {
-        el = this.closest('fx-fore');
-      } else {
-        for (const r of roots) {
-          if (r && 'querySelector' in r) {
-            el = r.querySelector(sel);
-            if (el) break;
-          }
-        }
+    for (const r of roots) {
+      if (r && 'querySelector' in r) {
+        const el = r.querySelector(sel);
+        if (el) return el;
       }
-      if (el) out.push(el);
     }
-    return out;
+    return null;
+  }
+  _isReadyTarget(el) {
+    return !!(el && (el.ready === true || el.classList && el.classList.contains('fx-ready') || typeof el.hasAttribute === 'function' && el.hasAttribute('ready')));
   }
 
   /**
-   * Wait until all dependencies are ready (i.e., they set `ready = true`
-   * and dispatch the `ready` event).
+   * Collect all init gates derived from attributes.
+   *
+   * - `wait-for` (DEPRECATED) becomes: init-on="ready" + init-on-target=<list>
+   * - `init-on` / `init-on-target` define a generic event gate
    */
-  _whenDependenciesReady() {
-    const raw = this.getAttribute('wait-for');
-    if (!raw) return Promise.resolve();
-    const sels = raw.split(',').map(s => s.trim()).filter(Boolean);
-    const roots = [this.getRootNode?.() ?? document, document];
-    const query = sel => {
-      for (const r of roots) {
-        if (r && 'querySelector' in r) {
-          const el = r.querySelector(sel);
-          if (el) return el;
-        }
+  _collectInitGates() {
+    const gates = [];
+    const waitForRaw = this.getAttribute('wait-for');
+    if (waitForRaw) {
+      if (!this._warnedWaitForDeprecation) {
+        console.warn('[fx-fore] The "wait-for" attribute is deprecated. Use init-on="ready" init-on-target="..." instead.');
+        this._warnedWaitForDeprecation = true;
       }
-      return null;
-    };
-    const isReadyNow = sel => {
-      if (sel === 'closest') {
-        const outer = this.closest('fx-fore');
-        return !!(outer && outer.ready === true);
+      const deps = this._parseTargetList(waitForRaw);
+      for (const dep of deps) {
+        gates.push({
+          event: 'ready',
+          targetSpec: dep
+        });
       }
-      const el = query(sel);
-      return !!(el && el.ready === true);
-    };
-    const waitOne = sel => new Promise(resolve => {
-      // fast path
-      if (isReadyNow(sel)) return resolve();
+    }
+    const initOn = this.getAttribute('init-on');
+    const initOnTargetRaw = this.getAttribute('init-on-target');
+    if (initOn || initOnTargetRaw) {
+      const eventName = initOn || 'ready';
+      const targets = initOnTargetRaw ? this._parseTargetList(initOnTargetRaw) : ['self'];
+      for (const t of targets) {
+        gates.push({
+          event: eventName,
+          targetSpec: t
+        });
+      }
+    }
+    return gates;
+  }
+  _waitForEvent(target, eventName, isSatisfiedFn = null) {
+    // If a caller provides an explicit satisfaction check, honor it first.
+    if (typeof isSatisfiedFn === 'function' && isSatisfiedFn(target)) {
+      FxFore._markInitEventSeen(target, eventName);
+      return Promise.resolve();
+    }
 
-      // robust path: listen at the document/root so replacement doesn't matter
-      const onReady = ev => {
-        const t = ev.target;
-        if (sel === 'closest') {
-          // outer fore becoming ready anywhere above us
-          if (t?.tagName === 'FX-FORE' && t.contains(this)) {
-            cleanup();
-            resolve();
-          }
-        } else if (t?.matches?.(sel)) {
-          cleanup();
+    // Sticky gate: if this event already happened on this target, don't wait again.
+    if (FxFore._hasSeenInitEvent(target, eventName)) {
+      return Promise.resolve();
+    }
+    return new Promise(resolve => {
+      const ac = new AbortController();
+      const on = () => {
+        FxFore._markInitEventSeen(target, eventName);
+        ac.abort();
+        resolve();
+      };
+      target.addEventListener(eventName, on, {
+        once: true,
+        signal: ac.signal
+      });
+    });
+  }
+  _waitForMatchingEvent(eventName, matchesEventFn, recheckFn = null) {
+    if (typeof recheckFn === 'function' && recheckFn()) {
+      return Promise.resolve();
+    }
+    return new Promise(resolve => {
+      const root = document;
+      const cleanupAll = () => {
+        root.removeEventListener(eventName, onEvent, true);
+        if (mo) mo.disconnect();
+      };
+      const onEvent = ev => {
+        if (matchesEventFn(ev)) {
+          cleanupAll();
           resolve();
         }
       };
-      const root = document; // capture at doc to catch composed events
-      const cleanup = () => root.removeEventListener('ready', onReady, true);
-      root.addEventListener('ready', onReady, true);
+      root.addEventListener(eventName, onEvent, true);
 
-      // also re-check on DOM changes in case a ready fore is inserted without firing (paranoia)
-      const mo = new MutationObserver(() => {
-        if (isReadyNow(sel)) {
-          mo.disconnect();
-          cleanup();
-          resolve();
-        }
-      });
-      mo.observe(document.documentElement, {
-        childList: true,
-        subtree: true
-      });
+      // Only used for `ready` (or any other gate that provides a recheck function)
+      let mo = null;
+      if (typeof recheckFn === 'function') {
+        mo = new MutationObserver(() => {
+          if (recheckFn()) {
+            cleanupAll();
+            resolve();
+          }
+        });
+        mo.observe(document.documentElement, {
+          childList: true,
+          subtree: true
+        });
+      }
     });
-    return Promise.all(sels.map(waitOne));
+  }
+  _waitForInitGate({
+    event,
+    targetSpec
+  }) {
+    // Direct targets
+    if (targetSpec === 'self') {
+      const satisfied = event === 'ready' ? t => this._isReadyTarget(t) : null;
+      return this._waitForEvent(this, event, satisfied);
+    }
+    if (targetSpec === 'document') {
+      return this._waitForEvent(document, event);
+    }
+    if (targetSpec === 'window') {
+      return this._waitForEvent(window, event);
+    }
+
+    // Special: closest fx-fore
+    if (targetSpec === 'closest') {
+      const recheckFn = event === 'ready' ? () => this._isReadyTarget(this.closest('fx-fore')) : null;
+      const matchesFn = ev => {
+        const t = ev.target;
+        return t?.tagName === 'FX-FORE' && t.contains(this);
+      };
+      return this._waitForMatchingEvent(event, matchesFn, recheckFn);
+    }
+
+    // Selector targets
+    const selector = targetSpec;
+    const recheckFn = event === 'ready' ? () => this._isReadyTarget(this._findBySelector(selector)) : null;
+    if (typeof recheckFn === 'function' && recheckFn()) {
+      return Promise.resolve();
+    }
+    const matchesFn = ev => {
+      // Prefer composedPath() so events coming from inside shadow DOM still match
+      const path = typeof ev.composedPath === 'function' ? ev.composedPath() : [];
+      for (const n of path) {
+        if (n && n.matches && n.matches(selector)) return true;
+      }
+      const t = ev.target;
+      return !!(t && t.closest && t.closest(selector));
+    };
+    return this._waitForMatchingEvent(event, matchesFn, recheckFn);
+  }
+
+  /**
+   * Wait until all configured init gates are satisfied.
+   * This is the single consolidation point for init gating.
+   */
+  _waitForInitGates() {
+    if (this._initGatesPromise) return this._initGatesPromise;
+    const gates = this._collectInitGates();
+    if (!gates.length) {
+      this._initGatesPromise = Promise.resolve();
+      return this._initGatesPromise;
+    }
+    this._initGatesPromise = Promise.all(gates.map(g => this._waitForInitGate(g))).then(() => undefined);
+    return this._initGatesPromise;
+  }
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue === newValue) return;
+    if (name === 'src') {
+      this.src = newValue;
+      if (!newValue) {
+        // Reset so a later src assignment can load again
+        this._srcLoadPromise = null;
+        return;
+      }
+      if (this.isConnected) {
+        this._maybeLoadFromSrc();
+      }
+      return;
+    }
+    if (name === 'selector') {
+      // Selector changes should affect a pending src-load
+      if (this.isConnected && this.src && !this._srcLoadPromise) {
+        this._maybeLoadFromSrc();
+      }
+    }
+  }
+  _maybeLoadFromSrc() {
+    if (!this.src) return null;
+    if (this._srcLoadPromise) return this._srcLoadPromise;
+    this._srcLoadPromise = (async () => {
+      await this._waitForInitGates();
+      if (!this.isConnected) return;
+      const selector = this.getAttribute('selector') || 'fx-fore';
+      await Fore.loadForeFromSrc(this, this.src, selector);
+    })();
+    return this._srcLoadPromise;
   }
   connectedCallback() {
     const modelElement = Array.from(this.children).find(modelElem => modelElem.nodeName.toUpperCase() === 'FX-MODEL');
     this.model = modelElement;
     this.style.visibility = 'hidden';
-    console.time('init');
+    // console.time('init');
     this.strict = !!this.hasAttribute('strict');
     /*
             document.re('ready', (e) =>{
@@ -24088,7 +25934,7 @@ class FxFore extends HTMLElement {
     }
     this.src = this.hasAttribute('src') ? this.getAttribute('src') : null;
     if (this.src) {
-      this._loadFromSrc();
+      this._maybeLoadFromSrc();
       return;
     }
     this._injectDevtools();
@@ -24105,6 +25951,67 @@ class FxFore extends HTMLElement {
     });
     if (this.hasAttribute('show-confirmation')) {
       this.showConfirmation = true;
+    }
+  }
+
+  /**
+   * Ensure there is an fx-var for each fx-instance in this fx-fore's fx-model scope.
+   *
+   * - For instances with an @id, create `$id` with value `instance('id')`.
+   * - For the first instance WITHOUT an @id, create `$default` with value `instance()`.
+   * - IMPORTANT: if an instance has id="default", we STILL bind `$default` to `instance()`
+   *   (avoids recursion / stack overflow during fx-var refresh in some cycles).
+   *
+   * Vars are inserted as direct children of `<fx-fore>` immediately before `<fx-model>`.
+   * The method is idempotent.
+   */
+  _ensureInstanceVars() {
+    if (this.__instanceVarsEnsured) return;
+    this.__instanceVarsEnsured = true;
+
+    // Resolve this fx-fore's own fx-model (not nested ones)
+    const model = this.querySelector(':scope > fx-model');
+    if (!model) return;
+
+    // Collect instances that are direct children of this model (doc order)
+    const instances = Array.from(model.querySelectorAll(':scope > fx-instance'));
+
+    // Collect existing fx-var names at fx-fore scope (author-defined and previously generated)
+    const existingVars = new Set(Array.from(this.querySelectorAll(':scope > fx-var')).map(v => (v.getAttribute('name') || '').trim()).filter(Boolean));
+    let defaultAssigned = false;
+    for (const inst of instances) {
+      const rawId = (inst.getAttribute('id') || '').trim();
+
+      // First id-less instance => $default = instance()
+      if (!rawId) {
+        if (defaultAssigned) continue;
+        defaultAssigned = true;
+        const name = 'default';
+        if (existingVars.has(name)) continue;
+        const fxVar = document.createElement('fx-var');
+        fxVar.setAttribute('name', name);
+        fxVar.setAttribute('value', 'instance()');
+        fxVar.setAttribute('data-generated', 'instance-var');
+        this.insertBefore(fxVar, model);
+        existingVars.add(name);
+        continue;
+      }
+
+      // Normal id-based instance var
+      const name = rawId;
+      if (existingVars.has(name)) continue;
+      const fxVar = document.createElement('fx-var');
+      fxVar.setAttribute('name', name);
+
+      // IMPORTANT: avoid `instance('default')` recursion in fx-var refresh
+      if (name === 'default') {
+        fxVar.setAttribute('value', 'instance()');
+      } else {
+        fxVar.setAttribute('value', `instance('${name}')`);
+      }
+      fxVar.setAttribute('data-generated', 'instance-var');
+      this.insertBefore(fxVar, model);
+      existingVars.add(name);
     }
   }
   _injectDevtools() {
@@ -24147,12 +26054,17 @@ class FxFore extends HTMLElement {
     this._scanForNewTemplateExpressionsNextRefresh = true;
   }
   markAsClean() {
+    console.log('marking as clean', this);
     this.addEventListener('value-changed', () => {
+      console.log('MARK as modified', this);
       this.dirtyState = dirtyStates.DIRTY;
+      this.classList.toggle('fx-modified');
     }, {
       once: true
     });
     this.dirtyState = dirtyStates.CLEAN;
+    this.classList.remove('fx-modified');
+    this.querySelectorAll('.visited').forEach(el => el.classList.remove('visited'));
   }
 
   /**
@@ -24162,15 +26074,7 @@ class FxFore extends HTMLElement {
    * @private
    */
   async _loadFromSrc() {
-    // console.log('########## loading Fore from ', this.src, '##########');
-    if (this.hasAttribute('wait-for')) {
-      await this._whenDependenciesReady();
-    }
-    if (this.hasAttribute('selector')) {
-      await Fore.loadForeFromSrc(this, this.src, this.getAttribute('selector'));
-    } else {
-      await Fore.loadForeFromSrc(this, this.src, 'fx-fore');
-    }
+    return this._maybeLoadFromSrc();
   }
 
   /**
@@ -24212,7 +26116,6 @@ class FxFore extends HTMLElement {
 
     // console.timeEnd('refreshLazy');
   }
-
   evaluateToNodes(xpath, context) {
     return evaluateXPathToNodes(xpath, context, this);
   }
@@ -24230,78 +26133,65 @@ class FxFore extends HTMLElement {
   /**
    * @param {(boolean|{reason:'index-function'})} [force]fx-fore
    */
+  /**
+   * @param {(boolean|{reason:'index-function'})} [force]
+   */
+  /**
+   * @param {(boolean|{reason:'index-function'})} [force]
+   */
   async refresh(force) {
+    // If we're already refreshing, do NOT drop the request.
+    // Queue a hard refresh and return a promise that resolves when the next refresh finishes.
     if (this.isRefreshing) {
-      return;
+      // keep "strongest" request: any true means hard refresh
+      this._pendingRefresh = this._pendingRefresh || force === true;
+      return new Promise(resolve => {
+        this.addEventListener('refresh-done', () => resolve(), {
+          once: true
+        });
+      });
     }
-
-    /*
-    if (force !== true && this._localNamesWithChanges.size > 0) {
-      force = {
-        ...(force || { reason: undefined }),
-        elementLocalnamesWithChanges: Array.from(this._localNamesWithChanges),
-      };
-      this._localNamesWithChanges.clear();
-    }
-    */
-
     this.isRefreshing = true;
     this.isRefreshPhase = true;
-
-    // refresh () {
-    // ### refresh Fore UI elements
-    // if (!this.initialRun && this.toRefresh.length !== 0) {
-    // if (!this.initialRun && this.toRefresh.length !== 0) {
-    // if (!force && !this.initialRun && this.toRefresh.length !== 0) {
-    if (force === true || this.initialRun) {
-      console.log('🔄 🔴🔴🔴 ### full refresh() on ', this);
-      Fore.refreshChildren(this, force);
-    } else {
-      // Process all batched no tifications at the end of the refresh phase
-      console.log('🔄 🎯  ### processing batched notifications');
-      await this._processBatchedNotifications();
-    }
-
-    // ### refresh template expressions
-    if (force === true || this.initialRun || this._scanForNewTemplateExpressionsNextRefresh) {
-      this._updateTemplateExpressions();
-      this._scanForNewTemplateExpressionsNextRefresh = false; // reset
-    }
-
-    this._processTemplateExpressions();
-    this.isRefreshPhase = false;
-
-    // console.log('### <<<<< dispatching refresh-done - end of UI update cycle >>>>>');
-    // this.dispatchEvent(new CustomEvent('refresh-done'));
-    this.initialRun = false;
-    this.style.visibility = 'visible';
-    console.info(`%c ✅ refresh-done on #${this.id}`, 'background:darkorange; color:black; padding:.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;', this.getModel().modelItems);
-    Fore.dispatch(this, 'refresh-done', {});
-    const subFores = Array.from(this.querySelectorAll('fx-fore'));
-    /*
-        calling the parent to refresh causes errors and inconsistent state. Also it is questionable
-        if a child should actually interact with its parent in this way.
-         This only affects the refreshing NOT the data mutation itself which is happening as expected.
-         Current solution is that a child that wants the parent to refresh must do so by adding an additional
-        event handler that dispatches an event upwards and having a handler in the parent to refresh itself.
-         So refreshed propagate downwards but not upwards which is at least an option to consider.
-         if(this.parentNode.nodeType !== Node.DOCUMENT_FRAGMENT_NODE){
-            // await this.parentNode.closest('fx-fore')?.refresh(false);
+    try {
+      if (force === true || this.initialRun) {
+        performance.mark('force-refresh-start');
+        console.log('🔄 🔴🔴🔴 ### full refresh() on ', this);
+        await Fore.refreshChildren(this, force);
+        performance.mark('force-refresh-end');
+        performance.measure('force-refresh', 'force-refresh-start', 'force-refresh-end');
+      } else {
+        await this._processBatchedNotifications();
+      }
+      if (force === true || this.initialRun || this._scanForNewTemplateExpressionsNextRefresh) {
+        this._updateTemplateExpressions();
+        this._scanForNewTemplateExpressionsNextRefresh = false;
+      }
+      this._processTemplateExpressions();
+      this.isRefreshPhase = false;
+      this.initialRun = false;
+      this.style.visibility = 'visible';
+      console.info(`%c ✅ refresh-done on #${this.id}`, 'background:darkorange; color:black; padding:.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;', this.getModel().modelItems);
+      Fore.dispatch(this, 'refresh-done', {});
+      const subFores = Array.from(this.querySelectorAll('fx-fore'));
+      for (const subFore of subFores) {
+        if (subFore.ready) {
+          await subFore.refresh(true);
         }
-    */
-    for (const subFore of subFores) {
-      // subFore.refresh(false, changedPaths);
-      if (subFore.ready) {
-        // Do an unconditional hard refresh: there might be changes that are relevant
-        // todo: investigate impact of observer architecture - do we really want to refresh all subfore elements with a hard refresh?
-        await subFore.refresh(true);
+      }
+    } finally {
+      this.isRefreshing = false;
+
+      // If anything requested a refresh while we were refreshing, run exactly one more.
+      // This prevents "dropped" refresh requests (your timeout).
+      if (this._pendingRefresh) {
+        const pendingHard = this._pendingRefresh === true;
+        this._pendingRefresh = false;
+        // Important: do NOT await in finally without clearing flags first.
+        await this.refresh(pendingHard);
       }
     }
-    this.isRefreshing = false;
-    // Clear the batch
-    // this.batchedNotifications.clear();
   }
-
   /**
    * Add a ModelItem to the batch of notifications to be processed at the end of the refresh phase
    * @param {ModelItem | import('./ui/UIElement.js').UIElement} item - The ModelItem or UI Element to add to the batch
@@ -24318,6 +26208,9 @@ class FxFore extends HTMLElement {
    */
   _processBatchedNotifications() {
     if (this.batchedNotifications.size > 0) {
+      console.log(`🔄 🎯  ### processing ${this.batchedNotifications.size} batched notifications`);
+      console.log('🔄 🎯  ### processing ', Array.from(this.batchedNotifications));
+
       // console.log(`🔍 Processing ${this.batchedNotifications.size} batched notifications`);
 
       // Process all batched notifications
@@ -24358,6 +26251,10 @@ class FxFore extends HTMLElement {
         }
       });
 
+      // Update template expressions after processing batched notifications
+      // This ensures template expressions are re-evaluated when data changes
+      this._processTemplateExpressions();
+
       // Clear the batch
       this.batchedNotifications.clear();
     }
@@ -24382,6 +26279,7 @@ class FxFore extends HTMLElement {
 
     // console.log('######### storedTemplateExpressions', this.storedTemplateExpressions.length);
 
+    if (!tmplExpressions) return;
     /*
     storing expressions and their nodes for re-evaluation
     */
@@ -24408,7 +26306,7 @@ class FxFore extends HTMLElement {
     this._processTemplateExpressions();
   }
   _processTemplateExpressions() {
-    console.log('processing template expressions ', this.storedTemplateExpressionByNode);
+    // console.log('processing template expressions ', this.storedTemplateExpressionByNode);
     for (const node of Array.from(this.storedTemplateExpressionByNode.keys())) {
       if (node.nodeType === Node.ATTRIBUTE_NODE) {
         // Attribute nodes are not contained by the document, but their owner elements are!
@@ -24448,39 +26346,50 @@ class FxFore extends HTMLElement {
    * @param {Node} node the node which will get updated with evaluation result
    */
   evaluateTemplateExpression(expr, node) {
-    // ### do not evaluate template expressions with nonrelevant sections
+    // ### do not evaluate template expressions within nonrelevant sections
     if (node.nodeType === Node.ATTRIBUTE_NODE && node.ownerElement.closest('[nonrelevant]')) return;
     if (node.nodeType === Node.TEXT_NODE && node.parentNode.closest('[nonrelevant]')) return;
     if (node.nodeType === Node.ELEMENT_NODE && node.closest('[nonrelevant]')) return;
 
-    // if(node.closest('[nonrelevant]')) return;
-    const replaced = expr.replace(/{[^}]*}/g, match => {
+    // ---- IMPORTANT GUARD ----
+    // Prevent JSON object/array literals in fx-insert@origin from being treated as
+    // template expressions (they contain {...} but are not XPath templates).
+    if (node.nodeType === Node.ATTRIBUTE_NODE) {
+      const el = node.ownerElement;
+      if (el && el.localName === 'fx-insert' && node.name === 'origin') {
+        const v = String(node.value ?? '').trim();
+        const isJsonLiteral = v.startsWith('{') && v.endsWith('}') || v.startsWith('[') && v.endsWith(']');
+        if (isJsonLiteral) return;
+      }
+    }
+    // -------------------------
+
+    // The element that "defines" the template expression is the correct basis for:
+    // - namespace resolution (xmlns lookup)
+    // - fx-var scoping (in-scope variables)
+    // - context() in repeats (repeat item detection)
+    const definitionElement = node.nodeType === Node.ATTRIBUTE_NODE ? node.ownerElement : node.nodeType === Node.TEXT_NODE ? node.parentElement || node.parentNode : node;
+    const formElement = definitionElement && definitionElement.nodeType === Node.ELEMENT_NODE ? definitionElement : this;
+    const replaced = String(expr ?? '').replace(/{[^}]*}/g, match => {
       if (match === '{}') return match;
       const naked = match.substring(1, match.length - 1);
       const inscope = getInScopeContext(node, naked);
       if (!inscope) {
-        console.warn('no inscope context for expr', naked);
-        node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ATTRIBUTE_NODE ? node.parentNode : node;
         return match;
       }
-      // Templates are special: they use the namespace configuration from the place where they are
-      // being defined
-      const instanceId = XPathUtil.getInstanceId(naked);
-
-      // If there is an instance referred
-      const inst = instanceId ? this.getModel().getInstance(instanceId) : this.getModel().getDefaultInstance();
       try {
-        const result = evaluateXPathToString(naked, inscope, node, null, inst);
-        // console.log(`template expression result for ${naked}=${result}`);
-        return result;
+        // IMPORTANT:
+        // Do NOT pass `null` as the 4th argument here.
+        // Passing `null` suppresses variable collection, which hides implicit vars
+        // like `$default`.
+        return evaluateXPathToString(naked, inscope, formElement);
       } catch (error) {
         console.warn('ignoring unparseable expr', error);
         return match;
       }
     });
 
-    // Update to the new value. Don't do it though if nothing changed to prevent iframes or
-    // images from reloading for example
+    // Update to the new value only if it changed (avoid iframe/image reload etc.)
     if (node.nodeType === Node.ATTRIBUTE_NODE) {
       const parent = node.ownerElement;
       if (parent.getAttribute(node.nodeName) !== replaced) {
@@ -24491,9 +26400,7 @@ class FxFore extends HTMLElement {
         node.textContent = replaced;
       }
     }
-  }
-
-  // eslint-disable-next-line class-methods-use-this
+  } // eslint-disable-next-line class-methods-use-this
   _getTemplateExpression(node) {
     if (this.ignoredNodes) {
       if (node.nodeType === Node.ATTRIBUTE_NODE) {
@@ -24518,7 +26425,6 @@ class FxFore extends HTMLElement {
    * @private
    */
   _handleModelConstructDone() {
-    this.markAsClean();
     if (this.showConfirmation) {
       window.addEventListener('beforeunload', event => {
         if (this.dirtyState === dirtyStates.DIRTY) {
@@ -24641,7 +26547,10 @@ class FxFore extends HTMLElement {
 
     // First refresh should be forced
     if (this.createNodes) {
+      performance.mark('initData-start');
       this.initData();
+      performance.mark('initData-end');
+      performance.measure('initData', 'initData-start', 'initData-end');
       const binds = this.getModel().querySelector('fx-bind');
       if (binds) {
         this.getModel().updateModel();
@@ -24661,10 +26570,9 @@ class FxFore extends HTMLElement {
 
     // console.log(`### <<<<< ${this.id} ready >>>>>`);
 
-    // console.log('### modelItems: ', this.getModel().modelItems);
     Fore.dispatch(this, 'ready', {});
     // console.log('dataChanged', FxModel.dataChanged);
-
+    this.markAsClean();
     this.addEventListener('dragstart', this._handleDragStart);
     //	this.addEventListener('dragend', this._handleDragEnd);
     this.handleDrop = event => this._handleDrop(event);
@@ -24674,6 +26582,45 @@ class FxFore extends HTMLElement {
       e.stopPropagation();
       e.dataTransfer.dropEffect = 'move';
     });
+
+    // Run authoring checks after ready — they're diagnostic only and must not delay
+    // the ready event or drag-listener registration (both of which tests depend on).
+    try {
+      await this._runAuthoringChecks();
+    } catch (e) {
+      console.warn('[fore] authoring check failed:', e.message);
+    }
+  }
+  async _runAuthoringChecks() {
+    if (this.hasAttribute('no-check')) return;
+    if (new URLSearchParams(window.location.search).has('no-check')) return;
+    const {
+      checkAuthoring
+    } = await Promise.resolve().then(function () { return authoringCheck; });
+    const errors = checkAuthoring(this);
+    if (errors.length) {
+      this._showAuthoringErrors(errors);
+    }
+  }
+  _showAuthoringErrors(errors) {
+    const overlay = this.shadowRoot.getElementById('authoringErrors');
+    const content = this.shadowRoot.getElementById('authoringErrorsContent');
+    if (!overlay || !content) return;
+    const rows = errors.map(({
+      element,
+      message
+    }) => {
+      const path = element ? element.tagName.toLowerCase() + (element.id ? `#${element.id}` : '') : '?';
+      const safeMsg = message.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const safePath = path.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      return `<tr><td>${safePath}</td><td>${safeMsg}</td></tr>`;
+    }).join('');
+    content.innerHTML = `
+      <table>
+        <thead><tr><th>Element</th><th>Problem</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+    overlay.classList.add('show');
   }
 
   /**
@@ -24778,21 +26725,155 @@ class FxFore extends HTMLElement {
     // Insert after the previous control
     return referenceNode;
   }
-
   /**
    * @param  {HTMLElement}  root The root of the data initialization. fx-repeat overrides this when it makes new repeat items
-   *
    */
   initData(root = this) {
-    // const created = new Promise(resolve => {
-    console.log('INIT');
-    // const boundControls = Array.from(root.querySelectorAll('[ref]:not(fx-model *),fx-repeatitem'));
+    /**
+     * @param {*} value
+     * @returns {boolean}
+     */
+    const isObjectLike = value => value !== null && (typeof value === 'object' || typeof value === 'function');
+
+    /**
+     * @param {*} nodeset
+     * @returns {boolean}
+     */
+    const hasResolvedNodeset = nodeset => {
+      if (nodeset == null) return false;
+
+      // Atomic values like strings/numbers/booleans are valid resolved XPath results
+      if (!isObjectLike(nodeset)) return true;
+      if (Array.isArray(nodeset)) return nodeset.length > 0;
+      if (typeof nodeset.length === 'number' && !('nodeType' in nodeset)) {
+        return nodeset.length > 0;
+      }
+      if (typeof nodeset[Symbol.iterator] === 'function' && !('nodeType' in nodeset)) {
+        for (const item of nodeset) {
+          return item !== undefined;
+        }
+        return false;
+      }
+      return !!nodeset.nodeType;
+    };
+
+    /**
+     * Only try create-nodes for path-like refs, not general expressions like sequences.
+     * @param {string} ref
+     * @returns {boolean}
+     */
+    const isCreateNodesCandidate = ref => {
+      const expr = String(ref || '').trim();
+      if (!expr || expr === '.') return false;
+      if (expr.startsWith('"') || expr.startsWith("'")) return false;
+
+      // Ignore only simple literal sequences like ('a', 'b', 'c') or (1, 2, 3).
+      // Keep fx-repeat refs that are real path expressions or more complex XPath.
+      const simpleSequencePattern = /^\(\s*(?:(?:'[^']*'|"[^"]*"|\d+(?:\.\d+)?|\.)(?:\s*,\s*(?:'[^']*'|"[^"]*"|\d+(?:\.\d+)?|\.))*)?\s*\)$/;
+      if (simpleSequencePattern.test(expr)) return false;
+      return true;
+    };
+
+    /**
+     * Detect whether a ref ends in an attribute step.
+     * @param {string} ref
+     * @returns {boolean}
+     */
+    const isAttributeRef = ref => /(^|\/)\s*@/.test(String(ref || '').trim());
+
+    /**
+     * Normalize a possibly sequence-like nodeset/context to a single DOM node.
+     * @param {*} candidate
+     * @returns {*}
+     */
+    const firstNode = candidate => {
+      if (!candidate) return null;
+      if (!isObjectLike(candidate)) return null;
+      if (candidate.nodeType) return candidate;
+      if (Array.isArray(candidate)) {
+        return candidate.find(item => item && isObjectLike(item) && item.nodeType) || null;
+      }
+      if (typeof candidate.length === 'number' && typeof candidate.item === 'function') {
+        for (let i = 0; i < candidate.length; i += 1) {
+          const item = candidate.item(i);
+          if (item && isObjectLike(item) && item.nodeType) return item;
+        }
+      }
+      return null;
+    };
+
+    /**
+     * Detect XPath results that are sequences of atomic values rather than DOM nodes.
+     * These are valid resolved results for repeats, but they must never trigger create-nodes.
+     * @param {*} candidate
+     * @returns {boolean}
+     */
+    const isAtomicSequence = candidate => {
+      if (!candidate) return false;
+
+      // A single primitive value is also atomic from our perspective
+      if (!isObjectLike(candidate)) return true;
+      if (candidate.nodeType) return false;
+      if (Array.isArray(candidate)) {
+        return candidate.length > 0 && !candidate.some(item => item && isObjectLike(item) && item.nodeType);
+      }
+      if (typeof candidate.length === 'number' && typeof candidate.item === 'function') {
+        return false;
+      }
+      if (typeof candidate[Symbol.iterator] === 'function') {
+        for (const item of candidate) {
+          return !(item && isObjectLike(item) && item.nodeType);
+        }
+      }
+      return false;
+    };
+
+    /**
+     * Check whether a bound element is resolved after evalInContext.
+     * Attribute refs often expose an empty string as nodeset, so use the model item node in that case.
+     * @param {import('./ForeElementMixin.js').default} bound
+     * @returns {boolean}
+     */
+    const isResolvedBound = bound => {
+      if (hasResolvedNodeset(bound.nodeset)) return true;
+      if (bound.nodeName === 'FX-REPEAT' && isAtomicSequence(bound.nodeset)) return true;
+      if (isAttributeRef(bound.ref)) {
+        const modelItem = typeof bound.getModelItem === 'function' ? bound.getModelItem() : null;
+        return !!modelItem?.node;
+      }
+      return false;
+    };
+
+    /**
+     * Determine the best context node for lazy node creation.
+     * Prefer the bound element's in-scope context, but fall back to a structural parent.
+     * @param {import('./ForeElementMixin.js').default} bound
+     * @param {*} fallback
+     * @returns {*}
+     */
+    const getCreationContext = (bound, fallback) => {
+      const direct = typeof bound.getInScopeContext === 'function' ? firstNode(bound.getInScopeContext()) : null;
+      if (direct) return direct;
+      const dotCtx = firstNode(getInScopeContext(bound, '.'));
+      if (dotCtx) return dotCtx;
+      const refCtx = firstNode(getInScopeContext(bound, bound.ref));
+      if (refCtx) return refCtx;
+      return firstNode(fallback);
+    };
 
     /**
      * @type {import('./ForeElementMixin.js').default[]}
      */
-    const boundControls = Array.from(root.querySelectorAll('fx-control[ref],fx-upload[ref],fx-group[ref],fx-repeat[ref], fx-switch[ref]'));
-    if (root.matches && root.matches('fx-repeatitem')) {
+    const boundControls = Array.from(root.querySelectorAll('fx-control[ref],fx-upload[ref],fx-group[ref],fx-repeat[ref], fx-switch[ref]')).filter(boundEl => {
+      if (boundEl.nodeName !== 'FX-REPEAT') return true;
+      const repeatRef = String(boundEl.getAttribute('ref') || '').trim();
+
+      // Any repeat whose ref is a pure parenthesized expression is not a create-nodes candidate.
+      // Example: ('a', 'b', 'c')
+      if (repeatRef.startsWith('(')) return false;
+      return isCreateNodesCandidate(repeatRef);
+    });
+    if (root.matches && root.matches('fx-repeatitem') && firstNode(root.nodeset)) {
       boundControls.unshift(root);
     }
     console.log('_initData', boundControls);
@@ -24806,11 +26887,20 @@ class FxFore extends HTMLElement {
         // Repeat items are dumb. They do not respond to evalInContext
         bound.evalInContext();
       }
-      if (bound.nodeset !== null && !(Array.isArray(bound.nodeset) && bound.nodeset.length > 0)) {
-        console.log('Node exists', bound.nodeset);
+      if (bound.nodeName === 'FX-REPEAT' && isAtomicSequence(bound.nodeset)) {
         continue;
       }
-      console.log('Node does not exists', bound.ref);
+      if (isResolvedBound(bound)) {
+        continue;
+      }
+      if (!isCreateNodesCandidate(bound.ref)) {
+        continue;
+      }
+
+      // Ignore bound elements in a different form. They will be taken care of in the other form.
+      if (bound.closest('fx-fore') !== this) {
+        continue;
+      }
 
       // We need to create that node!
       const previousControl = boundControls[i - 1];
@@ -24818,26 +26908,14 @@ class FxFore extends HTMLElement {
       // Previous control can either be an ancestor of us, or a previous node, which can be a sibling, or a child of a sibling.
       // First: parent
       if (previousControl && previousControl.contains(bound)) {
-        // Parent is here.
-        console.log('insert into', bound, previousControl);
-        console.log('insert into nodeset', bound.nodeset);
         /**
          * @type {ParentNode}
          */
-        const parentNodeset = previousControl.nodeset;
-        // console.log('parentNodeset', parentNodeset);
-
-        // const parentModelItemNode = parentModelItem.node;
+        const parentNodeset = firstNode(previousControl.nodeset) || firstNode(root.getModel().getDefaultContext());
+        const creationContext = getCreationContext(bound, parentNodeset);
         const ref = bound.ref;
-        // const newElement = parentModelItemNode.ownerDocument.createElement(ref);
-        // if (parentNodeset.querySelector(`[ref="${ref}"]`)) {
-        //   console.log(`Node with ref "${ref}" already exists.`);
-        //   continue;
-        // }
-
-        const newNode = this._createNodes(ref, parentNodeset);
-        if (!newNode) {
-          // We could not make the node for some reason. Maybe it's something like `instance('XXX')`?
+        const newNode = this._createNodes(ref, creationContext || parentNodeset);
+        if (!newNode || !parentNodeset) {
           continue;
         }
         if (newNode.nodeType === Node.ATTRIBUTE_NODE) {
@@ -24851,40 +26929,26 @@ class FxFore extends HTMLElement {
           }
         }
         bound.evalInContext();
-        bound.getModelItem().bind?.evalInContext();
-
-        // console.log('CREATED child', newElement);
-        // console.log('new control evaluated to ', control.nodeset);
-        // Done!
+        if (bound.nodeName !== 'FX-REPEAT') {
+          // Do not try to get a bind for a nodeSET of a repeat. there are multiple.
+          bound.getModelItem().bind?.evalInContext();
+        }
         continue;
       }
-      // console.log('previousControl', previousControl);
-      // console.log('control', control);
+
       // Is previousControl a sibling or a descendant of a logical sibling? Keep looking backwards until we share parents!
-      let ourParent = XPathUtil.getParentBindingElement(bound);
-      // console.log('ourParent', ourParent);
+      const ourParent = XPathUtil.getParentBindingElement(bound);
       let siblingControl = null;
-      /*
-            for (let j = i - 1; j >= 0; --j) {
-                const potentialSibling = boundControls[j];
-                if (XPathUtil.getParentBindingElement(potentialSibling) === ourParent) {
-                    siblingControl = potentialSibling;
-                    break; // Exit once the sibling is found
-                }
-            }
-      */
       for (let j = i - 1; j > 0; --j) {
         const siblingOrDescendant = boundControls[j];
+        if (siblingOrDescendant.nodeset && !('nodeType' in siblingOrDescendant.nodeset)) {
+          continue;
+        }
         if (XPathUtil.getParentBindingElement(siblingOrDescendant) === ourParent) {
           siblingControl = siblingOrDescendant;
           break;
         }
       }
-      if (!siblingControl) {
-        console.log('No sibling found for', bound);
-      }
-      // console.log('sibling', siblingControl);
-      // todo: review: should this not just be inscopeContext?
       let parentNodeset;
       if (!ourParent || !ourParent.nodeset) {
         /*
@@ -24893,16 +26957,19 @@ class FxFore extends HTMLElement {
            */
         parentNodeset = root.getModel().getDefaultContext();
       } else {
-        parentNodeset = ourParent.nodeset;
+        parentNodeset = firstNode(ourParent.nodeset) || root.getModel().getDefaultContext();
       }
       const ref = bound.ref;
-      const newNode = this._createNodes(ref, parentNodeset);
+      const creationContext = getCreationContext(bound, parentNodeset);
+      const newNode = this._createNodes(ref, creationContext || parentNodeset);
+      if (!newNode) {
+        continue;
+      }
       if (newNode.nodeType === Node.ATTRIBUTE_NODE) {
         parentNodeset.setAttributeNode(newNode);
       } else {
         let referenceNode = this._findReferenceNodeForNewElement(newNode, parentNodeset, siblingControl);
         if (referenceNode) {
-          // console.log('insert after', referenceNode,newNode);
           if (referenceNode.nodeType === Node.DOCUMENT_NODE) {
             referenceNode.firstElementChild.append(newNode);
           } else {
@@ -24912,53 +26979,172 @@ class FxFore extends HTMLElement {
           parentNodeset.prepend(newNode);
         }
       }
-
-      /*
-            console.log('control inscope', control.getInScopeContext());
-            console.log('control ref', control.ref);
-            console.log('control new element parent', newElement.parentNode.nodeName);
-      */
-
       bound.evalInContext();
       bound.getModelItem().bind?.evalInContext();
-      if (!bound.nodeset) {
-        throw new Error('Creating annode failed');
+      if (!isResolvedBound(bound)) {
+        console.warn('create-nodes: could not resolve bound after node creation, skipping', bound);
+        continue;
       }
-      // console.log('new control evaluated to ', control.nodeset);
-      // console.log('CREATED sibling', newElement);
     }
-    // console.log('DATA', this.getModel().getDefaultContext());
   }
-
   _createNodes(ref, referenceNode) {
-    // console.log('creating', ref)
-    // console.log('ownerDoc', referenceNode.ownerDocument);
-    /*
-        const existingNode = evaluateXPathToFirstNode(ref, referenceNode, this);
-        if(existingNode){
-            console.log(`Node already exists for ref: ${ref}`);
-            return existingNode;
-        }
-    console.log(`creating new node for ref: ${ref}`);
-    */
-    if (/instance\([^\)]*\)/.test(ref)) {
-      // This is an absolute path for some instance. Not supporteed for now
+    if (!ref || !referenceNode) return null;
+    const xpath = String(ref).trim();
+    if (!xpath || xpath === '.') return null;
+    if (/^instance\([^\)]*\)/.test(xpath)) {
+      // This is an absolute path for some instance. Not supported for create-nodes here.
       return null;
     }
-    let newElement;
-    if (ref.includes('/')) {
-      // multi-step ref expressions
-      newElement = XPathUtil.createNodesFromXPath(ref, referenceNode.ownerDocument, this);
-      // console.log('new subtree', newElement);
-      return newElement;
-    } else {
-      return XPathUtil.createNodesFromXPath(ref, referenceNode.ownerDocument, this);
+    const ownerDoc = referenceNode.nodeType === Node.DOCUMENT_NODE ? referenceNode : referenceNode.ownerDocument;
+    const baseElement = referenceNode.nodeType === Node.DOCUMENT_NODE ? referenceNode.documentElement : referenceNode.nodeType === Node.ATTRIBUTE_NODE ? referenceNode.ownerElement : referenceNode;
+    if (!ownerDoc) return null;
+    const baseNamespace = baseElement?.namespaceURI || null;
+    const namespaceResolver = createNamespaceResolver(xpath, this);
+    const parseName = token => {
+      const raw = token.trim();
+      if (raw.startsWith('@')) {
+        const attrToken = raw.slice(1);
+        if (attrToken.startsWith('*:')) {
+          return {
+            isAttribute: true,
+            namespaceURI: null,
+            localName: attrToken.substring(2)
+          };
+        }
+        if (attrToken.includes(':')) {
+          const [prefix, localName] = attrToken.split(':');
+          return {
+            isAttribute: true,
+            namespaceURI: prefix === '*' ? null : namespaceResolver(prefix) || null,
+            localName
+          };
+        }
+        return {
+          isAttribute: true,
+          namespaceURI: null,
+          localName: attrToken
+        };
+      }
+      if (raw.startsWith('*:')) {
+        return {
+          isAttribute: false,
+          namespaceURI: baseNamespace,
+          localName: raw.substring(2)
+        };
+      }
+      if (raw.includes(':')) {
+        const [prefix, localName] = raw.split(':');
+        return {
+          isAttribute: false,
+          namespaceURI: prefix === '*' ? baseNamespace : namespaceResolver(prefix) || baseNamespace,
+          localName
+        };
+      }
+      return {
+        isAttribute: false,
+        namespaceURI: baseNamespace,
+        localName: raw
+      };
+    };
+    const parseStep = step => {
+      const trimmed = step.trim();
+      const nameMatch = trimmed.match(/^([^\[]+)/);
+      const token = nameMatch ? nameMatch[1].trim() : trimmed;
+      const predicates = [];
+      const predicateRegex = /\[\s*@([^\]\s=]+)\s*=\s*(['"])(.*?)\2\s*\]/g;
+      let match;
+      while ((match = predicateRegex.exec(trimmed)) !== null) {
+        predicates.push({
+          name: match[1],
+          value: match[3]
+        });
+      }
+      return {
+        token,
+        predicates
+      };
+    };
+    const splitSteps = xpath => {
+      /**
+       * @type {string[]}
+       */
+      const steps = [];
+      let scratch = '';
+      let isInPredicate = false;
+      for (const char of xpath.split('')) {
+        if (char === '[') {
+          isInPredicate = true;
+          scratch += char;
+          continue;
+        }
+        if (char === ']') {
+          scratch += char;
+          isInPredicate = false;
+          continue;
+        }
+        if (!isInPredicate) {
+          // Just add to the scratch. Do not check for slashes within predicates
+          if (char === '/') {
+            // Consume this path step
+            if (scratch) {
+              steps.push(scratch);
+            }
+            scratch = '';
+            continue;
+          }
+        }
+        scratch += char;
+      }
+      if (scratch) {
+        // Flush it
+        steps.push(scratch);
+      }
+      return steps;
+    };
+    const steps = splitSteps(xpath).map(step => step.trim()).filter(step => step && step !== '.');
+    if (!steps.length) return null;
+    let subtreeRoot = null;
+    let current = null;
+    for (const rawStep of steps) {
+      const {
+        token,
+        predicates
+      } = parseStep(rawStep);
+      if (!token || token === '.') {
+        continue;
+      }
+      const parsed = parseName(token);
+      if (parsed.isAttribute) {
+        if (!current) {
+          const attr = ownerDoc.createAttribute(parsed.localName);
+          return attr;
+        }
+        current.setAttribute(parsed.localName, '');
+        continue;
+      }
+      if (!isValidName(parsed.localName)) {
+        // This did not result in a valid name. Stop.
+        console.warn(`Creating node for the XPath ${xpath} failed because the part ${parsed.localName} is not a valid Name.`);
+        return;
+      }
+      const element = parsed.namespaceURI ? ownerDoc.createElementNS(parsed.namespaceURI, parsed.localName) : ownerDoc.createElement(parsed.localName);
+      for (const predicate of predicates) {
+        const attrName = predicate.name.includes(':') ? predicate.name.split(':')[1] : predicate.name;
+        element.setAttribute(attrName, predicate.value);
+      }
+      if (!subtreeRoot) {
+        subtreeRoot = element;
+      } else {
+        current.appendChild(element);
+      }
+      current = element;
     }
+    return subtreeRoot;
   }
   _handleDragStart(event) {
     const draggedItem = event.target.closest('[draggable="true"]');
     this.originalDraggedItem = draggedItem;
-    console.log('DRAG START', this);
+    // console.log('DRAG START', this);
     if (draggedItem.getAttribute('drop-action') === 'copy') {
       event.dataTransfer.dropEffect = 'copy';
       event.dataTransfer.effectAllowed = 'copy';
@@ -24972,7 +27158,7 @@ class FxFore extends HTMLElement {
     }
   }
   _handleDrop(event) {
-    console.log('DROP ON BODY', this);
+    // console.log('DROP ON BODY', this);
     if (!this.draggedItem) {
       return;
     }
@@ -25029,15 +27215,22 @@ class FxFore extends HTMLElement {
     toast.showToast(`WARN: ${path}:${msg}`);
   }
   _logError(e) {
+    // Prevent the error event from bubbling up and potentially triggering
+    // parent error handlers that might call refresh() again
     e.stopPropagation();
+    e.stopImmediatePropagation(); // Added to stop other listeners on this element
     e.preventDefault();
     console.error('ERROR', e.detail.message);
-    console.error(e.detail.origin);
-    if (e.detail.expr) {
-      console.error('Failing expression', e.detail.expr);
-    }
-    if (this.strict) {
-      this._displayError(e);
+
+    // Guard the display logic: if showing the error causes another error,
+    // we must break the cycle.
+    if (this.strict && !this._isLogging) {
+      this._isLogging = true;
+      try {
+        this._displayError(e);
+      } finally {
+        this._isLogging = false;
+      }
     }
   }
   _copyToClipboard(target) {
@@ -25111,6 +27304,10 @@ class FxFore extends HTMLElement {
 }
 FxFore.outermostHandler = null;
 FxFore.draggedItem = null;
+// Records init gate events that have already happened for a given target (document/window/element).
+// This prevents “missed gate” situations when an fx-fore is replaced (e.g. via src loading)
+// after the init event already fired.
+FxFore._initEventState = new WeakMap();
 if (!customElements.get('fx-fore')) {
   customElements.define('fx-fore', FxFore);
 }
@@ -25189,7 +27386,6 @@ class Relevance {
             */
           });
         }
-
         return Relevance._filterRelevant(element, n, clone);
       }
       return null;
@@ -25313,57 +27509,32 @@ class FxSubmission extends ForeElementMixin {
   async _serializeAndSend() {
     const url = this._getProperty('url');
     const resolvedUrl = this.evaluateAttributeTemplateExpression(url, this);
-    // console.log('resolvedUrl', resolvedUrl);
     const instance = this.getInstance();
     if (!instance) {
       Fore.dispatch(this, 'warn', {
-        message: `instance not found ${instance.getAttribute('id')}`
+        message: `instance not found ${instance?.getAttribute?.('id')}`
       });
     }
     const instType = instance.getAttribute('type');
-    // console.log('instance type', instance.type);
-
     let serialized;
     if (this.serialization === 'none') {
       serialized = undefined;
     } else {
-      // const relevant = this.selectRelevant(instance.type);
       const relevant = Relevance.selectRelevant(this, instType);
-      serialized = this._serialize(instType, relevant);
+      serialized = this._serialize(instance, relevant);
     }
-
-    // let serialized = serializer.serializeToString(relevant);
     if (this.method.toLowerCase() === 'get') {
-      /*
-             todo: serialize the bound instance element names as get parameters and using their text values
-             as param values. leave out empty params and create querystring from the result.Elements may
-             have exactly level deep or are otherwise ignored.
-             <data>
-                <id>1234</id>
-                <name>john</name>
-                <zip></zip>
-                <!-- ignored as no direct text value -->
-                <phone>
-                    <mobile></mobile>
-                <phone>
-              </data>
-              results in: ?id=1234&name=john to be appended to this.url on fetch
-      */
-
       serialized = undefined;
     }
-    // console.log('data being send', serialized);
-    // console.log('submitting data',serialized);
 
-    // if (resolvedUrl === '#echo') {
+    // --- echo / localStore shortcuts ---
     if (resolvedUrl.startsWith('#echo')) {
       if (this.replace === 'download') {
-        this._handleResponse(serialized, resolvedUrl, 'application/xml');
+        await this._handleResponse(serialized, resolvedUrl, 'application/xml');
       } else {
         const data = this._parse(serialized, instance);
-        this._handleResponse(data, resolvedUrl, 'application/xml');
+        await this._handleResponse(data, resolvedUrl, 'application/xml');
       }
-      // this.dispatch('submit-done', {});
       console.log('### <<<<< submit-done >>>>>');
       Fore.dispatch(this, 'submit-done', {});
       this.parameters.clear();
@@ -25371,11 +27542,10 @@ class FxSubmission extends ForeElementMixin {
     }
     if (resolvedUrl.startsWith('localStore:')) {
       if (this.method === 'get' || this.method === 'consume') {
-        // let data = this._parse(serialized, instance);
         this.replace = 'instance';
         const key = resolvedUrl.substring(resolvedUrl.indexOf(':') + 1);
-        const serialized = localStorage.getItem(key);
-        if (!serialized) {
+        const stored = localStorage.getItem(key);
+        if (!stored) {
           Fore.dispatch(this, 'submit-error', {
             status: 400,
             message: `Error reading key ${key} from localstorage`
@@ -25383,8 +27553,8 @@ class FxSubmission extends ForeElementMixin {
           this.parameters.clear();
           return;
         }
-        const data = this._parse(serialized, instance);
-        this._handleResponse(data);
+        const data = this._parse(stored, instance);
+        await this._handleResponse(data);
         if (this.method === 'consume') {
           localStorage.removeItem(key);
         }
@@ -25392,10 +27562,9 @@ class FxSubmission extends ForeElementMixin {
         Fore.dispatch(this, 'submit-done', {});
       }
       if (this.method === 'post') {
-        // let data = this._parse(serialized, instance);
         const key = resolvedUrl.substring(resolvedUrl.indexOf(':') + 1);
         localStorage.setItem(key, serialized);
-        this._handleResponse(instance.instanceData);
+        await this._handleResponse(instance.instanceData);
         console.log('### <<<<< submit-done >>>>>');
         Fore.dispatch(this, 'submit-done', {});
       }
@@ -25404,17 +27573,16 @@ class FxSubmission extends ForeElementMixin {
         localStorage.removeItem(key);
         const newInst = new DOMParser().parseFromString('<data></data>', 'application/xml');
         this.replace = 'instance';
-        this._handleResponse(newInst);
+        await this._handleResponse(newInst);
         console.log('### <<<<< submit-done >>>>>');
         Fore.dispatch(this, 'submit-done', {});
       }
       return;
     }
 
-    // ### setting headers
+    // --- network fetch ---
     const headers = this._getHeaders();
     if (!this.methods.includes(this.method.toLowerCase())) {
-      // this.dispatch('error', { message: `Unknown method ${this.method}` });
       Fore.dispatch(this, 'error', {
         message: `Unknown method ${this.method}`
       });
@@ -25429,7 +27597,6 @@ class FxSubmission extends ForeElementMixin {
         body: serialized
       });
       if (!response.ok || response.status > 400) {
-        // this.dispatch('submit-error', { message: `Error while submitting ${this.id}` });
         console.info(`%csubmit-error #${this.id}`, 'background:red; color:black; padding:.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;');
         Fore.dispatch(this, 'submit-error', {
           status: response.status,
@@ -25438,30 +27605,21 @@ class FxSubmission extends ForeElementMixin {
         return;
       }
       const contentType = response.headers.get('content-type').split(';')[0].trim().toLowerCase();
-      if (contentType.startsWith('text/')) {
-        const text = await response.text();
-        this._handleResponse(text, resolvedUrl, contentType);
-      } else if (contentType.endsWith('/json') || contentType.endsWith('+json')) {
-        const json = await response.json();
-        this._handleResponse(json, resolvedUrl, contentType);
-      } else if (contentType.endsWith('/xml') || contentType.endsWith('+xml')) {
+      if (contentType.endsWith('/xml') || contentType.endsWith('+xml')) {
         const text = await response.text();
         const xml = new DOMParser().parseFromString(text, 'application/xml');
-        this._handleResponse(xml, resolvedUrl, contentType);
+        await this._handleResponse(xml, resolvedUrl, contentType);
+      } else if (contentType.startsWith('text/')) {
+        const text = await response.text();
+        await this._handleResponse(text, resolvedUrl, contentType);
+      } else if (contentType.endsWith('/json') || contentType.endsWith('+json')) {
+        const json = await response.json();
+        await this._handleResponse(json, resolvedUrl, contentType);
       } else {
         const blob = await response.blob();
-        this._handleResponse(blob, resolvedUrl, contentType);
+        await this._handleResponse(blob, resolvedUrl, contentType);
       }
-
-      // this.dispatch('submit-done', {});
-      // console.log(`### <<<<< ${this.id} submit-done >>>>>`);
       Fore.dispatch(this, 'submit-done', {});
-      /*
-      console.info(
-          `%csubmit-done #${this.id}`,
-          'background:green; color:white; padding:.5rem; display:inline-block; white-space: nowrap; border-radius:0.3rem;width:100%;',
-      );
-      */
     } catch (error) {
       Fore.dispatch(this, 'submit-error', {
         status: 500,
@@ -25488,28 +27646,150 @@ class FxSubmission extends ForeElementMixin {
     }
     return data;
   }
-  _serialize(instanceType, relevantNodes) {
-    if (this.serialization === 'application/x-www-form-urlencoded') {
-      // this.method = 'post';
-      const params = new URLSearchParams();
-      // console.log('nodes to serialize', relevantNodes);
-      Array.from(relevantNodes.children).forEach(child => {
-        params.append(child.nodeName, child.textContent);
-      });
-      return params;
+
+  /**
+   * Serialize the submission payload depending on instance type.
+   *
+   * - XML instances => XML serialization (existing behavior)
+   * - JSON instances => JSON serialization from plain JS (NOT from JSONNode lens objects)
+   *
+   * @param {import('./fx-instance.js').FxInstance | null} instanceEl
+   * @param {any} data
+   * @returns {string}
+   */
+  _serialize(instanceEl, data) {
+    // If the caller passed an explicit "data", prefer it; otherwise serialize the instance.
+    let payload = data;
+
+    // Resolve instance if not provided explicitly
+    if (!instanceEl) {
+      const model = this.getOwnerForm()?.getModel?.();
+      const instanceId = this.getAttribute('instance') || 'default';
+      instanceEl = model?.getInstance?.(instanceId) || null;
     }
-    if (instanceType === 'xml') {
-      const serializer = new XMLSerializer();
-      return serializer.serializeToString(relevantNodes);
+
+    // If no payload was passed, derive it from instance default context/nodeset
+    if (payload == null && instanceEl) {
+      payload = typeof instanceEl.getDefaultContext === 'function' && instanceEl.getDefaultContext() || instanceEl.nodeset || null;
     }
-    if (instanceType === 'json') {
-      // console.warn('JSON serialization is not yet supported')
-      return JSON.stringify(relevantNodes);
+
+    // Decide JSON vs XML by instance type (NOT by ref expression)
+    const isJsonInstance = instanceEl?.getAttribute?.('type') === 'json' || instanceEl?.type === 'json';
+    if (isJsonInstance) {
+      // Convert JSON lens nodes to plain JS before stringify
+      const plain = this._toPlainJson(payload);
+      // NOTE: you can pass spacing here if you want pretty output:
+      // return JSON.stringify(plain, null, 2);
+      return JSON.stringify(plain);
     }
-    if (instanceType === 'text') {
-      return relevantNodes;
+
+    // --- XML / default path ---
+    // Keep existing XML behavior: if payload is a DOM node/document, serialize as XML.
+    // If payload is a string, return as-is.
+    if (typeof payload === 'string') return payload;
+    try {
+      if (payload && payload.nodeType) {
+        // Document => serialize documentElement, Node => serialize node
+        const node = payload.nodeType === Node.DOCUMENT_NODE ? payload.documentElement : payload;
+        return new XMLSerializer().serializeToString(node);
+      }
+    } catch (_e) {
+      // fallthrough
     }
-    throw new Error('unknown instance type ', instanceType);
+
+    // As a last resort for non-XML odd payloads:
+    return String(payload ?? '');
+  }
+
+  /**
+   * Convert a JSON lens node (JSONNode) or other value into plain JSON (no circular refs).
+   * This must NEVER return JSONNode objects.
+   *
+   * @param {any} v
+   * @returns {any} plain JSON value
+   */
+  _toPlainJson(v) {
+    if (v == null) return null;
+
+    // If it's already a plain primitive, keep it
+    const t = typeof v;
+    if (t === 'string' || t === 'number' || t === 'boolean') return v;
+
+    // JSON lens node (your JSONNode objects)
+    if (v.__jsonlens__ === true) {
+      return this._jsonLensNodeToPlain(v);
+    }
+
+    // Arrays: convert elements
+    if (Array.isArray(v)) {
+      return v.map(x => this._toPlainJson(x));
+    }
+
+    // Plain objects: best-effort convert (should be rare here)
+    // Avoid circular refs by only copying own enumerable props.
+    const out = {};
+    for (const [k, val] of Object.entries(v)) {
+      out[k] = this._toPlainJson(val);
+    }
+    return out;
+  }
+
+  /**
+   * Convert a single JSON lens node (JSONNode) into a plain JS value by traversing children.
+   *
+   * Assumptions (based on your JSON lens structure):
+   * - node.value holds the underlying JS value for leaf nodes
+   * - node.children is an array for arrays/objects
+   * - node.get(keyOrIndex) returns child node for objects/arrays
+   *
+   * This function intentionally does NOT touch node.parent.
+   *
+   * @param {any} node JSONNode
+   * @returns {any}
+   */
+  _jsonLensNodeToPlain(node) {
+    // If node.value is a primitive or null, return it
+    // (Many JSON lens implementations store actual scalar in .value)
+    const val = node.value;
+    if (val === null || val === undefined || typeof val === 'string' || typeof val === 'number' || typeof val === 'boolean') {
+      return val ?? null;
+    }
+
+    // If the node represents an array
+    if (Array.isArray(val)) {
+      // Prefer node.children if present; fall back to val (might be raw JS)
+      const kids = Array.isArray(node.children) ? node.children : val;
+      return kids.map(child => this._toPlainJson(child));
+    }
+
+    // If the node represents an object
+    if (typeof val === 'object') {
+      // If this is already a plain JS object (not a JSONNode), convert it
+      // but in lens setups val might be plain object while children are lens nodes.
+      const result = {};
+
+      // Prefer iterating keys from val
+      for (const key of Object.keys(val)) {
+        // Try lens navigation first
+        if (typeof node.get === 'function') {
+          const child = node.get(key);
+          result[key] = this._toPlainJson(child ?? val[key]);
+        } else {
+          result[key] = this._toPlainJson(val[key]);
+        }
+      }
+      return result;
+    }
+    // Fallback: last-resort scalar conversion
+    try {
+      if (typeof node.get === 'function') {
+        // Some lens nodes return scalar via get()
+        return this._toPlainJson(node.get());
+      }
+    } catch (_e) {
+      // ignore
+    }
+    return String(val);
   }
   _getHeaders() {
     const headers = new Headers();
@@ -25558,50 +27838,68 @@ class FxSubmission extends ForeElementMixin {
    * @param data
    * @private
    */
-  _handleResponse(data, resolvedUrl, contentType) {
-    // console.log('_handleResponse ', data);
-
+  async _handleResponse(data, resolvedUrl, contentType) {
     const targetInstance = this._getTargetInstance();
     if (this.replace === 'instance') {
-      if (targetInstance) {
-        if (this.targetref) {
-          const [theTarget] = evaluateXPath(this.targetref, targetInstance.instanceData.firstElementChild, this);
-          console.log('theTarget', theTarget);
-          if (this.responseMediatype === 'application/xml' || this.responseMediatype === 'text/html') {
-            const clone = data.firstElementChild;
-            const parent = theTarget.parentNode;
-            parent.replaceChild(clone, theTarget);
-            console.log('finally ', parent);
+      // ### contentType handling (HTML special-case)
+      if (contentType && contentType.includes('html')) {
+        let effectiveData = data;
+        if (!data?.nodeType) {
+          try {
+            effectiveData = new DOMParser().parseFromString(data, 'text/html');
+          } catch {
+            Fore.dispatch(this, 'error', {
+              message: 'could not parse data as HTML'
+            });
           }
-          if (this.responseMediatype.startsWith('text/')) {
-            theTarget.textContent = data;
-          }
-          if (this.responseMediatype === 'application/json') {
-            console.warn('targetref is not supported for application/json responses');
-          }
-        } else if (this.into) {
-          const [theTarget] = evaluateXPath(this.into, targetInstance.instanceData.firstElementChild, this);
-          console.log('theTarget', theTarget);
-          if (data.nodeType === Node.DOCUMENT_NODE) {
-            theTarget.appendChild(data.firstElementChild);
-          } else {
-            theTarget.innerHTML = data;
-          }
-        } else {
-          const instanceData = data;
-          targetInstance.instanceData = instanceData;
-          // console.log('### replaced instance ', this.getModel().instances);
-          // console.log('### replaced instance ', targetInstance.instanceData);
         }
-
-        // Skip any refreshes if the model is not yet inited
-        if (this.model.inited) {
-          this.model.updateModel(); // force update
-          this.getOwnerForm().refresh(true);
-        }
-      } else {
+        targetInstance.instanceData = effectiveData;
+      }
+      if (!targetInstance) {
         throw new Error(`target instance not found: ${targetInstance}`);
       }
+      if (this.targetref) {
+        const [theTarget] = evaluateXPath(this.targetref, targetInstance.instanceData.firstElementChild, this);
+        if (this.responseMediatype === 'application/xml' || this.responseMediatype === 'text/html') {
+          const clone = data.firstElementChild;
+          const parent = theTarget.parentNode;
+          parent.replaceChild(clone, theTarget);
+        }
+        if (this.responseMediatype && this.responseMediatype.startsWith('text/')) {
+          theTarget.textContent = data;
+        }
+        if (this.responseMediatype === 'application/json') {
+          console.warn('targetref is not supported for application/json responses');
+        }
+      } else if (this.into) {
+        const [theTarget] = evaluateXPath(this.into, targetInstance.instanceData.firstElementChild, this);
+        if (data?.nodeType === Node.DOCUMENT_NODE) {
+          theTarget.appendChild(data.firstElementChild);
+        } else {
+          theTarget.innerHTML = data;
+        }
+      } else {
+        // ✅ This is the critical replace="instance" case
+        targetInstance.instanceData = data;
+      }
+
+      // Skip any refreshes if the model is not yet inited
+      if (this.model.inited) {
+        // Rebuild model items / binds against the new instance root
+        this.model.updateModel();
+
+        // ✅ treat instance replacement as a structural change
+        const fore = typeof this.getOwnerForm === 'function' && this.getOwnerForm() || this.closest('fx-fore') || this.getModel()?.parentNode;
+        if (fore) {
+          fore.someInstanceDataStructureChanged = true;
+          if (typeof fore.scanForNewTemplateExpressionsNextRefresh === 'function') {
+            fore.scanForNewTemplateExpressionsNextRefresh();
+          }
+          // ✅ IMPORTANT: await, otherwise tests/action-pipeline can out-run the refresh
+          await fore.refresh(true);
+        }
+      }
+      return;
     }
     if (this.replace === 'download') {
       const target = this._getProperty('target');
@@ -25613,6 +27911,7 @@ class FxSubmission extends ForeElementMixin {
       downloadLink.setAttribute('href', `data:${contentType},${encodeURIComponent(data)}`);
       document.body.appendChild(downloadLink);
       downloadLink.click();
+      return;
     }
     if (this.replace === 'all') {
       const target = this._getProperty('target');
@@ -25626,20 +27925,16 @@ class FxSubmission extends ForeElementMixin {
         document.close();
         window.location.href = resolvedUrl;
       }
-      // document.getElementsByTagName('html')[0].innerHTML = data;
+      return;
     }
-
     if (this.replace === 'target') {
-      // const target = this.getAttribute('target');
       const target = this._getProperty('target');
       const targetNode = document.querySelector(target);
       if (targetNode) {
-        if (contentType.startsWith('text/html')) {
+        if (contentType && contentType.startsWith('text/html')) {
           targetNode.innerHTML = data;
         }
-        if (this.responseMediatype.startsWith('image/svg')) {
-          const parser = new DOMParser();
-          parser.parseFromString(data, 'image/svg+xml');
+        if (this.responseMediatype && this.responseMediatype.startsWith('image/svg')) {
           const objectURL = URL.createObjectURL(data);
           targetNode.src = objectURL;
         }
@@ -25648,12 +27943,12 @@ class FxSubmission extends ForeElementMixin {
           message: `targetNode for selector ${target} not found`
         });
       }
+      return;
     }
     if (this.replace === 'redirect') {
       window.location.href = data;
     }
   }
-
   /*
   _handleError() {
     // this.dispatch('submit-error', {});
@@ -25701,7 +27996,6 @@ class FxSubmission extends ForeElementMixin {
     }
   */
 }
-
 if (!customElements.get('fx-submission')) {
   customElements.define('fx-submission', FxSubmission);
 }
@@ -25740,15 +28034,34 @@ class FxVariable extends ForeElementMixin {
     this.valueQuery = '';
     this.value = null;
     this.precedingVariables = [];
+    // Re-entrancy guard for variable evaluation
+    this._isRefreshing = false;
+    // Cached typed value (Fonto sequence wrapper)
+    this._value = null;
   }
   connectedCallback() {
+    super.connectedCallback();
     this.name = this.getAttribute('name');
     this.valueQuery = this.getAttribute('value');
   }
   refresh() {
-    const inscope = getInScopeContext(this, this.valueQuery);
-    const values = evaluateXPath(this.valueQuery, inscope, this, this.precedingVariables);
-    this.value = typedValueFactory(values, domFacade);
+    // Prevent re-entrant refresh loops (variable evaluation can consult variables again)
+    if (this._isRefreshing) return;
+    this._isRefreshing = true;
+    try {
+      // Ensure we have the current expression
+      this.valueQuery = this.getAttribute('value') || this.valueQuery || '';
+      const inscope = getInScopeContext(this, this.valueQuery);
+
+      // Evaluate using the preceding variables snapshot (do NOT pull live variables here)
+      const values = evaluateXPath(this.valueQuery, inscope, this, this.precedingVariables);
+
+      // Cache typed value for other computations to consume without triggering evaluation
+      this._value = typedValueFactory(values, domFacade);
+      this.value = this._value;
+    } finally {
+      this._isRefreshing = false;
+    }
   }
 
   /**
@@ -25767,9 +28080,16 @@ class FxVariable extends ForeElementMixin {
 
     // Set precedingVariables based on inScopeVariables
     this.precedingVariables = Array.from(inScopeVariables.entries()).map(([name, variable]) => {
+      // IMPORTANT: do not trigger evaluation while taking the snapshot
+      if (variable && variable._isRefreshing) {
+        return {
+          name,
+          value: null
+        };
+      }
       return {
         name,
-        value: variable.value
+        value: variable?._value ?? variable?.value ?? null
       };
     });
   }
@@ -25978,7 +28298,6 @@ class AbstractControl extends UIElement {
     // Relevance.handleRelevance(this);
     // todo: handleType()
   }
-
   _getForm() {
     return this.getModel().parentNode;
   }
@@ -26024,7 +28343,6 @@ class AbstractControl extends UIElement {
     }
     */
   }
-
   _updateRequired() {
     if (this.modelItem.required) {
       // if (this.getOwnerForm().ready){
@@ -26049,12 +28367,32 @@ class AbstractControl extends UIElement {
     }
   }
   _toggleValid(valid) {
+    // Used by required handling (and potentially other callers).
+    // It must also fire validity events and sync aria-invalid.
+    const wasInvalid = this.hasAttribute('invalid');
     if (valid) {
       this.removeAttribute('invalid');
       this.setAttribute('valid', '');
     } else {
       this.removeAttribute('valid');
       this.setAttribute('invalid', '');
+    }
+    this._syncAriaInvalid();
+    const isInvalid = this.hasAttribute('invalid');
+    // Only dispatch when the state actually changed
+    if (wasInvalid !== isInvalid) {
+      this._dispatchEvent(isInvalid ? 'invalid' : 'valid');
+    }
+  }
+  _syncAriaInvalid() {
+    // Keep widget aria-invalid in sync with the *control* state, regardless of
+    // whether invalidity comes from constraint, required emptiness, etc.
+    try {
+      const w = this.getWidget?.() || this.widget;
+      if (!w) return;
+      w.setAttribute('aria-invalid', this.hasAttribute('invalid') ? 'true' : 'false');
+    } catch (e) {
+      // ignore: widget might not exist yet
     }
   }
   handleReadonly() {
@@ -26074,17 +28412,24 @@ class AbstractControl extends UIElement {
   }
 
   // todo - review alert handling altogether. There could be potentially multiple ones in model
+  // TODO: both required and handleValid set valid attrs and aria attrs. Duplicate code
   handleValid() {
     // console.log('mip valid', this.modelItem.required);
 
     // console.log('late modelItem', mi);
-    if (this.isValid() !== this.modelItem.constraint) {
-      if (this.modelItem.constraint) {
+    const hasValue = this.modelItem.value !== '';
+    const isRequired = this.modelItem.required;
+    const isValidAccordingToRequired = isRequired ? hasValue : true;
+    const isValidNow = this.modelItem.constraint && isValidAccordingToRequired;
+    if (this.isValid() !== isValidNow) {
+      if (isValidNow) {
         // if (alert) alert.style.display = 'none';
         this._dispatchEvent('valid');
         this.setAttribute('valid', '');
-        this.getWidget().setAttribute('aria-invalid', 'false');
         this.removeAttribute('invalid');
+        this.getWidget().setAttribute('aria-invalid', 'false');
+        // also reset other dependent CSS classes
+        this.classList.remove('isEmpty');
       } else {
         this.setAttribute('invalid', '');
         this.getWidget().setAttribute('aria-invalid', 'true');
@@ -26116,33 +28461,40 @@ class AbstractControl extends UIElement {
         this._dispatchEvent('invalid');
       }
     }
+
+    // Ensure aria-invalid matches the current control state even if
+    // we didn't enter the state-change branch above.
+    this._syncAriaInvalid();
   }
   handleRelevant() {
-    // console.log('mip valid', this.modelItem.enabled);
+    // IMPORTANT: don't clear relevant/nonrelevant BEFORE comparing states.
+    // Otherwise isEnabled() (based on attributes) always reads as "enabled"
+    // and we can never detect a transition back to relevant.
     const item = this.modelItem.node;
-    this.removeAttribute('relevant');
-    this.removeAttribute('nonrelevant');
+    const wasEnabled = this.isEnabled();
+
+    // Determine new enabled state
+    let newEnabled = !!this.modelItem.relevant;
+
+    // If a nodeset resolves to an empty array, treat the control as nonrelevant
     if (Array.isArray(item) && item.length === 0) {
-      this._dispatchEvent('nonrelevant');
-      this.setAttribute('nonrelevant', '');
-      // this.style.display = 'none';
-      return;
+      newEnabled = false;
     }
-    if (this.isEnabled() !== this.modelItem.relevant) {
-      if (this.modelItem.relevant) {
-        this._dispatchEvent('relevant');
-        // this._fadeIn(this, this.display);
-        this.setAttribute('relevant', '');
-        // this.style.display = this.display;
-      } else {
-        this._dispatchEvent('nonrelevant');
-        // this._fadeOut(this);
-        this.setAttribute('nonrelevant', '');
-        // this.style.display = 'none';
-      }
+
+    // Apply attributes
+    if (newEnabled) {
+      this.setAttribute('relevant', '');
+      this.removeAttribute('nonrelevant');
+    } else {
+      this.setAttribute('nonrelevant', '');
+      this.removeAttribute('relevant');
+    }
+
+    // Dispatch only on actual change
+    if (wasEnabled !== newEnabled) {
+      this._dispatchEvent(newEnabled ? 'relevant' : 'nonrelevant');
     }
   }
-
   isRequired() {
     return this.hasAttribute('required');
   }
@@ -26335,6 +28687,11 @@ class FxControl extends AbstractControl {
     this.attachShadow({
       mode: 'open'
     });
+
+    /**
+     * Flag that is raised while refreshing, to ignore any updates from the widget inside of us
+     */
+    this._isRefreshing = false;
   }
   static get properties() {
     return {
@@ -26354,6 +28711,13 @@ class FxControl extends AbstractControl {
     if (this.valueProp === 'selectedOptions') {
       // We have multiple! Just return that as space-separated for now
       return [...this.widget.selectedOptions].map(option => option.value).join(' ');
+    }
+    if (this.getAttribute('as') === 'xml') {
+      // We are setting serialized XML here, so when roundtripping, parse it
+      const value = this.widget[this.valueProp];
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(value, 'application/xml');
+      return doc.documentElement;
     }
     return this.widget[this.valueProp];
   }
@@ -26402,7 +28766,6 @@ class FxControl extends AbstractControl {
         e.preventDefault();
         // e.stopImmediatePropagation();
       }
-
       this.widget.focus();
     });
     const defaultValueProp = this.widget.hasAttribute('multiple') ? 'selectedOptions' : 'value';
@@ -26434,7 +28797,6 @@ class FxControl extends AbstractControl {
       });
       this.updateEvent = 'blur'; // needs to be registered too
     }
-
     if (this.debounceDelay) {
       listenOn.addEventListener(this.updateEvent, debounce(this, () => {
         // console.log('eventlistener ', this.updateEvent);
@@ -26443,6 +28805,10 @@ class FxControl extends AbstractControl {
       }, this.debounceDelay));
     } else {
       listenOn.addEventListener(this.updateEvent, event => {
+        if (this._isRefreshing) {
+          // We are refreshing. No use in updating
+          return;
+        }
         this.setValue(this._getValueOfWidget());
       });
       listenOn.addEventListener('blur', event => {
@@ -26473,7 +28839,7 @@ class FxControl extends AbstractControl {
    * activates a control that uses 'on-demand' attribute
    */
   activate() {
-    console.log('fx-control.activate() called');
+    // console.log('fx-control.activate() called');
     this.removeAttribute('on-demand');
     this.style.display = '';
     this.refresh(true);
@@ -26503,7 +28869,7 @@ class FxControl extends AbstractControl {
    * @param val the new value to be set
    */
   setValue(val) {
-    console.log('Control.setValue', val, 'on', this);
+    // console.log('Control.setValue', val, 'on', this);
     const modelitem = this.getModelItem();
     if (this.getAttribute('class')) {
       this.classList.add('visited');
@@ -26514,13 +28880,11 @@ class FxControl extends AbstractControl {
       console.warn('attempt to change readonly node', modelitem);
       return; // do nothing when modelItem is readonly
     }
-
     if (this.getAttribute('as') === 'node') {
       const replace = this.shadowRoot.getElementById('replace');
-      const widgetValue = this.getWidget()[this.valueProp];
-      replace.replace(this.nodeset, widgetValue);
-      if (modelitem && widgetValue && widgetValue !== modelitem.value) {
-        modelitem.value = widgetValue;
+      replace.replace(this.nodeset, val);
+      if (modelitem && val && val !== modelitem.value) {
+        modelitem.value = val;
         FxModel.dataChanged = true;
         replace.actionPerformed();
       }
@@ -26538,7 +28902,6 @@ class FxControl extends AbstractControl {
     setval.actionPerformed(false);
     // this.visited = true;
   }
-
   _replaceNode(node) {
     // Note: clone the node while replacing to prevent the instances to leak through
     if (node.nodeType === Node.ATTRIBUTE_NODE) {
@@ -26652,11 +29015,14 @@ class FxControl extends AbstractControl {
     if (this.hasAttribute('as')) {
       const as = this.getAttribute('as');
 
-      // ### when there's an `as=text` attribute serialize nodeset to prettified string
-      if (as === 'text') {
+      // ### when there's an `as="xml"` attribute serialize nodeset to prettified string
+      if (as === 'xml') {
         const serializer = new XMLSerializer();
-        const pretty = Fore.prettifyXml(serializer.serializeToString(this.nodeset));
-        widget.value = pretty;
+        const pretty = serializer.serializeToString(this.nodeset);
+        if (widget[this.valueProp] === pretty) {
+          return;
+        }
+        widget[this.valueProp] = pretty;
       }
       if (as === 'node' && this.nodeset !== widget.value) {
         // const oldVal = this.nodeset.innerHTML;
@@ -26673,22 +29039,22 @@ class FxControl extends AbstractControl {
         // widget[this.valueProp] = this.nodeset.cloneNode(true);
         // console.log('passed value to widget', widget.value);
       }
-
       return;
     }
 
     // ### when there's a src Fore is used as widget and will be loaded from external file
-    if (this.src && !this.loaded && this.modelItem.relevant) {
+    if (this.src && !this.loaded && !this.loading && this.modelItem.relevant) {
       // ### evaluate initial data if necessary
 
       if (this.initial) {
         this.initialNode = evaluateXPathToFirstNode(this.initial, this.nodeset, this);
         // console.log('initialNodes', this.initialNode);
       }
-
+      this.loading = true;
       // ### load the markup from src
       await this._loadForeFromSrc();
       this.loaded = true;
+      this.loading = false;
 
       // ### replace default instance of embedded Fore with initial nodes
       // const innerInstance = this.querySelector('fx-instance');
@@ -26790,16 +29156,21 @@ class FxControl extends AbstractControl {
     return this.querySelector('template');
   }
   async refresh(force = false) {
-    console.log('🔄 fx-control refresh', this);
-    super.refresh(force);
-    // console.log('refresh template', this.template);
-    // const {widget} = this;
+    try {
+      this._isRefreshing = true;
+      // console.log('🔄 fx-control refresh', this);
+      super.refresh(force);
+      // console.log('refresh template', this.template);
+      // const {widget} = this;
 
-    // ### if we find a ref on control we have a 'select' control of some kind
-    const widget = this.getWidget();
-    this._handleBoundWidget(widget, force);
-    this._handleDataAttributeBinding();
-    Fore.refreshChildren(this, force);
+      // ### if we find a ref on control we have a 'select' control of some kind
+      const widget = this.getWidget();
+      this._handleBoundWidget(widget, force);
+      this._handleDataAttributeBinding();
+    } finally {
+      this._isRefreshing = false;
+    }
+    await Fore.refreshChildren(this, force);
   }
 
   /**
@@ -26990,7 +29361,6 @@ class FxContainer extends UIElement {
       */
     };
   }
-
   constructor() {
     super();
     this.attachShadow({
@@ -27200,7 +29570,7 @@ class FxGroup extends FxContainer {
     super.refresh(force);
     // Make the maybe filtered refresh an unconditional forced refresh: This fx-group changes the
     // context item
-    Fore.refreshChildren(this, !!force);
+    return Fore.refreshChildren(this, !!force);
   }
 
   // todo: this code should go
@@ -27263,12 +29633,9 @@ class FxHint extends AbstractControl {
   }
   */
 }
-
 if (!customElements.get('fx-hint')) {
   customElements.define('fx-hint', FxHint);
 }
-
-// import {markdown} from '../drawdown.js';
 
 /**
  * todo: review placing of value. should probably work with value attribute and not allow slotted content.
@@ -27311,7 +29678,7 @@ class FxOutput extends AbstractControl {
         `;
     const outputHtml = `
             <slot name="label"></slot>
-            
+
             <span id="value">
                 <slot name="default"></slot>
             </span>
@@ -27333,7 +29700,6 @@ class FxOutput extends AbstractControl {
     });
     */
   }
-
   async refresh() {
     // Resolve the ref first. The ref will set the `nodeset` which is important for the 'context'
     if (this.ref) {
@@ -27381,51 +29747,19 @@ class FxOutput extends AbstractControl {
     // }
 
     if (this.mediatype === 'html') {
-      if (this.modelItem.node) {
-        this.shadowRoot.querySelector('#default');
-        const {
-          node
-        } = this.modelItem;
-        if (node.nodeType) {
-          valueWrapper.append(node);
-          // this.appendChild(node);
+      // JSON instances use a lens, so modelItem.node is null — fall back to this.value
+      const source = this.modelItem.node ?? this.value;
+      if (source) {
+        if (source.nodeType) {
+          valueWrapper.append(source);
           return;
         }
-
-        // ### try to parse as string
-        const tmpDoc = new DOMParser().parseFromString(node, 'text/html');
-        const theNode = tmpDoc.body.childNodes;
-        // console.log('actual node', theNode)
-        Array.from(theNode).forEach(n => {
+        // parse string as HTML
+        const tmpDoc = new DOMParser().parseFromString(source, 'text/html');
+        Array.from(tmpDoc.body.childNodes).forEach(n => {
           valueWrapper.append(n);
         });
-        // valueWrapper.append(theNode);
-
-        // valueWrapper.innerHTML=node;
-        /*
-        if (node.nodeType) {
-          this.appendChild(node);
-          return;
-        }
-        Object.entries(node).map(obj => {
-          // valueWrapper.appendChild(obj[1]);
-          this.appendChild(obj[1]);
-        });
-        */
-        /*
-        Object.entries(node).map(obj => {
-          // valueWrapper.appendChild(obj[1]);
-          this.appendChild(obj[1]);
-        });
-        */
-
-        return;
       }
-
-      // this.innerHTML = this.value.outerHTML;
-      // valueWrapper.innerHTML = this.value.outerHTML;
-
-      // this.shadowRoot.appendChild(this.value);
       return;
     }
     if (this.mediatype === 'image') {
@@ -27488,13 +29822,16 @@ class FxRepeatitem extends withDraggability(UIElement) {
             ${html}
         `;
     this.getOwnerForm().registerLazyElement(this);
+
+    // Keep ref as a *property only* so repeatitem does not become the nearest [ref] for its children.
+    // Its children already get their context from the repeatitem via getInScopeContext().
     this.ref = `${this.parentNode.ref}`;
     this.tabindex = 0;
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this.removeEventListener('click', this._dispatchIndexChange);
-    this.removeEventListener('focusin', this._handleFocus);
+    this.removeEventListener('focusin', this._dispatchIndexChange);
   }
   init() {
     // console.log('repeatitem init model ', this.nodeset);
@@ -27531,6 +29868,17 @@ class FxRepeatitem extends withDraggability(UIElement) {
     // Refresh after all of the listeners for that item-changed have had their turn to update!
     this.getOwnerForm().refresh();
   }
+  update(_modelItem) {
+    // Repeatitems must refresh when their ModelItem facets (e.g. relevant) change,
+    // but they should NOT have a `ref` attribute (that would change inscope context resolution).
+    const fore = this.getOwnerForm();
+    if (!fore) return;
+    if (fore.isRefreshPhase) {
+      fore.addToBatchedNotifications(this);
+    } else {
+      this.refresh();
+    }
+  }
   async refresh(force = false) {
     // this.modelItem = this.getModelItem();
     this.attachObserver();
@@ -27550,8 +29898,6 @@ if (!customElements.get('fx-repeatitem')) {
   window.customElements.define('fx-repeatitem', FxRepeatitem);
 }
 
-// import {DependencyNotifyingDomFacade} from '../DependencyNotifyingDomFacade';
-
 /**
  * `fx-repeat`
  *
@@ -27560,12 +29906,7 @@ if (!customElements.get('fx-repeatitem')) {
  * Template is a standard HTML `<template>` element. Once instanciated the template
  * is moved to the shadowDOM of the repeat for safe re-use.
  *
- *
- *
  * @customElement
- * @demo demo/todo.html
- *
- * todo: it should be seriously be considered to extend FxContainer instead but needs refactoring first.
  * @extends {ForeElementMixin}
  */
 class FxRepeat extends withDraggability(UIElement) {
@@ -27610,120 +29951,194 @@ class FxRepeat extends withDraggability(UIElement) {
       delegatesFocus: true
     });
     this.opNum = 0; // global number of operations
+
+    this.handleInsertHandler = null;
+    this.handleDeleteHandler = null;
+
+    // Tracks ModelItems we observe due to JSON lens lookups inside predicate expressions
+    // (e.g. instance('data')?ui?query). Needed so the repeat refreshes when the query changes.
+    this._jsonPredicateDeps = new Set();
+    this._jsonPredicateDepsObserved = false;
+
+    // Flag used to suppress "programmatic index changed" notifications when setIndex()
+    // is called as a direct reaction to a repeatitem's item-changed event.
+    this._settingIndexFromItemChanged = false;
   }
 
+  // ------------------------------------------------------------
+  // JSON ref helpers (for routing insert/delete events correctly)
+  // ------------------------------------------------------------
+
+  _stripJsonRefToContainer(ref) {
+    let s = String(ref || '').trim();
+    if (!s) return '';
+
+    // If this is a repeat nodeset ref like: instance('data')?movies?*[...]
+    // strip everything from "?*" onward => instance('data')?movies
+    const starPos = s.indexOf('?*');
+    if (starPos >= 0) s = s.slice(0, starPos).trim();
+
+    // Also strip trailing predicates if someone wrote ...?movies[...]
+    // (not common for lens refs, but keep it safe)
+    s = s.replace(/\[[\s\S]*\]\s*$/g, '').trim();
+    return s;
+  }
+  _inferArrayKeyFromRef() {
+    const r = String(this.ref || this.getAttribute('ref') || '').trim();
+
+    // instance('data')?movies?*...
+    let m = r.match(/\?([^?\[\]]+)\?\*\s*/);
+    if (m) return m[1];
+
+    // instance('data')?movies  (no ?*)
+    m = r.match(/\?([^?\[\]]+)\s*$/);
+    if (m) return m[1];
+    return null;
+  }
+  _sameJsonContainer(detailRef) {
+    const myContainer = this._stripJsonRefToContainer(this.ref);
+    const evContainer = this._stripJsonRefToContainer(detailRef);
+    if (!myContainer || !evContainer) return false;
+    return myContainer === evContainer;
+  }
+  _matchesJsonParent(detail) {
+    // Fallback routing based on insertedParent / insertedNodes.parent
+    const parent = detail?.insertedParent || detail?.insertedNodes?.parent || detail?.insertedNodes?.insertedParent || null;
+    if (!parent || !parent.__jsonlens__) return false;
+    const myKey = this._inferArrayKeyFromRef();
+    if (myKey && String(parent.keyOrIndex) !== String(myKey)) return false;
+
+    // If instance is known on both sides, ensure it matches
+    const myInstanceId = XPathUtil.resolveInstance(this, this.ref);
+    if (myInstanceId && parent.instanceId && String(myInstanceId) !== String(parent.instanceId)) {
+      return false;
+    }
+    return true;
+  }
   connectedCallback() {
     super.connectedCallback();
     this.template = this.querySelector('template');
-
-    // console.log('connectedCallback',this);
-    // this.display = window.getComputedStyle(this, null).getPropertyValue("display");
     this.ref = this.getAttribute('ref');
     this.dependencies.addXPath(this.ref);
-    // this.ref = this._getRef();
-    // console.log('### fx-repeat connected ', this.id);
     this.addEventListener('item-changed', e => {
+      // IMPORTANT: when *we* emit item-changed from the repeat (programmatic setIndex),
+      // we must not react to it (would recurse).
+      if (e && e.target === this) return;
+      if (e?.detail?.source === 'repeat') return;
       const {
         item
       } = e.detail;
-      this.setIndex(item.index);
+      this._settingIndexFromItemChanged = true;
+      try {
+        this.setIndex(item.index);
+      } finally {
+        this._settingIndexFromItemChanged = false;
+      }
     });
 
-    // Listen for insertion events
+    // ----------------
+    // INSERT handler
+    // ----------------
     this.handleInsertHandler = event => {
       const {
         detail
       } = event;
       const myForeId = this.getOwnerForm().id;
-      if (myForeId !== detail.foreId) {
+      if (myForeId !== detail.foreId) return;
+      const fore = this.getOwnerForm();
+
+      // Detect JSON insert (robust)
+      const insertedParent = detail?.insertedParent;
+      const insertedNode = detail?.insertedNodes;
+      const isJson = !!detail?.isJson || !!insertedParent?.__jsonlens__ || !!insertedNode?.__jsonlens__ || !!insertedNode?.parent?.__jsonlens__;
+      if (isJson) {
+        // IMPORTANT FIX:
+        // The old code compared detail.ref strictly to a computed container ref.
+        // For repeats like instance('data')?movies?*[predicate] the container is "instance('data')?movies"
+        // while detail.ref is usually exactly that container. But if we keep the predicate in this.ref,
+        // a strict string compare will FAIL and the insert never updates the DOM -> stays at 12.
+        //
+        // We accept the event if either:
+        //  1) detail.ref matches our container (predicate stripped), OR
+        //  2) insertedParent / insertedNode.parent matches our array key + instance.
+        const okByRef = this._sameJsonContainer(detail?.ref);
+        const okByParent = this._matchesJsonParent(detail);
+        if (!okByRef && !okByParent) return;
+        this._handleJsonInserted(detail);
         return;
       }
-      // todo: early out if this.ref does not match the ref of the inserted node. Avoid re-evaluating the nodeset
-      // if (this.ref !== detail.ref) return;
 
-      console.log('insert catched', detail);
-
-      // Step 1: Refresh/re-evaluate the nodeset
+      // ----------------
+      // XML insert: keep existing behavior
+      // ----------------
       const oldNodesetLength = this.nodeset.length;
       this._evalNodeset();
       const newNodesetLength = this.nodeset.length;
-      if (oldNodesetLength === newNodesetLength) {
-        return;
-      }
+      if (oldNodesetLength === newNodesetLength) return;
+      const inserted = detail.insertedNodes;
+      const insertionIndex = this.nodeset.indexOf(inserted) + 1; // 1-based
 
-      /**
-       * @type {number}
-       */
-      //      const insertionIndex = detail.index;
-      /**
-       * The newly inserted node. TODO: handle multiple?
-       * @type {Node}
-       */
-      const insertedNode = detail.insertedNodes;
-      const insertionIndex = this.nodeset.indexOf(insertedNode) + 1;
-      // Step 2: Get current repeat items and create a new item
-      /**
-       * @type {import('./fx-repeatitem.js').FxRepeatitem[]}
-       */
       const repeatItems = Array.from(this.querySelectorAll(':scope > fx-repeat-item, :scope > fx-repeatitem, :scope > .repeat-item'));
-
-      // todo: search fx-bind elements with same nodeset as this repeat - if present update modelItem instead of creating one
       const newRepeatItem = this._createNewRepeatItem();
-
-      // Step 3: Insert the new repeatItem at the correct position
-      const beforeNode = repeatItems[insertionIndex - 1] ?? null; // Null appends by default
+      const beforeNode = repeatItems[insertionIndex - 1] ?? null;
       this.insertBefore(newRepeatItem, beforeNode);
       newRepeatItem.index = insertionIndex;
       this._initVariables(newRepeatItem);
-
-      // Step 4: Assign the inserted nodeset to the new `repeatItem`
-      newRepeatItem.nodeset = detail.insertedNodes;
-
-      // Update all the indices following here
+      newRepeatItem.nodeset = inserted;
       for (let i = insertionIndex - 1; i < repeatItems.length; ++i) {
-        const sibling = repeatItems[i];
-        // TODO: handle the next ones
-        sibling.index += 1;
+        repeatItems[i].index += 1;
       }
-      this.setIndex(insertionIndex); // sets attribute + applies repeat-index + refresh
-
-      // Generate the parent `modelItem` for the new repeat item
+      this.setIndex(insertionIndex);
       this.opNum++;
-      const parentModelItem = FxBind.createModelItem(this.ref, detail.insertedNodes, newRepeatItem, this.opNum);
+      let parentModelItem = FxBind.createModelItem(this.ref, inserted, newRepeatItem, this.opNum);
+      // IMPORTANT: registerModelItem may return an existing canonical ModelItem for the same path.
+      // Always keep using the returned instance to avoid "ghost" ModelItems that still notify.
+      parentModelItem = this.getModel().registerModelItem(parentModelItem);
       newRepeatItem.modelItem = parentModelItem;
-      this.getModel().registerModelItem(parentModelItem);
-
-      // Step 5: Create modelItems recursively for child elements
       this._createModelItemsRecursively(newRepeatItem, parentModelItem);
-      // Step 6: Notify and refresh the UI
-      this.getOwnerForm().scanForNewTemplateExpressionsNextRefresh();
-      this.getOwnerForm().addToBatchedNotifications(newRepeatItem);
+      fore.scanForNewTemplateExpressionsNextRefresh();
+      fore.addToBatchedNotifications(newRepeatItem);
     };
+
+    // ----------------
+    // DELETE handler
+    // ----------------
     this.handleDeleteHandler = event => {
-      console.log('delete catched', event);
       const {
         detail
       } = event;
-      if (!detail || !detail.deletedNodes) {
+      if (!detail || !detail.deletedNodes || detail.deletedNodes.length === 0) return;
+      const fore = this.getOwnerForm();
+      const myForeId = fore?.id;
+      if (detail.foreId && myForeId !== detail.foreId) return;
+      const deletedNodes = Array.from(detail.deletedNodes || []);
+      const first = deletedNodes[0];
+      const isJson = !!detail.isJson || !!first?.__jsonlens__ || !!first?.parent?.__jsonlens__ || deletedNodes.some(n => n?.__jsonlens__ || n?.parent?.__jsonlens__);
+      if (isJson) {
+        // Route by parent array container, NOT by detail.ref string.
+        const parent = detail.parent && Array.isArray(detail.parent.value) && detail.parent || (first?.parent && Array.isArray(first.parent.value) ? first.parent : null);
+        if (!parent) return;
+        const myKey = this._inferArrayKeyFromRef();
+        if (myKey && String(parent.keyOrIndex) !== String(myKey)) return;
+        if (detail.instanceId && parent.instanceId && String(detail.instanceId) !== String(parent.instanceId)) {
+          return;
+        }
+        this._handleJsonDeleted(detail);
         return;
       }
 
-      // Remove corresponding repeat items for deleted nodes
+      // XML delete: keep existing behavior
       detail.deletedNodes.forEach(node => {
         this.handleDelete(node);
-        //        this.removeRepeatItemForNode(node);
       });
-
-      this.getOwnerForm().addToBatchedNotifications(this);
+      fore?.addToBatchedNotifications?.(this);
     };
-    // inside connectedCallback()
     document.addEventListener('insert', this.handleInsertHandler, true);
     document.addEventListener('deleted', this.handleDeleteHandler, true);
 
-    // if (this.getOwnerForm().lazyRefresh) {
-    /**
-     * @type {MutationRecord[]}
-     */
+    // ----------------
+    // Mutation observer (XML only)
+    // ----------------
     let bufferedMutationRecords = [];
     let debouncedOnMutations = null;
     this.mutationObserver = new MutationObserver(mutations => {
@@ -27751,12 +30166,7 @@ class FxRepeat extends withDraggability(UIElement) {
     });
     this.getOwnerForm().registerLazyElement(this);
     const style = `
-      :host{
-      }
-       .fade-out-bottom {
-          -webkit-animation: fade-out-bottom 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-          animation: fade-out-bottom 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-      }
+      :host{ }
       .fade-out-bottom {
           -webkit-animation: fade-out-bottom 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
           animation: fade-out-bottom 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -27765,19 +30175,89 @@ class FxRepeat extends withDraggability(UIElement) {
     const html = `
           <slot name="header"></slot>
           <slot></slot>
-          <slot name="footer"></slot>
-        `;
+  `;
     this.shadowRoot.innerHTML = `
-            <style>
-                ${style}
-            </style>
-            ${html}
-        `;
-
-    // this.init();
+      <style>${style}</style>
+      ${html}
+  `;
   }
 
+  /**
+   * JSON insert (incremental):
+   * - re-evaluate nodeset once to get authoritative post-insert ordering
+   * - insert one new repeatitem at the correct position (using detail.index)
+   * - rebind only shifted repeatitems (pos..end) and refresh them
+   */
+  _handleJsonInserted(detail) {
+    const fore = this.getOwnerForm();
+    const repeatItems = () => Array.from(this.querySelectorAll(':scope > fx-repeat-item, :scope > fx-repeatitem, :scope > .repeat-item'));
+
+    // 1) Determine insertion index (1-based) from the event.
+    // Do NOT use indexOf(insertedNodes) for JSON.
+    let insertionIndex1 = Number(detail.index);
+    if (!Number.isFinite(insertionIndex1) || insertionIndex1 < 1) {
+      const ki = detail.insertedNodes?.keyOrIndex;
+      if (typeof ki === 'number') insertionIndex1 = ki + 1;
+    }
+    if (!Number.isFinite(insertionIndex1) || insertionIndex1 < 1) insertionIndex1 = 1;
+
+    // 2) Re-evaluate nodeset AFTER mutation to get correct order.
+    const oldLen = Array.isArray(this.nodeset) ? this.nodeset.length : 0;
+    this._evalNodeset();
+    const newLen = Array.isArray(this.nodeset) ? this.nodeset.length : 0;
+    if (newLen === oldLen) return;
+
+    // Clamp
+    insertionIndex1 = Math.max(1, Math.min(insertionIndex1, newLen));
+    const pos0 = insertionIndex1 - 1;
+
+    // 3) Insert DOM row: set nodeset/index BEFORE inserting into DOM.
+    const before = repeatItems();
+    const beforeNode = before[pos0] ?? null;
+    const newRepeatItem = this._createNewRepeatItem();
+    newRepeatItem.index = pos0 + 1;
+    this._initVariables(newRepeatItem);
+    newRepeatItem.nodeset = this.nodeset[pos0];
+    this.insertBefore(newRepeatItem, beforeNode);
+
+    // Ensure it gets initialized/rendered
+    fore.registerLazyElement(newRepeatItem);
+    if (fore.createNodes) {
+      fore.initData(newRepeatItem);
+    }
+    fore.scanForNewTemplateExpressionsNextRefresh();
+    fore.addToBatchedNotifications(newRepeatItem);
+
+    // 4) Rebind shifted rows (pos0+1..end) and refresh only those.
+    const after = repeatItems();
+    for (let i = pos0 + 1; i < after.length; i++) {
+      const ri = after[i];
+      ri.index = i + 1;
+      const newNode = this.nodeset[i];
+      if (ri.nodeset !== newNode) {
+        ri.nodeset = newNode;
+        if (fore.createNodes) fore.initData(ri);
+      }
+      fore.addToBatchedNotifications(ri);
+    }
+
+    // Select inserted row
+    this.setIndex(pos0 + 1);
+  }
   disconnectedCallback() {
+    // Ensure UIElement cleanup runs (removes observer for primary binding, etc.)
+    if (super.disconnectedCallback) super.disconnectedCallback();
+
+    // Remove observers that were added for predicate dependencies
+    if (this._jsonPredicateDeps && this._jsonPredicateDeps.size) {
+      for (const mi of this._jsonPredicateDeps) {
+        if (mi && typeof mi.removeObserver === 'function') {
+          mi.removeObserver(this);
+        }
+      }
+      this._jsonPredicateDeps.clear();
+    }
+    this._jsonPredicateDepsObserved = false;
     document.removeEventListener('deleted', this.handleDeleteHandler, true);
     document.removeEventListener('insert', this.handleInsertHandler, true);
   }
@@ -27788,15 +30268,28 @@ class FxRepeat extends withDraggability(UIElement) {
     this.size = size;
   }
   setIndex(index) {
-    // console.log('new repeat index ', index);
     this.index = index;
     const rItems = this.querySelectorAll(':scope > fx-repeatitem');
-    this.applyIndex(rItems[this.index - 1]);
+    const selected = rItems[this.index - 1];
+    this.applyIndex(selected);
 
-    // trying to do without
-    // this.getOwnerForm().refresh({ reason: 'index-function', elementLocalnamesWithChanges: [] });
+    // If setIndex is called programmatically (insert/delete), we must notify dependents
+    // (fx-group/fx-control/fx-output with index('repeatId') in ref).
+    //
+    // When setIndex is invoked as a reaction to a repeatitem click/focus,
+    // the repeatitem already dispatched item-changed and dependents already react.
+    if (!this._settingIndexFromItemChanged) {
+      this.dispatchEvent(new CustomEvent('item-changed', {
+        composed: false,
+        bubbles: false,
+        detail: {
+          item: selected || null,
+          index: this.index,
+          source: 'repeat'
+        }
+      }));
+    }
   }
-
   applyIndex(repeatItem) {
     this._removeIndexMarker();
     if (repeatItem) {
@@ -27813,89 +30306,94 @@ class FxRepeat extends withDraggability(UIElement) {
     return this.getAttribute('ref');
   }
   _createModelItemsRecursively(parentNode, parentModelItem) {
-    const parentWithDewey = parentModelItem?.path || null; // e.g. $default/AllowanceCharge[2]_1
-    parentWithDewey ? parentWithDewey.replace(/_\d+$/, '') : null; // e.g. $default/AllowanceCharge[2]
-
-    // Robust Dewey rewrite that tolerates $inst vs instance('inst') forms
+    parentModelItem?.path || null;
     const __applyDeweyRewrite = mi => {
       if (!mi || typeof mi.path !== 'string' || !parentModelItem?.path) return;
-      const pWith = parentModelItem.path; // e.g. $default/AllowanceCharge[2]_1  or  instance('default')/AllowanceCharge[2]_1
+      const pWith = parentModelItem.path;
       const opMatch = pWith.match(/_(\d+)$/);
       if (!opMatch) return;
       const op = opMatch[1];
-
-      // Normalize to $name/ and strip _n on parent; normalize child for prefix test only
       const toDollar = s => s.replace(/^instance\('([^']+)'\)\//, (_m, g1) => `$${g1}/`);
-      const parentBaseNorm = toDollar(pWith).replace(/_\d+$/, ''); // $default/AllowanceCharge[2]
+      const parentBaseNorm = toDollar(pWith).replace(/_\d+$/, '');
       const childNorm = toDollar(mi.path);
-      if (!childNorm.startsWith(parentBaseNorm)) return; // unrelated subtree
-
-      // Preserve original style of child's instance prefix
+      if (!childNorm.startsWith(parentBaseNorm)) return;
       const childUsesInstanceFn = /^instance\('/.test(mi.path);
       const parentBaseInChildStyle = childUsesInstanceFn ? parentBaseNorm.replace(/^\$([A-Za-z0-9_-]+)\//, `instance('$1')/`) : parentBaseNorm;
-
-      // If already suffixed for this parent, nothing to do
       if (mi.path.startsWith(`${parentBaseInChildStyle}_`)) return;
-
-      // Inject _op immediately after the parent base segment
       mi.path = `${parentBaseInChildStyle}_${op}${mi.path.slice(parentBaseInChildStyle.length)}`;
     };
     Array.from(parentNode.children).forEach(child => {
       const nextParentMI = parentModelItem;
-
-      // Skip native/embedded widgets that may carry a 'ref' but are UI only
       const isWidgetEl = child && (child.classList && child.classList.contains('widget') || typeof Fore !== 'undefined' && Fore.isWidget && Fore.isWidget(child) || child.tagName && ['INPUT', 'SELECT', 'TEXTAREA', 'OPTION', 'DATALIST'].includes(child.tagName));
       if (!isWidgetEl && child.hasAttribute('ref')) {
         const ref = child.getAttribute('ref').trim();
         if (ref && ref !== '.') {
-          // Evaluate the FULL ref once — this yields the terminal (last) node(s)
           let node = evaluateXPath(ref, parentModelItem.node, this);
           if (Array.isArray(node)) node = node[0];
           if (node) {
             let modelItem = this.getModel().getModelItem(node);
             if (!modelItem) {
-              // Create a ModelItem only for the final node; children never get their own opNum
               modelItem = FxBind.createModelItem(ref, node, child, null);
               modelItem.parentModelItem = parentModelItem;
-              this.getModel().registerModelItem(modelItem);
+              // IMPORTANT: keep using the canonical instance returned by registerModelItem.
+              // Otherwise a throwaway ModelItem can leak into observer graphs and be notified.
+              modelItem = this.getModel().registerModelItem(modelItem);
             }
-
-            // Always apply Dewey rewrite (handles both $inst and instance('inst') forms)
             __applyDeweyRewrite(modelItem);
             child.nodeset = node;
             if (child.attachObserver) child.attachObserver();
           }
         }
       }
-
-      // Recurse into non-widget subtrees
       if (!isWidgetEl) this._createModelItemsRecursively(child, nextParentMI);
     });
   }
-
-  /**
-   * Removes the repeat item corresponding to a deleted node.
-   * Cleans up its observers and notifies the parent form.
-   * @param {Node} node - The deleted node
-   */
-  removeRepeatItemForNode(node) {
-    const index = this.nodeset.indexOf(node);
-    if (index === -1) return;
-    const repeatItem = this.querySelector(`fx-repeatitem:nth-of-type(${index + 1})`);
-    if (repeatItem) {
-      this.removeChild(repeatItem);
-      this.getOwnerForm().addToBatchedNotifications(this);
+  _handleJsonDeleted(detail) {
+    const fore = this.getOwnerForm();
+    const repeatItems = () => Array.from(this.querySelectorAll(':scope > fx-repeat-item, :scope > fx-repeatitem, :scope > .repeat-item'));
+    let indices0 = Array.isArray(detail.deletedIndexes0) ? detail.deletedIndexes0.slice() : Array.from(detail.deletedNodes || []).map(n => n && typeof n.keyOrIndex === 'number' ? n.keyOrIndex : -1).filter(i => i >= 0);
+    indices0 = Array.from(new Set(indices0)).sort((a, b) => b - a);
+    if (indices0.length === 0) return;
+    let currentIndex1 = Number(this.getAttribute('index') || this.index || 1);
+    if (!Number.isFinite(currentIndex1) || currentIndex1 < 1) currentIndex1 = 1;
+    const deletedIdx1Asc = indices0.map(i0 => i0 + 1).sort((a, b) => a - b);
+    let nextIndex1 = currentIndex1;
+    for (const d1 of deletedIdx1Asc) {
+      if (nextIndex1 > d1) nextIndex1 -= 1;
     }
-
-    // Remove the node from the nodeset
-    this.nodeset.splice(index, 1);
+    const before = repeatItems();
+    for (const idx0 of indices0) {
+      const itemEl = before[idx0];
+      if (!itemEl) continue;
+      try {
+        fore?.unRegisterLazyElement?.(itemEl);
+      } catch (_e) {}
+      itemEl.remove();
+    }
+    this._evalNodeset();
+    const start0 = Math.min(...indices0);
+    const after = repeatItems();
+    for (let i = start0; i < after.length; i++) {
+      const ri = after[i];
+      ri.index = i + 1;
+      const newNode = Array.isArray(this.nodeset) ? this.nodeset[i] : null;
+      if (ri.nodeset !== newNode) {
+        ri.nodeset = newNode;
+        if (fore?.createNodes) fore.initData(ri);
+      }
+      fore?.addToBatchedNotifications?.(ri);
+    }
+    const newLen = after.length;
+    if (newLen === 0) {
+      this.setAttribute('index', '0');
+      this.index = 0;
+      this._removeIndexMarker?.();
+      return;
+    }
+    nextIndex1 = Math.max(1, Math.min(nextIndex1, newLen));
+    this.setIndex(nextIndex1);
   }
   handleDelete(deleted) {
-    console.log('handleDelete', deleted);
-    // grab the current repeat items (tweak selector if yours differs)
-    /**
-     * @type {import('./fx-repeatitem.js').FxRepeatitem[]}
-     */
     const items = Array.from(this.querySelectorAll(':scope > fx-repeat-item, :scope > fx-repeatitem, :scope > .repeat-item'));
     this._evalNodeset();
     const indexToRemove = items.findIndex(item => item.nodeset === deleted);
@@ -27904,22 +30402,15 @@ class FxRepeat extends withDraggability(UIElement) {
     }
     const itemToRemove = items[indexToRemove];
     itemToRemove.remove();
-
-    // If the list is now empty, clear selection (0). Adjust if you prefer 1-based only.
     const newLength = this.querySelectorAll(':scope > fx-repeat-item, :scope > fx-repeatitem, :scope > .repeat-item').length;
-    let nextIndex = indexToRemove + 1; // 1-based index at the deleted slot
+    let nextIndex = indexToRemove + 1;
     if (newLength === 0) {
-      nextIndex = 0; // nothing left; clear selection
+      nextIndex = 0;
     } else if (nextIndex > newLength) {
-      nextIndex = newLength; // deleted the last one; move to new last
+      nextIndex = newLength;
     }
-
     this.setIndex(nextIndex);
   }
-
-  /**
-   * @returns {import('./fx-repeatitem.js').FxRepeatitem}
-   */
   _createNewRepeatItem() {
     const newItem = document.createElement('fx-repeatitem');
     if (this.isDraggable) {
@@ -27931,29 +30422,220 @@ class FxRepeat extends withDraggability(UIElement) {
     return newItem;
   }
   init() {
-    // ### there must be a single 'template' child
-    // console.log('##### repeat init ', this.id);
-    // if(!this.inited) this.init();
-    // does not use this.evalInContext as it is expecting a nodeset instead of single node
     this._evalNodeset();
-    // console.log('##### ',this.id, this.nodeset);
-
     this._initTemplate();
     this._initRepeatItems();
     this.setAttribute('index', this.index);
     this.inited = true;
   }
+  _observeJsonPredicateDependencies(contextNode) {
+    if (this._jsonPredicateDepsObserved) return;
+    const ref = String(this.ref || this.getAttribute('ref') || '').trim();
+    if (!ref || !ref.includes('[') || !ref.includes('?')) return;
+    const model = this.getModel && this.getModel();
+    if (!model) return;
 
-  /**
-   * repeat has no own modelItems
-   * @private
-   */
+    // Collect predicate bodies [...]
+    const predicates = [];
+    const predRe = /\[([\s\S]+?)\]/g;
+    let pm;
+    while ((pm = predRe.exec(ref)) !== null) {
+      if (pm[1]) predicates.push(pm[1]);
+    }
+    if (predicates.length === 0) return;
+    const isBoundary = ch => ch === undefined || ch === null || /\s/.test(ch) || ch === ',' || ch === ')' || ch === ']' || ch === '+' || ch === '-' || ch === '*' || ch === '=' || ch === '>' || ch === '<' || ch === '!' || ch === '|' || ch === '&';
+    const lookups = new Set();
+    const readInstanceLensAt = (src, start) => {
+      if (!src.slice(start).match(/^instance\s*\(/)) return null;
+      let j = start;
+      let inS = false;
+      let inD = false;
+      let depth = 0;
+      while (j < src.length) {
+        const ch = src[j];
+        if (ch === "'" && !inD) {
+          inS = !inS;
+          j += 1;
+          continue;
+        }
+        if (ch === '"' && !inS) {
+          inD = !inD;
+          j += 1;
+          continue;
+        }
+        if (inS || inD) {
+          j += 1;
+          continue;
+        }
+        if (ch === '(') depth += 1;else if (ch === ')') {
+          depth -= 1;
+          if (depth === 0) break;
+        }
+        j += 1;
+      }
+      if (j >= src.length) return null;
+      let k = j + 1;
+      while (k < src.length && /\s/.test(src[k])) k += 1;
+      if (src[k] !== '?') return null;
+      k += 1;
+      let bracketDepth = 0;
+      inS = false;
+      inD = false;
+      while (k < src.length) {
+        const ch = src[k];
+        if (ch === "'" && !inD) {
+          inS = !inS;
+          k += 1;
+          continue;
+        }
+        if (ch === '"' && !inS) {
+          inD = !inD;
+          k += 1;
+          continue;
+        }
+        if (inS || inD) {
+          k += 1;
+          continue;
+        }
+        if (ch === '[') bracketDepth += 1;else if (ch === ']') {
+          if (bracketDepth > 0) bracketDepth -= 1;else break;
+        }
+        if (bracketDepth === 0 && isBoundary(ch)) break;
+        k += 1;
+      }
+      return {
+        raw: src.slice(start, k),
+        end: k
+      };
+    };
+    const readVarLensAt = (src, start) => {
+      if (src[start] !== '$') return null;
+      let j = start + 1;
+      if (!/[A-Za-z_]/.test(src[j] || '')) return null;
+      j += 1;
+      while (j < src.length && /[\w.-]/.test(src[j])) j += 1;
+      const varName = src.slice(start + 1, j);
+      let k = j;
+      while (k < src.length && /\s/.test(src[k])) k += 1;
+
+      // We only care if a lookup tail follows: ?foo?bar OR /foo/bar
+      const next = src[k];
+      if (next !== '?' && next !== '.' && next !== '/') {
+        return {
+          raw: src.slice(start, j),
+          end: j,
+          varName,
+          tail: ''
+        };
+      }
+
+      // normalize .?foo?bar => ?foo?bar
+      if (next === '.' && src[k + 1] === '?') k += 1;
+
+      // read until boundary
+      let p = k;
+      let bracketDepth = 0;
+      let inS = false;
+      let inD = false;
+      while (p < src.length) {
+        const ch = src[p];
+        if (ch === "'" && !inD) {
+          inS = !inS;
+          p += 1;
+          continue;
+        }
+        if (ch === '"' && !inS) {
+          inD = !inD;
+          p += 1;
+          continue;
+        }
+        if (inS || inD) {
+          p += 1;
+          continue;
+        }
+        if (ch === '[') bracketDepth += 1;else if (ch === ']') {
+          if (bracketDepth > 0) bracketDepth -= 1;else break;
+        }
+        if (bracketDepth === 0 && p !== k && isBoundary(ch)) break;
+        p += 1;
+      }
+      return {
+        raw: src.slice(start, p),
+        end: p,
+        varName,
+        tail: src.slice(k, p)
+      };
+    };
+
+    // Collect lookups used inside predicates
+    for (const predicate of predicates) {
+      const src = String(predicate ?? '');
+      let inSingle = false;
+      let inDouble = false;
+      for (let i = 0; i < src.length; i += 1) {
+        const ch = src[i];
+        if (ch === "'" && !inDouble) {
+          inSingle = !inSingle;
+          continue;
+        }
+        if (ch === '"' && !inSingle) {
+          inDouble = !inDouble;
+          continue;
+        }
+        if (inSingle || inDouble) continue;
+
+        // instance('x')?foo?bar
+        const instLens = readInstanceLensAt(src, i);
+        if (instLens && instLens.raw && instLens.raw.includes('?')) {
+          lookups.add(instLens.raw.trim());
+          i = instLens.end - 1;
+          continue;
+        }
+
+        // $default?ui?query or $foo?bar  (rewrite to instance() / instance('foo'))
+        const varLens = readVarLensAt(src, i);
+        if (varLens && varLens.tail && (varLens.tail.startsWith('?') || varLens.tail.startsWith('/'))) {
+          const v = varLens.varName;
+          const {
+            tail
+          } = varLens;
+
+          // $default must follow your semantics: first instance in doc order => instance()
+          const rewritten = v === 'default' ? `instance()${tail.startsWith('?') ? tail : tail}` : `instance('${v}')${tail}`;
+          lookups.add(rewritten.trim());
+          i = varLens.end - 1;
+        }
+      }
+    }
+    if (lookups.size === 0) return;
+
+    // Resolve lookups to actual nodes and observe them
+    for (const lookup of lookups) {
+      try {
+        const resolved = evaluateXPath(lookup, contextNode, this);
+        let node = null;
+        if (Array.isArray(resolved)) {
+          const first = resolved[0];
+          node = Array.isArray(first) ? first[0] : first;
+        } else {
+          node = resolved;
+        }
+        if (!node) continue;
+        const mi = FxModel.lazyCreateModelItem(model, lookup, node, this);
+        if (mi && typeof mi.addObserver === 'function') {
+          if (!this._jsonPredicateDeps.has(mi)) {
+            mi.addObserver(this);
+            this._jsonPredicateDeps.add(mi);
+          }
+        }
+      } catch (_e) {
+        // ignore
+      }
+    }
+    this._jsonPredicateDepsObserved = true;
+  }
   _evalNodeset() {
-    // const inscope = this.getInScopeContext();
     const inscope = getInScopeContext(this.getAttributeNode('ref') || this, this.ref);
-    // console.log('##### inscope ', inscope);
-    // console.log('##### ref ', this.ref);
-    // now we got a nodeset and attach MutationObserver to it
     if (!inscope) return;
     if (this.mutationObserver && inscope.nodeName) {
       this.mutationObserver.observe(inscope, {
@@ -27961,60 +30643,52 @@ class FxRepeat extends withDraggability(UIElement) {
         subtree: true
       });
     }
-
-    /*
-              this.touchedPaths = new Set();
-              const instance = XPathUtil.resolveInstance(this, this.ref);
-              const depTrackDomfacade = new DependencyNotifyingDomFacade((node) => {
-                  this.touchedPaths.add(XPathUtil.getPath(node, instance));
-              });
-              const rawNodeset = evaluateXPath(this.ref, inscope, this, {}, {}, depTrackDomfacade );
-        */
     const rawNodeset = evaluateXPath(this.ref, inscope, this);
-
-    // console.log('Touched!', this.ref, [...this.touchedPaths].join(', '));
+    this._observeJsonPredicateDependencies(inscope);
     if (rawNodeset.length === 1 && Array.isArray(rawNodeset[0])) {
-      // This XPath likely returned an XPath array. Just collapse to that array
       this.nodeset = rawNodeset[0];
       return;
     }
     this.nodeset = rawNodeset;
   }
+
+  /**
+   * Observer callback for ModelItem notifications.
+   * When a predicate dependency changes (eg. $default?ui?query),
+   * schedule this repeat for refresh so its nodeset/predicate is re-evaluated.
+   */
+  update(_modelItem) {
+    const fore = this.getOwnerForm && this.getOwnerForm();
+    if (fore && typeof fore.addToBatchedNotifications === 'function') {
+      fore.addToBatchedNotifications(this);
+      return;
+    }
+    // Fallback (should rarely happen)
+    this.refresh(true);
+  }
   async refresh(force) {
-    console.log('🔄 fx-repeat.refresh on', this.id);
     if (!this.inited) this.init();
-    // console.time('repeat-refresh', this);
     this._evalNodeset();
-
-    // console.log('repeat refresh nodeset ', this.nodeset);
-    // console.log('repeatCount', this.repeatCount);
-
-    const repeatItems = this.querySelectorAll(':scope > fx-repeatitem');
-    const repeatItemCount = repeatItems.length;
+    let repeatItems = this.querySelectorAll(':scope > fx-repeatitem');
+    let repeatItemCount = repeatItems.length;
     let nodeCount = 1;
     if (Array.isArray(this.nodeset)) {
       nodeCount = this.nodeset.length;
     }
-
-    // const contextSize = this.nodeset.length;
     const contextSize = nodeCount;
-    // todo: review - cant the context really never be smaller than the repeat count?
-    // todo: this code can be deprecated probably but check first
     if (contextSize < repeatItemCount) {
       for (let position = repeatItemCount; position > contextSize; position -= 1) {
-        // remove repeatitem
         const itemToRemove = repeatItems[position - 1];
         itemToRemove.parentNode.removeChild(itemToRemove);
         this.getOwnerForm().unRegisterLazyElement(itemToRemove);
-        // this._fadeOut(itemToRemove);
-        // Fore.fadeOutElement(itemToRemove)
       }
     }
 
+    // DOM changed: re-query repeatitems
+    repeatItems = this.querySelectorAll(':scope > fx-repeatitem');
+    repeatItemCount = repeatItems.length;
     if (contextSize > repeatItemCount) {
       for (let position = repeatItemCount + 1; position <= contextSize; position += 1) {
-        // add new repeatitem
-
         const newItem = this._createNewRepeatItem();
         this.appendChild(newItem);
         this._initVariables(newItem);
@@ -28023,14 +30697,14 @@ class FxRepeat extends withDraggability(UIElement) {
         if (this.getOwnerForm().createNodes) {
           this.getOwnerForm().initData(newItem);
         }
-
-        // Tell the owner form we might have new template expressions here
         this.getOwnerForm().scanForNewTemplateExpressionsNextRefresh();
         newItem.refresh(true);
       }
     }
 
-    // ### update nodeset of repeatitems
+    // DOM changed: re-query repeatitems
+    repeatItems = this.querySelectorAll(':scope > fx-repeatitem');
+    repeatItemCount = repeatItems.length;
     for (let position = 0; position < repeatItemCount; position += 1) {
       const item = repeatItems[position];
       this.getOwnerForm().registerLazyElement(item);
@@ -28041,62 +30715,20 @@ class FxRepeat extends withDraggability(UIElement) {
         }
       }
     }
-
-    // Fore.refreshChildren(clone, true);
     const fore = this.getOwnerForm();
-    // if (!fore.lazyRefresh || force) {
     if (!fore.lazyRefresh || force) {
-      // Turn the possibly conditional force refresh into a forced one: we changed our children
-      Fore.refreshChildren(this, force);
+      await Fore.refreshChildren(this, force);
     }
-    // this.style.display = 'block';
-    // this.style.display = this.display;
     this.setIndex(this.index);
-    // console.timeEnd('repeat-refresh');
-
-    // this.replaceWith(clone);
-
-    // this.repeatCount = contextSize;
-    // console.log('repeatCount', this.repeatCount);
   }
-
-  // eslint-disable-next-line class-methods-use-this
-  _fadeOut(el) {
-    el.style.opacity = 1;
-    (function fade() {
-      // eslint-disable-next-line no-cond-assign
-      if ((el.style.opacity -= 0.1) < 0) {
-        el.style.display = 'none';
-      } else {
-        requestAnimationFrame(fade);
-      }
-    })();
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  _fadeIn(el) {
-    if (!el) return;
-    el.style.opacity = 0;
-    el.style.display = this.display;
-    (function fade() {
-      // setTimeout(() => {
-      let val = parseFloat(el.style.opacity);
-      // eslint-disable-next-line no-cond-assign
-      if (!((val += 0.1) > 1)) {
-        el.style.opacity = val;
-        requestAnimationFrame(fade);
-      }
-      // }, 40);
-    })();
-  }
-
   _initTemplate() {
-    // console.log('### init template for repeat ', this.id, this.template);
-    // todo: this.dropTarget not needed?
-    this.dropTarget = this.template.getAttribute('drop-target');
-    this.isDraggable = this.template.hasAttribute('draggable') ? this.template.getAttribute('draggable') : null;
+    // Template can be missing during early init (slot timing / nested repeats).
+    // Never dereference it before we have it.
+    if (!this.template) {
+      // Prefer a direct child template, then any descendant template.
+      this.template = Array.from(this.children).find(c => c && c.localName === 'template') || this.querySelector('template') || this.shadowRoot && this.shadowRoot.querySelector('template') || null;
+    }
     if (this.template === null) {
-      // todo: catch this on form element
       this.dispatchEvent(new CustomEvent('no-template-error', {
         composed: true,
         bubbles: true,
@@ -28104,30 +30736,34 @@ class FxRepeat extends withDraggability(UIElement) {
           message: `no template found for repeat:${this.id}`
         }
       }));
+      return;
     }
-    this.shadowRoot.appendChild(this.template);
+    this.dropTarget = this.template.getAttribute('drop-target');
+    this.isDraggable = this.template.hasAttribute('draggable') ? this.template.getAttribute('draggable') : null;
+
+    // Move template to shadow for safe reuse.
+    // If it's already in the shadowRoot, don't append again.
+    if (this.template.parentNode !== this.shadowRoot) {
+      this.shadowRoot.appendChild(this.template);
+    }
   }
   _initRepeatItems() {
     this.nodeset.forEach((item, index) => {
       const repeatItem = this._createNewRepeatItem();
       repeatItem.nodeset = this.nodeset[index];
-      repeatItem.index = index + 1; // 1-based index
-
+      repeatItem.index = index + 1;
       this.appendChild(repeatItem);
       if (this.getOwnerForm().createNodes) {
         this.getOwnerForm().initData(repeatItem);
-        const repeatItemClone = repeatItem.nodeset.cloneNode(true);
-        this.clearTextValues(repeatItemClone);
-
-        // this.createdNodeset = repeatItem.nodeset.cloneNode(true);
-        this.createdNodeset = repeatItemClone;
-        // console.log('createdNodeset', this.createdNodeset)
+        if (repeatItem.nodeset.nodeType) {
+          const repeatItemClone = repeatItem.nodeset.cloneNode(true);
+          this.clearTextValues(repeatItemClone);
+          this.createdNodeset = repeatItemClone;
+        }
       }
-
       if (repeatItem.index === 1) {
         this.applyIndex(repeatItem);
       }
-      // console.log('*********repeat item created', repeatItem.nodeset);
       Fore.dispatch(this, 'item-created', {
         nodeset: repeatItem.nodeset,
         pos: index + 1
@@ -28137,20 +30773,14 @@ class FxRepeat extends withDraggability(UIElement) {
   }
   clearTextValues(node) {
     if (!node) return;
-
-    // Clear text node content
     if (node.nodeType === Node.TEXT_NODE) {
       node.nodeValue = '';
     }
-
-    // Clear all attribute values
     if (node.nodeType === Node.ELEMENT_NODE) {
       for (const attr of Array.from(node.attributes)) {
-        attr.value = ''; // Clear attribute value
+        attr.value = '';
       }
     }
-
-    // Recursively clear child nodes
     for (const child of node.childNodes) {
       this.clearTextValues(child);
     }
@@ -28167,18 +30797,7 @@ class FxRepeat extends withDraggability(UIElement) {
       }
     })(newRepeatItem);
   }
-
-  /*
   _clone() {
-    // const content = this.template.content.cloneNode(true);
-    this.template = this.shadowRoot.querySelector('template');
-    const content = this.template.content.cloneNode(true);
-    return document.importNode(content, true);
-  }
-  */
-
-  _clone() {
-    // Prefer the cached template set in _initTemplate; fall back to either DOM.
     const tpl = this.template || this.shadowRoot && this.shadowRoot.querySelector('template') || this.querySelector('template');
     if (!tpl) {
       console.error(`[fx-repeat] ${this.id || ''}: no <template> found when cloning`);
@@ -28193,8 +30812,6 @@ class FxRepeat extends withDraggability(UIElement) {
     });
   }
   setInScopeVariables(inScopeVariables) {
-    // Repeats are interesting: the variables should be scoped per repeat item, they should not be
-    // able to see the variables in adjacent repeat items!
     this.inScopeVariables = new Map(inScopeVariables);
   }
 }
@@ -28451,7 +31068,6 @@ class FxTrigger extends AbstractControl {
       }
     }
   }
-
   async refresh() {
     super.refresh();
   }
@@ -28521,6 +31137,7 @@ class FxCase extends FxContainer {
         `;
     this.addEventListener('select', async () => {
       const ownerForm = this.getOwnerForm();
+      let target = this;
       if (this.src) {
         // We will replace the node. So this node will be detached after these async function
         // calls. Save all important state first.
@@ -28537,9 +31154,10 @@ class FxCase extends FxContainer {
           return;
         }
         await parentNode.replaceCase(this, replacement);
+        target = replacement;
       }
       ownerForm.getModel();
-      ownerForm.addToBatchedNotifications(this);
+      ownerForm.addToBatchedNotifications(target);
       ownerForm.refresh(false);
     });
     this.addEventListener('deselect', event => {
@@ -28795,8 +31413,6 @@ if (!customElements.get('fx-dialog')) {
  * FxItems provides a templated list over its bound nodes. It is not standalone but expects to be used
  * within an fx-control element.
  *
- *
- *
  * @demo demo/selects3.html
  */
 class FxItems extends FxControl {
@@ -28841,21 +31457,16 @@ class FxItems extends FxControl {
       }
     });
     this.addEventListener('click', e => {
-      e.preventDefault;
+      e.preventDefault; // keep as-is (do not change behavior here)
       e.stopPropagation();
       const items = this.querySelectorAll('[value]');
-      /*
-      let target;
-      if (e.target.nodeName === 'LABEL') {
-        target = resolveId(e.target.getAttribute('for'), this);
-        target.checked = !target.checked;
-      }
-      */
-
       let val = '';
       Array.from(items).forEach(item => {
         if (item.checked) {
-          val += ` ${item.getAttribute('value')}`;
+          // ROOT FIX: for generated inputs, attribute "value" may still be "{value}".
+          // The DOM property .value is the authoritative one.
+          const v = item.value != null ? item.value : item.getAttribute('value');
+          val += ` ${v}`;
         }
       });
       this.setAttribute('value', val.trim());
@@ -28871,6 +31482,10 @@ class FxItems extends FxControl {
   }
   getWidget() {
     return this;
+  }
+  async refresh(force = false) {
+    super.refresh(force);
+    // console.log('fx-items.refresh() called');
   }
   async updateWidgetValue() {
     // console.log('setting items value');
@@ -28890,8 +31505,6 @@ class FxItems extends FxControl {
    * attention: limitations here: assumes that there's an `label` element plus an element with an `value`
    * attribute which it will update.
    *
-   *
-   *
    * @param newEntry
    * @param node
    */
@@ -28905,14 +31518,11 @@ class FxItems extends FxControl {
     const label = newEntry.querySelector('label');
     const lblExpr = Fore.getExpression(label.textContent);
 
-    // ### xml / JSON
-    if (node.nodeType) {
-      const lblEvaluated = evaluateXPathToString(lblExpr, node, this);
-      label.textContent = lblEvaluated;
-    } else {
-      const labelExpr = Fore.getExpression(lblExpr);
-      label.textContent = node[labelExpr];
-    }
+    // ROOT FIX: JSON lens nodes are objects; do NOT use direct JS property access.
+    // Always go through evaluateXPathToString() for JSON too.
+    const lblEvaluated = evaluateXPathToString(lblExpr, node, this);
+    // console.log('lblEvaluated ', lblEvaluated);
+    label.textContent = lblEvaluated;
     label.setAttribute('for', id);
 
     // ### handle the 'value'
@@ -28920,23 +31530,21 @@ class FxItems extends FxControl {
     const input = newEntry.querySelector('[value]');
     // getting expr
     const expr = input.value;
-    // const cutted = expr.substring(1, expr.length - 1);
     const cutted = Fore.getExpression(expr);
-    let evaluated;
-    if (node.nodeType) {
-      evaluated = evaluateXPathToString(cutted, node, newEntry);
-    } else {
-      evaluated = node[cutted];
-    }
+
+    // ROOT FIX: same here
+    const evaluated = evaluateXPathToString(cutted, node, this);
+    // console.log('evaluated ', lblEvaluated);
+
+    // Set both property and attribute so *any* downstream code path works
     input.value = evaluated;
+    input.setAttribute('value', evaluated);
     input.setAttribute('id', id);
+
     // Normalize the current value (remove newlines, tabs, excessive spaces)
     const currentValue = (this.getAttribute('value') || '').replace(/\s+/g, ' ').trim();
     const valueList = currentValue.split(/\s+/); // Split on whitespace
 
-    // Check if the value is in the space-separated list of values
-    // const currentValue = this.getAttribute('value') || '';
-    // const valueList = currentValue.split(/\s+/);
     if (valueList.includes(evaluated)) {
       input.checked = true;
     }
@@ -29193,7 +31801,6 @@ class FxLogSettings extends HTMLElement {
           // e.preventDefault();
           // e.stopPropagation();
         }
-
         const t = this.listenTo.find(evt => evt.name === item.name);
         e.target.checked ? t.show = true : t.show = false;
         // console.log('filter', this.listenTo);
@@ -29497,7 +32104,6 @@ class FxLogSettings extends HTMLElement {
 
     // }
   }
-
   _renderAction(actionElement, xpath, short, e) {
     actionElement.nodeName.split('-')[1];
     switch (actionElement.nodeName) {
@@ -29599,7 +32205,6 @@ class FxLogSettings extends HTMLElement {
             }
         */
   }
-
   _highlight(element) {
     const defaultBG = element.style.backgroundColor;
     const defaultTransition = element.style.transition;
@@ -30168,7 +32773,7 @@ class FxActionLog extends HTMLElement {
    */
   _logDetails(e) {
     const eventType = e.type;
-    const path = XPathUtil.getPath(e.target, '');
+    const path = getDocPath(e.target);
     // console.log('>>>> _logDetails', path);
     const cut = path.substring(path.indexOf('/fx-fore'), path.length);
     const xpath = `/${cut}`;
@@ -30223,7 +32828,6 @@ class FxActionLog extends HTMLElement {
 
     // }
   }
-
   _renderAction(actionElement, xpath, short, e) {
     actionElement.nodeName.split('-')[1];
     let eventName;
@@ -30334,7 +32938,6 @@ class FxActionLog extends HTMLElement {
             }
         */
   }
-
   _highlight(element) {
     const defaultBG = element.style.backgroundColor;
     const defaultTransition = element.style.transition;
@@ -30483,7 +33086,6 @@ function isAttributeShown(name, sourceNode) {
   return true;
   // return name === 'id' || name === 'ref' || name === 'event';
 }
-
 class ADI {
   constructor(rootElement, instance) {
     this.sourceNodeByInspectorNodeLookup = new Map();
@@ -32177,7 +34779,6 @@ class FxJsonInstance extends HTMLElement {
     // container.addEventListener('click', (event) => this._handleToggleEvent);
     // });
   }
-
   disconnectedCallback() {}
   _isHidden(elem) {
     const width = elem.offsetWidth;
@@ -32554,7 +35155,6 @@ class FxDevtools extends HTMLElement {
     this.render();
     // document.body.style.height = document.body.scrollHeight + 320 + 'px';
   }
-
   _startResize(event) {
     this.isResizing = true;
     this.lastY = event.clientY;
@@ -32811,7 +35411,6 @@ class FxDevtools extends HTMLElement {
         })
     */
   }
-
   _handleOpen(ev) {
     // console.log('that works')
 
@@ -32829,7 +35428,6 @@ class FxDevtools extends HTMLElement {
                             `<fx-dom-inspector instance="${instance.id}"> </fx-dom-inspector>`
             */
     }
-
     if (instance.type === 'json') {
       const jsonInspector = document.createElement('fx-json-instance');
       jsonInspector.setAttribute('instance', instance.id);
@@ -32847,7 +35445,6 @@ class FxDevtools extends HTMLElement {
     }
   }
 }
-
 if (!customElements.get('fx-devtools')) {
   customElements.define('fx-devtools', FxDevtools);
 }
@@ -32982,7 +35579,6 @@ class FxUpload extends AbstractControl {
         e.preventDefault();
         // e.stopImmediatePropagation();
       }
-
       this.widget.focus();
     });
 
@@ -33032,7 +35628,6 @@ class FxUpload extends AbstractControl {
     // // this.value=content;
     // return content;
   }
-
   async _readFile(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -33050,7 +35645,6 @@ class FxUpload extends AbstractControl {
           resolve(result); // Return plain text
         }
       };
-
       reader.onerror = () => reject(new Error('Error reading file'));
 
       // Start reading the file
@@ -33114,7 +35708,6 @@ class FxUpload extends AbstractControl {
 
     // console.log('data', this.getOwnerForm().getModel().getDefaultInstanceData());
   }
-
   renderHTML(ref) {
     return `
             ${this.label ? `${this.label}` : ''}
@@ -33366,7 +35959,6 @@ class AbstractAction extends ForeElementMixin {
       // console.log('adding listener for ', this.event , ` to `, this);
     }
   }
-
   async performSafe() {
     try {
       await this.perform();
@@ -33853,18 +36445,22 @@ class FxAppend extends AbstractAction {
     }
   */
 }
-
 if (!customElements.get('fx-append')) {
   window.customElements.define('fx-append', FxAppend);
 }
 
+// src/actions/fx-delete.js
+
 /**
- * `fx-delete`
- * deletes nodes from instance data.
+ * fx-delete
  *
- * @fires deleted event
- * @customElement
- * @demo demo/todo.html
+ * XML: remove DOM nodes using XPath.
+ * JSON: delete JSONNode(s) (node.__jsonlens__ === true) without calling FontoXPath.
+ *
+ * Key requirement for JSON:
+ * - do NOT trigger full refresh
+ * - emit 'deleted' with stable pre-delete indices so repeats can update incrementally
+ * - update parent via parent.set(nextValue) so children are rebuilt (no "zombie rows")
  */
 class FxDelete extends AbstractAction {
   static get properties() {
@@ -33875,25 +36471,134 @@ class FxDelete extends AbstractAction {
       }
     };
   }
-
-  /**
-   * deletes nodes from instance data.
-   *
-   * Will NOT perform delete if nodeset is pointing to document node, document fragment, root node or being readonly.
-   */
   async perform() {
-    const inscopeContext = getInScopeContext(this.getAttributeNode('ref') || this, this.ref);
-    this.nodeset = evaluateXPathToNodes(this.ref, inscopeContext, this);
+    const fore = this.getOwnerForm();
+    const ref = (this.getAttribute('ref') || this.ref || '.').trim() || '.';
 
-    // console.log('delete nodeset ', this.nodeset);
+    // IMPORTANT: keep correct scoping for vars/templates/repeats
+    const inscope = getInScopeContext(this.getAttributeNode('ref') || this, ref);
+    const instanceId = XPathUtil.resolveInstance(this, ref);
+    const model = this.getModel();
+    const instance = model.getInstance(instanceId);
+    const isJson = !!instance && (instance.type === 'json' || typeof instance.getAttribute === 'function' && instance.getAttribute('type') === 'json');
+    if (isJson) {
+      // JSON path stays as-is
+      return this._performJsonDelete(ref, inscope, instance, instanceId, fore);
+    }
 
-    const instanceId = XPathUtil.resolveInstance(this, this.ref);
-    const instance = this.getModel().getInstance(instanceId);
+    // XML path restored to proper semantics (readonly + modelItems + root safety)
+    return this._performXmlDelete(ref, inscope, instance, instanceId, fore);
+  }
+  async _performXmlDelete(ref, inscopeContext, instance, instanceId, fore) {
+    const nodesToDelete = evaluateXPathToNodes(ref, inscopeContext, this);
+    this.nodeset = nodesToDelete;
 
-    // const path = instance && this.nodeset.length !== 0 ? evaluateXPathToString('path()', this.nodeset[0], instance) : '';
+    // Nothing to do
+    if (!nodesToDelete || Array.isArray(nodesToDelete) && nodesToDelete.length === 0) {
+      return [];
+    }
 
-    const path = Fore.getDomNodeIndexString(this.nodeset);
-    const nodesToDelete = this.nodeset;
+    // Normalize to array
+    const nodes = Array.isArray(nodesToDelete) ? nodesToDelete : [nodesToDelete];
+
+    // Never delete instance(), document nodes, or instance root element
+    // (matches expectations in delete.test.js)
+    const instRoot = instance && instance.instanceData && instance.instanceData.documentElement ? instance.instanceData.documentElement : null;
+    const removedNodes = [];
+    let parent = null;
+    for (const node of nodes) {
+      if (!node) continue;
+
+      // hard stop: never delete document-ish nodes
+      if (node.nodeType === Node.DOCUMENT_NODE || node.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+        continue;
+      }
+
+      // hard stop: never delete instance root element
+      if (instRoot && node === instRoot) {
+        continue;
+      }
+
+      // Determine parent now (needed for event + safety checks)
+      const p = node.parentNode;
+      if (!p) continue;
+
+      // Use the guarded delete helper (checks readonly + safety)
+      if (this._deleteXmlNode(p, node)) {
+        removedNodes.push(node);
+        parent = p;
+
+        // keep Fore’s change signaling (helps recalculation / refresh)
+        try {
+          if (node.localName) fore?.signalChangeToElement?.(node.localName);
+        } catch (_e) {}
+      }
+    }
+    if (removedNodes.length === 0) {
+      // delete failed (eg readonly) => no refresh requested by tests
+      return [];
+    }
+
+    // also signal parent changed
+    try {
+      if (parent?.localName) fore?.signalChangeToElement?.(parent.localName);
+    } catch (_e) {}
+
+    // Dispatch deleted event
+    await Fore.dispatch(instance, 'deleted', {
+      ref,
+      deletedNodes: removedNodes,
+      instanceId,
+      parent,
+      foreId: fore?.id,
+      isJson: false
+    });
+    this.needsUpdate = true;
+
+    // return paths (not asserted by tests, but useful)
+    try {
+      return removedNodes.map(n => getPath(n, instanceId));
+    } catch (_e) {
+      return [];
+    }
+  }
+  _deleteXmlNode(parent, node) {
+    if (!parent || !node) return false;
+
+    // Safety: do not delete documents / fragments / detached
+    if (parent.nodeType === Node.DOCUMENT_NODE || node.nodeType === Node.DOCUMENT_NODE || node.nodeType === Node.DOCUMENT_FRAGMENT_NODE || node.parentNode === null) {
+      return false;
+    }
+
+    // Respect readonly facet
+    const mi = this.getModel().getModelItem(node);
+    if (mi?.readonly) return false;
+
+    // Execute deletion
+    parent.removeChild(node);
+
+    // Remove ModelItems for the deleted subtree (this is what your failing tests assert)
+    this.getModel().removeModelItem(node);
+    return true;
+  }
+  // -----------------
+  // JSON delete branch
+  // -----------------
+
+  async _performJsonDelete(ref, inscopeContext, instance, instanceId, fore) {
+    const nodesToDelete = this._resolveJsonNodeset(ref, inscopeContext, instance);
+    this.nodeset = nodesToDelete;
+    if (!nodesToDelete || nodesToDelete.length === 0) {
+      this.needsUpdate = true;
+      return [];
+    }
+
+    // Snapshot stable info BEFORE mutation
+    const deletedIndexes0 = Array.from(nodesToDelete).map(n => n && typeof n.keyOrIndex === 'number' ? n.keyOrIndex : -1).filter(i => i >= 0);
+    const parentBefore = nodesToDelete?.[0]?.parent || null;
+
+    // For logging / execute-action
+    const path = this._jsonNodesetPath(nodesToDelete);
     this.dispatchEvent(new CustomEvent('execute-action', {
       composed: true,
       bubbles: true,
@@ -33901,67 +36606,244 @@ class FxDelete extends AbstractAction {
       detail: {
         action: this,
         event: this.event,
-        path
+        path,
+        isJson: true
       }
     }));
-    const fore = this.getOwnerForm();
-    let parent;
-    const removedNodes = [];
-    if (Array.isArray(nodesToDelete)) {
-      if (nodesToDelete.length === 0) {
-        return;
-      }
-      parent = nodesToDelete[0].parentNode;
-      nodesToDelete.forEach(item => {
-        if (this._deleteNode(parent, item)) {
-          fore.signalChangeToElement(item.localName);
-          removedNodes.push(item);
-        }
-      });
-      if (removedNodes.length) {
-        fore.signalChangeToElement(parent.localName);
-      }
-    } else {
-      parent = nodesToDelete.parentNode;
-      if (this._deleteNode(parent, nodesToDelete)) {
-        fore.signalChangeToElement(parent.localName);
-        fore.signalChangeToElement(nodesToDelete.localName);
-        removedNodes.push(nodesToDelete);
-      }
-    }
-    if (removedNodes.length) {
-      await Fore.dispatch(instance, 'deleted', {
-        ref: path,
-        deletedNodes: removedNodes,
-        instanceId,
-        parent,
-        foreId: fore.id
-      });
+
+    // Perform deletion (mutates via parent.set to rebuild children)
+    const removed = this._deleteJsonNodes(nodesToDelete);
+    if (!removed || removed.length === 0) {
       this.needsUpdate = true;
+      return [];
     }
+
+    // Build a repeat-routable ref so your repeat filter works:
+    // repeat ref container is like: instance('data')?movies
+    const repeatRef = this._buildRepeatContainerRef(ref, instanceId, parentBefore);
+    await Fore.dispatch(instance, 'deleted', {
+      // This MUST match repeat's container ref (not a $path)
+      ref: repeatRef,
+      // keep path for debugging
+      path,
+      deletedNodes: removed,
+      deletedIndexes0,
+      instanceId,
+      parent: parentBefore,
+      foreId: fore?.id,
+      isJson: true
+    });
+
+    // CRITICAL: do NOT trigger full refresh for JSON deletes
+    this.needsUpdate = true;
+
+    // return useful paths (optional)
+    return removed.map(n => typeof n.getPath === 'function' ? n.getPath() : '').filter(Boolean);
+  }
+  _isJsonNode(n) {
+    return !!n && n.__jsonlens__ === true;
+  }
+  _buildRepeatContainerRef(originalRef, instanceId, parent) {
+    // If we deleted from an array container with a key like "movies", use that.
+    if (parent && Array.isArray(parent.value) && typeof parent.keyOrIndex === 'string') {
+      return `instance('${instanceId}')?${parent.keyOrIndex}`;
+    }
+
+    // Otherwise normalize the original ref:
+    // - strip predicates/brackets
+    // - strip trailing ?*
+    // - strip trailing whitespace
+    let s = String(originalRef || '').trim();
+    s = s.replace(/\[[^\]]*\]/g, '');
+    if (s.endsWith('?*')) s = s.slice(0, -2);
+    return s || `instance('${instanceId}')`;
   }
 
   /**
-   * Delete a node (if allowed). Does not hold for JSON
-   *
-   * @param {ParentNode}  parent - The parent of the node to remove
-   * @param {ChildNode}   node   - The child to remove
-   *
-   * @returns {boolean} Whether the delete is allowed and succeeded
+   * Resolve ref to JSONNode(s) without calling fontoxpath.
+   * Supports:
+   *  - '.'
+   *  - '?a?b'
+   *  - "instance('id')?a?b"
+   *  - '?*' (returns children)
+   *  - bracket steps: '?movies[2]' and '?movies[index(\"movies\")]'
    */
-  _deleteNode(parent, node) {
-    if (parent.nodeType === Node.DOCUMENT_NODE || node.nodeType === Node.DOCUMENT_NODE || node.nodeType === Node.DOCUMENT_FRAGMENT_NODE || node.parentNode === null) {
-      return false;
+  _resolveJsonNodeset(ref, inscopeContext, instance) {
+    const resolveIndexFunction = expr => {
+      const s = String(expr ?? '').trim();
+      const m = s.match(/^index\s*\(\s*(['"])(.*?)\1\s*\)\s*$/);
+      if (!m) return null;
+      const repeatId = m[2];
+      const fore = this.getOwnerForm();
+      if (!fore) return 1;
+      let repeat = null;
+      try {
+        repeat = fore.querySelector(`#${CSS.escape(repeatId)}`);
+      } catch (_e) {
+        repeat = fore.querySelector(`#${repeatId}`);
+      }
+      if (!repeat) return 1;
+      const attr = repeat.getAttribute('index');
+      let idx = Number(attr);
+      if (!Number.isFinite(idx) || idx < 1) idx = Number(repeat.index);
+      return Number.isFinite(idx) && idx >= 1 ? idx : 1;
+    };
+    const resolveBracketIndex1 = idxExpr => {
+      const t = String(idxExpr ?? '').trim();
+      if (/^\d+$/.test(t)) return Number(t);
+      const viaIndex = resolveIndexFunction(t);
+      if (viaIndex !== null) return viaIndex;
+      const n = Number(t);
+      return Number.isFinite(n) ? n : null;
+    };
+    if (ref === '.') {
+      if (this._isJsonNode(inscopeContext)) return [inscopeContext];
+      if (this._isJsonNode(instance?.nodeset)) return [instance.nodeset];
+      return [];
     }
-    const mi = this.getModel().getModelItem(node);
-    // Note that the model item can be absent, For elements that had no controls on them.
-    // In that case, allow removals
-    if (mi?.readonly) {
-      return false;
+    const parsed = this._parseJsonLensRef(ref);
+    if (!parsed) return [];
+    const model = this.getModel();
+    const targetInstance = model?.getInstance?.(parsed.instanceId) || instance;
+    const root = targetInstance?.nodeset;
+    if (!this._isJsonNode(root)) return [];
+    let node = parsed.hasExplicitInstance ? root : this._isJsonNode(inscopeContext) ? inscopeContext : root;
+    for (const step of parsed.steps) {
+      if (!node) return [];
+      if (step === '*') return Array.isArray(node.children) ? node.children : [];
+      if (typeof step === 'number') {
+        node = node.get(step) || null;
+        continue;
+      }
+      if (typeof step === 'string') {
+        const bm = step.match(/^(.*?)\[(.+)\]$/);
+        if (bm) {
+          const prop = bm[1].trim();
+          const idxExpr = bm[2].trim();
+          const container = prop ? typeof node.get === 'function' ? node.get(prop) : null : node;
+          if (!container) return [];
+          if (!Array.isArray(container.value)) return [];
+          const idx1 = resolveBracketIndex1(idxExpr);
+          if (!Number.isFinite(idx1) || idx1 < 1) return [];
+          const idx0 = idx1 - 1;
+          node = container.get(idx0) || null;
+          continue;
+        }
+        node = typeof node.get === 'function' ? node.get(step) : null;
+        continue;
+      }
+      return [];
     }
-    parent.removeChild(node);
-    this.getModel().removeModelItem(node);
-    return true;
+    if (!node) return [];
+    if (Array.isArray(node.value)) return node.children || [];
+    return [node];
+  }
+  _parseJsonLensRef(ref, defaultInstanceId = 'default') {
+    if (!ref) return null;
+    const s = String(ref).trim();
+    const instMatch = s.match(/^instance\s*\(\s*(['"])(.*?)\1\s*\)\s*(\?.*)?$/);
+    let instanceId;
+    let lensPart;
+    if (instMatch) {
+      instanceId = instMatch[2];
+      lensPart = instMatch[3] || '';
+    } else {
+      if (!s.startsWith('?')) return null;
+      instanceId = defaultInstanceId;
+      lensPart = s;
+    }
+    const steps = lensPart.split('?').filter(Boolean).map(part => {
+      if (part === '*') return '*';
+      if (/^\d+$/.test(part)) return Number(part) - 1; // 1-based -> 0-based
+      return part;
+    });
+    return {
+      instanceId,
+      steps,
+      hasExplicitInstance: !!instMatch
+    };
+  }
+  _jsonNodesetPath(nodes) {
+    const first = nodes?.[0];
+    if (!first) return '';
+    if (typeof first.getPath === 'function') return first.getPath();
+    const inst = first.instanceId || 'default';
+    return `$${inst}/`;
+  }
+
+  /**
+   * Delete JSON nodes by updating their parent via parent.set(nextValue).
+   * This is the ONLY reliable way to prevent stale parent.children (zombie rows).
+   */
+  _deleteJsonNodes(nodes) {
+    const model = this.getModel();
+    const removed = [];
+    const candidates = Array.from(nodes || []).filter(n => this._isJsonNode(n) && n.parent);
+
+    // Group by parent so we can apply one parent.set per parent
+    const byParent = new Map();
+    for (const n of candidates) {
+      const p = n.parent;
+      if (!byParent.has(p)) byParent.set(p, []);
+      byParent.get(p).push(n);
+    }
+    const canDelete = n => {
+      try {
+        const mi = model?.getModelItem?.(n);
+        return !mi?.readonly;
+      } catch (_e) {
+        return true;
+      }
+    };
+    for (const [parent, nodesForParent] of byParent.entries()) {
+      const allowed = nodesForParent.filter(canDelete);
+      if (allowed.length === 0) continue;
+
+      // Array parent
+      if (Array.isArray(parent.value)) {
+        const indices = allowed.map(n => typeof n.keyOrIndex === 'number' ? n.keyOrIndex : -1).filter(i => i >= 0).sort((a, b) => b - a);
+        if (indices.length === 0) continue;
+        const idxSet = new Set(indices);
+        const next = parent.value.filter((_v, i) => !idxSet.has(i));
+        if (typeof parent.set === 'function') {
+          parent.set(next);
+        } else {
+          // Fallback: mutate (may still be stale if no set exists)
+          indices.forEach(i => parent.value.splice(i, 1));
+        }
+
+        // record removed nodes (old node identities are fine for repeat removal)
+        allowed.forEach(n => {
+          removed.push(n);
+          try {
+            model?.removeModelItem?.(n);
+          } catch (_e) {}
+        });
+        continue;
+      }
+
+      // Object parent
+      if (parent.value && typeof parent.value === 'object') {
+        const keys = allowed.map(n => typeof n.keyOrIndex === 'string' ? n.keyOrIndex : null).filter(Boolean);
+        if (keys.length === 0) continue;
+        const next = {
+          ...parent.value
+        };
+        keys.forEach(k => delete next[k]);
+        if (typeof parent.set === 'function') {
+          parent.set(next);
+        } else {
+          keys.forEach(k => delete parent.value[k]);
+        }
+        allowed.forEach(n => {
+          removed.push(n);
+          try {
+            model?.removeModelItem?.(n);
+          } catch (_e) {}
+        });
+      }
+    }
+    return removed;
   }
 }
 if (!customElements.get('fx-delete')) {
@@ -34047,6 +36929,60 @@ if (!customElements.get('fx-setfocus')) {
   window.customElements.define('fx-setfocus', FxSetfocus);
 }
 
+// json-lens.js
+class JSONLens {
+  constructor(root, path = []) {
+    this.root = root; // the raw JSON object
+    this.path = path; // path to target node, e.g., ['invoice', 'items', 0]
+  }
+  _resolveParent() {
+    const lastKey = this.path[this.path.length - 1];
+    const parentPath = this.path.slice(0, -1);
+    const parent = parentPath.reduce((obj, key) => obj?.[key], this.root);
+    return [parent, lastKey];
+  }
+  get() {
+    return this.path.reduce((obj, key) => obj?.[key], this.root);
+  }
+  set(value) {
+    const [parent, key] = this._resolveParent();
+    if (parent !== undefined) {
+      parent[key] = value;
+    }
+  }
+  delete() {
+    const [parent, key] = this._resolveParent();
+    if (Array.isArray(parent)) {
+      parent.splice(key, 1);
+    } else if (parent && typeof parent === 'object') {
+      delete parent[key];
+    }
+  }
+  insert(value, keyOrIndex = null) {
+    const target = this.get();
+    if (Array.isArray(target)) {
+      if (keyOrIndex === null || keyOrIndex >= target.length) {
+        target.push(value); // append
+      } else {
+        target.splice(keyOrIndex, 0, value); // insert at index
+      }
+    } else if (target && typeof target === 'object') {
+      if (typeof keyOrIndex !== 'string') {
+        throw new Error('Inserting into an object requires a string key.');
+      }
+      target[keyOrIndex] = value;
+    } else {
+      throw new Error('Target is not insertable (must be object or array).');
+    }
+  }
+  lensForChild(key) {
+    return new JSONLens(this.root, this.path.concat(key));
+  }
+  pathString() {
+    return '/' + this.path.map(k => typeof k === 'number' ? `[${k}]` : k).join('/');
+  }
+}
+
 /**
  * `fx-insert`
  * inserts nodes into data instances
@@ -34061,7 +36997,7 @@ class FxInsert extends AbstractAction {
         type: Number
       },
       position: {
-        type: Number
+        type: String
       },
       origin: {
         type: Object
@@ -34097,21 +37033,338 @@ class FxInsert extends AbstractAction {
     this.origin = this.hasAttribute('origin') ? this.getAttribute('origin') : null; // last item of context seq
     this.keepValues = !!this.hasAttribute('keep-values');
   }
+
+  // -------------------------
+  // JSON helpers
+  // -------------------------
+  _getValueAtLensSteps(rootValue, steps) {
+    let cur = rootValue;
+    for (const step of steps || []) {
+      if (cur === null || cur === undefined) return undefined;
+
+      // keyOrIndex can be string (object key) or number (array index)
+      if (typeof step === 'number') {
+        if (!Array.isArray(cur)) return undefined;
+        cur = cur[step];
+      } else {
+        cur = cur[step];
+      }
+    }
+    return cur;
+  }
+  _getInlineTemplateElement() {
+    // Prefer a direct child <template>, otherwise any descendant <template> within fx-insert
+    const direct = Array.from(this.children).find(c => c?.localName === 'template');
+    if (direct) return direct;
+    return this.querySelector('template');
+  }
+  _getTemplateElementById(templateId) {
+    if (!templateId) return null;
+
+    // Try within the same fore first (shadow + light)
+    const fore = this.getOwnerForm?.() || this.closest('fx-fore');
+    const sel = `template#${CSS.escape(templateId)}`;
+    if (fore) {
+      const inLight = fore.querySelector(sel);
+      if (inLight) return inLight;
+      const inShadow = fore.shadowRoot?.querySelector?.(sel);
+      if (inShadow) return inShadow;
+    }
+
+    // Global fallback
+    const el = document.getElementById(templateId);
+    return el && el.localName === 'template' ? el : null;
+  }
+  _getJsonTemplateTextFromTemplateEl(tplEl) {
+    if (!tplEl) return null;
+
+    // <template>.textContent is "" because content lives in template.content (DocumentFragment).
+    // innerHTML reads from the content fragment correctly.
+    const raw = String(tplEl.innerHTML || tplEl.textContent || '').trim();
+    if (!raw) return null;
+    return raw;
+  }
+  _tryParseJsonFromTemplateEl(tplEl, errorLabel) {
+    const txt = this._getJsonTemplateTextFromTemplateEl(tplEl);
+    if (!txt) return null;
+    try {
+      return JSON.parse(txt);
+    } catch (_e) {
+      throw new Error(`fx-insert: ${errorLabel} does not contain valid JSON`);
+    }
+  }
+  _isJsonLiteral(value) {
+    if (value === null || value === undefined) return false;
+    const t = String(value).trim();
+    return t.startsWith('{') && t.endsWith('}') || t.startsWith('[') && t.endsWith(']');
+  }
+  _parseJsonLiteral(value) {
+    const t = String(value ?? '').trim();
+    return JSON.parse(t);
+  }
+  _matchIndexRepeatId(expr) {
+    const t = String(expr ?? '').trim();
+    const m = t.match(/^index\s*\(\s*(['"])(.*?)\1\s*\)\s*$/);
+    return m ? m[2] : null;
+  }
+  _resolveRepeatById(repeatId, fore) {
+    if (!repeatId || !fore) return null;
+    try {
+      return fore.querySelector(`#${CSS.escape(repeatId)}`);
+    } catch (_e) {
+      // CSS.escape not available or invalid selector; fall back
+      return fore.querySelector(`#${repeatId}`);
+    }
+  }
+  _isJsonLensRef(ref) {
+    if (!ref) return false;
+    const t = String(ref).trim();
+    return t.startsWith('?') || /^instance\s*\(/.test(t);
+  }
+  _deepClone(value) {
+    // Prefer structuredClone when available
+    if (typeof structuredClone === 'function') return structuredClone(value);
+    return JSON.parse(JSON.stringify(value));
+  }
+  _clearJsonValues(value) {
+    // Produce an “empty” structure with same keys/shape.
+    if (Array.isArray(value)) return value.map(v => this._clearJsonValues(v));
+    if (value && typeof value === 'object') {
+      const out = {};
+      for (const [k, v] of Object.entries(value)) {
+        out[k] = this._clearJsonValues(v);
+      }
+      return out;
+    }
+    // primitives: clear to empty string (inputs render blank)
+    return '';
+  }
+  _jsonNodeToLensSteps(node) {
+    // Build JSONLens path array from a JSONNode by walking parents.
+    const steps = [];
+    let cur = node;
+    while (cur && cur.parent !== null && cur.keyOrIndex !== null && cur.keyOrIndex !== undefined) {
+      steps.unshift(cur.keyOrIndex);
+      cur = cur.parent;
+    }
+    return steps;
+  }
+  _resolveRepeatElement() {
+    // Don’t use XPathUtil.getClosest here: it can receive non-Elements and then `.matches()` explodes.
+    return this && this.nodeType === Node.ELEMENT_NODE && typeof this.closest === 'function' ? this.closest('fx-repeat') : null;
+  }
+  _performJsonInsert(inscope, fore) {
+    // We need the ARRAY CONTAINER node, not the array children.
+    // IMPORTANT: do not rely on xpath-evaluation here because action in-scope context
+    // can be a DOM node (trigger/button), not a JSON lens node.
+    const target = this._resolveJsonRefToNode(this.ref);
+    if (!target || !target.__jsonlens__) {
+      throw new Error('fx-insert JSON mode: ref did not resolve to a JSON lens node');
+    }
+
+    // Determine array container + insertion index
+    let arrayNode = target;
+    let insertIndex = 0;
+
+    // If ref points to an array item, insert relative to its parent array
+    if (!Array.isArray(arrayNode.value) && arrayNode.parent && Array.isArray(arrayNode.parent.value)) {
+      const itemNode = arrayNode;
+      arrayNode = itemNode.parent;
+      const base = typeof itemNode.keyOrIndex === 'number' ? itemNode.keyOrIndex : arrayNode.value.length;
+      if (this.position === 'before') insertIndex = base;else insertIndex = base + 1; // after (default)
+    } else {
+      // ref points to the array itself
+      if (!Array.isArray(arrayNode.value)) {
+        throw new Error('fx-insert JSON mode: target is not an array');
+      }
+      const len = arrayNode.value.length;
+      if (this.hasAttribute('at')) {
+        // `at` is 1-based like XForms/XPath.
+        // When combined with position="after", we insert *after* the item at `at`.
+        const atExpr = this.getAttribute('at');
+        let at1;
+        if (/^\s*-?\d+(?:\.\d+)?\s*$/.test(atExpr)) {
+          at1 = Number(atExpr);
+        } else {
+          at1 = Number(evaluateXPathToNumber(atExpr, inscope, this));
+        }
+        if (Number.isNaN(at1) || at1 < 1) at1 = 1;
+        const base0 = Math.min(len, Math.max(0, at1 - 1));
+        if (this.position === 'after') {
+          insertIndex = Math.min(len, base0 + 1);
+        } else {
+          // before (and any other value): insert at the computed base index
+          insertIndex = base0;
+        }
+      } else if (this.position === 'first') {
+        insertIndex = 0;
+      } else if (this.position === 'last') {
+        insertIndex = len; // append
+      } else {
+        // default behavior: append
+        insertIndex = len;
+      }
+    }
+
+    // ------------------------------------------------------------
+    // IMPORTANT: update repeat index even if action is outside repeat
+    // ------------------------------------------------------------
+    // If at="index('movies')" (like in your demo), ensure index('movies')
+    // points at the new row BEFORE subsequent actions run.
+    const atExpr = this.getAttribute('at');
+    const repeatId = this._matchIndexRepeatId(atExpr);
+    const repeatFromAt = repeatId ? this._resolveRepeatById(repeatId, fore) : null;
+
+    // If action *is* inside a repeat, keep existing behavior as fallback
+    const repeatLocal = this._resolveRepeatElement();
+    const repeat = repeatFromAt || repeatLocal;
+    if (repeat) {
+      const newIndex1 = insertIndex + 1;
+      repeat.setAttribute('index', String(newIndex1));
+      if (typeof repeat.setIndex === 'function') {
+        try {
+          repeat.setIndex(newIndex1);
+        } catch (_e) {
+          // ignore
+        }
+      }
+    }
+
+    // ----------------------
+    // Compute insert value
+    // ----------------------
+    // Goal:
+    // - origin attribute OR <template> (inline or referenced) are AUTHOR-DEFINED defaults -> keep as-is
+    // - only the implicit fallback (clone last item) is cleared unless keep-values is set
+
+    let templateValue = null;
+    let hasExplicitOriginOrTemplate = false;
+    if (this.origin) {
+      // origin attribute is always explicit
+      hasExplicitOriginOrTemplate = true;
+
+      // 1) JSON literal origin (existing behavior): origin="{ ... }"
+      if (this._isJsonLiteral(this.origin)) {
+        templateValue = this._parseJsonLiteral(this.origin);
+      } else {
+        // 2) lens origin: origin="?foo?bar" OR 3) XPath origin
+        const originNode = this._isJsonLensRef(this.origin) ? this._resolveJsonRefToNode(this.origin) : evaluateXPathToFirstNode(this.origin, inscope, this);
+        if (originNode && originNode.__jsonlens__) {
+          templateValue = this._deepClone(originNode.value);
+        } else {
+          // origin was present but did not resolve -> keep old behavior: fall back
+          templateValue = null;
+          hasExplicitOriginOrTemplate = false;
+        }
+      }
+    } else {
+      // No origin attribute: allow JSON via template="id" or inline <template>...</template>
+      const templateId = this.getAttribute('template');
+      if (templateId) {
+        const tplEl = this._getTemplateElementById(templateId);
+        const parsed = this._tryParseJsonFromTemplateEl(tplEl, `template=\"${templateId}\"`);
+        if (parsed !== null) {
+          templateValue = parsed;
+          hasExplicitOriginOrTemplate = true;
+        }
+      }
+      if (templateValue === null) {
+        const inlineTpl = this._getInlineTemplateElement();
+        const parsed = this._tryParseJsonFromTemplateEl(inlineTpl, 'inline <template>');
+        if (parsed !== null) {
+          templateValue = parsed;
+          hasExplicitOriginOrTemplate = true;
+        }
+      }
+    }
+    if (templateValue === null) {
+      // Fallback: clone last item if it exists, else insert empty object
+      const len = arrayNode.value.length;
+      if (len > 0) {
+        templateValue = this._deepClone(arrayNode.value[len - 1]);
+      } else {
+        templateValue = {};
+      }
+      hasExplicitOriginOrTemplate = false;
+    }
+
+    // Explicit origin/template values must be preserved as-is.
+    // Only the implicit fallback clone gets cleared (unless keep-values is set).
+    const newValue = this.keepValues || hasExplicitOriginOrTemplate ? this._deepClone(templateValue) : this._clearJsonValues(templateValue);
+
+    // Mutate raw JSON via JSONLens
+    // Mutate JSON in a way that keeps JSONNode.children in sync
+    const instanceId = XPathUtil.resolveInstance(this, this.ref);
+    const model = this.getModel();
+    const instance = model.getInstance(instanceId);
+
+    // 1) BEST: use the JSONNode API if available (it should update children)
+    if (arrayNode && typeof arrayNode.insert === 'function') {
+      arrayNode.insert(newValue, insertIndex);
+    } else {
+      // 2) Fallback: mutate raw data via JSONLens
+      const steps = this._jsonNodeToLensSteps(arrayNode);
+      const lens = new JSONLens(instance.instanceData, steps);
+      lens.insert(newValue, insertIndex);
+
+      // Force the array node to notice the change and rebuild children:
+      // IMPORTANT: change reference so set() can't short-circuit on sameRef=true
+      const nextArr = Array.isArray(arrayNode.value) ? arrayNode.value.slice() : [];
+      if (typeof arrayNode.set === 'function') {
+        arrayNode.set(nextArr);
+      } else {
+        // last resort
+        arrayNode.value = nextArr;
+        if (typeof arrayNode._buildChildren === 'function') arrayNode._buildChildren();
+      }
+    }
+
+    // At this point, children MUST match value length
+    if (Array.isArray(arrayNode.value) && Array.isArray(arrayNode.children)) {
+      if (arrayNode.children.length !== arrayNode.value.length) {
+        // One more forced rebuild to be safe
+        const nextArr = arrayNode.value.slice();
+        if (typeof arrayNode.set === 'function') arrayNode.set(nextArr);else if (typeof arrayNode._buildChildren === 'function') arrayNode._buildChildren();
+      }
+    }
+    const insertedNode = arrayNode.children?.[insertIndex] || null;
+
+    // Dispatch Fore insert event similarly to XML branch
+    const xpath = insertedNode?.getPath ? insertedNode.getPath() : '';
+    Fore.dispatch(instance, 'insert', {
+      insertedNodes: insertedNode,
+      insertedParent: arrayNode,
+      ref: this.ref,
+      location: insertedNode,
+      position: this.position,
+      instanceId,
+      foreId: fore.id,
+      index: insertIndex + 1,
+      xpath
+    });
+    document.dispatchEvent(new CustomEvent('index-changed', {
+      composed: true,
+      bubbles: true,
+      detail: {
+        insertedNodes: insertedNode,
+        index: insertIndex + 1
+      }
+    }));
+
+    // Ensure UI updates
+    this.needsUpdate = true;
+    return [xpath];
+  }
+  // -------------------------
+  // Existing XML clone helpers
+  // -------------------------
+
   _cloneOriginSequence(inscope, targetSequence) {
     let originSequenceClone;
     if (this.origin) {
       // ### if there's an origin attribute use it
       let originTarget;
       try {
-        /*
-        todo: discuss where to pass vars from event.detail into function context
-         */
-        // this.setInScopeVariables(this.detail);
-
-        /*
-        if in 'create-nodes' mode and origin targets a repeat, the repeat
-        we use the already during initData() created nodeset as a template for insertion
-         */
         if (this.origin.startsWith('#') && this.getOwnerForm().createNodes) {
           const repeat = this.getOwnerForm().querySelector(this.origin);
           originSequenceClone = repeat.createdNodeset.cloneNode(true);
@@ -34119,7 +37372,6 @@ class FxInsert extends AbstractAction {
             console.error(`createdNodeset for repeat ${this.origin} does not exist`);
           }
         } else {
-          // originTarget = evaluateXPathToFirstNode(this.origin, inscope, this);
           originTarget = evaluateXPathToFirstNode(this.origin, inscope, this);
           if (Array.isArray(originTarget) && originTarget.length === 0) {
             console.warn('invalid origin for this insert action - ignoring...', this);
@@ -34148,18 +37400,79 @@ class FxInsert extends AbstractAction {
     }
     return targetSequence.length;
   }
+  _parseJsonLensRef(ref, defaultInstanceId = 'default') {
+    if (!ref) return null;
+    const s = String(ref).trim();
+
+    // instance('id')?a?b
+    const instMatch = s.match(/^instance\s*\(\s*(['"])(.*?)\1\s*\)\s*(\?.*)?$/);
+    let instanceId;
+    let lensPart;
+    if (instMatch) {
+      instanceId = instMatch[2];
+      lensPart = instMatch[3] || '';
+    } else {
+      if (!s.startsWith('?')) return null;
+      instanceId = defaultInstanceId;
+      lensPart = s;
+    }
+    const steps = lensPart.split('?').filter(Boolean).map(part => {
+      if (part === '*') return '*';
+      if (/^\d+$/.test(part)) return Number(part) - 1; // 1-based -> 0-based
+      return part;
+    });
+    return {
+      instanceId,
+      steps
+    };
+  }
+  _resolveJsonRefToNode(ref) {
+    const parsed = this._parseJsonLensRef(ref, 'default');
+    if (!parsed) return null;
+    const model = this.getModel();
+    const instance = model?.getInstance?.(parsed.instanceId) || model?.getInstance?.('default');
+    const root = instance?.nodeset;
+    if (!root || !root.__jsonlens__) return null;
+    let node = root;
+    for (const step of parsed.steps) {
+      if (step === '*') {
+        // For insert we require a concrete container; callers should not use wildcard here.
+        return null;
+      }
+      node = node?.get?.(step);
+      if (!node) return null;
+    }
+    return node;
+  }
   async perform() {
-    // We have a few terms here: `inScope` is the 'current item' we have. It is the item we're
-    // copying and inserting elsewhere.  If we have a `ref`, one of the nodes returned will
-    // become the sibling of this copy.  The `context` is the new parent of the copied
-    // element. It's usually better to add a `context` because that deals with empty elements.
     let inscope;
     let context;
     let targetSequence = [];
-    const inscopeContext = getInScopeContext(this);
     const fore = this.getOwnerForm();
+    const inscopeContext = getInScopeContext(this);
 
-    // ### 'context' attribute takes precedence over 'ref'
+    // -----------------------------------------
+    // Decide mode ONLY by instance type (NOT ref)
+    // -----------------------------------------
+    const exprForInstanceResolution = this.hasAttribute('ref') && this.ref || this.hasAttribute('context') && this.getAttribute('context') || "instance('default')";
+    const instanceId = XPathUtil.resolveInstance(this, exprForInstanceResolution);
+    const inst = this.getModel()?.getInstance?.(instanceId);
+    const isJsonInstance = !!inst && (inst.type === 'json' || typeof inst.getAttribute === 'function' && inst.getAttribute('type') === 'json');
+    if (isJsonInstance) {
+      // In JSON mode we only support lens refs that start with '?'
+      if (this.hasAttribute('ref') && !this._isJsonLensRef(this.ref)) {
+        throw new Error(`fx-insert JSON mode: ref must be a JSON lens path starting with '?' (got: ${this.ref})`);
+      }
+      // For JSON inserts your implementation expects to work from the in-scope lens context
+      inscope = inscopeContext;
+      return this._performJsonInsert(inscope, fore);
+    }
+
+    // -------------------------
+    // XML branch (normal XPath)
+    // -------------------------
+
+    // context takes precedence over ref
     if (this.hasAttribute('context')) {
       [context] = evaluateXPathToNodes(this.getAttribute('context'), inscopeContext, this);
       inscope = inscopeContext;
@@ -34172,21 +37485,10 @@ class FxInsert extends AbstractAction {
         targetSequence = evaluateXPathToNodes(this.ref, inscope, this);
       }
     }
-    // const originSequenceClone = this._cloneOriginSequence(inscope, targetSequence);
-
     const originSequenceClone = this._cloneOriginSequence(inscope, targetSequence);
-    if (!originSequenceClone) return; // if no origin back out without effect
-
-    /**
-     * @type {Node}
-     */
+    if (!originSequenceClone) return;
     let insertLocationNode;
-    /**
-     * @type {number}
-     */
     let index;
-
-    // if the targetSequence is empty but we got an originSequence use inscope as context and ignore 'at' and 'position'
     if (targetSequence.length === 0) {
       if (context) {
         insertLocationNode = context;
@@ -34194,57 +37496,39 @@ class FxInsert extends AbstractAction {
         fore.signalChangeToElement(insertLocationNode.localName);
         fore.signalChangeToElement(originSequenceClone.localName);
         index = 1;
+      } else if (!inscope && this.getOwnerForm().createNodes) {
+        const repeat = this.getOwnerForm().querySelector(this.origin);
+        inscope = getInScopeContext(repeat, repeat.ref);
+        insertLocationNode = inscope;
+        inscope.appendChild(originSequenceClone);
+        index = inscope.length - 1;
       } else {
-        // No context but creating nodes from UI
-        if (!inscope && this.getOwnerForm().createNodes) {
-          const repeat = this.getOwnerForm().querySelector(this.origin);
-          inscope = getInScopeContext(repeat, repeat.ref);
-          insertLocationNode = inscope;
-          inscope.appendChild(originSequenceClone);
-          index = inscope.length - 1;
-        } else {
-          insertLocationNode = inscope;
-          inscope.appendChild(originSequenceClone);
-          index = 1;
-        }
+        insertLocationNode = inscope;
+        inscope.appendChild(originSequenceClone);
+        index = 1;
       }
     } else {
-      /* ### insert at position given by 'at' or use the last item in the targetSequence ### */
       if (this.hasAttribute('at')) {
-        // todo: eval 'at'
-        // index = this.at;
-        // insertLocationNode = targetSequence[this.at - 1];
-
         index = evaluateXPathToNumber(this.getAttribute('at'), inscope, this);
-        insertLocationNode = targetSequence[index - 1];
+        insertLocationNode = targetSequence[index - 1]; // 1-based
       } else {
-        // this.at = targetSequence.length;
         index = targetSequence.length;
         insertLocationNode = targetSequence[targetSequence.length - 1];
       }
-
-      // ### if the insertLocationNode is undefined use the targetSequence - usually the case when the targetSequence just contains a single node
       if (!insertLocationNode) {
         index = 1;
         insertLocationNode = targetSequence;
-        const context = evaluateXPathToNumber('count(preceding::*)', targetSequence, this.getOwnerForm());
-        // console.log('context', context);
-        index = context + 1;
-        // index = targetSequence.findIndex(insertLocationNode);
+        const ctxIndex = evaluateXPathToNumber('count(preceding::*)', targetSequence, this.getOwnerForm());
+        index = ctxIndex + 1;
       }
-
       if (this.position && this.position === 'before') {
-        // this.at -= 1;
         insertLocationNode.parentNode.insertBefore(originSequenceClone, insertLocationNode);
         fore.signalChangeToElement(insertLocationNode.parentNode);
         fore.signalChangeToElement(originSequenceClone.localName);
       }
       if (this.position && this.position === 'after') {
-        // insertLocationNode.parentNode.append(originSequence);
-        // const nextSibl = insertLocationNode.nextSibling;
         index += 1;
         if (this.hasAttribute('context') && this.hasAttribute('ref')) {
-          // index=1;
           inscope.append(originSequenceClone);
           fore.signalChangeToElement(insertLocationNode);
           fore.signalChangeToElement(originSequenceClone.localName);
@@ -34260,19 +37544,6 @@ class FxInsert extends AbstractAction {
         }
       }
     }
-    // instance('default')/items/item[index()]
-
-    // console.log('insert context item ', insertLocationNode);
-    // console.log('parent ', insertLocationNode.parentNode);
-    // console.log('instance ', this.getModel().getDefaultContext());
-    // Fore.dispatch()
-
-    // const instanceId = XPathUtil.resolveInstance(this, this.getAttribute('context'));
-    const instanceId = XPathUtil.resolveInstance(this, this.ref);
-    const inst = this.getModel().getInstance(instanceId);
-    // console.log('<<<<<<< resolved instance', inst);
-    // Note: the parent to insert under is always the parent of the inserted node. The 'context' is not always the parent if the sequence is empty, or the position is different
-    // const xpath = XPathUtil.getPath(originSequenceClone.parentNode, instanceId);
     const xpath = getPath(insertLocationNode, instanceId);
     const path = Fore.getDomNodeIndexString(originSequenceClone);
     this.dispatchEvent(new CustomEvent('execute-action', {
@@ -34296,11 +37567,7 @@ class FxInsert extends AbstractAction {
       index,
       xpath
     });
-
-    // todo: this actually should dispatch to respective instance
-    document.dispatchEvent(
-    // new CustomEvent('insert', {
-    new CustomEvent('index-changed', {
+    document.dispatchEvent(new CustomEvent('index-changed', {
       composed: true,
       bubbles: true,
       detail: {
@@ -34323,8 +37590,6 @@ class FxInsert extends AbstractAction {
     return null;
   }
   actionPerformed(changedPaths) {
-    // ### make sure the necessary modelItems will get created
-    // this.getModel().rebuild();
     super.actionPerformed();
   }
 
@@ -34338,7 +37603,6 @@ class FxInsert extends AbstractAction {
 
     // clear attrs
     for (let i = 0; i < attrs.length; i += 1) {
-      // n.setAttribute(attrs[i].name,'');
       attrs[i].value = '';
     }
     // clear text content
@@ -34531,13 +37795,17 @@ class FxSetvalue extends AbstractAction {
    * which call setvalue directly without perform().
    */
   dispatchExecute() {}
+
+  // Adjustment in setValue logic to ensure we work with JSONNode, not just raw values
   setValue(modelItem, newVal) {
     console.log('setValue', modelItem, newVal);
     const item = modelItem;
     if (!item) return;
+
+    // Check if current node is a JSONNode
+    const node = Array.isArray(item.node) ? item.node[0] : item.node;
     if (item.value !== newVal) {
-      // const path = XPathUtil.getPath(modelItem.node);
-      const path = Fore.getDomNodeIndexString(modelItem.node);
+      const path = Fore.getDomNodeIndexString(node);
       const ev = this.event;
       const targetElem = this;
       this.dispatchEvent(new CustomEvent('execute-action', {
@@ -34551,19 +37819,18 @@ class FxSetvalue extends AbstractAction {
           path
         }
       }));
+
+      // Use ModelItem's value setter which handles both DOM nodes and JSON lenses
       if (newVal?.nodeType) {
         if (newVal.nodeType === Node.ELEMENT_NODE) {
           item.value = newVal;
-        }
-        if (newVal.nodeType === Node.ATTRIBUTE_NODE) {
-          item.value = newVal.getValue();
-        }
-        if (newVal.nodeType === Node.TEXT_NODE) {
+        } else if (newVal.nodeType === Node.ATTRIBUTE_NODE) {
+          item.value = newVal.nodeValue;
+        } else if (newVal.nodeType === Node.TEXT_NODE) {
           item.value = newVal.textContent;
         }
       } else {
         item.value = newVal;
-        item.node.textContent = newVal;
       }
       this.getModel().changed.push(modelItem);
       this.needsUpdate = true;
@@ -34659,7 +37926,6 @@ class FxSend extends AbstractAction {
     }
     // if not of type fx-submission signal error
   }
-
   _emitToChannel() {
     const channel = this.getModel().querySelector(`#${this.connection}`);
     if (channel === null) {
@@ -34707,7 +37973,6 @@ class FxToggle extends AbstractAction {
     // this.needsUpdate = true;
   }
 }
-
 if (!customElements.get('fx-toggle')) {
   window.customElements.define('fx-toggle', FxToggle);
 }
@@ -35017,7 +38282,6 @@ class FxReturn extends AbstractAction {
     }
     // const nonrelevant = this.hasAttribute('nonrelevant') ? this.getAttribute('nonrelevant') : null;
   }
-
   async perform() {
     super.perform();
 
@@ -35694,10 +38958,12 @@ class FxSetattribute extends AbstractAction {
     }
     mi.node.setAttribute(this.attrName, this.attrValue);
     const newModelItem = FxBind.createModelItem(`${this.ref}/@${this.attrName}`, mi.node.getAttributeNode(this.attrName), this, null);
-    this.getOwnerForm().getModel().registerModelItem(newModelItem);
-    this.getOwnerForm().addToBatchedNotifications(newModelItem);
+    // IMPORTANT: registerModelItem may return an existing canonical ModelItem for the same path.
+    // Always use the returned instance for notifications.
+    const canonical = this.getOwnerForm().getModel().registerModelItem(newModelItem);
+    this.getOwnerForm().addToBatchedNotifications(canonical);
     this.needsUpdate = true;
-    newModelItem.notify();
+    canonical.notify();
   }
 }
 if (!customElements.get('fx-setattribute')) {
@@ -35939,8 +39205,25 @@ if (!customElements.get('fx-control-menu')) {
   customElements.define('fx-control-menu', FxControlMenu);
 }
 
+// FontoXPath custom functions are registered globally. If multiple <fx-functionlib> (or multiple
+// <fx-fore> instances) register the same function name+arity, later registrations would overwrite
+// earlier ones across the whole page. We enforce "first wins".
+const _registeredFunctionKeys = new Set();
+function _makeFunctionKey(functionIdentifier, arity) {
+  if (typeof functionIdentifier === 'string') {
+    return `str:${functionIdentifier}#${arity}`;
+  }
+  return `{${functionIdentifier.namespaceURI}}${functionIdentifier.localName}#${arity}`;
+}
+function _ensureGlobalUnprefixedName(localName) {
+  // Keep this list unique to avoid unbounded growth across tests
+  if (!globallyDeclaredFunctionLocalNames.includes(localName)) {
+    globallyDeclaredFunctionLocalNames.push(localName);
+  }
+}
+
 /**
- * @param functionObject {{signature: string, type: string|null, functionBody: string}}
+ * @param functionObject {{signature: string, type: string|null, functionBody: string, implementation?: Function}}
  * @param formElement {HTMLElement} The form element connected to this function. Used to determine inscope context
  * @returns {undefined}
  */
@@ -35968,13 +39251,7 @@ function registerFunction(functionObject, formElement) {
     namespaceURI: 'http://www.w3.org/2005/xquery-local-functions',
     localName
   } : `${prefix}:${localName}`;
-
-  // Make the function available globally w/o a prefix. See the functionNameResolver for for how
-  // functionObject is picked up
-  if (!prefix) {
-    globallyDeclaredFunctionLocalNames.push(localName);
-  }
-  const paramParts = params ? params.split(',').map(param => {
+  const paramParts = params ? params.split(',').map(param => param.trim()).filter(Boolean).map(param => {
     const match = param.match(/(?<variableName>\$[^\s]+)(?:\sas\s(?<varType>[^\s]+))/);
     if (!match) {
       throw new Error(`Param ${param} could not be parsed`);
@@ -35988,9 +39265,38 @@ function registerFunction(functionObject, formElement) {
       variableType: varType || 'item()*'
     };
   }) : [];
+  const arity = paramParts.length;
+
+  // -------------------------------------------------
+  // FIRST-WINS GUARD (name + arity) WITH NAME EXPORT
+  // -------------------------------------------------
+  const key = _makeFunctionKey(functionIdentifier, arity);
+  if (_registeredFunctionKeys.has(key)) {
+    // If this registration is unprefixed, we must still make it callable without prefix.
+    // This fixes the unit test case where local:hello-world() was registered earlier and
+    // hello-world() should resolve to that implementation.
+    if (!prefix) {
+      _ensureGlobalUnprefixedName(localName);
+    }
+    return;
+  }
+  _registeredFunctionKeys.add(key);
+
+  // Make the function available globally w/o a prefix.
+  if (!prefix) {
+    _ensureGlobalUnprefixedName(localName);
+  }
   switch (type) {
     case 'text/javascript':
       {
+        // If a real JS function is provided (module libs), register it directly.
+        if (typeof functionObject.implementation === 'function') {
+          const impl = functionObject.implementation;
+          registerCustomXPathFunction(functionIdentifier, paramParts.map(paramPart => paramPart.variableType), returnType || 'item()*', (domFacade, ...values) => impl.apply(formElement.getInScopeContext(), [...values, formElement.getOwnerForm()]));
+          break;
+        }
+
+        // Existing behavior: compile from functionBody
         // eslint-disable-next-line no-new-func
         const fun = new Function('_domFacade', ...paramParts.map(paramPart => paramPart.variableName), 'form', functionObject.functionBody);
         registerCustomXPathFunction(functionIdentifier, paramParts.map(paramPart => paramPart.variableType), returnType || 'item()*', (...args) => fun.apply(formElement.getInScopeContext(), [...args, formElement.getOwnerForm()]));
@@ -36003,7 +39309,6 @@ function registerFunction(functionObject, formElement) {
         const typedValueFactories = paramParts.map(param => createTypedValueFactory(param.variableType));
         const language = type === 'text/xpath' ? 'XPath3.1' : type === 'text/xquery' ? 'XQuery3.1' : 'XQueryUpdate3.1';
         const fun = (domFacade, ...args) => evaluateXPath(functionObject.functionBody, formElement.getInScopeContext(), formElement.getOwnerForm(), paramParts.reduce((variablesByName, paramPart, i) => {
-          // Because we know the XPath type here (from the function declaration) we do not have to depend on the implicit typings
           variablesByName[paramPart.variableName.replace('$', '')] = typedValueFactories[i](args[i], domFacade);
           return variablesByName;
         }, {}), {
@@ -36041,10 +39346,35 @@ if (!customElements.get('fx-function')) {
   customElements.define('fx-function', FxFunction);
 }
 
-/**
- * Allows to extend a form with remote custom functions.
- *
- */
+const LOCAL_FUNCTIONS_NS = 'http://www.w3.org/2005/xquery-local-functions';
+
+// Global per-page cache to prevent registering the same library multiple times.
+// Keyed by resolved URL + prefix + mode.
+const _functionLibLoadCache = new Map();
+function looksLikeModuleSrc(src) {
+  return /\.m?js($|\?)/i.test(src);
+}
+function applyPrefixToSignature(signature, prefix) {
+  if (!signature || !prefix) return signature;
+  const s = signature.trim();
+  const paren = s.indexOf('(');
+  if (paren < 0) return s;
+  const namePart = s.slice(0, paren).trim();
+  const rest = s.slice(paren);
+  const localName = namePart.includes(':') ? namePart.split(':').pop().trim() : namePart;
+  if (!localName) return s;
+  return `${prefix}:${localName}${rest}`;
+}
+function normalizeModuleExportToList(mod, src) {
+  const lib = mod.functions ?? mod.fxFunctions;
+  if (!lib) {
+    console.error(`fx-functionlib: Module ${src} must export a named \`functions\` (or \`fxFunctions\`).`);
+    return [];
+  }
+  if (Array.isArray(lib)) return lib;
+  if (typeof lib === 'object') return Object.values(lib);
+  return [];
+}
 class FxFunctionlib extends ForeElementMixin {
   constructor() {
     super();
@@ -36062,34 +39392,553 @@ class FxFunctionlib extends ForeElementMixin {
   async connectedCallback() {
     this.style.display = 'none';
     const src = this.getAttribute('src');
-    const result = await fetch(src);
+    if (!src) {
+      console.error('fx-functionlib: Missing required @src.');
+      this._resolveLoading(undefined);
+      return;
+    }
+    const prefix = (this.getAttribute('prefix') || '').trim();
+    const typeAttr = (this.getAttribute('type') || '').trim().toLowerCase();
+    const isModule = typeAttr === 'module' || !typeAttr && looksLikeModuleSrc(src);
+    const resolvedUrl = new URL(src, this.baseURI).href;
+    if (prefix) this._ensurePrefixDeclared(prefix);
+    const mode = isModule ? 'module' : 'html';
+    const cacheKey = `${mode}|${resolvedUrl}|${prefix}`;
+    const existing = _functionLibLoadCache.get(cacheKey);
+    if (existing) {
+      try {
+        await existing;
+      } finally {
+        this._resolveLoading(undefined);
+      }
+      return;
+    }
+    const loadPromise = (async () => {
+      if (isModule) {
+        await this._loadModuleLibrary(resolvedUrl, src, prefix);
+      } else {
+        await this._loadHtmlLibrary(resolvedUrl, src, prefix);
+      }
+    })();
+    _functionLibLoadCache.set(cacheKey, loadPromise);
+    try {
+      await loadPromise;
+    } catch (e) {
+      _functionLibLoadCache.delete(cacheKey);
+      console.error(`fx-functionlib: Loading function library at ${src} failed.`, e);
+    } finally {
+      this._resolveLoading(undefined);
+    }
+  }
+  _ensurePrefixDeclared(prefix) {
+    const ownerForm = typeof this.getOwnerForm === 'function' && this.getOwnerForm() || this.closest('fx-fore');
+    if (!ownerForm) return;
+    const attrName = `xmlns:${prefix}`;
+    if (!ownerForm.getAttribute(attrName)) {
+      ownerForm.setAttribute(attrName, LOCAL_FUNCTIONS_NS);
+    }
+  }
+  _register(functionObject, prefix) {
+    if (!functionObject || typeof functionObject.signature !== 'string') return;
+
+    // If prefix is given: register ONLY the prefixed signature (no unprefixed alias).
+    const sig = prefix ? applyPrefixToSignature(functionObject.signature, prefix) : functionObject.signature;
+    registerFunction({
+      ...functionObject,
+      signature: sig
+    }, this);
+  }
+  async _loadModuleLibrary(resolvedUrl, src, prefix) {
+    const mod = await import(/* @vite-ignore */resolvedUrl);
+    const items = normalizeModuleExportToList(mod, src);
+    for (const item of items) {
+      if (typeof item === 'function') {
+        const {
+          signature
+        } = item;
+        if (typeof signature !== 'string' || !signature.trim()) continue;
+        this._register({
+          type: 'text/javascript',
+          signature: signature.trim(),
+          implementation: item
+        }, prefix);
+      } else if (item && typeof item === 'object' && typeof item.signature === 'string') {
+        this._register(item, prefix);
+      }
+    }
+  }
+  async _loadHtmlLibrary(resolvedUrl, src, prefix) {
+    const result = await fetch(resolvedUrl);
     if (!result.ok) {
       console.error(`Loading function library at ${src} failed.`);
+      return;
     }
     const body = await result.text();
     const document = new DOMParser().parseFromString(body, 'text/html');
-
-    /**
-     * @type {HTMLElement[]}
-     */
     const functions = Array.from(document.querySelectorAll('fx-function'));
-    // TODO: also recurse into new function libraries here?
     for (const func of functions) {
       const functionObject = {
         type: func.getAttribute('type'),
         signature: func.getAttribute('signature'),
         functionBody: func.innerText
       };
-      registerFunction(functionObject, this);
+      this._register(functionObject, prefix);
     }
-    this._resolveLoading(undefined);
   }
 }
 if (!customElements.get('fx-functionlib')) {
   customElements.define('fx-functionlib', FxFunctionlib);
 }
 
+// fx-speech.js — Fore-compatible voice input component with focus alignment, restart, repeat/back commands, and visual listening indicator
+class FxSpeech extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({
+      mode: 'open'
+    });
+    this.mode = this.getAttribute('mode') || 'guided';
+    this.currentIndex = 0;
+    this.controls = [];
+    this.recognition = null;
+    this.lastInputCaptured = false;
+    this.awaitingInput = false;
+    this.waitingToAdvance = false;
+  }
+  connectedCallback() {
+    this.shadowRoot.innerHTML = `
+      <style>
+        button { margin: 0.5em; padding: 0.5em 1em; font-size: 1em; }
+        #status { display: inline-block; margin-left: 1em; font-weight: bold; color: green; visibility: hidden; }
+        #status.listening { visibility: visible; animation: pulse 1s infinite; }
+        @keyframes pulse {
+          0% { opacity: 0.3; }
+          50% { opacity: 1; }
+          100% { opacity: 0.3; }
+        }
+      </style>
+      <button id="start">🎤 Start Speech Input</button>
+      <button id="retry" style="display:none;">🔁 Continue</button>
+      <span id="status">🎧 Listening…</span>
+    `;
+    this.controls = Array.from(document.querySelectorAll('fx-control'));
+    this.initSpeech();
+    this.shadowRoot.getElementById('start').addEventListener('click', () => {
+      this.startInteraction();
+    });
+    this.shadowRoot.getElementById('retry').addEventListener('click', () => {
+      this.startGuided();
+    });
+    document.addEventListener('focusin', e => {
+      const targetControl = e.target.closest('fx-control');
+      if (targetControl) {
+        const index = this.controls.indexOf(targetControl);
+        if (index !== -1) {
+          this.currentIndex = index;
+        }
+      }
+    });
+  }
+  initSpeech() {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert('Web Speech API not supported in this browser.');
+      return;
+    }
+    this.recognition = new SpeechRecognition();
+    this.recognition.lang = 'en-US';
+    this.recognition.interimResults = false;
+    this.recognition.continuous = false;
+    this.recognition.onresult = event => {
+      this.lastSpoken = null;
+      const spoken = event.results[0][0].transcript.trim();
+      console.log('Recognized:', spoken);
+      this.lastInputCaptured = true;
+      this.awaitingInput = false;
+      this.toggleListening(false);
+      if (this.mode === 'guided') {
+        this.lastSpoken = spoken.toLowerCase();
+        this.applyGuidedInput(this.lastSpoken);
+      } else {
+        this.handleCommandInput(spoken.toLowerCase());
+      }
+    };
+    this.recognition.onerror = e => {
+      console.warn('Speech error:', e.error);
+      this.awaitingInput = false;
+      this.toggleListening(false);
+      if (this.mode === 'guided' && !this.waitingToAdvance) this.retryGuided();
+    };
+    this.recognition.onend = () => {
+      this.recognitionActive = false;
+      console.log('Recognition ended');
+      this.toggleListening(false);
+      if (this.mode === 'guided') {
+        if (this.lastInputCaptured && !['next', 'back'].includes(this.lastSpoken)) {
+          this.advanceToNextField();
+        } else if (this.awaitingInput && !this.waitingToAdvance) {
+          this.retryGuided();
+        }
+      }
+    };
+    this.recognition.onstart = () => {
+      this.recognitionActive = true;
+      console.log('Recognition started');
+      this.toggleListening(true);
+    };
+  }
+  toggleListening(state) {
+    const status = this.shadowRoot.getElementById('status');
+    if (state) {
+      status.classList.add('listening');
+    } else {
+      status.classList.remove('listening');
+    }
+  }
+  speak(text, callback) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.onend = async () => {
+      await this.waitForSpeechSynthesisToEnd();
+      if (callback) callback();
+    };
+    speechSynthesis.speak(utterance);
+  }
+  async waitForSpeechSynthesisToEnd() {
+    while (speechSynthesis.speaking) {
+      await new Promise(resolve => setTimeout(resolve, 50));
+    }
+  }
+  getLabelText(control) {
+    return control.getAttribute('aria-label') || control.querySelector('label')?.textContent?.trim() || 'unknown field';
+  }
+  getInputElement(control) {
+    return control.querySelector('input, textarea, select');
+  }
+  startInteraction() {
+    this.shadowRoot.getElementById('retry').style.display = 'none';
+    if (this.mode === 'guided') {
+      this.startGuided();
+    } else {
+      this.recognition.start();
+    }
+  }
+  startGuided() {
+    this.shadowRoot.getElementById('retry').style.display = 'none';
+    if (this.currentIndex >= this.controls.length) {
+      this.speak('All fields completed.', () => {
+        this.currentIndex = 0;
+        this.shadowRoot.getElementById('start').textContent = '🔁 Restart Speech Input';
+        this.shadowRoot.getElementById('retry').style.display = 'inline-block';
+      });
+      return;
+    }
+    this.lastInputCaptured = false;
+    this.awaitingInput = true;
+    this.waitingToAdvance = false;
+    const control = this.controls[this.currentIndex];
+    const label = this.getLabelText(control);
+    const input = this.getInputElement(control);
+    input?.focus();
+    console.log('Prompting for field:', label);
+    this.speak(`Please say value for ${label}`, () => {
+      console.log('Starting recognition for:', label);
+      if (!this.recognitionActive) this.recognition.start();
+    });
+  }
+  retryGuided() {
+    this.shadowRoot.getElementById('retry').style.display = 'inline-block';
+    this.awaitingInput = false;
+    this.speak('Please try again or tap continue.');
+  }
+  applyGuidedInput(spoken) {
+    if (spoken === 'clear') {
+      const control = this.controls[this.currentIndex];
+      const input = this.getInputElement(control);
+      if (input) {
+        input.value = '';
+        input.dispatchEvent(new Event('input', {
+          bubbles: true
+        }));
+        this.speak('Cleared');
+      }
+      return;
+    }
+    if (spoken === 'next') {
+      this.advanceToNextField();
+      return;
+    }
+    if (spoken === 'repeat') {
+      this.startGuided();
+      return;
+    }
+    if (spoken === 'back') {
+      this.currentIndex = Math.max(0, this.currentIndex - 1);
+      this.startGuided();
+      return;
+    }
+    const control = this.controls[this.currentIndex];
+    const input = this.getInputElement(control);
+    if (input) {
+      input.value = spoken;
+      input.dispatchEvent(new Event('input', {
+        bubbles: true
+      }));
+    }
+  }
+  advanceToNextField() {
+    this.waitingToAdvance = true;
+    setTimeout(() => {
+      this.currentIndex++;
+      this.startGuided();
+    }, 1000);
+  }
+  handleCommandInput(spoken) {
+    if (spoken.startsWith('skip to')) {
+      const label = spoken.replace('skip to', '').trim();
+      const target = this.controls.find(ctrl => this.getLabelText(ctrl).toLowerCase() === label);
+      if (target) {
+        this.currentIndex = this.controls.indexOf(target);
+        this.getInputElement(target)?.focus();
+        this.speak(`Skipping to ${label}`);
+      } else {
+        this.speak(`Label "${label}" not found.`);
+      }
+      return;
+    }
+    if (spoken === 'next') {
+      this.currentIndex++;
+      return;
+    }
+    if (spoken === 'repeat') {
+      this.startGuided();
+      return;
+    }
+    if (spoken === 'back') {
+      this.currentIndex = Math.max(0, this.currentIndex - 1);
+      this.startGuided();
+      return;
+    }
+    const [label, ...rest] = spoken.split(' ');
+    const value = rest.join(' ');
+    const target = this.controls.find(ctrl => this.getLabelText(ctrl).toLowerCase() === label);
+    if (target) {
+      const input = this.getInputElement(target);
+      if (input) {
+        input.value = value;
+        input.dispatchEvent(new Event('input', {
+          bubbles: true
+        }));
+        input.focus();
+      }
+    } else {
+      this.speak(`Label "${label}" not found.`);
+    }
+  }
+}
+customElements.define('fx-speech', FxSpeech);
+
 // core + models classes
 var index = {};
+
+/**
+ * Authoring integrity checks for Fore forms.
+ *
+ * Runs by default at startup. Add the `no-check` attribute to `<fx-fore>` to disable
+ * (e.g. in production). The module is dynamically imported, so it is never loaded
+ * when checks are disabled.
+ *
+ * Adding a new check: add a function `_check<Name>(fore, errors)` and call it in
+ * `checkAuthoring()` below.
+ */
+
+const INSTANCE_RE = /instance\s*\(\s*['"]([^'"]+)['"]\s*\)/g;
+const INDEX_RE = /index\s*\(\s*['"]([^'"]+)['"]\s*\)/g;
+
+// Attributes that may carry XPath expressions
+const XPATH_ATTRS = ['ref', 'value', 'calculate', 'constraint', 'required', 'readonly', 'relevant', 'bind', 'context', 'if', 'while', 'origin', 'iterate', 'at'];
+function _isDynamic(val) {
+  return !val || val.includes('{');
+}
+function _byId(fore, id) {
+  return fore.ownerDocument.getElementById(id) || fore.getRootNode().getElementById?.(id) || fore.querySelector(`#${id}`);
+}
+function _checkSendSubmissions(fore, errors) {
+  fore.querySelectorAll('fx-send[submission]').forEach(el => {
+    const id = el.getAttribute('submission');
+    if (_isDynamic(id)) return;
+    const localFore = el.closest('fx-fore');
+    const {
+      model
+    } = localFore;
+    const target = model ? model.querySelector(`fx-submission#${id}`) : fore.querySelector(`fx-submission#${id}`);
+    if (!target) {
+      errors.push({
+        element: el,
+        message: `<fx-send submission="${id}">: no <fx-submission id="${id}"> found`
+      });
+    }
+  });
+}
+function _checkDispatchTargets(fore, errors) {
+  fore.querySelectorAll('fx-dispatch[targetid]').forEach(el => {
+    const id = el.getAttribute('targetid');
+    if (_isDynamic(id)) return;
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<fx-dispatch targetid="${id}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkXPathInstanceRefs(fore, errors) {
+  const allEls = Array.from(fore.querySelectorAll('*'));
+  for (const el of allEls) {
+    const localFore = el.closest('fx-fore');
+    for (const attr of XPATH_ATTRS) {
+      const val = el.getAttribute(attr);
+      if (!val) continue;
+      INSTANCE_RE.lastIndex = 0;
+      let m;
+      while ((m = INSTANCE_RE.exec(val)) !== null) {
+        const id = m[1];
+        const localInstance = localFore.querySelector(`fx-instance#${id}`);
+        const sharedInstance = !localInstance && localFore.ownerDocument.querySelector(`fx-instance[shared]#${id}`);
+        if (!localInstance && !sharedInstance) {
+          errors.push({
+            element: el,
+            message: `[${attr}="${val}"]: instance('${id}') — no <fx-instance id="${id}"> found`
+          });
+        }
+      }
+      INDEX_RE.lastIndex = 0;
+      while ((m = INDEX_RE.exec(val)) !== null) {
+        const id = m[1];
+        if (!localFore.querySelector(`fx-repeat#${id}`)) {
+          errors.push({
+            element: el,
+            message: `[${attr}="${val}"]: index('${id}') — no <fx-repeat id="${id}"> found`
+          });
+        }
+      }
+    }
+  }
+}
+function _checkCallActions(fore, errors) {
+  fore.querySelectorAll('fx-call[action]').forEach(el => {
+    const id = el.getAttribute('action');
+    if (_isDynamic(id)) return;
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<fx-call action="${id}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkShowHideDialogs(fore, errors) {
+  fore.querySelectorAll('fx-show[dialog], fx-hide[dialog]').forEach(el => {
+    const id = el.getAttribute('dialog');
+    if (_isDynamic(id)) return;
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<${el.localName} dialog="${id}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkLoadAttachTo(fore, errors) {
+  fore.querySelectorAll('fx-load[attach-to]').forEach(el => {
+    const val = el.getAttribute('attach-to');
+    if (_isDynamic(val)) return;
+    if (!val.startsWith('#')) return; // _blank, _self etc. are valid non-id targets
+    const id = val.substring(1);
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<fx-load attach-to="${val}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkRefreshControl(fore, errors) {
+  fore.querySelectorAll('fx-refresh[control]').forEach(el => {
+    const id = el.getAttribute('control');
+    if (_isDynamic(id)) return;
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<fx-refresh control="${id}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkResetInstance(fore, errors) {
+  const model = fore.querySelector(':scope > fx-model');
+  fore.querySelectorAll('fx-reset[instance]').forEach(el => {
+    const id = el.getAttribute('instance');
+    if (_isDynamic(id)) return;
+    const target = model ? model.querySelector(`fx-instance#${id}`) : fore.querySelector(`fx-instance#${id}`);
+    const sharedTarget = !target && fore.ownerDocument.querySelector(`fx-instance[shared]#${id}`);
+    if (!target && !sharedTarget) {
+      errors.push({
+        element: el,
+        message: `<fx-reset instance="${id}">: no <fx-instance id="${id}"> found`
+      });
+    }
+  });
+}
+function _checkSetfocusControl(fore, errors) {
+  fore.querySelectorAll('fx-setfocus[control]').forEach(el => {
+    const id = el.getAttribute('control');
+    if (_isDynamic(id)) return;
+    if (!_byId(fore, id)) {
+      errors.push({
+        element: el,
+        message: `<fx-setfocus control="${id}">: no element with id="${id}" found`
+      });
+    }
+  });
+}
+function _checkToggleCase(fore, errors) {
+  fore.querySelectorAll('fx-toggle[case]').forEach(el => {
+    const id = el.getAttribute('case');
+    if (_isDynamic(id)) return;
+    if (!fore.querySelector(`fx-case#${id}`)) {
+      errors.push({
+        element: el,
+        message: `<fx-toggle case="${id}">: no <fx-case id="${id}"> found`
+      });
+    }
+  });
+}
+
+/**
+ * Run all authoring checks on a given `<fx-fore>` element.
+ * Returns an array of `{ element, message }` error objects.
+ *
+ * @param {HTMLElement} fore
+ * @returns {{ element: HTMLElement, message: string }[]}
+ */
+function checkAuthoring(fore) {
+  const errors = [];
+  _checkSendSubmissions(fore, errors);
+  _checkDispatchTargets(fore, errors);
+  _checkXPathInstanceRefs(fore, errors);
+  _checkCallActions(fore, errors);
+  _checkShowHideDialogs(fore, errors);
+  _checkLoadAttachTo(fore, errors);
+  _checkRefreshControl(fore, errors);
+  _checkResetInstance(fore, errors);
+  _checkSetfocusControl(fore, errors);
+  _checkToggleCase(fore, errors);
+  return errors;
+}
+
+var authoringCheck = /*#__PURE__*/Object.freeze({
+	__proto__: null,
+	checkAuthoring: checkAuthoring
+});
 
 export { index as default };
