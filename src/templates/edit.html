@@ -22,7 +22,7 @@
 
         <!--script type="module" src="http://localhost:8090/index.js"></script>
         <script type="module" src="http://localhost:8090/tools/fx-lens.js"></script-->
-        <script type="module" src="resources/scripts/fore-dev.js"></script>
+        <script type="module" src="resources/scripts/fore.js"></script>
         <script type="module" src="resources/scripts/fx-lens.js"></script>
         <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>
         <script type="module" src="resources/scripts/edep-xml-editor.js"></script>
@@ -77,7 +77,7 @@
                     </app-header>
 
                     <main id="main" class="editor">
-                        <fx-fore show-confirmation="show-confirmation" id="epidoc-editor" create-nodes="create-nodes">
+                        <fx-fore show-confirmation="show-confirmation" id="epidoc-editor" create-nodes="create-nodes" no-check="no-check">
                             <fx-model data-template="pages:parse-params">
                                 <fx-action event="model-construct-done">
                                     <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
@@ -149,9 +149,7 @@
                                         <fx-setvalue ref="instance('default')/@fragments" value="concat(instance('default')/@fragments, ' ', instance('i-fragment')/@xml:id)"></fx-setvalue>
                                     </fx-action>
                                     <fx-action event="submit-error">
-                                        <fx-message>
-                                            <pb-i18n key="form.save-failed"></pb-i18n>
-                                        </fx-message>
+                                        <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
                                         <fx-action src="resources/scripts/showErrors.js"></fx-action>
                                     </fx-action>
                                 </fx-submission>
@@ -303,9 +301,7 @@
                                         <pb-i18n key="form.data-saved"></pb-i18n>
                                     </fx-message>
                                     <fx-action event="submit-error">
-                                        <fx-message>
-                                            <pb-i18n key="form.save-failed"></pb-i18n>
-                                        </fx-message>
+                                        <fx-message><pb-i18n key="form.invalid-data"></pb-i18n></fx-message>
                                         <fx-action src="resources/scripts/showErrors.js"></fx-action>
                                     </fx-action>
                                 </fx-submission>
@@ -321,9 +317,7 @@
                                         <fx-call function="updateUrl(instance('default')/@xml:id)" if="not(ends-with(uri-path(),'.xml'))"></fx-call>
                                     </fx-action>
                                     <fx-action event="submit-error">
-                                        <fx-message>
-                                            <pb-i18n key="form.save-failed"></pb-i18n>
-                                        </fx-message>
+                                        <fx-message><pb-i18n key="form.invalid-data"></pb-i18n></fx-message>
                                         <fx-action src="resources/scripts/showErrors.js"></fx-action>
                                     </fx-action>
                                 </fx-submission>
@@ -530,9 +524,10 @@
                                     </li>
                                     <li class="nav-divider"></li>
                                     <li class="noflex">
-                                      {uri-relpath()}
-<!--                                        <fx-control ref="instance('default')/@fragments" style="display:none;" create="create"></fx-control>-->
-                                        <fx-group ref="instance('default')/@fragments" class="neutral">
+                                        <!-- these controls just create the attributes they are pointing to in case they are not present in the data -->
+                                        <fx-control ref="instance('default')/@fragments" style="display:none;" create="create"></fx-control>
+                                        <fx-control ref="instance('default')/@type" style="display:none;" create="create"></fx-control>
+                                        <fx-group ref="instance('default')/@fragments[string() and ../@type!='partial']" class="neutral">
                                             <fieldset id="fragment-fields">
                                                 <legend>
                                                     <pb-i18n key="form.fragments"></pb-i18n>
@@ -562,13 +557,12 @@
                             </nav>
                             <fx-group ref="teiHeader" aria-labelledby="title-lbl" class="outer-group">
                                 <h1 id="title-lbl">
-                                    <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
+                                    <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title" update-event="input">
                                         <label>
                                             <pb-i18n key="form.title"></pb-i18n>
                                         </label>
                                     </fx-control>
                                 </h1>
-
 
                                 <!-- IDENTIFIERs -->
                                 <div
