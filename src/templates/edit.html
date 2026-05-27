@@ -18,12 +18,12 @@
         <link rel="stylesheet" href="resources/css/zotero-autocomplete.css" media="screen" />
         <!-- Uncomment if jinn-codemirror is running on 8000 -->
         <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
-<!--        <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>-->
+        <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
 
-        <script type="module" src="http://localhost:8090/index.js"></script>
-        <script type="module" src="http://localhost:8090/tools/fx-lens.js"></script>
-<!--        <script type="module" src="resources/scripts/fore-dev.js"></script>-->
-<!--        <script type="module" src="resources/scripts/fx-lens.js"></script>-->
+        <!--script type="module" src="http://localhost:8090/index.js"></script>
+        <script type="module" src="http://localhost:8090/tools/fx-lens.js"></script-->
+        <script type="module" src="resources/scripts/fore-dev.js"></script>
+        <script type="module" src="resources/scripts/fx-lens.js"></script>
         <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>
         <script type="module" src="resources/scripts/edep-xml-editor.js"></script>
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
@@ -567,8 +567,6 @@
                                             <pb-i18n key="form.title"></pb-i18n>
                                         </label>
                                     </fx-control>
-                                    {concat(uri-relpath(),instance('default')/@corresp)}
-
                                 </h1>
 
 
