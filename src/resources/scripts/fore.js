@@ -1,4 +1,4 @@
-/* Version: 3.1.1 - May 20, 2026 17:16:47 */
+/* Version: 3.1.2 - May 27, 2026 14:39:34 */
 function t$2(t, s, r, i) {
   const n = {
     op: s,
@@ -21553,10 +21553,8 @@ class FxModel extends HTMLElement {
     const instance = model.getInstance(instanceId);
     const fore = model.formElement;
     if (fore?.createNodes && (node === null || node === undefined)) {
-      const mi = new ModelItem(undefined, ref, null, null, instanceId, fore);
-      mi.isSynthetic = true;
-      model.registerModelItem(mi);
-      return mi;
+      // Do not create the model item. It may be exchanged later when create-nodes actually made the node
+      return null;
     }
     if (node === null || node === undefined) return null;
     let targetNode = Array.isArray(node) ? node[0] : node;
@@ -25427,7 +25425,7 @@ class FxFore extends HTMLElement {
       this._createRepeatsFromAttributes();
       this.inited = true;
     };
-    this.version = 'Version: 3.1.1 - built on May 20, 2026 17:16:47';
+    this.version = 'Version: 3.1.2 - built on May 27, 2026 14:39:34';
 
     /**
      * @type {import('./fx-model.js').FxModel}
@@ -27043,6 +27041,10 @@ class FxFore extends HTMLElement {
         continue;
       }
       const parsed = parseName(token);
+      if (!isValidName(parsed.localName)) {
+        // This did not result in a valid name. Stop.
+        return;
+      }
       if (parsed.isAttribute) {
         if (!current) {
           const attr = ownerDoc.createAttribute(parsed.localName);
@@ -27050,10 +27052,6 @@ class FxFore extends HTMLElement {
         }
         current.setAttribute(parsed.localName, '');
         continue;
-      }
-      if (!isValidName(parsed.localName)) {
-        // This did not result in a valid name. Stop.
-        return;
       }
       const element = parsed.namespaceURI ? ownerDoc.createElementNS(parsed.namespaceURI, parsed.localName) : ownerDoc.createElement(parsed.localName);
       for (const predicate of predicates) {
