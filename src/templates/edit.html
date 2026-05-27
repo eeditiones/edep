@@ -18,14 +18,12 @@
         <link rel="stylesheet" href="resources/css/zotero-autocomplete.css" media="screen" />
         <!-- Uncomment if jinn-codemirror is running on 8000 -->
         <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
-        <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
+<!--        <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>-->
 
-<!--        <script type="module" src="http://localhost:8090/index.js"></script>-->
-<!--        <script type="module" src="http://localhost:8090/tools/fx-lens.js"></script>-->
+        <script type="module" src="http://localhost:8090/index.js"></script>
+        <script type="module" src="http://localhost:8090/tools/fx-lens.js"></script>
 <!--        <script type="module" src="resources/scripts/fore-dev.js"></script>-->
-        <script type="module" src="resources/scripts/fore.js"></script>
 <!--        <script type="module" src="resources/scripts/fx-lens.js"></script>-->
-
         <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>
         <script type="module" src="resources/scripts/edep-xml-editor.js"></script>
         <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
@@ -38,6 +36,10 @@
             }
             h3{
                 font-size: 1.25rem;
+            }
+            nav fx-output label{
+                display:block;
+                width: 100%;
             }
         </style>
     </head>
@@ -82,9 +84,8 @@
                                     <!-- ### if get called with an id param we load the data via submission ### -->
                                     <fx-send
                                         submission="s-load-inscription"
-                                        if="exists(instance('params')/id)"></fx-send>
+                                        if="string-length(instance('params')/id) != 0"></fx-send>
                                     <fx-setvalue ref="instance('vars')/inited">true</fx-setvalue>
-                                    <fx-send submission="s-load-fragments"></fx-send>
                                 </fx-action>
 
                                 <fx-instance
@@ -93,43 +94,10 @@
                                     xpath-default-namespace="http://www.tei-c.org/ns/1.0">
                                     <data></data>
                                 </fx-instance>
-
-                                <fx-instance id="i-fragment" xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
-                                <fx-submission id="s-load-template"
-                                               method="get"
-                                               url="templates/fore/epidoc-template.xml"
-                                               replace="instance"
-                                               instance="i-fragment"
-                                               validate="false">
-                                    <fx-action event="submit-done">
-                                        <fx-setvalue ref="instance('i-fragment')/@corresp" value="instance('default')/@xml:id"></fx-setvalue>
-                                        <fx-setvalue ref="instance('i-fragment')/@type" value="'partial'">partial</fx-setvalue>
-                                        <fx-setvalue ref="instance('i-fragment')/@xml:id" value="concat(instance('default')/@xml:id,'-')"></fx-setvalue>
-                                    </fx-action>
-                                </fx-submission>
-                                <fx-instance id="i-fragments" type="json"></fx-instance>
-                                <fx-submission id="s-load-fragments"
-                                               method="get"
-                                               url="api/fragments?id={instance('default')/@xml:id}"
-                                               replace="instance" instance="i-fragments" validate="false"></fx-submission>
-                                <fx-submission
-                                    id="s-create-fragment"
-                                    url="api/inscription?collection={instance('params')/collection}"
-                                    method="post"
-                                    ref="instance('i-fragment')"
-                                    replace="instance"
-                                    instance="i-fragment">
-                                    <fx-message event="submit-done">
-                                        <pb-i18n key="form.data-saved"></pb-i18n>
-                                    </fx-message>
-                                    <fx-action event="submit-error">
-                                        <fx-message>
-                                            <pb-i18n key="form.save-failed"></pb-i18n>
-                                        </fx-message>
-                                        <fx-action src="resources/scripts/showErrors.js"></fx-action>
-                                    </fx-action>
-                                </fx-submission>
                                 <fx-bind ref="instance('default')">
+								  <!-- Fragments are relevant if they are actually there and if this TEI is of type partial -->
+                                    <fx-bind ref="@fragments" relevant="string() and not(../@type='partial')"></fx-bind>
+                                    <fx-bind ref="@type" relevant=". = 'partial'"></fx-bind>
                                     <fx-bind ref="teiHeader">
                                         <fx-bind
                                             ref="fileDesc/titleStmt/title"
@@ -150,6 +118,43 @@
                                         </fx-bind>
                                     </fx-bind>
                                 </fx-bind>
+
+
+
+                                <fx-instance id="i-fragment" xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
+<!--
+                                <fx-submission id="s-load-template"
+                                               method="get"
+                                               url="templates/fore/epidoc-template.xml"
+                                               replace="instance"
+                                               instance="i-fragment"
+                                               validate="false">
+                                    <fx-action event="submit-done">
+                                        <fx-setvalue ref="instance('i-fragment')/@corresp" value="instance('default')/@xml:id"></fx-setvalue>
+                                        <fx-setvalue ref="instance('i-fragment')/@type" value="'partial'">partial</fx-setvalue>
+                                        <fx-setvalue ref="instance('i-fragment')/@xml:id" value="concat(instance('default')/@xml:id,'-')"></fx-setvalue>
+                                    </fx-action>
+                                </fx-submission>
+-->
+<!--                                <fx-instance id="i-fragments" type="json"></fx-instance>-->
+                                <fx-submission
+                                    id="s-create-fragment"
+                                    url="api/fragment?collection={instance('params')/collection}"
+                                    method="post"
+                                    ref="instance('default')"
+                                    replace="instance"
+                                    instance="i-fragment">
+                                    <fx-action event="submit-done">
+                                        <fx-message><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
+                                        <fx-setvalue ref="instance('default')/@fragments" value="concat(instance('default')/@fragments, ' ', instance('i-fragment')/@xml:id)"></fx-setvalue>
+                                    </fx-action>
+                                    <fx-action event="submit-error">
+                                        <fx-message>
+                                            <pb-i18n key="form.save-failed"></pb-i18n>
+                                        </fx-message>
+                                        <fx-action src="resources/scripts/showErrors.js"></fx-action>
+                                    </fx-action>
+                                </fx-submission>
 
                                 <fx-instance id="typeins" src="../edep-data/data/taxonomy/typeins.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
                                     <data></data>
@@ -178,7 +183,7 @@
                                 <fx-instance id="language-scope" src="../edep-data/data/taxonomy/language-scope.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
                                     <data></data>
                                 </fx-instance>
-                                
+
                                 <fx-instance id="decoration" src="../edep-data/data/taxonomy/decor.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
                                     <data></data>
                                 </fx-instance>
@@ -240,7 +245,7 @@
                                 <fx-bind ref="instance('vars')/is-fragment"
                                          relevant="not(exists(instance('default')/@type))"
                                          readonly="true()"></fx-bind>
-                                <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
+                                <fx-bind ref="instance('vars')/can-delete" relevant="index('r-fragments') gt 1"></fx-bind>
                                 <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
                                 <fx-bind
                                     ref="instance('vars')/xml-valid"
@@ -253,7 +258,6 @@
                                     </data>
                                 </fx-instance>
 
-                                <!-- this instance holds queryString params from the Url of this page -->
                                 <fx-instance id="params">
                                     <data>
                                         <id>${id}</id>
@@ -311,9 +315,11 @@
                                     url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
                                     method="post"
                                     replace="instance">
-                                    <fx-message event="submit-done">
-                                        <pb-i18n key="form.data-saved"></pb-i18n>
-                                    </fx-message>
+                                    <fx-action event="submit-done">
+                                        <fx-message><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
+                                        <fx-unmodified></fx-unmodified>
+                                        <fx-call function="updateUrl(instance('default')/@xml:id)" if="not(ends-with(uri-path(),'.xml'))"></fx-call>
+                                    </fx-action>
                                     <fx-action event="submit-error">
                                         <fx-message>
                                             <pb-i18n key="form.save-failed"></pb-i18n>
@@ -334,12 +340,18 @@
                                     method="post"
                                     replace="instance"
                                     instance="login"
-                                    validate="false">
+                                    validate="false"
+                                    serialization="none">
                                     <fx-setvalue ref="instance('vars')/loggedin" event="submit-error"
                                         >false</fx-setvalue
                                     >
                                     <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
                                 </fx-submission>
+                                <fx-function signature="updateUrl($id as xs:string)" type="text/javascript">
+                                    const url = new URL(window.location.href);
+                                    url.pathname += $id + '.xml';
+                                    history.pushState(null, '', url.toString());
+                                </fx-function>
 
                                 <fx-function signature="editorsValid() as xs:boolean" type="text/javascript">
                                     const editors =
@@ -437,184 +449,115 @@
                                         </svg>
                                     </button>
                                 </div>
-
-<!--                                <div id="navigation">Navigation</div>-->
                                 <ul>
-
-<!--
                                     <li>
                                         <a
                                             href="{uri-path()}#object">
-                                            <pb-i18n key="form.object">Objekt</pb-i18n>
+                                            <pb-i18n key="form.identifier">Identifier</pb-i18n>
                                         </a>
-                                        <button id="expander" onclick="expander()">&lt; &gt;</button>
                                     </li>
-                                    
--->
-                                    <!-- if corresp then partial document, otherwise, composite -->
-                                           
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#object">
-                                                    <pb-i18n key="form.identifier">Identifier</pb-i18n>
-                                                </a>
-<!--                                                <input type="checkbox" id="object-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#findspot">
-                                                    <pb-i18n key="form.finding"></pb-i18n>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#location">
-                                                    <pb-i18n key="form.last-recorded-location"></pb-i18n>
-                                                </a>
-<!--                                                <input type="checkbox" id="location-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#verification">
-                                                    <pb-i18n key="form.verification"></pb-i18n>
-                                                </a>
-<!--                                                <input type="checkbox" id="verification-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#objectdesc">
-                                                    <pb-i18n key="form.object-description"></pb-i18n>
-                                                </a>
-<!--                                                <input type="checkbox" id="objectdesc-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#inscription-field">
-                                                    <pb-i18n key="form.inscription-field"></pb-i18n>
-                                                </a>
-<!--                                                <input type="checkbox" id="inscription-field-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#text-description">
-                                                    <pb-i18n key="form.text-description"></pb-i18n>
-                                                </a>
-<!--                                                <input type="checkbox" id="text-description-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <!-- <li>
-                                                <a
-                                                    href="{uri-path()}#languages">
-                                                    <pb-i18n key="form.language"></pb-i18n>
-                                                </a>
-                                            </li> -->
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#references">
-                                                    <pb-i18n key="form.references"></pb-i18n>
-                                                </a>
-                                                <!-- <input type="checkbox" id="references-checkbox" title="expand/collapse"/> -->
-                                            </li>
-
-                                            <!-- <li>
-                                                <a
-                                                    href="{uri-path()}#transmission">
-                                                    <pb-i18n key="form.transmission"></pb-i18n>
-                                                </a>
-                                            </li> -->
-                                            <!-- <li>
-                                                <a
-                                                    href="{uri-path()}#prev-editions">
-                                                    <pb-i18n key="form.previous-editions"></pb-i18n>
-                                                </a>
-                                            </li> -->
-                                            <!-- <li>
-                                                <a
-                                                    href="{uri-path()}#bibliography">
-                                                    <pb-i18n key="form.bibliography"></pb-i18n>
-                                                </a>
-                                            </li> -->
-                                            <!-- <li>
-                                                <a
-                                                    href="{uri-path()}#images">
-                                                    <pb-i18n key="form.images-dps"></pb-i18n>
-                                                </a>
-                                            </li> -->
-                                            <!-- <li>
-                                                <a
-                                                    href="{uri-path()}#pictures">
-                                                    <pb-i18n key="form.images"></pb-i18n>
-                                                </a>
-                                            </li> -->
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#edition">
-                                                    <pb-i18n key="form.edition">Textedition</pb-i18n>
-                                                </a>
-        <!--                                        <input type="checkbox" id="edition-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#commentary">
-                                                    <pb-i18n key="form.commentary"></pb-i18n>
-                                                </a>
-        <!--                                        <input type="checkbox" id="commentary-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#dating">
-                                                    <pb-i18n key="form.dating"></pb-i18n>
-                                                </a>
-<!--                                                <input type="checkbox" id="dating-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#historic-relevance">
-                                                    <pb-i18n key="form.historic-relevance"></pb-i18n>
-                                                </a>
-<!--                                                <input type="checkbox" id="profileDesc-checkbox" title="expand/collapse"/>-->
-                                            </li>
-                                            <li>
-                                                <a
-                                                    href="{uri-path()}#editor">
-                                                    <pb-i18n key="form.editing"></pb-i18n>
-                                                </a>
-<!--                                                <input type="checkbox" id="editor-checkbox" title="expand/collapse"/>-->
-                                            </li>
-<!--
-                                        </ul>
-                                    </li>
--->
-                                    
-<!--
                                     <li>
-                                        <button  onclick="expander()">&lt; &gt;<pb-i18n key="form.expand">Expand all sections</pb-i18n></button>
+                                        <a
+                                            href="{uri-path()}#findspot">
+                                            <pb-i18n key="form.finding"></pb-i18n>
+                                        </a>
                                     </li>
--->
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#location">
+                                            <pb-i18n key="form.last-recorded-location"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#verification">
+                                            <pb-i18n key="form.verification"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#objectdesc">
+                                            <pb-i18n key="form.object-description"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#inscription-field">
+                                            <pb-i18n key="form.inscription-field"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#text-description">
+                                            <pb-i18n key="form.text-description"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#references">
+                                            <pb-i18n key="form.references"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#edition">
+                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#commentary">
+                                            <pb-i18n key="form.commentary"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#dating">
+                                            <pb-i18n key="form.dating"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#historic-relevance">
+                                            <pb-i18n key="form.historic-relevance"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#editor">
+                                            <pb-i18n key="form.editing"></pb-i18n>
+                                        </a>
+                                    </li>
                                     <li class="nav-divider"></li>
-                                    <li>
-                                        <fx-repeat id="r-fragments" ref="instance('i-fragments')?fragments?*">
-                                            <template>
-                                                <fx-var name="curr" value="."></fx-var>
-                                                <a href="{uri-relpath()}{$curr}.xml" target="_blank">{$curr}</a>
-                                            </template>
-                                        </fx-repeat>
+                                    <li class="noflex">
+                                      {uri-relpath()}
+<!--                                        <fx-control ref="instance('default')/@fragments" style="display:none;" create="create"></fx-control>-->
+                                        <fx-group ref="instance('default')/@fragments" class="neutral">
+                                            <fieldset id="fragment-fields">
+                                                <legend>
+                                                    <pb-i18n key="form.fragments"></pb-i18n>
+                                                </legend>
+                                                <fx-repeat id="r-fragments" ref="tokenize(instance('default')/@fragments)" aria-labelled-by="r-fragments-label">
+                                                    <template>
+                                                        <fx-var name="curr" value="."></fx-var>
+                                                        <a href="{uri-relpath()}{.}.xml" target="_blank">{.}</a>
+                                                    </template>
+                                                </fx-repeat>
+                                            </fieldset>
+                                        </fx-group>
+
+                                        <fx-group ref="instance('default')/@xml:id[string-length(.) > 0][not(instance('default')/@type='partial')]">
+                                            <!-- show trigger only if corresp is empty meaning we are a parent -->
+                                            <fx-trigger id="addFragment">
+                                                <button><pb-i18n key="form.add"></pb-i18n></button>
+                                                <fx-send submission="s-create-fragment"></fx-send>
+                                            </fx-trigger>
+                                        </fx-group>
+
+                                        <fx-group id="backlink" ref="instance('default')/@type[.='partial']">
+                                            <a href="{concat(uri-relpath(),instance('default')/@corresp)}.xml" target="_blank">{instance('default')/@corresp}</a>
+                                        </fx-group>
                                     </li>
-                                    <li class="nav-fragments">
-                                        <!-- TODO show links to children (fragment documents)-->
-                                        <fx-trigger id="addFragment" ref="instance('vars')/is-fragment">
-                                            <button><pb-i18n key="form.add"></pb-i18n></button>
-                                            <fx-action>
-                                                <fx-send submission="s-load-template"></fx-send>
-                                            </fx-action>
-                                        </fx-trigger>
-                                    </li>
-<!--
-                                    <li>
-                                        {instance('i-fragment')/@xml:id}
-                                        {instance('i-fragment')/@type}
-                                        {instance('i-fragment')/@corresp}
-                                    </li>
--->
                                 </ul>
                             </nav>
                             <fx-group ref="teiHeader" aria-labelledby="title-lbl" class="outer-group">
@@ -624,6 +567,8 @@
                                             <pb-i18n key="form.title"></pb-i18n>
                                         </label>
                                     </fx-control>
+                                    {concat(uri-relpath(),instance('default')/@corresp)}
+
                                 </h1>
 
 
@@ -686,7 +631,7 @@
                                         data-template-path="templates/parts/text-description.html"
                                         data-template-replace="true"></div>
                                 </fx-group>
-<!-- 
+<!--
                                 <fx-group ref="profileDesc" class="outer-group" aria-labelledby="profile-lbl">
                                     <div
                                         id="languages"
@@ -694,13 +639,13 @@
                                         data-template-path="templates/parts/languages.html"
                                         data-template-replace="true"></div>
                                 </fx-group> -->
-          
+
 
                                 <!-- REFERENCES -->
                                 <fx-group id="references" class="references-background">
                                     <fx-group ref="fileDesc/sourceDesc/listBibl" class="outer-group">
                                         <h2>
-                                            <pb-i18n key="form.references"/>
+                                            <pb-i18n key="form.references"></pb-i18n>
                                             <pb-popover>
                                                 <iron-icon icon="info-outline"></iron-icon>
                                                 <template slot="alternate">
@@ -738,7 +683,7 @@
                                             id="pictures"
                                             data-template="lib:include"
                                             data-template-path="templates/parts/pictures.html"
-                                            data-template-replace="true"></div>   
+                                            data-template-replace="true"></div>
                                     </fx-group>
                                 </fx-group>
                             </fx-group>
@@ -822,7 +767,11 @@
                             </fx-control>
                         </fx-fore>
 
-<!--                        <fx-lens></fx-lens>-->
+<pre>
+    <code>
+        {log('default')}
+    </code>
+</pre>
                     </main>
 
                     <footer class="version">

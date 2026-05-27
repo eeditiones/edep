@@ -49,6 +49,9 @@ details > fx-group{
     /*padding:1rem 0;*/
     padding:0;
 }
+.noflex{
+    display: block;
+}
 @media (min-width: 1200px) {
     .editor > fx-fore {
         display: block;
@@ -151,6 +154,12 @@ nav{
         border-bottom: thin solid var(--paper-grey-300);
         margin-bottom: 1rem;
     }
+
+    /*
+    #backlink::before{
+        content:'corresp';
+    }
+    */
 
 }
 
