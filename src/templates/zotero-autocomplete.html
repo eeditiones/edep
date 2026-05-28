@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>zotero</title>
+
+    <link rel="stylesheet" href="resources/css/fore.css" />
+    <link rel="stylesheet" href="resources/css/zotero-autocomplete.css" />
+
+<!--    <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>-->
+<!--    <script type="module" src="resources/scripts/fore-dev.js"></script>-->
+    <script type="module">
+      import './resources/scripts/zotero-autocomplete.js';
+      await customElements.whenDefined('zotero-autocomplete');
+      import './resources/scripts/fore-dev.js';
+    </script>
+
+    <style>
+        fx-control, label { display:block; }
+        .wrapper { max-width: 740px; margin: 2rem auto; padding: 1rem; }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <fx-fore>
+        <fx-model>
+            <fx-instance>
+                <data>
+                    <value>schillinger-häfelevierternachtrag1977</value>
+                </data>
+            </fx-instance>
+        </fx-model>
+
+        <fx-control ref="value" update-event="change">
+            <label>Zotero Value</label>
+            <zotero-autocomplete
+                class="widget"
+                endpoint="../api/zotero/items/suggest"
+                limit="8"
+                minlength="2"
+                debounce="250">
+            </zotero-autocomplete>
+        </fx-control>
+
+        <p>Selected tag: <fx-output ref="value"></fx-output></p>
+    </fx-fore>
+</div>
+</body>
+</html>

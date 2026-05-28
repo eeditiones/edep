@@ -8,7 +8,7 @@
 	"servers": [
 		{
 			"description": "Endpoint for testing on localhost",
-			"url": "/exist/apps/tei-publisher"
+			"url": "/exist/apps/edep"
 		}
 	],
 	"tags": [
@@ -2845,7 +2845,7 @@
 				}
 			}
         },
-        "/api/register/{type}/{id}" : {
+		"/api/register/{type}/{id}" : {
             "post": {
                 "summary": "Create a local entry",
                 "description": "Create a local register entry based on the provided data",

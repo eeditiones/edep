@@ -19,11 +19,11 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 (:~
  : Define where places are located
- :)
  declare variable $config:places := $config:data-root || "/places/";
  declare variable $config:people := $config:data-root || "/people/";
  declare variable $config:inscription := $config:data-root || "/workspace/";
  declare variable $config:inscription-templ := $config:app-root || "/templates/fore/epidoc-template.xml";
+ :)
 
 (:~~
  : The version of the pb-components webcomponents library to be used by this app.
@@ -96,6 +96,8 @@ declare variable $config:default-view :="body";
  : overwritten by the teipublisher processing instruction inside a TEI document.
  :)
 declare variable $config:default-template :="edep.html";
+
+declare variable $config:odd-media := ("web", "print", "fo", "latex", "epub");
 
 (:
  : The element to search by default, either 'tei:div' or 'tei:text'.
@@ -320,6 +322,36 @@ declare variable $config:context-path :=
 declare variable $config:data-root := repo:get-root() || "edep-data";
 
 (:~
+ : Define where places are located
+ :)
+ declare variable $config:places := $config:data-root || "/places/";
+ declare variable $config:people := $config:data-root || "/people/";
+ declare variable $config:inscription := $config:data-root || "/workspace/";
+ declare variable $config:inscription-templ := $config:app-root || "/templates/fore/epidoc-template.xml";
+
+(:  ZOTERO CONFIG :)
+(: Base URL of Zotero Web API :)
+declare variable $config:zotero-api-base := "https://api.zotero.org";
+
+(: Optional API key; leave empty for public groups :)
+declare variable $config:zotero-api-key := "";
+
+(: Your group id :)
+declare variable $config:zotero-group-id  := "2519759";
+
+(: Base dir where all groups live; must already exist :)
+declare variable $config:zotero-base-dir := $config:data-root || "/zotero/groups";
+
+(: Derived paths for this group :)
+declare variable $config:zotero-group-dir := $config:zotero-base-dir || "/" || $config:zotero-group-id;
+declare variable $config:zotero-items-dir := $config:zotero-group-dir || "/items";
+declare variable $config:zotero-items-xml-dir := $config:zotero-group-dir || "/items-xml";
+
+declare variable $config:zotero-meta-path := $config:zotero-group-dir || "/meta.json";
+declare variable $config:zotero-style := "digital-humanities-im-deutschsprachigen-raum";
+
+
+(:~
  : The root of the collection hierarchy whose files should be displayed
  : on the entry page. Can be different from $config:data-root.
  :)
@@ -343,7 +375,7 @@ declare variable $config:default-odd :="edep.odd";
  : make sure to run modules/generate-pm-config.xql to update the main configuration
  : module for transformations (modules/pm-config.xql).
  :)
-declare variable $config:odd-available :=("edep.odd", "teipublisher_odds.odd", "teipublisher.odd", "tei_simplePrint.odd", "edep-clean.odd", "edep-output.odd");
+declare variable $config:odd-available :=("edep.odd", "edep-edition.odd", "teipublisher_odds.odd", "teipublisher.odd", "tei_simplePrint.odd", "edep-clean.odd", "edep-output.odd");
 
 (:~
  : List of ODD files which are used internally only, i.e. not for displaying information

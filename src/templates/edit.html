@@ -1,1719 +1,774 @@
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <base href="${app}/" data-template="pages:parse-params" />
+        <title data-template="config:app-title"></title>
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" />
+        <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico" />
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-16.png" sizes="16x16" />
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-24.png" sizes="24x24" />
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-32.png" sizes="32x32" />
+        <link rel="shortcut icon" type="image/png" href="resources/images/favicon-64.png" sizes="64x64" />
+        <link rel="stylesheet" href="resources/css/theme.css" media="screen" />
+        <link rel="stylesheet" href="resources/css/fore.css" media="screen" />
+        <link rel="stylesheet" href="resources/css/edep-theme.css" media="screen" />
+        <link rel="stylesheet" href="resources/css/edep-theme2.css" media="screen" />
+        <link rel="stylesheet" href="resources/css/geo-picker.css" media="screen" />
+        <link rel="stylesheet" href="transform/edep.css" media="screen" />
+        <link rel="stylesheet" href="resources/css/zotero-autocomplete.css" media="screen" />
+        <!-- Uncomment if jinn-codemirror is running on 8000 -->
+        <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
+        <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"></script>
 
-<head>
-    <meta charset="utf-8"/>
-    <base href="${app}/" data-template="pages:parse-params"/>
-    <title data-template="config:app-title"/>
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"/>
-    <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico"/>
-    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-16.png" sizes="16x16"/>
-    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-24.png" sizes="24x24"/>
-    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-32.png" sizes="32x32"/>
-    <link rel="shortcut icon" type="image/png" href="resources/images/favicon-64.png" sizes="64x64"/>
-    <link rel="stylesheet" href="resources/css/theme.css" media="screen"/>
-    <link rel="stylesheet" href="resources/css/fore.css" media="screen"/>
-    <link rel="stylesheet" href="resources/css/edep-theme.css" media="screen"/>
-    <link rel="stylesheet" href="resources/css/edep-theme2.css" media="screen"/>
-    <link rel="stylesheet" href="resources/css/geo-picker.css" media="screen"/>
-    <link rel="stylesheet" href="transform/edep.css" media="screen"/>
-    <!-- Uncomment if jinn-codemirror is running on 8000 -->
-    <!--script type="module" src="http://localhost:8000/src/jinn-codemirror-bundle.ts"></script-->
-    <script type="module" src="resources/scripts/jinn-codemirror-bundle.js"/>
+        <!--script type="module" src="http://localhost:8090/index.js"></script>
+        <script type="module" src="http://localhost:8090/tools/fx-lens.js"></script-->
+        <script type="module" src="resources/scripts/fore.js"></script>
+        <script type="module" src="resources/scripts/fx-lens.js"></script>
+        <script type="module" src="resources/scripts/zotero-autocomplete.js"></script>
+        <script type="module" src="resources/scripts/edep-xml-editor.js"></script>
+        <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
+        <style>
+            fx-lens{
+                top:4rem;
+            }
+            h2{
+                font-size: 1.5rem;
+            }
+            h3{
+                font-size: 1.25rem;
+            }
+            nav fx-output label{
+                display:block;
+                width: 100%;
+            }
+        </style>
+    </head>
 
-<!--            <script type="module" src="http://localhost:8090/index.js"></script>-->
-    <script type="module" src="resources/scripts/fore-dev.js"></script>
-    <script type="module" src="pb-components-bundle.js" data-template="pages:load-components"></script>
+    <body>
+        <pb-page
+            data-template="pages:pb-page"
+            unresolved="unresolved"
+            locales="resources/i18n/{{ns}}/{{lng}}.json"
+            require-language=""
+            supported-languages="de,en">
+            <app-drawer-layout force-narrow="force-narrow">
+                <app-drawer slot="drawer" align="right">
+                    <div class="drawer-content">
+                        <pb-media-query query="(max-width: 1023px)">
+                            <!-- language selector -->
+                            <pb-lang name="lang" data-template="pages:languages"></pb-lang>
+                        </pb-media-query>
+                    </div>
+                </app-drawer>
+                <app-header-layout>
+                    <app-header slot="header" fixed="fixed" reveals="reveals" effects="waterfall">
+                        <app-toolbar data-template="lib:include" data-template-path="templates/menu.html"></app-toolbar>
+                        <pb-media-query query="(max-width: 1023px)">
+                            <app-toolbar class="toolbar" sticky="sticky">
+                                <!-- Search input -->
+                                <pb-search
+                                    action="${app}/search.html"
+                                    data-template="lib:parse-params"
+                                    value="${query}"
+                                    redirect="redirect"></pb-search>
+                                <paper-icon-button icon="icons:menu" drawer-toggle="drawer-toggle"></paper-icon-button>
+                            </app-toolbar>
+                        </pb-media-query>
+                    </app-header>
 
-    <style>
-        .valid{
-            position:fixed;
-            bottom:0;
-            left:0;
-            padding:1rem;
-            background: red;
-            color:white;
-        }
+                    <main id="main" class="editor">
+                        <fx-fore show-confirmation="show-confirmation" id="epidoc-editor" create-nodes="create-nodes" no-check="no-check">
+                            <fx-model data-template="pages:parse-params">
+                                <fx-action event="model-construct-done">
+                                    <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
+                                    <!-- ### if get called with an id param we load the data via submission ### -->
+                                    <fx-send
+                                        submission="s-load-inscription"
+                                        if="string-length(instance('params')/id) != 0"></fx-send>
+                                    <fx-setvalue ref="instance('vars')/inited">true</fx-setvalue>
+                                </fx-action>
 
-        select {
-            width: 100%;
-        }
-                
-        .fx-radio input {
-            width:auto !important;
-        }
-        
-        .fx-radio label {
-            display:inline !important;
-        }
-    </style>
-</head>
-
-<body>
-<pb-page data-template="pages:pb-page" unresolved="unresolved" locales="resources/i18n/{{ns}}/{{lng}}.json" require-language="" supported-languages="de,en">
-    <app-drawer-layout force-narrow="force-narrow">
-        <app-drawer slot="drawer" align="right">
-            <div class="drawer-content">
-                <pb-media-query query="(max-width: 1023px)">
-                    <!-- language selector -->
-                    <pb-lang name="lang" data-template="pages:languages"/>
-                </pb-media-query>
-            </div>
-        </app-drawer>
-        <app-header-layout>
-            <app-header slot="header" fixed="fixed" reveals="reveals" effects="waterfall">
-                <app-toolbar data-template="lib:include" data-template-path="templates/menu.html"/>
-                <pb-media-query query="(max-width: 1023px)">
-                    <app-toolbar class="toolbar" sticky="sticky">
-                        <!-- Search input -->
-                        <pb-search action="${app}/search.html" data-template="lib:parse-params" value="${query}" redirect="redirect"/>
-                        <paper-icon-button icon="icons:menu" drawer-toggle="drawer-toggle"/>
-                    </app-toolbar>
-                </pb-media-query>
-            </app-header>
-
-            <main id="main" class="editor">
-                <fx-fore show-confirmation="show-confirmation">
-
-                  
-
-                    <fx-model data-template="pages:parse-params">
-                        <fx-action event="model-construct-done">
-                            <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"></fx-send>
-                            <!-- ### if get called with an id param we load the data via submission ### -->
-                            <fx-send submission="s-load-inscription" if="exists(instance('params')/id)"></fx-send>
-                            <fx-setvalue ref="instance('vars')/inited">true</fx-setvalue>
-                        </fx-action>
-
-                        <fx-instance id="default" src="api/inscription" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                            <data></data>
-                        </fx-instance>
-
-                        <fx-bind ref="instance('default')">
-                            <fx-bind ref=".//fileDesc/titleStmt/title" required="true()" constraint="string-length(.) != 0">
-                            </fx-bind>
-                            <fx-bind ref=".//history/provenance">
-                                <fx-bind ref="./@when" constraint="checkDate(.)"></fx-bind>
-                                <fx-bind ref="./@notBefore" constraint="checkDate(.)"></fx-bind>
-                                <fx-bind ref="./@notAfter" constraint="checkDate(.)"></fx-bind>
-                            </fx-bind>
-                            <fx-bind ref=".//history/origin/origDate">
-                                <fx-bind ref="./@when-custom" constraint="checkDate(.)"></fx-bind>
-                                <fx-bind ref="./@notBefore-custom" constraint="checkDate(.)"></fx-bind>
-                                <fx-bind ref="./@notAfter-custom" constraint="checkDate(.)"></fx-bind>
-                            </fx-bind>
-                        </fx-bind>
-
-
-                        <fx-instance id="typeins" src="../edep-data/typeins.xml">
-                            <data></data>
-                        </fx-instance>
-                        <fx-instance id="objtyp" src="../edep-data/objtyp.xml">
-                            <data></data>
-                        </fx-instance>
-
-                        <fx-instance id="material" src="../edep-data/material.xml">
-                            <data></data>
-                        </fx-instance>
-
-                        <fx-instance id="palaeo" src="templates/fore/data/palaeographie.xml">
-                            <data></data>
-                        </fx-instance>
-
-                        <fx-instance id="mspart" src="templates/fore/mspart-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                            <data></data>
-                        </fx-instance>
-
-                        <fx-instance id="templates" src="templates/fore/templates.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
-                            <data></data>
-                        </fx-instance>
-
-                        <fx-instance id="vars">
-                            <data>
-                                <display-leiden>hidden</display-leiden>
-                                <can-delete>false</can-delete>
-                                <parent></parent>
-                                <uuid></uuid>
-                                <geoid></geoid>
-                                <loggedin>hidden</loggedin>
-                                <xml-valid>true</xml-valid>
-                                <history-term></history-term>
-                                <geography-term></geography-term>
-                                <military-term></military-term>
-                                <languages xml:lang="en">
-                                    <lang code="cel">Celtic</lang>
-                                    <lang code="grc">Greek</lang>
-                                    <lang code="heb">Hebrew</lang>
-                                    <lang code="xib">Iberian</lang>
-                                    <lang code="ita">Italic</lang>
-                                    <lang code="lat">Latin</lang>
-                                    <lang code="nxm">Numidian</lang>
-                                    <lang code="xxx">Palmyrenic</lang>
-                                    <lang code="xpu">Phoenician-Punic</lang>
-                                </languages>
-                                <languages xml:lang="de">
-                                    <lang code="cel">Keltisch</lang>
-                                    <lang code="grc">Griechisch</lang>
-                                    <lang code="heb">Hebräisch</lang>
-                                    <lang code="xib">Iberisch</lang>
-                                    <lang code="ita">Italisch</lang>
-                                    <lang code="lat">Latein</lang>
-                                    <lang code="nxm">Numidisch</lang>
-                                    <lang code="xxx">Palmyrisch</lang>
-                                    <lang code="xpu">Phönizisch-Punisch</lang>
-                                </languages>
-                                <language>en</language>
-                                <inited>false</inited>
-                                <verification>
-                                    <option lang="de" value="autopsy">Autopsie</option>
-                                    <option lang="de" value="squeeze">Abklatsch</option>
-                                    <option lang="de" value="photo">Foto</option>
-                                    <option lang="de" value="drawing">Zeichnung</option>
-                                    <option lang="de" value="not-seen">nicht gesehen</option>
-                                    <option lang="en" value="autopsy">Autopsy</option>
-                                    <option lang="en" value="squeeze">Squeeze</option>
-                                    <option lang="en" value="photo">Photo</option>
-                                    <option lang="en" value="drawing">Drawing</option>
-                                    <option lang="en" value="not-seen">not seen</option>
-                                </verification>
-                            </data>
-                        </fx-instance>
-                        <fx-bind ref="instance('vars')/can-delete" relevant="index('parts') gt 1"></fx-bind>
-                        <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
-                        <fx-bind ref="instance('vars')/xml-valid" calculate="editorsValid()" constraint=".='true'"></fx-bind>
+                                <fx-instance
+                                    id="default"
+                                    src="templates/fore/epidoc-template.xml"
+                                    xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+                                <fx-bind ref="instance('default')">
+								  <!-- Fragments are relevant if they are actually there and if this TEI is of type partial -->
+                                    <fx-bind ref="@fragments" relevant="string() and not(../@type='partial')"></fx-bind>
+                                    <fx-bind ref="@type" relevant=". = 'partial'"></fx-bind>
+                                    <fx-bind ref="teiHeader">
+                                        <fx-bind
+                                            ref="fileDesc/titleStmt/title"
+                                            required="true()"
+                                            constraint="string-length(.) &gt; 0">
+                                        </fx-bind>
+                                        <fx-bind ref="fileDesc/sourceDesc/msDesc/history">
+                                            <fx-bind ref="provenance">
+                                                <fx-bind ref="./@when" constraint="checkDate(.)"></fx-bind>
+                                                <fx-bind ref="./@notBefore" constraint="checkDate(.)"></fx-bind>
+                                                <fx-bind ref="./@notAfter" constraint="checkDate(.)"></fx-bind>
+                                            </fx-bind>
+                                            <fx-bind ref="origin/origDate">
+                                                <fx-bind ref="./@when-custom" constraint="checkDate(.)"></fx-bind>
+                                                <fx-bind ref="./@notBefore-custom" constraint="checkDate(.)"></fx-bind>
+                                                <fx-bind ref="./@notAfter-custom" constraint="checkDate(.)"></fx-bind>
+                                            </fx-bind>
+                                        </fx-bind>
+                                    </fx-bind>
+                                </fx-bind>
 
 
-                        <fx-instance id="tmp">
-                            <data>
-                                <dummy>xpath?</dummy>
-                            </data>
-                        </fx-instance>
 
-                        <!-- this instance holds queryString params from the Url of this page -->
-                        <fx-instance id="params">
-                            <data>
-                                <id>${id}</id>
-                                <collection>${collection}</collection>
-                                <app>${app}</app>
-                            </data>
-                        </fx-instance>
-
-                        <fx-submission id="s-load-inscription" url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}" method="get" replace="instance" validate="false">
-                            <fx-message event="submit-error">
-                                        <pb-i18n key="loading-failed"/>
-                                    </fx-message>
-
-                            <fx-action event="submit-done">
-                                <!--
-                                ### initializing state for 30) 31) 32) dummy switches
-                                -->
-                                <fx-setvalue ref="instance('vars')/history-term" value="if(exists(instance('default')//term[@ref='#social-economic-legal-history'])) then 'true' else 'false'"></fx-setvalue>
-
-                                <fx-setvalue ref="instance('vars')/geography-term" value="if(exists(instance('default')//term[@ref='#geography'])) then 'true' else 'false'"></fx-setvalue>
-
-                                <fx-setvalue ref="instance('vars')/military-term" value="if(exists(instance('default')//term[@ref='#military'])) then 'true' else 'false'"></fx-setvalue>
-
-                            </fx-action>
-                        </fx-submission>
-
-                        <fx-submission id="s-create" url="api/inscription?collection={instance('params')/collection}" method="post" replace="instance">
-                            <fx-message event="submit-done">
-                                        <pb-i18n key="form.data-saved"/>
-                                    </fx-message>
-                            <fx-action event="submit-error">
-                                <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
-                                <fx-action src="resources/scripts/showErrors.js"></fx-action>
-                            </fx-action>
-                        </fx-submission>
-
-                        <fx-submission id="s-save" url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}" method="post" replace="instance">
-                            <fx-message event="submit-done">
-                                        <pb-i18n key="form.data-saved"/>
-                                    </fx-message>
-                            <fx-action event="submit-error">
-                                <fx-message>
-                                            <pb-i18n key="form.save-failed"/>
-                                        </fx-message>
-                                <fx-action src="resources/scripts/showErrors.js"></fx-action>
-                            </fx-action>
-                        </fx-submission>
-
-                        <fx-function signature="gen-id() as xs:string" type="text/javascript">
-                            return createUUID();
-                        </fx-function>
-
-                        <fx-instance id="login" type="json">{}</fx-instance>
-                        <fx-submission id="s-login" ref="instance('login')?*" url="api/login" method="post" replace="instance" instance="login" validate="false">
-                            <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
-                            <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
-                        </fx-submission>
-
-                        <fx-function signature="editorsValid() as xs:boolean" type="text/javascript">
-                            const editors = form.querySelectorAll('jinn-xml-editor[valid="false"],jinn-epidoc-editor[valid="false"]');
-                            if(editors.length !== 0){
-                            return false;
-                            }else{
-                            return true;
-                            }
-                        </fx-function>
-
-                        <fx-function signature="shortlang($input as xs:string,$default as xs:string) as xs:string" type="text/javascript">
-                            if($input) {
-                            return $input.substring(0, 2);
-                            }
-                            return $default;
-                        </fx-function>
-
-                        <fx-function signature="checkDate($value as xs:string) as xs:boolean" type="text/javascript">
-                            return checkDate($value);
-                        </fx-function>
-                        <fx-function signature="sortNames($terms as element()*) as element()*" type="text/xquery">
-                            let $lang := instance('vars')/language
-                            for $term in $terms
-                            order by $term/name[@xml:lang = $lang]
-                            return $term
-                        </fx-function>
-                        <fx-function signature="sortLang($langs as element()*) as element()*" type="text/xquery">
-                            for $term in $langs
-                            order by $term
-                            return $term
-                        </fx-function>
-                        <fx-function signature="computeBiblId($bibls as element()*) as xs:string" type="text/xquery">
-                            max((
-                                0,
-                                for $bibl in $bibls/@xml:id
-                                where starts-with($bibl, 'bibl-')
-                                return
-                                    xs:int(substring-after($bibl, 'bibl-'))
-                            )) + 1
-                        </fx-function>
-                        <fx-function signature="clipboard($value as xs:string) as xs:string" type="text/javascript">
-                            console.log($value);
-                            navigator.clipboard.writeText($value);
-                            return $value;
-                        </fx-function>
-                        <fx-function signature="scrollto($selector as xs:string) as xs:string" type="text/javascript">
-                            const found = document.querySelector($selector);
-                            if(found){
-                              found.scrollIntoView({block: "start", inline: "nearest", behavior:"smooth"});
-                            }
-                        </fx-function>
+                                <fx-instance id="i-fragment" xpath-default-namespace="http://www.tei-c.org/ns/1.0"></fx-instance>
 <!--
-                        <fx-function signature="expander() as xs:boolean" type="text/javascript">
-                            const expander = document.querySelector('#expander');
-                            const details = document.querySelectorAll('details');
+                                <fx-submission id="s-load-template"
+                                               method="get"
+                                               url="templates/fore/epidoc-template.xml"
+                                               replace="instance"
+                                               instance="i-fragment"
+                                               validate="false">
+                                    <fx-action event="submit-done">
+                                        <fx-setvalue ref="instance('i-fragment')/@corresp" value="instance('default')/@xml:id"></fx-setvalue>
+                                        <fx-setvalue ref="instance('i-fragment')/@type" value="'partial'">partial</fx-setvalue>
+                                        <fx-setvalue ref="instance('i-fragment')/@xml:id" value="concat(instance('default')/@xml:id,'-')"></fx-setvalue>
+                                    </fx-action>
+                                </fx-submission>
+-->
+<!--                                <fx-instance id="i-fragments" type="json"></fx-instance>-->
+                                <fx-submission
+                                    id="s-create-fragment"
+                                    url="api/fragment?collection={instance('params')/collection}"
+                                    method="post"
+                                    ref="instance('default')"
+                                    replace="instance"
+                                    instance="i-fragment">
+                                    <fx-action event="submit-done">
+                                        <fx-message><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
+                                        <fx-setvalue ref="instance('default')/@fragments" value="concat(instance('default')/@fragments, ' ', instance('i-fragment')/@xml:id)"></fx-setvalue>
+                                    </fx-action>
+                                    <fx-action event="submit-error">
+                                        <fx-message><pb-i18n key="form.save-failed"></pb-i18n></fx-message>
+                                        <fx-action src="resources/scripts/showErrors.js"></fx-action>
+                                    </fx-action>
+                                </fx-submission>
 
-                            if(expander.classList.contains('expanded')){
-                                Array.from(details).foreach(d => {
+                                <fx-instance id="typeins" src="../edep-data/data/taxonomy/typeins.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="objtyp" src="../edep-data/data/taxonomy/objtyp.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="material" src="../edep-data/data/taxonomy/material.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="paleography" src="../edep-data/data/taxonomy/paleography.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="editor-roles" src="../edep-data/data/taxonomy/editor-roles.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="language-options" src="../edep-data/data/taxonomy/languages.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="language-scope" src="../edep-data/data/taxonomy/language-scope.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="decoration" src="../edep-data/data/taxonomy/decor.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="metre" src="../edep-data/data/taxonomy/metre.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="ligature" src="../edep-data/data/taxonomy/ligature.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="verification-options" src="../edep-data/data/taxonomy/verification.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="publication-status" src="../edep-data/data/taxonomy/publication-status.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="preservation" src="../edep-data/data/taxonomy/preservation.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="religion" src="../edep-data/data/taxonomy/religion.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="document-type" src="../edep-data/data/taxonomy/document-type.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance
+                                    id="templates"
+                                    src="templates/fore/templates.xml"
+                                    xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+                                    <data></data>
+                                </fx-instance>
+
+                                <fx-instance id="vars" shared="true">
+                                    <data>
+                                        <appdir>${app}</appdir>
+                                        <display-leiden>hidden</display-leiden>
+                                        <can-delete>false</can-delete>
+                                        <parent></parent>
+                                        <uuid></uuid>
+                                        <geoid></geoid>
+                                        <loggedin>hidden</loggedin>
+                                        <xml-valid>true</xml-valid>
+                                        <history-term></history-term>
+                                        <geography-term></geography-term>
+                                        <military-term></military-term>
+                                        <language>en</language>
+                                        <inited>false</inited>
+                                        <is-fragment>false</is-fragment>
+                                    </data>
+                                </fx-instance>
+                                <!-- todo: remove static readonly once new fragment functionality is completely done -->
+                                <fx-bind ref="instance('vars')/is-fragment"
+                                         relevant="not(exists(instance('default')/@type))"
+                                         readonly="true()"></fx-bind>
+                                <fx-bind ref="instance('vars')/can-delete" relevant="index('r-fragments') gt 1"></fx-bind>
+                                <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"></fx-bind>
+                                <fx-bind
+                                    ref="instance('vars')/xml-valid"
+                                    calculate="editorsValid()"
+                                    constraint=".='true'"></fx-bind>
+
+                                <fx-instance id="tmp">
+                                    <data>
+                                        <dummy>xpath?</dummy>
+                                    </data>
+                                </fx-instance>
+
+                                <fx-instance id="params">
+                                    <data>
+                                        <id>${id}</id>
+                                        <collection>${collection}</collection>
+                                        <app>${app}</app>
+                                    </data>
+                                </fx-instance>
+
+                                <fx-submission
+                                    id="s-load-inscription"
+                                    url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
+                                    method="get"
+                                    replace="instance"
+                                    validate="false">
+                                    <fx-message event="submit-error">
+                                        <pb-i18n key="loading-failed"></pb-i18n>
+                                    </fx-message>
+
+                                    <fx-action event="submit-done">
+                                        <!--
+                                            ### initializing state for 30) 31) 32) dummy switches
+                                        -->
+                                        <fx-setvalue
+                                            ref="instance('vars')/history-term"
+                                            value="if(exists(instance('default')//term[@ref='#social-economic-legal-history'])) then 'true' else 'false'"></fx-setvalue>
+
+                                        <fx-setvalue
+                                            ref="instance('vars')/geography-term"
+                                            value="if(exists(instance('default')//term[@ref='#geography'])) then 'true' else 'false'"></fx-setvalue>
+
+                                        <fx-setvalue
+                                            ref="instance('vars')/military-term"
+                                            value="if(exists(instance('default')//term[@ref='#military'])) then 'true' else 'false'"></fx-setvalue>
+                                    </fx-action>
+                                </fx-submission>
+
+                                <fx-submission
+                                    id="s-create"
+                                    url="api/inscription?collection={instance('params')/collection}"
+                                    method="post"
+                                    replace="instance">
+                                    <fx-message event="submit-done">
+                                        <pb-i18n key="form.data-saved"></pb-i18n>
+                                    </fx-message>
+                                    <fx-action event="submit-error">
+                                        <fx-message><pb-i18n key="form.invalid-data"></pb-i18n></fx-message>
+                                        <fx-action src="resources/scripts/showErrors.js"></fx-action>
+                                    </fx-action>
+                                </fx-submission>
+
+                                <fx-submission
+                                    id="s-save"
+                                    url="api/inscription?id={instance('params')/id}&amp;collection={instance('params')/collection}"
+                                    method="post"
+                                    replace="instance">
+                                    <fx-action event="submit-done">
+                                        <fx-message><pb-i18n key="form.data-saved"></pb-i18n></fx-message>
+                                        <fx-unmodified></fx-unmodified>
+                                        <fx-call function="updateUrl(instance('default')/@xml:id)" if="not(ends-with(uri-path(),'.xml'))"></fx-call>
+                                    </fx-action>
+                                    <fx-action event="submit-error">
+                                        <fx-message><pb-i18n key="form.invalid-data"></pb-i18n></fx-message>
+                                        <fx-action src="resources/scripts/showErrors.js"></fx-action>
+                                    </fx-action>
+                                </fx-submission>
+
+                                <fx-function signature="gen-id() as xs:string" type="text/javascript">
+                                    return createUUID();
+                                </fx-function>
+
+                                <fx-instance id="login" type="json">{}</fx-instance>
+                                <fx-submission
+                                    id="s-login"
+                                    ref="instance('login')?*"
+                                    url="api/login"
+                                    method="post"
+                                    replace="instance"
+                                    instance="login"
+                                    validate="false"
+                                    serialization="none">
+                                    <fx-setvalue ref="instance('vars')/loggedin" event="submit-error"
+                                        >false</fx-setvalue
+                                    >
+                                    <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
+                                </fx-submission>
+                                <fx-function signature="updateUrl($id as xs:string)" type="text/javascript">
+                                    const url = new URL(window.location.href);
+                                    url.pathname += $id + '.xml';
+                                    history.pushState(null, '', url.toString());
+                                </fx-function>
+
+                                <fx-function signature="editorsValid() as xs:boolean" type="text/javascript">
+                                    const editors =
+                                    form.querySelectorAll('jinn-xml-editor[valid="false"],jinn-epidoc-editor[valid="false"]');
+                                    if(editors.length !== 0){ return false; }else{ return true; }
+                                </fx-function>
+
+                                <fx-function
+                                    signature="shortlang($input as xs:string,$default as xs:string) as xs:string"
+                                    type="text/javascript">
+                                    if($input) { return $input.substring(0, 2); } return $default;
+                                </fx-function>
+
+                                <fx-function
+                                    signature="checkDate($value as xs:string) as xs:boolean"
+                                    type="text/javascript">
+                                    return checkDate($value);
+                                </fx-function>
+                                <fx-function
+                                    signature="sortNames($terms as element()*) as element()*"
+                                    type="text/xquery">
+                                    let $lang := instance('vars')/language for $term in $terms order by
+                                    $term/catDesc[@xml:lang = $lang] return $term
+                                </fx-function>
+                                <fx-function
+                                    signature="sortLang($langs as element()*) as element()*"
+                                    type="text/xquery">
+                                    for $term in $langs order by $term return $term
+                                </fx-function>
+                                <fx-function
+                                    signature="computeBiblId($bibls as element()*) as xs:string"
+                                    type="text/xquery">
+                                    max(( 0, for $bibl in $bibls/@xml:id where starts-with($bibl, 'bibl-') return
+                                    xs:int(substring-after($bibl, 'bibl-')) )) + 1
+                                </fx-function>
+                                <fx-function
+                                    signature="clipboard($value as xs:string) as xs:string"
+                                    type="text/javascript">
+                                    console.log($value); navigator.clipboard.writeText($value); return $value;
+                                </fx-function>
+                                <fx-function
+                                    signature="scrollto($selector as xs:string) as xs:string"
+                                    type="text/javascript">
+                                    const found = document.querySelector($selector); if(found){
+                                    found.scrollIntoView({block: "start", inline: "nearest", behavior:"smooth"}); }
+                                </fx-function>
+                                <!--
+                                    <fx-function signature="expander() as xs:boolean" type="text/javascript">
+                                    const expander = document.querySelector('#expander');
+                                    const details = document.querySelectorAll('details');
+
+                                    if(expander.classList.contains('expanded')){
+                                    Array.from(details).foreach(d => {
                                     details.removeAttribute('open');
-                                });
-                            }else{
-                                Array.from(details).foreach(d => {
+                                    });
+                                    }else{
+                                    Array.from(details).foreach(d => {
                                     details.setAttribute('open','open');
                                     expander.classList.addClass('expanded');
-                                });
-                            }
-                            return true;
-                        </fx-function>
--->
-                    </fx-model>
-                    <fx-action event="pb-i18n-update" target="#document">
-                        <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'), instance('vars')/language/string())"></fx-setvalue>
-                        <fx-refresh force="force"></fx-refresh>
-                    </fx-action>
+                                    });
+                                    }
+                                    return true;
+                                    </fx-function>
+                                -->
+                            </fx-model>
+                            <fx-action event="pb-i18n-update" target="#document">
+                                <fx-setvalue
+                                    ref="instance('vars')/language"
+                                    value="shortlang(event('language'), instance('vars')/language/string())"></fx-setvalue>
+                                <fx-refresh force="force"></fx-refresh>
+                            </fx-action>
 
-                    <nav>
-                        <h3>Navigation</h3>
-                        <ul>
-<!--
-                          <li>
-                            <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
-                              <button>
-                                <pb-i18n key="form.add"></pb-i18n>
-                              </button>
-                              <fx-dispatch name="click" targetid="addFragBtn">
-                                <fx-call function="scrollto('#parts [repeat-index]')" event="action-performed"></fx-call>
-                              </fx-dispatch>
-                            </fx-trigger>
-                          </li>
--->
-                            <li>
-                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#object">
-                                    <pb-i18n key="form.object">Objekt</pb-i18n>
-                                </a>
-<!--                                <fx-trigger id="expander">-->
-                                    <button id="expander" onclick="expander()">&lt; &gt;</button>
-<!--                                    <fx-call function="expander()"></fx-call>-->
-<!--                                </fx-trigger>-->
-                            </li>
+                            <fx-var name="lang" value="instance('vars')/language"></fx-var>
 
-                            <li class="nav-fragments" data-ref="teiHeader//msPart">
-                                <template>
-                                    <div>
-                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}">
-                                            <fx-switch ref="@type">
-                                                <fx-case name="main">
-                                                    <pb-i18n key="form.part-main"/>
-                                                </fx-case>
-                                                <fx-case name="fragment">
-                                                    <span>
-                                                        <pb-i18n key="form.part-fragment"/>
-                                                        {(' ', count(preceding-sibling::msPart[@type='fragment']) + 1)}
-                                                    </span>
-                                                </fx-case>
-                                            </fx-switch>
-                                        </a>
-                                        <ul>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-findspot">
-                                                            <pb-i18n key="form.findspot"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-finddate">
-                                                            <pb-i18n key="form.year-of-find"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-location">
-                                                            <pb-i18n key="form.last-recorded-location"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-verification">
-                                                            <pb-i18n key="form.verification"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-objectdesc">
-                                                            <pb-i18n key="form.object-description"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-inscription-field">
-                                                            <pb-i18n key="form.inscription-field"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-text-description">
-                                                            <pb-i18n key="form.text-description"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-references">
-                                                            <pb-i18n key="form.references"/>
-                                                        </a>
-                                            </li>
-                                            <li>
-                                                        <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#{@xml:id}-edition">
-                                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
-                                                        </a>
-                                                    </li>
-                                        </ul>
-                                    </div>
-                                </template>
-                            </li>
-                            <li>
-                                <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
-                                    <button>
-                                        <pb-i18n key="form.add"></pb-i18n>
+                            <nav aria-labelledby="navigation">
+                                <div class="toolbar">
+                                    <button class="expander" onclick="expandAll()" title="expand all">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <!-- up chevron -->
+                                                <path d="M8 9 L12 5 L16 9" />
+                                                <!-- down chevron -->
+                                                <path d="M8 15 L12 19 L16 15" />
+                                            </g>
+                                        </svg>
                                     </button>
-                                    <fx-dispatch name="click" targetid="addFragBtn">
-                                        <fx-call function="scrollto('#parts [repeat-index]')" event="action-performed"></fx-call>
-                                    </fx-dispatch>
-                                </fx-trigger>
-                            </li>
+                                    <button class="expander" title="collapse all" onclick="closeAll()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                            <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <!-- top chevron (now pointing down) -->
+                                                <path d="M8 5 L12 9 L16 5" />
+                                                <!-- bottom chevron (now pointing up) -->
+                                                <path d="M8 19 L12 15 L16 19" />
+                                            </g>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#object">
+                                            <pb-i18n key="form.identifier">Identifier</pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#findspot">
+                                            <pb-i18n key="form.finding"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#location">
+                                            <pb-i18n key="form.last-recorded-location"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#verification">
+                                            <pb-i18n key="form.verification"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#objectdesc">
+                                            <pb-i18n key="form.object-description"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#inscription-field">
+                                            <pb-i18n key="form.inscription-field"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#text-description">
+                                            <pb-i18n key="form.text-description"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#references">
+                                            <pb-i18n key="form.references"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#edition">
+                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#commentary">
+                                            <pb-i18n key="form.commentary"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#dating">
+                                            <pb-i18n key="form.dating"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#historic-relevance">
+                                            <pb-i18n key="form.historic-relevance"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{uri-path()}#editor">
+                                            <pb-i18n key="form.editing"></pb-i18n>
+                                        </a>
+                                    </li>
+                                    <li class="nav-divider"></li>
+                                    <li class="noflex">
+                                        <!-- these controls just create the attributes they are pointing to in case they are not present in the data -->
+                                        <fx-control ref="instance('default')/@fragments" style="display:none;" create="create"></fx-control>
+                                        <fx-control ref="instance('default')/@type" style="display:none;" create="create"></fx-control>
+                                        <fx-group ref="instance('default')/@fragments[string() and ../@type!='partial']" class="neutral">
+                                            <fieldset id="fragment-fields">
+                                                <legend>
+                                                    <pb-i18n key="form.fragments"></pb-i18n>
+                                                </legend>
+                                                <fx-repeat id="r-fragments" ref="tokenize(instance('default')/@fragments)" aria-labelled-by="r-fragments-label">
+                                                    <template>
+                                                        <fx-var name="curr" value="."></fx-var>
+                                                        <a href="{uri-relpath()}{.}.xml" target="_blank">{.}</a>
+                                                    </template>
+                                                </fx-repeat>
+                                            </fieldset>
+                                        </fx-group>
 
-                            <li>
-                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#commentary">
-                                    <pb-i18n key="form.commentary"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#chronology">
-                                    <pb-i18n key="form.dating"/>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="edit/{instance('params')/collection}/{instance('params')/id}.xml#historic-relevance">
-                                    <pb-i18n key="form.historic-relevance"/>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <fx-group ref="teiHeader" style="z-index:{}">
-                        <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title">
-                            <label>
-                                        <pb-i18n key="form.title"/>
-                                    </label>
-                        </fx-control>
-                        <!--            <span>Sprachselector hier</span>-->
-                        <fx-group id="object">
-                            <h3>
-                                        <pb-i18n key="form.object">Objekt</pb-i18n>
-                                    </h3>
-                            <!-- 3) -->
-
-                            <fx-output ref=".//msDesc/msIdentifier/idno" class="edepid">
-                                <label slot="label">
-                                    <pb-i18n key="form.edepid">EDEp ID</pb-i18n>
-                                </label>
-                            </fx-output>
-
-                            <!-- 16a) -->
-                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/objectType/@ref" update-event="input">
-                                <label>
-                                    <pb-i18n key="form.type-of-monument">Inschriftträger</pb-i18n>
-                                </label>
-                                <select ref="sortNames(instance('objtyp')/term)" class="widget" selection="open">
-                                    <template>
-                                        <option value="{@ref}">{name[@xml:lang = instance('vars')/language]}</option>
-                                    </template>
-                                </select>
-                            </fx-control>
-
-                            <!-- 16b) -->
-                            <fx-control ref="//physDesc/objectDesc/supportDesc/support/note" as="node" update-event="leave">
-                                <label>
-                                    <pb-i18n key="form.description-of-monument">Beschreibung Inschriftträger</pb-i18n>
-                                </label>
-                                <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
-                                    <div slot="toolbar">
-                                        <pb-popover>
-                                            <iron-icon icon="info-outline"/>
-                                            <template slot="alternate">
-                                                <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                            </template>
-                                        </pb-popover>
-                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                    </div>
-                                </jinn-xml-editor>
-                            </fx-control>
-
-                            <!-- there's no 17) -->
-
-                            <!-- 18) -->
-                            <details>
-                                <summary><pb-i18n key="form.material">Material</pb-i18n></summary>
-                                <fx-control ref="//physDesc/objectDesc/supportDesc/support/material/@ref" class="orange block" style="margin-top:0;">
-                                    <fx-items ref="sortNames(instance('material')/term)" class="widget material-list">
-                                        <template>
-                                            <div class="fx-checkbox">
-                                                <input type="checkbox" value="{@ref}"/>
-                                                <label>{name[@xml:lang = instance('vars')/language]}</label>
-                                            </div>
-                                        </template>
-                                    </fx-items>
-                                </fx-control>
-                            </details>
-                        </fx-group>
-
-                        <fx-repeat id="parts" ref=".//msPart">
-                            <template>
-                                <fx-trigger class="delete {if(@type='main' or count(./preceding-sibling::msPart) = 0) then 'hidden' else ''} remove-fragment">
-                                    <iron-icon icon="remove-circle-outline"></iron-icon>
-<!--
-                                    <pb-popover>
-                                        <iron-icon icon="remove-circle-outline"></iron-icon>
-                                        <template slot="alternate"><pb-i18n key="form.hint-delete-fragment"></pb-i18n></template>
-                                    </pb-popover>
--->
-                                    <fx-confirm message="really delete this fragment?">
-                                        <fx-delete ref="."></fx-delete>
-                                    </fx-confirm>
-                                    <fx-refresh control="parts"></fx-refresh>
-                                </fx-trigger>
-
-                                <div class="fragment" id="{@xml:id}">
-                                    <label>
-                                        <pb-popover>
-                                            <fx-switch ref="@type">
-                                                <fx-case name="main">
-                                                    <pb-i18n key="form.part-main"/>
-                                                    <iron-icon icon="info-outline"/>
-                                                </fx-case>
-                                                <fx-case name="fragment">
-                                                    <pb-i18n key="form.part-fragment"/>
-                                                    <iron-icon icon="info-outline"/>
-                                                </fx-case>
-                                            </fx-switch>
-                                            <template slot="alternate">
-                                                <pb-i18n key="form.hint-part-type"/>
-                                            </template>
-                                        </pb-popover>
-                                    </label>
-
-                                    <!-- 4) -->
-                                    <fx-control id="tm-number" class="tm-number" ref="msIdentifier/idno">
-                                        <label><pb-i18n key="form.tm">TM Nummer</pb-i18n></label>
-                                    </fx-control>
-
-                                    <details id="{@xml:id}-findspot">
-                                        <summary><pb-i18n key="form.findspot">Fundort</pb-i18n></summary>
-                                        <fx-control class="fore-control" ref="history/origin/origPlace/@corresp"
-                                                    src="geo-picker.html"
-                                                    initial="..">
-                                        </fx-control>
-
-
-                                        <!-- 10b) -->
-                                        <fx-control ref="history/provenance/note[@type='context']" as="node" update-event="leave">
-                                            <label>
-                                                <pb-i18n key="form.context-of-provenance">Fundkontext</pb-i18n>
-                                            </label>
-                                            <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
-                                                <div slot="toolbar">
-                                                    <pb-popover>
-                                                        <iron-icon icon="info-outline"/>
-                                                        <template slot="alternate">
-                                                            <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                                        </template>
-                                                    </pb-popover>
-                                                    <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                    <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                    <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                    <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                </div>
-                                            </jinn-xml-editor>
-                                        </fx-control>
-
-                                    </details>
-
-                                    <!-- 11) -->
-
-                                    <!-- YYYY ->  matches(//title,'^-?[1-9]\d*$')-->
-                                    <!-- YYYY-MM-DD -> matches(//title,'^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$')    -->
-                                    <details id="{@xml:id}-finddate">
-                                        <summary><pb-i18n key="form.year-of-find">Fundjahr/-datum</pb-i18n></summary>
-                                        <fx-control ref="history/provenance/@when">
-                                            <label>
-                                                <pb-i18n key="form.date">Zeitpunkt</pb-i18n>
-                                            </label>
-                                            <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
-                                            <fx-alert>
-                                                <iron-icon icon="warning"/>
-                                                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
-                                            </fx-alert>
-                                        </fx-control>
-                                        <fx-control ref="history/provenance/@notBefore">
-                                            <label>
-                                                <pb-i18n key="form.date-after">nach</pb-i18n>
-                                            </label>
-                                            <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
-                                            <fx-alert>
-                                                <iron-icon icon="warning"/>
-                                                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
-                                            </fx-alert>
-                                        </fx-control>
-                                        <fx-control ref="history/provenance/@notAfter">
-                                            <label>
-                                                <pb-i18n key="form.date-before">vor</pb-i18n>
-                                            </label>
-                                            <input placeholder="YYYY, YYYY-MM oder YYYY-MM-DD" class="widget"/>
-                                            <fx-alert>
-                                                <iron-icon icon="warning"/>
-                                                <pb-i18n key="form.invalid-date">Ungültiges Datum</pb-i18n>
-                                            </fx-alert>
-                                        </fx-control>
-                                        <fx-control ref="history/provenance/@when-custom">
-                                            <label>
-                                                <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
-                                            </label>
-                                        </fx-control>
-                                    </details>
-
-                                    <details id="{@xml:id}-location">
-
-                                        <summary><pb-i18n key="form.last-recorded-location"/></summary>
-                                        <!-- 12a) -->
-                                        <div class="with-hint">
-                                            <fx-control ref="msIdentifier/repository">
-                                                <label>
-                                                    <pb-i18n key="form.last-recorded-location">Aufbewahrung</pb-i18n>
-                                                </label>
-                                            </fx-control>
-                                        </div>
-
-                                        <fx-control ref="msIdentifier/repository/@key">
-                                            <label>
-                                                <pb-i18n key="form.gnd">GND ID</pb-i18n>
-                                            </label>
-                                        </fx-control>
-                                        
-                                        <!-- 12b) -->
-                                        <div class="with-hint">
-                                            <fx-control ref=".//provenance[@type='history']" as="node" update-event="leave">
-                                                <label>
-                                                            <pb-i18n key="form.other-events">Weitere Ereignisse</pb-i18n>
-                                                        </label>
-                                                <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
-                                                    <div slot="toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon icon="info-outline"/>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                        <button data-command="snippet" data-params="&lt;placeName key=&#34;$|1|&#34;&gt;$|_|&lt;/placeName&gt;" title="placeName">&lt;placeName&gt;</button>
-                                                        <button data-command="snippet" data-params="&lt;orgName key=&#34;$|1|&#34;&gt;$|_|&lt;/orgName&gt;" title="orgName">&lt;orgName&gt;</button>
-                                                    </div>
-                                                </jinn-xml-editor>
-                                            </fx-control>
-                                            <pb-popover>
-                                                <iron-icon icon="info-outline"/>
-                                                <template slot="alternate">
-                                                            <pb-i18n key="form.hint-other-events"/>
-                                                        </template>
-                                            </pb-popover>
-                                        </div>
-
-
-                                        <!-- 12c) Überlieferung -->
-                                        <fieldset>
-                                            <legend>
-                                                <label>
-                                                    <pb-i18n key="form.transmission">Überlieferung</pb-i18n>
-                                                    <pb-popover>
-                                                        <iron-icon icon="info-outline"/>
-                                                        <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-recorded-location"/>
-                                                                </template>
-                                                    </pb-popover>
-                                                </label>
-                                                <fx-trigger class="add" title="Überlieferung hinzufügen">
-                                                    <iron-icon icon="add-circle-outline" title="Überlieferung hinzufügen"/>
-
-                                                    <fx-insert context="msContents/msItem/listBibl[@type='transmission']" ref="bibl" origin="instance('templates')//bibl"></fx-insert>
-                                                    <fx-setvalue ref="(msContents/msItem/listBibl[@type='transmission']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
-                                                    <fx-refresh control="r-transmission"></fx-refresh>
-                                                </fx-trigger>
-                                            </legend>
-                                            <fx-repeat class="nested-repeat" id="r-transmission" ref="msContents/msItem/listBibl[@type='transmission']/bibl">
-                                                <template>
-                                                    <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"/>
-                                                    <div>
-                                                        <div class="output">
-                                                            <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                            <div>
-                                                                <fx-output ref="@xml:id"></fx-output>
-                                                                <fx-trigger>
-                                                                    <iron-icon class="widget" icon="icons:content-copy"></iron-icon>
-                                                                    <fx-call function="clipboard(@xml:id)"></fx-call>
-                                                                </fx-trigger>
-                                                            </div>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"/>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                        </div>
-                                                        <fx-control ref="ptr/@target" update-event="change">
-                                                            <label>
-                                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
-                                                              </label>
-                                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
-                                                        </fx-control>
-                                                        <fx-control ref="citedRange">
-                                                            <label>
-                                                                <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
-                                                            </label>
-                                                        </fx-control>
-
-                                                        <div>
-                                                            <fx-control ref="note" as="node" update-event="leave">
-                                                                <label>
-                                                                    <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
-                                                                </label>
-                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]" schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
-                                                                    <div slot="toolbar">
-                                                                        <pb-popover>
-                                                                            <iron-icon icon="info-outline"/>
-                                                                            <template slot="alternate">
-                                                                                <pb-i18n key="form.hint-biblio-note">Hint</pb-i18n>
-                                                                            </template>
-                                                                        </pb-popover>
-                                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
-                                                            </fx-control>
-                                                        </div>
-                                                    </div>
-                                                    <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="Überlieferung löschen"></iron-icon>
-                                                        <fx-delete ref="."></fx-delete>
-                                                        <fx-refresh control="r-transmission"></fx-refresh>
-                                                    </fx-trigger>
-
-                                                </template>
-                                            </fx-repeat>
-                                        </fieldset>
-                                    </details>
-
-                                    <details id="{@xml:id}-verification">
-                                        <summary><pb-i18n key="form.verification">Verifizierung</pb-i18n>
-                                            <!-- 12b-12e missing -->
-                                            <fx-trigger class="add">
-                                                <pb-popover>
-                                                    <iron-icon icon="add-circle-outline"/>
-                                                    <template slot="alternate"><pb-i18n key="form.hint-add-verification"/></template>
-                                                </pb-popover>
-                                                <fx-insert context="msContents/msItem" ref="note"
-                                                           origin="instance('templates')/note[@type='verification']"></fx-insert>
+                                        <fx-group ref="instance('default')/@xml:id[string-length(.) > 0][not(instance('default')/@type='partial')]">
+                                            <!-- show trigger only if corresp is empty meaning we are a parent -->
+                                            <fx-trigger id="addFragment">
+                                                <button><pb-i18n key="form.add"></pb-i18n></button>
+                                                <fx-send submission="s-create-fragment"></fx-send>
                                             </fx-trigger>
-                                        </summary>
-                                        <fx-repeat class="nested-repeat" ref="msContents/msItem/note[@type='verification']"
-                                            id="r-verification">
-                                            <template>
-                                                <fx-group>
-                                                    <fx-control class="verification" ref="@subtype">
-                                                        <label>
-                                                            <pb-i18n key="form.basis-of-verification">Verifizierungsgrundlage</pb-i18n>
-                                                        </label>
-                                                        <select class="widget" ref="instance('vars')/verification/option[@lang=instance('vars')/language]">
-                                                            <template>
-                                                                <option value="{@value}">{.}</option>
-                                                            </template>
-                                                        </select>
-                                                    </fx-control>
-                                                    <fx-control ref="date/@when">
-                                                        <label>
-                                                            <pb-i18n key="form.date-of-verification">Datum der Verifizierung</pb-i18n>
-                                                        </label>
-                                                        <input placeholder="YYYY-MM-DD" class="widget"/>
-                                                    </fx-control>
-                                                    <fx-control ref="persName">
-                                                        <label>
-                                                            <pb-i18n key="form.verification-by">Verifizierer</pb-i18n>
-                                                        </label>
-                                                    </fx-control>
-                                                </fx-group>
-                                                <fx-trigger>
-                                                    <pb-popover>
-                                                        <iron-icon icon="remove-circle-outline"></iron-icon>
-                                                        <template slot="alternate"><pb-i18n key="form.hint-delete-verification"></pb-i18n></template>
-                                                    </pb-popover>
-                                                    <fx-delete ref="."></fx-delete>
-                                                </fx-trigger>
-                                            </template>
-                                        </fx-repeat>
-                                    </details>
+                                        </fx-group>
 
-                                    <details id="{@xml:id}-objectdesc">
-                                        <summary>
-                                            <pb-i18n key="form.object-description">Objektbeschreibung</pb-i18n>
-                                        </summary>
+                                        <fx-group id="backlink" ref="instance('default')/@type[.='partial']">
+                                            <a href="{concat(uri-relpath(),instance('default')/@corresp)}.xml" target="_blank">{instance('default')/@corresp}</a>
+                                        </fx-group>
+                                    </li>
+                                </ul>
+                            </nav>
+                            <fx-group ref="teiHeader" aria-labelledby="title-lbl" class="outer-group">
+                                <h1 id="title-lbl">
+                                    <fx-control id="edeptitle" class="title" ref="fileDesc/titleStmt/title" update-event="input">
+                                        <label>
+                                            <pb-i18n key="form.title"></pb-i18n>
+                                        </label>
+                                    </fx-control>
+                                </h1>
 
-                                        <!-- 13) -->
-                                        <fx-control ref="physDesc/objectDesc/supportDesc/condition" update-event="input">
-                                            <label>
-                                                <pb-i18n key="form.preservation">Erhaltung</pb-i18n>
-                                            </label>
-                                            <select class="widget">
-                                                <option value="" data-i18n="form.unknown">unbekannt</option>
-                                                <option value="complete" data-i18n="preservation.complete">vollständig</option>
-                                                <option value="fragmentary" data-i18n="preservation.fragmentary">fragmentarisch</option>
-                                            </select>
-                                        </fx-control>
+                                <!-- IDENTIFIERs -->
+                                <div
+                                    id="object"
+                                    data-template="lib:include"
+                                    data-template-path="templates/parts/object.html"
+                                    data-template-replace="true"></div>
 
-                                        <!-- 14) -->
-                                        <fx-control ref="physDesc/objectDesc/supportDesc/support/rs/@ref" update-event="input">
-                                            <label>
-                                                <pb-i18n key="form.decoration">Dekor</pb-i18n>
-                                            </label>
-                                            <select class="widget">
-                                                <option value="" data-i18n="form.unknown">unbekannt</option>
-                                                <option value="https://www.eagle-network.eu/voc/decor/lod/2000" data-i18n="decor.yes">Ja</option>
-                                                <option value="https://www.eagle-network.eu/voc/decor/lod/1000" data-i18n="decor.no">Nein</option>
-                                                <option value="https://edep.adw.uni-heidelberg.de/decor/uncertain" data-i18n="decor.uncertain">unsicher</option>
-                                            </select>
-                                        </fx-control>
+                                <fx-group
+                                    ref="fileDesc/sourceDesc/msDesc"
+                                    id="inscription"
+                                    class="neutral">
 
-                                        <!-- 15) -->
-                                        <div class="alternatives">
-                                            <fx-control ref="msContents/msItem/@class" update-event="input">
-                                                <label>
-                                                    <pb-i18n key="form.type-of-inscription">Inschriftengattung</pb-i18n>
-                                                </label>
-                                                <fx-items ref="sortNames(instance('typeins')/term)" class="widget">
-                                                    <template>
-                                                        <span class="fx-checkbox">
-                                                            <input type="checkbox" value="{@ref}"/>
-                                                            <label>{name[@xml:lang = instance('vars')/language]}</label>
-                                                        </span>
-                                                    </template>
-                                                </fx-items>
-                                            </fx-control>
+                                    <!-- FINDSPOT -->
+                                    <div
+                                        id="findspot"
+                                        data-template="lib:include"
+                                        data-template-path="templates/parts/findspot.html"
+                                        data-template-replace="true"></div>
 
+                                    <!-- PRESENT LOCATION -->
+                                    <div
+                                        id="location"
+                                        data-template="lib:include"
+                                        data-template-path="templates/parts/location.html"
+                                        data-template-replace="true"></div>
+                                </fx-group>
 
-                                            <fx-control ref="msContents/msItem/@type">
-                                                <label>
-                                                    <pb-i18n key="form.free-form">Freie Eingabe</pb-i18n>
-                                                </label>
-                                            </fx-control>
-                                        </div>
+                                    <!-- VERIFICATION -->
+                                    <div
+                                    id="verification"
+                                    data-template="lib:include"
+                                    data-template-path="templates/parts/verification.html"
+                                    data-template-replace="true"></div>
 
-                                        <!-- 38) -->
-                                        <fx-control class="measurement" ref="physDesc/objectDesc/supportDesc/support/dimensions/height">
-                                            <label>
-                                                <pb-i18n key="form.height">Höhe</pb-i18n>
-                                            </label>
-                                        </fx-control>
-                                        <!-- 19) -->
-                                        <fx-control class="measurement" ref="physDesc/objectDesc/supportDesc/support/dimensions/width">
-                                            <label>
-                                                <pb-i18n key="form.width">Breite</pb-i18n>
-                                            </label>
-                                        </fx-control>
-                                        <!-- 20) -->
-                                        <fx-control class="measurement" ref="physDesc/objectDesc/supportDesc/support/dimensions/depth">
-                                            <label>
-                                                <pb-i18n key="form.depth">Tiefe</pb-i18n>
-                                            </label>
-                                        </fx-control>
+                                <fx-group
+                                    ref="fileDesc/sourceDesc/msDesc"
+                                    id="objdesc"
+                                    class="neutral">
+                                    <!-- OBJECT DESCRIPTION -->
+                                    <div
+                                        id="objectdesc"
+                                        data-template="lib:include"
+                                        data-template-path="templates/parts/objectdesc.html"
+                                        data-template-replace="true"></div>
 
-                                        <!-- 34) -->
-                                    </details>
-                                    <details id="{@xml:id}-inscription-field">
-                                        <summary>
-                                            <pb-i18n key="form.inscription-field">Inschriftfeld</pb-i18n>
-                                        </summary>
-                                        <!-- 21) -->
-                                        <fx-control class="measurement" ref="physDesc/objectDesc/layoutDesc/layout/dimensions/height">
-                                            <label>
-                                                <pb-i18n key="form.height">Höhe</pb-i18n>
-                                            </label>
-                                        </fx-control>
-                                        <!-- 22) -->
-                                        <fx-control class="measurement" ref="physDesc/objectDesc/layoutDesc/layout/dimensions/width">
-                                            <label>
-                                                <pb-i18n key="form.width">Breite</pb-i18n>
-                                            </label>
-                                        </fx-control>
-                                        <!-- 23) -->
-                                        <fx-control class="measurement" ref="physDesc/handDesc/handNote/dimensions/height">
-                                            <label>
-                                                <pb-i18n key="form.letter-size">Buchstabenhöhe</pb-i18n>
-                                            </label>
-                                        </fx-control>
-                                        <fx-control ref="physDesc/objectDesc/layoutDesc/layout/ab" as="node" update-event="leave">
-                                            <label>
-                                                <pb-i18n key="form.description">Beschreibung</pb-i18n>
-                                            </label>
-                                            <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
-                                                <div slot="toolbar">
-                                                    <pb-popover>
-                                                        <iron-icon icon="info-outline"/>
-                                                        <template slot="alternate">
-                                                            <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                                        </template>
-                                                    </pb-popover>
-                                                    <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                    <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                    <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                    <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                </div>
-                                            </jinn-xml-editor>
-                                        </fx-control>
-                                    </details>
+                                    <!-- INSCRIPTION FIELD -->
+                                    <div
+                                        id="inscription-field"
+                                        data-template="lib:include"
+                                        data-template-path="templates/parts/inscription-field.html"
+                                        data-template-replace="true"></div>
+
+                                    <!-- TEXT DESCRIPTION -->
+                                    <div
+                                        id="text-description"
+                                        data-template="lib:include"
+                                        data-template-path="templates/parts/text-description.html"
+                                        data-template-replace="true"></div>
+                                </fx-group>
+<!--
+                                <fx-group ref="profileDesc" class="outer-group" aria-labelledby="profile-lbl">
+                                    <div
+                                        id="languages"
+                                        data-template="lib:include"
+                                        data-template-path="templates/parts/languages.html"
+                                        data-template-replace="true"></div>
+                                </fx-group> -->
 
 
-                                    <details id="{@xml:id}-text-description">
-                                        <summary>
-                                            <pb-i18n key="form.text-description"/>
-                                        </summary>
-                                        <!-- 24) -->
-                                        <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='metric']" update-event="input">
-                                            <label><pb-i18n key="form.metre">Metrik</pb-i18n></label>
-                                            <select class="widget">
-                                                <option value="" data-i18n="form.unknown">unbekannt</option>
-                                                <option value="yes" data-i18n="decor.yes">Ja</option>
-                                                <option value="no" data-i18n="decor.no">Nein</option>
-                                                <option value="partim" data-i18n="metric.partim">Partim</option>
-                                            </select>
-                                        </fx-control>
-                                        <!-- 25) -->
-                                        <fx-control ref="msContents/msItem/textLang/@mainLang">
-                                            <label><pb-i18n key="form.languageMain">Hauptsprache</pb-i18n></label>
-                                            <fx-items ref="sortLang(instance('vars')/languages[@xml:lang=instance('vars')/language]/lang)" class="widget">
-                                                <template>
-                                                <span>
-                                                    <input type="radio" name="mainLanguage" value="{@code}"/>
-                                                    <label>{.}</label>
-                                                </span>
-                                                </template>
-                                            </fx-items>
-                                        </fx-control>
-
-                                        <fx-control ref="msContents/msItem/textLang/@otherLangs">
-                                            <label>
-                                                <pb-i18n key="form.languageOther">Andere Sprachen</pb-i18n>
-                                            </label>
-                                            <fx-items ref="sortLang(instance('vars')/languages[@xml:lang=instance('vars')/language]/lang)" class="widget">
-                                                <template>
-                                                <span class="fx-checkbox">
-                                                    <input type="checkbox" value="{@code}"/>
-                                                    <label>{.}</label>
-                                                </span>
-                                                </template>
-                                            </fx-items>
-                                          </fx-control>
-                                          
-                                          <fx-control ref="msContents/msItem/textLang">
-                                            <label><pb-i18n key="form.languageFree">Andere Sprachen oder Kommentare</pb-i18n></label>
-                                          </fx-control>
-
-                                        <!-- 34) -->
-                                        <div class="alternatives">
-                                            <fx-control ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']/@ref" update-event="input">
-                                                <label>
-                                                            <pb-i18n key="form.palaeography">Paläographie</pb-i18n>
-                                                        </label>
-                                                <fx-items ref="instance('palaeo')/item" class="widget">
-                                                    <template>
-                                                    <span class="fx-checkbox">
-                                                        <input type="checkbox" value="{@ref}"/>
-                                                        <label>{name[@xml:lang=instance('vars')/language]}</label>
-                                                    </span>
-                                                    </template>
-                                                </fx-items>
-                                            </fx-control>
-                                            <fx-control id="input34" ref="physDesc/objectDesc/layoutDesc/layout/rs[@type='palaeography']" class="{instance('vars')/hide}" as="node" update-event="leave">
-                                                <label>
-                                                    <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
-                                                </label>
-                                                <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
-                                                    <div slot="toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon icon="info-outline"/>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                    </div>
-                                                </jinn-xml-editor>
-                                            </fx-control>
-                                        </div>
-
-                                        <!-- 39) -->
-                                        <fx-control ref="physDesc/handDesc/handNote/rs" update-event="input">
-                                            <label><pb-i18n key="form.ligature">Ligatur</pb-i18n></label>
-                                            <select class="widget">
-                                                <option value="" data-i18n="form.unknown">unbekannt</option>
-                                                <option value="yes" data-i18n="decor.yes">Ja</option>
-                                                <option value="no" data-i18n="decor.no">Nein</option>
-                                            </select>
-                                        </fx-control>
-
-                                    </details>
-
-                                    <fx-var name="frag" value="'#' || ./@xml:id"></fx-var>
-
-                                    <details class="group-6" id="{@xml:id}-references">
-                                        <summary>
-                                            <pb-i18n key="form.references">Referenzen</pb-i18n>
+                                <!-- REFERENCES -->
+                                <fx-group id="references" class="references-background">
+                                    <fx-group ref="fileDesc/sourceDesc/listBibl" class="outer-group">
+                                        <h2>
+                                            <pb-i18n key="form.references"></pb-i18n>
                                             <pb-popover>
                                                 <iron-icon icon="info-outline"></iron-icon>
                                                 <template slot="alternate">
                                                     <pb-i18n key="form.hint-references"></pb-i18n>
                                                 </template>
                                             </pb-popover>
-                                        </summary>
+                                        </h2>
 
-                                        <!-- 35a) Ältere Editionen -->
-                                        <fieldset>
-                                            <legend>
-                                                <label>
-                                                    <pb-i18n key="form.previous-editions">Ältere Editionen</pb-i18n>
-                                                    <pb-popover>
-                                                        <iron-icon icon="info-outline"></iron-icon>
-                                                        <template slot="alternate">
-                                                            <pb-i18n key="form.hint-previous-editions"></pb-i18n>
-                                                        </template>
-                                                    </pb-popover>
-                                                </label>
-                                                <fx-trigger class="add" title="Ältere Edition hinzufügen">
-                                                    <iron-icon icon="add-circle-outline"></iron-icon>
+                                        <div
+                                            id="transmission"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/transmission.html"
+                                            data-template-replace="true"></div>
 
-                                                    <fx-insert context="msContents/msItem/listBibl[@type='previousEditions']" ref="bibl" origin="instance('templates')//bibl"></fx-insert>
-                                                    <fx-setvalue ref="(msContents/msItem/listBibl[@type='previousEditions']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
-                                                    <fx-refresh control="r-editions"></fx-refresh>
-                                                </fx-trigger>
-                                            </legend>
-                                            <fx-repeat class="nested-repeat" id="r-editions" ref="msContents/msItem/listBibl[@type='previousEditions']/bibl">
-                                                <template>
-                                                    <div>
-                                                        <div class="output">
-                                                            <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                            <div>
-                                                                <fx-output ref="@xml:id"></fx-output>
-                                                                <fx-trigger>
-                                                                    <iron-icon class="widget" icon="icons:content-copy"></iron-icon>
-                                                                    <fx-call function="clipboard(@xml:id)"></fx-call>
-                                                                </fx-trigger>
-                                                            </div>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"/>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                        </div>
-                                                        <fx-control ref="ptr/@target" update-event="change">
-                                                            <label>
-                                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
-                                                              </label>
-                                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
-                                                        </fx-control>
-                                                        <fx-control ref="citedRange">
-                                                            <label>
-                                                                <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
-                                                            </label>
-                                                        </fx-control>
-                                                        <div>
-                                                            <fx-control ref="note" as="node" update-event="leave">
-                                                                <label>
-                                                                    <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
-                                                                </label>
-                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" placeholder="[Inline text/markup or sequence of paragraphs]" schema-root="note" namespace="http://www.tei-c.org/ns/1.0">
-                                                                    <div slot="toolbar">
-                                                                        <pb-popover>
-                                                                            <iron-icon icon="info-outline"/>
-                                                                            <template slot="alternate">
-                                                                                <pb-i18n key="form.hint-biblio-note">Hint</pb-i18n>
-                                                                            </template>
-                                                                        </pb-popover>
-                                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
-                                                                        </button>
-                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
-                                                                        </button>
-                                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
-                                                            </fx-control>
-                                                        </div>
-                                                    </div>
+                                        <div
+                                            id="prev-editions"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/prev-editions.html"
+                                            data-template-replace="true"></div>
+                                        <div
+                                            id="bibliography"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/bibliography.html"
+                                            data-template-replace="true"></div>
+                                        <div
+                                            id="images"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/images.html"
+                                            data-template-replace="true"></div>
+                                    </fx-group>
 
-                                                    <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="delete Bibliographie"></iron-icon>
-                                                        <fx-delete ref="."></fx-delete>
-                                                        <fx-refresh control="r-editions"></fx-refresh>
-                                                    </fx-trigger>
+                                    <!-- DIGITAL IMAGES -->
+                                    <fx-group id="dig-images" class="neutral">
+                                        <div
+                                            id="pictures"
+                                            data-template="lib:include"
+                                            data-template-path="templates/parts/pictures.html"
+                                            data-template-replace="true"></div>
+                                    </fx-group>
+                                </fx-group>
+                            </fx-group>
 
-                                                </template>
-                                            </fx-repeat>
-                                        </fieldset>
+                            <!-- edition here, splitting the binding group -->
+                            <!-- EDITION and COMMENTARY together as they are all stored in BODY -->
+                            <fx-group ref="text/body" class="outer-group">
+                                <div
+                                    id="edition"
+                                    data-template="lib:include"
+                                    data-template-path="templates/parts/edition.html"
+                                    data-template-replace="true"></div>
 
-                                        <!-- 35b) -->
-                                        <fieldset>
-                                            <legend>
-                                                <label>
-                                                    <pb-i18n key="form.bibliography">Bibliographie</pb-i18n>
-                                                </label>
-                                                <fx-trigger class="add" title="Bibliographie hinzufügen">
-                                                    <iron-icon icon="add-circle-outline"></iron-icon>
+                                <!--
+                                    This won't call the update-cycle for each event as the replace action in its current form does not
+                                    call it. The control will refresh the UI when the control looses focus (onblur).
+                                -->
+                                <div
+                                    id="commentary"
+                                    data-template="lib:include"
+                                    data-template-path="templates/parts/commentary.html"
+                                    data-template-replace="true"></div>
+                            </fx-group>
 
-                                                    <fx-insert context="msContents/msItem/listBibl[@type='bibliography']" ref="bibl" origin="instance('templates')//bibl"></fx-insert>
-                                                    <fx-setvalue ref="(msContents/msItem/listBibl[@type='bibliography']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
-                                                    <fx-refresh control="r-biblio"></fx-refresh>
-                                                </fx-trigger>
-                                            </legend>
-                                            <fx-repeat class="nested-repeat" id="r-biblio" ref="msContents/msItem/listBibl[@type='bibliography']/bibl">
-                                                <template>
-                                                    <fx-var name="current" value="count(./preceding-sibling::bibl) + 1"/>
+                            <fx-group ref="teiHeader" aria-labelledby="title-lbl" class="outer-group">
+                                <!-- DATING -->
+                                <div
+                                    id="dating"
+                                    data-template="lib:include"
+                                    data-template-path="templates/parts/dating.html"
+                                    data-template-replace="true"></div>
 
-                                                    <div>
-                                                        <div class="output">
-                                                            <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                            <div>
-                                                                <fx-output ref="@xml:id"></fx-output>
-                                                                <fx-trigger>
-                                                                    <iron-icon class="widget" icon="icons:content-copy"></iron-icon>
-                                                                    <fx-call function="clipboard(@xml:id)"></fx-call>
-                                                                </fx-trigger>
-                                                            </div>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"/>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                        </div>
-                                                        <fx-control ref="ptr/@target" update-event="change">
-                                                            <label>
-                                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
-                                                              </label>
-                                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
-                                                        </fx-control>
-                                                        <fx-control ref="citedRange">
-                                                            <label>
-                                                                <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
-                                                            </label>
-                                                        </fx-control>
-                                                        <fx-control ref="note" as="node" update-event="leave">
-                                                            <label>
-                                                                <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
-                                                            </label>
-                                                            <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" schema-root="note" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Inline text/markup or sequence of paragraphs]">
-                                                                <div slot="toolbar">
-                                                                    <pb-popover>
-                                                                        <iron-icon icon="info-outline"/>
-                                                                        <template slot="alternate">
-                                                                            <pb-i18n key="form.hint-biblio-note">Hint</pb-i18n>
-                                                                        </template>
-                                                                    </pb-popover>
-                                                                    <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                                    <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                    <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                                    <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                                </div>
-                                                            </jinn-xml-editor>
-                                                        </fx-control>
-                                                        <fx-control ref="@type" update-event="input">
-                                                            <label><pb-i18n key="form.visibility"></pb-i18n></label>
-                                                            <select class="widget" static="static">
-                                                                <option value="public" data-i18n="status.public">public</option>
-                                                                <option value="internal" data-i18n="status.intern">internal</option>
-                                                            </select>
-                                                        </fx-control>
-                                                    </div>
-                                                    <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="Bibliographie löschen"></iron-icon>
-                                                        <fx-delete ref="."></fx-delete>
-                                                        <fx-refresh control="r-biblio"></fx-refresh>
-                                                    </fx-trigger>
+                                <div
+                                    id="historic-relevance"
+                                    data-template="lib:include"
+                                    data-template-path="templates/parts/historic-relevance.html"
+                                    data-template-replace="true"></div>
 
-                                                </template>
-                                            </fx-repeat>
+                                <div
+                                    id="editor"
+                                    data-template="lib:include"
+                                    data-template-path="templates/parts/editor.html"
+                                    data-template-replace="true"></div>
+                            </fx-group>
 
-                                        </fieldset>
+                            <section class="buttonBar">
+                                <pb-restricted login="login" group="tei">
+                                    <p class="loginMessage" slot="fallback">You need to be logged in to save.</p>
 
-                                        <!-- 35c) Bilder: Verweis auf Literatur, in der Abbildung vorhanden -->
-                                        <fieldset>
-                                            <legend>
-                                                <label>
-                                                            <pb-i18n key="form.images-dps">Bilder (Fotos, Zeichnungen, Abklatsche)</pb-i18n>
-                                                        </label>
-                                                <fx-trigger class="add" title="Bilder (Fotos, Zeichnungen, Abklatsche) hinzufügen">
-                                                    <iron-icon icon="add-circle-outline"/>
-                                                    <fx-action>
-                                                        <fx-insert context="msContents/msItem/listBibl[@type='images']" ref="bibl" origin="instance('templates')//listBibl[@type='images']/bibl"></fx-insert>
-                                                        <fx-setvalue ref="(msContents/msItem/listBibl[@type='images']/bibl)[last()]/@xml:id" value="'bibl-' || computeBiblId(//listBibl/bibl)"></fx-setvalue>
-                                                        <fx-refresh control="r-images"></fx-refresh>
-                                                    </fx-action>
-                                                </fx-trigger>
-                                            </legend>
-                                            <fx-repeat class="nested-repeat" id="r-images" ref="msContents/msItem/listBibl[@type='images']/bibl">
-                                                <template>
-                                                    <div>
-                                                        <div class="output">
-                                                            <label><pb-i18n key="form.biblio-abbreviation">Kürzel</pb-i18n></label>
-                                                            <div>
-                                                                <fx-output ref="@xml:id"></fx-output>
-                                                                <fx-trigger>
-                                                                    <iron-icon class="widget" icon="icons:content-copy"></iron-icon>
-                                                                    <fx-call function="clipboard(@xml:id)"></fx-call>
-                                                                </fx-trigger>
-                                                            </div>
-                                                            <pb-popover>
-                                                                <iron-icon icon="info-outline"/>
-                                                                <template slot="alternate">
-                                                                    <pb-i18n key="form.hint-biblio-abbreviation">XML:ID</pb-i18n>
-                                                                </template>
-                                                            </pb-popover>
-                                                        </div>
-                                                        <fx-control ref="ptr/@target" update-event="change">
-                                                            <label>
-                                                                <pb-i18n key="form.reference">Referenz</pb-i18n>
-                                                              </label>
-                                                            <jinn-zotero-picker class="widget" group="2519759"></jinn-zotero-picker>
-                                                        </fx-control>
-                                                        <fx-control ref="citedRange">
-                                                            <label>
-                                                                        <pb-i18n key="form.cited-range">Cited Range</pb-i18n>
-                                                                    </label>
-                                                        </fx-control>
-                                                        <div>
-                                                            <fx-control ref="note" as="node" update-event="leave">
-                                                                <label>
-                                                                    <pb-i18n key="form.notes">Anmerkungen</pb-i18n>
-                                                                </label>
-                                                                <jinn-xml-editor unwrap="unwrap" class="widget" schema="resources/scripts/tei.json" schema-root="note" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Inline text/markup or sequence of paragraphs]">
-                                                                    <div slot="toolbar">
-                                                                        <pb-popover>
-                                                                            <iron-icon icon="info-outline"/>
-                                                                            <template slot="alternate">
-                                                                                <pb-i18n key="form.hint-biblio-note">Hint</pb-i18n>
-                                                                            </template>
-                                                                        </pb-popover>
-                                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                                    </div>
-                                                                </jinn-xml-editor>
-                                                            </fx-control>
-                                                        </div>
-                                                    </div>
-                                                    <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="delete image"></iron-icon>
-                                                        <fx-delete ref="."></fx-delete>
-                                                        <fx-refresh control="r-images"></fx-refresh>
-                                                    </fx-trigger>
-
-                                                </template>
-                                            </fx-repeat>
-                                        </fieldset>
-
-                                        <!-- 35d) Abbildungen -->
-                                        <fieldset>
-                                            <legend>
-                                                <label>
-                                                            <pb-i18n key="form.images">Abbildungen (URLs)</pb-i18n>
-                                                        </label>
-                                                <fx-trigger class="add" title="Abbildung hinzufügen">
-                                                    <iron-icon icon="add-circle-outline"/>
-
-                                                    <fx-insert context="facsimile" ref="graphic" origin="instance('templates')/graphic"></fx-insert>
-                                                    <!--                                                       <fx-refresh control="r-pics"></fx-refresh>-->
-                                                </fx-trigger>
-                                            </legend>
-                                            <fx-repeat class="nested-repeat" ref="facsimile/graphic" id="r-pics">
-                                                <template>
-                                                    <fx-control ref="@url">
-                                                        <label>URL</label>
-                                                    </fx-control>
-
-                                                    <fx-trigger>
-                                                        <iron-icon icon="remove-circle-outline" title="delete image"></iron-icon>
-                                                        <fx-delete ref="."></fx-delete>
-                                                    </fx-trigger>
-
-                                                </template>
-                                            </fx-repeat>
-                                        </fieldset>
-                                    </details>
-                                    <details class="group-6" id="{@xml:id}-edition">
-                                        <summary>
-                                            <pb-i18n key="form.edition">Textedition</pb-i18n>
-                                        </summary>
-                                        <div class="block" id="{@xml:id}-transcript">
-                                            <h4>
-                                                <pb-i18n key="form.transcription">Transkription</pb-i18n>
-                                            </h4>
-                                            <fx-control class="transcription editor" ref="div[@type='textpart']" as="node" update-event="leave">
-                                                <jinn-epidoc-editor id="transcriptionEditor" unwrap="unwrap" class="widget" show-leiden="" schema="resources/scripts/tei.json" schema-root="div" mode="leiden_plus">
-                                                    <h5 slot="leiden-header">Leiden+ Editor</h5>
-                                                    <div slot="leiden-toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon icon="info-outline"/>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-transcription-prefix">Hint</pb-i18n>
-                                                                <a href="https://papyri.info/docs/leiden_plus" target="_blank">Leiden+</a>
-                                                                <pb-i18n key="form.hint-transcription">Hint</pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="snippet" data-mode="leiden_plus" data-params="($|_|)" title="Abbreviation parenthesis">(abc)</button>
-                                                        <button data-command="expan" data-mode="leiden_plus" title="Expanded abbreviation">(a(bcd))</button>
-                                                        <button data-command="erasure" data-mode="leiden_plus" title="Erasure">〚abc〛</button>
-                                                        <button data-command="unclear" data-mode="leiden_plus" title="Unclear">ạ</button>
-                                                        <button data-command="snippet" data-mode="leiden_plus" data-params="~|$|_||~$|2:gr|" title="Language switch">~|...|~</button>
-                                                        <button data-command="div" data-mode="leiden_plus" title="Division">&lt;=...</button>
-                                                        <button data-command="snippet" data-mode="leiden_plus" title="Part" data-params="&lt;D=.$|A|.part&lt;=$|_|=&gt;=D&gt;">&lt;D=.A.part...</button>
-                                                        <button data-command="snippet" data-mode="leiden_plus" title="Column" data-params="&lt;D=.$|i|.column&lt;=$|_|=&gt;=D&gt;">&lt;D=.i.column...</button>
-                                                        <button data-command="snippet" data-mode="leiden_plus" title="Recto/Verso" data-params="&lt;D=.$|r|&lt;=$|_|=&gt;=D&gt;">&lt;D=.r...</button>
-                                                        <button data-command="fixNewlines" data-mode="leiden_plus" title="Add missing line numbers">↩</button>
-                                                        <button data-command="erasure" data-mode="edcs">〚abc〛</button>
-                                                        <button data-command="gap" data-mode="edcs">[...]</button>
-                                                        <button data-command="convert" data-mode="edcs">Convert to Leiden+</button>
-                                                    </div>
-                                                    <h5 slot="xml-header">EpiDoc XML Editor</h5>
-                                                    <div slot="xml-toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon icon="info-outline"/>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-transcription2">Hint</pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                                        <button data-command="snippet" data-params="&lt;ab&gt;$|_|&lt;/ab&gt;" title="Insert ab">&lt;ab&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;supplied reason=&#34;lost&#34;&gt;$|_|&lt;/supplied&gt;" title="Insert supplied">&lt;supplied&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;expan&gt;&lt;abbr&gt;$|1|&lt;/abbr&gt;&lt;ex&gt;$|_|&lt;/ex&gt;&lt;/expan&gt;$|3|" title="Insert expan/abbr">&lt;expan&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;gap reason=&#34;lost&#34; extent=&#34;unknown&#34; unit=&#34;character&#34;/&gt;$|1|" title="Gap, extent unknown"><iron-icon icon="editor:space-bar"></iron-icon>?</button>
-                                                        <button data-command="snippet" data-params="&lt;gap reason=&#34;lost&#34; quantity=&#34;$|1|&#34; unit=&#34;$|2:line|&#34;/&gt;$|3|" title="Gap, extent known"><iron-icon icon="editor:space-bar"></iron-icon></button>
-                                                        <button data-command="snippet" data-params='&lt;hi rend="ligature">$|_|&lt;/hi>' title="Ligature">Lig</button>
-                                                        <pb-popover>
-                                                            <button data-command="snippet" data-params='&lt;l met="$|1|" real="$|2|">$|_|&lt;/l>' title="Metric"><pb-i18n key="form.verse">Verse</pb-i18n></button>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-verse"></pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
-                                                    </div>
-                                                </jinn-epidoc-editor>
-                                            </fx-control>
-                                            <h4>
-                                                <pb-i18n key="form.display">Display</pb-i18n>
-                                            </h4>
-                                            <div id="transcription-display"></div>
-                                        </div>
-                                        <div class="block">
-                                            <h4>
-                                                <pb-i18n key="form.apparatus">Apparatus</pb-i18n>
-                                            </h4>
-                                            <!-- 36) Apparatus für 1. Fragment: @corresp referenziert msPart - eingefügt aus jinn-codemirror -->
-                                            <fx-control class="apparatus editor" ref="div[@type='apparatus']" as="node" update-event="leave">
-                                                <jinn-xml-editor id="apparatus" class="widget" unwrap="unwrap" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0" placeholder="[Should contain a &lt;listApp&gt; with nested &lt;app&gt;]">
-                                                    <div slot="toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon icon="info-outline"/>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
-                                                        </button>
-                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;listApp&gt;$|_|&lt;/listApp&gt;" title="Insert apparatus list">&lt;listApp&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;app loc=&#34;$|1|&#34;&gt;&lt;note&gt;$|_|&lt;/note&gt;&lt;/app&gt;" title="Insert apparatus entry">&lt;app&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                                        <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
-                                                        <button data-command="snippet" data-params="'&lt;citedRange&gt;$|1|&lt;/citedRange&gt;" title="citedRange">&lt;citedRange&gt;</button>
-                                                    </div>
-                                                </jinn-xml-editor>
-                                            </fx-control>
-                                        </div>
-
-                                        <div class="block">
-                                            <h4>
-                                                        <pb-i18n key="form.translation">Übersetzung</pb-i18n>
-                                                    </h4>
-                                            <!-- 42) Übersetzung: @corresp referenziert msPart; @resp = Kürzel des Übersetzers - eingefügt aus jinn-codemirror -->
-                                            <fx-control class="translation editor" ref="div[@type='translation']" as="node" update-event="leave">
-                                                <jinn-xml-editor id="translation" unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
-                                                    <div slot="toolbar">
-                                                        <pb-popover>
-                                                            <iron-icon icon="info-outline"/>
-                                                            <template slot="alternate">
-                                                                <pb-i18n key="form.hint-translation">Hint</pb-i18n>
-                                                            </template>
-                                                        </pb-popover>
-                                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;
-                                                        </button>
-                                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;
-                                                        </button>
-                                                        <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
-                                                    </div>
-                                                </jinn-xml-editor>
-                                            </fx-control>
-                                            <!-- 43) Übersetzer/in -->
-                                            <fx-control class="translator" ref="div[@type='translation']/@resp">
-                                                <label>
-                                                            <pb-i18n key="form.translated-by">Übersetzer/in</pb-i18n>: </label>
-                                            </fx-control>
-                                        </div>
-                                    </details>
-                                </div>
-
-                                <fx-trigger class="delete {if(@type='main' or count(./preceding-sibling::msPart) = 0) then 'hidden' else ''}">
-                                    <button>Löschen</button>
-                                    <fx-confirm message="really delete?">
-                                        <fx-delete ref="."></fx-delete>
-                                    </fx-confirm>
-                                    <fx-refresh control="parts"></fx-refresh>
-                                </fx-trigger>
-
-
-                            </template>
-                        </fx-repeat>
-
-                        <fx-trigger id="addFragment" class="add" title="msPart hinzufügen">
-                            <button id="addFragBtn">
-                                <pb-i18n key="form.add"></pb-i18n>
-                                    </button>
-                            <fx-action>
-                                <!-- insert a new msPart  -->
-                                <fx-insert ref="//msPart" origin="instance('mspart')"></fx-insert>
-                                <!-- update and refresh so the repeat index is updated -->
-                                <fx-update></fx-update>
-                                <fx-refresh></fx-refresh>
-                                <!-- setting generated id on new msPart -->
-                                <fx-var name="uuid" value="gen-id()"></fx-var>
-                                <fx-setvalue ref="//msPart[index('parts')]/@xml:id" value="$uuid"></fx-setvalue>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='textpart']/@corresp" value="'#' || $uuid"></fx-setvalue>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='apparatus']/@corresp" value="'#' || $uuid"></fx-setvalue>
-                                <fx-setvalue ref="//msPart[index('parts')]/div[@type='translation']/@corresp" value="'#' || $uuid"></fx-setvalue>
-                                <fx-setvalue ref="//msPart[index('parts')]/facsimile/@corresp" value="'#' || $uuid"></fx-setvalue>
-                                <fx-setvalue ref="//msPart[index('parts')]/@type" value="'fragment'"></fx-setvalue>
-                                <fx-refresh control="parts"></fx-refresh>
-
-                            </fx-action>
-                        </fx-trigger>
-
-                        <!--
-                        This won't call the update-cycle for each event as the replace action in its current form does not
-                        call it. The control will refresh the UI when the control looses focus (onblur).
-                        -->
-                        <details class="group-10" id="commentary">
-                            <summary>
-                                <pb-i18n key="form.commentary">Kommentar</pb-i18n>
-                            </summary>
-                            <fx-control class="commentary editor" ref="instance('default')//body/div[@type='commentary']" as="node" update-event="leave">
-                                <jinn-xml-editor id="commentary" class="widget" unwrap="unwrap" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="div" namespace="http://www.tei-c.org/ns/1.0">
-                                    <div slot="toolbar">
-                                        <pb-popover>
-                                            <iron-icon icon="info-outline"/>
-                                            <template slot="alternate">
-                                                <pb-i18n key="form.hint-commentary">Hint</pb-i18n>
-                                            </template>
-                                        </pb-popover>
-                                        <button data-command="selectElement" title="Select element around current cursor position">
-                                            &lt;|&gt;
+                                    <fx-trigger class="saveBtn" debounce="1000">
+                                        <button>
+                                            <pb-i18n key="form.save"></pb-i18n>
                                         </button>
-                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;
-                                        </button>
-                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;
-                                        </button>
-                                        <button data-command="snippet" data-params="&lt;p&gt;$|_|&lt;/p&gt;" title="Insert paragraph">&lt;p&gt;
-                                        </button>
-                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                        <button data-command="snippet" data-params="&lt;persName key=&#34;$|1|&#34;&gt;$|_|&lt;/persName&gt;" title="persName"><iron-icon icon="social:person-add"></iron-icon></button>
-                                        <button data-command="snippet" data-params="&lt;citedRange&gt;$|1|&lt;/citedRange&gt;" title="citedRange">&lt;citedRange&gt;</button>
-                                    </div>
-                                </jinn-xml-editor>
-                            </fx-control>
-                        </details>
-
-                        <!-- 26) -->
-                        <details ref="//msDesc" class="group-6" id="chronology">
-                            <summary>
-                                <pb-i18n key="form.dating">Datierung</pb-i18n>
-                                <pb-popover>
-                                    <iron-icon icon="info-outline"/>
-                                    <template slot="alternate">
-                                        <pb-i18n key="form.hint-dating"/>
-                                    </template>
-                                </pb-popover>
-                            </summary>
-
-
-                            <!-- 26), 27)-->
-                            <fx-control ref="//msDesc/history/origin/origDate/@when-custom">
-                                <label>
-                                            <pb-i18n key="form.date">Zeitpunkt</pb-i18n>
-                                        </label>
-                                <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
-                                <fx-alert>
-                                            <iron-icon icon="warning"/>
-                                            <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
-                                        </fx-alert>
-                            </fx-control>
-                            <div class="with-hint">
-                                <fx-control ref="//msDesc/history/origin/origDate/@notBefore-custom">
-                                    <label>
-                                                <pb-i18n key="form.date-after">nach</pb-i18n>
-                                            </label>
-                                    <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
-                                    <fx-alert>
-                                                <iron-icon icon="warning"/>
-                                                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
-                                            </fx-alert>
-                                </fx-control>
-                            </div>
-                            <div class="with-hint">
-                                <fx-control ref="//msDesc/history/origin/origDate/@notAfter-custom">
-                                    <label>
-                                                <pb-i18n key="form.date-before">vor</pb-i18n>
-                                            </label>
-                                    <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
-                                    <fx-alert>
-                                                <iron-icon icon="warning"/>
-                                                <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
-                                            </fx-alert>
-                                </fx-control>
-                            </div>
-                            <fx-control ref="//msDesc/history/origin/origDate" as="node" update-event="leave">
-                                <label>
-                                            <pb-i18n key="form.free-form">freie Angabe</pb-i18n>
-                                        </label>
-                                <jinn-xml-editor unwrap="unwrap" class="widget" placeholder="[Inline text/markup or sequence of paragraphs]" schema="resources/scripts/tei.json" schema-root="provenance" namespace="http://www.tei-c.org/ns/1.0">
-                                    <div slot="toolbar">
-                                        <pb-popover>
-                                            <iron-icon icon="info-outline"/>
-                                            <template slot="alternate">
-                                                <pb-i18n key="form.hint-apparatus">Hint</pb-i18n>
-                                            </template>
-                                        </pb-popover>
-                                        <button data-command="selectElement" title="Select element around current cursor position">&lt;|&gt;</button>
-                                        <button data-command="encloseWith" title="Enclose selection in new element">&lt;...&gt;</button>
-                                        <button data-command="removeEnclosing" title="Remove enclosing tags" class="sep">&lt;X&gt;</button>
-                                        <button data-command="snippet" data-params="&lt;ref type=&#34;biblio&#34; target=&#34;$|1|&#34;&gt;$|_|&lt;/ref&gt;" title="Insert reference">&lt;ref&gt;</button>
-                                    </div>
-                                </jinn-xml-editor>
-                            </fx-control>
-                        </details>
-
-                        <details ref="profileDesc" id="historic-relevance">
-                            <summary>
-                                <pb-i18n key="form.historic-relevance"/>
-                            </summary>
-                            <!-- 28)  -->
-                            <fx-control ref="textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/religion']/term/@ref" update-event="input">
-                                <label>
-                                            <pb-i18n key="form.religion">Religion</pb-i18n>
-                                        </label>
-                                <select class="widget" multiple="multiple" static="static">
-                                    <option value="#pagan" data-i18n="religion.pagan">pagan</option>
-                                    <option value="#jewish" data-i18n="religion.jewish">jüdisch</option>
-                                    <option value="#christian" data-i18n="religion.christian">christlich</option>
-                                </select>
-                            </fx-control>
-                            <!-- 29) missing -->
-                            <!-- 30) -->
-                            <!-- dummy switch to insert or delete 'term' elements in main instance -->
-                            <fx-control ref="instance('vars')/history-term" value-prop="checked" update-event="input">
-                                <label for="historyTerm">
-                                            <pb-i18n key="form.social-economic-legal-history">Sozial-,Wirschafts-/Rechtsgeschichte</pb-i18n>
-                                        </label>
-                                <input id="historyTerm" type="checkbox" class="widget"/>
-                                <fx-insert event="value-changed" if="context()/text()='true'" ref="instance('default')//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']/term" origin="instance('templates')/term[@ref='#social-economic-legal-history']"/>
-
-                                <fx-delete event="value-changed" if="context()/text()='false'" ref="instance('default')//term[@ref='#social-economic-legal-history']"/>
-                            </fx-control>
-
-                            <!-- 31) -->
-                            <!-- dummy switch to insert or delete 'term' elements in main instance -->
-                            <fx-control ref="instance('vars')/geography-term" value-prop="checked" update-event="input">
-                                <label for="geographyTerm">
-                                            <pb-i18n key="form.geography">Geographie / Topographie</pb-i18n>
-                                        </label>
-                                <input id="geographyTerm" type="checkbox" class="widget"/>
-                                <fx-insert event="value-changed" if="context()/text()='true'" ref="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']/term" origin="instance('templates')/term[@ref='#geography']"/>
-
-                                <fx-delete event="value-changed" if="context()/text()='false'" ref="instance('default')//term[@ref='#geography']"/>
-                            </fx-control>
-
-                            <!-- 32) -->
-                            <!-- dummy switch to insert or delete 'term' elements in main instance -->
-                            <fx-control ref="instance('vars')/military-term" value-prop="checked" update-event="input">
-                                <label for="militaryTerm">
-                                            <pb-i18n key="form.military">Militär</pb-i18n>
-                                        </label>
-                                <input id="militaryTerm" type="checkbox" class="widget"/>
-                                <fx-insert event="value-changed" if="context()/text()='true'" ref="instance()//textClass/keywords[@scheme='https://edh.ub.uni-heidelberg.de/edep/terms']/term" origin="instance('templates')/term[@ref='#military']"/>
-
-                                <fx-delete event="value-changed" if="context()/text()='false'" ref="instance('default')//term[@ref='#military']"/>
-                            </fx-control>
-
-                        </details>
-
-                        <!-- 35b) -->
-                        <!-- 35a) -->
-                        <!-- 35d) -->
-
-
-                        <!-- 47) -->
-                        <!-- 45) -->
-                        <fx-group>
-                            <!-- 44) -->
-                            <fx-control ref="fileDesc/titleStmt/editor" title="Author of the epigraphic edition">
-                                <label>
-                                            <pb-i18n key="form.author-epigraphic-edition">Bearbeiter der Inschriftenedition</pb-i18n>
-                                        </label>
-                            </fx-control>
-
-                            <!-- 33) -->
-                            <fx-control ref="revisionDesc/@status" update-event="input">
-                                <label>
-                                            <pb-i18n key="form.status-of-editing">Stand der Bearbeitung</pb-i18n>
-                                        </label>
-                                <select class="widget">
-                                    <option value="draft" data-i18n="status.intern">intern</option>
-                                    <option value="public" data-i18n="status.public">öffentlich</option>
-                                </select>
-                            </fx-control>
-
-                        </fx-group>
-
-                        <section class="buttonBar">
-                            <pb-restricted login="login" group="tei">
-                                <p class="loginMessage" slot="fallback">You need to be logged in to save.</p>
-
-                                <fx-trigger class="saveBtn" debounce="1000">
-                                    <button>
-                                                <pb-i18n key="form.save"/>
-                                            </button>
-                                    <fx-action if="not(exists(instance('params')/id))">
-                                        <fx-send submission="s-login"/>
-                                        <fx-send submission="s-create"/>
-                                    </fx-action>
-                                    <fx-action if="exists(instance('params')/id)">
-                                        <fx-send submission="s-login"/>
-                                        <fx-send submission="s-save"/>
-                                    </fx-action>
-                                </fx-trigger>
-                                <fx-trigger>
-                                    <a href="edit/workspace/">
-                                                <pb-i18n key="form.new">Neuer Eintrag</pb-i18n>
-                                            </a>
-                                </fx-trigger>
-                            </pb-restricted>
-                            <fx-trigger>
-                                <a href="index.html">
-                                            <pb-i18n key="form.list">Zur Liste</pb-i18n>
+                                        <fx-action if="not(exists(instance('params')/id))">
+                                            <fx-send submission="s-login"></fx-send>
+                                            <fx-send submission="s-create"></fx-send>
+                                        </fx-action>
+                                        <fx-action if="exists(instance('params')/id)">
+                                            <fx-send submission="s-login"></fx-send>
+                                            <fx-send submission="s-save"></fx-send>
+                                        </fx-action>
+                                    </fx-trigger>
+                                    <fx-trigger>
+                                        <a href="edit/workspace/">
+                                            <pb-i18n key="form.new">Neuer Eintrag</pb-i18n>
                                         </a>
-                            </fx-trigger>
-                        </section>
+                                    </fx-trigger>
+                                </pb-restricted>
+                                <fx-trigger>
+                                    <a href="index.html">
+                                        <pb-i18n key="form.list">Zur Liste</pb-i18n>
+                                    </a>
+                                </fx-trigger>
+                            </section>
 
-                        <fx-control ref="instance('vars')/xml-valid" class="valid-warning">
-                            <fx-alert>
-                                        <pb-i18n key="form.invalid-data"/>
-                                    </fx-alert>
-                            <input style="display:none;"/>
-                        </fx-control>
-                    </fx-group>
+                            <fx-control ref="instance('vars')/xml-valid" class="valid-warning">
+                                <fx-alert>
+                                    <pb-i18n key="form.invalid-data"></pb-i18n>
+                                </fx-alert>
+                                <input style="display: none" />
+                            </fx-control>
+                        </fx-fore>
+                    </main>
 
-                </fx-fore>
-            </main>
+                    <footer class="version">
+                        App: v<span data-template="pages:version"></span>
+                    </footer>
+                </app-header-layout>
+            </app-drawer-layout>
+        </pb-page>
+        <div class="splash"></div>
 
-            <footer class="version">
-                App: v<span data-template="pages:version"></span> / web components: v<pb-version></pb-version>
-            </footer>
-        </app-header-layout>
-    </app-drawer-layout>
-</pb-page>
-<div class="splash"></div>
-
-<script src="./resources/scripts/util.js" type="text/javascript"></script>
-<!--fx-devtools></fx-devtools-->
-
-
-
-</body>
-
+        <script src="./resources/scripts/util.js" type="text/javascript"></script>
+        <!--fx-devtools></fx-devtools-->
+    </body>
 </html>

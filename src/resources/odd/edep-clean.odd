@@ -42,6 +42,12 @@
             <elementSpec ident="*" mode="add">
                 <model behaviour="copy"/>
             </elementSpec>
+
+            <elementSpec ident="body" mode="add">
+                <model behaviour="copy">
+                    <param name="content" value="(div[@type='edition'], div[@type='apparatus'], div[@type='translation'], div[@type='commentary'], div[not(@type=('edition', 'apparatus', 'translation', 'commentary'))])"/>
+                </model>
+            </elementSpec>
             
             <elementSpec ident="origDate" mode="add">
                 <model predicate="@when-custom ne ''" behaviour="inline">
@@ -81,9 +87,24 @@
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="note" mode="add">
-                <model predicate="not(node())" behaviour="omit">
+                <model predicate="not(node()) and normalize-space(@corresp) eq ''" behaviour="omit">
             <desc>Delete any note element that doesn’t have textual content other than white spaces</desc>
         </model>
+                <model behaviour="copy"/>
+            </elementSpec>
+            <elementSpec ident="handNote" mode="add">
+                <model predicate="@scope eq 'ligature' and normalize-space(.) eq ''" behaviour="omit">
+                    <desc>Delete ligature info when content not present</desc>
+                </model>
+                <model predicate="@scope eq 'letterHeight' and count(descendant::*/@*[. ne ''])" behaviour="copy">
+                    <desc>Preserve note when some descendant attributes non-empty</desc>
+                </model>
+                <model predicate="@scope eq 'letterHeight' and normalize-space(.) ne ''" behaviour="copy">
+                    <desc>Preserve note when any text content present</desc>
+                </model>
+                <model predicate="@scope eq 'letterHeight'" behaviour="omit">
+                    <desc>Delete letter height info in all other cases</desc>
+                </model>
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="idno" mode="add">
@@ -133,7 +154,7 @@
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="listBibl" mode="add">
-                <model predicate="not(bibl)" behaviour="omit">
+                <model predicate="not(child::*)" behaviour="omit">
             <desc>Clean-up of an empty listBibl element</desc>
         </model>
                 <model behaviour="copy"/>
@@ -158,9 +179,12 @@
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="dimensions" mode="add">
-                <model predicate="(string-length(width) eq 0) and (string-length(height) eq 0) and (string-length(depth) eq 0)" behaviour="omit">
-            <desc>Delete element if all children are empty</desc>
-        </model>
+                <model predicate="parent::handNote and count(descendant::*/@*[. ne ''])" behaviour="copy">
+                    <desc>Keep if in handNote</desc>
+                </model>
+                <model predicate="normalize-space(.) eq ''" behaviour="omit">
+                    <desc>Delete element if all children are empty</desc>
+                </model>
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="layoutDesc" mode="add">
@@ -198,7 +222,7 @@
                 <model behaviour="copy"/>
             </elementSpec>
             <elementSpec ident="div" mode="add">
-                <model predicate="deep-equal(., following-sibling::*)" behaviour="omit"/>
+                <!-- <model predicate="deep-equal(., following-sibling::*)" behaviour="omit"/> -->
                 <model behaviour="copy"/>
             </elementSpec>            
             <elementSpec ident="keywords" mode="add">

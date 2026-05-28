@@ -8,7 +8,7 @@
   "servers": [
     {
       "description": "Endpoint for testing on localhost",
-      "url": "http://localhost:8080/exist/apps/edep"
+			"url": "/exist/apps/edep"
     }
   ],
   "components": {
@@ -216,114 +216,6 @@
               "text/html": {
                 "schema": {
                   "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/decor": {
-      "get": {
-        "summary": "decor items",
-        "operationId": "api:decor",
-        "responses": {
-          "200": {
-            "description": "decor",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/material": {
-      "get": {
-        "summary": "material items",
-        "operationId": "api:material",
-        "responses": {
-          "200": {
-            "description": "material",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/objtyp": {
-      "get": {
-        "summary": "objtyp items",
-        "operationId": "api:objtyp",
-        "responses": {
-          "200": {
-            "description": "objtyp",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/statepreserv": {
-      "get": {
-        "summary": "statepreserv items",
-        "operationId": "api:statepreserv",
-        "responses": {
-          "200": {
-            "description": "statepreserv",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/typeins": {
-      "get": {
-        "summary": "typeins items",
-        "operationId": "api:typeins",
-        "responses": {
-          "200": {
-            "description": "typeins",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/writing": {
-      "get": {
-        "summary": "writing items",
-        "operationId": "api:writing",
-        "responses": {
-          "200": {
-            "description": "writing",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array"
                 }
               }
             }
@@ -743,13 +635,31 @@
             }
           }
         }
-      },
-      "put": {
-        "summary": "update/add inscription",
+      }
+    },
+    "/api/fragment": {
+      "post": {
+        "summary": "update/add fragment",
         "x-constraints": {
           "group": "tei"
         },
-        "operationId": "api:upload",
+        "operationId": "api:fragment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "collection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -761,7 +671,7 @@
         },
         "responses": {
           "200": {
-            "description": "inscription",
+            "description": "fragment",
             "content": {
               "application/xml": {
                 "schema": {
@@ -807,49 +717,135 @@
         }
       }
     },
-    		"/api/document/{id}/epidoc": {
-			"get": {
-				"summary": "Get the Epidoc source of a document",
-				"description": "Get the source of a document, either as XML, text or binary.",
-				"tags": ["documents"],
-				"operationId": "dapi:epidoc",
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"required": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				],
-				"responses": {
-					"200": {
-						"description": "Content of the document",
-						"content": {
-							"application/xml": {
-								"schema": {
-									"type": "string"
-								}
-							},
-							"text/markdown": {
-								"schema": {
-									"type": "string"
-								}
-							},
-							"text/text": {
-								"schema": {
-									"type": "string"
-								}
-							}
-						}
-					},
-					"410": {
-						"description": "Document deleted"
-					}
-				}
-			}
-		}
+    "/api/document/{id}/epidoc": {
+        "get": {
+            "summary": "Get the Epidoc source of a document",
+            "description": "Get the source of a document, either as XML, text or binary.",
+            "tags": ["documents"],
+            "operationId": "dapi:epidoc",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Content of the document",
+                    "content": {
+                        "application/xml": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        "text/markdown": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        "text/text": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "410": {
+                    "description": "Document deleted"
+                }
+            }
+        }
+    },
+    "/api/zotero/sync": {
+      "get": {
+        "summary": "Incrementally sync local cache.",
+        "tags": ["zotero"],
+        "operationId": "zotero:sync",
+        "responses": {
+          "200": {
+            "description": "Sync result.",
+            "content": {
+              "application/json": { "schema": { "type": "string" } }
+            }
+          },
+          "304": {
+            "description": "No updates."
+          }
+        }
+      }
+    },
+    "/api/zotero/items/suggest": {
+      "get": {
+        "security": [{ "basicAuth": [] }],
+        "summary": "Lightweight suggestions for autocomplete (key, tag, label HTML).",
+        "tags": ["zotero"],
+        "operationId": "zotero:items-suggest",
+        "parameters": [
+          { "in": "query", "name": "q", "schema": { "type": "string" } },
+          { "in": "query", "name": "tag", "schema": { "type": "string" } },
+          { "in": "query", "name": "limit", "schema": { "type": "integer", "default": 8 } },
+          { "in": "query", "name": "top", "schema": { "type": "boolean", "default": true } }
+        ],
+        "responses": {
+          "200": {
+            "description": "Suggestion list",
+            "content": { "text/plain": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    },
+    "/api/zotero/items/search": {
+        "get": {
+          "security": [{ "basicAuth": [] }],
+          "summary": "Search cached items. JSON only.",
+          "tags": ["zotero"],
+          "operationId": "zotero:items-search",
+          "parameters": [
+              {
+                  "in": "query",
+                  "name": "q",
+                  "schema": {
+                      "type": "string",
+                      "default": "Ama"
+                  },
+                  "description": "Full-text over title/creators/DOI."
+              },
+              {
+                  "in": "query",
+                  "name": "tag",
+                  "schema": {
+                      "type": "string"
+                  },
+                  "description": "Restrict to items having this tag."
+              },
+              {
+                  "in": "query",
+                  "name": "limit",
+                  "schema": {
+                      "type": "integer",
+                      "default": 15
+                  }
+              }
+          ],
+          "responses": {
+              "200": {
+                  "description": "Array of items (key + data).",
+                  "content": {
+                      "text/plain": {
+                          "schema": {
+                              "type": "string"
+                          }
+                      }
+                  }
+              }
+          }
+        }
+      }
+
   },
   "security": [
     {

@@ -32,7 +32,13 @@ if ($exist:path eq '' or matches($exist:path, "^/edit/[^/]+$")) then
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <redirect url="{request:get-uri()}/"/>
     </dispatch>
-
+else if (matches($exist:path, "^/?templates/zotero-autocomplete\.html$")) then (
+         util:declare-option(
+           "exist:serialize",
+           "method=html5 media-type=text/html omit-xml-declaration=yes"
+         ),
+         doc('templates/zotero-autocomplete.html')                                 (: no stream-binary; just return the node :)
+)
 else if ($exist:path eq "/") then
     (: forward root path to index.xql :)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">

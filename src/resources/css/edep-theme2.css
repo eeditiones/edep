@@ -15,6 +15,9 @@ html{
     scroll-padding-top:5rem;
 }
 
+h2,h3{
+    display: inline-block;
+}
 body{
 }
 * {
@@ -37,6 +40,17 @@ details{
         margin-bottom:1em;
         padding-bottom:1em;
     }
+
+    h2,h3{
+        margin:0;
+    }
+}
+details > fx-group{
+    /*padding:1rem 0;*/
+    padding:0;
+}
+.noflex{
+    display: block;
 }
 @media (min-width: 1200px) {
     .editor > fx-fore {
@@ -53,12 +67,24 @@ details{
 nav #addFragment{
     button{
         font-size: 0.8rem;
+        color: var(--paper-grey-700);
+        border: thin solid var(--paper-grey-300);
+    }
+    button:hover{
+        background: var(--paper-grey-300);
+    }
+
+    #r-fragments::before{
+        content:"Fragments"
     }
 }
-#expander {
-    transform: rotate(90deg);
-    height: 2rem;
-    width: 2rem;
+
+
+
+.expander {
+    /* transform: rotate(90deg); */
+     height: 24px;
+     width: 24px;
     padding: 0;
     background: transparent;
     border: thin solid var(--paper-grey-300);
@@ -67,7 +93,7 @@ nav #addFragment{
     cursor: pointer;
 
 }
-#expander:hover{
+.expander:hover{
     background: var(--paper-grey-300);
 }
 
@@ -76,14 +102,10 @@ nav #addFragment{
     height: calc(100vh - 9rem);
     background: #efefef;
     left: 0;
-    padding: 1rem;
+    padding: 2rem 1rem 1rem 0.5rem;
     z-index: 10;
     top: 4.2rem;
     overflow: auto;
-}
-
-.editor > fx-fore fx-group[ref=teiHeader] {
-    margin-left: 12rem;
 }
 
 nav{
@@ -106,12 +128,18 @@ nav{
     a:link{
         color:#333;
         display: inline-block;
-        padding: 0.25rem 0;
+        padding: 0.25rem;
+        width: 100%;
     }
     a:hover{
         background: white;
-        padding: 0.3rem;
+        /*padding: 0.3rem;*/
         border-radius: 0.1rem;
+    }
+    li{
+        display: flex;
+        justify-content: space-between;
+        max-width: 12rem;
     }
 
     .nav-fragments{
@@ -122,6 +150,17 @@ nav{
             padding:0.25rem;
         }
     }
+    .nav-divider{
+        border-bottom: thin solid var(--paper-grey-300);
+        margin-bottom: 1rem;
+    }
+
+    /*
+    #backlink::before{
+        content:'corresp';
+    }
+    */
+
 }
 
 
@@ -178,7 +217,14 @@ nav{
 
 @media (min-width: 1024px) {
     .toolbar {
-        display: none;
+        /* display: none; */
+        position: absolute;
+        top: 0.2rem;
+        left: 0;
+        width: 100%;
+        text-align: right;
+        padding: 0 0.25rem;
+        background: transparent;
     }
     .panels {
         display: flex;
@@ -195,6 +241,13 @@ fx-case{
 }
 fx-case.selected-case{
     display: block;
+}
+fx-control:has(textarea){
+    /*margin:0;*/
+}
+fx-control:has(textarea) label {
+    display: block;
+    width: 100%;
 }
 .panels {
     margin-bottom: 40px;
@@ -234,7 +287,7 @@ fx-case.selected-case{
     right:1rem;
 }
 #places .case-content{
-    margin-top:3rem;
+    /*margin-top:3rem;*/
 }
 
 pb-split-list::part(items) {
@@ -270,8 +323,14 @@ pb-split-list .place .place-id{
     flex-direction: column;
     min-width: 360px;
 }
-.actions{
-    padding:1rem;
+.actions {
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    background: white;
+    border-top: thin solid;
+    width: 100%;
+    left: 0;
 }
 
 .transcription, .apparatus, .translation, .commentary{
@@ -295,19 +354,29 @@ fx-trigger.delete{
 fx-trigger.delete button{
     background: var(--pb-link-color);
 }
-fx-trigger.add{
-    text-align:right;
-    display:inline-block;
-    margin-top:0.5rem;
+fx-trigger.add {
+    display: inline-block;
+    position: absolute;
+    right: -0.75rem;
+    bottom: -0.75rem;
 }
-
-fx-repeat fx-trigger.add {
+fx-repeat > fx-trigger.add {
     position: absolute;
     bottom: -0.75rem;
     right: -0.75rem;
     background: white;
     padding-top: 0 0.3rem;
     z-index: 10;
+}
+#verification fx-group fx-trigger.add,
+#inscription-field fx-group fx-trigger.add{
+    right:0.25rem;
+    z-index: 10;
+}
+#text-description fx-group fx-trigger.add {
+    bottom: -2.75rem;
+    z-index: 10;
+    right: -1.5rem;
 }
 /*
 fx-trigger.add::before{
@@ -337,7 +406,7 @@ body, .wrapper{
     /* font-family: "Kimberley"; */
 }
 button{
-    font-size: 1.2rem;
+    /*font-size: 1.2rem;*/
     padding: 0.5rem 1rem;
 }
 
@@ -357,8 +426,31 @@ fx-group[ref="teiHeader"]{
     margin:0;
     min-width: 46rem;
 }
+fx-group:has(> h2){
+    border:thin solid var(--paper-grey-300);
+}
+fx-group.bordered{
+    border:thin solid var(--paper-grey-300);
+}
+
+fx-group#object{
+    fx-output, fx-control {
+        display: block;
+        padding: 0rem 0;
+        margin: 1rem 0;
+    }
+
+    fx-output{
+        margin-left:0;
+    }
+    border:thin solid var(--paper-grey-300);
+}
+.outer-group{
+    padding-left: 0;
+}
+
 .edepid{
-    font-size: 1.4rem;
+    /*font-size: 1.4rem;*/
     margin-left:1.5rem;
 }
 .edepid label{
@@ -427,8 +519,7 @@ fx-group.padded {
     details{
         border-color:var(--paper-grey-600);
         margin:1rem;
-
-
+        position: relative;
 
         &[open] summary{
             border-bottom-color:var(--paper-grey-600);
@@ -465,7 +556,7 @@ summary{
 fieldset{
     border-radius: 0.3rem;
     /*width:100%;*/
-    border:thin solid var(--paper-grey-300);
+    border:thin solid var(--paper-grey-500);
     position: relative;
     padding-bottom: 1rem;
 }
@@ -494,25 +585,34 @@ fieldset control{
 .measurement::after{
     content:'cm';
     position:absolute;
-    right:1rem;
+    right:0rem;
+    top:1.3rem;
 }
-.measurement input{
+.measurement input.widget{
     width:5rem;
     text-align:right;
+    top:1.5rem;
+    right:-1.5rem;
+    padding-right:1.5rem;
 }
 
 fx-control, fx-output, .output, .nested-repeat fieldset legend {
     display: grid;
-    grid-template-columns: 16rem 1rem 1fr;
+    grid-template-columns: 10rem 1rem 1fr;
     row-gap: 0.2rem;
     grid-template-areas:
     "label icon control"
     ". . alert";
-    margin: 0.5rem 0;
+    margin: 1rem;
     grid-column-gap: 0.5rem;
     width: calc(100% - 1rem);
 }
-
+fx-control{
+    display: block;
+}
+fx-control textarea{
+    width:100%;
+}
 .output label {
     text-align: right;
 }
@@ -544,6 +644,13 @@ fx-items.material-list{
 
 .fx-checkbox{
     display:block;
+
+    input{
+        display:inline-block;
+    }
+    label{
+        display:inline-block;
+    }
 }
 
 fx-control{
@@ -551,7 +658,8 @@ fx-control{
 }
 
 fx-control label, .output label {
-    grid-area:label;
+    /*grid-area:label;*/
+    display: block;
 }
 
 fx-control [icon="info-outline"]{
@@ -612,12 +720,14 @@ fx-control:has(jinn-xml-editor){
     margin-left: 17.8rem;
 }
 
+/*
 fx-group{
     padding:1rem;
     border-radius: 0.3rem;
     position: relative;
     padding:0 2rem 1rem 2rem;
 }
+*/
 fx-group > label {
     font-family: var(--pb-heading-font-family);
     font-weight: 400 !important;
@@ -627,10 +737,51 @@ fx-group > label {
     position:absolute;
     top: 0;
 }
+fx-group.neutral{
+    padding: 0;
+    border:none;
+    position: relative;
+}
+fx-group.outer-group{
+    padding:1rem;
+}
+
+.outer-group:has(#edition) {
+    padding:0 1rem;
+    margin-top: 0;
+}
+#pictures .add {
+    bottom: -2.75rem;
+    right: -1.75rem;
+}
+#references {
+    border-left: 5px solid #cee0fe;
+    border-radius: 0;
+    /*padding-left: 0.5rem;*/
+}
+#references details{
+    border-radius: 0;
+}
+
+/*
+#transmission, #prev-editions, #bibliography,#images,#pictures{
+    border-left: 5px solid #cee0fe;
+}
+*/
+#transmission{
+    margin-top: 1rem;
+}
+
+/*
+fx-group fx-group {
+    border:none;
+}
+*/
+
+/* 
 fx-group fx-group {
     border:thin solid var(--paper-grey-600);
-    /*padding:1rem;*/
-}
+} */
 
 
 fx-group + fx-group {
@@ -642,7 +793,7 @@ fx-group + fx-group {
 }
 
 fx-control label, fx-output label{
-    justify-self: end;
+    /*justify-self: end;*/
 }
 fx-inspector{
     position:absolute;
@@ -680,6 +831,19 @@ fx-repeatitem{
     }
 }
 
+fx-repeat.repeat-flex{
+    display:flex;
+    flex-wrap:wrap;
+
+    fx-repeatitem{
+        display:inline-block;
+    }
+}
+
+details > fx-repeat{
+    margin-left: -1rem;
+}
+
 fx-inspector[open]{
     width: 50%;
 }
@@ -687,6 +851,9 @@ fx-inspector[open]{
 input.widget, select.widget{
     border:none;
     border-bottom:thin solid;
+    padding:0.25rem;
+    font-size: 1rem;
+    width:auto;
 }
 
 fx-items {
@@ -720,6 +887,7 @@ fx-var{
 }
 
 .nested-repeat{
+    display: block;
     /*margin-top:1rem;*/
 
     fx-group{
@@ -879,7 +1047,25 @@ input:focus, select:focus, textarea:focus{
 }
 #historic-relevance{
     fx-control{
-        grid-template-columns: 17rem 1rem 1fr;
+        display: flex;
+        gap: 1rem;
+    }
+
+    fx-items{
+        display:flex;
+    }
+}
+
+#findspot-ctrl{
+    display:block;
+}
+#findspot-ctrl pb-popover {
+    margin-left: -1rem;
+    margin-top: 1.2rem;
+}
+#objectdesc{
+    .description{
+        flex-grow: 2;
     }
 }
 #places-list {
@@ -914,6 +1100,16 @@ input:focus, select:focus, textarea:focus{
     background-color: #35424b;
     color: #F0F0F0;
 }
+
+#r-verification fx-repeatitem, #r-verification fx-group{
+    display:flex;
+}
+#r-verification fx-repeatitem{
+    width: calc(100% - 2rem) ;
+}
+
+
+
 pb-popover > iron-icon{
     display:inline-block;
     width: 1.5rem;
@@ -938,6 +1134,41 @@ legend{
     transition:opacity 0.8s;
     transition-delay:1s;
 }
+#idnos{
+    position:relative;
+
+    /*
+    fx-trigger {
+        display: block;
+        position: absolute;
+        top: 1.5rem;
+        right: 1rem;
+    }
+    */
+}
+.idno-repeat{
+    display:block;
+    width:100%;
+
+    fx-repeatitem{
+        display:flex;
+        flex-wrap:wrap;
+        gap:1rem;
+        width:28rem;
+        position:relative;
+
+        fx-control{
+            display:inline-block;
+            width:12rem;
+        }
+
+        fx-trigger{
+            position:absolute;
+            right:0;
+            top:3rem;
+        }
+    }
+}
 .tm-number{
     display: grid;
     grid-template-columns: 19rem 1rem;
@@ -954,9 +1185,15 @@ legend{
     grid-area:hint;
     align-self: start;
 }
+#findspot-popover{
+    position:absolute;
+    top:-22px;
+    left:72px;
+    z-index:5;
+}
 .output {
     display: grid;
-    grid-template-columns: 16rem 2rem auto 1rem;
+    grid-template-columns: 4rem 2rem auto 1rem;
     grid-template-areas:
         "label icon control hint";
     margin: 0.5rem 0;
@@ -1105,4 +1342,37 @@ jinn-zotero-picker {
 .hint {
     font-size: var(--pb-footnote-font-size);
     margin-top: 0;
+}
+
+.valid {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background: red;
+    color: white;
+}
+
+select {
+    width: 100%;
+}
+
+.fx-radio input {
+    width: auto !important;
+}
+
+.fx-radio label {
+    display: inline !important;
+}
+
+
+.form-row{
+    display:flex;
+    gap:1rem;
+
+    fx-control,label{
+        display:block;
+        width:auto;
+    }
+
 }

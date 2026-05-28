@@ -1,23 +1,39 @@
 <app-toolbar class="menubar">
-    <a href="${app}/index.html" class="logo" data-template="lib:parse-params"/>
+    <a href="${app}/index.html" class="logo" data-template="lib:parse-params"></a>
     <pb-media-query query="min-width: 1024px">
-        <a href="${app}/index.html" data-template="lib:parse-params"><pb-i18n key="menu.inscriptions"></pb-i18n></a>
-        <a href="${app}/orte" target="_blank" data-template="lib:parse-params"><pb-i18n key="menu.geodata"></pb-i18n></a>
-        <a href="${app}/personen" data-template="lib:parse-params" target="_blank"><pb-i18n key="menu.people"></pb-i18n></a>
-        <a href="${app}/about.xml" data-template="lib:parse-params"><pb-i18n key="menu.about"></pb-i18n></a>
+        <a href="${app}/index.html" data-template="lib:parse-params">
+            <pb-i18n key="menu.inscriptions"></pb-i18n>
+        </a>
+        <a href="${app}/orte" target="_blank" data-template="lib:parse-params">
+            <pb-i18n key="menu.geodata"></pb-i18n
+        ></a>
+        <a href="${app}/personen" data-template="lib:parse-params" target="_blank">
+            <pb-i18n key="menu.people"></pb-i18n
+        ></a>
+        <a href="${app}/about.xml" data-template="lib:parse-params">
+            <pb-i18n key="menu.about"></pb-i18n>
+        </a>
+        <a href="${app}/howto.xml" data-template="lib:parse-params">
+            <pb-i18n key="menu.instructions"></pb-i18n>
+        </a>
         <div id="custom" style="display: none"></div>
         <pb-restricted login="login">
             <paper-menu-button>
-                <a href="#" slot="dropdown-trigger"><pb-i18n key="menu.admin.title">Admin</pb-i18n></a>
+                <a href="#" slot="dropdown-trigger">
+                    <pb-i18n key="menu.admin.title">Admin</pb-i18n>
+                </a>
                 <paper-listbox slot="dropdown-content">
-                    <paper-item data-template="pages:edit-odd-list"/>
+                    <paper-item data-template="pages:edit-odd-list"></paper-item>
                     <!--paper-item>
                         <pb-download url="api/apps/download">
-                            <pb-i18n key="appgen.xar-download">Download App as .xar</pb-i18n>
+                        <pb-i18n key="appgen.xar-download">Download App as .xar</pb-i18n>
                         </pb-download>
-                    </paper-item-->
+                        </paper-item-->
                     <paper-item>
                         <a href="${app}/api.html" data-template="lib:parse-params" target="_blank">API Documentation</a>
+                    </paper-item>
+                    <paper-item>
+                        <a href="${app}/zotero-sync.html" data-template="lib:parse-params" target="_blank">Zotero Sync</a>
                     </paper-item>
                 </paper-listbox>
             </paper-menu-button>
@@ -27,17 +43,16 @@
     <!-- Search input -->
     <!--pb-search action="${app}/search.html" data-template="lib:parse-params" value="${query}" redirect="redirect"/-->
     <pb-media-query query="min-width: 1024px">
-       <!-- language selector -->
-       <pb-lang name="lang" data-template="pages:languages"/>
+        <!-- language selector -->
+        <pb-lang name="lang" data-template="pages:languages"></pb-lang>
     </pb-media-query>
-    <pb-login id="login" group="tei">
-    </pb-login>
+    <pb-login id="login" group="tei"> </pb-login>
     <paper-dialog id="downloadDialog">
         <h2>
             <pb-i18n key="dialogs.generatingFile">Generating file ...</pb-i18n>
         </h2>
         <paper-dialog-scrollable>
-            <pb-i18n key="dialogs.downloadMessage"/>
+            <pb-i18n key="dialogs.downloadMessage"></pb-i18n>
         </paper-dialog-scrollable>
         <div class="buttons">
             <paper-button dialog-confirm="dialog-confirm" autofocus="autofocus">

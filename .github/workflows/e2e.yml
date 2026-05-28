@@ -1,0 +1,124 @@
+# This workflow builds a xar archive, deploys it into exist and execute a simple smoke test.
+
+name: Build and Test
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    strategy:
+       fail-fast: false
+       matrix:
+        # 7.0.0-SNAPSHOT and 6.4.0 created
+         exist-version: [6.4.0, release]
+         java-version: [11]
+         experimental: [false]
+         include:
+           - exist-version: latest
+             java-version: 21
+             experimental: true
+
+    steps:
+      # Checkout code
+      - uses: actions/checkout@v5
+
+      # Speed up apt-get installs
+      - name: Disable man-db to make package install and removal faster
+        run: |
+          echo 'set man-db/auto-update false' | sudo debconf-communicate >/dev/null
+          sudo dpkg-reconfigure man-db
+
+      - name: Install Test Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libxml2-utils bats
+          npm install --global @existdb/xst
+
+      # sanity check
+      - name: Ensure all XML files are well-formed
+        run: |
+          xmllint --noout \
+            $(find . -type f -name '*.xml')
+
+      # Build
+      - name: Install Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: ${{ matrix.java-version }}
+      - run: ant
+
+      - name: Check Contents
+        working-directory: build/
+        run: ls
+
+      # Install
+      - name: Start exist-ci containers
+        run: |
+          docker run -dit -p 8080:8080 \
+          --name exist --rm --health-interval=1s --health-start-period=2s \
+          duncdrum/existdb:${{ matrix.exist-version }}-slim
+
+      - name: Wait for server to start
+        timeout-minutes: 1
+        run: |
+          echo "Waiting for server to start..."
+          until docker logs exist 2>&1 | grep -q "Server has started"; do
+            echo "Still waiting..."
+            sleep 4
+          done
+
+      - name: install edep and edep-data
+        env:
+          EXISTDB_USER: 'admin'
+          EXISTDB_PASS: ''
+          EXISTDB_SERVER: 'http://localhost:8080/'
+        run: |
+          xst package install ./dist/*.xar
+          xst package install github-release edep-data --owner eeditiones
+
+      # Test
+      - name: Run smoke test
+        run: bats --tap test/*.bats
+
+      - name: debug logs
+        if: failure()
+        run: docker logs exist | grep 'ERROR'
+
+      - name: Copy logs on failure
+        if: failure()
+        run: |
+          echo "Copying logs..."
+          docker cp exist:/exist/logs/exist.log ./exist.log
+
+      - name: Upload logs artifact
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: edep-exist-${{ matrix.exist-version }}-log
+          path: exist.log
+
+      - name: Run Cypress e2e test
+        if: matrix.experimental != true
+        uses: cypress-io/github-action@v6
+        with:
+          browser: firefox
+
+      - name: Run Cypress e2e test (expect fail)
+        if: matrix.experimental == true
+        continue-on-error: true
+        uses: cypress-io/github-action@v6
+        with:
+          browser: firefox
+
+      - name: Upload cypress sceenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: CiM-exist-${{ matrix.exist-version }}-screenshots
+          path: cypress/screenshots/

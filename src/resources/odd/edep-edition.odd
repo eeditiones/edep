@@ -221,7 +221,7 @@
                     <model behaviour="inline" useSourceRendition="true"/>
                 </elementSpec>                 
             <elementSpec ident="div" mode="change">
-                    <modelSequence predicate="@type = ('translation', 'apparatus', 'textpart') and child::node() and (@type = following-sibling::div/@type or @type = preceding-sibling::div/@type)">
+                    <modelSequence predicate="@type = ('translation', 'apparatus', 'edition') and child::node() and (@type = following-sibling::div/@type or @type = preceding-sibling::div/@type)">
             <desc>Creation of subheadings when there are multiple fragments</desc>
             <model behaviour="heading">
                 <param name="level" value="3"/>
