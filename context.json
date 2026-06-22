@@ -67,6 +67,12 @@
     }, {
       "url" : "places",
       "id" : "places"
+    }, {
+      "url" : "about.xml",
+      "id" : "about"
+    }, {
+      "url" : "howto.xml",
+      "id" : "instructions"
     } ],
     "login" : true,
     "download" : true,
@@ -106,7 +112,7 @@
     "icons" : [ "edep-icons.svg" ],
     "splash" : {
       "width" : "320px",
-      "image" : "../images/tei-publisher-logo-color.svg",
+      "image" : "../images/icon.png",
       "height" : "auto"
     },
     "body" : {
@@ -269,7 +275,7 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-06-22T16:50:27.484+02:00",
+  "_lastModified" : "2026-06-22T17:31:11.956+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",

@@ -1,7 +1,7 @@
 {
   "resources/fonts/inter-v19-latin_latin-ext-500italic.woff2" : "b36a2ba5a967404ed49def322603e8ee34dee356cd0e1d0faeaeb12da0d653bb",
   "modules/lib/epub.xql" : "5076b46969ef116ca46e63065d676a17c5e32ba5337766fab310855eef8b620f",
-  "resources/css/jinks-theme.css" : "f9bbc32141e8f3b1f80cce46796cce2c96cff633eeceba519da611207f2dc7ab",
+  "resources/css/jinks-theme.css" : "b742b8261f4dd95841dac273847d12814e82e3ec11230c868051b87cb0bab3fa",
   "data/taxonomy/paleography.xml" : "b94d46b10ae41cb9809ca88bab7a4ca8ea5ec8029af800c44af21c39383aa2fa",
   "resources/odd/edep-clean.odd" : "1cce6244be56b4d3ed03af62e458a9db232365f89d925ba342aca8c0c976f2e0",
   "templates/fore/epidoc-template.xml" : "e28e4bbfb22ff155fa494f41015441e514fda61c5d188588e4f366e83b7949da",
@@ -33,7 +33,7 @@
   ".devcontainer/Dockerfile.dev" : "fe4f2c99b77ad57bb604f2434a2bb64213d42205b080fd26b0c03ae104a21f53",
   "resources/css/print.css" : "c39a12abf903506e43ad3ff28895fded32b7caa4fb245200d0c2c32893e19933",
   "resources/i18n/registers/de.json" : "783a56391cacaa09ace143790b54dad9639f3c5a43b26e18254e75523caf8266",
-  "resources/css/jinks-variables.css" : "a20c7cc3de094341e9a414f748446f8e1f236ff7b99a650346e7857c7320f193",
+  "resources/css/jinks-variables.css" : "ce3255eca4efae98d8ff85e96f688f36f5d915568060319f4afd867bc1ebb934",
   "resources/images/tei-publisher-logo-contrast-color.svg" : "d3a41798c9691bae335e6e94e6b8b81fb3e950e76581486e03d6993a06fec1be",
   "resources/i18n/app/en.json" : "768d029bd73e2aa7e43194149fc0b7f18fc62c43b74074dae67d79af1f7d484d",
   ".dockerignore" : "8e0f25cee1e24e2652a4e23eb1416e73b869603c4aa7451d7a7b1092169c3c93",

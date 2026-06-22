@@ -18,10 +18,25 @@
       "image" : "../images/icon.png",
       "width" : "95px",
       "height" : "48px"
+    },
+    "splash": {
+        "image": "../images/icon.png"
     }
   },
   "pkg" : {
     "abbrev" : "edep"
   },
-  "description" : ""
+  "description" : "",
+  "menu": {
+    "items": [
+      {
+        "url": "about.xml",
+        "id": "about"
+      },
+      {
+        "url": "howto.xml",
+        "id": "instructions"
+      }
+    ]
+  }
 }
