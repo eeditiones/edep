@@ -129,13 +129,14 @@
     "colors" : {
       "palettes" : {
         "green" : "palette-green.css",
+        "edep-red" : "palette-edep-red.css",
         "teal" : "palette-teal.css",
         "neutral" : "palette-neutral.css",
         "blue" : "palette-blue.css",
         "beige" : "palette-beige.css",
         "dark" : "palette-dark.css"
       },
-      "palette" : "neutral"
+      "palette" : "edep-red"
     },
     "fonts" : {
       "toc" : {
@@ -268,7 +269,7 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-06-22T16:49:08.673+02:00",
+  "_lastModified" : "2026-06-22T16:50:27.484+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",

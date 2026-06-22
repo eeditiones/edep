@@ -8,6 +8,12 @@
     "data-default": ""
   },
   "theme" : {
+    "colors" : {
+      "palette" : "edep-red",
+      "palettes" : {
+        "edep-red" : "palette-edep-red.css"
+      }
+    },
     "logo" : {
       "image" : "../images/icon.png",
       "width" : "95px",

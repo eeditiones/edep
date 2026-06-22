@@ -1,0 +1,57 @@
+:root {
+    --jinks-colors-700: #2B0205;
+    --jinks-colors-600: #6F030A;
+    --jinks-colors-500: #8F040D;
+    --jinks-colors-400: #E30613;
+    --jinks-colors-300: #F05F68;
+    --jinks-colors-200: #F6F6F3;
+    --jinks-colors-100: #FCFCF8;
+    --jinks-colors-50: #FEFEF9;
+
+    --jinks-colors-light: #FCFCF8;
+    --jinks-colors-grey: #5A5A5A;
+    --jinks-colors-dark: #2B0205;
+    --jinks-colors-medium: #DBDBD0;
+    --jinks-colors-accent: #E30613;
+    --jinks-colors-black-300: #737373;
+
+    --jinks-colors-highlight: var(--jinks-colors-accent);
+}
+
+[data-theme=light],
+:root:not([data-theme=dark]) {
+    --pico-primary: var(--jinks-colors-600);
+    --pico-primary-background: var(--jinks-colors-500);
+    --pico-primary-border: var(--pico-primary-background);
+    --pico-primary-underline: rgba(111, 3, 10, 0.5);
+    --pico-primary-hover: var(--jinks-colors-400);
+    --pico-primary-hover-background: var(--jinks-colors-600);
+    --pico-primary-hover-border: var(--pico-primary-hover-background);
+    --pico-primary-hover-underline: var(--pico-primary-hover);
+    --pico-primary-focus: rgba(227, 6, 19, 0.25);
+    --pico-primary-inverse: var(--jinks-colors-light);
+
+    --jinks-form-hover-color: var(--jinks-colors-500);
+    --jinks-form-focus-color1: #E30613;
+    --jinks-form-focus-color2: rgba(227, 6, 19, 0.2);
+}
+
+button:hover,
+.dropdown-button summary:hover,
+btn:hover {
+    color: var(--jinks-colors-light);
+}
+
+body .documents.documents header a,
+body .documents.documents header a:visited,
+body .documents.documents h3 a,
+body .documents.documents h3 a:visited {
+    color: var(--jinks-colors-600);
+}
+
+body .documents.documents header a:hover,
+body .documents.documents header a:focus,
+body .documents.documents h3 a:hover,
+body .documents.documents h3 a:focus {
+    color: var(--jinks-colors-400);
+}
