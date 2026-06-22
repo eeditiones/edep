@@ -1,0 +1,10 @@
+{
+  "overwrite" : "default",
+  "label" : "edep",
+  "id" : "https://e-editiones.org/apps/edep",
+  "extends" : [ "base10", "theme-base10", "registers", "docker", "edep-editor", "forms", "upload" ],
+  "pkg" : {
+    "abbrev" : "edep"
+  },
+  "description" : ""
+}

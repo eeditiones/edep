@@ -1,0 +1,14 @@
+<place xmlns="http://www.tei-c.org/ns/1.0"> <!-- ID automatisch vergeben -->
+    <placeName type="findspot"/> <!-- Fundstelle -->
+    <placeName type="modern"/> <!-- moderner Ortsname -->
+    <placeName type="ancient"/> <!-- antiker Ortsname -->
+    <region type="province"/> <!-- antike Provinz -->
+    <region type="modern"/> <!-- modernes Region -->
+    <country/> <!-- modernes Land -->
+    <location>
+        <!-- Latitude/longitude durch space getrennt -->
+        <geo/>
+    </location>
+    <ptr type="pleiades" target=""/> <!-- Freitext -->
+    <ptr type="geonames" target=""/> <!-- Freitext -->
+</place>

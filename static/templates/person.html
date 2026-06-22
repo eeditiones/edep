@@ -1,0 +1,33 @@
+<main>
+    ---json
+    {
+        "templating": {
+            "extends": "static/templates/layouts/base.html"
+        },
+        "styles": [
+            "transform/serafin.css"
+        ],
+        "features": {
+            "toc": {
+                "enabled": false
+            },
+            "toolbar": {
+                "zoom": false
+            }
+        }
+    }
+    ---
+    [% template breadcrumb %]
+    <li>
+        <nav aria-label="breadcrumb">
+            <ul>
+                <li><a href="[[ $context-path ]]/people"><pb-i18n key="menu.people"/></a></li>
+                <li>[[ $person?name ]]</li>
+            </ul>
+        </nav>
+    </li>
+    [% endtemplate %]
+    <section class="person">
+        [[ $parts?default?content ]]
+    </section>
+</main>

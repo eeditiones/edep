@@ -1,0 +1,106 @@
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="E0000004"><teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Testinschrift</title>
+                <editor/>
+                
+                <respStmt>
+                    <resp/>
+                    <persName/>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <authority>Epigraphische Datenbank Heidelberg</authority>
+                <availability>
+                    <p>Heidelberger Akademie der Wissenschaften</p>
+                    <licence target="http://creativecommons.org/licenses/by-sa/4.0/">This file is licensed under the
+                        Creative Commons Attribution-ShareAlike 4.0 license. </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier><idno/>
+                        <repository/><repository/><repository/><repository/><repository/><repository/><repository/>                        
+                        <idno type="inventory"/>
+                        <idno type="EDEp">E0000004</idno>
+                        
+                    </msIdentifier>
+                    <msContents>
+                        <summary/>
+                    </msContents>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support>
+                                    <objectType/>
+                                    <material/>
+                                    
+                                    
+                                </support>
+                                <condition/>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout><note type="paleography" corresp="https://edep.adw.uni-heidelberg.de/paleography/scratched"/>
+                                    
+                                    
+                                    
+                                    
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            
+                        </handDesc>
+                        <decoDesc>
+                            <decoNote/>
+                        </decoDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origDate datingMethod="http://en.wikipedia.org/wiki/Julian_calendar"/>
+                            <origPlace/>
+                        </origin>
+                        <provenance type="found">
+                            
+                            
+                        </provenance>
+                        <provenance type="history"/>
+                    </history><fileDesc><titleStmt><respStmt><resp/><persName/></respStmt></titleStmt></fileDesc>
+                </msDesc>
+                <listBibl><listBibl type="images"><bibl/></listBibl><listBibl type="bibliography"><bibl corresp="Schulze_1966"><note>Großartige Zusammenfassung, besser als <ref type="biblio" target="#Olcott_1904-1912"/></note></bibl><bibl type="public" corresp="Gradenwitz_1904">
+        
+        
+    </bibl></listBibl><listBibl type="previousEditions"><bibl/></listBibl><listBibl type="transmission"><bibl/></listBibl>
+                    
+                    
+                    
+                    
+                </listBibl>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <p>Encoded following EpiDoc guidelines 9.2</p>
+        </encodingDesc>
+        <profileDesc>
+            <textClass><keywords scheme="https://edh.ub.uni-heidelberg.de/edep/inscription-type"><term/></keywords>
+                <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/religion">
+                    <term/>
+                </keywords>
+                <keywords scheme="https://edh.ub.uni-heidelberg.de/edep/terms">
+                    <term/>
+                </keywords>
+            </textClass>
+            <langUsage>
+                <language ident="edep"/>
+                <language ident="lat" ana="main"/>
+            <language ident="grc"/></langUsage>
+        </profileDesc>
+        <revisionDesc status="draft"><change type="created" when="2026-06-22T09:52:38.988+02:00" who="tei"/><change type="changed" when="2026-06-22T12:15:13.699+02:00" who="tei"/></revisionDesc>
+    </teiHeader><text>
+        <body><div type="edition"><ab>
+<lb n="1"/>Dies ist meine <supplied reason="lost">Inschrift</supplied>:
+<lb n="2"/><expan>H<ex>ans</ex></expan> war hier
+</ab></div><div type="apparatus"><listApp>
+  <app loc="2"><note>Anders bei <ref type="biblio" target="#Frenz_1985">Frenz 1985</ref></note></app>
+</listApp></div><div type="translation"/><div type="commentary"><p>Siehe auch <ref type="biblio" target="#Horster_2001">Horster 2001</ref></p></div></body>
+    </text></TEI>

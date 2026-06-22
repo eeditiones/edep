@@ -1,0 +1,13 @@
+{
+    "menu": {
+        "people": "People",
+        "places": "Places",
+        "bibliography": "Bibliography"
+    },
+    "form": {
+        "description": "Show descriptions"
+    },
+    "tabs": {
+        "register": "Register"
+    }
+}

@@ -1,0 +1,46 @@
+<details id="dating" class="group-6">
+    <summary>
+        <h2><pb-i18n key="form.dating">Datierung</pb-i18n></h2>
+    </summary>
+    <fx-group ref="fileDesc/sourceDesc/msDesc/history/origin/origDate" id="chronology">
+        <!-- 26), 27)-->
+        <section class="form-grid">
+            <fx-control ref="@when-custom" create="create">
+                <label>
+                    <pb-i18n key="form.date">Zeitpunkt</pb-i18n>
+                </label>
+                <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
+                <fx-alert>
+                    <svg class="icon icon-warning"><use href="#exclamation-triangle-fill"/></svg>
+                    <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+                </fx-alert>
+            </fx-control>
+            <fx-control ref="@notBefore-custom" create="create">
+                <label>
+                    <pb-i18n key="form.date-after">nach</pb-i18n>
+                </label>
+                <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
+                <fx-alert>
+                    <svg class="icon icon-warning"><use href="#exclamation-triangle-fill"/></svg>
+                    <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+                </fx-alert>
+            </fx-control>
+            <fx-control ref="@notAfter-custom" create="create">
+                <label>
+                    <pb-i18n key="form.date-before">vor</pb-i18n>
+                </label>
+                <input placeholder="" data-i18n="[placeholder]form.dating-placeholder" class="widget"/>
+                <fx-alert>
+                    <svg class="icon icon-warning"><use href="#exclamation-triangle-fill"/></svg>
+                    <pb-i18n key="form.date-invalid">Ungültiges Datum</pb-i18n>
+                </fx-alert>
+            </fx-control>
+        </section>
+        <fx-control ref="." as="node" update-event="leave">
+            <label>
+                <pb-i18n key="form.remarks">Beschreibung/Kommentare</pb-i18n>
+            </label>
+            [% include "templates/parts/xml-editor-provenance.html" %]
+        </fx-control>
+    </fx-group>
+</details>

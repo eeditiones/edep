@@ -1,0 +1,380 @@
+{
+  "actions" : [ {
+    "app" : "jinks",
+    "description" : "Reindex the data",
+    "label" : "Reindex data",
+    "name" : "reindex"
+  }, {
+    "description" : "Rebuild list of ODDs and recompile",
+    "label" : "Fix ODDs",
+    "name" : "fix-odds"
+  }, {
+    "app" : "jinks",
+    "description" : "Download the app as a `.xar` file",
+    "label" : "Download",
+    "name" : "download"
+  }, {
+    "app" : "jinks",
+    "description" : "Sync the app to a directory on the local file system",
+    "label" : "Sync",
+    "name" : "file-sync",
+    "parameters" : [ {
+      "required" : true,
+      "description" : "The path to the target directory",
+      "label" : "Directory",
+      "name" : "target"
+    } ]
+  } ],
+  "profiles" : [ "base10", "theme-base10", "registers", "docker", "edep-editor", "forms", "upload" ],
+  "shortname" : "register",
+  "label" : "edep",
+  "version" : "1.0.0",
+  "id" : "https://e-editiones.org/apps/edep",
+  "_update" : true,
+  "styles" : [ "https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/classic.min.css", "resources/css/pico-components.css", "resources/css/jinks-theme.css" ],
+  "_noDeploy" : false,
+  "profile-versions" : {
+    "docker" : "1.0.0",
+    "base10" : "1.0.0",
+    "edep-editor" : "1.0.0",
+    "theme-base10" : "1.0.0",
+    "upload" : "1.0.0",
+    "registers" : "1.0.0",
+    "forms" : "1.0.0"
+  },
+  "depends" : [ "base10", "registers", "upload", "forms" ],
+  "profile-changes" : {
+    "upload" : {
+      "2.0.0" : "Adds support for multiple formats, currently TEI and JATS. Splits annotate.html into format-specific templates. Existing customizations may need to be updated."
+    }
+  },
+  "changes" : {
+    "2.0.0" : "Adds support for multiple formats, currently TEI and JATS. Splits annotate.html into format-specific templates. Existing customizations may need to be updated."
+  },
+  "template-suffix" : "\\.tpl",
+  "ignore" : [ "repo.xml", "resources/css/components.css" ],
+  "target" : "/db/apps/edep",
+  "menu" : {
+    "language" : true,
+    "delete" : true,
+    "dark-mode" : false,
+    "items" : [ {
+      "url" : "browse.html",
+      "id" : "Start"
+    }, {
+      "url" : "people",
+      "id" : "people"
+    }, {
+      "url" : "places",
+      "id" : "places"
+    } ],
+    "login" : true,
+    "download" : true,
+    "search" : true
+  },
+  "theme" : {
+    "layout" : {
+      "class" : "fixed-layout",
+      "search" : "before-top",
+      "footer" : {
+        "mobile" : {
+          "enabled" : true
+        }
+      },
+      "after" : {
+        "width" : "min(30vw, 356px)",
+        "hidden" : false,
+        "toggle" : true,
+        "collapsible" : true
+      },
+      "before" : {
+        "width" : "min(30vw, 356px)",
+        "hidden" : false,
+        "toggle" : true,
+        "collapsible" : true
+      },
+      "max-width" : "84rem"
+    },
+    "menubar" : {
+      "background-color" : "var(--jinks-colors-500)",
+      "color" : "#ffffff",
+      "background-image" : "none"
+    },
+    "registers" : {
+      "columns" : 2
+    },
+    "icons" : [ "edep-icons.svg" ],
+    "splash" : {
+      "width" : "320px",
+      "image" : "../images/tei-publisher-logo-color.svg",
+      "height" : "auto"
+    },
+    "body" : {
+      "background-color" : "var(--jinks-colors-100)"
+    },
+    "logo" : {
+      "width" : "140px",
+      "image" : "../images/tei-publisher-logo-contrast-color.svg",
+      "height" : "48px"
+    },
+    "breadcrumbs" : {
+      "max" : "40ch"
+    },
+    "content" : {
+      "max-width" : "70ch"
+    },
+    "texture" : {
+      "background-image" : null
+    },
+    "colors" : {
+      "palettes" : {
+        "green" : "palette-green.css",
+        "teal" : "palette-teal.css",
+        "neutral" : "palette-neutral.css",
+        "blue" : "palette-blue.css",
+        "beige" : "palette-beige.css",
+        "dark" : "palette-dark.css"
+      },
+      "palette" : "neutral"
+    },
+    "fonts" : {
+      "toc" : {
+        "size" : "1.125rem"
+      },
+      "menubar" : {
+        "size" : "14px"
+      },
+      "footnote" : {
+        "size" : "0.9em"
+      },
+      "base" : {
+        "family" : "'Inter', 'Noto', sans-serif",
+        "line-height" : "1.4",
+        "size" : "16px",
+        "weight" : "400"
+      },
+      "heading" : {
+        "family" : "'Inter', 'Noto', sans-serif",
+        "size" : "1.2rem",
+        "weight" : "600"
+      },
+      "breadcrumbs" : {
+        "size" : "0.9rem"
+      },
+      "content" : {
+        "family" : "JunicodeVF, Georgia, 'Times New Roman', serif",
+        "line-height" : "150%",
+        "size" : "1.25rem",
+        "weight" : "400"
+      }
+    },
+    "toolbar" : {
+      "background-color" : "var(--jinks-colors-200)",
+      "color" : "var(--jinks-color-primary)"
+    }
+  },
+  "features" : {
+    "zotero" : {
+      "group_id" : "2519759",
+      "style" : "digital-humanities-im-deutschsprachigen-raum",
+      "api_base" : "https://api.zotero.org",
+      "api_key" : ""
+    },
+    "browse" : {
+      "sort" : {
+        "options" : [ {
+          "label" : "Category",
+          "value" : "category",
+          "key" : "browse.category"
+        }, {
+          "label" : "Title",
+          "value" : "title",
+          "key" : "browse.title"
+        }, {
+          "label" : "Author",
+          "value" : "author",
+          "key" : "browse.author"
+        } ],
+        "default" : "category"
+      },
+      "field" : {
+        "options" : [ {
+          "label" : "Content",
+          "value" : "text",
+          "key" : "search.content"
+        }, {
+          "label" : "Title",
+          "value" : "title",
+          "key" : "search.title"
+        } ],
+        "default" : "text"
+      }
+    },
+    "menubar" : true,
+    "register" : {
+      "config" : {
+        "place" : {
+          "collection" : "registers/places"
+        },
+        "person" : {
+          "collection" : "registers/people"
+        }
+      },
+      "description" : "auto",
+      "enabled" : false
+    },
+    "upload" : {
+      "target" : "",
+      "accept" : ".xml, .tei, .odd, .docx, .md, .mei",
+      "enabled" : true
+    },
+    "edep" : {
+      "toolbar-button" : true
+    },
+    "toolbar" : {
+      "zoom" : true,
+      "navigation" : true,
+      "enabled" : true,
+      "progress" : {
+        "subscribe" : "transcription",
+        "enabled" : true
+      }
+    },
+    "hero" : false,
+    "toc" : {
+      "collapse" : false,
+      "enabled" : false
+    },
+    "toolbar-toggles" : {
+      "toggle-reading" : false,
+      "enabled" : false
+    },
+    "forms" : {
+      "fore" : {
+        "version" : "3.1.1",
+        "cdn" : "https://cdn.jsdelivr.net/npm/@jinntec/fore"
+      }
+    }
+  },
+  "indexing" : {
+    "tei" : {
+      "enable" : true,
+      "context" : "div"
+    },
+    "docbook" : {
+      "enable" : true
+    },
+    "jats" : {
+      "enable" : true
+    }
+  },
+  "_lastModified" : "2026-06-22T15:57:00.763+02:00",
+  "overwrite" : "default",
+  "pkg" : {
+    "website" : "http://tei-publisher.org",
+    "abbrev" : "edep",
+    "author" : "Wolfgang Meier et al.",
+    "version" : "1.0.0",
+    "dependencies" : [ {
+      "semver" : "1",
+      "package" : "http://e-editiones.org/roaster"
+    }, {
+      "semver-min" : "6.1",
+      "package" : "http://existsolutions.com/apps/tei-publisher-lib",
+      "semver-max" : "6"
+    }, {
+      "semver" : "1",
+      "package" : "http://tei-publisher.com/library/jinks-templates"
+    } ],
+    "permissions" : "rw-r--r--",
+    "user" : {
+      "password" : "simple",
+      "name" : "tei",
+      "group" : "tei"
+    }
+  },
+  "description" : "",
+  "_dry" : false,
+  "source" : "/db/apps/jinks/profiles/upload",
+  "type" : "feature",
+  "skip" : [ "^doc/.*$", "setup.xql", "config.json" ],
+  "odds" : [ "teipublisher.odd", "edep-clean.odd", "edep.odd" ],
+  "docker" : {
+    "eXist" : "6.4.0",
+    "features" : {
+      "nodejs" : false,
+      "xst" : false,
+      "ner" : false,
+      "tex" : false
+    },
+    "jwt" : "2.0.1",
+    "roaster" : "1.11.0",
+    "ports" : {
+      "https" : 8443,
+      "http" : 8080
+    },
+    "crypto" : "6.0.1",
+    "tei-publisher-lib" : "6.1.0",
+    "ant" : "1.10.15",
+    "jinks-templates" : "1.4.1"
+  },
+  "category" : "workflow",
+  "_overwrite" : "quick",
+  "defaults" : {
+    "data" : "data",
+    "address-by-id" : false,
+    "odd-root" : "resources/odd",
+    "languages" : [ "bg", "cs", "zh_CN", "zh_TW", "de", "en", "es", "el", "fr", "fi", "it", "ka", "nl", "no", "pl", "pt", "ro", "ru", "sl", "sv", "tr", "uk" ],
+    "data-default" : "workspace",
+    "direction" : "ltr",
+    "template" : "basic.html",
+    "browse" : "browse.html",
+    "search" : "div",
+    "view" : "div",
+    "data-exclude" : [ "doc($config:data-root || '/taxonomy.xml')//tei:text", "collection($config:register-root)//tei:text" ],
+    "odd" : "edep.odd",
+    "pagination" : {
+      "fill" : 5,
+      "depth" : 10
+    },
+    "media" : [ "web", "print", "epub" ],
+    "register-root" : "registers"
+  },
+  "templating" : {
+    "use" : [ "templates/register-blocks.html", "templates/edep-blocks.html", "templates/forms-blocks.html", "templates/upload-blocks.html" ],
+    "modules" : {
+      "http://teipublisher.com/ns/templates/browse" : {
+        "at" : "modules/templates/browse.xqm",
+        "prefix" : "browse"
+      },
+      "http://teipublisher.com/ns/templates/page" : {
+        "at" : "modules/templates/page.xqm",
+        "prefix" : "page"
+      }
+    }
+  },
+  "script" : {
+    "custom" : [ ],
+    "webcomponents" : "3.3.0",
+    "extra-components" : [ ],
+    "cdn" : "https://cdn.jsdelivr.net/npm/@teipublisher/pb-components"
+  },
+  "order" : 11,
+  "$schema" : "../../schema/jinks.json",
+  "i18n" : [ "registers" ],
+  "api" : [ {
+    "spec" : "registers-api.json",
+    "prefix" : "rview",
+    "id" : "http://teipublisher.com/api/registers/view",
+    "path" : "registers-api.xql"
+  }, {
+    "spec" : "edep-api.json",
+    "prefix" : "edep",
+    "id" : "http://e-editiones.org/api/edep",
+    "path" : "edep-api.xql"
+  }, {
+    "prefix" : "zotero",
+    "id" : "http://e-editiones.org/edep/api/zotero",
+    "path" : "zotero.xql"
+  } ]
+}

@@ -1,0 +1,213 @@
+<template>
+---json
+{
+    "templating": {
+        "extends": "templates/edep-base.html"
+    },
+    "styles": [
+        "resources/css/edep-theme.css"
+    ],
+    "features": {
+        "forms": {
+            "enabled": true
+        },
+        "toolbar": {
+            "navigation": false
+        }
+    }
+}
+---
+[% template fore-prolog %]
+    <fx-action event="visibilitychange" target="#document">
+        <fx-message>document focus {event('target.visibilityState')}</fx-message>
+    </fx-action>
+
+    <fx-action event="ready" if="exists(instance('query')/id)">
+        <fx-send submission="s-load"/>
+        <fx-setfocus control="findspot"/>
+    </fx-action>
+
+    <fx-model>
+        <fx-action event="model-construct-done">
+            <fx-send submission="s-login"/>
+            <!-- TODO: is this needed? The `if` is needed, otherwise a different endpoint may be called -->
+            <fx-send submission="s-load" if="exists(instance('query')/id)"/>
+        </fx-action>
+
+        <fx-instance src="templates/fore/place-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+            <data/>
+        </fx-instance>
+        <fx-bind ref="placeName[@type='findspot']" required="true()"/>
+
+        <fx-instance id="vars">
+            <data>
+                <loggedin>hidden</loggedin>
+                <language>en</language>
+                <place lang="en">Place has been stored</place>
+                <place lang="de">Ort wurde gespeichert</place>
+            </data>
+        </fx-instance>
+        <fx-bind ref="instance('vars')/loggedin" relevant=".='true'"/>
+
+        <fx-instance id="query" src="#querystring">
+            <data/>
+        </fx-instance>
+
+        <fx-instance id="province" src="[[ $context-path ]]/data/taxonomy/province.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0"/>
+
+        <fx-instance id="country" src="[[ $context-path ]]/data/taxonomy/country.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
+            <data/>
+        </fx-instance>
+
+        <fx-submission id="s-save" method="post" url="[[ $context-path ]]/api/places/{instance('query')/id}" replace="instance">
+            <fx-action event="submit-done">
+                <fx-message>{instance('vars')/place[@lang=instance('vars')/language]}</fx-message>
+                <fx-unmodified/>
+            </fx-action>
+            <fx-message event="submit-error">couldn't be saved</fx-message>
+        </fx-submission>
+        <fx-submission id="s-load" method="get" url="[[ $context-path ]]/api/places/{instance('query')/id}" replace="instance" validate="false"/>
+
+        <fx-submission id="s-reset" url="templates/fore/place-tmpl.xml" replace="instance">
+        </fx-submission>
+
+        <fx-instance id="login" type="json">{}</fx-instance>
+        <fx-submission id="s-login" ref="instance('login')?*" url="[[ $context-path ]]/api/login" method="post" replace="instance" instance="login" validate="false">
+            <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
+            <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
+        </fx-submission>
+
+        <fx-function signature="shortlang($input as xs:string,$default as xs:string) as xs:string" type="text/javascript">
+            if($input) { return $input.substring(0, 2); } return $default;
+        </fx-function>
+    </fx-model>
+
+    <fx-var name="lang" value="instance('vars')/language"/>
+
+    <fx-action event="pb-i18n-update" target="#document">
+        <fx-setvalue ref="instance('vars')/language" value="shortlang(event('language'), instance('vars')/language/string())"/>
+        <fx-refresh force="force"/>
+    </fx-action>
+[% endtemplate %]
+
+[% template breadcrumb %]
+<li>
+    <nav aria-label="breadcrumb">
+        <ul>
+            <li>
+                <a href="[[ $context-path ]]/places"><pb-i18n key="menu.places"/></a>
+            </li>
+            <li>
+                <fx-output ref="instance('default')/@xml:id"/>
+            </li>
+        </ul>
+    </nav>
+</li>
+[% endtemplate %]
+
+    <fieldset class="case-content">
+        <legend>
+            <pb-i18n key="place.place"/>
+        </legend>
+        <fx-control ref="placeName[@type='findspot']" id="findspot">
+            <label>
+                <span class="form-hint-wrap">
+                    <pb-i18n key="form.context-of-provenance">Fundstelle</pb-i18n>
+                    <button type="button" class="hint-trigger" aria-label="Help">
+                        <svg class="icon icon-info"><use href="#info-circle"/></svg>
+                    </button>
+                    <div class="form-hint" popover="manual" role="tooltip">
+                        <pb-i18n key="form.hint-geodata-findspot"/>
+                    </div>
+                </span>
+            </label>
+            <input type="text" autofocus="autofocus" class="widget" tabindex="1"/>
+        </fx-control>
+        <fx-control ref="placeName[@type='ancient']">
+            <label>
+                <pb-i18n key="form.site-ancient-name"/>
+            </label>
+        </fx-control>
+        <fx-control ref="region[@type='province']" update-event="input">
+            <label>
+                <pb-i18n key="form.site-ancient-province"/>"{./@xml:id}"
+            </label>
+            <select ref="instance('province')//category" class="widget" selection="open">
+                <template>
+                    <option value="{@xml:id}">{catDesc}</option>
+                </template>
+            </select>
+        </fx-control>
+        <fx-control ref="placeName[@type='modern']">
+            <label>
+                <span class="form-hint-wrap">
+                    <pb-i18n key="form.site-modern-name">Fundort (modern)</pb-i18n>
+                    <button type="button" class="hint-trigger" aria-label="Help">
+                        <svg class="icon icon-info"><use href="#info-circle"/></svg>
+                    </button>
+                    <div class="form-hint" popover="manual" role="tooltip">
+                        <pb-i18n key="form.hint-geodata-findspot-modern"/>
+                    </div>
+                </span>
+            </label>
+        </fx-control>
+        <fx-control ref="region[@type='modern']">
+            <label>
+                <pb-i18n key="form.site-modern-region"/>
+            </label>
+        </fx-control>
+        <fx-control ref="country" update-event="input">
+            <label>
+                <pb-i18n key="form.site-modern-country"/>
+            </label>
+            <select ref="instance('country')//category" class="widget" selection="open">
+                <template>
+                    <option value="{@xml:id}">{catDesc[@xml:lang = $lang]}</option>
+                </template>
+            </select>
+        </fx-control>
+        <fx-control ref="location/geo">
+            <label>
+                <pb-i18n key="place.geolocation"/>
+            </label>
+        </fx-control>
+        <fx-control ref="ptr[@type='pleiades']">
+            <label>Pleiades</label>
+        </fx-control>
+        <fx-control ref="ptr[@type='geonames']">
+            <label>Geonames</label>
+        </fx-control>
+    </fieldset>
+
+[% template toolbar %]
+<li>
+    <pb-restricted login="login" group="tei">
+        <p class="loginMessage" slot="fallback">You need to be logged in to edit.</p>
+        <fx-trigger id="save" class="saveBtn" debounce="1000">
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                    <path d="M11 2H9v3h2z"/>
+                    <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+                </svg>
+                <span><pb-i18n key="form.save">Save</pb-i18n></span>
+            </button>
+            <fx-action>
+                <fx-send submission="s-login"/>
+                <fx-send submission="s-save"/>
+            </fx-action>
+        </fx-trigger>
+    </pb-restricted>
+</li>
+<li>
+    <fx-trigger id="new-entry">
+        <a href="place" class="btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+                <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5"/>
+                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/>
+            </svg>
+            <span><pb-i18n key="form.new">New</pb-i18n></span>
+        </a>
+    </fx-trigger>
+</li>
+[% endtemplate %]
+</template>
