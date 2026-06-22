@@ -60,13 +60,7 @@
     "dark-mode" : false,
     "items" : [ {
       "url" : "browse.html",
-      "id" : "Start"
-    }, {
-      "url" : "people",
-      "id" : "people"
-    }, {
-      "url" : "places",
-      "id" : "places"
+      "id" : "inscriptions"
     }, {
       "url" : "about.xml",
       "id" : "about"
@@ -275,7 +269,7 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-06-22T17:31:11.956+02:00",
+  "_lastModified" : "2026-06-22T19:33:49.331+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",
@@ -331,7 +325,7 @@
     "data" : "/db/apps/edep-data/data",
     "address-by-id" : false,
     "odd-root" : "resources/odd",
-    "languages" : [ "bg", "cs", "zh_CN", "zh_TW", "de", "en", "es", "el", "fr", "fi", "it", "ka", "nl", "no", "pl", "pt", "ro", "ru", "sl", "sv", "tr", "uk" ],
+    "languages" : [ "en", "de" ],
     "data-default" : "",
     "direction" : "ltr",
     "template" : "basic.html",

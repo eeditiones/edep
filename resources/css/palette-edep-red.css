@@ -42,6 +42,13 @@ btn:hover {
     color: var(--jinks-colors-light);
 }
 
+.page-header,
+.menubar,
+.mobile.menubar {
+    --jinks-menubar-background-color: var(--jinks-colors-700);
+    --jinks-menubar-button-color: rgba(252, 252, 248, 0.16);
+}
+
 body .documents.documents header a,
 body .documents.documents header a:visited,
 body .documents.documents h3 a,

@@ -1,0 +1,40 @@
+<template>
+    ---json
+    {
+        "templating": {
+            "extends": "templates/layouts/content.html"
+        },
+        "features": {
+            "toolbar": {
+                "navigation": false
+            },
+            "edep": {
+                "toolbar-button": false
+            }
+        },
+        "script": {
+            "custom": [
+                "resources/scripts/language.js"
+            ]
+        }
+    }
+    ---
+    [% template! breadcrumb %]
+    <li>
+        <nav aria-label="breadcrumb">
+            <ul>
+                [% if $context?doc?path = 'about.xml' %]
+                <li><pb-i18n key="menu.about"/></li>
+                [% else %]
+                <li><pb-i18n key="menu.instructions"/></li>
+                [% endif %]
+            </ul>
+        </nav>
+    </li>
+    [% endtemplate %]
+
+    <!-- Basic template for a page with a single document -->
+    <div class="center">
+        <pb-view src="document1" column-separator=".tei-cb" append-footnotes="append-footnotes" subscribe="transcription" emit="transcription" direction="[[$context?defaults?direction]]"/>
+    </div>
+</template>

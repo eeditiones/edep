@@ -64,11 +64,14 @@
                     <model output="web" behaviour="block"/>
                 </elementSpec>
             <elementSpec ident="TEI" mode="change">
-                    <model predicate="@type='about'" behaviour="inline">
-            <param name="content" value="text/body/div[starts-with($parameters?language, @xml:lang)]"/>
-        </model>
-                    <model behaviour="document"/>
-                </elementSpec>
+                <model predicate="$parameters?mode = 'breadcrumb'" behaviour="inline">
+                    <param name="content" value="text/body/div[@xml:lang = 'en']//head[1]"/>
+                </model>
+                <model predicate="@type='about'" behaviour="inline">
+                    <param name="content" value="text/body/div[starts-with(@xml:lang, $parameters?language)]"/>
+                </model>
+                <model behaviour="document"/>
+            </elementSpec>
                 <elementSpec ident="ex" mode="change">
                     <model behaviour="inline">
             <param name="content" value="if (./@cert='low')  then ('(',., '?)') else ('(',., ')')"/>

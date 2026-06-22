@@ -4,8 +4,10 @@
   "id" : "https://e-editiones.org/apps/edep",
   "extends" : [ "base10", "theme-base10", "registers", "docker", "edep-editor", "forms", "upload" ],
   "defaults": {
+    "$replace": [ "languages" ],
     "data": "/db/apps/edep-data/data",
-    "data-default": ""
+    "data-default": "",
+    "languages": [ "en", "de" ]
   },
   "theme" : {
     "colors" : {
@@ -28,7 +30,12 @@
   },
   "description" : "",
   "menu": {
+    "$replace": [ "items" ],
     "items": [
+      {
+        "url": "browse.html",
+        "id": "inscriptions"
+      },
       {
         "url": "about.xml",
         "id": "about"
