@@ -62,6 +62,12 @@
       "url" : "browse.html",
       "id" : "inscriptions"
     }, {
+      "url" : "people",
+      "id" : "people"
+    }, {
+      "url" : "places",
+      "id" : "places"
+    }, {
       "url" : "about.xml",
       "id" : "about"
     }, {
@@ -269,7 +275,7 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-06-22T19:33:49.331+02:00",
+  "_lastModified" : "2026-06-22T19:43:52.61+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",
@@ -329,7 +335,7 @@
     "data-default" : "",
     "direction" : "ltr",
     "template" : "basic.html",
-    "browse" : "browse.html",
+    "browse" : "browse-custom.html",
     "search" : "div",
     "view" : "div",
     "data-exclude" : [ "doc($config:data-root || '/taxonomy.xml')//tei:text", "collection($config:register-root)//tei:text" ],

@@ -7,7 +7,8 @@
     "$replace": [ "languages" ],
     "data": "/db/apps/edep-data/data",
     "data-default": "",
-    "languages": [ "en", "de" ]
+    "languages": [ "en", "de" ],
+    "browse": "browse-custom.html"
   },
   "theme" : {
     "colors" : {
@@ -35,6 +36,14 @@
       {
         "url": "browse.html",
         "id": "inscriptions"
+      },
+      {
+        "id": "people",
+        "url": "people"
+      },
+      {
+        "id": "places",
+        "url": "places"
       },
       {
         "url": "about.xml",
