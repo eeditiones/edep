@@ -7,8 +7,8 @@
 
     /* Logo */
 
-    --jinks-logo-light: url("../images/tei-publisher-logo-contrast-color.svg");
-    --jinks-logo-image-width: 140px;
+    --jinks-logo-light: url("../images/icon.png");
+    --jinks-logo-image-width: 95px;
     --jinks-logo-image-height: 48px;
     --jinks-logo-margin-right: 1rem;
 

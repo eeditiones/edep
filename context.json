@@ -113,8 +113,8 @@
       "background-color" : "var(--jinks-colors-100)"
     },
     "logo" : {
-      "width" : "140px",
-      "image" : "../images/tei-publisher-logo-contrast-color.svg",
+      "width" : "95px",
+      "image" : "../images/icon.png",
       "height" : "48px"
     },
     "breadcrumbs" : {
@@ -268,7 +268,7 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-06-22T15:57:00.763+02:00",
+  "_lastModified" : "2026-06-22T16:12:29.428+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",
@@ -319,7 +319,7 @@
     "jinks-templates" : "1.4.1"
   },
   "category" : "workflow",
-  "_overwrite" : "quick",
+  "_overwrite" : "all",
   "defaults" : {
     "data" : "data",
     "address-by-id" : false,
