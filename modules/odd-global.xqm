@@ -25,7 +25,7 @@ declare variable $config:app-root :=
  :)
  
     
-    declare variable $config:data-root := $config:app-root || "/data";
+    declare variable $config:data-root := "/db/apps/edep-data/data";
     
 
 
@@ -38,7 +38,7 @@ declare variable $config:register-root := $config:data-root || "/registers";
  : The default data collection.
  :)
 
-  declare variable $config:data-default as xs:string :=   $config:data-root || "/workspace";
+  declare variable $config:data-default as xs:string :=   $config:data-root || "/";
 
 
 (:~

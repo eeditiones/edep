@@ -3,6 +3,10 @@
   "label" : "edep",
   "id" : "https://e-editiones.org/apps/edep",
   "extends" : [ "base10", "theme-base10", "registers", "docker", "edep-editor", "forms", "upload" ],
+  "defaults": {
+    "data": "/db/apps/edep-data/data",
+    "data-default": ""
+  },
   "theme" : {
     "logo" : {
       "image" : "../images/icon.png",
