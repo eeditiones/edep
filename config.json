@@ -24,8 +24,16 @@
     },
     "splash": {
         "image": "../images/icon.png"
+    },
+    "fonts" : {
+      "heading" : {
+        "family" : "'Cinzel', 'Inter', 'Noto', serif"
+      }
     }
   },
+  "styles": [
+    "https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap"
+  ],
   "pkg" : {
     "abbrev" : "edep"
   },
@@ -54,5 +62,28 @@
         "id": "instructions"
       }
     ]
+  },
+  "features": {
+    "register": {
+        "config": {
+            "$replace": true,
+            "place": {
+                "collection": "registers/places"
+            },
+            "person": {
+                "collection": "registers/people"
+            }
+        }
+    },
+    "upload": {
+        "enabled": true,
+        "target": "workspace",
+        "accept": ".xml, .tei, .odd, .docx, .md, .mei"
+    },
+    "edep": {
+        "editor": {
+            "enabled": true
+        }
+    }
   }
 }

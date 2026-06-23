@@ -31,7 +31,7 @@
   "version" : "1.0.0",
   "id" : "https://e-editiones.org/apps/edep",
   "_update" : true,
-  "styles" : [ "https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/classic.min.css", "resources/css/pico-components.css", "resources/css/jinks-theme.css" ],
+  "styles" : [ "https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/classic.min.css", "resources/css/pico-components.css", "resources/css/jinks-theme.css", "https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" ],
   "_noDeploy" : false,
   "profile-versions" : {
     "docker" : "1.0.0",
@@ -161,7 +161,7 @@
         "weight" : "400"
       },
       "heading" : {
-        "family" : "'Inter', 'Noto', sans-serif",
+        "family" : "'Cinzel', 'Inter', 'Noto', serif",
         "size" : "1.2rem",
         "weight" : "600"
       },
@@ -231,12 +231,14 @@
       "enabled" : false
     },
     "upload" : {
-      "target" : "",
+      "target" : "workspace",
       "accept" : ".xml, .tei, .odd, .docx, .md, .mei",
       "enabled" : true
     },
     "edep" : {
-      "toolbar-button" : true
+      "editor" : {
+        "enabled" : true
+      }
     },
     "toolbar" : {
       "zoom" : true,
@@ -275,7 +277,7 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-06-22T19:43:52.61+02:00",
+  "_lastModified" : "2026-06-23T11:01:02.08+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",
@@ -290,6 +292,7 @@
       "package" : "http://existsolutions.com/apps/tei-publisher-lib",
       "semver-max" : "6"
     }, {
+      "semver-min" : "1.4.2",
       "semver" : "1",
       "package" : "http://tei-publisher.com/library/jinks-templates"
     } ],
