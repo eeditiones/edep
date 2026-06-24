@@ -74,7 +74,7 @@
         <fx-instance src="templates/fore/person-tmpl.xml" xpath-default-namespace="http://www.tei-c.org/ns/1.0">
             <data/>
         </fx-instance>
-        <fx-bind ref="instance('default')/persName/name[@type = ('nomen', 'praenomen', 'god', 'cognomen', 'supernomen')]" required="let $c := . return empty(../name[@type = ('nomen', 'praenomen', 'god', 'cognomen', 'supernomen')][$c/@type != @type][string-length(.) &gt; 0])">
+        <fx-bind ref="instance('default')/persName" constraint="exists(name[@type = ('nomen', 'praenomen', 'god', 'cognomen', 'supernomen')][normalize-space(.)])">
         </fx-bind>
 
         <fx-instance id="tribus">

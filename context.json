@@ -277,7 +277,7 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-06-23T11:01:02.08+02:00",
+  "_lastModified" : "2026-06-24T10:38:32.081+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",
@@ -293,8 +293,8 @@
       "semver-max" : "6"
     }, {
       "semver-min" : "1.4.2",
-      "semver" : "1",
-      "package" : "http://tei-publisher.com/library/jinks-templates"
+      "package" : "http://tei-publisher.com/library/jinks-templates",
+      "semver-max" : "1"
     } ],
     "permissions" : "rw-r--r--",
     "user" : {

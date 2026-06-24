@@ -6,6 +6,6 @@
      
         <dependency package="http://existsolutions.com/apps/tei-publisher-lib" semver-min="6.1" semver-max="6"/>
      
-        <dependency package="http://tei-publisher.com/library/jinks-templates" semver-max="1" semver-min="1.4.2"/>
+        <dependency package="http://tei-publisher.com/library/jinks-templates" semver-min="1.4.2" semver-max="1"/>
     
 </package>
