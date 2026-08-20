@@ -16,6 +16,9 @@
     --jinks-colors-black-300: #737373;
 
     --jinks-colors-highlight: var(--jinks-colors-accent);
+
+    /* Reading-pane / content links (inherits into pb-view shadow) */
+    --pb-link-color: var(--jinks-colors-accent);
 }
 
 [data-theme=light],
