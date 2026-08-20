@@ -14,10 +14,12 @@
      *  regulate their width either by using variables (--column-before-width / column-after-width)
      *  or by being resized and getting an absolute width set in HTML
      */
+    --jinks-layout-before-track: minmax(0, var(--jinks-layout-before-width));
+    --jinks-layout-after-track: minmax(0, var(--jinks-layout-after-width));
     grid-template-columns:
-        0.001fr
-        1fr
-        0.001fr;
+        var(--jinks-layout-before-track)
+        minmax(0, 1fr)
+        var(--jinks-layout-after-track);
     grid-template-areas:
         "header header header"
         "before-top content-top after-top"
@@ -90,6 +92,25 @@
     display: none;
 }
 
+.fixed-layout:not(:has(> .before > :not(.resize-handler))),
+.fixed-layout:has(> .before.hidden):not(:has(> .before-top .aside-toggle)) {
+    --jinks-layout-before-track: 0;
+}
+
+.fixed-layout:not(:has(> .after > :not(.resize-handler))),
+.fixed-layout:has(> .after.hidden):not(:has(> .after-top .aside-toggle)) {
+    --jinks-layout-after-track: 0;
+}
+
+/* Collapsed sidebars with a toggle: keep the top bar wide enough for the button only */
+.fixed-layout:has(> .before.hidden):has(> .before-top .aside-toggle) {
+    --jinks-layout-before-track: max-content;
+}
+
+.fixed-layout:has(> .after.hidden):has(> .after-top .aside-toggle) {
+    --jinks-layout-after-track: max-content;
+}
+
 .fixed-layout > .before-top.hidden svg,
 .fixed-layout > .after-top svg {
     rotate: 180deg;
@@ -113,8 +134,10 @@
 .fixed-layout > .before.hidden,
 .fixed-layout > .after.hidden {
     visibility: hidden;
-    /* Make sure this is actually hidden and takes no more width */
-    width: auto !important;
+    /* Collapsed panel must not widen the grid column (after-top/before-top keep the toggle) */
+    width: 0 !important;
+    min-width: 0;
+    overflow: hidden;
     padding: 0;
 }
 
@@ -269,6 +292,59 @@
 .fixed-layout > main > .center {
     display: flex;
     justify-content: center;
+}
+
+/* Opt-in multi-column pb-view layout: add class "column" to each pb-view in main.
+   For more than two columns, set --jinks-columns-count on :root or the page template.
+   Numbered classes column1–column6 are still accepted for backward compatibility. */
+.fixed-layout > main:has(> :is(.column, .column1, .column2, .column3, .column4, .column5, .column6)) {
+    display: grid;
+    grid-template-columns: repeat(var(--jinks-columns-count, 2), minmax(0, 1fr));
+    column-gap: var(--jinks-columns-gap);
+    padding: var(--jinks-columns-padding);
+    box-sizing: border-box;
+    max-width: min(
+        100%,
+        calc(
+            var(--pb-view-max-width) * var(--jinks-columns-count, 2)
+            + var(--jinks-columns-gap) * (var(--jinks-columns-count, 2) - 1)
+        )
+    );
+    margin: 0 auto;
+}
+
+.fixed-layout > main:has(> :is(.column, .column1, .column2, .column3, .column4, .column5, .column6)) > header {
+    grid-column: 1 / -1;
+    height: auto;
+}
+
+.fixed-layout > main:has(> :is(.column, .column1, .column2, .column3, .column4, .column5, .column6)) > header .tei-date {
+    display: block;
+    text-align: right;
+    font-size: var(--jinks-content-font-size);
+    line-height: var(--jinks-content-line-height);
+}
+
+.fixed-layout > main:has(> :is(.column, .column1, .column2, .column3, .column4, .column5, .column6)) > :is(.column, .column1, .column2, .column3, .column4, .column5, .column6) {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    margin-inline: 0;
+}
+
+@media (max-width: 1023px) {
+    .fixed-layout > main:has(> :is(.column, .column1, .column2, .column3, .column4, .column5, .column6)) {
+        column-gap: var(--jinks-columns-gap-md);
+    }
+}
+
+@media (max-width: 639px) {
+    .fixed-layout > main:has(> :is(.column, .column1, .column2, .column3, .column4, .column5, .column6)) {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: var(--jinks-columns-row-gap-sm);
+        max-width: calc(var(--pb-view-max-width) + var(--jinks-columns-padding) * 2);
+    }
 }
 
 @media (max-width: 768px) {

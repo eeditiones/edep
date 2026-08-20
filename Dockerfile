@@ -4,7 +4,7 @@ ARG BUILD=local
 # START STAGE 1
 FROM ghcr.io/eeditiones/builder:latest AS builder
 
-ARG ROUTER_VERSION=1.11.0
+ARG ROUTER_VERSION=1.12.1
 
 
 

@@ -32,7 +32,7 @@
                     <fx-insert context="." ref="language" origin="instance('templates')/language"/>
                 </fx-trigger>
 
-                <fx-repeat class="nested-repeat repeat-flex" ref="language[@ident!='edep']" id="r-language">
+                <fx-repeat class="nested-repeat repeat-flex" ref="language[not(@ident = 'edep')]" id="r-language">
                     <template>
                     <fx-group class="neutral">
                             <fx-control ref="@ident" create="create">

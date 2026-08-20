@@ -7,7 +7,7 @@ module namespace config="https://e-editiones.org/tei-publisher/generator/config"
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
-declare variable $config:webcomponents := "3.3.0";
+declare variable $config:webcomponents := "3.6.6";
 declare variable $config:webcomponents-cdn := "https://cdn.jsdelivr.net/npm/@teipublisher/pb-components";
 declare variable $config:fore := "";
 
@@ -74,7 +74,7 @@ declare variable $config:pagination-fill := 5;
 
 declare variable $config:address-by-id as xs:boolean :=  false() ;
 
-declare variable $config:default-language as xs:string := "";
+declare variable $config:default-language as xs:string := "en";
 
 declare variable $config:context-path :=
     

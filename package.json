@@ -4,7 +4,7 @@
     "description": "edep",
     "license": "GPL-3.0",
     "dependencies": {
-        "@teipublisher/pb-components": "^3.3.0",
+        "@teipublisher/pb-components": "^3.6.6",
         "@jinntec/fore": "^2.8.0",
         "@picocss/pico": "^2.1.1"
     },
@@ -18,6 +18,10 @@
         "glob": "^13.0.0"
     },
     "scripts": {
+        "build": "node build.cjs",
+        "build:local": "node build.cjs --local",
+        "build:release": "node build.cjs --release",
+        "build:release:local": "node build.cjs --local --release",
         "test": "cypress run",
         "test:open": "cypress open"
     }

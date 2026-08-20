@@ -103,7 +103,10 @@ pb-page[unresolved]~.splash {
 
 /* check should take the theming settings */
 .toolbar {
-    background-image: none;
+    background-image: var(--jinks-toolbar-background-image);
+    background-size: var(--jinks-toolbar-background-size);
+    background-position: var(--jinks-toolbar-background-position);
+    background-repeat: var(--jinks-toolbar-background-repeat);
     position: relative;
     width: 100%;
     background-color: var(--jinks-toolbar-background-color);
@@ -119,12 +122,15 @@ pb-page[unresolved]~.splash {
 .toolbar > ul:last-of-type {
     display: flex;
     align-items: center;
-    gap: 0;
+    column-gap: var(--s-1);
+    flex-wrap: wrap;
+    row-gap: var(--s-1);
 }
 
 .toolbar ul {
     padding-left: var(--s-2);
     padding-right: var(--s-2);
+    column-gap: var(--s-2);
 }
 
 .toolbar li {
@@ -135,10 +141,6 @@ pb-page[unresolved]~.splash {
 .toolbar > ul:last-of-type > li {
     padding-inline: 0;
     margin-inline: 0 !important;
-}
-
-.toolbar > ul:last-of-type > li + li {
-    margin-inline-start: var(--s-1) !important;
 }
 
 .toolbar [role="group"] {
@@ -192,6 +194,10 @@ a[role="button"] svg, .theme-toggle svg, .icon {
 
 .content-top:has(.toolbar) {
     background-color: var(--jinks-toolbar-background-color);
+    background-image: var(--jinks-toolbar-background-image);
+    background-size: var(--jinks-toolbar-background-size);
+    background-position: var(--jinks-toolbar-background-position);
+    background-repeat: var(--jinks-toolbar-background-repeat);
 }
 
 @media (max-width: 1024px) {
@@ -239,6 +245,7 @@ pb-document {
     background-repeat: no-repeat;
     background-position: top;
     background-color: var(--jinks-menubar-background-color);
+    border-bottom: var(--jinks-page-header-border-bottom);
 }
 
 /* hero covers 100% of the viewport height */

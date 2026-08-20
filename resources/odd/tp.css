@@ -116,7 +116,6 @@ Toggle styles for
 
 .tei-figure .figure-head {
     font-style: italic;
-    text-align: right;
 }
 
 .table-head {
@@ -204,7 +203,7 @@ ul.tei-person {
     content: ' – ';
 }
 
-.center {
+.align-center {
     text-align: center;
 }
 

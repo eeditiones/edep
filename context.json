@@ -277,7 +277,7 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-06-24T10:38:32.081+02:00",
+  "_lastModified" : "2026-08-20T09:33:20.268+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",
@@ -318,7 +318,7 @@
       "tex" : false
     },
     "jwt" : "2.0.1",
-    "roaster" : "1.11.0",
+    "roaster" : "1.12.1",
     "ports" : {
       "https" : 8443,
       "http" : 8080
@@ -331,6 +331,8 @@
   "category" : "workflow",
   "_overwrite" : "all",
   "defaults" : {
+    "language" : "en",
+    "language-label" : "label",
     "data" : "/db/apps/edep-data/data",
     "address-by-id" : false,
     "odd-root" : "resources/odd",
@@ -365,7 +367,7 @@
   },
   "script" : {
     "custom" : [ ],
-    "webcomponents" : "3.3.0",
+    "webcomponents" : "3.6.6",
     "extra-components" : [ ],
     "cdn" : "https://cdn.jsdelivr.net/npm/@teipublisher/pb-components"
   },

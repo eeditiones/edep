@@ -1,4 +1,4 @@
-<html>
+<html lang="[[page:resolve-language($context)]]">
     <head>
         [% if $context?defaults?base %]
         <base href="[[ $context-path ]]/[[ $context?defaults?base ]]"/>
@@ -30,7 +30,9 @@
         </style>
         [% block styles %][% endblock %]
 
+        [% block title %]
         <title>[[ $label ]]</title>
+        [% endblock %]
 
         [% if $script?webcomponents = 'dev' %]
         <script type="module" src="[[$script?cdn]]/src/pb-components-bundle.js"/>
@@ -121,10 +123,12 @@
                     </li>
                 </ul>
                 [% endif %]
+                <ul>[% block after-top %][% endblock %]</ul>
             </nav>
             <aside class="after hidden-mobile [[ if ($context?theme?layout?after?hidden) then 'hidden' else '' ]] [[ if ($context?theme?layout?after?mode = 'tabs') then 'after-tabs' else '' ]]">
                 [% block after %][% endblock %]
             </aside>
+            [% block footer %][% endblock %]
             [% if $context?theme?layout?footer?mobile?enabled %]
                 [% include 'templates/footer-mobile.html' %]
             [% endif %]

@@ -1154,7 +1154,8 @@ fx-var {
     display: none;
 }
 
-.hidden {
+/* Keep before-top/after-top visible when collapsed: they host the reopen (|->) toggle. */
+.hidden:not(.before-top):not(.after-top) {
     display: none;
 }
 

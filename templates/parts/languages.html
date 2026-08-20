@@ -15,7 +15,7 @@
         <fx-insert context="langUsage" ref="language" origin="instance('templates')/language"/>
     </fx-trigger>
 
-    <fx-repeat class="nested-repeat" ref="langUsage/language[not(note)][@ident!='']" id="r-language">
+    <fx-repeat class="nested-repeat" ref="langUsage/language[not(note)][not(@ident = '')]" id="r-language">
         <template>
             <fx-group>
                 <fx-control ref="@ident">

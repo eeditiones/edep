@@ -75,8 +75,12 @@ else if (matches($exist:path, "^.*/(resources|transform|templates)/.*$")
             </forward>
         </dispatch>
 
-(: other images are resolved against the data collection and also returned directly :)
-else if (matches($exist:resource, "\.(png|jpg|jpeg|gif|tif|tiff|txt|mei)$", "s")) then
+(: other images are resolved against the data collection and also returned directly.
+ : Skip /api/… — those must reach the OpenAPI router (e.g. /api/jinntap/assets/foo.png). :)
+else if (
+    matches($exist:resource, "\.(png|jpg|jpeg|gif|tif|tiff|txt|mei)$", "s")
+    and not(matches($exist:path, "^/+api/+"))
+) then
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/data/{$exist:path}"/>
     </dispatch>
@@ -84,8 +88,10 @@ else if (matches($exist:resource, "\.(png|jpg|jpeg|gif|tif|tiff|txt|mei)$", "s")
 (: all other requests are passed on the Open API router :)
 else
     let $main :=
-        if (matches($exist:path, "^/+api/+(?:odd|lint)")) then
-            "api-odd.xql"
+        if (matches($exist:path, "^/+api/+(?:odd|lint)")) then 
+            "api-odd.xql" 
+        else if (matches($exist:path, "^/+api/+actions/+fix-odds$")) then
+            "api-actions.xql"
         else if (matches($exist:path, "/+tex$") or matches($exist:path, "/+api/+(?:actions/reindex|actions/file-sync)$")) then
             "api-dba.xql"
         else

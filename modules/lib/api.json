@@ -1077,21 +1077,33 @@
 				}
 			}
 		},
-        "/api/document/{id}/md": {
+        "/api/document/{doc}/md": {
             "get": {
                 "summary": "Retrieve document content as markdown",
+                "description": "Returns the document (or an optional section identified by xml:id) transformed to markdown via ODD.",
                 "tags": [
                     "documents"
                 ],
                 "operationId": "dapi:markdown",
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "doc",
                         "in": "path",
                         "required": true,
+                        "description": "Path to the document relative to the data root",
                         "schema": {
                             "type": "string",
-                            "example": "test/F-rom.xml"
+                            "example": "doc/documentation.xml"
+                        },
+                        "allowReserved": true
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Optional xml:id of a section to export instead of the entire document",
+                        "schema": {
+                            "type": "string",
+                            "example": "templates-syntax"
                         }
                     },
                     {
@@ -1113,7 +1125,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Returns the entire document as markdown",
+                        "description": "Returns the document or section as markdown",
                         "content": {
                             "text/markdown": {
                                 "schema": {
@@ -1123,7 +1135,7 @@
                         }
                     },
                     "404": {
-                        "description": "Document not found",
+                        "description": "Document or section not found",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1622,6 +1634,26 @@
 							"default": false
 						},
 						"description": "should returned HTML be wrapped into a div?"
+					},
+					{
+						"name": "content",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"enum": ["full", "none"],
+							"default": "full"
+						},
+						"description": "set to `none` to skip the ODD transform and return navigation metadata only (no rendered content/footnotes). Used by pb-view when the fragment was already server-rendered into its light DOM (SSR), to avoid rendering the same content twice."
+					},
+					{
+						"name": "user.track-ids",
+						"in": "query",
+						"schema": {
+							"type": "string",
+							"default": "no",
+							"enum": ["yes", "no"]
+						},
+						"description": "passed by the annotation editor to track IDs in the HTML"
 					},
 					{
 						"name": "If-Modified-Since",
@@ -3050,7 +3082,7 @@
                 "x-constraints": {
                     "group": ["tei"]
                 },
-                
+
                 "requestBody": {
                     "content": {
                         "application/xml": {
@@ -3090,7 +3122,7 @@
                 "description": "Get the XML fragment for a given register entry. Used by the registry forms in the annotation editor.",
                 "tags": ["register"],
                 "operationId": "rapi:entry",
-                
+
                 "parameters": [
                     {
                         "name": "id",
@@ -3098,7 +3130,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "example": "gnd-139890289" 
+                            "example": "gnd-139890289"
                         }
                     },
                     {
@@ -3167,7 +3199,7 @@
                     }
                 }
             },
-        
+
             "put": {
                 "summary": "Save a register entry",
                 "description": "Replace an entry with the current version from the editor",
@@ -3176,7 +3208,7 @@
                 "x-constraints": {
                     "group": ["tei"]
                 },
-                
+
                 "requestBody": {
                     "content": {
                         "application/xml": {
@@ -3227,7 +3259,7 @@
                 "description": "Get the HTML fragment for a given register entry. May be used when retrieving e.g. registry content for popups asynchronously",
                 "tags": ["register"],
                 "operationId": "rapi:html",
-                
+
                 "parameters": [
                     {
                         "name": "id",
@@ -3235,7 +3267,7 @@
                         "required": true,
                         "schema": {
                             "type": "string",
-                            "example": "gnd-139890289" 
+                            "example": "gnd-139890289"
                         }
                     },
                     {
