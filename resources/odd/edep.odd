@@ -57,11 +57,21 @@
                         <model behaviour="block">
                             <param name="content" value="subsequence(title, 2)"/>
                         </model>
-                        <model behaviour="block">
-                            <param name="content" value="author"/>
+                        <model predicate="editor[normalize-space(.) != '']" behaviour="block">
+                            <param name="content" value="string-join(
+                                for $e in editor[normalize-space(.) != '']
+                                let $name := normalize-space(string($e))
+                                let $role := normalize-space(string($e/@role))
+                                return if ($role != '') then concat($name, ' (', $role, ')') else $name,
+                                ', '
+                            )"/>
                         </model>
                     </modelSequence>
                     <model output="web" behaviour="block"/>
+                </elementSpec>
+                <elementSpec ident="publicationStmt" mode="change">
+                    <model predicate="$parameters?display='browse'" behaviour="omit"/>
+                    <model behaviour="block"/>
                 </elementSpec>
             <elementSpec ident="TEI" mode="change">
                 <model predicate="$parameters?mode = 'breadcrumb'" behaviour="inline">
