@@ -44,6 +44,14 @@
                     </label>
                     <zotero-autocomplete class="widget" debounce="250" endpoint="{instance('vars')/appdir}/api/zotero/items/suggest" limit="8" minlength="2" wait-ready="true">
                     </zotero-autocomplete>
+                    <span class="form-hint-wrap">
+                        <button type="button" class="hint-trigger" aria-label="Help">
+                            <svg class="icon icon-info"><use href="#info-circle"/></svg>
+                        </button>
+                        <div class="form-hint" popover="manual" role="tooltip">
+                            <pb-i18n key="form.hint-reference"/>
+                        </div>
+                    </span>
                 </fx-control>
                 <fx-control ref="citedRange">
                     <label>

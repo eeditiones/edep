@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="resources/css/fore.css"/>
         <link rel="stylesheet" href="resources/css/edep-theme.css"/>
         <script src="resources/scripts/edep-hints.js"/>
+        <script src="resources/scripts/geo-autocomplete.js"/>
     </head>
 
     <body>
@@ -25,7 +26,7 @@
 
                 This will load data as necessary and just expects an `<place>` element as initial instance.
 
-                On selection of a value from the datalist the respective full record is fetched and displayed.
+                On selection of a place from the autocomplete list the respective full record is fetched and displayed.
             -->
             <fx-action event="model-construct-done">
                 <fx-send submission="s-load-places"/>
@@ -89,13 +90,8 @@
                         </span>
                     </label>
 
-                    <input list="place-list" class="widget"/>
-
-                    <datalist id="place-list" data-ref="instance('i-geodata')//place/placeName">
-                        <template>
-                            <option value="{../@xml:id}">{.}</option>
-                        </template>
-                    </datalist>
+                    <input class="widget" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="place-suggest-list"/>
+                    <ul id="place-suggest-list" class="geo-suggest-list" role="listbox" hidden="hidden"></ul>
                     <fx-action event="value-changed">
                         <!-- if we have a @corresp load the place and display it -->
                         <fx-action if="string-length(.) != 0">
