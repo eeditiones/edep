@@ -14,6 +14,10 @@
         <encodingDesc>
             <classDecl>
                 <taxonomy xml:id="inscription-type">
+                    <category corresp="edep-inscription-type-unbestimmt" ana="no-eagle-ref">
+                        <catDesc xml:lang="de"> unbestimmt</catDesc>
+                        <catDesc xml:lang="en"> unassigned</catDesc>
+                    </category>
                     <category corresp="https://www.eagle-network.eu/voc/typeins/lod/73">
                         <catDesc xml:lang="de">Akklamation</catDesc>
                         <catDesc xml:lang="en">acclamation</catDesc>
