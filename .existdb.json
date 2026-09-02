@@ -3,8 +3,8 @@
     "servers": {
         "localhost": {
             "server": "http://127.0.0.1:8080/exist",
-            "user": "admin",
-            "password": "",
+            "user": "edep",
+            "password": "edep",
             "root": "/apps/edep"
         }
     },

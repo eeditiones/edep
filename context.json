@@ -277,7 +277,7 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-08-21T13:00:22.795+02:00",
+  "_lastModified" : "2026-09-02T11:03:45.089+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",
@@ -366,7 +366,7 @@
     }
   },
   "script" : {
-    "custom" : [ ],
+    "custom" : [ "resources/scripts/edep-copy-id.js" ],
     "webcomponents" : "3.6.6",
     "extra-components" : [ ],
     "cdn" : "https://cdn.jsdelivr.net/npm/@teipublisher/pb-components"
