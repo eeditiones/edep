@@ -29,7 +29,7 @@
 
     <fx-model>
         <fx-action event="model-construct-done">
-            <fx-send submission="s-login"/>
+            <fx-send submission="s-login" if="instance('vars')/loggedin != 'true'"/>
             <!-- TODO: is this needed? The `if` is needed, otherwise a different endpoint may be called -->
             <fx-send submission="s-load" if="exists(instance('query')/id)"/>
         </fx-action>
@@ -72,7 +72,7 @@
         </fx-submission>
 
         <fx-instance id="login" type="json">{}</fx-instance>
-        <fx-submission id="s-login" ref="instance('login')?*" url="[[ $context-path ]]/api/login" method="post" replace="instance" instance="login" validate="false">
+        <fx-submission id="s-login" url="[[ $context-path ]]/api/login" method="post" replace="instance" instance="login" validate="false" serialization="application/x-www-form-urlencoded">
             <fx-setvalue ref="instance('vars')/loggedin" event="submit-error">false</fx-setvalue>
             <fx-setvalue ref="instance('vars')/loggedin" event="submit-done">true</fx-setvalue>
         </fx-submission>
@@ -198,7 +198,6 @@
                 <span><pb-i18n key="form.save">Save</pb-i18n></span>
             </button>
             <fx-action>
-                <fx-send submission="s-login"/>
                 <fx-send submission="s-save"/>
             </fx-action>
         </fx-trigger>
