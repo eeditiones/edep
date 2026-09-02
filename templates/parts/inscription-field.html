@@ -39,7 +39,7 @@
                             <svg class="icon icon-add"><use href="#plus-circle"/></svg>
                         </span>
                         <div class="form-hint" popover="manual" role="tooltip">
-                            <pb-i18n key="form.hint-add-language"/>
+                            <pb-i18n key="form.hint-letter-size"/>
                         </div>
                     </span>
                     <fx-insert context="." ref="handNote" origin="instance('templates')/handNote[@scope='letterHeight']"/>
@@ -47,8 +47,8 @@
 
                 <fx-repeat class="nested-repeat" ref="handNote[@scope='letterHeight']" id="r-letterHeight">
                     <template>
-                        <fx-group>
-                            <fx-group class="form-row">                             
+                        <fx-group class="letter-height-entry">
+                            <section class="letter-height-metrics">
                                 <fx-control ref="locus">
                                     <label>
                                         <pb-i18n key="form.line"/>
@@ -56,7 +56,7 @@
                                 </fx-control>
 
                                 <fx-group ref="dimensions">
-                                    <fx-group ref="height">
+                                    <fx-group ref="height" class="letter-height-bounds">
                                         <fx-control ref="@min" create="create" class="measurement">
                                             <label>
                                                 <pb-i18n key="form.letter-size-min"/>
@@ -70,8 +70,8 @@
                                         </fx-control>
                                     </fx-group>
                                 </fx-group>
-                            </fx-group>
-                            <fx-group ref="dimensions">
+                            </section>
+                            <fx-group ref="dimensions" class="letter-height-free">
                                 <fx-control ref="height">
                                     <label>
                                         <pb-i18n key="form.letter-size-free"/>
@@ -79,7 +79,6 @@
                                     <textarea class="widget"/>
                                 </fx-control>
                             </fx-group>
-
                         </fx-group>
 
                         <fx-trigger tabindex="">
@@ -88,7 +87,7 @@
                                     <svg class="icon icon-remove"><use href="#dash-circle"/></svg>
                                 </span>
                                 <div class="form-hint" popover="manual" role="tooltip">
-                                    <pb-i18n key="form.hint-delete"/>
+                                    <pb-i18n key="form.hint-delete-letter-size"/>
                                 </div>
                             </span>
                             <fx-delete ref="."/>
