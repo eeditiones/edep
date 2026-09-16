@@ -156,7 +156,7 @@
 
     --jinks-font-size-smaller: 0.875rem;
     --jinks-footnote-font-size: 0.9em;
-    --jinks-footnote-padding: 0 0 0 .25em;
+    --jinks-footnote-padding: 0 0 0 .25em ;
 
     --jinks-content-max-width: 70ch;
     --jinks-page-max-width: 84rem;
@@ -266,13 +266,13 @@
     --pb-footnote-font-family: var(--jinks-content-font-family);
     --pb-footnote-font-weight: var(--jinks-content-font-weight);
     /* --pb-footnote-color: #303030; */
-    --pb-footnote-padding: 0 0 0 .25em;
+    --pb-footnote-padding: var(--jinks-footnote-padding);
 
     /* pb-popover */
     --pb-popover-theme: "light-border";
     --pb-popover-max-width: 480px;
     --pb-popover-font-size: 16px;
-    --pb-popover-line-height: 1.2;
+    --pb-popover-line-height: 1.5;
     --pb-popover-placement: "bottom";
     --pb-popover-fallback-placement: "top right left";
 

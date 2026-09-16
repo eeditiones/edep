@@ -1,10 +1,10 @@
 {
     "name": "edep",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "edep",
     "license": "GPL-3.0",
     "dependencies": {
-        "@teipublisher/pb-components": "^3.6.6",
+        "@teipublisher/pb-components": "^3.6.8",
         "@jinntec/fore": "^2.8.0",
         "@picocss/pico": "^2.1.1"
     },

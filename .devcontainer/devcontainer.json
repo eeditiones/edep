@@ -5,7 +5,7 @@
         "args": {
             "HTTP_PORT": "8080",
             "HTTPS_PORT": "8443",
-            "PUBLISHER_LIB_VERSION": "6.1.0",
+            "PUBLISHER_LIB_VERSION": "6.1.2",
             "JINKS_TEMPLATES_VERSION": "1.4.1",
             "ROUTER_VERSION": "1.12.1",
             "EXIST_VERSION": "6.4.0",

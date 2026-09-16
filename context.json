@@ -35,11 +35,11 @@
   "_noDeploy" : false,
   "profile-versions" : {
     "docker" : "1.0.0",
-    "base10" : "1.0.0",
+    "base10" : "1.1.0",
     "edep-editor" : "1.0.0",
-    "theme-base10" : "1.0.0",
+    "theme-base10" : "1.1.0",
     "upload" : "1.0.0",
-    "registers" : "1.0.0",
+    "registers" : "1.1.0",
     "forms" : "1.0.0"
   },
   "depends" : [ "base10", "registers", "upload", "forms" ],
@@ -152,7 +152,8 @@
         "size" : "14px"
       },
       "footnote" : {
-        "size" : "0.9em"
+        "size" : "0.9em",
+        "padding" : "0 0 0 .25em"
       },
       "base" : {
         "family" : "'Inter', 'Noto', sans-serif",
@@ -277,13 +278,13 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-09-02T11:03:45.089+02:00",
+  "_lastModified" : "2026-09-16T11:03:37.528+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",
     "abbrev" : "edep",
     "author" : "Wolfgang Meier et al.",
-    "version" : "1.0.0",
+    "version" : "1.1.0",
     "dependencies" : [ {
       "semver" : "1",
       "package" : "http://e-editiones.org/roaster"
@@ -324,7 +325,7 @@
       "http" : 8080
     },
     "crypto" : "6.0.1",
-    "tei-publisher-lib" : "6.1.0",
+    "tei-publisher-lib" : "6.1.2",
     "ant" : "1.10.15",
     "jinks-templates" : "1.4.1"
   },
@@ -367,7 +368,7 @@
   },
   "script" : {
     "custom" : [ "resources/scripts/edep-copy-id.js" ],
-    "webcomponents" : "3.6.6",
+    "webcomponents" : "3.6.8",
     "extra-components" : [ ],
     "cdn" : "https://cdn.jsdelivr.net/npm/@teipublisher/pb-components"
   },

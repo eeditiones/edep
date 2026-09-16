@@ -1,0 +1,8 @@
+{
+    "xml.fileAssociations": [
+        {
+            "pattern": "**/*.odd",
+            "systemId": "/Users/wolfgang/.cursor/extensions/e-editiones.oddity-0.5.0-universal/schemas/teipublisher_odds.xsd"
+        }
+    ]
+}
