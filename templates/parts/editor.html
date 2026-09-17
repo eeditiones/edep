@@ -24,17 +24,6 @@
             <label>
                 <pb-i18n key="form.author-epigraphic-edition">Author(s)</pb-i18n>
             </label>
-            <fx-trigger class="add">
-                                <span class="form-hint-wrap">
-                    <span class="hint-trigger hint-trigger--passive" tabindex="0" role="button" aria-label="Help">
-                        <svg class="icon icon-add"><use href="#plus-circle"/></svg>
-                    </span>
-                    <div class="form-hint" popover="manual" role="tooltip">
-                        <pb-i18n key="form.hint-add-editor"/>
-                    </div>
-                </span>
-                <fx-insert context="fileDesc/titleStmt" ref="editor" origin="instance('templates')/editor"/>
-            </fx-trigger>
         </legend>
 
         <fx-repeat class="nested-repeat" ref="fileDesc/titleStmt/editor" id="r-editor">
@@ -71,5 +60,16 @@
                 </fx-trigger>
             </template>
         </fx-repeat>
+        <fx-trigger class="add">
+                                <span class="form-hint-wrap">
+                    <span class="hint-trigger hint-trigger--passive" tabindex="0" role="button" aria-label="Help">
+                        <svg class="icon icon-add"><use href="#plus-circle"/></svg>
+                    </span>
+                    <div class="form-hint" popover="manual" role="tooltip">
+                        <pb-i18n key="form.hint-add-editor"/>
+                    </div>
+                </span>
+                <fx-insert context="fileDesc/titleStmt" ref="editor" origin="instance('templates')/editor"/>
+            </fx-trigger>
     </fieldset>  
 </details>

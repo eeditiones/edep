@@ -19,19 +19,7 @@
         </label>
     </fx-output>
     <fieldset id="idnos">
-        <legend>Identifier
-            <fx-trigger class="add">
-                <span class="form-hint-wrap">
-                    <span class="hint-trigger hint-trigger--passive" tabindex="0" role="button" aria-label="Help">
-                        <svg class="icon icon-add"><use href="#plus-circle"/></svg>
-                    </span>
-                    <div class="form-hint" popover="manual" role="tooltip">
-                        <pb-i18n key="form.hint-add-idno"/>
-                    </div>
-                </span>
-                <fx-insert context="." ref="idno" origin="instance('templates')/idno"/>
-            </fx-trigger>
-        </legend>
+        <legend>Identifier</legend>
         <fx-repeat ref="idno[not(@type = ('EDEp', 'inventory'))]" class="idno-repeat">
             <template>
                 <fx-control ref="@type">
@@ -62,6 +50,17 @@
                 </fx-trigger>
             </template>
         </fx-repeat>
+        <fx-trigger class="add">
+            <span class="form-hint-wrap">
+                <span class="hint-trigger hint-trigger--passive" tabindex="0" role="button" aria-label="Help">
+                    <svg class="icon icon-add"><use href="#plus-circle"/></svg>
+                </span>
+                <div class="form-hint" popover="manual" role="tooltip">
+                    <pb-i18n key="form.hint-add-idno"/>
+                </div>
+            </span>
+            <fx-insert context="." ref="idno" origin="instance('templates')/idno"/>
+        </fx-trigger>
     </fieldset>
 
 

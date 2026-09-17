@@ -33,18 +33,6 @@
         <fx-group ref="physDesc">
             <fx-group ref="handDesc">
 
-                <fx-trigger class="add">
-                                        <span class="form-hint-wrap">
-                        <span class="hint-trigger hint-trigger--passive" tabindex="0" role="button" aria-label="Help">
-                            <svg class="icon icon-add"><use href="#plus-circle"/></svg>
-                        </span>
-                        <div class="form-hint" popover="manual" role="tooltip">
-                            <pb-i18n key="form.hint-letter-size"/>
-                        </div>
-                    </span>
-                    <fx-insert context="." ref="handNote" origin="instance('templates')/handNote[@scope='letterHeight']"/>
-                </fx-trigger>
-
                 <fx-repeat class="nested-repeat" ref="handNote[@scope='letterHeight']" id="r-letterHeight">
                     <template>
                         <fx-group class="letter-height-entry">
@@ -94,6 +82,17 @@
                         </fx-trigger>
                     </template>
                 </fx-repeat>
+                <fx-trigger class="add">
+                                        <span class="form-hint-wrap">
+                        <span class="hint-trigger hint-trigger--passive" tabindex="0" role="button" aria-label="Help">
+                            <svg class="icon icon-add"><use href="#plus-circle"/></svg>
+                        </span>
+                        <div class="form-hint" popover="manual" role="tooltip">
+                            <pb-i18n key="form.hint-letter-size"/>
+                        </div>
+                    </span>
+                    <fx-insert context="." ref="handNote" origin="instance('templates')/handNote[@scope='letterHeight']"/>
+                </fx-trigger>
             </fx-group>
         </fx-group>
     </fieldset>
