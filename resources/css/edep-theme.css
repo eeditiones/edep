@@ -360,6 +360,37 @@ fx-control.editor[relevant] {
     line-height: 1.2;
 }
 
+/* Unify Save / New / Sync / Preview: cream resting state, red hover with light label.
+   Anchors need an explicit hover (button:hover does not match them). Preview is a
+   button.btn and must keep readable light text over the red hover background.
+   !important on link color beats `.toolbar a { color: … !important }` from base.css. */
+nav.toolbar > ul.hidden-mobile > li a.btn,
+nav.toolbar > ul.hidden-mobile > li fx-trigger > button,
+nav.toolbar > ul.hidden-mobile > li pb-restricted fx-trigger > button {
+    background-color: var(--jinks-form-background-color, #FEFEF9);
+    color: var(--jinks-colors-700, #2B0205);
+}
+
+nav.toolbar > ul.hidden-mobile > li a.btn:hover,
+nav.toolbar > ul.hidden-mobile > li a.btn:focus-visible,
+nav.toolbar > ul.hidden-mobile > li fx-trigger > button:hover,
+nav.toolbar > ul.hidden-mobile > li fx-trigger > button:focus-visible,
+nav.toolbar > ul.hidden-mobile > li pb-restricted fx-trigger > button:hover,
+nav.toolbar > ul.hidden-mobile > li pb-restricted fx-trigger > button:focus-visible {
+    background-color: var(--jinks-form-hover-color, var(--jinks-colors-500));
+    color: var(--jinks-colors-light, #FCFCF8) !important;
+}
+
+nav.toolbar > ul.hidden-mobile > li a.btn:hover svg,
+nav.toolbar > ul.hidden-mobile > li a.btn:focus-visible svg,
+nav.toolbar > ul.hidden-mobile > li fx-trigger > button:hover svg,
+nav.toolbar > ul.hidden-mobile > li fx-trigger > button:focus-visible svg,
+nav.toolbar > ul.hidden-mobile > li pb-restricted fx-trigger > button:hover svg,
+nav.toolbar > ul.hidden-mobile > li pb-restricted fx-trigger > button:focus-visible svg {
+    color: inherit;
+    fill: currentColor;
+}
+
 /* --- Tooltips/hints --------------------------------------------------------- */
 fx-control fx-hint {
     display: inline-block;
@@ -395,6 +426,11 @@ fx-control .icon:hover ~ fx-hint {
     position: relative;
 }
 
+main details > summary > h2 > .form-hint-wrap,
+fx-group.outer-group > h2 > .form-hint-wrap {
+    margin-left: 0.35rem;
+}
+
 .hint-trigger {
     display: inline-flex;
     align-items: center;
@@ -425,6 +461,10 @@ fx-control .icon:hover ~ fx-hint {
     box-shadow: 0 3px 10px rgba(0,0,0,0.12);
     background: var(--jinks-background-color-dark, #2D2B26);
     color: var(--jinks-colors-light, #FCFCF8);
+    font-family: var(--jinks-base-font-family, 'Inter', sans-serif);
+    font-weight: var(--jinks-base-font-weight, 400);
+    font-variant: normal;
+    letter-spacing: normal;
     font-size: 0.8rem;
     width: min(22vw, 28rem);
     max-width: min(22vw, 28rem);
@@ -1079,13 +1119,47 @@ fx-group.form-row fx-control > input[type="radio"].widget {
 }
 
 /* --- XML / EpiDoc editors --------------------------------------------------- */
+.transcription-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    margin-bottom: 0.35rem;
+}
+
+.transcription-heading h4 {
+    margin: 0;
+}
+
+.leiden-open-btn {
+    font-family: var(--jinks-base-font-family, 'Inter', sans-serif);
+    font-size: 0.82rem;
+    line-height: 1.3;
+    color: var(--jinks-colors-700, #3f3c34);
+    background: var(--jinks-form-background-color, #FEFEF9);
+    border: 1px solid var(--edep-editor-border-color, #CFCDC5);
+    border-radius: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.leiden-open-btn:hover {
+    border-color: var(--jinks-colors-500, #6f6b5d);
+}
+
 jinn-xml-editor,
 jinn-epidoc-editor {
+    display: block;
+    width: 100%;
     font-size: 16px;
     overflow: hidden;
     border: 1px solid var(--edep-editor-border-color, #CFCDC5);
     border-radius: 0.5rem;
     background: var(--jinks-form-background-color, #FEFEF9);
+    white-space: normal;
+    line-height: normal;
+    vertical-align: top;
 }
 
 jinn-epidoc-editor [slot="leiden-header"],
