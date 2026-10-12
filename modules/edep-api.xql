@@ -274,8 +274,13 @@ declare function edep:render($request as map(*)) {
                 $request?body//tei:div[@type="edition"]
             default return
                 $request?body
+    let $lang := normalize-space(request:get-parameter("language", ""))
+    let $parameters := map:merge((
+        map { "root": $xml, "webcomponents": 7 },
+        if ($lang = "") then () else map { "language": $lang }
+    ))
     return
-        $pm-config:web-transform(edep:clean-namespace($xml), map { "root": $xml, "webcomponents": 7 }, $config:default-odd)
+        $pm-config:web-transform(edep:clean-namespace($xml), $parameters, $config:default-odd)
 };
 
 declare %private function edep:clean($nodes as node()*, $edepId as xs:string?, $removeRedundant as xs:boolean?) {

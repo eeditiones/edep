@@ -28,4 +28,11 @@
     <output mode="tei" odd="docx">
         <module uri="http://www.tei-c.org/tei-simple/xquery/functions/docx" prefix="ext-docx"/>
     </output>
+    <output mode="web" odd="edep-display">
+        <!-- Database URI: a relative at= is resolved from modules/lib during fix-odds and misses this file. -->
+        <module uri="http://e-editiones.org/edep/sheet" prefix="sheet" at="xmldb:exist:///db/apps/edep/modules/sheet.xqm"/>
+    </output>
+    <output mode="print" odd="edep-display">
+        <module uri="http://e-editiones.org/edep/sheet" prefix="sheet" at="xmldb:exist:///db/apps/edep/modules/sheet.xqm"/>
+    </output>
 </modules>

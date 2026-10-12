@@ -39,13 +39,13 @@ declare variable $config:data-exclude := (
 );
 
 declare variable $config:odd-root := $config:app-root || "/resources/odd";
-declare variable $config:default-odd := "edep.odd";
+declare variable $config:default-odd := "edep-display.odd";
 declare variable $config:odd-internal := 
     (  );
 
 declare variable $config:odd-available :=
 
-( "teipublisher.odd", "edep-clean.odd", "edep.odd" )
+( "teipublisher.odd", "edep-clean.odd", "edep.odd", "edep-display.odd" )
 ;
 
 declare variable $config:odd-media := ("web", "print", "epub");
@@ -96,8 +96,16 @@ declare variable $config:context-path :=
  : Use the JSON configuration to determine which configuration applies for which collection
  :)
 declare function config:collection-config($collection as xs:string?, $docUri as xs:string?) {
-    
-    (: No special overrides apply. Return the default in all cases:)
+    if ($collection = "workspace" or starts-with($docUri, "workspace/")) then
+        map {
+            "odd": "edep-display.odd",
+            "view": "single"
+        }
+    else if ($collection = "demo" or starts-with($docUri, "demo/")) then
+        map {
+            "odd": "edep-display.odd",
+            "view": "single"
+        }
+    else
         ()
-    
 };

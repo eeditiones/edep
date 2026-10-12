@@ -1,0 +1,215 @@
+@import url("edep.css");
+
+/* Transcription rules from edep.css, kept here so the edition still
+   renders if the import does not resolve next to this file. */
+.choice-alternate {
+    display: none;
+}
+
+.choice-alternate.toggle {
+    display: inline;
+}
+
+.choice.toggle {
+    display: none;
+}
+
+.number-lb {
+    position: absolute;
+    font-style: normal;
+    font-size: 80%;
+    color: #838383;
+    text-align: right;
+    font-weight: bold;
+    left: -2.75em;
+    width: 2em;
+    padding-top: 0.5%;
+}
+
+.norm {
+    text-transform: uppercase;
+}
+
+.inscription-title:empty {
+    display: none;
+}
+
+.inscription-section {
+    display: grid;
+    grid-template-columns: minmax(9rem, 14rem) minmax(0, 1fr);
+    column-gap: 1.5rem;
+    align-items: start;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--jinks-colors-200, #e4e0d4);
+}
+
+.inscription-category {
+    font-weight: 700;
+}
+
+.inscription-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.inscription-field {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.5rem;
+    align-items: baseline;
+}
+
+.inscription-label {
+    font-weight: 600;
+}
+
+.inscription-label::after {
+    content: ":";
+}
+
+.inscription-label-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: baseline;
+}
+
+.inscription-value {
+    min-width: 0;
+}
+
+.inscription-value:empty {
+    display: none;
+}
+
+.inscription-field:has(> .inscription-value:empty) {
+    display: none;
+}
+
+.inscription-zotero:empty,
+.inscription-cited-range:empty {
+    display: none;
+}
+
+.inscription-zotero:not(:empty) + .inscription-cited-range:not(:empty)::before {
+    content: ", ";
+}
+
+.inscription-zotero .csl-bib-body {
+    display: inline;
+    padding-left: 0 !important;
+    text-indent: 0 !important;
+    line-height: inherit;
+}
+
+.inscription-zotero .csl-entry {
+    display: inline;
+}
+
+.inscription-editor + .inscription-editor::before {
+    content: "; ";
+}
+
+.inscription-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin-bottom: 0.45rem;
+}
+
+.inscription-field:has(> .inscription-value > .inscription-entry) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.15rem;
+}
+
+.inscription-entry:has(.inscription-zotero) {
+    position: relative;
+    display: block;
+    padding-left: 1.15em;
+    margin: 0 0 0.55rem;
+}
+
+.inscription-entry:has(.inscription-zotero)::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+}
+
+.inscription-edition {
+    position: relative;
+    padding-left: 3em;
+}
+
+.inscription-view-toggle {
+    font: inherit;
+    font-size: 0.85em;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--pb-link-color, var(--jinks-colors-accent, #E30613));
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    cursor: pointer;
+}
+
+.inscription .when-diplomatic {
+    display: none;
+}
+
+.inscription.diplomatic .when-normalized {
+    display: none;
+}
+
+.inscription.diplomatic .when-diplomatic {
+    display: inline;
+}
+
+.inscription.diplomatic .choice {
+    display: none;
+}
+
+.inscription.diplomatic .choice-alternate {
+    display: inline;
+}
+
+/* Diplomatic transcription: capitals, only what was carved.
+   Expansions, restorations, unresolved-abbreviation markers and
+   editorial line-break hyphens are not on the stone. */
+.inscription.diplomatic .inscription-edition {
+    text-transform: uppercase;
+}
+
+.inscription.diplomatic .inscription-edition .tei-ex,
+.inscription.diplomatic .inscription-edition .tei-supplied,
+.inscription.diplomatic .inscription-edition .abbr-unresolved,
+.inscription.diplomatic .inscription-edition span.tei-lb {
+    display: none;
+}
+
+/* A lacuna that continues into a restoration omits its closing bracket.
+   The restoration is hidden, so put the bracket back on the gap. */
+.inscription.diplomatic .inscription-edition .tei-gap:has(+ .tei-supplied)::after {
+    content: "]";
+}
+
+@media (max-width: 40rem) {
+    .inscription-section {
+        grid-template-columns: 1fr;
+        row-gap: 0.25rem;
+    }
+}
+
+/* The transcription ODD writes Leiden marks into the text: (ex), [supplied].
+   tp.css repeats them with ::before/::after, and also appends [?] after unclear.
+   The editor preview does not load this sheet, so it shows the text once. */
+.tei-ex::before,
+.tei-ex::after,
+.tei-supplied::before,
+.tei-supplied::after,
+.tei-sic.sic::before,
+.tei-sic.sic::after,
+.tei-unclear::after {
+    content: none;
+}

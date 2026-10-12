@@ -28,9 +28,9 @@
   "profiles" : [ "base10", "theme-base10", "registers", "docker", "edep-editor", "forms", "upload" ],
   "shortname" : "register",
   "label" : "edep",
+  "editable" : [ "^collection\\.xconf$", "^index\\.xql$", "^modules/navigation[^/]*\\.xql$", "^modules/query[^/]*\\.xql$", "^modules/facets-config\\.xql$" ],
   "version" : "1.0.0",
   "id" : "https://e-editiones.org/apps/edep",
-  "_update" : true,
   "styles" : [ "https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/classic.min.css", "resources/css/pico-components.css", "resources/css/jinks-theme.css", "https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" ],
   "_noDeploy" : false,
   "profile-versions" : {
@@ -278,7 +278,7 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-09-16T11:09:34.725+02:00",
+  "_lastModified" : "2026-10-01T10:41:26.828+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",
@@ -309,7 +309,7 @@
   "source" : "/db/apps/jinks/profiles/upload",
   "type" : "feature",
   "skip" : [ "^doc/.*$", "setup.xql", "config.json" ],
-  "odds" : [ "teipublisher.odd", "edep-clean.odd", "edep.odd" ],
+  "odds" : [ "teipublisher.odd", "edep-clean.odd", "edep.odd", "edep-display.odd" ],
   "docker" : {
     "eXist" : "6.4.0",
     "features" : {
@@ -345,7 +345,7 @@
     "search" : "div",
     "view" : "div",
     "data-exclude" : [ "doc($config:data-root || '/taxonomy.xml')//tei:text", "collection($config:register-root)//tei:text" ],
-    "odd" : "edep.odd",
+    "odd" : "edep-display.odd",
     "pagination" : {
       "fill" : 5,
       "depth" : 10
@@ -367,13 +367,20 @@
     }
   },
   "script" : {
-    "custom" : [ "resources/scripts/edep-copy-id.js" ],
+    "custom" : [ "resources/scripts/edep-copy-id.js", "resources/scripts/inscription-display.js" ],
     "webcomponents" : "3.6.8",
     "extra-components" : [ ],
     "cdn" : "https://cdn.jsdelivr.net/npm/@teipublisher/pb-components"
   },
   "order" : 11,
   "$schema" : "../../schema/jinks.json",
+  "collection-config" : {
+    "workspace" : {
+      "view" : "single",
+      "odd" : "edep-display.odd"
+    }
+  },
+  "_update" : true,
   "i18n" : [ "registers" ],
   "api" : [ {
     "spec" : "registers-api.json",

@@ -8,7 +8,22 @@
     "data": "/db/apps/edep-data/data",
     "data-default": "",
     "languages": [ "en", "de" ],
-    "browse": "browse-custom.html"
+    "browse": "browse-custom.html",
+    "odd": "edep-display.odd"
+  },
+  "odds": ["teipublisher.odd", "edep-clean.odd", "edep.odd", "edep-display.odd"],
+  "collection-config": {
+    "workspace": {
+      "odd": "edep-display.odd",
+      "view": "single"
+    },
+    "demo": {
+        "odd": "edep-display.odd",
+        "view": "single"
+    }
+  },
+  "script": {
+    "custom": ["resources/scripts/inscription-display.js"]
   },
   "theme" : {
     "colors" : {
