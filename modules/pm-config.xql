@@ -17,7 +17,7 @@ declare variable $pm-config:web-transform := function($xml as node()*, $paramete
     case "edep.odd" return pm-edep-web:transform($xml, $parameters)
 case "edep-display.odd" return pm-edep-display-web:transform($xml, $parameters)
 case "teipublisher.odd" return pm-teipublisher-web:transform($xml, $parameters)
-    default return pm-edep-display-web:transform($xml, $parameters)
+    default return pm-edep-web:transform($xml, $parameters)
             
 
 };
@@ -29,7 +29,7 @@ declare variable $pm-config:print-transform := function($xml as node()*, $parame
     case "edep.odd" return pm-edep-print:transform($xml, $parameters)
 case "edep-display.odd" return pm-edep-display-print:transform($xml, $parameters)
 case "teipublisher.odd" return pm-teipublisher-print:transform($xml, $parameters)
-    default return pm-edep-display-print:transform($xml, $parameters)
+    default return pm-edep-print:transform($xml, $parameters)
             
 
 };

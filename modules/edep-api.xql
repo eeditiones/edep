@@ -275,12 +275,13 @@ declare function edep:render($request as map(*)) {
             default return
                 $request?body
     let $lang := normalize-space(request:get-parameter("language", ""))
+    (: A transcription preview transforms the edition. Root stays the whole document. :)
     let $parameters := map:merge((
-        map { "root": $xml, "webcomponents": 7 },
+        map { "root": $request?body, "webcomponents": 7 },
         if ($lang = "") then () else map { "language": $lang }
     ))
     return
-        $pm-config:web-transform(edep:clean-namespace($xml), $parameters, $config:default-odd)
+        $pm-config:web-transform(edep:clean-namespace($xml), $parameters, "edep-display.odd")
 };
 
 declare %private function edep:clean($nodes as node()*, $edepId as xs:string?, $removeRedundant as xs:boolean?) {

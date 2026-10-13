@@ -261,7 +261,7 @@
     },
     "forms" : {
       "fore" : {
-        "version" : "3.1.1",
+        "version" : "2.9.0",
         "cdn" : "https://cdn.jsdelivr.net/npm/@jinntec/fore"
       }
     }
@@ -278,7 +278,7 @@
       "enable" : true
     }
   },
-  "_lastModified" : "2026-10-01T10:41:26.828+02:00",
+  "_lastModified" : "2026-10-12T18:37:50.627+02:00",
   "overwrite" : "default",
   "pkg" : {
     "website" : "http://tei-publisher.org",
@@ -293,9 +293,8 @@
       "package" : "http://existsolutions.com/apps/tei-publisher-lib",
       "semver-max" : "6"
     }, {
-      "semver-min" : "1.4.2",
-      "package" : "http://tei-publisher.com/library/jinks-templates",
-      "semver-max" : "1"
+      "semver" : "1",
+      "package" : "http://tei-publisher.com/library/jinks-templates"
     } ],
     "permissions" : "rw-r--r--",
     "user" : {
@@ -345,7 +344,7 @@
     "search" : "div",
     "view" : "div",
     "data-exclude" : [ "doc($config:data-root || '/taxonomy.xml')//tei:text", "collection($config:register-root)//tei:text" ],
-    "odd" : "edep-display.odd",
+    "odd" : "edep.odd",
     "pagination" : {
       "fill" : 5,
       "depth" : 10
@@ -366,6 +365,9 @@
       }
     }
   },
+  "urls" : {
+    "ignore" : "odd"
+  },
   "script" : {
     "custom" : [ "resources/scripts/edep-copy-id.js", "resources/scripts/inscription-display.js" ],
     "webcomponents" : "3.6.8",
@@ -375,9 +377,13 @@
   "order" : 11,
   "$schema" : "../../schema/jinks.json",
   "collection-config" : {
+    "demo" : {
+      "view" : "single",
+      "template" : "inscription.html"
+    },
     "workspace" : {
       "view" : "single",
-      "odd" : "edep-display.odd"
+      "template" : "inscription.html"
     }
   },
   "_update" : true,

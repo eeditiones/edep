@@ -25,13 +25,16 @@
         <body>
             <schemaSpec start="TEI teiCorpus" ident="edep-display" source="edep.odd">
                 <elementSpec ident="TEI" mode="change">
+                    <model predicate="$parameters?mode='title'" behaviour="text">
+                        <param name="content" value="teiHeader/fileDesc/titleStmt/title[not(@type)][normalize-space(.)][1]"/>
+                    </model>
                     <model predicate="$parameters?mode = 'breadcrumb'" behaviour="inline">
                         <param name="content" value="(teiHeader/fileDesc/titleStmt/title[not(@type)][normalize-space(.)], text/body/div[@xml:lang = 'en']//head[1])[1]"/>
                     </model>
                     <model predicate="@type='about'" behaviour="inline">
                         <param name="content" value="let $raw := normalize-space(string($parameters?language)) let $lang := if ($raw = '' or not(matches($raw, '^(de|en)(-|$)'))) then 'en' else tokenize($raw, '-')[1] return text/body/div[starts-with(@xml:lang, $lang)]"/>
                     </model>
-                    <modelSequence output="web" predicate="sheet:on($parameters)">
+                    <modelSequence output="web">
                         <desc>Inscription sheet. Each section is a template; the fields it contains are rendered by the element specifications below. mode=change replaces the models inherited from edep.odd, so breadcrumb and about are repeated above and document remains the fallback.</desc>
                         <model predicate="teiHeader/fileDesc/titleStmt/title[not(@type)][normalize-space(.)]" behaviour="pass-through">
                             <param name="title" value="sheet:plain(teiHeader/fileDesc/titleStmt/title[not(@type)][1])"/>
@@ -104,11 +107,11 @@
                 </elementSpec>
 
                 <elementSpec ident="idno" mode="change">
-                    <model output="web" predicate="sheet:on($parameters) and @type=('EDEp','TM')" behaviour="pass-through">
+                    <model output="web" predicate="@type=('EDEp','TM')" behaviour="pass-through">
                         <param name="value" value="sheet:plain(.)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-value">[[value]]</div></pb:template>
                     </model>
-                    <model output="web" predicate="sheet:on($parameters) and @type='inventory'" behaviour="pass-through">
+                    <model output="web" predicate="@type='inventory'" behaviour="pass-through">
                         <param name="value" value="sheet:plain(.)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.repository-number">Inv.-Nummer</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
@@ -121,7 +124,7 @@
                     <model behaviour="inline"/>
                 </elementSpec>
                 <elementSpec ident="origPlace" mode="add">
-                    <model output="web" predicate="sheet:on($parameters)" behaviour="pass-through">
+                    <model output="web" behaviour="pass-through">
                         <param name="geoid" value="sheet:plain(@corresp)"/>
                         <param name="ancient" value="sheet:place-name(@corresp, 'ancient')"/>
                         <param name="modern" value="sheet:place-name(@corresp, 'modern')"/>
@@ -130,19 +133,19 @@
                     </model>
                 </elementSpec>
                 <elementSpec ident="provenance" mode="add">
-                    <model output="web" predicate="sheet:on($parameters) and @type='found'" behaviour="pass-through">
+                    <model output="web" predicate="@type='found'" behaviour="pass-through">
                         <param name="details" value="note[@type='context']/node()"/>
                         <param name="when" value="sheet:plain(@when)"/>
                         <param name="context" value="note[@type='found-date']/node()"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="display.findspot-details">Nähere Informationen zu Fundort und Fundstelle</pb-i18n></span><div class="inscription-value">[[details]]</div></div><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.date">Zeitpunkt</pb-i18n></span><div class="inscription-value">[[when]]</div></div><div class="inscription-field"><span class="inscription-label"><pb-i18n key="display.found-context">Fundkontext</pb-i18n></span><div class="inscription-value">[[context]]</div></div></pb:template>
                     </model>
-                    <model output="web" predicate="sheet:on($parameters) and @type='history'" behaviour="pass-through">
+                    <model output="web" predicate="@type='history'" behaviour="pass-through">
                         <param name="content" value="node()"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.other-events">Informationen zur Objektgeschichte</pb-i18n></span><div class="inscription-value">[[content]]</div></div></pb:template>
                     </model>
                 </elementSpec>
                 <elementSpec ident="respStmt" mode="add">
-                    <model output="web" predicate="sheet:on($parameters)" behaviour="pass-through">
+                    <model output="web" behaviour="pass-through">
                         <param name="basis" value="sheet:label($parameters, 'verification.xml', 'id', resp)"/>
                         <param name="date" value="sheet:plain(resp/@when)"/>
                         <param name="who" value="sheet:plain(persName)"/>
@@ -150,79 +153,79 @@
                     </model>
                 </elementSpec>
                 <elementSpec ident="decoNote" mode="add">
-                    <model output="web" predicate="sheet:on($parameters)" behaviour="pass-through">
+                    <model output="web" behaviour="pass-through">
                         <param name="decoration" value="sheet:label($parameters, 'decor.xml', 'corresp', @corresp)"/>
                         <param name="description" value="sheet:plain(text())"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.decoration">Dekor</pb-i18n></span><div class="inscription-value">[[decoration]]</div></div><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.decoration-description">Dekorbeschreibung</pb-i18n></span><div class="inscription-value">[[description]]</div></div></pb:template>
                     </model>
                 </elementSpec>
                 <elementSpec ident="condition" mode="add">
-                    <model output="web" predicate="sheet:on($parameters)" behaviour="pass-through">
+                    <model output="web" behaviour="pass-through">
                         <param name="value" value="sheet:label($parameters, 'preservation.xml', 'id', .)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.preservation">Erhaltung</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
                 </elementSpec>
                 <elementSpec ident="objectType" mode="add">
-                    <model output="web" predicate="sheet:on($parameters)" behaviour="pass-through">
+                    <model output="web" behaviour="pass-through">
                         <param name="value" value="sheet:labels($parameters, 'objtyp.xml', 'corresp', @ref)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.type-of-monument">Inschriftträger</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
                 </elementSpec>
                 <elementSpec ident="material" mode="add">
-                    <model output="web" predicate="sheet:on($parameters)" behaviour="pass-through">
+                    <model output="web" behaviour="pass-through">
                         <param name="value" value="sheet:labels($parameters, 'material.xml', 'corresp', @ref)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.material">Material</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
                 </elementSpec>
                 <elementSpec ident="height" mode="add">
-                    <model output="web" predicate="sheet:on($parameters) and ancestor::supportDesc" behaviour="pass-through">
+                    <model output="web" predicate="ancestor::supportDesc" behaviour="pass-through">
                         <param name="value" value="sheet:cm(.)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.height">Höhe</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
-                    <model output="web" predicate="sheet:on($parameters) and ancestor::layoutDesc" behaviour="pass-through">
+                    <model output="web" predicate="ancestor::layoutDesc" behaviour="pass-through">
                         <param name="value" value="sheet:plain(.)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.height">Höhe</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
                 </elementSpec>
                 <elementSpec ident="width" mode="add">
-                    <model output="web" predicate="sheet:on($parameters) and ancestor::supportDesc" behaviour="pass-through">
+                    <model output="web" predicate="ancestor::supportDesc" behaviour="pass-through">
                         <param name="value" value="sheet:cm(.)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.width">Breite</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
-                    <model output="web" predicate="sheet:on($parameters) and ancestor::layoutDesc" behaviour="pass-through">
+                    <model output="web" predicate="ancestor::layoutDesc" behaviour="pass-through">
                         <param name="value" value="sheet:plain(.)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.width">Breite</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
                 </elementSpec>
                 <elementSpec ident="depth" mode="add">
-                    <model output="web" predicate="sheet:on($parameters) and ancestor::supportDesc" behaviour="pass-through">
+                    <model output="web" predicate="ancestor::supportDesc" behaviour="pass-through">
                         <param name="value" value="sheet:cm(.)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.depth">Tiefe</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
                 </elementSpec>
                 <elementSpec ident="summary" mode="add">
-                    <model output="web" predicate="sheet:on($parameters)" behaviour="pass-through">
+                    <model output="web" behaviour="pass-through">
                         <param name="value" value="sheet:plain(.)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.notes">Anmerkungen</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
                 </elementSpec>
                 <elementSpec ident="ab" mode="change">
-                    <model output="web" predicate="sheet:on($parameters) and parent::layout" behaviour="pass-through">
+                    <model output="web" predicate="parent::layout" behaviour="pass-through">
                         <param name="content" value="node()"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.description">Beschreibung</pb-i18n></span><div class="inscription-value">[[content]]</div></div></pb:template>
                     </model>
                     <model behaviour="block"/>
                 </elementSpec>
                 <elementSpec ident="note" mode="change">
-                    <model output="web" predicate="sheet:on($parameters) and parent::support and not(@type)" behaviour="pass-through">
+                    <model output="web" predicate="parent::support and not(@type)" behaviour="pass-through">
                         <param name="content" value="node()"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.description-of-monument">Beschreibung Inschriftträger</pb-i18n></span><div class="inscription-value">[[content]]</div></div></pb:template>
                     </model>
-                    <model output="web" predicate="sheet:on($parameters) and @type='metre'" behaviour="pass-through">
+                    <model output="web" predicate="@type='metre'" behaviour="pass-through">
                         <param name="value" value="sheet:label($parameters, 'metre.xml', 'id', .)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.metre">Metrik</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
-                    <model output="web" predicate="sheet:on($parameters) and @type='paleography'" behaviour="pass-through">
+                    <model output="web" predicate="@type='paleography'" behaviour="pass-through">
                         <param name="labels" value="sheet:labels($parameters, 'paleography.xml', 'corresp', tokenize(normalize-space(string(@corresp)), '\s+'))"/>
                         <param name="free" value="node()"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.paleography">Paläographie</pb-i18n></span><div class="inscription-value">[[labels]]</div></div><div class="inscription-field"><span class="inscription-label"><pb-i18n key="display.paleography-free">Freie Eingabe</pb-i18n></span><div class="inscription-value">[[free]]</div></div></pb:template>
@@ -238,13 +241,13 @@
                     </model>
                 </elementSpec>
                 <elementSpec ident="handNote" mode="add">
-                    <model output="web" predicate="sheet:on($parameters) and @scope='ligature'" behaviour="pass-through">
+                    <model output="web" predicate="@scope='ligature'" behaviour="pass-through">
                         <param name="value" value="sheet:label($parameters, 'ligature.xml', 'id', .)"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.ligature">Ligatur(en)</pb-i18n></span><div class="inscription-value">[[value]]</div></div></pb:template>
                     </model>
                 </elementSpec>
                 <elementSpec ident="langUsage" mode="add">
-                    <model output="web" predicate="sheet:on($parameters)" behaviour="pass-through">
+                    <model output="web" behaviour="pass-through">
                         <param name="language" value="sheet:languages(., $parameters)"/>
                         <param name="scope" value="sheet:language-scope(language[@ident][not(@ident=('edep',''))], $parameters)"/>
                         <param name="free" value="sheet:plain(language[@ident='edep'])"/>
@@ -252,19 +255,19 @@
                     </model>
                 </elementSpec>
                 <elementSpec ident="listBibl" mode="change">
-                    <model output="web" predicate="sheet:on($parameters) and @type='transmission' and bibl" behaviour="pass-through">
+                    <model output="web" predicate="@type='transmission' and bibl" behaviour="pass-through">
                         <param name="entries" value="bibl"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.transmission">Überlieferung</pb-i18n></span><div class="inscription-value">[[entries]]</div></div></pb:template>
                     </model>
-                    <model output="web" predicate="sheet:on($parameters) and @type='previousEditions' and bibl" behaviour="pass-through">
+                    <model output="web" predicate="@type='previousEditions' and bibl" behaviour="pass-through">
                         <param name="entries" value="bibl"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.previous-editions">Ältere Editionen</pb-i18n></span><div class="inscription-value">[[entries]]</div></div></pb:template>
                     </model>
-                    <model output="web" predicate="sheet:on($parameters) and @type='bibliography' and bibl" behaviour="pass-through">
+                    <model output="web" predicate="@type='bibliography' and bibl" behaviour="pass-through">
                         <param name="entries" value="bibl"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.bibliography">Bibliographie</pb-i18n></span><div class="inscription-value">[[entries]]</div></div></pb:template>
                     </model>
-                    <model output="web" predicate="sheet:on($parameters) and @type='images' and bibl" behaviour="pass-through">
+                    <model output="web" predicate="@type='images' and bibl" behaviour="pass-through">
                         <param name="entries" value="bibl"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.images-dps">Bilder (Zeichnungen, Fotos, Abklatsche)</pb-i18n></span><div class="inscription-value">[[entries]]</div></div></pb:template>
                     </model>
@@ -272,7 +275,7 @@
                     <model behaviour="block"/>
                 </elementSpec>
                 <elementSpec ident="bibl" mode="change">
-                    <model output="web" predicate="sheet:on($parameters) and parent::listBibl[@type=('transmission','previousEditions','bibliography','images')] and (@corresp or citedRange[normalize-space(.)] or note[normalize-space(.)] or (parent::listBibl/@type='bibliography' and @type[normalize-space(.)]))" behaviour="pass-through">
+                    <model output="web" predicate="parent::listBibl[@type=('transmission','previousEditions','bibliography','images')] and (@corresp or citedRange[normalize-space(.)] or note[normalize-space(.)] or (parent::listBibl/@type='bibliography' and @type[normalize-space(.)]))" behaviour="pass-through">
                         <param name="key" value="sheet:plain(@corresp)"/>
                         <param name="range" value="sheet:join(citedRange, ', ')"/>
                         <param name="notes" value="note[normalize-space(.)]/node()"/>
@@ -327,7 +330,7 @@
                     </model>
                 </elementSpec>
                 <elementSpec ident="graphic" mode="change">
-                    <model output="web" predicate="sheet:on($parameters) and ancestor::facsimile" behaviour="pass-through">
+                    <model output="web" predicate="ancestor::facsimile" behaviour="pass-through">
                         <param name="url" value="string(@url)"/>
                         <pb:template xmlns="" xml:space="preserve"><div><a href="[[url]]" target="_blank" rel="noopener">[[url]]</a></div></pb:template>
                     </model>
@@ -340,7 +343,7 @@
                     </model>
                 </elementSpec>
                 <elementSpec ident="origDate" mode="add">
-                    <model output="web" predicate="sheet:on($parameters)" behaviour="pass-through">
+                    <model output="web" behaviour="pass-through">
                         <param name="dating" value="sheet:dating(., $parameters)"/>
                         <param name="notes" value="node()"/>
                         <pb:template xmlns="" xml:space="preserve"><div class="inscription-value">[[dating]]</div><div class="inscription-field"><span class="inscription-label"><pb-i18n key="form.notes">Anmerkungen</pb-i18n></span><div class="inscription-value">[[notes]]</div></div></pb:template>
@@ -348,7 +351,7 @@
                 </elementSpec>
                 <elementSpec ident="lb" mode="change">
                     <model predicate="preceding-sibling::*[1][self::lg]" behaviour="omit"/>
-                    <model output="web" predicate="sheet:on($parameters) and ancestor::div[@type='edition']" behaviour="pass-through">
+                    <model output="web" predicate="ancestor::div[@type='edition']" behaviour="pass-through">
                         <desc>Inscription sheet: a line beginning carries its number for the margin (edep-display.css). Hyphen for @break='no' stays a span.tei-lb so the diplomatic view can hide it.</desc>
                         <param name="n" value="string(@n)"/>
                         <param name="hyphen" value="if (@break = 'no') then '-' else ()"/>
@@ -369,7 +372,7 @@
                     </model>
                 </elementSpec>
                 <elementSpec ident="editor" mode="add">
-                    <model output="web" predicate="sheet:on($parameters) and parent::titleStmt" behaviour="pass-through">
+                    <model output="web" predicate="parent::titleStmt" behaviour="pass-through">
                         <param name="value" value="sheet:editor(., $parameters)"/>
                         <pb:template xmlns="" xml:space="preserve"><span class="inscription-editor">[[value]]</span></pb:template>
                     </model>

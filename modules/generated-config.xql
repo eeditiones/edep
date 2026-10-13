@@ -39,7 +39,7 @@ declare variable $config:data-exclude := (
 );
 
 declare variable $config:odd-root := $config:app-root || "/resources/odd";
-declare variable $config:default-odd := "edep-display.odd";
+declare variable $config:default-odd := "edep.odd";
 declare variable $config:odd-internal := 
     (  );
 
@@ -98,13 +98,13 @@ declare variable $config:context-path :=
 declare function config:collection-config($collection as xs:string?, $docUri as xs:string?) {
     if ($collection = "workspace" or starts-with($docUri, "workspace/")) then
         map {
-            "odd": "edep-display.odd",
-            "view": "single"
+            "view": "single",
+            "template": "inscription.html"
         }
     else if ($collection = "demo" or starts-with($docUri, "demo/")) then
         map {
-            "odd": "edep-display.odd",
-            "view": "single"
+            "view": "single",
+            "template": "inscription.html"
         }
     else
         ()

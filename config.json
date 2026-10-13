@@ -9,21 +9,24 @@
     "data-default": "",
     "languages": [ "en", "de" ],
     "browse": "browse-custom.html",
-    "odd": "edep-display.odd"
+    "odd": "edep.odd"
   },
   "odds": ["teipublisher.odd", "edep-clean.odd", "edep.odd", "edep-display.odd"],
   "collection-config": {
     "workspace": {
-      "odd": "edep-display.odd",
-      "view": "single"
+      "view": "single",
+      "template": "inscription.html"
     },
     "demo": {
-        "odd": "edep-display.odd",
-        "view": "single"
+      "view": "single",
+      "template": "inscription.html"
     }
   },
   "script": {
     "custom": ["resources/scripts/inscription-display.js"]
+  },
+  "urls": {
+    "ignore": "odd"
   },
   "theme" : {
     "colors" : {

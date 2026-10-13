@@ -4,12 +4,6 @@ module namespace sheet="http://e-editiones.org/edep/sheet";
 
 import module namespace global="http://e-editiones.org/tei-publisher/odd-global" at "odd-global.xqm";
 
-declare function sheet:on($parameters as map(*)?) as xs:boolean {
-    exists($parameters?root//*:msDesc) and
-    not($parameters?mode = ("breadcrumb", "title", "toc", "metadata-panel", "register", "register-details", "register-overview")) and
-    not($parameters?display = "browse")
-};
-
 declare function sheet:lang($parameters as map(*)?) as xs:string {
     (tokenize(normalize-space(string($parameters?language)), "-")[1][. = ("de", "en")], "de")[1]
 };

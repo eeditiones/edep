@@ -198,5 +198,9 @@
     "place": {
         "geolocation": "Coordinates",
         "place": "Place"
+    },
+    "breadcrumb": {
+        "demo": "Demo",
+        "workspace": "Workspace"
     }
 }
