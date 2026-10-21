@@ -11,9 +11,12 @@
 
     Note: starting with tei-publisher-lib 3.1.0, the module import paths can be relative
     to the modules/ collection.
---><modules>
+-->
+<modules>
     <!-- Import global variables and functions from modules/odd-global.xqm -->
     <module uri="http://e-editiones.org/tei-publisher/odd-global" prefix="global" at="odd-global.xqm"/>
+    <!-- Inscription sheet helpers. A global module resolves from modules/ the same way odd-global does. -->
+    <module uri="http://e-editiones.org/edep/sheet" prefix="sheet" at="sheet.xqm"/>
     <!-- General latex extension functions -->
     <!--output mode="latex">
         <property name="class">"article"</property>
@@ -27,12 +30,5 @@
     <!-- Required for MS Word docx to TEI transformations -->
     <output mode="tei" odd="docx">
         <module uri="http://www.tei-c.org/tei-simple/xquery/functions/docx" prefix="ext-docx"/>
-    </output>
-    <output mode="web" odd="edep-display">
-        <!-- Database URI: a relative at= is resolved from modules/lib during fix-odds and misses this file. -->
-        <module uri="http://e-editiones.org/edep/sheet" prefix="sheet" at="xmldb:exist:///db/apps/edep/modules/sheet.xqm"/>
-    </output>
-    <output mode="print" odd="edep-display">
-        <module uri="http://e-editiones.org/edep/sheet" prefix="sheet" at="xmldb:exist:///db/apps/edep/modules/sheet.xqm"/>
     </output>
 </modules>

@@ -2,7 +2,7 @@
     "xml.fileAssociations": [
         {
             "pattern": "**/*.odd",
-            "systemId": "/Users/wolfgang/.cursor/extensions/e-editiones.oddity-0.6.0-universal/schemas/teipublisher_odds.xsd"
+            "systemId": "/Users/wolfgang/.vscode/extensions/e-editiones.oddity-0.6.0/schemas/teipublisher_odds.xsd"
         }
     ]
 }
